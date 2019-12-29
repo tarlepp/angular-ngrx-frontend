@@ -8,7 +8,11 @@
  *
  *  apiUrl
  *    Backend API url, eg. https://api.somedomain.tld
+ *
+ *  tokenUrl
+ *    Backend API url where Json WebToken (JWT) can be obtained
  */
 export interface ApplicationConfigurationInterface {
   apiUrl: string;
+  tokenUrl: string;
 }

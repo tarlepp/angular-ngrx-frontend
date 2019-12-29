@@ -1,3 +1,4 @@
 {
-  "apiUrl": "https://api.somedomain.tld"
+  "apiUrl": "https://api.somedomain.tld",
+  "tokenUrl": "https://api.somedomain.tld/token-url"
 }

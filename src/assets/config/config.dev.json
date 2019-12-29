@@ -1,3 +1,4 @@
 {
-  "apiUrl": "http://localhost:8000"
+  "apiUrl": "http://localhost:8000",
+  "tokenUrl": "http://localhost:8000/getToken"
 }

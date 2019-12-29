@@ -1,0 +1,13 @@
+FROM node:13.5.0
+
+WORKDIR /app
+
+ADD . .
+
+RUN ln -s /app/node_modules/\@angular/cli/bin/ng /usr/local/bin/ng
+RUN chmod +x docker-entrypoint-dev.sh
+RUN npm install -g npm-check-updates
+
+EXPOSE 4200
+
+ENTRYPOINT ["/app/docker-entrypoint-dev.sh"]

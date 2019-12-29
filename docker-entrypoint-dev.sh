@@ -16,6 +16,6 @@ set -e
 yarn install
 
 # Step 2
-chmod -R o+s+w /app
+make fix-permissions
 
 exec "$@"

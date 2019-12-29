@@ -1,5 +1,8 @@
 FROM node:13.5.0
 
+# Let's use bash as a default shell
+SHELL ["/bin/bash", "-c"]
+
 WORKDIR /app
 
 ADD . .
@@ -7,6 +10,9 @@ ADD . .
 RUN ln -s /app/node_modules/\@angular/cli/bin/ng /usr/local/bin/ng
 RUN chmod +x docker-entrypoint-dev.sh
 RUN npm install -g npm-check-updates
+
+# Add necessary stuff to bash autocomplete
+RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
 
 EXPOSE 4200
 

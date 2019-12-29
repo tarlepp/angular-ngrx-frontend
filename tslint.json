@@ -71,7 +71,13 @@
       true,
       "single"
     ],
-    "trailing-comma": true,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
@@ -83,7 +89,9 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "triple-equals": true,
+    "unnecessary-constructor": true
   },
   "rulesDirectory": [
     "codelyzer"

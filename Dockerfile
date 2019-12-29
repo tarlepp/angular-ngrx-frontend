@@ -1,8 +1,15 @@
+FROM node:13.5.0 as build
+
+RUN npm install -g @angular/cli@8.3.21
+
+COPY ./ /src/
+
+WORKDIR /src/
+
+RUN yarn && \
+    ng build --prod --build-optimizer --configuration=production
+
 FROM nginx:mainline-alpine
 
-COPY docker /etc/nginx/conf.d/default.conf
-
-COPY ./dist/ /usr/share/nginx/html
-
-RUN rm -rf /usr/share/nginx/html/env.js \
-    && ln -s /secret/env.js /usr/share/nginx/html/env.jsDocker
+COPY --from=build /src/docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /src/dist/angular-frontend /usr/share/nginx/html

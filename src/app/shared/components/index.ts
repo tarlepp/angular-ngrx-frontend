@@ -1,5 +1,4 @@
-import { HeaderComponent } from './header/header.component';
+export { HeaderComponent } from './header/header.component';
 
-export const Components = [
-  HeaderComponent
-];
+// Only export components that are used commonly within another modules
+export const Components = [];

@@ -1,2 +1,22 @@
+<ng-container>
+  <app-header></app-header>
 
-<router-outlet></router-outlet>
+  <div fxFlex
+       fxLayout="row"
+  >
+    <div fxFlex
+         fxLayout="column"
+    >
+      <div fxFlex
+           fxLayout="column"
+           fxLayoutAlign="space-between stretch"
+      >
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+
+        <div>footer here</div>
+      </div>
+    </div>
+  </div>
+</ng-container>

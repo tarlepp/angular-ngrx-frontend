@@ -1,1 +1,22 @@
-<p>header works!</p>
+<div class="header-container">
+  <mat-toolbar class="mat-elevation-z2"
+               color="primary"
+               fxLayout="row"
+               fxLayoutAlign="space-between center"
+  >
+    <span>Angular frontend</span>
+
+    <button mat-icon-button
+            [matMenuTriggerFor]="matMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-menu #matMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>fingerprint</mat-icon>
+
+      <span>Login</span>
+    </button>
+  </mat-menu>
+</div>

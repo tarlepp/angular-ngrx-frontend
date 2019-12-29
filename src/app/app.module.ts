@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { LandingModule } from './landing/landing.module';
 import { FooterComponent, HeaderComponent } from './shared/components';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FooterComponent, HeaderComponent } from './shared/components';
   ],
   imports: [
     BrowserModule,
+    AuthModule,
     LandingModule,
     AppRoutingModule,
     SharedModule,

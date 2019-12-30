@@ -3,7 +3,7 @@ export interface UserProfileInterface {
   username: string;
   firstName: string;
   lastName: string;
-  email:  string;
+  email: string;
   userGroups: Array<{
     id: string;
     name: string;

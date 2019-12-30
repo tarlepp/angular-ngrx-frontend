@@ -4,7 +4,11 @@
                fxLayout="row"
                fxLayoutAlign="space-between center"
   >
-    <span>Angular frontend</span>
+    <a mat-button
+       routerLink="/"
+    >
+      Angular frontend
+    </a>
 
     <button mat-icon-button
             [matMenuTriggerFor]="matMenu">
@@ -13,10 +17,12 @@
   </mat-toolbar>
 
   <mat-menu #matMenu="matMenu">
-    <button mat-menu-item>
+    <a mat-menu-item
+       routerLink="/auth/login"
+    >
       <mat-icon>fingerprint</mat-icon>
 
       <span>Login</span>
-    </button>
+    </a>
   </mat-menu>
 </div>

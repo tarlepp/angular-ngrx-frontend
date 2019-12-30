@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AuthModule,
     LandingModule,
     AppRoutingModule,

@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   loggedIn: false,
   roles: [],
+  profile: null,
   error: null,
 } as AuthenticationState;
 
@@ -31,6 +32,30 @@ const reducer = createReducer(
   ),
   on(
     authenticationActions.loginFailure,
+    (state: AuthenticationState, { error }): AuthenticationState => ({
+      ...state,
+      loading: false,
+      error,
+    }),
+  ),
+  on(
+    authenticationActions.profile,
+    (state: AuthenticationState): AuthenticationState => ({
+      ...state,
+      loading: true,
+      profile: null,
+    }),
+  ),
+  on(
+    authenticationActions.profileSuccess,
+    (state: AuthenticationState, { profile }): AuthenticationState => ({
+      ...state,
+      loading: false,
+      profile,
+    }),
+  ),
+  on(
+    authenticationActions.profileFailure,
     (state: AuthenticationState, { error }): AuthenticationState => ({
       ...state,
       loading: false,

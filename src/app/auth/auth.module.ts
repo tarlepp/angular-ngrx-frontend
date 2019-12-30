@@ -8,6 +8,10 @@ import { LoginModule } from './login/login.module';
     AuthRoutingModule,
     LoginModule,
   ],
+  providers: [
+    ...Services,
+    ...Guards,
+  ],
 })
 
 export class AuthModule { }

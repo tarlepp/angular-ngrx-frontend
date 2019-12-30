@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -14,6 +15,7 @@ import { MaterialModule } from './material/material.module';
     BrowserAnimationsModule,
     CommonModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     MaterialModule,
   ],
   exports: [
@@ -21,6 +23,7 @@ import { MaterialModule } from './material/material.module';
     BrowserAnimationsModule,
     CommonModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     MaterialModule,
   ],
 })

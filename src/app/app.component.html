@@ -6,17 +6,19 @@
   >
     <div fxFlex
          fxLayout="column"
+         fxLayoutAlign="space-between stretch"
     >
       <div fxFlex
-           fxLayout="column"
-           fxLayoutAlign="space-between stretch"
+           fxLayout="row"
       >
-        <div>
-          <router-outlet></router-outlet>
+        <div fxFlex
+             fxFill
+        >
+          <router-outlet ></router-outlet>
         </div>
-
-        <app-footer></app-footer>
       </div>
+
+      <app-footer></app-footer>
     </div>
   </div>
 </ng-container>

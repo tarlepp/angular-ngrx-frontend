@@ -11,6 +11,7 @@ import { AuthenticationActionType } from './authentication-action.type';
 import { authenticationActions } from './authentication.actions';
 import { AuthenticationService } from '../../auth/services';
 import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/interfaces';
+import { Role } from '../../auth/enums';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -21,7 +22,7 @@ export class AuthenticationEffects {
       switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationActionType>> => {
         return from(this.authService.authenticate(credentials)
           .pipe(
-            map((roles: Array<string>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
+            map((roles: Array<Role>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
               this.snackbarService
                 .message('You signed in')
                 .finally();

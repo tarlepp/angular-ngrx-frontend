@@ -8,11 +8,12 @@ import { take } from 'rxjs/operators';
 import { ConfigurationService } from '../../shared/services';
 import { ServerErrorInterface } from '../../shared/interfaces';
 import { CredentialsRequestInterface, CredentialsResponseInterface, UserProfileInterface } from '../interfaces';
+import { Role } from '../enums';
 
 @Injectable()
 export class AuthenticationService {
   private readonly httpOptions: object;
-  private readonly userRoles$: BehaviorSubject<string[]|null>;
+  private readonly userRoles$: BehaviorSubject<Array<Role>|null>;
 
   public constructor(
     private http: HttpClient,
@@ -25,7 +26,7 @@ export class AuthenticationService {
       }),
     };
 
-    this.userRoles$ = new BehaviorSubject<string[]|null>(null);
+    this.userRoles$ = new BehaviorSubject<Array<Role>|null>(null);
   }
 
   public authenticate(credentials: CredentialsRequestInterface): Observable<string[]|ServerErrorInterface> {
@@ -76,7 +77,7 @@ export class AuthenticationService {
     this.userRoles$.next(null);
   }
 
-  public getLoggedInRoles(): BehaviorSubject<string[]|null> {
+  public getLoggedInRoles(): BehaviorSubject<Array<Role>|null> {
     this.isAuthenticated()
       .subscribe((authenticated: boolean): void => {
         const token = this.localStorage.retrieve('token');

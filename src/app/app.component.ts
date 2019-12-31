@@ -4,6 +4,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { Role } from './auth/enums';
 import { AuthenticationService } from './auth/services';
 import { authenticationActions, authenticationSelectors, AuthenticationState } from './store/authentication';
 
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription
       .add(this.authenticationService
         .getLoggedInRoles()
-        .subscribe((roles: Array<string>): void => {
+        .subscribe((roles: Array<Role>|null): void => {
           if (roles === null && this.loggedIn) {
             this.logout(null);
           }

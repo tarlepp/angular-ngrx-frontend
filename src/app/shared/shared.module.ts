@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { Components } from './components';
+import { HttpInterceptors } from './interceptors';
 import { Services } from './services';
 import { MaterialModule } from './material/material.module';
 
@@ -28,6 +29,7 @@ import { MaterialModule } from './material/material.module';
     MaterialModule,
   ],
   providers: [
+    ...HttpInterceptors,
     ...Services,
   ],
 })

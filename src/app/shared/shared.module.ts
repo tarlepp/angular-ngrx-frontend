@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { Components } from './components';
+import { Services } from './services';
 import { MaterialModule } from './material/material.module';
 
 @NgModule({
@@ -25,6 +26,9 @@ import { MaterialModule } from './material/material.module';
     FlexLayoutModule,
     ReactiveFormsModule,
     MaterialModule,
+  ],
+  providers: [
+    ...Services,
   ],
 })
 

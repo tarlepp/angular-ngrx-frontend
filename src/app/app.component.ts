@@ -16,7 +16,7 @@ import { authenticationActions, authenticationSelectors, AuthenticationState } f
 
 export class AppComponent implements OnInit, OnDestroy {
   private loggedIn: boolean;
-  private tokenInterval;
+  private tokenInterval: number;
   private subscription: Subscription;
 
   public constructor(
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.tokenInterval = setInterval((): void => this.checkToken(), 15000);
+    this.setTokenInterval();
 
     this.subscription
       .add(this.localStorage
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
           if (value !== undefined) {
             clearInterval(this.tokenInterval);
 
-            this.tokenInterval = setInterval((): void => this.checkToken(), 15000);
+            this.setTokenInterval();
           }
         }),
       );
@@ -49,9 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
         .subscribe((roles: Array<Role>|null): void => {
           if (roles === null && this.loggedIn) {
             this.logout(null);
-          }
-
-          if (roles !== null && !this.loggedIn) {
+          } else if (roles !== null && !this.loggedIn) {
             this.authenticationStore.dispatch(authenticationActions.loginSuccess({roles}));
           }
         }),
@@ -68,6 +66,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private setTokenInterval(): void {
+    this.tokenInterval = setInterval((): void => this.checkToken(), 15000);
   }
 
   private checkToken(): void {

@@ -1,3 +1,5 @@
+import { Role } from '../enums';
+
 export interface UserProfileInterface {
   id: string;
   username: string;
@@ -8,8 +10,8 @@ export interface UserProfileInterface {
     id: string;
     name: string;
     role: {
-      id: string;
+      id: Role,
     }
   }>;
-  roles: Array<string>;
+  roles: Array<Role>;
 }

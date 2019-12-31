@@ -71,11 +71,9 @@ export class AuthenticationService {
     return of(!isTokenExpired);
   }
 
-  public logout(): Observable<boolean> {
+  public logout(): void {
     this.localStorage.clear('token');
     this.userRoles$.next(null);
-
-    return of(true);
   }
 
   public getLoggedInRoles(): BehaviorSubject<string[]|null> {

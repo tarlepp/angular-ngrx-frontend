@@ -7,10 +7,11 @@ import { tap } from 'rxjs/operators';
 import { errorActions, ErrorState } from '../../store/error';
 import { ConfigurationService } from '../services';
 import { ServerErrorInterface } from '../interfaces';
+import { authenticationActions, AuthenticationState } from '../../store/authentication';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  public constructor(private errorStore: Store<ErrorState>) { }
+  public constructor(private errorStore: Store<ErrorState>, private authenticationStore: Store<AuthenticationState>) { }
 
   public intercept(httpRequest: HttpRequest<any>, delegate: HttpHandler): Observable<HttpEvent<any>> {
     const modified = httpRequest.clone();
@@ -21,14 +22,16 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private handle(httpRequest: HttpRequest<any>, httpErrorResponse: HttpErrorResponse): void {
-    this.dispatchMessage(httpErrorResponse);
-
     if (httpErrorResponse.status === 401
       && httpRequest.url !== ConfigurationService.configuration.tokenUrl
       && new URL(httpRequest.url).host === new URL(ConfigurationService.configuration.apiUrl).host
     ) {
-      // TODO: Dispatch logout action to auth store
+      this.authenticationStore.dispatch(authenticationActions.logout({message: 'Unauthorized'}));
+
+      return;
     }
+
+    this.dispatchMessage(httpErrorResponse);
   }
 
   private dispatchMessage(httpErrorResponse: HttpErrorResponse): void {

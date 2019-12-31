@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ServerErrorInterface } from '../../shared/interfaces';
-import { ErrorActionType } from './error-action-type';
+import { ErrorActionType } from './error-action.type';
 
 const snackbar = createAction(
   ErrorActionType.ERROR_SNACKBAR,

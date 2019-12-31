@@ -6,7 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 import { from, Observable, of } from 'rxjs';
 
-import { AuthenticationActionTypeEnum } from './authentication-action-type.enum';
+import { AuthenticationActionType } from './authentication-action.type';
 import { authenticationActions } from './authentication.actions';
 import { AuthenticationService } from '../../auth/services';
 import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/interfaces';
@@ -15,19 +15,19 @@ import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/in
 export class AuthenticationEffects {
   private login$ = createEffect(() => this.actions$
     .pipe(
-      ofType(AuthenticationActionTypeEnum.LOGIN),
+      ofType(AuthenticationActionType.LOGIN),
       pluck('credentials'),
       switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<string>> => {
         return from(this.authService.authenticate(credentials)
           .pipe(
-            map((roles: Array<string>): TypedAction<AuthenticationActionTypeEnum.LOGIN_SUCCESS> => {
+            map((roles: Array<string>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
               this.router
                 .navigate(['/'])
                 .finally();
 
               return authenticationActions.loginSuccess({roles});
             }),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationActionTypeEnum.LOGIN_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationActionType.LOGIN_FAILURE>> =>
               of(authenticationActions.loginFailure({error: httpErrorResponse.error})),
             ),
           ),
@@ -38,21 +38,21 @@ export class AuthenticationEffects {
 
   private loginSuccess$ = createEffect(() => this.actions$
     .pipe(
-      ofType(AuthenticationActionTypeEnum.LOGIN_SUCCESS),
-      switchMap((): Observable<TypedAction<AuthenticationActionTypeEnum.PROFILE>> => of(authenticationActions.profile())),
+      ofType(AuthenticationActionType.LOGIN_SUCCESS),
+      switchMap((): Observable<TypedAction<AuthenticationActionType.PROFILE>> => of(authenticationActions.profile())),
     ),
   );
 
   private profile$ = createEffect(() => this.actions$
     .pipe(
-      ofType(AuthenticationActionTypeEnum.PROFILE),
+      ofType(AuthenticationActionType.PROFILE),
       switchMap((): Observable<TypedAction<string>> => {
         return from(this.authService.getProfile()
           .pipe(
-            map((profile: UserProfileInterface): TypedAction<AuthenticationActionTypeEnum.PROFILE_SUCCESS> =>
+            map((profile: UserProfileInterface): TypedAction<AuthenticationActionType.PROFILE_SUCCESS> =>
               authenticationActions.profileSuccess({profile}),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationActionTypeEnum.PROFILE_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationActionType.PROFILE_FAILURE>> =>
               of(authenticationActions.profileFailure({error: httpErrorResponse.error})),
             ),
           ),

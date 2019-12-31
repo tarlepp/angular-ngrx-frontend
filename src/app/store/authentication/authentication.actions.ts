@@ -1,33 +1,33 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ServerErrorInterface } from '../../shared/interfaces';
-import { AuthenticationActionTypeEnum } from './authentication-action-type.enum';
+import { AuthenticationActionType } from './authentication-action.type';
 import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/interfaces';
 
 const login = createAction(
-  AuthenticationActionTypeEnum.LOGIN,
+  AuthenticationActionType.LOGIN,
   props<{ credentials: CredentialsRequestInterface }>(),
 );
 
 const loginSuccess = createAction(
-  AuthenticationActionTypeEnum.LOGIN_SUCCESS,
+  AuthenticationActionType.LOGIN_SUCCESS,
   props<{ roles: Array<string> }>(),
 );
 
 const loginFailure = createAction(
-  AuthenticationActionTypeEnum.LOGIN_FAILURE,
+  AuthenticationActionType.LOGIN_FAILURE,
   props<{ error: ServerErrorInterface }>(),
 );
 
-const profile = createAction(AuthenticationActionTypeEnum.PROFILE);
+const profile = createAction(AuthenticationActionType.PROFILE);
 
 const profileSuccess = createAction(
-  AuthenticationActionTypeEnum.PROFILE_SUCCESS,
+  AuthenticationActionType.PROFILE_SUCCESS,
   props<{ profile: UserProfileInterface }>(),
 );
 
 const profileFailure = createAction(
-  AuthenticationActionTypeEnum.PROFILE_FAILURE,
+  AuthenticationActionType.PROFILE_FAILURE,
   props<{ error: ServerErrorInterface }>(),
 );
 

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 import { from, Observable, of } from 'rxjs';
+import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 
 import { SnackbarService } from '../../shared/services';
 import { AuthenticationActionType } from './authentication-action.type';

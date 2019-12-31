@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+// Only add Material modules that are used within other modules
 const MaterialModules = [
   MatButtonModule,
   MatDividerModule,
@@ -29,6 +30,7 @@ const MaterialModules = [
     ...MaterialModules,
   ],
   exports: [
+    CommonModule,
     ...MaterialModules,
   ],
 })

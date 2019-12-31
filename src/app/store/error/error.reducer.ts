@@ -25,9 +25,6 @@ const reducer = createReducer(
   ),
 );
 
-export function errorReducer(
-  state: ErrorState|undefined,
-  action: Action,
-): ErrorState {
+export function errorReducer(state: ErrorState|undefined, action: Action): ErrorState {
   return reducer(state, action);
 }

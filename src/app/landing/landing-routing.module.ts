@@ -10,7 +10,7 @@ import { LandingComponent } from './landing.component';
         path: 'landing',
         component: LandingComponent,
       },
-    ])
+    ]),
   ],
   exports: [
     RouterModule,

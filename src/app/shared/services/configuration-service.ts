@@ -26,8 +26,8 @@ export class ConfigurationService {
 
           this.loadConfiguration(this.configurationFile)
             .then((): void => resolve())
-            .catch((error: string): void => reject(error))
-        })
+            .catch((errorDefault: string): void => reject(errorDefault));
+        });
     });
   }
 
@@ -45,9 +45,9 @@ export class ConfigurationService {
 
               resolve();
             })
-            .catch((response: any): void => reject(`Invalid JSON in file '${configurationFile}': ${response}`));
+            .catch((error: any): void => reject(`Invalid JSON in file '${configurationFile}': ${error}`));
         })
-        .catch((response: any): void => reject(`Could not load file '${configurationFile}': ${response}`));
+        .catch((error: any): void => reject(`Could not load file '${configurationFile}': ${error}`));
     });
   }
 }

@@ -6,6 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 import { from, Observable, of } from 'rxjs';
 
+import { SnackbarService } from '../../shared/services';
 import { AuthenticationActionType } from './authentication-action.type';
 import { authenticationActions } from './authentication.actions';
 import { AuthenticationService } from '../../auth/services';
@@ -21,6 +22,10 @@ export class AuthenticationEffects {
         return from(this.authService.authenticate(credentials)
           .pipe(
             map((roles: Array<string>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
+              this.snackbarService
+                .message('You signed in')
+                .finally();
+
               this.router
                 .navigate(['/'])
                 .finally();
@@ -64,8 +69,15 @@ export class AuthenticationEffects {
   private logout$ = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(AuthenticationActionType.LOGOUT),
-      map((): void => {
+      pluck('message'),
+      map((message?: string): void => {
         this.authService.logout();
+
+        if (message) {
+          this.snackbarService
+            .message(message)
+            .finally();
+        }
 
         this.router
           .navigate(['/'])
@@ -75,5 +87,10 @@ export class AuthenticationEffects {
     { dispatch: false },
   );
 
-  public constructor(private actions$: Actions, private router: Router, private authService: AuthenticationService) { }
+  public constructor(
+    private actions$: Actions,
+    private router: Router,
+    private authService: AuthenticationService,
+    private snackbarService: SnackbarService,
+  ) { }
 }

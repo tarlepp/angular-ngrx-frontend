@@ -4,7 +4,6 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { SnackbarService } from './shared/services';
 import { AuthenticationService } from './auth/services';
 import { authenticationActions, authenticationSelectors, AuthenticationState } from './store/authentication';
 
@@ -21,7 +20,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public constructor(
     private localStorage: LocalStorageService,
-    private snackbarService: SnackbarService,
     private authenticationStore: Store<AuthenticationState>,
     private authenticationService: AuthenticationService,
   ) {
@@ -49,7 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
         .getLoggedInRoles()
         .subscribe((roles: Array<string>): void => {
           if (roles === null && this.loggedIn) {
-            this.logout();
+            this.logout(null);
           }
 
           if (roles !== null && !this.loggedIn) {
@@ -75,18 +73,14 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authenticationService
       .isAuthenticated()
       .pipe(take(1))
-      .subscribe((authenticated: boolean) => {
+      .subscribe((authenticated: boolean): void => {
         if (this.loggedIn && !authenticated) {
-          this.logout();
-
-          this.snackbarService
-            .message('Session timeout.')
-            .finally();
+          this.logout('Session timeout');
         }
       });
   }
 
-  private logout(): void {
-    this.authenticationStore.dispatch(authenticationActions.logout());
+  private logout(message?: string): void {
+    this.authenticationStore.dispatch(authenticationActions.logout({message}));
   }
 }

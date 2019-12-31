@@ -13,11 +13,11 @@ import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/in
 
 @Injectable()
 export class AuthenticationEffects {
-  private login$ = createEffect(() => this.actions$
+  private login$ = createEffect((): Observable<TypedAction<AuthenticationActionType>> => this.actions$
     .pipe(
       ofType(AuthenticationActionType.LOGIN),
       pluck('credentials'),
-      switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<string>> => {
+      switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationActionType>> => {
         return from(this.authService.authenticate(credentials)
           .pipe(
             map((roles: Array<string>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
@@ -36,17 +36,17 @@ export class AuthenticationEffects {
     ),
   );
 
-  private loginSuccess$ = createEffect(() => this.actions$
+  private loginSuccess$ = createEffect((): Observable<TypedAction<AuthenticationActionType>> => this.actions$
     .pipe(
       ofType(AuthenticationActionType.LOGIN_SUCCESS),
       switchMap((): Observable<TypedAction<AuthenticationActionType.PROFILE>> => of(authenticationActions.profile())),
     ),
   );
 
-  private profile$ = createEffect(() => this.actions$
+  private profile$ = createEffect((): Observable<TypedAction<AuthenticationActionType>> => this.actions$
     .pipe(
       ofType(AuthenticationActionType.PROFILE),
-      switchMap((): Observable<TypedAction<string>> => {
+      switchMap((): Observable<TypedAction<AuthenticationActionType>> => {
         return from(this.authService.getProfile()
           .pipe(
             map((profile: UserProfileInterface): TypedAction<AuthenticationActionType.PROFILE_SUCCESS> =>
@@ -61,9 +61,19 @@ export class AuthenticationEffects {
     ),
   );
 
-  public constructor(
-    private actions$: Actions,
-    private router: Router,
-    private authService: AuthenticationService,
-  ) { }
+  private logout$ = createEffect((): Observable<void> => this.actions$
+    .pipe(
+      ofType(AuthenticationActionType.LOGOUT),
+      map((): void => {
+        this.authService.logout();
+
+        this.router
+          .navigate(['/'])
+          .finally();
+      }),
+    ),
+    { dispatch: false },
+  );
+
+  public constructor(private actions$: Actions, private router: Router, private authService: AuthenticationService) { }
 }

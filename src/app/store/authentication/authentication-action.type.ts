@@ -5,4 +5,5 @@ export enum AuthenticationActionType {
   PROFILE = '[Authentication] Profile',
   PROFILE_SUCCESS = '[Authentication] Profile success',
   PROFILE_FAILURE = '[Authentication] Profile failure',
+  LOGOUT = '[Authentication] Logout',
 }

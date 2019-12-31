@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+
 import { AuthenticationState } from './authentication.state';
 import { authenticationActions } from './authentication.actions';
 
@@ -62,11 +63,9 @@ const reducer = createReducer(
       error,
     }),
   ),
+  on(authenticationActions.logout, (): AuthenticationState => initialState),
 );
 
-export function authenticationReducer(
-  state: AuthenticationState|undefined,
-  action: Action,
-): AuthenticationState {
+export function authenticationReducer(state: AuthenticationState|undefined, action: Action): AuthenticationState {
   return reducer(state, action);
 }

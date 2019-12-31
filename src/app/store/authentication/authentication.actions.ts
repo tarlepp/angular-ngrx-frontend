@@ -31,6 +31,8 @@ const profileFailure = createAction(
   props<{ error: ServerErrorInterface }>(),
 );
 
+const logout = createAction(AuthenticationActionType.LOGOUT);
+
 export const authenticationActions = {
   login,
   loginSuccess,
@@ -38,4 +40,5 @@ export const authenticationActions = {
   profile,
   profileSuccess,
   profileFailure,
+  logout,
 };

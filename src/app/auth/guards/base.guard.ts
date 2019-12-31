@@ -13,7 +13,7 @@ export class BaseGuard {
         .isAuthenticated()
         .pipe(take(1))
         .subscribe((authenticated: boolean): void => {
-          observer.next(authenticated);
+          observer.next(authenticated === needsToBeAuthenticated);
 
           if (authenticated !== needsToBeAuthenticated) {
             this.router

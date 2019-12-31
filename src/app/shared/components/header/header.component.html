@@ -10,13 +10,29 @@
       Angular frontend
     </a>
 
-    <button mat-icon-button
-            [matMenuTriggerFor]="matMenu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+    >
+      <div *ngIf="loading$ | async">
+        <mat-spinner diameter="24"
+                     color="accent"
+        ></mat-spinner>
+      </div>
+
+      <small *ngIf="profile">
+        {{ profile.username }}
+      </small>
+
+      <button mat-icon-button
+              fxFlexOffset="16px"
+              #userMenu="matMenuTrigger"
+              [matMenuTriggerFor]="profile ? matMenuUser : matMenuAnon">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
   </mat-toolbar>
 
-  <mat-menu #matMenu="matMenu">
+  <mat-menu #matMenuAnon="matMenu">
     <a mat-menu-item
        routerLink="/auth/login"
     >
@@ -24,5 +40,27 @@
 
       <span>Login</span>
     </a>
+  </mat-menu>
+
+  <mat-menu class="header-menu"
+            #matMenuUser="matMenu"
+  >
+    <a mat-menu-item
+       routerLink="/profile"
+    >
+      <mat-icon>person</mat-icon>
+
+      <span>Profile</span>
+    </a>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item
+            (click)="logout()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+
+      <span>Logout</span>
+    </button>
   </mat-menu>
 </div>

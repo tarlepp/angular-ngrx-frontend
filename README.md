@@ -1,27 +1,128 @@
-# AngularFrontend
+# What is this
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Development server
+Angular frontend template project for 
+[Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)
+or any other backend that is providing similar API.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Table of Contents
 
-## Code scaffolding
+* [What is this](#what-is-this)
+   * [Table of Contents](#table-of-contents)
+   * [Requirements](#requirements)
+   * [Installation](#installation)
+      * [1. Clone repository](#1-clone-repository)
+      * [2. Start containers](#2-start-containers)
+      * [3. Using application](#3-using-application)
+      * [4. Getting shell to container](#4-getting-shell-to-container)
+      * [5. Building containers](#5-building-containers)
+   * [Resources](#resources)
+   * [External links / resources](#external-links--resources)
+   * [Authors](#authors)
+   * [License](#license)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Requirements
 
-## Build
+* [docker-compose](https://docs.docker.com/compose/install/)
+* *nix platform - not really requirement, but recommend to use to get 
+  `Makefile` support
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Installation
 
-## Running unit tests
+This installation guide expects that you're `make` commands.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 1. Clone repository
 
-## Running end-to-end tests
+Use your favorite IDE and get checkout from GitHub or just use following command
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+git clone https://github.com/tarlepp/angular-frontend.git
+```
 
-## Further help
+### 2. Start containers
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+For this just run following command:
+
+```bash
+make start
+```
+
+or without `Makefile` support:
+
+```bash
+docker-compose up
+```
+
+This command will create one (1) Docker container where your application is
+running on development stage.
+ 
+### 3. Using application
+
+By default `make start` command starts Angular application on Docker container
+and exposes following port on `localhost`:
+ * 4200 (Angular Live Development Server)
+ 
+And this application is usable within your browser on `http://localhost:4200`
+address.
+
+Note that this frontend application assumes that your backend is running on 
+`http://localhost:8000` address. Also note that _"default"_ 
+[backend](https://github.com/tarlepp/symfony-flex-backend)
+is running on that address by default.
+
+### 4. Getting shell to container
+
+After you've run `make start` command you can list all running containers with 
+`docker ps` command.
+
+And to eg. get shell access inside one of those containers you can run following
+shortcut command:
+
+```bash
+make bash
+```
+
+or without `Makefile` support:
+
+```bash
+docker-compose exec node bash
+``` 
+
+Where that `node` is that actual container where this backend application is
+running.
+
+### 5. Building containers
+
+For time to time you probably need to build containers again. This is something
+that you should do always if you have some problems to get containers up and
+running. This you can do with following command:
+
+```bash
+make start-build
+```
+
+or without `Makefile` support:
+
+```bash
+docker-compose up --build 
+```
+
+## Resources
+
+_TODO_
+
+## External links / resources
+
+_TODO_
+
+## Authors
+
+* [Tarmo Leppänen](https://github.com/tarlepp)
+
+## License
+
+[The MIT License (MIT)](LICENSE)
+
+Copyright © 2020 Tarmo Leppänen
+

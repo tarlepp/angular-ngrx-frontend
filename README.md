@@ -122,6 +122,7 @@ _TODO_
 * [Angular Flex-Layout](https://github.com/angular/flex-layout)
 * [The RxJS Library](https://angular.io/guide/rx-library)
 * [NgRX Reactive State for Angular](https://ngrx.io/)
+* [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
 ## Authors
 

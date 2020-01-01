@@ -30,8 +30,6 @@ or any other backend that is providing similar API.
 
 ## Installation
 
-This installation guide expects that you're `make` commands.
-
 ### 1. Clone repository
 
 Use your favorite IDE and get checkout from GitHub or just use following command

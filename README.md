@@ -11,6 +11,7 @@ or any other backend that is providing similar API.
 * [What is this](#what-is-this)
    * [Table of Contents](#table-of-contents)
    * [Requirements](#requirements)
+      * [Recommendations](#recommendations)
    * [Installation](#installation)
       * [1. Clone repository](#1-clone-repository)
       * [2. Start containers](#2-start-containers)
@@ -25,7 +26,10 @@ or any other backend that is providing similar API.
 ## Requirements
 
 * [docker-compose](https://docs.docker.com/compose/install/)
-* *nix platform - not really requirement, but recommend to use to get 
+
+### Recommendations
+
+* `*nix platform` - not really requirement, but recommend to use to get 
   `Makefile` support
 
 ## Installation

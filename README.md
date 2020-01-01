@@ -112,7 +112,7 @@ docker-compose up --build
 
 ## Resources
 
-_TODO_
+* [Speed problems with application?](doc/SPEED_UP_DOCKER_COMPOSE.md)
 
 ## External links / resources
 

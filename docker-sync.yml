@@ -1,0 +1,13 @@
+#
+# For osx users, see http://docker-sync.io/
+# this file should be added to your VCS
+#
+version: '2'
+
+syncs:
+  frontend-code:
+    src: ./
+      sync_args:
+        - "-ignore='Path .idea'"      # no need to send PHPStorm config to container
+        - "-ignore='Path .git'"       # ignore the main .git repo
+        - "-ignore='BelowPath .git'"  # also ignore .git repos in subfolders

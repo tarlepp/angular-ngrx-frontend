@@ -112,7 +112,12 @@ _TODO_
 
 ## External links / resources
 
-_TODO_
+* [Angular](https://angular.io/)
+* [Angular Material](https://material.angular.io/)
+* [Material Icons](https://material.io/resources/icons/)
+* [Angular Flex-Layout](https://github.com/angular/flex-layout)
+* [The RxJS Library](https://angular.io/guide/rx-library)
+* [NgRX Reactive State for Angular](https://ngrx.io/)
 
 ## Authors
 
@@ -123,4 +128,3 @@ _TODO_
 [The MIT License (MIT)](LICENSE)
 
 Copyright © 2020 Tarmo Leppänen
-

@@ -4,7 +4,7 @@ import 'hammerjs';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import { ConfigurationService } from "./app/shared/services";
+import { ConfigurationService } from './app/shared/services';
 
 if (environment.production) {
   enableProdMode();

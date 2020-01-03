@@ -16,7 +16,7 @@ import { authenticationActions, authenticationSelectors, AuthenticationState } f
 
 export class AppComponent implements OnInit, OnDestroy {
   private loggedIn: boolean;
-  private tokenInterval: number;
+  private tokenInterval;
   private subscription: Subscription;
 
   public constructor(

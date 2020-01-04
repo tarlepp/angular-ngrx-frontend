@@ -33,7 +33,8 @@
   </mat-toolbar>
 
   <mat-menu #matMenuAnon="matMenu">
-    <a mat-menu-item
+    <a class="padding-right"
+       mat-menu-item
        routerLink="/auth/login"
     >
       <mat-icon>fingerprint</mat-icon>
@@ -45,7 +46,8 @@
   <mat-menu class="header-menu"
             #matMenuUser="matMenu"
   >
-    <a mat-menu-item
+    <a class="padding-right"
+       mat-menu-item
        routerLink="/profile"
     >
       <mat-icon>person</mat-icon>
@@ -53,9 +55,10 @@
       <span>Profile</span>
     </a>
 
-    <mat-divider></mat-divider>
+    <mat-divider class="margin-vertical-quarter"></mat-divider>
 
-    <button mat-menu-item
+    <button class="padding-right"
+            mat-menu-item
             (click)="logout()"
     >
       <mat-icon>exit_to_app</mat-icon>

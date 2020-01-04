@@ -7,6 +7,7 @@
           fxLayout="column"
           [formGroup]="loginForm"
           (ngSubmit)="submit()"
+          [class.ghost]="loading"
     >
       <h1 class="mat-title">Login</h1>
 

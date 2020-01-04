@@ -11,9 +11,6 @@ RUN ln -s /app/node_modules/\@angular/cli/bin/ng /usr/local/bin/ng
 RUN chmod +x docker-entrypoint-dev.sh
 RUN npm install -g npm-check-updates
 
-# Add necessary stuff to bash autocomplete
-RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
-
 EXPOSE 4200
 
 ENTRYPOINT ["/app/docker-entrypoint-dev.sh"]

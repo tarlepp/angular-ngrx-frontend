@@ -1,0 +1,188 @@
+@import './variables';
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+@each $size-name, $size in $sizes {
+  .margin#{$size-name} {
+    margin: #{$size} !important;
+  }
+
+  .padding#{$size-name} {
+    padding: #{$size} !important;
+  }
+}
+
+@each $position in $positions {
+  @each $size-name, $size in $sizes {
+    .margin-#{$position}#{$size-name} {
+      margin-#{$position}: #{$size} !important;
+    }
+
+    .margin-negative-#{$position}#{$size-name} {
+      margin-#{$position}: -#{$size} !important;
+    }
+
+    .padding-#{$position}#{$size-name} {
+      padding-#{$position}: #{$size} !important;
+    }
+  }
+
+  .no-margin-#{$position} {
+    margin-#{$position}: 0 !important;
+  }
+
+  .no-padding-#{$position} {
+    padding-#{$position}: 0 !important;
+  }
+}
+
+@each $orientation in $orientations {
+  @each $size-name, $size in $sizes {
+    @if $orientation == 'vertical' {
+      .margin-#{$orientation}#{$size-name} {
+        margin-top: #{$size} !important;
+        margin-bottom: #{$size} !important;
+      }
+
+      .margin-negative-#{$orientation}#{$size-name} {
+        margin-top: -#{$size} !important;
+        margin-bottom: -#{$size} !important;
+      }
+
+      .padding-#{$orientation}#{$size-name} {
+        padding-top: #{$size} !important;
+        padding-bottom: #{$size} !important;
+      }
+    } @else {
+      .margin-#{$orientation}#{$size-name} {
+        margin-left: #{$size} !important;
+        margin-right: #{$size} !important;
+      }
+
+      .margin-negative-#{$orientation}#{$size-name} {
+        margin-left: -#{$size} !important;
+        margin-right: -#{$size} !important;
+      }
+
+      .padding-#{$orientation}#{$size-name} {
+        padding-left: #{$size} !important;
+        padding-right: #{$size} !important;
+      }
+    }
+  }
+
+  @if $orientation == 'vertical' {
+    .no-margin-#{$orientation} {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+  } @else {
+    .no-padding-#{$orientation} {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+}
+
+@each $name, $opacity in $opacities {
+  .opacity-#{$name} {
+    opacity: #{$opacity};
+  }
+}
+
+.selectable {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.unselectable {
+  user-select: none;
+  outline: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.scroll-y-auto {
+  overflow-y: auto;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-bold {
+  font-weight: 600 !important;
+}
+
+.text-italic {
+  font-style: italic !important;
+}
+
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.text-monospace {
+  font-family: $font-family-monospace !important;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.text-normal {
+  font-size: $font-size-normal !important;
+}
+
+.text-color-normal {
+  color: $text-color !important;
+}
+
+.text-small {
+  font-size: $font-size-small !important;
+}
+
+.text-size-80 {
+  font-size: 80%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

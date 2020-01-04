@@ -1,0 +1,30 @@
+@import './variables';
+
+.ghost {
+  animation: ghost-pulse 2.0s ease infinite;
+
+  &--text {
+    color: transparent !important;
+    text-shadow: 0 0 8px $text-color;
+  }
+
+  &--text-white {
+    color: transparent !important;
+    text-shadow: 0 0 8px $white;
+  }
+
+  &--text-primary {
+    color: transparent !important;
+    text-shadow: 0 0 8px $primary-color;
+  }
+}
+
+@keyframes ghost-pulse {
+  0%, 100% {
+    opacity: .67;
+  }
+
+  50% {
+    opacity: .17;
+  }
+}

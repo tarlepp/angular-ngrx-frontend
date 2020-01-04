@@ -1,0 +1,74 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$angular-frontend-primary: mat-palette($mat-indigo);
+$angular-frontend-accent: mat-palette($mat-pink, A200, A100, A400);
+$angular-frontend-warn: mat-palette($mat-red);
+
+// Base font families
+$font-family: Roboto, 'Helvetica Neue', sans-serif;
+$font-family-monospace: Monaco, monospace;
+
+// Colors
+$white: #fff;
+$text-color: mat-color($mat-light-theme-foreground, text);
+$icon-color: mat-color($mat-light-theme-foreground, icon);
+$primary-color: mat-color($angular-frontend-primary, 500);
+$primary-color-light: mat-color($angular-frontend-primary, 200);
+$primary-color-dark: mat-color($angular-frontend-primary, 900);
+$accent-color: mat-color($angular-frontend-accent, 500);
+$warn-color: mat-color($angular-frontend-warn, 500);
+$warn-color-dark: mat-color($angular-frontend-warn, 900);
+
+// Paddings & Margins
+$spacing: 32px;
+$spacing-half: $spacing / 2;
+$spacing-quarter: $spacing / 4;
+$spacing-half-quarter: $spacing * 0.75;
+$spacing-quarter-half-quarter: $spacing * 0.375;
+$spacing-1-5x: $spacing * 1.5;
+$spacing-2x: $spacing * 2;
+
+// Positions
+$positions: (top, right, bottom, left);
+$orientations: (vertical, horizontal);
+
+// Sizes
+$sizes: (
+  '-half': $spacing-half,
+  '-quarter': $spacing-quarter,
+  '-half-quarter': $spacing-half-quarter,
+  '-quarter-half-quarter': $spacing-quarter-half-quarter,
+  '-1-5x': $spacing-1-5x,
+  '-2x': $spacing-2x,
+  '': $spacing,
+);
+
+// Opacities
+$opacities: (
+  '7': '.07',
+  '27': '.27',
+  '47': '.47',
+  '67': '.67',
+  '87': '.87',
+  '100': '1',
+);
+
+// Font-sizes
+$font-size-normal: 16px;
+$font-size-list: 13px;
+$font-size-small: 12px;
+
+// Border radius
+$border-radius: $spacing / 4;
+
+// Sizes
+$header-height: 64px;
+
+// Animations
+$interval: .4s;
+$interval-short: $interval / 2;

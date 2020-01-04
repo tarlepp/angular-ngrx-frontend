@@ -14,8 +14,12 @@ if (environment.production) {
 ConfigurationService
   .loadStatic()
   .then((): void => {
-    platformBrowserDynamic()
-      .bootstrapModule(AppModule)
-      .catch(err => console.error(err));
+    setTimeout((): void => {
+      platformBrowserDynamic()
+        .bootstrapModule(AppModule)
+        .catch((error: string): void => console.error(error));
+      },
+      2500,
+    );
   })
-  .catch(err => console.error(err));
+  .catch((error: string): void => console.error(error));

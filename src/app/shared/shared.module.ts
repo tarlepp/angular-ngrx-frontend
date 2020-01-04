@@ -4,14 +4,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { MaterialModule } from './material/material.module';
 import { Components } from './components';
+import { Directives } from './directives';
 import { HttpInterceptors } from './interceptors';
 import { Services } from './services';
-import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
     ...Components,
+    ...Directives,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -22,6 +24,7 @@ import { MaterialModule } from './material/material.module';
   ],
   exports: [
     ...Components,
+    ...Directives,
     BrowserAnimationsModule,
     CommonModule,
     FlexLayoutModule,

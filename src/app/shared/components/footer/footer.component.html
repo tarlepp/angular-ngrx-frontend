@@ -1,22 +1,28 @@
-<div class="footer-container">
+<div class="footer-container"
+     #footerContainer
+>
   <mat-toolbar class="mat-elevation-z10"
                fxLayout="row"
                fxLayoutAlign="space-between center"
   >
-    <span></span>
+    <div></div>
 
-    <span fxLayout="row">
-      <a href="https://www.github.com/tarlepp/angular-frontend" target="_blank"
-        mat-button
-      >GitHub</a>
+    <div fxLayout="row">
+      <a href="https://www.github.com/tarlepp/angular-frontend/issues" target="_blank"
+         mat-button
+      >
+        Issues
+      </a>
 
       <mat-divider class="margin-quarter"
                    [vertical]="true"
       ></mat-divider>
 
-      <a href="https://www.github.com/tarlepp/angular-frontend/issues" target="_blank"
-         mat-button
-      >Issues</a>
-    </span>
+      <a href="https://www.github.com/tarlepp/angular-frontend" target="_blank"
+        mat-button
+      >
+        GitHub
+      </a>
+    </div>
   </mat-toolbar>
 </div>

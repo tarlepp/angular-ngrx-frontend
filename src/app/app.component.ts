@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 import { Role } from './auth/enums';
 import { AuthenticationService } from './auth/services';
 import { authenticationActions, authenticationSelectors, AuthenticationState } from './store/authentication';
+import { layoutActions, LayoutState } from './store/layout';
 import { Language } from './shared/enums';
 
 @Component({
@@ -26,16 +27,15 @@ export class AppComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private authenticationStore: Store<AuthenticationState>,
     private authenticationService: AuthenticationService,
+    private layoutStore: Store<LayoutState>,
   ) {
     this.loggedIn = false;
     this.subscription = new Subscription();
-
-    // Set default translation language
-    this.translateService.setDefaultLang(Language.ENGLISH);
   }
 
   public ngOnInit(): void {
     this.setTokenInterval();
+    this.initializeLanguage();
 
     this.subscription
       .add(this.localStorage
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
           if (roles === null && this.loggedIn) {
             this.logout(null);
           } else if (roles !== null && !this.loggedIn) {
-            this.authenticationStore.dispatch(authenticationActions.loginSuccess({roles}));
+            this.authenticationStore.dispatch(authenticationActions.loginSuccess({ roles }));
           }
         }),
       );
@@ -90,6 +90,18 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private logout(message?: string): void {
-    this.authenticationStore.dispatch(authenticationActions.logout({message}));
+    this.authenticationStore.dispatch(authenticationActions.logout({ message }));
+  }
+
+  private initializeLanguage(): void {
+    this.translateService.setDefaultLang(Language.DEFAULT);
+
+    let language = this.localStorage.retrieve('language');
+
+    if (language === null) {
+      language = navigator.language.split('-')[0].toLowerCase();
+    }
+
+    this.layoutStore.dispatch(layoutActions.changeLanguage({ language }));
   }
 }

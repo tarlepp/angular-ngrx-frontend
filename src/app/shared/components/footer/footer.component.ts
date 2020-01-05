@@ -7,10 +7,10 @@ import { AfterViewInit, Component, ElementRef, HostBinding, ViewChild } from '@a
 })
 
 export class FooterComponent implements AfterViewInit {
-  @HostBinding('style.top') private topOffset = '0';
-  @HostBinding('style.position') private position = 'relative';
-  @HostBinding('style.margin-top') private topMargin = '0';
-  @ViewChild('footerContainer', {static: false}) private footerContainer: ElementRef;
+  @HostBinding('style.top') public topOffset = '0';
+  @HostBinding('style.position') public position = 'relative';
+  @HostBinding('style.margin-top') public topMargin = '0';
+  @ViewChild('footerContainer', {static: false}) public footerContainer: ElementRef;
 
   public ngAfterViewInit(): void {
     setTimeout((): void => {

@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { Role } from './auth/enums';
 import { AuthenticationService } from './auth/services';
 import { authenticationActions, authenticationSelectors, AuthenticationState } from './store/authentication';
+import { Language } from './shared/enums';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +23,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public constructor(
     private localStorage: LocalStorageService,
+    private translateService: TranslateService,
     private authenticationStore: Store<AuthenticationState>,
     private authenticationService: AuthenticationService,
   ) {
     this.loggedIn = false;
     this.subscription = new Subscription();
+
+    // Set default translation language
+    this.translateService.setDefaultLang(Language.ENGLISH);
   }
 
   public ngOnInit(): void {

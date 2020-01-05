@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { MaterialModule } from './material/material.module';
 import { Components, EntryComponents } from './components';
@@ -15,13 +16,7 @@ import { Services } from './services';
     ...Components,
     ...Directives,
   ],
-  imports: [
-    BrowserAnimationsModule,
-    CommonModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    MaterialModule,
-  ],
+  imports: [],
   exports: [
     ...Components,
     ...Directives,
@@ -30,6 +25,7 @@ import { Services } from './services';
     FlexLayoutModule,
     ReactiveFormsModule,
     MaterialModule,
+    TranslateModule,
   ],
   entryComponents: [
     ...EntryComponents,

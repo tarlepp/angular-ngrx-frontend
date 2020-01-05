@@ -41,6 +41,8 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     if (httpErrorResponse.hasOwnProperty('error') && httpErrorResponse.error.hasOwnProperty('message')) {
       payload = httpErrorResponse.error as ServerErrorInterface;
+    } else if (httpErrorResponse.hasOwnProperty('message')) {
+      payload.message = httpErrorResponse.message;
     }
 
     this.errorStore.dispatch(errorActions.snackbar({error: payload}));

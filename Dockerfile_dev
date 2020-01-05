@@ -3,9 +3,17 @@ FROM node:13.5.0
 # Let's use bash as a default shell
 SHELL ["/bin/bash", "-c"]
 
+# Update package list and install necessary libraries
+RUN apt-get update && apt-get install -y \
+    nano git unzip jq bash-completion \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 ADD . .
+
+# Add necessary stuff to bash autocomplete
+RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
 
 RUN ln -s /app/node_modules/\@angular/cli/bin/ng /usr/local/bin/ng
 RUN chmod +x docker-entrypoint-dev.sh

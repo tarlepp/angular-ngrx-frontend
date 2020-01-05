@@ -1,4 +1,5 @@
 import { Role } from '../enums';
+import { UserGroupInterface } from './user-group.interface';
 
 export interface UserProfileInterface {
   id: string;
@@ -6,12 +7,6 @@ export interface UserProfileInterface {
   firstName: string;
   lastName: string;
   email: string;
-  userGroups: Array<{
-    id: string;
-    name: string;
-    role: {
-      id: Role,
-    }
-  }>;
+  userGroups: Array<UserGroupInterface>;
   roles: Array<Role>;
 }

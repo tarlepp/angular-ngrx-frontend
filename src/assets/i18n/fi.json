@@ -15,7 +15,12 @@
       "menu": {
         "login": "Kirjaudu sisään",
         "logout": "Kirjaudu ulos",
-        "profile": "Profiili"
+        "profile": "Profiili",
+        "language": {
+          "title": "Kieli",
+          "fi": "Suomi",
+          "en": "Englanti"
+        }
       }
     }
   }

@@ -15,7 +15,12 @@
       "menu": {
         "login": "Login",
         "logout": "Logout",
-        "profile": "Profile"
+        "profile": "Profile",
+        "language": {
+          "title": "Language",
+          "fi": "Finnish",
+          "en": "English"
+        }
       }
     }
   }

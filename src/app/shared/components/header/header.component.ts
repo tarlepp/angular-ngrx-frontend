@@ -4,7 +4,9 @@ import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { authenticationActions, authenticationSelectors, AuthenticationState } from '../../../store/authentication';
+import { layoutActions, layoutSelectors, LayoutState } from '../../../store/layout';
 import { UserProfileInterface } from '../../../auth/interfaces';
+import { Language } from '../../enums';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +19,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public profile?: UserProfileInterface;
   public loading$: Observable<boolean>;
+  public languages: Array<Language>;
+  public currentLanguage: Language;
 
   private subscriptions: Subscription;
 
-  public constructor(private authenticationStore: Store<AuthenticationState>) {
+  public constructor(private authenticationStore: Store<AuthenticationState>, private layoutStore: Store<LayoutState>) {
+    this.currentLanguage = Language.DEFAULT;
     this.subscriptions = new Subscription();
+
+    this.languages = Object
+      .keys(Language)
+      .filter((key: string): boolean => key !== 'DEFAULT')
+      .map((key: string): Language => Language[key]);
   }
 
   public ngOnInit(): void {
@@ -34,6 +44,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.profile = profile;
         }),
       );
+
+    this.subscriptions
+      .add(this.layoutStore
+        .pipe(select(layoutSelectors.language))
+        .subscribe((language: Language): void => {
+          this.currentLanguage = language;
+        }),
+      );
   }
 
   public ngOnDestroy(): void {
@@ -43,5 +61,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public logout(): void {
     this.userMenu.closeMenu();
     this.authenticationStore.dispatch(authenticationActions.logout({message: 'You signed out'}));
+  }
+
+  public changeLanguage(language: Language): void {
+    this.layoutStore.dispatch(layoutActions.changeLanguage({ language }));
   }
 }

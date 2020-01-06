@@ -41,6 +41,14 @@
 
       <span>{{ 'component.header.menu.login' | translate }}</span>
     </a>
+
+    <button mat-menu-item
+            [matMenuTriggerFor]="languageMenu"
+    >
+      <mat-icon>language</mat-icon>
+
+      <span>{{ 'component.header.menu.language.title' | translate }}</span>
+    </button>
   </mat-menu>
 
   <mat-menu class="header-menu"
@@ -55,6 +63,14 @@
       <span>{{ 'component.header.menu.profile' | translate }}</span>
     </a>
 
+    <button mat-menu-item
+            [matMenuTriggerFor]="languageMenu"
+    >
+      <mat-icon>language</mat-icon>
+
+      <span>{{ 'component.header.menu.language.title' | translate }}</span>
+    </button>
+
     <mat-divider class="margin-vertical-quarter"></mat-divider>
 
     <button class="padding-right"
@@ -64,6 +80,18 @@
       <mat-icon>exit_to_app</mat-icon>
 
       <span>{{ 'component.header.menu.logout' | translate }}</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu class="header-menu"
+            #languageMenu="matMenu"
+  >
+    <button mat-menu-item
+            *ngFor="let language of languages"
+            [class.text-bold]="currentLanguage === language"
+            (click)="changeLanguage(language)"
+    >
+      {{ 'component.header.menu.language.' + language | translate }}
     </button>
   </mat-menu>
 </div>

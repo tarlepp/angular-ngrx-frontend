@@ -1,4 +1,7 @@
 {
+  "snackbar": {
+    "close-button": "Sulje"
+  },
   "component": {
     "auth": {
       "login": {

@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { take } from 'rxjs/operators';
 
 import { errorActions, ErrorState } from '../../store/error';
 import { ServerErrorInterface } from '../interfaces';
 
 @Injectable()
 export class SnackbarService {
-  public constructor(private snackBar: MatSnackBar, private errorStore: Store<ErrorState>) { }
+  private closeButtonTag = 'snackbar.close-button';
+
+  public constructor(
+    private snackBar: MatSnackBar,
+    private errorStore: Store<ErrorState>,
+    private translateService: TranslateService,
+  ) { }
 
   public message(message: string, duration: number = 6000): Promise<MatSnackBarRef<SimpleSnackBar>> {
     return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve): void => {
@@ -16,7 +24,12 @@ export class SnackbarService {
         panelClass: ['snackbar'],
       } as MatSnackBarConfig;
 
-      resolve(this.snackBar.open(message, 'Close', config));
+      this.translateService
+        .get([message, this.closeButtonTag])
+        .pipe(take(1))
+        .subscribe((texts: {[key: string]: string}): void =>
+          resolve(this.snackBar.open(texts[message], texts[this.closeButtonTag], config)),
+        );
     });
   }
 
@@ -26,13 +39,18 @@ export class SnackbarService {
         panelClass: ['snackbar', 'snackbar--error'],
       } as MatSnackBarConfig;
 
-      const ref = this.snackBar.open(error.message, 'Close', config);
+      this.translateService
+        .get(this.closeButtonTag)
+        .pipe(take(1))
+        .subscribe((closeButtonText: string): void => {
+          const matSnackBarRef = this.snackBar.open(error.message, closeButtonText, config);
 
-      ref.afterDismissed().subscribe((): void => {
-        this.errorStore.dispatch(errorActions.clearSnackbar());
-      });
+          matSnackBarRef
+            .afterDismissed()
+            .subscribe((): void => this.errorStore.dispatch(errorActions.clearSnackbar()));
 
-      resolve(ref);
+          resolve(matSnackBarRef);
+        });
     });
   }
 }

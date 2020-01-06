@@ -1,3 +1,12 @@
 {
-  "application-title": "Angular frontend"
+  "component": {
+    "header": {
+      "title": "Angular frontend",
+      "menu": {
+        "login": "Kirjaudu sisään",
+        "logout": "Kirjaudu ulos",
+        "profile": "Profiili"
+      }
+    }
+  }
 }

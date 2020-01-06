@@ -7,7 +7,7 @@
     <a mat-button
        routerLink="/"
     >
-      {{ 'application-title' | translate }}
+      {{ 'component.header.title' | translate }}
     </a>
 
     <div fxLayout="row"
@@ -39,7 +39,7 @@
     >
       <mat-icon>fingerprint</mat-icon>
 
-      <span>Login</span>
+      <span>{{ 'component.header.menu.login' | translate }}</span>
     </a>
   </mat-menu>
 
@@ -52,7 +52,7 @@
     >
       <mat-icon>person</mat-icon>
 
-      <span>Profile</span>
+      <span>{{ 'component.header.menu.profile' | translate }}</span>
     </a>
 
     <mat-divider class="margin-vertical-quarter"></mat-divider>
@@ -63,7 +63,7 @@
     >
       <mat-icon>exit_to_app</mat-icon>
 
-      <span>Logout</span>
+      <span>{{ 'component.header.menu.logout' | translate }}</span>
     </button>
   </mat-menu>
 </div>

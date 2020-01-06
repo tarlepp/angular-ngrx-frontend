@@ -1,5 +1,15 @@
 {
   "component": {
+    "auth": {
+      "login": {
+        "title": "Sisäänkirjautuminen",
+        "username": "Käyttäjätunnus",
+        "password": "Salasana",
+        "submit": "Kirjaudu sisään",
+        "error-username": "Pakollinen tieto, syötä vähintään kolme (3) merkkiä.",
+        "error-password": "Pakollinen tieto."
+      }
+    },
     "header": {
       "title": "Angular frontend",
       "menu": {

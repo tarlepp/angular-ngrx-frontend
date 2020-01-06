@@ -9,34 +9,34 @@
           (ngSubmit)="submit()"
           [class.ghost]="loading"
     >
-      <h1 class="mat-title">Login</h1>
+      <h1 class="mat-title">{{ 'component.auth.login.title' | translate }}</h1>
 
       <mat-form-field>
-        <input type="text" placeholder="Username"
+        <input type="text" placeholder="{{ 'component.auth.login.username' | translate }}"
                formControlName="username"
                matInput
                [appAutoFocus]="true"
                [readonly]="loading"
         />
 
-        <mat-error>This field is required and must contain at least three (3) characters.</mat-error>
+        <mat-error>{{ 'component.auth.login.error-username' | translate }}</mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlexOffset="8px">
-        <input type="password" placeholder="Password"
+        <input type="password" placeholder="{{ 'component.auth.login.password' | translate }}"
                formControlName="password"
                matInput
                [readonly]="loading"
         />
 
-        <mat-error>This field is required.</mat-error>
+        <mat-error>{{ 'component.auth.login.error-password' | translate }}</mat-error>
       </mat-form-field>
 
       <button mat-raised-button
               color="primary"
               fxFlexOffset="16px"
               [disabled]="loginForm.invalid || loading"
-      >Login</button>
+      >{{ 'component.auth.login.submit' | translate }}</button>
     </form>
   </div>
 </div>

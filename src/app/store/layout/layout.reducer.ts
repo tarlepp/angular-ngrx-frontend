@@ -1,11 +1,14 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { LayoutState } from './layout.state';
+import { MobileViewports } from '../../shared/constants';
 import { Language } from '../../shared/enums';
+import { LayoutState } from './layout.state';
 import { layoutActions } from './layout.actions';
 
 const initialState = {
-  language: '',
+  language: null,
+  viewport: null,
+  mobile: false,
 } as LayoutState;
 
 const reducer = createReducer(
@@ -15,6 +18,14 @@ const reducer = createReducer(
     (state: LayoutState, { language }): LayoutState => ({
       ...state,
       language: Object.values(Language).includes(language) ? language : Language.DEFAULT,
+    }),
+  ),
+  on(
+    layoutActions.changeViewport,
+    (state: LayoutState, { viewport }): LayoutState => ({
+      ...state,
+      viewport,
+      mobile: MobileViewports.includes(viewport),
     }),
   ),
 );

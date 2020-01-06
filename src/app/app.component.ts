@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { select, Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
 import { Role } from './auth/enums';
 import { AuthenticationService } from './auth/services';
 import { authenticationActions, authenticationSelectors, AuthenticationState } from './store/authentication';
 import { layoutActions, LayoutState } from './store/layout';
-import { Language } from './shared/enums';
+import { Language, Viewport } from './shared/enums';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private authenticationStore: Store<AuthenticationState>,
     private authenticationService: AuthenticationService,
     private layoutStore: Store<LayoutState>,
+    private mediaObserver: MediaObserver,
   ) {
     this.loggedIn = false;
     this.subscription = new Subscription();
@@ -67,6 +69,18 @@ export class AppComponent implements OnInit, OnDestroy {
         .subscribe((loggedIn: boolean): void => {
           this.loggedIn = loggedIn;
         }),
+      );
+
+    this.subscription
+      .add(this.mediaObserver.asObservable()
+        .pipe(
+          filter((changes: MediaChange[]): boolean => changes.length > 0),
+          map((changes: MediaChange[]): MediaChange => changes[0]),
+          distinctUntilChanged((prev: MediaChange, curr: MediaChange): boolean => prev.mqAlias === curr.mqAlias),
+        )
+        .subscribe((mediaChange: MediaChange): void =>
+          this.layoutStore.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
+        ),
       );
   }
 

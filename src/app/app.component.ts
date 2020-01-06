@@ -98,7 +98,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe((authenticated: boolean): void => {
         if (this.loggedIn && !authenticated) {
-          this.logout('Session timeout');
+          this.logout('messages.authentication.timout');
         }
       });
   }

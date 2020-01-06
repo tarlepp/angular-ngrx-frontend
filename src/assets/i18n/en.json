@@ -26,5 +26,12 @@
         }
       }
     }
+  },
+  "messages": {
+    "authentication": {
+      "login": "You signed in.",
+      "logout": "You signed out.",
+      "timeout": "Session timeout."
+    }
   }
 }

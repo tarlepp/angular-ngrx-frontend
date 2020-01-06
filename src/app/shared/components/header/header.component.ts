@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public logout(): void {
     this.userMenu.closeMenu();
-    this.authenticationStore.dispatch(authenticationActions.logout({message: 'You signed out'}));
+    this.authenticationStore.dispatch(authenticationActions.logout({ message: 'messages.authentication.logout' }));
   }
 
   public changeLanguage(language: Language): void {

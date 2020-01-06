@@ -24,7 +24,7 @@ export class AuthenticationEffects {
           .pipe(
             map((roles: Array<Role>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
               this.snackbarService
-                .message('You signed in')
+                .message('messages.authentication.login')
                 .finally();
 
               this.router

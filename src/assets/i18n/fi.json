@@ -26,5 +26,12 @@
         }
       }
     }
+  },
+  "messages": {
+    "authentication": {
+      "login": "Kirjauduit sisään.",
+      "logout": "Kirjauduit ulos.",
+      "timeout": "Istunto vanhentunut."
+    }
   }
 }

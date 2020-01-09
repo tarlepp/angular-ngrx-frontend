@@ -17,7 +17,7 @@ RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
 
 RUN ln -s /app/node_modules/\@angular/cli/bin/ng /usr/local/bin/ng
 RUN chmod +x docker-entrypoint-dev.sh
-RUN npm install -g npm-check-updates
+RUN npm install -g npm-check-updates mversion
 
 EXPOSE 4200
 

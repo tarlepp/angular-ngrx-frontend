@@ -22,4 +22,5 @@ fix-permissions      # Fix file permissions
 start-build          # Start application in development mode and build containers
 start                # Start application in development mode
 start-yarn           # Run start command with yarn
+stop                 # Stop application containers
 ```

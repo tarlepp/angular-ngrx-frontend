@@ -14,7 +14,7 @@ start: ## Start application in development mode
 ###< Start application in development mode ###
 
 ###> Stop application containers ###
-start: ## Stop application containers
+stop: ## Stop application containers
 	@docker-compose down
 ###< Stop application containers ###
 

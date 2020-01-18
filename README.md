@@ -116,6 +116,7 @@ docker-compose up --build
 * [Concepts and features](doc/CONCEPTS_AND_FEATURES.md)
 * [Speed problems with application?](doc/SPEED_UP_DOCKER_COMPOSE.md)
 * [Tools](doc/TOOLS.md)
+* [Usage checklist](doc/USAGE_CHECKLIST.md)
 
 ## External links / resources
 

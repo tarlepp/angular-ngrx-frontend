@@ -1,5 +1,15 @@
 {
   "name": "angular-frontend",
+  "description": "Angular NgRx powered frontend template project",
+  "author": "Tarmo Leppänen",
+  "license": "MIT",
+  "homepage": "https://github.com/tarlepp/angular-ngrx-frontend",
+  "keywords": [
+    "angular, ngrx"
+  ],
+  "bugs": {
+    "url": "https://github.com/tarlepp/angular-ngrx-frontend/issues"
+  },
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

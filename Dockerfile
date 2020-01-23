@@ -1,4 +1,4 @@
-FROM node:13.6.0 as build
+FROM node:13.7.0 as build
 
 RUN npm install -g @angular/cli@8.3.23
 

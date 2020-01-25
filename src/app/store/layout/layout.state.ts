@@ -7,4 +7,5 @@ export interface LayoutState {
   desktop: boolean,
   tablet: boolean,
   mobile: boolean;
+  anchor?: string;
 }

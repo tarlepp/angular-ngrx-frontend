@@ -12,6 +12,7 @@ const initialState = {
   desktop: false,
   tablet: false,
   mobile: false,
+  anchor: null,
 } as LayoutState;
 
 const reducer = createReducer(
@@ -41,6 +42,13 @@ const reducer = createReducer(
         mobile: device === Device.MOBILE,
       }
     },
+  ),
+  on(
+    layoutActions.scrollTo,
+    (state: LayoutState, { anchor }): LayoutState => ({
+      ...state,
+      anchor,
+    }),
   ),
 );
 

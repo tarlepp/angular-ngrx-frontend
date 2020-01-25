@@ -13,7 +13,16 @@ const changeViewport = createAction(
   props<{ viewport: Viewport }>(),
 );
 
+const scrollTo = createAction(
+  LayoutActionType.SCROLL_TO,
+  props<{ anchor: string }>(),
+);
+
+const scrollToTop = createAction(LayoutActionType.SCROLL_TO_TOP);
+
 export const layoutActions = {
   changeLanguage,
   changeViewport,
+  scrollTo,
+  scrollToTop,
 };

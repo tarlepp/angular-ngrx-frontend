@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { select, Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   public constructor(
+    private router: Router,
     private localStorage: LocalStorageService,
     private translateService: TranslateService,
     private authenticationStore: Store<AuthenticationState>,
@@ -38,6 +40,15 @@ export class AppComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.setTokenInterval();
     this.initializeLanguage();
+
+    this.subscription
+      .add(this.router.events
+        .pipe(
+          filter((event: RouterEvent): boolean => event instanceof NavigationEnd),
+          distinctUntilChanged(),
+        )
+        .subscribe((): void => this.layoutStore.dispatch(layoutActions.scrollToTop())),
+      );
 
     this.subscription
       .add(this.localStorage

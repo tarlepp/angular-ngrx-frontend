@@ -1,1 +1,1 @@
-export * from './mobile-viewports.constant';
+export * from './viewports.constant';

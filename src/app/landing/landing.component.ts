@@ -25,17 +25,13 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.subscription
       .add(this.layoutStore
         .select(layoutSelectors.viewport)
-        .subscribe((viewport: Viewport): void => {
-          this.viewport = viewport;
-        }),
+        .subscribe((viewport: Viewport): Viewport => this.viewport = viewport),
       );
 
     this.subscription
       .add(this.layoutStore
         .select(layoutSelectors.device)
-        .subscribe((device: Device): void => {
-          this.device = device;
-        }),
+        .subscribe((device: Device): Device => this.device = device),
       );
   }
 

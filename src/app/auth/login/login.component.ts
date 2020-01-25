@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptions
       .add(this.authenticationStore
         .select(authenticationSelectors.loading)
-        .subscribe((loading: boolean): void => {
-          this.loading = loading;
-        }),
+        .subscribe((loading: boolean): boolean => this.loading = loading),
       );
 
     this.loginForm = this.formBuilder.group({

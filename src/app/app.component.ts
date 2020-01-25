@@ -77,9 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription
       .add(this.authenticationStore
         .select(authenticationSelectors.loggedIn)
-        .subscribe((loggedIn: boolean): void => {
-          this.loggedIn = loggedIn;
-        }),
+        .subscribe((loggedIn: boolean): boolean => this.loggedIn = loggedIn),
       );
 
     this.subscription

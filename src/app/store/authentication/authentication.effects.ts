@@ -19,8 +19,8 @@ export class AuthenticationEffects {
     .pipe(
       ofType(AuthenticationActionType.LOGIN),
       pluck('credentials'),
-      switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationActionType>> => {
-        return from(this.authService.authenticate(credentials)
+      switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationActionType>> =>
+        from(this.authService.authenticate(credentials)
           .pipe(
             map((roles: Array<Role>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
               this.snackbarService
@@ -37,8 +37,8 @@ export class AuthenticationEffects {
               of(authenticationActions.loginFailure({error: httpErrorResponse.error})),
             ),
           ),
-        );
-      }),
+        ),
+      ),
     ),
   );
 
@@ -52,8 +52,8 @@ export class AuthenticationEffects {
   private profile$ = createEffect((): Observable<TypedAction<AuthenticationActionType>> => this.actions$
     .pipe(
       ofType(AuthenticationActionType.PROFILE),
-      switchMap((): Observable<TypedAction<AuthenticationActionType>> => {
-        return from(this.authService.getProfile()
+      switchMap((): Observable<TypedAction<AuthenticationActionType>> =>
+        from(this.authService.getProfile()
           .pipe(
             map((profile: UserProfileInterface): TypedAction<AuthenticationActionType.PROFILE_SUCCESS> =>
               authenticationActions.profileSuccess({profile}),
@@ -62,8 +62,8 @@ export class AuthenticationEffects {
               of(authenticationActions.profileFailure({error: httpErrorResponse.error})),
             ),
           ),
-        );
-      }),
+        ),
+      ),
     ),
   );
 

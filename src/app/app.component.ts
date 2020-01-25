@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscription
       .add(this.authenticationStore
-        .pipe(select(authenticationSelectors.loggedIn))
+        .select(authenticationSelectors.loggedIn)
         .subscribe((loggedIn: boolean): void => {
           this.loggedIn = loggedIn;
         }),

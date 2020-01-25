@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { authenticationActions, authenticationSelectors, AuthenticationState } from '../../store/authentication';
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.subscriptions
       .add(this.authenticationStore
-        .pipe(select(authenticationSelectors.loading))
+        .select(authenticationSelectors.loading)
         .subscribe((loading: boolean): void => {
           this.loading = loading;
         }),

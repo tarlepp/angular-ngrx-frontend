@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { authenticationActions, authenticationSelectors, AuthenticationState } from '../../../store/authentication';
@@ -35,11 +35,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.loading$ = this.authenticationStore.pipe(select(authenticationSelectors.loading));
+    this.loading$ = this.authenticationStore.select(authenticationSelectors.loading);
 
     this.subscriptions
       .add(this.authenticationStore
-        .pipe(select(authenticationSelectors.profile))
+        .select(authenticationSelectors.profile)
         .subscribe((profile: UserProfileInterface|null): void => {
           this.profile = profile;
         }),
@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.subscriptions
       .add(this.layoutStore
-        .pipe(select(layoutSelectors.language))
+        .select(layoutSelectors.language)
         .subscribe((language: Language): void => {
           this.currentLanguage = language;
         }),

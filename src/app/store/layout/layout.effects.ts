@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Observable, of } from 'rxjs';
 import { map, pluck, switchMap, withLatestFrom } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export class LayoutEffects {
   private changeLanguage$ = createEffect((): Observable<void> => this.actions$
       .pipe(
         ofType(LayoutActionType.CHANGE_LANGUAGE),
-        withLatestFrom(this.layoutStore.pipe(select(layoutSelectors.language))),
+        withLatestFrom(this.layoutStore.select(layoutSelectors.language)),
         map(([, language]): void => {
           this.translateService.use(language);
           this.localStorageService.store('language', language);

@@ -14,7 +14,7 @@
       }
     },
     "header": {
-      "title": "Angular frontend",
+      "title": null,
       "menu": {
         "login": "Kirjaudu sisään",
         "logout": "Kirjaudu ulos",

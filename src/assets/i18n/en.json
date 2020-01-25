@@ -14,7 +14,7 @@
       }
     },
     "header": {
-      "title": "Angular frontend",
+      "title": "Angular NgRx frontend",
       "menu": {
         "login": "Login",
         "logout": "Logout",

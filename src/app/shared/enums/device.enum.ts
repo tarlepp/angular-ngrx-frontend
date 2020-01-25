@@ -1,5 +1,5 @@
 export enum Device {
   DESKTOP = 'desktop',
-  TABLET = 'table',
+  TABLET = 'tablet',
   MOBILE = 'mobile',
 }

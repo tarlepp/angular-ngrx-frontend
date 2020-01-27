@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-// Only add Material modules that are used within other modules
+// Only add Material modules that are used within _all_ other modules
 const MaterialModules = [
   MatButtonModule,
   MatDividerModule,
@@ -24,13 +23,7 @@ const MaterialModules = [
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    ...MaterialModules,
-  ],
   exports: [
-    CommonModule,
     ...MaterialModules,
   ],
 })

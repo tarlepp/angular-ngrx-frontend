@@ -122,13 +122,13 @@ enum for this.
 these will help you to build your components for each viewport size more
 easily than just using `fxFlex*` attributes on your templates - although those
 are still useful and you should use those.
-* `mobile<boolean>`, is mobile layout active or not - this is something that
-you can control via `MobileViewports` constant as you like.
+* `device<Device>`, what kind of "device" user is using. This is determined
+by `Viewports` constant.
 
 When `language` property is changed it triggers `@ngx-translate/core` to change
 used language to specified one + stores that language to `local storage`.
 
-`viewport` and `mobile` properties are updated automatically when user changes
+`viewport` and `device` properties are updated automatically when user changes
 browser viewport.
 
 ## Interceptors

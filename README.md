@@ -1,6 +1,7 @@
 # What is this?
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![CI](https://github.com/tarlepp/angular-ngrx-frontend/workflows/CI/badge.svg)
 
 Angular NgRx powered frontend template project for 
 [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)

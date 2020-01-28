@@ -44,7 +44,7 @@ export class LayoutEffects {
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
           }
-        })
+        });
       }),
     ),
     { dispatch: false },

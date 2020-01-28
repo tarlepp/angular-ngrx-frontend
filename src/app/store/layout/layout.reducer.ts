@@ -40,7 +40,7 @@ const reducer = createReducer(
         desktop: device === Device.DESKTOP,
         tablet: device === Device.TABLET,
         mobile: device === Device.MOBILE,
-      }
+      };
     },
   ),
   on(

@@ -1,4 +1,4 @@
-export enum LayoutActionType {
+export enum LayoutAction {
   CHANGE_LANGUAGE = '[Layout] Change language',
   CHANGE_VIEWPORT = '[Layout] Change viewport',
   SCROLL_TO = '[Layout] Scroll to anchor',

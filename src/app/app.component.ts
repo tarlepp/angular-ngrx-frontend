@@ -21,7 +21,7 @@ import { Language, Viewport } from './shared/enums';
 
 export class AppComponent implements OnInit, OnDestroy {
   private loggedIn: boolean;
-  private tokenInterval;
+  private tokenInterval: number;
   private subscription: Subscription;
 
   public constructor(
@@ -81,7 +81,8 @@ export class AppComponent implements OnInit, OnDestroy {
       );
 
     this.subscription
-      .add(this.mediaObserver.asObservable()
+      .add(this.mediaObserver
+        .asObservable()
         .pipe(
           filter((changes: MediaChange[]): boolean => changes.length > 0),
           map((changes: MediaChange[]): MediaChange => changes[0]),

@@ -40,17 +40,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscriptions
       .add(this.authenticationStore
         .select(authenticationSelectors.profile)
-        .subscribe((profile: UserProfileInterface|null): void => {
-          this.profile = profile;
-        }),
+        .subscribe((profile: UserProfileInterface|null): UserProfileInterface|null => this.profile = profile),
       );
 
     this.subscriptions
       .add(this.layoutStore
         .select(layoutSelectors.language)
-        .subscribe((language: Language): void => {
-          this.currentLanguage = language;
-        }),
+        .subscribe((language: Language): Language => this.currentLanguage = language),
       );
   }
 

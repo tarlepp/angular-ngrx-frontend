@@ -7,22 +7,24 @@ import { from, Observable, of } from 'rxjs';
 import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 
 import { SnackbarService } from '../../shared/services';
-import { AuthenticationActionType } from './authentication-action.type';
+import { AuthenticationAction } from './authentication.action';
 import { authenticationActions } from './authentication.actions';
+import { AuthenticationLoginType, AuthenticationProfileType } from './authentication.types';
 import { AuthenticationService } from '../../auth/services';
 import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/interfaces';
 import { Role } from '../../auth/enums';
 
 @Injectable()
 export class AuthenticationEffects {
-  private login$ = createEffect((): Observable<TypedAction<AuthenticationActionType>> => this.actions$
+  private login$ = createEffect((): Observable<TypedAction<AuthenticationLoginType>> => this.actions$
     .pipe(
-      ofType(AuthenticationActionType.LOGIN),
+      ofType(AuthenticationAction.LOGIN),
       pluck('credentials'),
-      switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationActionType>> =>
-        from(this.authService.authenticate(credentials)
+      switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationLoginType>> =>
+        from(this.authService
+          .authenticate(credentials)
           .pipe(
-            map((roles: Array<Role>): TypedAction<AuthenticationActionType.LOGIN_SUCCESS> => {
+            map((roles: Array<Role>): TypedAction<AuthenticationAction.LOGIN_SUCCESS> => {
               this.snackbarService
                 .message('messages.authentication.login')
                 .finally();
@@ -33,7 +35,7 @@ export class AuthenticationEffects {
 
               return authenticationActions.loginSuccess({roles});
             }),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationActionType.LOGIN_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.LOGIN_FAILURE>> =>
               of(authenticationActions.loginFailure({error: httpErrorResponse.error})),
             ),
           ),
@@ -42,23 +44,23 @@ export class AuthenticationEffects {
     ),
   );
 
-  private loginSuccess$ = createEffect((): Observable<TypedAction<AuthenticationActionType>> => this.actions$
+  private loginSuccess$ = createEffect((): Observable<TypedAction<AuthenticationAction.PROFILE>> => this.actions$
     .pipe(
-      ofType(AuthenticationActionType.LOGIN_SUCCESS),
-      switchMap((): Observable<TypedAction<AuthenticationActionType.PROFILE>> => of(authenticationActions.profile())),
+      ofType(AuthenticationAction.LOGIN_SUCCESS),
+      switchMap((): Observable<TypedAction<AuthenticationAction.PROFILE>> => of(authenticationActions.profile())),
     ),
   );
 
-  private profile$ = createEffect((): Observable<TypedAction<AuthenticationActionType>> => this.actions$
+  private profile$ = createEffect((): Observable<TypedAction<AuthenticationProfileType>> => this.actions$
     .pipe(
-      ofType(AuthenticationActionType.PROFILE),
-      switchMap((): Observable<TypedAction<AuthenticationActionType>> =>
+      ofType(AuthenticationAction.PROFILE),
+      switchMap((): Observable<TypedAction<AuthenticationProfileType>> =>
         from(this.authService.getProfile()
           .pipe(
-            map((profile: UserProfileInterface): TypedAction<AuthenticationActionType.PROFILE_SUCCESS> =>
+            map((profile: UserProfileInterface): TypedAction<AuthenticationAction.PROFILE_SUCCESS> =>
               authenticationActions.profileSuccess({profile}),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationActionType.PROFILE_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.PROFILE_FAILURE>> =>
               of(authenticationActions.profileFailure({error: httpErrorResponse.error})),
             ),
           ),
@@ -69,7 +71,7 @@ export class AuthenticationEffects {
 
   private logout$ = createEffect((): Observable<void> => this.actions$
     .pipe(
-      ofType(AuthenticationActionType.LOGOUT),
+      ofType(AuthenticationAction.LOGOUT),
       pluck('message'),
       map((message?: string): void => {
         this.authService.logout();

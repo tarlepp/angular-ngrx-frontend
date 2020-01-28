@@ -1,4 +1,4 @@
-export enum AuthenticationActionType {
+export enum AuthenticationAction {
   LOGIN = '[Authentication] Login',
   LOGIN_SUCCESS = '[Authentication] Login success',
   LOGIN_FAILURE = '[Authentication] Login failure',

@@ -14,7 +14,8 @@ on:
       - master
 
 jobs:
-  build:
+  lint:
+    name: Lint application
     runs-on: ubuntu-latest
 
     steps:
@@ -28,5 +29,5 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Lint
+      - name: Run `yarn lint`
         run: yarn lint

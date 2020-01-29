@@ -1,23 +1,24 @@
-
 # GitHub Actions docs
 # https://help.github.com/en/articles/about-github-actions
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 13.7
-      uses: actions/setup-node@v1
-      with:
-        node-version: 13.7
-    - name: Install dependencies
-      run: yarn install
-    - name: Lint
-      run: yarn lint
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js 13.7
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13.7
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint
+        run: yarn lint

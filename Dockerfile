@@ -1,6 +1,6 @@
 FROM node:13.7.0 as build
 
-RUN npm install -g @angular/cli@8.3.23
+RUN npm install -g @angular/cli@8.3.24
 
 COPY ./ /src/
 

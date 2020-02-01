@@ -34,7 +34,7 @@ jobs:
 
   lint-markdown:
     name: Lint application markdown files
-    runs-one: ubuntu-lates
+    runs-on: ubuntu-lates
 
     steps:
       - uses: actions/checkout@v1

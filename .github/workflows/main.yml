@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Make checkout
+        uses: actions/checkout@v1
 
       - name: Use Node.js 13.7
         uses: actions/setup-node@v1
@@ -32,12 +33,13 @@ jobs:
       - name: Run `yarn lint`
         run: yarn lint
 
-  lint-markdown:
-    name: Lint application markdown files
+  lint-documentation:
+    name: Lint documentation files
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Make checkout
+        uses: actions/checkout@v1
 
       - name: Lint `README.md`
         uses: avto-dev/markdown-lint@v1

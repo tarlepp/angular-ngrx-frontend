@@ -15,7 +15,7 @@ on:
 
 jobs:
   lint:
-    name: Lint application
+    name: Lint application code
     runs-on: ubuntu-latest
 
     steps:
@@ -31,3 +31,16 @@ jobs:
 
       - name: Run `yarn lint`
         run: yarn lint
+
+  lint-markdown:
+    name: Lint application markdown files
+    runs-one: ubuntu-lates
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Lint `README.md`
+        uses: avto-dev/markdown-lint@v1
+        with:
+          config: '/markdown-lint.yml'
+          args: './README.md'

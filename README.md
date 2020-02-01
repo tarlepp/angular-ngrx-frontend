@@ -3,26 +3,26 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![CI](https://github.com/tarlepp/angular-ngrx-frontend/workflows/CI/badge.svg)
 
-Angular NgRx powered frontend template project for 
+Angular NgRx powered frontend template project for
 [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)
 or any other backend that is providing similar API.
 
 ## Table of Contents
 
 * [What is this](#what-is-this)
-   * [Table of Contents](#table-of-contents)
-   * [Requirements](#requirements)
-      * [Recommendations](#recommendations)
-   * [Installation](#installation)
-      * [1. Clone repository](#1-clone-repository)
-      * [2. Start containers](#2-start-containers)
-      * [3. Using application](#3-using-application)
-      * [4. Getting shell to container](#4-getting-shell-to-container)
-      * [5. Building containers](#5-building-containers)
-   * [Resources](#resources)
-   * [External links / resources](#external-links--resources)
-   * [Authors](#authors)
-   * [License](#license)
+  * [Table of Contents](#table-of-contents)
+  * [Requirements](#requirements)
+    * [Recommendations](#recommendations)
+  * [Installation](#installation)
+    * [1. Clone repository](#1-clone-repository)
+    * [2. Start containers](#2-start-containers)
+    * [3. Using application](#3-using-application)
+    * [4. Getting shell to container](#4-getting-shell-to-container)
+    * [5. Building containers](#5-building-containers)
+  * [Resources](#resources)
+  * [External links / resources](#external-links--resources)
+  * [Authors](#authors)
+  * [License](#license)
 
 ## Requirements
 
@@ -30,7 +30,7 @@ or any other backend that is providing similar API.
 
 ### Recommendations
 
-* `*nix platform` - not really requirement, but recommend to use to get 
+* `*nix platform` - not really requirement, but recommend to use to get
   `Makefile` support
 
 ## Installation
@@ -59,24 +59,25 @@ docker-compose up
 
 This command will create one (1) Docker container where your application is
 running on development stage.
- 
+
 ### 3. Using application
 
 By default `make start` command starts Angular application on Docker container
 and exposes following port on `localhost`:
- * 4200 (Angular Live Development Server)
- 
+
+* 4200 (Angular Live Development Server)
+
 And this application is usable within your browser on `http://localhost:4200`
 address.
 
-Note that this frontend application assumes that your backend is running on 
-`http://localhost:8000` address. Also note that _"default"_ 
+Note that this frontend application assumes that your backend is running on
+`http://localhost:8000` address. Also note that _"default"_
 [backend](https://github.com/tarlepp/symfony-flex-backend)
 is running on that address by default.
 
 ### 4. Getting shell to container
 
-After you've run `make start` command you can list all running containers with 
+After you've run `make start` command you can list all running containers with
 `docker ps` command.
 
 And to eg. get shell access inside one of those containers you can run following
@@ -90,7 +91,7 @@ or without `Makefile` support:
 
 ```bash
 docker-compose exec node bash
-``` 
+```
 
 Where that `node` is that actual container where this backend application is
 running.
@@ -108,7 +109,7 @@ make start-build
 or without `Makefile` support:
 
 ```bash
-docker-compose up --build 
+docker-compose up --build
 ```
 
 ## Resources

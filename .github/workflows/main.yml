@@ -65,7 +65,6 @@ jobs:
           config: './markdown-lint.yml'
           args: './doc/TOOLS.md'
 
-
       - name: Lint `doc/USAGE_CHECKLIST.md`
         uses: avto-dev/markdown-lint@v1
         with:

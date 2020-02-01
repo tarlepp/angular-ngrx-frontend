@@ -8,12 +8,12 @@ application is built and how you can use it.
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
   * [Main external components/libraries](#main-external-componentslibraries)
-    * [@angular/material](#angularmaterial) 
-    * [@angular/flex-layout](#angularflex-layout) 
-    * [@auth0/angular-jwt](#auth0angular-jwt) 
-    * [@ngrx/store](#ngrxstore) 
-    * [@ngx-translate/core](#ngx-translatecore) 
-    * [ngx-webstorage](#ngx-webstorage) 
+    * [@angular/material](#angularmaterial)
+    * [@angular/flex-layout](#angularflex-layout)
+    * [@auth0/angular-jwt](#auth0angular-jwt)
+    * [@ngrx/store](#ngrxstore)
+    * [@ngx-translate/core](#ngx-translatecore)
+    * [ngx-webstorage](#ngx-webstorage)
   * [Application stores](#application-stores)
     * [Authentication](#authentication)
     * [Error](#error)
@@ -80,7 +80,7 @@ synchronize the component attributes and the web storages.
 
 ## Application stores
 
-By default this application gives you couple `NgRx stores` that you can easily 
+By default this application gives you couple `NgRx stores` that you can easily
 use within application to help you.
 
 If you want to get deeper look of each of those stores you just need to go
@@ -135,14 +135,14 @@ browser viewport.
 
 Application contains some generic interceptors that will help you to
 development your application. Note that these interceptors relies that you're
-using 
+using
 [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)
 or similar backend.
 
 ### Error interceptor
 
 Generic HTTP error interceptor that will dispatch event to
-[Error store](#error), 
+[Error store](#error),
 so that error is shown within Angular Material snackbar.
 
 ## Links

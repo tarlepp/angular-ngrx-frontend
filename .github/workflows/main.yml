@@ -42,5 +42,5 @@ jobs:
       - name: Lint `README.md`
         uses: avto-dev/markdown-lint@v1
         with:
-          config: '/markdown-lint.yml'
+          config: './markdown-lint.yml'
           args: './README.md'

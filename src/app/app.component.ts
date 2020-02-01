@@ -99,7 +99,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private setTokenInterval(): void {
-    this.tokenInterval = setInterval((): void => this.checkToken(), 15000);
+    this.tokenInterval = window.setInterval((): void => this.checkToken(), 15000);
   }
 
   private checkToken(): void {

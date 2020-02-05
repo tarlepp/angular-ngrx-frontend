@@ -1,26 +1,26 @@
 # What is this?
 
-This document contains information about main concepts and features how this 
+This document contains information about main concepts and features how this
 application is built and how you can use it.
 
 ## Table of Contents
 
 * [What is this?](#what-is-this)
-   * [Table of Contents](#table-of-contents)
-   * [Main external components/libraries](#main-external-componentslibraries)
-      * [@angular/material](#angularmaterial) 
-      * [@angular/flex-layout](#angularflex-layout) 
-      * [@auth0/angular-jwt](#auth0angular-jwt) 
-      * [@ngrx/store](#ngrxstore) 
-      * [@ngx-translate/core](#ngx-translatecore) 
-      * [ngx-webstorage](#ngx-webstorage) 
-   * [Application stores](#application-stores)
-      * [Authentication](#authentication)
-      * [Error](#error)
-      * [Layout](#layout)
-   * [Interceptors](#interceptors)
-      * [Error interceptor](#error-interceptor)
-   * [Links](#links)
+  * [Table of Contents](#table-of-contents)
+  * [Main external components/libraries](#main-external-componentslibraries)
+    * [@angular/material](#angularmaterial)
+    * [@angular/flex-layout](#angularflex-layout)
+    * [@auth0/angular-jwt](#auth0angular-jwt)
+    * [@ngrx/store](#ngrxstore)
+    * [@ngx-translate/core](#ngx-translatecore)
+    * [ngx-webstorage](#ngx-webstorage)
+  * [Application stores](#application-stores)
+    * [Authentication](#authentication)
+    * [Error](#error)
+    * [Layout](#layout)
+  * [Interceptors](#interceptors)
+    * [Error interceptor](#error-interceptor)
+  * [Links](#links)
 
 ## Main external components/libraries
 
@@ -34,10 +34,10 @@ project just makes some assumptions.
 
 ### @angular/material
 
-UI component infrastructure and Material Design components for mobile and 
+UI component infrastructure and Material Design components for mobile and
 desktop Angular web applications.
 
-Note that this just _my_ personal preference, you might like more eg. 
+Note that this just _my_ personal preference, you might like more eg.
 [Bootstrap](https://getbootstrap.com/)
 or some another UI library.
 
@@ -45,7 +45,7 @@ or some another UI library.
 
 ### @angular/flex-layout
 
-Provides HTML UI layout for Angular applications; using Flexbox and a 
+Provides HTML UI layout for Angular applications; using Flexbox and a
 Responsive API.
 
 * [Website](https://github.com/angular/flex-layout)
@@ -58,7 +58,7 @@ Helper library for handling JWTs in Angular 2+ apps.
 
 ### @ngrx/store
 
-Store is RxJS powered state management for Angular applications, inspired by 
+Store is RxJS powered state management for Angular applications, inspired by
 Redux. Store is a controlled state container designed to help write performant,
 consistent applications on top of Angular.
 
@@ -72,18 +72,18 @@ The internationalization (i18n) library for Angular.
 
 ### ngx-webstorage
 
-This library provides an easy to use service to manage the web storages (local 
-and session) from your Angular application. It provides also two decorators to 
+This library provides an easy to use service to manage the web storages (local
+and session) from your Angular application. It provides also two decorators to
 synchronize the component attributes and the web storages.
 
 * [Website](https://github.com/PillowPillow/ng2-webstorage)
 
 ## Application stores
 
-By default this application gives you couple `NgRx stores` that you can easily 
+By default this application gives you couple `NgRx stores` that you can easily
 use within application to help you.
 
-If you want to get deeper look of each of those stores you just need to go 
+If you want to get deeper look of each of those stores you just need to go
 through each of those code - no worries there isn't so much code really.
 
 ### Authentication
@@ -108,7 +108,7 @@ This store contains following `error` information;
 * `errorSnackbar<ServerErrorInterface|null>`, Error that is show on snackbar
 
 Application `ErrorInterceptor` is using this store to show possible HTTP errors
-to user. With this store you can easily dispatch events to show some error 
+to user. With this store you can easily dispatch events to show some error
 message in your application.
 
 ### Layout
@@ -133,16 +133,16 @@ browser viewport.
 
 ## Interceptors
 
-Application contains some generic interceptors that will help you to 
+Application contains some generic interceptors that will help you to
 development your application. Note that these interceptors relies that you're
-using 
+using
 [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)
 or similar backend.
 
 ### Error interceptor
 
-Generic HTTP error interceptor that will dispatch event to 
-[Error store](#error), 
+Generic HTTP error interceptor that will dispatch event to
+[Error store](#error),
 so that error is shown within Angular Material snackbar.
 
 ## Links

@@ -30,8 +30,10 @@ or any other backend that is providing similar API.
 
 ### Recommendations
 
-* `*nix platform` - not really requirement, but recommend to use to get
-  `Makefile` support
+* `*nix platform` - most likely you're going to host your application on *nix
+  platform - so I would recommend to do development also on that platform.
+* `Makefile` support - if you don't have this you need to look `Makefile` file
+  to see what each `make` command is doing.
 
 ## Installation
 
@@ -49,12 +51,6 @@ For this just run following command:
 
 ```bash
 make start
-```
-
-or without `Makefile` support:
-
-```bash
-docker-compose up
 ```
 
 This command will create one (1) Docker container where your application is
@@ -87,12 +83,6 @@ shortcut command:
 make bash
 ```
 
-or without `Makefile` support:
-
-```bash
-docker-compose exec node bash
-```
-
 Where that `node` is that actual container where this backend application is
 running.
 
@@ -104,12 +94,6 @@ running. This you can do with following command:
 
 ```bash
 make start-build
-```
-
-or without `Makefile` support:
-
-```bash
-docker-compose up --build
 ```
 
 ## Resources

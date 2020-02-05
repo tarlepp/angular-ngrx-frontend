@@ -59,6 +59,12 @@ jobs:
           config: './markdown-lint.yml'
           args: './doc/CONCEPTS_AND_FEATURES.md'
 
+      - name: Lint `doc/SPEED_UP_DOCKER_COMPOSE.md`
+        uses: avto-dev/markdown-lint@v1
+        with:
+          config: './markdown-lint.yml'
+          args: './doc/SPEED_UP_DOCKER_COMPOSE.md'
+
       - name: Lint `doc/TOOLS.md`
         uses: avto-dev/markdown-lint@v1
         with:

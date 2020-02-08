@@ -66,6 +66,6 @@ const reducer = createReducer(
   on(authenticationActions.logout, (): AuthenticationState => initialState),
 );
 
-export function authenticationReducer(state: AuthenticationState|undefined, action: Action): AuthenticationState {
+export function authenticationReducer(state: AuthenticationState, action: Action): AuthenticationState {
   return reducer(state, action);
 }

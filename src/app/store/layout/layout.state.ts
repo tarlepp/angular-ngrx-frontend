@@ -1,7 +1,7 @@
-import { Device, Viewport } from '../../shared/enums';
+import {Device, Language, Viewport} from '../../shared/enums';
 
 export interface LayoutState {
-  language?: string;
+  language?: Language;
   viewport?: Viewport;
   device?: Device;
   desktop: boolean;

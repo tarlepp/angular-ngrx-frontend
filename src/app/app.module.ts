@@ -5,7 +5,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { environment } from '../environments/environment';
@@ -34,14 +34,20 @@ import { metaReducers, reducers, effects } from './store';
     NgxWebstorageModule.forRoot(),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
+      routerState: RouterState.Minimal,
     }),
-    StoreModule.forRoot(reducers, {
-      metaReducers,
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true,
+    StoreModule.forRoot(
+      reducers,
+      {
+        metaReducers,
+        runtimeChecks: {
+          strictStateSerializability: true,
+          strictActionSerializability: true,
+          strictStateImmutability: true,
+          strictActionImmutability: true,
+        },
       },
-    }),
+    ),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

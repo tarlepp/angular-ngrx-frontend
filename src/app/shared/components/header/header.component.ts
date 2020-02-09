@@ -15,7 +15,7 @@ import { Language } from '../../enums';
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
-  @ViewChild('userMenu', {static: true}) private userMenu: MatMenuTrigger;
+  @ViewChild('userMenu') private userMenu: MatMenuTrigger;
 
   public profile?: UserProfileInterface;
   public loading$: Observable<boolean>;

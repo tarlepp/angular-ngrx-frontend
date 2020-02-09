@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       && httpRequest.url !== ConfigurationService.configuration.tokenUrl
       && new URL(httpRequest.url).host === new URL(ConfigurationService.configuration.apiUrl).host
     ) {
-      this.authenticationStore.dispatch(authenticationActions.logout({message: 'Unauthorized'}));
+      this.authenticationStore.dispatch(authenticationActions.logout({ message: 'Unauthorized' }));
 
       return;
     }
@@ -45,6 +45,6 @@ export class ErrorInterceptor implements HttpInterceptor {
       payload.message = httpErrorResponse.message;
     }
 
-    this.errorStore.dispatch(errorActions.snackbar({error: payload}));
+    this.errorStore.dispatch(errorActions.snackbar({ error: payload }));
   }
 }

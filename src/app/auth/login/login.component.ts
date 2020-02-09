@@ -39,6 +39,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public submit(): void {
-    this.authenticationStore.dispatch(authenticationActions.login({credentials: this.loginForm.value}));
+    this.authenticationStore.dispatch(authenticationActions.login({ credentials: this.loginForm.value }));
   }
 }

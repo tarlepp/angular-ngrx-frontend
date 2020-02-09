@@ -5,8 +5,8 @@ export class ConfigurationService {
   public static configuration: undefined|ApplicationConfigurationInterface;
   public static initialized: boolean;
 
-  private static configurationFile = `/assets/config/config.${environment.name}.json`;
-  private static configurationFileLocal = `/assets/config/config.${environment.name}.local.json`;
+  private static configurationFile = `/assets/config/config.${ environment.name }.json`;
+  private static configurationFileLocal = `/assets/config/config.${ environment.name }.local.json`;
 
   public constructor() {
     ConfigurationService.initialized = false;
@@ -22,7 +22,7 @@ export class ConfigurationService {
         .then((): void => resolve())
         .catch((error: string): void => {
           console.warn(error);
-          console.warn(`Fallback to '${this.configurationFile}' configuration file`);
+          console.warn(`Fallback to '${ this.configurationFile }' configuration file`);
 
           this.loadConfiguration(this.configurationFile)
             .then((): void => resolve())
@@ -35,7 +35,7 @@ export class ConfigurationService {
     const ts = Math.round((new Date()).getTime() / 1000);
 
     return new Promise<void>((resolve, reject): void => {
-      fetch(`${configurationFile}?t=${ts}`)
+      fetch(`${ configurationFile }?t=${ ts }`)
         .then((response) => {
           response
             .json()
@@ -45,9 +45,9 @@ export class ConfigurationService {
 
               resolve();
             })
-            .catch((error: any): void => reject(`Invalid JSON in file '${configurationFile}': ${error}`));
+            .catch((error: any): void => reject(`Invalid JSON in file '${ configurationFile }': ${ error }`));
         })
-        .catch((error: any): void => reject(`Could not load file '${configurationFile}': ${error}`));
+        .catch((error: any): void => reject(`Could not load file '${ configurationFile }': ${ error }`));
     });
   }
 }

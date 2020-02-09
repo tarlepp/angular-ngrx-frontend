@@ -14,6 +14,7 @@ import { layoutActions } from './layout.actions';
 
 @Injectable()
 export class LayoutEffects {
+  // noinspection JSUnusedLocalSymbols
   private changeLanguage$ = createEffect((): Observable<void> => this.actions$
       .pipe(
         ofType(LayoutAction.CHANGE_LANGUAGE),
@@ -26,6 +27,7 @@ export class LayoutEffects {
     { dispatch: false },
   );
 
+  // noinspection JSUnusedLocalSymbols
   private scrollToTop$ = createEffect((): Observable<TypedAction<LayoutAction.SCROLL_TO>> => this.actions$
     .pipe(
       ofType(LayoutAction.SCROLL_TO_TOP),
@@ -33,6 +35,7 @@ export class LayoutEffects {
     ),
   );
 
+  // noinspection JSUnusedLocalSymbols
   private scrollTo$ = createEffect((): Observable<TypedAction<LayoutAction.SCROLL_TO_CLEAR>> => this.actions$
     .pipe(
       ofType(LayoutAction.SCROLL_TO),

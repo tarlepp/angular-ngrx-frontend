@@ -16,6 +16,7 @@ import { Role } from '../../auth/enums';
 
 @Injectable()
 export class AuthenticationEffects {
+  // noinspection JSUnusedLocalSymbols
   private login$ = createEffect((): Observable<TypedAction<AuthenticationLoginType>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGIN),
@@ -36,7 +37,7 @@ export class AuthenticationEffects {
               return authenticationActions.loginSuccess({roles});
             }),
             catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.LOGIN_FAILURE>> =>
-              of(authenticationActions.loginFailure({error: httpErrorResponse.error})),
+              of(authenticationActions.loginFailure({ error: httpErrorResponse.error })),
             ),
           ),
         ),
@@ -44,6 +45,7 @@ export class AuthenticationEffects {
     ),
   );
 
+  // noinspection JSUnusedLocalSymbols
   private loginSuccess$ = createEffect((): Observable<TypedAction<AuthenticationAction.PROFILE>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGIN_SUCCESS),
@@ -51,6 +53,7 @@ export class AuthenticationEffects {
     ),
   );
 
+  // noinspection JSUnusedLocalSymbols
   private profile$ = createEffect((): Observable<TypedAction<AuthenticationProfileType>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.PROFILE),
@@ -61,7 +64,7 @@ export class AuthenticationEffects {
               authenticationActions.profileSuccess({profile}),
             ),
             catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.PROFILE_FAILURE>> =>
-              of(authenticationActions.profileFailure({error: httpErrorResponse.error})),
+              of(authenticationActions.profileFailure({ error: httpErrorResponse.error })),
             ),
           ),
         ),
@@ -69,6 +72,7 @@ export class AuthenticationEffects {
     ),
   );
 
+  // noinspection JSUnusedLocalSymbols
   private logout$ = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGOUT),

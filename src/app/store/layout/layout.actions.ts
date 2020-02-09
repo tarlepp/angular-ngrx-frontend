@@ -7,10 +7,12 @@ const changeLanguage = createAction(LayoutAction.CHANGE_LANGUAGE, props<{ langua
 const changeViewport = createAction(LayoutAction.CHANGE_VIEWPORT, props<{ viewport: Viewport }>());
 const scrollTo = createAction(LayoutAction.SCROLL_TO, props<{ anchor: string }>());
 const scrollToTop = createAction(LayoutAction.SCROLL_TO_TOP);
+const scrollToClear = createAction(LayoutAction.SCROLL_TO_CLEAR);
 
 export const layoutActions = {
   changeLanguage,
   changeViewport,
   scrollTo,
   scrollToTop,
+  scrollToClear,
 };

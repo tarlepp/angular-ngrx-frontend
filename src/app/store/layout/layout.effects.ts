@@ -33,11 +33,11 @@ export class LayoutEffects {
     ),
   );
 
-  private scrollTo$ = createEffect((): Observable<void> => this.actions$
+  private scrollTo$ = createEffect((): Observable<TypedAction<LayoutAction.SCROLL_TO_CLEAR>> => this.actions$
     .pipe(
       ofType(LayoutAction.SCROLL_TO),
       pluck('anchor'),
-      map((anchor: string): void => {
+      switchMap((anchor: string): Observable<TypedAction<LayoutAction.SCROLL_TO_CLEAR>> => {
         setTimeout((): void => {
           const element = document.querySelector(anchor);
 
@@ -45,9 +45,10 @@ export class LayoutEffects {
             element.scrollIntoView({ behavior: 'smooth' });
           }
         });
+
+        return of(layoutActions.scrollToClear());
       }),
     ),
-    { dispatch: false },
   );
 
   public constructor(

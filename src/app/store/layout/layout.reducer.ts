@@ -1,15 +1,15 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import {Action, createReducer, on} from '@ngrx/store';
 
 import { Viewports } from '../../shared/constants';
-import { Device, Language } from '../../shared/enums';
+import { Device, Language, Viewport } from '../../shared/enums';
 import { LayoutState } from './layout.state';
 import { layoutActions } from './layout.actions';
 
 const initialState = {
-  language: null,
-  viewport: null,
-  device: null,
-  desktop: false,
+  language: Language.DEFAULT,
+  viewport: Viewport.XL,
+  device: Device.DESKTOP,
+  desktop: true,
   tablet: false,
   mobile: false,
   anchor: null,
@@ -50,8 +50,15 @@ const reducer = createReducer(
       anchor,
     }),
   ),
+  on(
+    layoutActions.scrollToClear,
+    (state: LayoutState): LayoutState => ({
+      ...state,
+      anchor: null,
+    }),
+  ),
 );
 
-export function layoutReducer(state: LayoutState|undefined, action: Action): LayoutState {
+export function layoutReducer(state: LayoutState, action: Action): LayoutState {
   return reducer(state, action);
 }

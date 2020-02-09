@@ -4,7 +4,9 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
-import { errorActions, ErrorState } from '../../store/error';
+// noinspection TypeScriptPreferShortImport - Circular dependency detected
+import { errorActions } from '../../store/error/error.actions';
+import { ErrorState } from '../../store/error';
 import { ServerErrorInterface } from '../interfaces';
 
 @Injectable()

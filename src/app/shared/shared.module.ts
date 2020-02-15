@@ -6,7 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { MaterialModule } from './material/material.module';
-import { Components, EntryComponents } from './components';
+import { Components } from './components';
 import { Directives } from './directives';
 import { HttpInterceptors } from './interceptors';
 import { Services } from './services';
@@ -26,9 +26,6 @@ import { Services } from './services';
     ReactiveFormsModule,
     MaterialModule,
     TranslateModule,
-  ],
-  entryComponents: [
-    ...EntryComponents,
   ],
   providers: [
     ...HttpInterceptors,

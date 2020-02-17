@@ -16,8 +16,8 @@ export class FooterComponent implements AfterViewInit {
     setTimeout((): void => {
       const element = this.footerContainer.nativeElement;
 
-      this.topOffset = `${element.offsetHeight}px`;
-      this.topMargin = `-${element.offsetHeight}px`;
+      this.topOffset = `${ element.offsetHeight }px`;
+      this.topMargin = `-${ element.offsetHeight }px`;
     }, 0);
   }
 }

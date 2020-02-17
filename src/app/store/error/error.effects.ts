@@ -9,6 +9,7 @@ import { errorActions } from './error.actions';
 
 @Injectable()
 export class ErrorEffects {
+  // noinspection JSUnusedLocalSymbols
   private snackbarError$ = createEffect((): Observable<void> =>
     this.actions$.pipe(
       ofType(errorActions.snackbar),

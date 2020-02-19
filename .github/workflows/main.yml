@@ -22,10 +22,10 @@ jobs:
       - name: Make checkout
         uses: actions/checkout@v1
 
-      - name: Use Node.js 13.7
+      - name: Use Node.js 13.8
         uses: actions/setup-node@v1
         with:
-          node-version: 13.7
+          node-version: 13.8
 
       - name: Install dependencies
         run: yarn install
@@ -77,3 +77,21 @@ jobs:
           config: './markdown-lint.yml'
           args: './doc/USAGE_CHECKLIST.md'
 
+  build:
+    name: Build application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make checkout
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 13.8
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13.8
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run `yarn build-prod`
+        run: yarn build-prod

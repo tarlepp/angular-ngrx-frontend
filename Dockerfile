@@ -6,8 +6,8 @@ COPY ./ /src/
 
 WORKDIR /src/
 
-RUN yarn && \
-    ng build --prod --build-optimizer --configuration=production
+RUN yarn \
+    && yarn build-prod
 
 FROM nginx:mainline-alpine
 

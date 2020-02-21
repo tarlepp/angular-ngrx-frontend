@@ -1,8 +1,6 @@
 import { BaseRouterStoreState, RouterReducerState } from '@ngrx/router-store';
 
-import { AuthenticationState } from './authentication';
-import { ErrorState } from './error';
-import { LayoutState } from './layout';
+import { AuthenticationState, ErrorState, LayoutState } from './store-states';
 
 export interface AppState {
   router: RouterReducerState<BaseRouterStoreState>;

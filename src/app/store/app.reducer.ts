@@ -2,9 +2,7 @@ import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';
 
 import { environment } from '../../environments/environment';
-import { authenticationReducer } from './authentication';
-import { errorReducer } from './error';
-import { layoutReducer } from './layout';
+import { authenticationReducer, errorReducer, layoutReducer } from './store-reducer';
 import { AppState } from './app.state';
 
 export const reducers: ActionReducerMap<AppState> = {

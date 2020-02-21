@@ -3,10 +3,12 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { authenticationActions, authenticationSelectors, AuthenticationState } from '../../../store/authentication';
-import { layoutActions, layoutSelectors, LayoutState } from '../../../store/layout';
 import { UserProfileInterface } from '../../../auth/interfaces';
 import { Language } from '../../enums';
+
+import { AuthenticationState, LayoutState } from '../../../store/store-states';
+import { authenticationSelectors, layoutSelectors } from '../../../store/store-selectors';
+import { authenticationActions, layoutActions } from '../../../store/store-actions';
 
 @Component({
   selector: 'app-header',

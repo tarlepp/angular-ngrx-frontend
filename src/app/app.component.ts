@@ -9,9 +9,12 @@ import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
 import { Role } from './auth/enums';
 import { AuthenticationService } from './auth/services';
-import { authenticationActions, authenticationSelectors, AuthenticationState } from './store/authentication';
-import { layoutActions, LayoutState } from './store/layout';
 import { Language, Viewport } from './shared/enums';
+import { AuthenticationState } from './store/authentication/authentication.state';
+import { LayoutState } from './store/layout/layout.state';
+import { layoutActions } from './store/layout/layout.actions';
+import { authenticationActions } from './store/authentication/authentication.actions';
+import { authenticationSelectors } from './store/authentication/authentication.selectors';
 
 @Component({
   selector: 'app-root',

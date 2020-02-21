@@ -1,6 +1,4 @@
-import { AuthenticationEffects } from './authentication';
-import { ErrorEffects } from './error';
-import { LayoutEffects } from './layout';
+import { AuthenticationEffects, ErrorEffects, LayoutEffects } from './store-effects';
 
 export const effects = [
   AuthenticationEffects,

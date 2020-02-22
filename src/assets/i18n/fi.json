@@ -25,6 +25,11 @@
           "en": "Englanti"
         }
       }
+    },
+    "shared": {
+      "error-message": {
+        "not-used-production-environment": "Tämä on näkyvissä vain jos Angular `environment` ei ole `production` - vain debug tarkoitukseen."
+      }
     }
   },
   "messages": {

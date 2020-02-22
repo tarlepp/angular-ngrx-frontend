@@ -1,0 +1,15 @@
+@import './src/styles/variables';
+
+.mat-list-base[dense] {
+  .mat-list-item {
+    height: auto;
+
+    ::ng-deep {
+      .mat-list-item-content {
+        padding: 0 0 $spacing-half;
+        line-height: 12px;
+        color: rgba(255, 255, 255, .7);
+      }
+    }
+  }
+}

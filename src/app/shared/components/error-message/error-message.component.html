@@ -1,0 +1,35 @@
+<div fxLayout="row">
+  <div fxFlex>
+    <mat-list dense>
+      <mat-list-item *ngFor="let error of errors">
+        <div fxLayout="row"
+             fxLayoutAlign="start start"
+        >
+          <span>{{ error.property | translate }}</span>
+
+          <span>&nbsp;-&nbsp;</span>
+
+          <span>{{ error.message | translate }}</span>
+
+          <code *ngIf="!production"
+             matTooltip="{{ 'component.shared.error-message.not-used-production-environment' | translate }}"
+          >
+            &nbsp;({{ error.debug }})
+          </code>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div fxLayout="column"
+       fxLayoutAlign="end end"
+  >
+    <button mat-button
+            type="button"
+            color="warn"
+            (click)="dismiss()"
+    >
+      {{ 'snackbar.close-button' | translate }}
+    </button>
+  </div>
+</div>

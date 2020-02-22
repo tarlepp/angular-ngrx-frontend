@@ -16,7 +16,14 @@ import { Services } from './services';
     ...Components,
     ...Directives,
   ],
-  imports: [],
+  imports: [
+    BrowserAnimationsModule,
+    CommonModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    TranslateModule,
+  ],
   exports: [
     ...Components,
     ...Directives,

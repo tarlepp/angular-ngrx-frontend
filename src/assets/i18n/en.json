@@ -25,6 +25,11 @@
           "en": "English"
         }
       }
+    },
+    "shared": {
+      "error-message": {
+        "not-used-production-environment": "This is only shown if Angular `environment` is not `production` - only for debug purposes."
+      }
     }
   },
   "messages": {

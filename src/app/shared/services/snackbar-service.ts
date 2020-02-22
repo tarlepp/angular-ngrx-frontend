@@ -6,7 +6,8 @@ import { take } from 'rxjs/operators';
 
 import { errorActions } from '../../store/store-actions';
 import { ErrorState } from '../../store/store-states';
-import { ServerErrorInterface } from '../interfaces';
+import { ErrorMessageServerInterface, ServerErrorInterface } from '../interfaces';
+import { ErrorMessageComponent } from '../components';
 
 @Injectable()
 export class SnackbarService {
@@ -34,17 +35,33 @@ export class SnackbarService {
     });
   }
 
-  public error(error: ServerErrorInterface): Promise<MatSnackBarRef<SimpleSnackBar>> {
+  public error(error: ServerErrorInterface): Promise<MatSnackBarRef<SimpleSnackBar|ErrorMessageComponent>> {
     return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve): void => {
       const config = {
         panelClass: ['snackbar', 'snackbar--error'],
       } as MatSnackBarConfig;
 
+      let serverErrorMessages = [] as Array<ErrorMessageServerInterface>;
+
+      try {
+        serverErrorMessages = JSON.parse(error.message) as Array<ErrorMessageServerInterface>;
+
+        if (!Array.isArray(serverErrorMessages)) {
+          serverErrorMessages = [];
+        }
+      } catch (e) { }
+
       this.translateService
         .get(this.closeButtonTag)
         .pipe(take(1))
-        .subscribe((closeButtonText: string): void => {
-          const matSnackBarRef = this.snackBar.open(error.message, closeButtonText, config);
+        .subscribe((closeButton: string): void => {
+          let matSnackBarRef;
+
+          if (serverErrorMessages.length > 0) {
+            matSnackBarRef = this.snackBar.openFromComponent(ErrorMessageComponent, { ...config, data: serverErrorMessages });
+          } else {
+            matSnackBarRef = this.snackBar.open(error.message, closeButton, config);
+          }
 
           matSnackBarRef
             .afterDismissed()

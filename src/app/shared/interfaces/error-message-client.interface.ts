@@ -1,5 +1,8 @@
-import {ErrorMessageServerInterface} from "./error-message-server.interface";
+import {ErrorMessageServerInterface} from './error-message-server.interface';
 
 export interface ErrorMessageClientInterface extends ErrorMessageServerInterface {
-  textTag: string;
+  messageText: string;
+  messageProperty: string;
+  messageTextClient?: string|null;
+  messagePropertyClient?: string|null;
 }

@@ -9,6 +9,7 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { environment } from '../environments/environment';
+import { registerLocales } from './app.locales';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -17,6 +18,8 @@ import { LandingModule } from './landing/landing.module';
 import { FooterComponent, HeaderComponent } from './shared/components';
 import { AuthModule } from './auth/auth.module';
 import { metaReducers, reducers, effects } from './store';
+
+registerLocales();
 
 @NgModule({
   declarations: [

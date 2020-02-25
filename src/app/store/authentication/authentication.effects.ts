@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { from, Observable, of } from 'rxjs';
@@ -27,7 +28,7 @@ export class AuthenticationEffects {
           .pipe(
             map((roles: Array<Role>): TypedAction<AuthenticationAction.LOGIN_SUCCESS> => {
               this.snackbarService
-                .message('messages.authentication.login')
+                .message(marker('messages.authentication.login'))
                 .finally();
 
               this.router

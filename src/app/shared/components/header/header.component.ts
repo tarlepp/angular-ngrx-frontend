@@ -1,14 +1,20 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { UserProfileInterface } from '../../../auth/interfaces';
 import { Language } from '../../enums';
-
 import { AuthenticationState, LayoutState } from '../../../store/store-states';
 import { authenticationSelectors, layoutSelectors } from '../../../store/store-selectors';
 import { authenticationActions, layoutActions } from '../../../store/store-actions';
+
+// Note that if you add new language, you need to define it's text tag here
+marker([
+  'component.header.menu.language.en',
+  'component.header.menu.language.fi',
+]);
 
 @Component({
   selector: 'app-header',
@@ -58,7 +64,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public logout(): void {
     this.userMenu.closeMenu();
-    this.authenticationStore.dispatch(authenticationActions.logout({ message: 'messages.authentication.logout' }));
+    this.authenticationStore.dispatch(
+      authenticationActions.logout({ message: marker('messages.authentication.logout') }),
+    );
   }
 
   public changeLanguage(language: Language): void {

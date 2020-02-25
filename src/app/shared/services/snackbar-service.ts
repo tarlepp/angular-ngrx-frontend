@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
@@ -11,7 +12,7 @@ import { ErrorMessageComponent } from '../components';
 
 @Injectable()
 export class SnackbarService {
-  private closeButtonTag = 'snackbar.close-button';
+  private closeButtonTag = marker('snackbar.close-button');
 
   public constructor(
     private snackBar: MatSnackBar,

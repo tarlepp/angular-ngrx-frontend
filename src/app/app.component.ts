@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { TranslateService } from '@ngx-translate/core';
@@ -111,7 +112,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe((authenticated: boolean): void => {
         if (this.loggedIn && !authenticated) {
-          this.logout('messages.authentication.timout');
+          this.logout(marker('messages.authentication.timout'));
         }
       });
   }

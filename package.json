@@ -43,11 +43,11 @@
     "@ngrx/router-store": "8.6.0",
     "@ngrx/store": "8.6.0",
     "@ngrx/store-devtools": "8.6.0",
-    "@ngx-translate/core": "12.1.1",
+    "@ngx-translate/core": "12.1.2",
     "@ngx-translate/http-loader": "4.0.0",
     "ngx-webstorage": "5.0.0",
     "rxjs": "6.5.4",
-    "tslib": "1.11.0",
+    "tslib": "1.11.1",
     "zone.js": "0.10.2"
   },
   "devDependencies": {

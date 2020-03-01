@@ -14,6 +14,9 @@ import { AuthenticationLoginType, AuthenticationProfileType } from './authentica
 import { AuthenticationService } from '../../auth/services';
 import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/interfaces';
 import { Role } from '../../auth/enums';
+import { LayoutAction } from '../layout/layout.action';
+import { LocalizationInterface } from '../../shared/interfaces';
+import { layoutActions } from '../layout/layout.actions';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -70,6 +73,21 @@ export class AuthenticationEffects {
           ),
         ),
       ),
+    ),
+  );
+
+  // noinspection JSUnusedLocalSymbols
+  private profileSuccess$ = createEffect((): Observable<TypedAction<LayoutAction.CHANGE_LOCALIZATION>> => this.actions$
+    .pipe(
+      ofType(AuthenticationAction.PROFILE_SUCCESS),
+      pluck('profile'),
+      map((profile: UserProfileInterface): LocalizationInterface => ({
+        language: profile.language,
+        locale: profile.locale,
+        timezone: profile.timezone,
+        } as LocalizationInterface),
+      ),
+      switchMap((localization: LocalizationInterface) => of(layoutActions.changeLocalization({ localization }))),
     ),
   );
 

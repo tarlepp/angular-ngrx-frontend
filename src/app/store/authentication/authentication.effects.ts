@@ -7,18 +7,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { from, Observable, of } from 'rxjs';
 import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 
-import { SnackbarService } from '../../shared/services';
-import { AuthenticationAction } from './authentication.action';
-import { authenticationActions } from './authentication.actions';
-import { AuthenticationLoginType, AuthenticationProfileType } from './authentication.types';
-import { AuthenticationService } from '../../auth/services';
-import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from '../../auth/interfaces';
-import { LayoutAction } from '../layout/layout.action';
-import { layoutActions } from '../layout/layout.actions';
-
-type LoginSuccessTypes =
-  AuthenticationAction.PROFILE
-| LayoutAction.CHANGE_LOCALIZATION;
+import { SnackbarService } from 'src/app/shared/services';
+import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
+import { AuthenticationService } from 'src/app/auth/services';
+import { AuthenticationAction } from 'src/app/store/store.action';
+import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
+import { AuthenticationLoginType, AuthenticationProfileType, LoginSuccessTypes } from 'src/app/store/store-types';
+import { LocalizationInterface } from '../../shared/interfaces';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -56,9 +51,10 @@ export class AuthenticationEffects {
     .pipe(
       ofType(AuthenticationAction.LOGIN_SUCCESS),
       pluck('userData'),
-      switchMap((data: UserDataInterface): Array<TypedAction<LoginSuccessTypes>> => [
+      map((userData: UserDataInterface): LocalizationInterface => userData.localization),
+      switchMap((localization: LocalizationInterface): Array<TypedAction<LoginSuccessTypes>> => [
         authenticationActions.profile(),
-        layoutActions.changeLocalization({ localization: data.localization }),
+        layoutActions.changeLocalization({ localization }),
       ]),
     ),
   );
@@ -71,7 +67,7 @@ export class AuthenticationEffects {
         from(this.authService.getProfile()
           .pipe(
             map((profile: UserProfileInterface): TypedAction<AuthenticationAction.PROFILE_SUCCESS> =>
-              authenticationActions.profileSuccess({profile}),
+              authenticationActions.profileSuccess({ profile }),
             ),
             catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.PROFILE_FAILURE>> =>
               of(authenticationActions.profileFailure({ error: httpErrorResponse.error })),

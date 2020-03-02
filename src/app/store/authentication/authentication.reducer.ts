@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { AuthenticationState } from './authentication.state';
-import { authenticationActions } from './authentication.actions';
+import { AuthenticationState } from 'src/app/store/store-states';
+import { authenticationActions } from 'src/app/store/store-actions';
 
 const initialState = {
   loading: false,
@@ -32,14 +32,6 @@ const reducer = createReducer(
     }),
   ),
   on(
-    authenticationActions.loginFailure,
-    (state: AuthenticationState, { error }): AuthenticationState => ({
-      ...state,
-      loading: false,
-      error,
-    }),
-  ),
-  on(
     authenticationActions.profile,
     (state: AuthenticationState): AuthenticationState => ({
       ...state,
@@ -56,6 +48,7 @@ const reducer = createReducer(
     }),
   ),
   on(
+    authenticationActions.loginFailure,
     authenticationActions.profileFailure,
     (state: AuthenticationState, { error }): AuthenticationState => ({
       ...state,

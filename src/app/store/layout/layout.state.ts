@@ -1,4 +1,4 @@
-import { Device, Language, Locale, Viewport } from '../../shared/enums';
+import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
 
 export interface LayoutState {
   language: Language;

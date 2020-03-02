@@ -1,9 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { Viewports } from '../../shared/constants';
-import { Device, Language, Locale, Viewport } from '../../shared/enums';
-import { LayoutState } from './layout.state';
-import { layoutActions } from './layout.actions';
+import { Viewports } from 'src/app/shared/constants';
+import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
+import { LayoutState } from 'src/app/store/store-states';
+import { layoutActions } from 'src/app/store/store-actions';
 
 const initialState = {
   language: Language.DEFAULT,
@@ -30,7 +30,7 @@ const reducer = createReducer(
     layoutActions.changeLocalization,
     (state: LayoutState, { localization }): LayoutState => ({
       ...state,
-      language: localization.language,
+      language: Object.values(Language).includes(localization.language) ? localization.language : Language.DEFAULT,
       locale: localization.locale,
       timezone: localization.timezone,
     }),
@@ -62,7 +62,7 @@ const reducer = createReducer(
     }),
   ),
   on(
-    layoutActions.scrollToClear,
+    layoutActions.clearScrollTo,
     (state: LayoutState): LayoutState => ({
       ...state,
       anchor: null,

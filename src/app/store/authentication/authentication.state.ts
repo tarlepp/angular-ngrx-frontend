@@ -1,11 +1,10 @@
 import { ServerErrorInterface } from '../../shared/interfaces';
-import { UserProfileInterface } from '../../auth/interfaces';
-import { Role } from '../../auth/enums';
+import { UserDataInterface, UserProfileInterface } from '../../auth/interfaces';
 
 export interface AuthenticationState {
   loading: boolean;
   loggedIn: boolean;
-  roles: Array<Role>;
+  userData: UserDataInterface|null;
   profile: UserProfileInterface|null;
   error: ServerErrorInterface|null;
 }

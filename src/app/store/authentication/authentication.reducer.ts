@@ -6,7 +6,7 @@ import { authenticationActions } from './authentication.actions';
 const initialState = {
   loading: false,
   loggedIn: false,
-  roles: [],
+  userData: null,
   profile: null,
   error: null,
 } as AuthenticationState;
@@ -24,11 +24,11 @@ const reducer = createReducer(
   ),
   on(
     authenticationActions.loginSuccess,
-    (state: AuthenticationState, { roles }): AuthenticationState => ({
+    (state: AuthenticationState, { userData }): AuthenticationState => ({
       ...state,
       loading: false,
       loggedIn: true,
-      roles,
+      userData,
     }),
   ),
   on(

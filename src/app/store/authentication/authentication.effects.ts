@@ -12,8 +12,13 @@ import { AuthenticationAction } from './authentication.action';
 import { authenticationActions } from './authentication.actions';
 import { AuthenticationLoginType, AuthenticationProfileType } from './authentication.types';
 import { AuthenticationService } from '../../auth/services';
-import { CredentialsRequestInterface, UserProfileInterface } from '../../auth/interfaces';
-import { Role } from '../../auth/enums';
+import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from '../../auth/interfaces';
+import { LayoutAction } from '../layout/layout.action';
+import { layoutActions } from '../layout/layout.actions';
+
+type LoginSuccessTypes =
+  AuthenticationAction.PROFILE
+| LayoutAction.CHANGE_LOCALIZATION;
 
 @Injectable()
 export class AuthenticationEffects {
@@ -26,7 +31,7 @@ export class AuthenticationEffects {
         from(this.authService
           .authenticate(credentials)
           .pipe(
-            map((roles: Array<Role>): TypedAction<AuthenticationAction.LOGIN_SUCCESS> => {
+            map((userData: UserDataInterface): TypedAction<AuthenticationAction.LOGIN_SUCCESS> => {
               this.snackbarService
                 .message(marker('messages.authentication.login'))
                 .finally();
@@ -35,7 +40,7 @@ export class AuthenticationEffects {
                 .navigate(['/'])
                 .finally();
 
-              return authenticationActions.loginSuccess({roles});
+              return authenticationActions.loginSuccess({ userData });
             }),
             catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.LOGIN_FAILURE>> =>
               of(authenticationActions.loginFailure({ error: httpErrorResponse.error })),
@@ -47,10 +52,14 @@ export class AuthenticationEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private loginSuccess$ = createEffect((): Observable<TypedAction<AuthenticationAction.PROFILE>> => this.actions$
+  private loginSuccess$ = createEffect((): Observable<TypedAction<LoginSuccessTypes>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGIN_SUCCESS),
-      switchMap((): Observable<TypedAction<AuthenticationAction.PROFILE>> => of(authenticationActions.profile())),
+      pluck('userData'),
+      switchMap((data: UserDataInterface): Array<TypedAction<LoginSuccessTypes>> => [
+        authenticationActions.profile(),
+        layoutActions.changeLocalization({ localization: data.localization }),
+      ]),
     ),
   );
 

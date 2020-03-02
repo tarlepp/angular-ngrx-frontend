@@ -11,9 +11,19 @@ import { LayoutAction } from './layout.action';
 import { LayoutState } from './layout.state';
 import { layoutSelectors } from './layout.selectors';
 import { layoutActions } from './layout.actions';
+import { LocalizationInterface } from '../../shared/interfaces';
 
 @Injectable()
 export class LayoutEffects {
+  // noinspection JSUnusedLocalSymbols
+  private changeLocalization$ = createEffect((): Observable<TypedAction<LayoutAction.CHANGE_LANGUAGE>> => this.actions$
+    .pipe(
+      ofType(LayoutAction.CHANGE_LOCALIZATION),
+      pluck('localization'),
+      switchMap((localization: LocalizationInterface) => of(layoutActions.changeLanguage({ language: localization.language }))),
+    ),
+  );
+
   // noinspection JSUnusedLocalSymbols
   private changeLanguage$ = createEffect((): Observable<void> => this.actions$
       .pipe(

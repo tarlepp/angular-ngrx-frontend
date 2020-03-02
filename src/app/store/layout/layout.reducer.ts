@@ -4,7 +4,6 @@ import { Viewports } from '../../shared/constants';
 import { Device, Language, Locale, Viewport } from '../../shared/enums';
 import { LayoutState } from './layout.state';
 import { layoutActions } from './layout.actions';
-import { authenticationActions } from '../authentication/authentication.actions';
 
 const initialState = {
   language: Language.DEFAULT,
@@ -69,7 +68,6 @@ const reducer = createReducer(
       anchor: null,
     }),
   ),
-  on(authenticationActions.logout, (): LayoutState => initialState),
 );
 
 export function layoutReducer(state: LayoutState, action: Action): LayoutState {

@@ -3,8 +3,12 @@ import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar'
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
-import { ErrorMessageClientInterface, ErrorMessageInterface, ErrorMessageServerInterface } from '../../interfaces';
-import { environment } from '../../../../environments/environment';
+import {
+  ErrorMessageClientInterface,
+  ErrorMessageInterface,
+  ErrorMessageServerInterface,
+} from 'src/app/shared/interfaces';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-error-message',

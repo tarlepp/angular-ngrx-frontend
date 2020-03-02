@@ -1,7 +1,7 @@
-import { SnackbarService } from './snackbar-service';
+import { SnackbarService } from 'src/app/shared/services/snackbar-service';
 
-export * from './configuration-service';
-export * from './snackbar-service';
+export * from 'src/app/shared/services/configuration-service';
+export * from 'src/app/shared/services/snackbar-service';
 
 export const Services = [
   SnackbarService,

@@ -1,7 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { ErrorInterceptor } from './error.interceptor';
-import { AcceptLanguageInterceptor } from './accept-language.interceptor';
+import { ErrorInterceptor } from 'src/app/shared/interceptors/error.interceptor';
+import { AcceptLanguageInterceptor } from 'src/app/shared/interceptors/accept-language.interceptor';
 
 export const HttpInterceptors = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

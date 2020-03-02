@@ -4,11 +4,11 @@ import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { UserProfileInterface } from '../../../auth/interfaces';
-import { Language } from '../../enums';
-import { AuthenticationState, LayoutState } from '../../../store/store-states';
-import { authenticationSelectors, layoutSelectors } from '../../../store/store-selectors';
-import { authenticationActions, layoutActions } from '../../../store/store-actions';
+import { UserProfileInterface } from 'src/app/auth/interfaces';
+import { Language } from 'src/app/shared/enums';
+import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
+import { authenticationSelectors, layoutSelectors } from 'src/app/store/store-selectors';
+import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
 
 // Note that if you add new language, you need to define it's text tag here
 marker([

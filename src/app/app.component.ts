@@ -8,14 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
-import { AuthenticationService } from './auth/services';
-import { Language, Viewport } from './shared/enums';
-import { AuthenticationState } from './store/authentication/authentication.state';
-import { LayoutState } from './store/layout/layout.state';
-import { layoutActions } from './store/layout/layout.actions';
-import { authenticationActions } from './store/authentication/authentication.actions';
-import { authenticationSelectors } from './store/authentication/authentication.selectors';
-import { UserDataInterface } from './auth/interfaces';
+import { AuthenticationService } from 'src/app/auth/services';
+import { Language, Viewport } from 'src/app/shared/enums';
+import { AuthenticationState } from 'src/app/store/authentication/authentication.state';
+import { LayoutState } from 'src/app/store/layout/layout.state';
+import { layoutActions } from 'src/app/store/layout/layout.actions';
+import { authenticationActions } from 'src/app/store/authentication/authentication.actions';
+import { authenticationSelectors } from 'src/app/store/authentication/authentication.selectors';
+import { UserDataInterface } from 'src/app/auth/interfaces';
 
 @Component({
   selector: 'app-root',

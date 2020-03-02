@@ -7,13 +7,17 @@ import { take } from 'rxjs/operators';
 
 import { ConfigurationService } from '../../shared/services';
 import { ServerErrorInterface } from '../../shared/interfaces';
-import { CredentialsRequestInterface, CredentialsResponseInterface, UserProfileInterface } from '../interfaces';
-import { Role } from '../enums';
+import {
+  CredentialsRequestInterface,
+  CredentialsResponseInterface,
+  UserDataInterface,
+  UserProfileInterface,
+} from '../interfaces';
 
 @Injectable()
 export class AuthenticationService {
   private readonly httpOptions: object;
-  private readonly userRoles$: BehaviorSubject<Array<Role>|null>;
+  private readonly userData$: BehaviorSubject<UserDataInterface|null>;
 
   public constructor(
     private http: HttpClient,
@@ -26,20 +30,19 @@ export class AuthenticationService {
       }),
     };
 
-    this.userRoles$ = new BehaviorSubject<Array<Role>|null>(null);
+    this.userData$ = new BehaviorSubject<UserDataInterface|null>(null);
   }
 
-  public authenticate(credentials: CredentialsRequestInterface): Observable<string[]|ServerErrorInterface> {
-    return new Observable((observer: Observer<string[]|ServerErrorInterface>): void => {
+  public authenticate(credentials: CredentialsRequestInterface): Observable<UserDataInterface|ServerErrorInterface> {
+    return new Observable((observer: Observer<UserDataInterface|ServerErrorInterface>): void => {
       this.http
         .post(ConfigurationService.configuration.tokenUrl, credentials, this.httpOptions)
         .pipe(take(1))
         .subscribe(
           (token: CredentialsResponseInterface): void => {
             this.localStorage.store('token', token.token);
-            const decoded = this.jwtHelper.decodeToken(token.token);
 
-            observer.next(decoded.roles);
+            observer.next(this.getUserData(token.token));
           },
           (error: ServerErrorInterface): void => {
             this.localStorage.clear('token');
@@ -74,18 +77,31 @@ export class AuthenticationService {
 
   public logout(): void {
     this.localStorage.clear('token');
-    this.userRoles$.next(null);
+    this.userData$.next(null);
   }
 
-  public getLoggedInRoles(): BehaviorSubject<Array<Role>|null> {
+  public getLoggedInUserData(): BehaviorSubject<UserDataInterface|null> {
     this.isAuthenticated()
       .subscribe((authenticated: boolean): void => {
         const token = this.localStorage.retrieve('token');
-        const decoded = this.jwtHelper.decodeToken(token);
+        const payload = authenticated ? this.getUserData(token) : null;
 
-        this.userRoles$.next(authenticated ? decoded.roles : null);
+        this.userData$.next(payload);
       });
 
-    return this.userRoles$;
+    return this.userData$;
+  }
+
+  private getUserData(token: string): UserDataInterface {
+    const decoded = this.jwtHelper.decodeToken(token);
+
+    return {
+      roles: decoded.roles,
+      localization: {
+        language: decoded.language,
+        locale: decoded.locale,
+        timezone: decoded.timezone,
+      },
+    };
   }
 }

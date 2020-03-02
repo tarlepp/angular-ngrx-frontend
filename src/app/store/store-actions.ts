@@ -1,3 +1,3 @@
-export * from './authentication/authentication.actions';
-export * from './error/error.actions';
-export * from './layout/layout.actions';
+export * from 'src/app/store/authentication/authentication.actions';
+export * from 'src/app/store/error/error.actions';
+export * from 'src/app/store/layout/layout.actions';

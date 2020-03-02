@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { ErrorState } from './error.state';
-import { errorActions } from './error.actions';
+import { ErrorState } from 'src/app/store/store-states';
+import { errorActions } from 'src/app/store/store-actions';
 
 const initialState = {
   errorSnackbar: null,

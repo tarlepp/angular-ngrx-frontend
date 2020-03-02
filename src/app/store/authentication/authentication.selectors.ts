@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { AuthenticationState } from './authentication.state';
-import { ServerErrorInterface } from '../../shared/interfaces';
-import { UserDataInterface, UserProfileInterface } from '../../auth/interfaces';
-import { Role } from '../../auth/enums';
+import { AuthenticationState } from 'src/app/store/store-states';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
+import { Role } from 'src/app/auth/enums';
 
 const authenticationState = createFeatureSelector<AuthenticationState>('authentication');
 const loading = createSelector(authenticationState, (state: AuthenticationState): boolean => state.loading);

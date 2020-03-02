@@ -3,9 +3,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, pluck } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { ServerErrorInterface } from '../../shared/interfaces';
-import { SnackbarService } from '../../shared/services';
-import { errorActions } from './error.actions';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { SnackbarService } from 'src/app/shared/services';
+import { errorActions } from 'src/app/store/store-actions';
 
 @Injectable()
 export class ErrorEffects {

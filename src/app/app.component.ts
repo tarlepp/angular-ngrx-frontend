@@ -8,7 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
-import { Role } from './auth/enums';
 import { AuthenticationService } from './auth/services';
 import { Language, Viewport } from './shared/enums';
 import { AuthenticationState } from './store/authentication/authentication.state';
@@ -16,6 +15,7 @@ import { LayoutState } from './store/layout/layout.state';
 import { layoutActions } from './store/layout/layout.actions';
 import { authenticationActions } from './store/authentication/authentication.actions';
 import { authenticationSelectors } from './store/authentication/authentication.selectors';
+import { UserDataInterface } from './auth/interfaces';
 
 @Component({
   selector: 'app-root',
@@ -68,12 +68,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscription
       .add(this.authenticationService
-        .getLoggedInRoles()
-        .subscribe((roles: Array<Role>|null): void => {
-          if (roles === null && this.loggedIn) {
+        .getLoggedInUserData()
+        .subscribe((userData: UserDataInterface|null): void => {
+          if (userData === null && this.loggedIn) {
             this.logout(null);
-          } else if (roles !== null && !this.loggedIn) {
-            this.authenticationStore.dispatch(authenticationActions.loginSuccess({ roles }));
+          } else if (userData !== null && !this.loggedIn) {
+            this.authenticationStore.dispatch(authenticationActions.loginSuccess({ userData }));
           }
         }),
       );

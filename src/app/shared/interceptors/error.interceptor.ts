@@ -4,10 +4,10 @@ import { Store } from '@ngrx/store';
 import { noop, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { ConfigurationService } from '../services';
-import { ServerErrorInterface } from '../interfaces';
-import { AuthenticationState, ErrorState } from '../../store/store-states';
-import { authenticationActions, errorActions } from '../../store/store-actions';
+import { ConfigurationService } from 'src/app/shared/services';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
+import { authenticationActions, errorActions } from 'src/app/store/store-actions';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

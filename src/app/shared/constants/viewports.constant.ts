@@ -1,4 +1,4 @@
-import { Device, Viewport } from '../enums';
+import { Device, Viewport } from 'src/app/shared/enums';
 
 export const Viewports = {
   [Device.MOBILE]: [
@@ -13,4 +13,3 @@ export const Viewports = {
     Viewport.XL,
   ],
 };
-

@@ -1,4 +1,4 @@
-import {ErrorMessageServerInterface} from './error-message-server.interface';
+import {ErrorMessageServerInterface} from 'src/app/shared/interfaces/error-message-server.interface';
 
 export interface ErrorMessageClientInterface extends ErrorMessageServerInterface {
   messageText: string;

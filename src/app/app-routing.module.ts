@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-import { LandingRoutingModule } from './landing/landing-routing.module';
+import { LandingRoutingModule } from 'src/app/landing/landing-routing.module';
 
 const routes: Routes = [
   {

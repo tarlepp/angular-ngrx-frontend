@@ -3,8 +3,8 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { LocalStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 
-import { ConfigurationService } from '../services';
-import { Language } from '../enums';
+import { ConfigurationService } from 'src/app/shared/services';
+import { Language } from 'src/app/shared/enums';
 
 @Injectable()
 export class AcceptLanguageInterceptor implements HttpInterceptor {

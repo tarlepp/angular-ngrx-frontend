@@ -1,4 +1,4 @@
-import { ServerErrorDebugInterface } from './server-error-debug.interface';
+import { ServerErrorDebugInterface } from 'src/app/shared/interfaces/server-error-debug.interface';
 
 export interface ServerErrorInterface {
   code: number;

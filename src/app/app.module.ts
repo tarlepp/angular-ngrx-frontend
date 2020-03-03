@@ -8,16 +8,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
-import { environment } from '../environments/environment';
-import { registerLocales } from './app.locales';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { HttpLoaderFactory } from './shared/factories';
-import { LandingModule } from './landing/landing.module';
-import { FooterComponent, HeaderComponent } from './shared/components';
-import { AuthModule } from './auth/auth.module';
-import { metaReducers, reducers, effects } from './store';
+import { environment } from 'src/environments/environment';
+import { registerLocales } from 'src/app/app.locales';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppComponent } from 'src/app/app.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpLoaderFactory } from 'src/app/shared/factories';
+import { LandingModule } from 'src/app/landing/landing.module';
+import { FooterComponent, HeaderComponent } from 'src/app/shared/components';
+import { AuthModule } from 'src/app/auth/auth.module';
+import { effects, metaReducers, reducers } from 'src/app/store';
 
 registerLocales();
 

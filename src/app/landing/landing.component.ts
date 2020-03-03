@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
-import { Device, Viewport } from '../shared/enums';
-import { LayoutState } from '../store/store-states';
-import { layoutSelectors } from '../store/store-selectors';
+import { Device, Viewport } from 'src/app/shared/enums';
+import { LayoutState } from 'src/app/store/store-states';
+import { layoutSelectors } from 'src/app/store/store-selectors';
 
 @Component({
   selector: 'app-landing',

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { LandingComponent } from './landing.component';
-import { LandingRoutingModule } from './landing-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { LandingComponent } from 'src/app/landing/landing.component';
+import { LandingRoutingModule } from 'src/app/landing/landing-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
-import { Role } from '../enums';
-import { UserGroupInterface } from './user-group.interface';
-import { Language, Locale } from '../../shared/enums';
+import { Role } from 'src/app/auth/enums';
+import { UserGroupInterface } from 'src/app/auth/interfaces/user-group.interface';
+import { Language, Locale } from 'src/app//shared/enums';
 
 export interface UserProfileInterface {
   id: string;

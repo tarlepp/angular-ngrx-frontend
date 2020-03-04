@@ -1,1 +1,1 @@
-export * from './role.enum';
+export * from 'src/app/auth/enums/role.enum';

@@ -1,7 +1,7 @@
 import { JwtModuleOptions } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
 
-import { ConfigurationService } from '../../shared/services';
+import { ConfigurationService } from 'src/app/shared/services';
 
 export function jwtOptionsFactory(localStorage: LocalStorageService): JwtModuleOptions['config'] {
   return {

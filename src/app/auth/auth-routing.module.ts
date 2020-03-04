@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { LoginRoutes } from './login/login.routes';
+import { LoginRoutes } from 'src/app/auth/login/login.routes';
 
 @NgModule({
   imports: [

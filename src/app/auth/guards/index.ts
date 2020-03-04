@@ -1,8 +1,8 @@
-import { AnonymousGuard } from './anonymous.guard';
-import { AuthenticationGuard } from './authentication.guard';
+import { AnonymousGuard } from 'src/app/auth/guards/anonymous.guard';
+import { AuthenticationGuard } from 'src/app/auth/guards/authentication.guard';
 
-export * from './anonymous.guard';
-export * from './authentication.guard';
+export * from 'src/app/auth/guards/anonymous.guard';
+export * from 'src/app/auth/guards/authentication.guard';
 
 export const Guards = [
   AnonymousGuard,

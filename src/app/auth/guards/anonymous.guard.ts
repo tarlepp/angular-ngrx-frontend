@@ -3,10 +3,10 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterSt
 import { Observable } from 'rxjs';
 
 import { AuthenticationService } from 'src/app/auth/services';
-import { BaseGuard } from 'src/app/auth/guards/base.guard';
+import { BaseAuth } from 'src/app/auth/guards/base-auth';
 
 @Injectable()
-export class AnonymousGuard extends BaseGuard implements CanActivate, CanActivateChild {
+export class AnonymousGuard extends BaseAuth implements CanActivate, CanActivateChild {
   public constructor(protected router: Router, protected authenticationService: AuthenticationService) {
     super(router, authenticationService);
   }

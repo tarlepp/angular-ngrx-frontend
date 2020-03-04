@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
-import { AuthenticationState } from '../../store/store-states';
-import { authenticationSelectors } from '../../store/store-selectors';
-import { authenticationActions } from '../../store/store-actions';
+import { AuthenticationState } from 'src/app/store/store-states';
+import { authenticationSelectors } from 'src/app/store/store-selectors';
+import { authenticationActions } from 'src/app/store/store-actions';
 
 @Component({
   selector: 'app-login',

@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { AuthenticationService } from '../services';
+import { AuthenticationService } from 'src/app/auth/services';
 
 export abstract class BaseGuard {
   protected constructor(protected router: Router, protected authenticationService: AuthenticationService) { }

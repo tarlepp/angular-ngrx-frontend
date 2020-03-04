@@ -1,1 +1,1 @@
-export * from './jwt-options.factory';
+export * from 'src/app/auth/factories/jwt-options.factory';

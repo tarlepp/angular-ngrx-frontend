@@ -5,14 +5,14 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { ConfigurationService } from '../../shared/services';
-import { ServerErrorInterface } from '../../shared/interfaces';
+import { ConfigurationService } from 'src/app/shared/services';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import {
   CredentialsRequestInterface,
   CredentialsResponseInterface,
   UserDataInterface,
   UserProfileInterface,
-} from '../interfaces';
+} from 'src/app/auth/interfaces';
 
 @Injectable()
 export class AuthenticationService {

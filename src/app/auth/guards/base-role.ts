@@ -6,7 +6,7 @@ import { AuthenticationState } from 'src/app/store/store-states';
 import { authenticationSelectors } from 'src/app/store/authentication/authentication.selectors';
 import { switchMap, take } from 'rxjs/operators';
 
-export abstract class RoleBaseGuard {
+export abstract class BaseRole {
   protected constructor(protected authenticationStore: Store<AuthenticationState>) { }
 
   protected checkRole(role: Role): Observable<boolean> {

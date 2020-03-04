@@ -4,11 +4,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Role } from 'src/app/auth/enums';
-import { RoleBaseGuard } from 'src/app/auth/guards/role-base.guard';
+import { BaseRole } from 'src/app/auth/guards/base-role';
 import { AuthenticationState } from 'src/app/store/store-states';
 
 @Injectable()
-export class RoleRootGuard extends RoleBaseGuard implements CanActivate, CanActivateChild {
+export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateChild {
   public constructor(protected authenticationStore: Store<AuthenticationState>) {
     super(authenticationStore);
   }

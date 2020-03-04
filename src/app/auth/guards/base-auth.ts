@@ -4,7 +4,7 @@ import { take } from 'rxjs/operators';
 
 import { AuthenticationService } from 'src/app/auth/services';
 
-export abstract class BaseGuard {
+export abstract class BaseAuth {
   protected constructor(protected router: Router, protected authenticationService: AuthenticationService) { }
 
   protected makeCheck(needsToBeAuthenticated: boolean): Observable<boolean> {

@@ -10,11 +10,13 @@ import { Components } from 'src/app/shared/components';
 import { Directives } from 'src/app/shared/directives';
 import { HttpInterceptors } from 'src/app/shared/interceptors';
 import { Services } from 'src/app/shared/services';
+import { Pipes } from 'src/app/shared/pipes';
 
 @NgModule({
   declarations: [
     ...Components,
     ...Directives,
+    ...Pipes,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -27,6 +29,7 @@ import { Services } from 'src/app/shared/services';
   exports: [
     ...Components,
     ...Directives,
+    ...Pipes,
     BrowserAnimationsModule,
     CommonModule,
     FlexLayoutModule,

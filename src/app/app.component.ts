@@ -9,13 +9,11 @@ import { Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
 import { AuthenticationService } from 'src/app/auth/services';
-import { Language, Viewport } from 'src/app/shared/enums';
-import { AuthenticationState } from 'src/app/store/authentication/authentication.state';
-import { LayoutState } from 'src/app/store/layout/layout.state';
-import { layoutActions } from 'src/app/store/layout/layout.actions';
-import { authenticationActions } from 'src/app/store/authentication/authentication.actions';
-import { authenticationSelectors } from 'src/app/store/authentication/authentication.selectors';
 import { UserDataInterface } from 'src/app/auth/interfaces';
+import { Language, Viewport } from 'src/app/shared/enums';
+import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
+import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
+import { authenticationSelectors } from 'src/app/store/store-selectors';
 
 @Component({
   selector: 'app-root',

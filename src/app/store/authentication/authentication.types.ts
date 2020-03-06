@@ -10,4 +10,4 @@ export type AuthenticationProfileType =
 
 export type LoginSuccessTypes =
   AuthenticationAction.PROFILE
-  | LayoutAction.CHANGE_LOCALIZATION;
+  | LayoutAction.UPDATE_LOCALIZATION;

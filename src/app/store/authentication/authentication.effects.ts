@@ -7,13 +7,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { from, Observable, of } from 'rxjs';
 import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 
+import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { SnackbarService } from 'src/app/shared/services';
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { AuthenticationAction } from 'src/app/store/store.action';
 import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
 import { AuthenticationLoginType, AuthenticationProfileType, LoginSuccessTypes } from 'src/app/store/store-types';
-import { LocalizationInterface } from '../../shared/interfaces';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -54,7 +54,7 @@ export class AuthenticationEffects {
       map((userData: UserDataInterface): LocalizationInterface => userData.localization),
       switchMap((localization: LocalizationInterface): Array<TypedAction<LoginSuccessTypes>> => [
         authenticationActions.profile(),
-        layoutActions.changeLocalization({ localization }),
+        layoutActions.updateLocalization({ localization }),
       ]),
     ),
   );

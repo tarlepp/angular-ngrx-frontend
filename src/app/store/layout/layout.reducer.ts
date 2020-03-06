@@ -27,12 +27,17 @@ const reducer = createReducer(
     }),
   ),
   on(
-    layoutActions.changeLocalization,
-    (state: LayoutState, { localization }): LayoutState => ({
+    layoutActions.changeLocale,
+    (state: LayoutState, { locale }): LayoutState => ({
       ...state,
-      language: Object.values(Language).includes(localization.language) ? localization.language : Language.DEFAULT,
-      locale: localization.locale,
-      timezone: localization.timezone,
+      locale: Object.values(Locale).includes(locale) ? locale : Locale.DEFAULT,
+    }),
+  ),
+  on(
+    layoutActions.changeTimezone,
+    (state: LayoutState, { timezone }): LayoutState => ({
+      ...state,
+      timezone,
     }),
   ),
   on(

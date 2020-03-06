@@ -8,10 +8,15 @@ import { ConfigurationService } from 'src/app/shared/services';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
 import { authenticationActions, errorActions } from 'src/app/store/store-actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  public constructor(private errorStore: Store<ErrorState>, private authenticationStore: Store<AuthenticationState>) { }
+  public constructor(
+    private router: Router,
+    private errorStore: Store<ErrorState>,
+    private authenticationStore: Store<AuthenticationState>,
+  ) { }
 
   public intercept(httpRequest: HttpRequest<any>, delegate: HttpHandler): Observable<HttpEvent<any>> {
     const modified = httpRequest.clone();
@@ -22,11 +27,14 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private handle(httpRequest: HttpRequest<any>, httpErrorResponse: HttpErrorResponse): void {
-    if (httpErrorResponse.status === 401
-      && httpRequest.url !== ConfigurationService.configuration.tokenUrl
-      && new URL(httpRequest.url).host === new URL(ConfigurationService.configuration.apiUrl).host
-    ) {
+    const sameHost = new URL(httpRequest.url).host === new URL(ConfigurationService.configuration.apiUrl).host;
+
+    if (httpErrorResponse.status === 401 && sameHost && httpRequest.url !== ConfigurationService.configuration.tokenUrl) {
       this.authenticationStore.dispatch(authenticationActions.logout({ message: 'Unauthorized' }));
+
+      return;
+    } else if (httpErrorResponse.status === 0 && sameHost) {
+      this.router.navigate(['/oops']).finally();
 
       return;
     }

@@ -23,6 +23,11 @@
       },
       "title": null
     },
+    "oops": {
+      "link": "Takaisin etusivulle - toivotaan että kaikki toimii...",
+      "subtitle": "Hiton gerbiilit ovat lakanneet taas juoksemasta! Joku on lähetetty tökkäämään niitä terävällä tikulla.",
+      "title": "Oops..."
+    },
     "shared": {
       "error-message": {
         "not-used-production-environment": "Tämä on näkyvissä vain jos Angular `environment` ei ole `production` - vain debug tarkoitukseen."

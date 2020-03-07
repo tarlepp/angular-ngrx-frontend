@@ -9,7 +9,6 @@ import { ConfigurationService } from 'src/app/shared/services';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
 import { authenticationActions, errorActions } from 'src/app/store/store-actions';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

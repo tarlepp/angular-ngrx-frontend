@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { noop, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -8,7 +9,6 @@ import { ConfigurationService } from 'src/app/shared/services';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
 import { authenticationActions, errorActions } from 'src/app/store/store-actions';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

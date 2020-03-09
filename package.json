@@ -21,7 +21,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --format-indentation '  ' --sort --format namespaced-json --null-as-default-value && find ./src/assets/i18n/ -type f -exec sed -i -e '$a\\' {} \\;",
+    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --format-indentation '  ' --sort --format namespaced-json --null-as-default-value && for files in src/assets/i18n/*.json; do echo >> $files; done;",
     "postinstall": "node version.js"
   },
   "private": true,

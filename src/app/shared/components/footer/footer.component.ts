@@ -1,7 +1,10 @@
-import { AfterViewInit, Component, ElementRef, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { interval, Observable, Subscription } from 'rxjs';
 
-import { environment } from 'src/environments/environment';
-import { EnvironmentInterface } from 'src/app/shared/interfaces';
+import { VersionState } from 'src/app/store/store-states';
+import { versionSelectors } from 'src/app/store/store-selectors';
+import { versionActions } from 'src/app/store/store-actions';
 
 @Component({
   selector: 'app-footer',
@@ -9,16 +12,27 @@ import { EnvironmentInterface } from 'src/app/shared/interfaces';
   styleUrls: ['./footer.component.scss'],
 })
 
-export class FooterComponent implements OnInit, AfterViewInit {
+export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
   @HostBinding('style.top') public topOffset = '0';
   @HostBinding('style.position') public position = 'relative';
   @HostBinding('style.margin-top') public topMargin = '0';
   @ViewChild('footerContainer') public footerContainer: ElementRef;
 
-  public environment: EnvironmentInterface;
+  public versionFrontend$: Observable<string>;
+
+  private subscriptions: Subscription;
+
+  constructor(private versionStore: Store<VersionState>) {
+    this.subscriptions = new Subscription();
+  }
 
   public ngOnInit(): void {
-    this.environment = environment;
+    this.versionFrontend$ = this.versionStore.select(versionSelectors.versionFrontend);
+
+    this.subscriptions
+      .add(interval(1000 * 60)
+        .subscribe((): void => this.versionStore.dispatch(versionActions.fetchFrontendVersion())),
+      );
   }
 
   public ngAfterViewInit(): void {
@@ -28,5 +42,9 @@ export class FooterComponent implements OnInit, AfterViewInit {
       this.topOffset = `${ element.offsetHeight }px`;
       this.topMargin = `-${ element.offsetHeight }px`;
     }, 0);
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

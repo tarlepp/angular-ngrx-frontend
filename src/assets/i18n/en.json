@@ -10,6 +10,11 @@
         "username": "Username"
       }
     },
+    "footer": {
+      "version": {
+        "frontend": "Application version"
+      }
+    },
     "header": {
       "menu": {
         "language": {

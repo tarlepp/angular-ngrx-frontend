@@ -6,7 +6,9 @@ import { versionActions } from 'src/app/store/store-actions';
 
 const initialState = {
   frontend: environment.version,
-  loading: false,
+  backend: '0.0.0',
+  loadingFrontend: false,
+  loadingBackend: false,
   error: null,
 } as VersionState;
 
@@ -16,7 +18,7 @@ const reducer = createReducer(
     versionActions.fetchFrontendVersion,
     (state: VersionState): VersionState => ({
       ...state,
-      loading: true,
+      loadingFrontend: true,
       error: null,
     }),
   ),
@@ -24,7 +26,7 @@ const reducer = createReducer(
     versionActions.fetchFrontendVersionSuccess,
     (state: VersionState, { version }): VersionState => ({
       ...state,
-      loading: false,
+      loadingFrontend: false,
       frontend: version,
     }),
   ),
@@ -32,7 +34,31 @@ const reducer = createReducer(
     versionActions.fetchFrontendVersionFailure,
     (state: VersionState, { error }): VersionState => ({
       ...state,
-      loading: false,
+      loadingFrontend: false,
+      error,
+    }),
+  ),
+  on(
+    versionActions.fetchBackendVersion,
+    (state: VersionState): VersionState => ({
+      ...state,
+      loadingBackend: true,
+      error: null,
+    }),
+  ),
+  on(
+    versionActions.fetchBackendVersionSuccess,
+    (state: VersionState, { version }): VersionState => ({
+      ...state,
+      loadingBackend: false,
+      backend: version,
+    }),
+  ),
+  on(
+    versionActions.fetchBackendVersionFailure,
+    (state: VersionState, { error }): VersionState => ({
+      ...state,
+      loadingBackend: false,
       error,
     }),
   ),

@@ -12,6 +12,7 @@
     },
     "footer": {
       "version": {
+        "backend": "Rajapinnan versio",
         "frontend": "Sovelluksen versio"
       }
     },

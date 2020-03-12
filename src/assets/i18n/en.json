@@ -12,6 +12,7 @@
     },
     "footer": {
       "version": {
+        "backend": "API version",
         "frontend": "Application version"
       }
     },

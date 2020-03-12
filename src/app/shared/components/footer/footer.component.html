@@ -28,7 +28,7 @@
                    [vertical]="true"
       ></mat-divider>
 
-      <small>{{ environment.version }}</small>
+      <small matTooltip="{{ 'component.footer.version.frontend' | translate }}">{{ versionFrontend$ | async }}</small>
     </div>
   </mat-toolbar>
 </div>

@@ -10,6 +10,11 @@
         "username": "Käyttäjätunnus"
       }
     },
+    "footer": {
+      "version": {
+        "frontend": "Sovelluksen versio"
+      }
+    },
     "header": {
       "menu": {
         "language": {

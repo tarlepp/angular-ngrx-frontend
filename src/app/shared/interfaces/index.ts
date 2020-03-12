@@ -6,3 +6,4 @@ export * from 'src/app/shared/interfaces/error-message-server.interface';
 export * from 'src/app/shared/interfaces/localization.interface';
 export * from 'src/app/shared/interfaces/server-error.interface';
 export * from 'src/app/shared/interfaces/server-error-debug.interface';
+export * from 'src/app/shared/interfaces/version.interface';

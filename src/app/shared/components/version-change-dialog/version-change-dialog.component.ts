@@ -14,8 +14,7 @@ export class VersionChangeDialogComponent {
     @Inject(MAT_DIALOG_DATA) private data: { versionOld: string, versionNew: string },
   ) {
     this.contentParams = {
-      versionOld: data.versionOld,
-      versionNew: data.versionNew,
+      ...data,
     };
   }
 }

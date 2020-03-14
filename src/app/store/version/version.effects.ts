@@ -10,6 +10,8 @@ import { BackendVersionTypes, FrontendVersionTypes } from 'src/app/store/store-t
 import { VersionAction } from 'src/app/store/store.action';
 import { versionActions } from 'src/app/store/store-actions';
 import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { VersionChangeDialogComponent } from 'src/app/shared/components';
 
 @Injectable()
 export class VersionEffects {
@@ -57,12 +59,25 @@ export class VersionEffects {
       ofType(VersionAction.FETCH_FRONTEND_VERSION_SUCCESS),
       pluck('version'),
       filter((version: string): boolean => environment.version !== version),
-      map((version: string): void => {
-        console.log('Frontend application version has been changed - trigger some indicator about this!', version);
+      map((versionNew: string): void => {
+        this.dialog
+          .open(
+            VersionChangeDialogComponent,
+            {
+              disableClose: true,
+              maxWidth: '400px',
+              data: {
+                versionOld: environment.version,
+                versionNew,
+              },
+            },
+          )
+          .beforeClosed()
+          .subscribe((): void => location.reload());
       }),
     ),
     { dispatch: false },
   );
 
-  public constructor(private actions$: Actions, private versionService: VersionService) { }
+  public constructor(private actions$: Actions, private versionService: VersionService, private dialog: MatDialog) { }
 }

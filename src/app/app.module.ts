@@ -15,7 +15,12 @@ import { AppComponent } from 'src/app/app.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpLoaderFactory } from 'src/app/shared/factories';
 import { LandingModule } from 'src/app/landing/landing.module';
-import { FooterComponent, HeaderComponent } from 'src/app/shared/components';
+import {
+  ErrorMessageComponent,
+  FooterComponent,
+  HeaderComponent,
+  VersionChangeDialogComponent,
+} from 'src/app/shared/components';
 import { AuthModule } from 'src/app/auth/auth.module';
 import { effects, metaReducers, reducers } from 'src/app/store';
 
@@ -26,6 +31,8 @@ registerLocales();
     AppComponent,
     FooterComponent,
     HeaderComponent,
+    ErrorMessageComponent,
+    VersionChangeDialogComponent,
   ],
   imports: [
     BrowserModule,

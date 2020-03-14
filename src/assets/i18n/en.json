@@ -38,6 +38,11 @@
       "error-message": {
         "not-used-production-environment": "This is only shown if Angular `environment` is not `production` - only for debug purposes."
       }
+    },
+    "version-change-dialog": {
+      "button": "Reload application",
+      "content": "There is new version of this application available `{{versionNew}}` - it's recommend that you reload this page, to get latest version of the application.",
+      "title": "New version available"
     }
   },
   "messages": {

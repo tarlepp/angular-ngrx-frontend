@@ -10,10 +10,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Only add Material modules that are used within _all_ other modules
 const MaterialModules = [
   MatButtonModule,
+  MatDialogModule,
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,

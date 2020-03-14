@@ -38,6 +38,11 @@
       "error-message": {
         "not-used-production-environment": "Tämä on näkyvissä vain jos Angular `environment` ei ole `production` - vain debug tarkoitukseen."
       }
+    },
+    "version-change-dialog": {
+      "button": "Lataa sovellus uudelleen",
+      "content": "Sovelluksesta on saatavilla uusi versio `{{versionNew}}` ja on suositeltavaa että lataat tämän sivun uudelleen, jotta saat käyttöösi uusimman version sovelluksesta.",
+      "title": "Sovelluksen versio päivittynyt"
     }
   },
   "messages": {

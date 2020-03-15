@@ -49,7 +49,7 @@
     "authentication": {
       "login": "You signed in.",
       "logout": "You signed out.",
-      "timout": "Session timeout"
+      "timeout": "Session timeout"
     }
   },
   "snackbar": {

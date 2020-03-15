@@ -49,7 +49,7 @@
     "authentication": {
       "login": "Kirjauduit sisään.",
       "logout": "Kirjauduit ulos.",
-      "timout": null
+      "timeout": null
     }
   },
   "snackbar": {

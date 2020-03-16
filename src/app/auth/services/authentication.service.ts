@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -16,27 +16,32 @@ import {
 
 @Injectable()
 export class AuthenticationService {
-  private readonly httpOptions: object;
   private readonly userData$: BehaviorSubject<UserDataInterface|null>;
 
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   public constructor(
     private http: HttpClient,
     private localStorage: LocalStorageService,
     private jwtHelper: JwtHelperService,
   ) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    };
-
     this.userData$ = new BehaviorSubject<UserDataInterface|null>(null);
   }
 
+  /**
+   * Method to make user login request to backend API endpoint. This method
+   * will store response Json Web Token (JWT) to local storage and dispatch
+   * new value to `userData$` observable stream if/when request was ok.
+   *
+   * Otherwise method will clear that `token` from local storage and dispatch
+   * error to `userData$` observable stream.
+   */
   public authenticate(credentials: CredentialsRequestInterface): Observable<UserDataInterface|ServerErrorInterface> {
     return new Observable((observer: Observer<UserDataInterface|ServerErrorInterface>): void => {
       this.http
-        .post(ConfigurationService.configuration.tokenUrl, credentials, this.httpOptions)
+        .post(ConfigurationService.configuration.tokenUrl, credentials)
         .pipe(take(1))
         .subscribe(
           (token: CredentialsResponseInterface): void => {
@@ -54,12 +59,21 @@ export class AuthenticationService {
     });
   }
 
+  /**
+   * Method to fetch logged in user profile from backend API endpoint. This
+   * method is called via `Authentication` store effect when below action is
+   * dispatched:
+   *  - AuthenticationAction.PROFILE
+   *
+   * This action is dispatched on successfully login and if user refresh page
+   * and he/she is already logged in to application.
+   */
   public getProfile(): Observable<UserProfileInterface|ServerErrorInterface> {
     const url = ConfigurationService.configuration.apiUrl + '/profile';
 
     return new Observable((observer: Observer<UserProfileInterface|ServerErrorInterface>): void => {
       this.http
-        .get(url, this.httpOptions)
+        .get(url)
         .pipe(take(1))
         .subscribe(
           (profile: UserProfileInterface): void => observer.next(profile),
@@ -69,22 +83,33 @@ export class AuthenticationService {
     });
   }
 
+  /**
+   * Method to check is current Json Web Token (JWT) is expired or not.
+   */
   public isAuthenticated(): Observable<boolean> {
     const isTokenExpired = this.jwtHelper.isTokenExpired(this.localStorage.retrieve('token'));
 
     return of(!isTokenExpired);
   }
 
+  /**
+   * Method to make logout for current user, within this method we want to
+   * clear `token` from local storage and reset service internal state about
+   * logged in user.
+   */
   public logout(): void {
     this.localStorage.clear('token');
     this.userData$.next(null);
   }
 
+  /**
+   * Method to "refresh" logged in user data to class internal state and return
+   * that as an observable.
+   */
   public getLoggedInUserData(): BehaviorSubject<UserDataInterface|null> {
     this.isAuthenticated()
       .subscribe((authenticated: boolean): void => {
-        const token = this.localStorage.retrieve('token');
-        const payload = authenticated ? this.getUserData(token) : null;
+        const payload = authenticated ? this.getUserData(this.localStorage.retrieve('token')) : null;
 
         this.userData$.next(payload);
       });
@@ -92,6 +117,9 @@ export class AuthenticationService {
     return this.userData$;
   }
 
+  /**
+   * Helper method to determine user data from Json Web Token (JWT) data.
+   */
   private getUserData(token: string): UserDataInterface {
     const decoded = this.jwtHelper.decodeToken(token);
 

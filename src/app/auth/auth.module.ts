@@ -17,7 +17,9 @@ import { Services } from 'src/app/auth/services';
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
-        deps: [LocalStorageService],
+        deps: [
+          LocalStorageService,
+        ],
       },
     }),
   ],

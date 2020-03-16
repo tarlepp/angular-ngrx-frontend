@@ -9,6 +9,10 @@ import { AuthenticationState } from 'src/app/store/store-states';
 
 @Injectable()
 export class RoleAdminGuard extends BaseRole implements CanActivate, CanActivateChild {
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this guard.
+   */
   public constructor(protected authenticationStore: Store<AuthenticationState>) {
     super(authenticationStore);
   }

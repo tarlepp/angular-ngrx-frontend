@@ -10,5 +10,11 @@ export const LoginRoutes: Routes = [
       AnonymousGuard,
     ],
     component: LoginComponent,
+    children: [
+      {
+        path: '**',
+        redirectTo: 'login',
+      },
+    ],
   },
 ];

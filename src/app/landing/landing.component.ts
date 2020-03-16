@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Device, Viewport } from 'src/app/shared/enums';
 import { LayoutState } from 'src/app/store/store-states';
@@ -13,29 +13,35 @@ import { layoutSelectors } from 'src/app/store/store-selectors';
 })
 
 export class LandingComponent implements OnInit, OnDestroy {
-  public viewport: Viewport;
-  public device: Device;
+  public viewport$: Observable<Viewport>;
+  public device$: Observable<Device>;
 
   private subscription: Subscription;
 
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   constructor(private layoutStore: Store<LayoutState>) {
     this.subscription = new Subscription();
   }
 
+  /**
+   * A callback method that is invoked immediately after the default change
+   * detector has checked the directive's data-bound properties for the first
+   * time, and before any of the view or content children have been checked.
+   * It is invoked only once when the directive is instantiated.
+   */
   public ngOnInit(): void {
-    this.subscription
-      .add(this.layoutStore
-        .select(layoutSelectors.viewport)
-        .subscribe((viewport: Viewport): Viewport => this.viewport = viewport),
-      );
-
-    this.subscription
-      .add(this.layoutStore
-        .select(layoutSelectors.device)
-        .subscribe((device: Device): Device => this.device = device),
-      );
+    // Initialize `viewport$` and `device$` observables - remove these if you don't need these
+    this.viewport$ = this.layoutStore.select(layoutSelectors.viewport);
+    this.device$ = this.layoutStore.select(layoutSelectors.device);
   }
 
+  /**
+   * A callback method that performs custom clean-up, invoked immediately
+   * before a directive, pipe, or service instance is destroyed.
+   */
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

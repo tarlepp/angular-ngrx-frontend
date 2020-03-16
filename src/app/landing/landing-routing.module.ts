@@ -9,6 +9,12 @@ import { LandingComponent } from 'src/app/landing/landing.component';
       {
         path: 'landing',
         component: LandingComponent,
+        children: [
+          {
+            path: '**',
+            redirectTo: 'landing',
+          },
+        ],
       },
     ]),
   ],

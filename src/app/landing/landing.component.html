@@ -4,6 +4,6 @@
   </p>
 
   <p>
-    You're currently using this application in <em>{{ device }}</em> mode and using viewport: <em>{{ viewport }}</em>.
+    You're currently using this application in <em>{{ device$ | async }}</em> mode and using viewport: <em>{{ viewport$ | async }}</em>.
   </p>
 </div>

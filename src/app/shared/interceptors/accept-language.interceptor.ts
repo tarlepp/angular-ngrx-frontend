@@ -8,8 +8,19 @@ import { Language } from 'src/app/shared/enums';
 
 @Injectable()
 export class AcceptLanguageInterceptor implements HttpInterceptor {
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   public constructor(private localStorage: LocalStorageService) { }
 
+  /**
+   * Identifies and handles a given HTTP request.
+   *
+   * Within this we add `Accept-Language` header with user selected language to
+   * all requests that are made against our backend - so that backend knows
+   * which language to use within that request.
+   */
   public intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let output;
 

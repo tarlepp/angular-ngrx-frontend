@@ -1,5 +1,5 @@
-import { environment } from 'src/environments/environment';
 import { ApplicationConfigurationInterface } from 'src/app/shared/interfaces';
+import { environment } from 'src/environments/environment';
 
 export class ConfigurationService {
   public static configuration: undefined|ApplicationConfigurationInterface;

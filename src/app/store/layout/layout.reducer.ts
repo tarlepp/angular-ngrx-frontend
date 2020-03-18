@@ -2,8 +2,8 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 import { Viewports } from 'src/app/shared/constants';
 import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
-import { LayoutState } from 'src/app/store/store-states';
 import { layoutActions } from 'src/app/store/store-actions';
+import { LayoutState } from 'src/app/store/store-states';
 
 const initialState = {
   language: Language.DEFAULT,

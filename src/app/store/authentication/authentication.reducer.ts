@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { AuthenticationState } from 'src/app/store/store-states';
 import { authenticationActions } from 'src/app/store/store-actions';
+import { AuthenticationState } from 'src/app/store/store-states';
 
 const initialState = {
   loading: false,

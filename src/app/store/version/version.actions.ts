@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-import { VersionAction } from 'src/app/store/store.action';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { VersionAction } from 'src/app/store/store.action';
 
 const fetchFrontendVersion = createAction(VersionAction.FETCH_FRONTEND_VERSION);
 const fetchFrontendVersionSuccess = createAction(VersionAction.FETCH_FRONTEND_VERSION_SUCCESS, props<{ version: string }>());

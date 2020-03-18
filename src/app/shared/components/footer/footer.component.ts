@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { interval, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, interval } from 'rxjs';
 
-import { VersionState } from 'src/app/store/store-states';
-import { versionSelectors } from 'src/app/store/store-selectors';
 import { versionActions } from 'src/app/store/store-actions';
+import { versionSelectors } from 'src/app/store/store-selectors';
+import { VersionState } from 'src/app/store/store-states';
 
 @Component({
   selector: 'app-footer',

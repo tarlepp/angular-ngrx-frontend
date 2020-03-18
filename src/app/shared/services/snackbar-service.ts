@@ -5,10 +5,10 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
+import { ErrorMessageComponent } from 'src/app/shared/components';
+import { ErrorMessageServerInterface, ServerErrorInterface } from 'src/app/shared/interfaces';
 import { errorActions } from 'src/app/store/store-actions';
 import { ErrorState } from 'src/app/store/store-states';
-import { ErrorMessageServerInterface, ServerErrorInterface } from 'src/app/shared/interfaces';
-import { ErrorMessageComponent } from 'src/app/shared/components';
 
 @Injectable()
 export class SnackbarService {

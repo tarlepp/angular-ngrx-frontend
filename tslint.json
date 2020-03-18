@@ -31,7 +31,7 @@
       true,
       140
     ],
-    "member-access": false,
+    "member-access": true,
     "member-ordering": [
       true,
       {
@@ -66,7 +66,26 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports":  [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-last",
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "3rd party",
+            "order": 10,
+            "match": "^(?!src\/)([@]|[a-z])"
+          },
+          {
+            "name": "local",
+            "order": 20,
+            "match": "^(src\/)"
+          }
+        ]
+      }
+    ],
     "quotemark": [
       true,
       "single"

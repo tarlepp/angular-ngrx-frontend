@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import { TypedAction } from '@ngrx/store/src/models';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { from, Observable, of } from 'rxjs';
+import { TypedAction } from '@ngrx/store/src/models';
+import { Observable, from, of } from 'rxjs';
 import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 
-import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { SnackbarService } from 'src/app/shared/services';
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
-import { AuthenticationAction } from 'src/app/store/store.action';
+import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { SnackbarService } from 'src/app/shared/services';
 import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
 import { AuthenticationLoginType, AuthenticationProfileType, LoginSuccessTypes } from 'src/app/store/store-types';
+import { AuthenticationAction } from 'src/app/store/store.action';
 
 @Injectable()
 export class AuthenticationEffects {

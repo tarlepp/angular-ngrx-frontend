@@ -6,9 +6,9 @@ import { Observable, Subscription } from 'rxjs';
 
 import { UserProfileInterface } from 'src/app/auth/interfaces';
 import { Language } from 'src/app/shared/enums';
-import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
-import { authenticationSelectors, layoutSelectors } from 'src/app/store/store-selectors';
 import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
+import { authenticationSelectors, layoutSelectors } from 'src/app/store/store-selectors';
+import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
 
 @Component({
   selector: 'app-header',

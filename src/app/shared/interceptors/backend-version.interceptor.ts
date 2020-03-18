@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { noop, Observable, of } from 'rxjs';
+import { Observable, noop, of } from 'rxjs';
 import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { ConfigurationService } from 'src/app/shared/services';

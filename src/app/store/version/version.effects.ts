@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
-import { from, Observable, of } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { catchError, filter, map, pluck, switchMap } from 'rxjs/operators';
 
+import { VersionChangeDialogComponent } from 'src/app/shared/components';
 import { VersionService } from 'src/app/shared/services';
+import { versionActions } from 'src/app/store/store-actions';
 import { BackendVersionTypes, FrontendVersionTypes } from 'src/app/store/store-types';
 import { VersionAction } from 'src/app/store/store.action';
-import { versionActions } from 'src/app/store/store-actions';
 import { environment } from 'src/environments/environment';
-import { MatDialog } from '@angular/material/dialog';
-import { VersionChangeDialogComponent } from 'src/app/shared/components';
 
 @Injectable()
 export class VersionEffects {

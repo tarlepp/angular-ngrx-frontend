@@ -1,10 +1,10 @@
-import { Role } from 'src/app/auth/enums';
+import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-
-import { AuthenticationState } from 'src/app/store/store-states';
-import { authenticationSelectors } from 'src/app/store/store-selectors';
 import { switchMap, take } from 'rxjs/operators';
+
+import { Role } from 'src/app/auth/enums';
+import { authenticationSelectors } from 'src/app/store/store-selectors';
+import { AuthenticationState } from 'src/app/store/store-states';
 
 export abstract class BaseRole {
   /**

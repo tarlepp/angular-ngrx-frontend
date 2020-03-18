@@ -1,5 +1,5 @@
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
 
 export interface AuthenticationState {
   loading: boolean;

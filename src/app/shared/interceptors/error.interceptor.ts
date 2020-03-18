@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { noop, Observable, throwError } from 'rxjs';
+import { Observable, noop, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { ConfigurationService } from 'src/app/shared/services';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
+import { ConfigurationService } from 'src/app/shared/services';
 import { authenticationActions, errorActions } from 'src/app/store/store-actions';
+import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

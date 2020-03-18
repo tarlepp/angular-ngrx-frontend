@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 
-import { ConfigurationService } from 'src/app/shared/services';
 import { Language } from 'src/app/shared/enums';
+import { ConfigurationService } from 'src/app/shared/services';
 
 @Injectable()
 export class AcceptLanguageInterceptor implements HttpInterceptor {

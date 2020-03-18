@@ -1,11 +1,11 @@
-import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { formatNumber } from '@angular/common';
+import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { Locale } from 'src/app/shared/enums';
-import { LayoutState } from 'src/app/store/store-states';
 import { layoutSelectors } from 'src/app/store/store-selectors';
+import { LayoutState } from 'src/app/store/store-states';
 
 /**
  * Locale aware number pipe that uses Angular internal `DecimalPipe` implementation

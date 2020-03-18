@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { VersionState } from 'src/app/store/store-states';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { VersionState } from 'src/app/store/store-states';
 
 const versionState = createFeatureSelector<VersionState>('version');
 const versionFrontend = createSelector(versionState, (state: VersionState): string => state.frontend);

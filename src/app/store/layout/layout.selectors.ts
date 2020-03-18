@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { LayoutState } from 'src/app/store/store-states';
 import { Device, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { LayoutState } from 'src/app/store/store-states';
 
 const layoutState = createFeatureSelector<LayoutState>('layout');
 const language = createSelector(layoutState, (state: LayoutState): string => state.language);

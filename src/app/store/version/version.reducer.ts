@@ -1,8 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { environment } from 'src/environments/environment';
-import { VersionState } from 'src/app/store/store-states';
 import { versionActions } from 'src/app/store/store-actions';
+import { VersionState } from 'src/app/store/store-states';
+import { environment } from 'src/environments/environment';
 
 const initialState = {
   frontend: environment.version,

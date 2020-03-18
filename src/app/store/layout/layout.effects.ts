@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
+import { TranslateService } from '@ngx-translate/core';
+import * as moment from 'moment-timezone';
+import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, of } from 'rxjs';
 import { map, pluck, switchMap } from 'rxjs/operators';
-import { LocalStorageService } from 'ngx-webstorage';
-import * as moment from 'moment-timezone';
 
-import { LayoutAction } from 'src/app/store/store.action';
+import { Language, Locale } from 'src/app/shared/enums';
+import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { layoutActions } from 'src/app/store/store-actions';
 import { LocalizationTypes } from 'src/app/store/store-types';
-import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { Language, Locale } from 'src/app/shared/enums';
+import { LayoutAction } from 'src/app/store/store.action';
 
 @Injectable()
 export class LayoutEffects {

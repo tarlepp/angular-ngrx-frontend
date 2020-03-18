@@ -16,7 +16,8 @@ import { LayoutAction } from 'src/app/store/store.action';
 @Injectable()
 export class LayoutEffects {
   // noinspection JSUnusedLocalSymbols
-  private changeLocalization$ = createEffect((): Observable<TypedAction<LocalizationTypes>> => this.actions$
+  private changeLocalization$: Observable<TypedAction<LocalizationTypes>> = createEffect(
+    (): Observable<TypedAction<LocalizationTypes>> => this.actions$
     .pipe(
       ofType(LayoutAction.UPDATE_LOCALIZATION),
       pluck('localization'),
@@ -29,7 +30,7 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private changeLanguage$ = createEffect((): Observable<void> => this.actions$
+  private changeLanguage$: Observable<void> = createEffect((): Observable<void> => this.actions$
       .pipe(
         ofType(LayoutAction.CHANGE_LANGUAGE),
         pluck('language'),
@@ -42,7 +43,7 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private changeLocale$ = createEffect((): Observable<void> => this.actions$
+  private changeLocale$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(LayoutAction.CHANGE_LOCALE),
       pluck('locale'),
@@ -52,7 +53,7 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private changeTimezone$ = createEffect((): Observable<void> => this.actions$
+  private changeTimezone$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(LayoutAction.CHANGE_TIMEZONE),
       pluck('timezone'),
@@ -62,7 +63,8 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private scrollToTop$ = createEffect((): Observable<TypedAction<LayoutAction.SCROLL_TO>> => this.actions$
+  private scrollToTop$: Observable<TypedAction<LayoutAction.SCROLL_TO>> = createEffect(
+    (): Observable<TypedAction<LayoutAction.SCROLL_TO>> => this.actions$
     .pipe(
       ofType(LayoutAction.SCROLL_TO_TOP),
       switchMap((): Observable<TypedAction<LayoutAction.SCROLL_TO>> => of(layoutActions.scrollTo({ anchor: '#top-page' }))),
@@ -70,7 +72,8 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private scrollTo$ = createEffect((): Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> => this.actions$
+  private scrollTo$: Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> = createEffect(
+    (): Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> => this.actions$
     .pipe(
       ofType(LayoutAction.SCROLL_TO),
       pluck('anchor'),

@@ -5,8 +5,8 @@ export class ConfigurationService {
   public static configuration: undefined|ApplicationConfigurationInterface;
   public static initialized: boolean;
 
-  private static configurationFile = `/assets/config/config.${ environment.name }.json`;
-  private static configurationFileLocal = `/assets/config/config.${ environment.name }.local.json`;
+  private static configurationFile: string = `/assets/config/config.${ environment.name }.json`;
+  private static configurationFileLocal: string = `/assets/config/config.${ environment.name }.local.json`;
 
   public constructor() {
     ConfigurationService.initialized = false;

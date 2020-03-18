@@ -12,7 +12,7 @@ import { ErrorState } from 'src/app/store/store-states';
 
 @Injectable()
 export class SnackbarService {
-  private closeButtonTag = marker('snackbar.close-button');
+  private closeButtonTag: string = marker('snackbar.close-button');
 
   public constructor(
     private snackBar: MatSnackBar,

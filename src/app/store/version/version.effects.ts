@@ -16,7 +16,8 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class VersionEffects {
   // noinspection JSUnusedLocalSymbols
-  private fetchFrontendVersion$ = createEffect((): Observable<TypedAction<FrontendVersionTypes>> => this.actions$
+  private fetchFrontendVersion$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
+    (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$
     .pipe(
       ofType(VersionAction.FETCH_FRONTEND_VERSION),
       switchMap((): Observable<TypedAction<FrontendVersionTypes>> =>
@@ -35,7 +36,8 @@ export class VersionEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private fetchBackendVersion$ = createEffect((): Observable<TypedAction<BackendVersionTypes>> => this.actions$
+  private fetchBackendVersion$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
+    (): Observable<TypedAction<BackendVersionTypes>> => this.actions$
     .pipe(
       ofType(VersionAction.FETCH_BACKEND_VERSION),
       switchMap((): Observable<TypedAction<BackendVersionTypes>> =>
@@ -54,7 +56,7 @@ export class VersionEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private versionChanged$ = createEffect((): Observable<void> => this.actions$
+  private versionChanged$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(VersionAction.FETCH_FRONTEND_VERSION_SUCCESS),
       pluck('version'),

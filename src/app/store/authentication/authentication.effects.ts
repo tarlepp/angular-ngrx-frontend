@@ -18,7 +18,8 @@ import { AuthenticationAction } from 'src/app/store/store.action';
 @Injectable()
 export class AuthenticationEffects {
   // noinspection JSUnusedLocalSymbols
-  private login$ = createEffect((): Observable<TypedAction<AuthenticationLoginType>> => this.actions$
+  private login$: Observable<TypedAction<AuthenticationLoginType>> = createEffect(
+    (): Observable<TypedAction<AuthenticationLoginType>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGIN),
       pluck('credentials'),
@@ -47,7 +48,8 @@ export class AuthenticationEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private loginSuccess$ = createEffect((): Observable<TypedAction<LoginSuccessTypes>> => this.actions$
+  private loginSuccess$: Observable<TypedAction<LoginSuccessTypes>> = createEffect(
+    (): Observable<TypedAction<LoginSuccessTypes>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGIN_SUCCESS),
       pluck('userData'),
@@ -60,7 +62,8 @@ export class AuthenticationEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private profile$ = createEffect((): Observable<TypedAction<AuthenticationProfileType>> => this.actions$
+  private profile$: Observable<TypedAction<AuthenticationProfileType>> = createEffect(
+    (): Observable<TypedAction<AuthenticationProfileType>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.PROFILE),
       switchMap((): Observable<TypedAction<AuthenticationProfileType>> =>
@@ -79,7 +82,7 @@ export class AuthenticationEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private logout$ = createEffect((): Observable<void> => this.actions$
+  private logout$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGOUT),
       pluck('message'),

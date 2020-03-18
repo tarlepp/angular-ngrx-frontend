@@ -13,9 +13,9 @@ import { VersionState } from 'src/app/store/store-states';
 })
 
 export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
-  @HostBinding('style.top') public topOffset = '0';
-  @HostBinding('style.position') public position = 'relative';
-  @HostBinding('style.margin-top') public topMargin = '0';
+  @HostBinding('style.top') public topOffset: string = '0';
+  @HostBinding('style.position') public position: string = 'relative';
+  @HostBinding('style.margin-top') public topMargin: string = '0';
   @ViewChild('footerContainer') public footerContainer: ElementRef;
 
   public versionFrontend$: Observable<string>;

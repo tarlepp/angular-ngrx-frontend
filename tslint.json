@@ -54,7 +54,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,
@@ -94,8 +94,11 @@
       true,
       "arrow-call-signature",
       "arrow-parameter",
+      "array-destructuring",
       "call-signature",
-      "parameter"
+      "object-destructuring",
+      "parameter",
+      "member-variable-declaration"
     ],
     "trailing-comma": [
       true,

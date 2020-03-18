@@ -19,7 +19,7 @@ import { environment } from 'src/environments/environment';
 
 export class ErrorMessageComponent implements OnInit {
   public errors: Array<ErrorMessageInterface>;
-  public production = environment.production;
+  public production: boolean = environment.production;
 
   /**
    * Method to mark all custom error messages so that those aren't removed when

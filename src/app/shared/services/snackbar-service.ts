@@ -21,7 +21,7 @@ export class SnackbarService {
   ) { }
 
   public message(message: string, duration: number = 6000): Promise<MatSnackBarRef<SimpleSnackBar>> {
-    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve): void => {
+    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
       const config = {
         duration,
         panelClass: ['snackbar'],
@@ -37,7 +37,7 @@ export class SnackbarService {
   }
 
   public error(error: ServerErrorInterface): Promise<MatSnackBarRef<SimpleSnackBar|ErrorMessageComponent>> {
-    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve): void => {
+    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
       const config = {
         panelClass: ['snackbar', 'snackbar--error'],
       } as MatSnackBarConfig;

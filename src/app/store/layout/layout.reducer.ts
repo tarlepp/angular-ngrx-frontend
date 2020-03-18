@@ -2,6 +2,12 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 import { Viewports } from 'src/app/shared/constants';
 import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
+import {
+  LanguageValueInterface,
+  LocaleValueInterface,
+  StringValueInterface,
+  ViewportValueInterface,
+} from 'src/app/shared/interfaces';
 import { layoutActions } from 'src/app/store/store-actions';
 import { LayoutState } from 'src/app/store/store-states';
 
@@ -21,28 +27,28 @@ const reducer = createReducer(
   initialState,
   on(
     layoutActions.changeLanguage,
-    (state: LayoutState, { language }): LayoutState => ({
+    (state: LayoutState, { language }: LanguageValueInterface): LayoutState => ({
       ...state,
       language: Object.values(Language).includes(language) ? language : Language.DEFAULT,
     }),
   ),
   on(
     layoutActions.changeLocale,
-    (state: LayoutState, { locale }): LayoutState => ({
+    (state: LayoutState, { locale }: LocaleValueInterface): LayoutState => ({
       ...state,
       locale: Object.values(Locale).includes(locale) ? locale : Locale.DEFAULT,
     }),
   ),
   on(
     layoutActions.changeTimezone,
-    (state: LayoutState, { timezone }): LayoutState => ({
+    (state: LayoutState, { timezone }: StringValueInterface): LayoutState => ({
       ...state,
       timezone,
     }),
   ),
   on(
     layoutActions.changeViewport,
-    (state: LayoutState, { viewport }): LayoutState => {
+    (state: LayoutState, { viewport }: ViewportValueInterface): LayoutState => {
       const device = Viewports[Device.MOBILE].includes(viewport)
         ? Device.MOBILE
         : Viewports[Device.TABLET].includes(viewport)
@@ -61,7 +67,7 @@ const reducer = createReducer(
   ),
   on(
     layoutActions.scrollTo,
-    (state: LayoutState, { anchor }): LayoutState => ({
+    (state: LayoutState, { anchor }: StringValueInterface): LayoutState => ({
       ...state,
       anchor,
     }),

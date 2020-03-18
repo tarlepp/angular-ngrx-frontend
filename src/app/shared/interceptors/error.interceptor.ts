@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable, noop, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { ServerErrorInterface, ServerErrorValueInterface } from 'src/app/shared/interfaces';
 import { ConfigurationService } from 'src/app/shared/services';
 import { authenticationActions, errorActions } from 'src/app/store/store-actions';
 import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
@@ -42,16 +42,16 @@ export class ErrorInterceptor implements HttpInterceptor {
       .handle(modified)
       .pipe(
         tap(noop, (error: HttpErrorResponse): void => this.handle(modified, error)),
-        catchError((error): Observable<never> => {
+        catchError((error: any): Observable<never> => {
           let payload = error;
 
-          if (error.status === 0) {
+          if (error && error.hasOwnProperty('error') && error.status === 0) {
             payload = {
               error: {
                 code: 0,
-                message: error.message,
-                status: error.status,
-                statusText: error.statusText,
+                message: error.message || `Unknown error - ${error.toString()}`,
+                status: error.status || 0,
+                statusText: error.statusText || '',
               },
             };
           }

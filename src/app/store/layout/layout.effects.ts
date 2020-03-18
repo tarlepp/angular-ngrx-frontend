@@ -20,7 +20,7 @@ export class LayoutEffects {
     .pipe(
       ofType(LayoutAction.UPDATE_LOCALIZATION),
       pluck('localization'),
-      switchMap((localization: LocalizationInterface) => [
+      switchMap((localization: LocalizationInterface): Array<TypedAction<LocalizationTypes>> => [
         layoutActions.changeLanguage({ language: localization.language }),
         layoutActions.changeLocale({ locale: localization.locale }),
         layoutActions.changeTimezone({ timezone: localization.timezone }),

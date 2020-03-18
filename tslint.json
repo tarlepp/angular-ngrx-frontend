@@ -90,6 +90,13 @@
       true,
       "single"
     ],
+    "typedef": [
+      true,
+      "arrow-call-signature",
+      "arrow-parameter",
+      "call-signature",
+      "parameter"
+    ],
     "trailing-comma": [
       true,
       {

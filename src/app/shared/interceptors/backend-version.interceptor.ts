@@ -11,6 +11,10 @@ import { versionSelectors } from 'src/app/store/version/version.selectors';
 
 @Injectable()
 export class BackendVersionInterceptor implements HttpInterceptor {
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   public constructor(private versionStore: Store<VersionState>) { }
 
   /**

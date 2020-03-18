@@ -27,13 +27,19 @@ import { layoutSelectors } from 'src/app/store/store-selectors';
   name: 'localNumber',
   pure: false,
 })
+
 export class LocalNumberPipe implements PipeTransform, OnDestroy {
   private locale: Locale;
   private subscriptions: Subscription;
 
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   public constructor(private layoutStore: Store<LayoutState>) {
     this.subscriptions = new Subscription();
 
+    // Subscribe to locale changes
     this.subscriptions
       .add(this.layoutStore
         .select(layoutSelectors.locale)
@@ -41,10 +47,18 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
       );
   }
 
+  /**
+   * A callback method that performs custom clean-up, invoked immediately
+   * before a directive, pipe, or service instance is destroyed.
+   */
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
 
+  /**
+   * Angular invokes the `transform` method with the value of a binding as the
+   * first argument, and any parameters as the second argument in list form.
+   */
   public transform(value: any, format?: string, locale?: string): string {
     return value === undefined || value === null || value === ''
       ? ''

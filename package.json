@@ -63,7 +63,7 @@
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
     "@types/jasmine": "3.5.9",
     "@types/jasminewd2": "2.0.8",
-    "@types/node": "13.9.1",
+    "@types/node": "13.9.2",
     "codelyzer": "5.2.1",
     "jasmine-core": "3.5.0",
     "jasmine-spec-reporter": "4.2.1",

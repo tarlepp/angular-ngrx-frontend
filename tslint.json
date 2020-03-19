@@ -55,6 +55,38 @@
     "no-misused-new": true,
     "no-null-undefined-union": true,
     "no-object-literal-type-assertion": true,
+    "no-promise-as-boolean": true,
+    "no-restricted-globals": [
+      true,
+      "name",
+      "length",
+      "event"
+    ],
+    "no-return-await": true,
+    "no-shadowed-variable": true,
+    "no-sparse-arrays": true,
+    "no-string-literal": true,
+    "no-string-throw": true,
+    "no-this-assignment": true,
+    "no-unnecessary-class": [
+      true,
+      "allow-empty-class",
+      "allow-constructor-only",
+      "allow-static-only"
+    ],
+    "no-unsafe-finally": true,
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "no-void-expression": [
+      true,
+      "ignore-arrow-function-shorthand"
+    ],
+    "prefer-object-spread": true,
+    "radix": true,
+    "restrict-plus-operands": true,
+    "static-this": true,
+
+
     "ban-comma-operator": true,
     "member-access": true,
     "member-ordering": [

@@ -13,18 +13,20 @@ export class ConfigurationService {
   }
 
   public static loadStatic(): Promise<void> {
-    return environment.production ? this.loadConfiguration(this.configurationFile) : this.loadDevelopment();
+    return environment.production
+      ? ConfigurationService.loadConfiguration(ConfigurationService.configurationFile)
+      : ConfigurationService.loadDevelopment();
   }
 
   private static loadDevelopment(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (s: string) => void): void => {
-      this.loadConfiguration(this.configurationFileLocal)
+      ConfigurationService.loadConfiguration(ConfigurationService.configurationFileLocal)
         .then((): void => resolve())
         .catch((error: string): void => {
           console.warn(error);
-          console.warn(`Fallback to '${ this.configurationFile }' configuration file`);
+          console.warn(`Fallback to '${ ConfigurationService.configurationFile }' configuration file`);
 
-          this.loadConfiguration(this.configurationFile)
+          ConfigurationService.loadConfiguration(ConfigurationService.configurationFile)
             .then((): void => resolve())
             .catch((errorDefault: string): void => reject(errorDefault));
         });

@@ -3,14 +3,10 @@ import { environment } from 'src/environments/environment';
 
 export class ConfigurationService {
   public static configuration: undefined|ApplicationConfigurationInterface;
-  public static initialized: boolean;
+  public static initialized: boolean = false;
 
   private static configurationFile: string = `/assets/config/config.${ environment.name }.json`;
   private static configurationFileLocal: string = `/assets/config/config.${ environment.name }.local.json`;
-
-  public constructor() {
-    ConfigurationService.initialized = false;
-  }
 
   public static loadStatic(): Promise<void> {
     return environment.production

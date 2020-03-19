@@ -5,13 +5,13 @@ import { versionActions } from 'src/app/store/store-actions';
 import { VersionState } from 'src/app/store/store-states';
 import { environment } from 'src/environments/environment';
 
-const initialState = {
+const initialState: VersionState = {
   frontend: environment.version,
   backend: '0.0.0',
   loadingFrontend: false,
   loadingBackend: false,
   error: null,
-} as VersionState;
+};
 
 const reducer = createReducer(
   initialState,

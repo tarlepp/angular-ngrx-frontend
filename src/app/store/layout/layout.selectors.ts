@@ -12,7 +12,7 @@ const localization = createSelector(layoutState, (state: LayoutState): Localizat
   locale: state.locale,
   language: state.language,
   timezone: state.timezone,
-} as LocalizationInterface));
+}));
 const viewport = createSelector(layoutState, (state: LayoutState): Viewport => state.viewport);
 const device = createSelector(layoutState, (state: LayoutState): Device => state.device);
 const isMobile = createSelector(layoutState, (state: LayoutState): boolean => state.mobile);

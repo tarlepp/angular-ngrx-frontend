@@ -4,9 +4,9 @@ import { ServerErrorValueInterface } from 'src/app/shared/interfaces';
 import { errorActions } from 'src/app/store/store-actions';
 import { ErrorState } from 'src/app/store/store-states';
 
-const initialState = {
+const initialState: ErrorState = {
   errorSnackbar: null,
-} as ErrorState;
+};
 
 const reducer = createReducer(
   initialState,

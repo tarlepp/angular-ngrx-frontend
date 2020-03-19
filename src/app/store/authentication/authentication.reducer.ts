@@ -5,13 +5,13 @@ import { ServerErrorValueInterface } from 'src/app/shared/interfaces';
 import { authenticationActions } from 'src/app/store/store-actions';
 import { AuthenticationState } from 'src/app/store/store-states';
 
-const initialState = {
+const initialState: AuthenticationState = {
   loading: false,
   loggedIn: false,
   userData: null,
   profile: null,
   error: null,
-} as AuthenticationState;
+};
 
 const reducer = createReducer(
   initialState,

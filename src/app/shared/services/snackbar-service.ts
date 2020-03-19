@@ -22,10 +22,10 @@ export class SnackbarService {
 
   public message(message: string, duration: number = 6000): Promise<MatSnackBarRef<SimpleSnackBar>> {
     return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
-      const config = {
+      const config: MatSnackBarConfig = {
         duration,
         panelClass: ['snackbar'],
-      } as MatSnackBarConfig;
+      };
 
       this.translateService
         .get([message, this.closeButtonTag])
@@ -38,9 +38,9 @@ export class SnackbarService {
 
   public error(error: ServerErrorInterface): Promise<MatSnackBarRef<SimpleSnackBar|ErrorMessageComponent>> {
     return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
-      const config = {
+      const config: MatSnackBarConfig = {
         panelClass: ['snackbar', 'snackbar--error'],
-      } as MatSnackBarConfig;
+      };
 
       let serverErrorMessages = [] as Array<ErrorMessageServerInterface>;
 

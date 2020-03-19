@@ -97,9 +97,12 @@ export class ErrorInterceptor implements HttpInterceptor {
    * that user can see the actual error message(s) in that snackbar.
    */
   private dispatchMessage(httpErrorResponse: HttpErrorResponse): void {
-    let error = {
+    let error: ServerErrorInterface = {
       message: httpErrorResponse.toString(),
-    } as ServerErrorInterface;
+      code: 0,
+      status: httpErrorResponse.status || 0,
+      statusText: httpErrorResponse.statusText || '',
+    };
 
     if (httpErrorResponse.hasOwnProperty('error') && httpErrorResponse.error.hasOwnProperty('message')) {
       error = httpErrorResponse.error as ServerErrorInterface;

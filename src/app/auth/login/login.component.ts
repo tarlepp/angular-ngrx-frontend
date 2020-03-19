@@ -61,9 +61,9 @@ export class LoginComponent implements OnInit, OnDestroy {
    * Method to dispatch `login` action from login form submit event.
    */
   public submit(): void {
-    const credentials = {
+    const credentials: CredentialsRequestInterface = {
       ...this.loginForm.value,
-    } as CredentialsRequestInterface;
+    };
 
     this.authenticationStore.dispatch(authenticationActions.login({ credentials }));
   }

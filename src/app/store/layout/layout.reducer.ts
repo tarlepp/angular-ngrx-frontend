@@ -11,7 +11,7 @@ import {
 import { layoutActions } from 'src/app/store/store-actions';
 import { LayoutState } from 'src/app/store/store-states';
 
-const initialState = {
+const initialState: LayoutState = {
   language: Language.DEFAULT,
   locale: Locale.DEFAULT,
   timezone: 'UTC',
@@ -21,7 +21,7 @@ const initialState = {
   tablet: false,
   mobile: false,
   anchor: null,
-} as LayoutState;
+};
 
 const reducer = createReducer(
   initialState,

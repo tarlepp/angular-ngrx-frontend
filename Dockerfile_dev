@@ -14,6 +14,7 @@ ADD . .
 
 # Add necessary stuff to bash autocomplete
 RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
+RUN curl https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash >> /etc/bash.bashrc
 
 RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng
 RUN chmod +x docker-entrypoint-dev.sh

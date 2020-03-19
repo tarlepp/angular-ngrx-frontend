@@ -1,15 +1,17 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { AuthenticationState } from 'src/app/store/store-states';
+import { UserDataValueInterface, UserProfileValueInterface } from 'src/app/auth/interfaces';
+import { ServerErrorValueInterface } from 'src/app/shared/interfaces';
 import { authenticationActions } from 'src/app/store/store-actions';
+import { AuthenticationState } from 'src/app/store/store-states';
 
-const initialState = {
+const initialState: AuthenticationState = {
   loading: false,
   loggedIn: false,
   userData: null,
   profile: null,
   error: null,
-} as AuthenticationState;
+};
 
 const reducer = createReducer(
   initialState,
@@ -24,7 +26,7 @@ const reducer = createReducer(
   ),
   on(
     authenticationActions.loginSuccess,
-    (state: AuthenticationState, { userData }): AuthenticationState => ({
+    (state: AuthenticationState, { userData }: UserDataValueInterface): AuthenticationState => ({
       ...state,
       loading: false,
       loggedIn: true,
@@ -41,7 +43,7 @@ const reducer = createReducer(
   ),
   on(
     authenticationActions.profileSuccess,
-    (state: AuthenticationState, { profile }): AuthenticationState => ({
+    (state: AuthenticationState, { profile }: UserProfileValueInterface): AuthenticationState => ({
       ...state,
       loading: false,
       profile,
@@ -50,7 +52,7 @@ const reducer = createReducer(
   on(
     authenticationActions.loginFailure,
     authenticationActions.profileFailure,
-    (state: AuthenticationState, { error }): AuthenticationState => ({
+    (state: AuthenticationState, { error }: ServerErrorValueInterface): AuthenticationState => ({
       ...state,
       loading: false,
       error,

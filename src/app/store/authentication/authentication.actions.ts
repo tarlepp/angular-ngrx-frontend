@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { AuthenticationAction } from 'src/app/store/store.action';
 
 const login = createAction(AuthenticationAction.LOGIN, props<{ credentials: CredentialsRequestInterface }>());

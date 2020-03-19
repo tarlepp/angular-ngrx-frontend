@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MomentModule } from 'ngx-moment';
 import { TranslateModule } from '@ngx-translate/core';
+import { MomentModule } from 'ngx-moment';
 
-import { MaterialModule } from 'src/app/shared/material/material.module';
 import { Components } from 'src/app/shared/components';
 import { Directives } from 'src/app/shared/directives';
 import { HttpInterceptors } from 'src/app/shared/interceptors';
-import { Services } from 'src/app/shared/services';
+import { MaterialModule } from 'src/app/shared/material/material.module';
 import { Pipes } from 'src/app/shared/pipes';
+import { Services } from 'src/app/shared/services';
 
 @NgModule({
   declarations: [

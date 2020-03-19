@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-import { LayoutAction } from 'src/app/store/store.action';
 import { Language, Locale, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { LayoutAction } from 'src/app/store/store.action';
 
 const changeLanguage = createAction(LayoutAction.CHANGE_LANGUAGE, props<{ language: Language }>());
 const changeLocale = createAction(LayoutAction.CHANGE_LOCALE, props<{ locale: Locale }>());

@@ -1,22 +1,23 @@
-import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
-import { from, Observable, of } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { catchError, filter, map, pluck, switchMap } from 'rxjs/operators';
 
+import { VersionChangeDialogComponent } from 'src/app/shared/components';
 import { VersionService } from 'src/app/shared/services';
+import { versionActions } from 'src/app/store/store-actions';
 import { BackendVersionTypes, FrontendVersionTypes } from 'src/app/store/store-types';
 import { VersionAction } from 'src/app/store/store.action';
-import { versionActions } from 'src/app/store/store-actions';
 import { environment } from 'src/environments/environment';
-import { MatDialog } from '@angular/material/dialog';
-import { VersionChangeDialogComponent } from 'src/app/shared/components';
 
 @Injectable()
 export class VersionEffects {
   // noinspection JSUnusedLocalSymbols
-  private fetchFrontendVersion$ = createEffect((): Observable<TypedAction<FrontendVersionTypes>> => this.actions$
+  private fetchFrontendVersion$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
+    (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$
     .pipe(
       ofType(VersionAction.FETCH_FRONTEND_VERSION),
       switchMap((): Observable<TypedAction<FrontendVersionTypes>> =>
@@ -35,7 +36,8 @@ export class VersionEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private fetchBackendVersion$ = createEffect((): Observable<TypedAction<BackendVersionTypes>> => this.actions$
+  private fetchBackendVersion$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
+    (): Observable<TypedAction<BackendVersionTypes>> => this.actions$
     .pipe(
       ofType(VersionAction.FETCH_BACKEND_VERSION),
       switchMap((): Observable<TypedAction<BackendVersionTypes>> =>
@@ -54,7 +56,7 @@ export class VersionEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private versionChanged$ = createEffect((): Observable<void> => this.actions$
+  private versionChanged$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(VersionAction.FETCH_FRONTEND_VERSION_SUCCESS),
       pluck('version'),

@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { Device, Viewport } from 'src/app/shared/enums';
-import { LayoutState } from 'src/app/store/store-states';
 import { layoutSelectors } from 'src/app/store/store-selectors';
+import { LayoutState } from 'src/app/store/store-states';
 
 @Component({
   selector: 'app-landing',

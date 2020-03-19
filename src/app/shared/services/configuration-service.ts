@@ -1,30 +1,28 @@
-import { environment } from 'src/environments/environment';
 import { ApplicationConfigurationInterface } from 'src/app/shared/interfaces';
+import { environment } from 'src/environments/environment';
 
 export class ConfigurationService {
   public static configuration: undefined|ApplicationConfigurationInterface;
-  public static initialized: boolean;
+  public static initialized: boolean = false;
 
-  private static configurationFile = `/assets/config/config.${ environment.name }.json`;
-  private static configurationFileLocal = `/assets/config/config.${ environment.name }.local.json`;
-
-  public constructor() {
-    ConfigurationService.initialized = false;
-  }
+  private static configurationFile: string = `/assets/config/config.${ environment.name }.json`;
+  private static configurationFileLocal: string = `/assets/config/config.${ environment.name }.local.json`;
 
   public static loadStatic(): Promise<void> {
-    return environment.production ? this.loadConfiguration(this.configurationFile) : this.loadDevelopment();
+    return environment.production
+      ? ConfigurationService.loadConfiguration(ConfigurationService.configurationFile)
+      : ConfigurationService.loadDevelopment();
   }
 
-  private static loadDevelopment() {
-    return new Promise<void>((resolve, reject): void => {
-      this.loadConfiguration(this.configurationFileLocal)
+  private static loadDevelopment(): Promise<void> {
+    return new Promise<void>((resolve: () => void, reject: (s: string) => void): void => {
+      ConfigurationService.loadConfiguration(ConfigurationService.configurationFileLocal)
         .then((): void => resolve())
         .catch((error: string): void => {
           console.warn(error);
-          console.warn(`Fallback to '${ this.configurationFile }' configuration file`);
+          console.warn(`Fallback to '${ ConfigurationService.configurationFile }' configuration file`);
 
-          this.loadConfiguration(this.configurationFile)
+          ConfigurationService.loadConfiguration(ConfigurationService.configurationFile)
             .then((): void => resolve())
             .catch((errorDefault: string): void => reject(errorDefault));
         });
@@ -34,9 +32,9 @@ export class ConfigurationService {
   private static loadConfiguration(configurationFile: string): Promise<void> {
     const ts = Math.round((new Date()).getTime() / 1000);
 
-    return new Promise<void>((resolve, reject): void => {
+    return new Promise<void>((resolve: () => void, reject: (s: string) => any): void => {
       fetch(`${ configurationFile }?t=${ ts }`)
-        .then((response) => {
+        .then((response: Response): void => {
           response
             .json()
             .then((configuration: ApplicationConfigurationInterface): void => {

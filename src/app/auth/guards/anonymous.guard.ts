@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { AuthenticationService } from 'src/app/auth/services';
 import { BaseAuth } from 'src/app/auth/guards/base-auth';
+import { AuthenticationService } from 'src/app/auth/services';
 
 @Injectable()
 export class AnonymousGuard extends BaseAuth implements CanActivate, CanActivateChild {

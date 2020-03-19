@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { noop, Observable, of } from 'rxjs';
+import { Observable, noop, of } from 'rxjs';
 import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { ConfigurationService } from 'src/app/shared/services';
@@ -59,10 +59,12 @@ export class BackendVersionInterceptor implements HttpInterceptor {
       filter((event: HttpResponse<any>): boolean => !event.url.includes('/version')),
       filter((event: HttpResponse<any>): boolean => event.headers.has('X-API-VERSION')),
       withLatestFrom(this.versionStore.select(versionSelectors.versionBackend)),
-      filter(([event, version]): boolean => version !== '0.0.0' && event.headers.get('X-API-VERSION') !== version),
-      map(([event]): string => event.headers.get('X-API-VERSION')),
+      filter(([event, version]: [HttpResponse<any>, string]): boolean =>
+        version !== '0.0.0' && event.headers.get('X-API-VERSION') !== version,
+      ),
+      map(([event ]: [HttpResponse<any>, string]): string => event.headers.get('X-API-VERSION')),
     )
-    .subscribe((version): void => {
+    .subscribe((version: string): void => {
       this.versionStore.dispatch(versionActions.fetchBackendVersionSuccess({ version }));
       this.versionStore.dispatch(versionActions.fetchFrontendVersion());
     });

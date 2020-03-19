@@ -1,6 +1,6 @@
+import { Language, Locale } from 'src/app//shared/enums';
 import { Role } from 'src/app/auth/enums';
 import { UserGroupInterface } from 'src/app/auth/interfaces/user-group.interface';
-import { Language, Locale } from 'src/app//shared/enums';
 
 /**
  * Interface to present user profile.

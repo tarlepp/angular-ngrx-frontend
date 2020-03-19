@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { interval, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, interval } from 'rxjs';
 
-import { VersionState } from 'src/app/store/store-states';
-import { versionSelectors } from 'src/app/store/store-selectors';
 import { versionActions } from 'src/app/store/store-actions';
+import { versionSelectors } from 'src/app/store/store-selectors';
+import { VersionState } from 'src/app/store/store-states';
 
 @Component({
   selector: 'app-footer',
@@ -13,9 +13,9 @@ import { versionActions } from 'src/app/store/store-actions';
 })
 
 export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
-  @HostBinding('style.top') public topOffset = '0';
-  @HostBinding('style.position') public position = 'relative';
-  @HostBinding('style.margin-top') public topMargin = '0';
+  @HostBinding('style.top') public topOffset: string = '0';
+  @HostBinding('style.position') public position: string = 'relative';
+  @HostBinding('style.margin-top') public topMargin: string = '0';
   @ViewChild('footerContainer') public footerContainer: ElementRef;
 
   public versionFrontend$: Observable<string>;

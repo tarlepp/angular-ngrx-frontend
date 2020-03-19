@@ -1,19 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
-import { LocalStorageService } from 'ngx-webstorage';
 import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
-import { AuthenticationService } from 'src/app/auth/services';
 import { UserDataInterface } from 'src/app/auth/interfaces';
+import { AuthenticationService } from 'src/app/auth/services';
 import { Language, Viewport } from 'src/app/shared/enums';
-import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
 import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
 import { authenticationSelectors } from 'src/app/store/store-selectors';
+import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
 
 @Component({
   selector: 'app-root',

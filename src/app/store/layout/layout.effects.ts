@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
+import { TranslateService } from '@ngx-translate/core';
+import * as moment from 'moment-timezone';
+import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, of } from 'rxjs';
 import { map, pluck, switchMap } from 'rxjs/operators';
-import { LocalStorageService } from 'ngx-webstorage';
-import * as moment from 'moment-timezone';
 
-import { LayoutAction } from 'src/app/store/store.action';
+import { Language, Locale } from 'src/app/shared/enums';
+import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { layoutActions } from 'src/app/store/store-actions';
 import { LocalizationTypes } from 'src/app/store/store-types';
-import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { Language, Locale } from 'src/app/shared/enums';
+import { LayoutAction } from 'src/app/store/store.action';
 
 @Injectable()
 export class LayoutEffects {
   // noinspection JSUnusedLocalSymbols
-  private changeLocalization$ = createEffect((): Observable<TypedAction<LocalizationTypes>> => this.actions$
+  private changeLocalization$: Observable<TypedAction<LocalizationTypes>> = createEffect(
+    (): Observable<TypedAction<LocalizationTypes>> => this.actions$
     .pipe(
       ofType(LayoutAction.UPDATE_LOCALIZATION),
       pluck('localization'),
-      switchMap((localization: LocalizationInterface) => [
+      switchMap((localization: LocalizationInterface): Array<TypedAction<LocalizationTypes>> => [
         layoutActions.changeLanguage({ language: localization.language }),
         layoutActions.changeLocale({ locale: localization.locale }),
         layoutActions.changeTimezone({ timezone: localization.timezone }),
@@ -29,7 +30,7 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private changeLanguage$ = createEffect((): Observable<void> => this.actions$
+  private changeLanguage$: Observable<void> = createEffect((): Observable<void> => this.actions$
       .pipe(
         ofType(LayoutAction.CHANGE_LANGUAGE),
         pluck('language'),
@@ -42,7 +43,7 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private changeLocale$ = createEffect((): Observable<void> => this.actions$
+  private changeLocale$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(LayoutAction.CHANGE_LOCALE),
       pluck('locale'),
@@ -52,7 +53,7 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private changeTimezone$ = createEffect((): Observable<void> => this.actions$
+  private changeTimezone$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(LayoutAction.CHANGE_TIMEZONE),
       pluck('timezone'),
@@ -62,7 +63,8 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private scrollToTop$ = createEffect((): Observable<TypedAction<LayoutAction.SCROLL_TO>> => this.actions$
+  private scrollToTop$: Observable<TypedAction<LayoutAction.SCROLL_TO>> = createEffect(
+    (): Observable<TypedAction<LayoutAction.SCROLL_TO>> => this.actions$
     .pipe(
       ofType(LayoutAction.SCROLL_TO_TOP),
       switchMap((): Observable<TypedAction<LayoutAction.SCROLL_TO>> => of(layoutActions.scrollTo({ anchor: '#top-page' }))),
@@ -70,7 +72,8 @@ export class LayoutEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private scrollTo$ = createEffect((): Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> => this.actions$
+  private scrollTo$: Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> = createEffect(
+    (): Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> => this.actions$
     .pipe(
       ofType(LayoutAction.SCROLL_TO),
       pluck('anchor'),

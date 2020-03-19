@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
-import { AuthenticationState } from 'src/app/store/store-states';
-import { authenticationSelectors } from 'src/app/store/store-selectors';
-import { authenticationActions } from 'src/app/store/store-actions';
 import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
+import { authenticationActions } from 'src/app/store/store-actions';
+import { authenticationSelectors } from 'src/app/store/store-selectors';
+import { AuthenticationState } from 'src/app/store/store-states';
 
 @Component({
   selector: 'app-login',
@@ -61,9 +61,9 @@ export class LoginComponent implements OnInit, OnDestroy {
    * Method to dispatch `login` action from login form submit event.
    */
   public submit(): void {
-    const credentials = {
+    const credentials: CredentialsRequestInterface = {
       ...this.loginForm.value,
-    } as CredentialsRequestInterface;
+    };
 
     this.authenticationStore.dispatch(authenticationActions.login({ credentials }));
   }

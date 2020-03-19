@@ -31,7 +31,64 @@
       true,
       140
     ],
-    "member-access": false,
+    "curly": true,
+    "function-constructor": true,
+    "no-parameter-reassignment": true,
+    "no-construct": true,
+    "no-duplicate-super": true,
+    "no-duplicate-switch-case": true,
+    "no-duplicate-variable": [
+      true,
+      "check-parameters"
+    ],
+    "no-implicit-dependencies": [
+      true,
+      "dev",
+      ["src", "package.json"]
+    ],
+    "no-inferred-empty-object-type": true,
+    "no-invalid-template-strings": true,
+    "no-invalid-this": [
+      true,
+      "check-function-in-method"
+    ],
+    "no-misused-new": true,
+    "no-null-undefined-union": true,
+    "no-object-literal-type-assertion": true,
+    "no-promise-as-boolean": true,
+    "no-restricted-globals": [
+      true,
+      "name",
+      "length",
+      "event"
+    ],
+    "no-return-await": true,
+    "no-shadowed-variable": true,
+    "no-sparse-arrays": true,
+    "no-string-literal": true,
+    "no-string-throw": true,
+    "no-this-assignment": true,
+    "no-unnecessary-class": [
+      true,
+      "allow-empty-class",
+      "allow-constructor-only",
+      "allow-static-only"
+    ],
+    "no-unsafe-finally": true,
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "no-void-expression": [
+      true,
+      "ignore-arrow-function-shorthand"
+    ],
+    "prefer-object-spread": true,
+    "radix": true,
+    "restrict-plus-operands": true,
+    "static-this": true,
+
+
+    "ban-comma-operator": true,
+    "member-access": true,
     "member-ordering": [
       true,
       {
@@ -52,9 +109,12 @@
       "timeEnd",
       "trace"
     ],
-    "no-empty": false,
-    "no-inferrable-types": [
+    "no-empty": [
       true,
+      "allow-empty-catch"
+    ],
+    "no-inferrable-types": [
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,
@@ -66,10 +126,39 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports":  [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-last",
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "3rd party",
+            "order": 10,
+            "match": "^(?!src\/)([@]|[a-z])"
+          },
+          {
+            "name": "local",
+            "order": 20,
+            "match": "^(src\/)"
+          }
+        ]
+      }
+    ],
     "quotemark": [
       true,
       "single"
+    ],
+    "typedef": [
+      true,
+      "arrow-call-signature",
+      "arrow-parameter",
+      "array-destructuring",
+      "call-signature",
+      "object-destructuring",
+      "parameter",
+      "member-variable-declaration"
     ],
     "trailing-comma": [
       true,
@@ -78,6 +167,7 @@
         "singleline": "never"
       }
     ],
+    "await-promise": true,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,

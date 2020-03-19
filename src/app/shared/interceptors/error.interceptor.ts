@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { noop, Observable, throwError } from 'rxjs';
+import { Observable, noop, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+import { ServerErrorInterface, ServerErrorValueInterface } from 'src/app/shared/interfaces';
 import { ConfigurationService } from 'src/app/shared/services';
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
 import { authenticationActions, errorActions } from 'src/app/store/store-actions';
+import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -42,16 +42,16 @@ export class ErrorInterceptor implements HttpInterceptor {
       .handle(modified)
       .pipe(
         tap(noop, (error: HttpErrorResponse): void => this.handle(modified, error)),
-        catchError((error): Observable<never> => {
+        catchError((error: any): Observable<never> => {
           let payload = error;
 
-          if (error.status === 0) {
+          if (error && error.hasOwnProperty('error') && error.status === 0) {
             payload = {
               error: {
                 code: 0,
-                message: error.message,
-                status: error.status,
-                statusText: error.statusText,
+                message: error.message || `Unknown error - ${error.toString()}`,
+                status: error.status || 0,
+                statusText: error.statusText || '',
               },
             };
           }
@@ -97,9 +97,12 @@ export class ErrorInterceptor implements HttpInterceptor {
    * that user can see the actual error message(s) in that snackbar.
    */
   private dispatchMessage(httpErrorResponse: HttpErrorResponse): void {
-    let error = {
+    let error: ServerErrorInterface = {
       message: httpErrorResponse.toString(),
-    } as ServerErrorInterface;
+      code: 0,
+      status: httpErrorResponse.status || 0,
+      statusText: httpErrorResponse.statusText || '',
+    };
 
     if (httpErrorResponse.hasOwnProperty('error') && httpErrorResponse.error.hasOwnProperty('message')) {
       error = httpErrorResponse.error as ServerErrorInterface;

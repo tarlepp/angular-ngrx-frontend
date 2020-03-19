@@ -1,12 +1,12 @@
 import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
 import * as moment from 'moment-timezone';
+import { Subscription } from 'rxjs';
 
 import { Locale } from 'src/app/shared/enums';
-import { LayoutState } from 'src/app/store/layout/layout.state';
-import { layoutSelectors } from 'src/app/store/layout/layout.selectors';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { layoutSelectors } from 'src/app/store/layout/layout.selectors';
+import { LayoutState } from 'src/app/store/layout/layout.state';
 
 /**
  * Locale and timezone aware date formatter pipe that can be used short hand

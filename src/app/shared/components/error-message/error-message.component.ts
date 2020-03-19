@@ -19,7 +19,7 @@ import { environment } from 'src/environments/environment';
 
 export class ErrorMessageComponent implements OnInit {
   public errors: Array<ErrorMessageInterface>;
-  public production = environment.production;
+  public production: boolean = environment.production;
 
   /**
    * Method to mark all custom error messages so that those aren't removed when
@@ -43,7 +43,7 @@ export class ErrorMessageComponent implements OnInit {
    * remember to add those translations tags to `markTexts` method!
    */
   private static getClientMessage(message: ErrorMessageServerInterface): ErrorMessageClientInterface {
-    const target = message.target.split('.').map(bit => bit.charAt(0).toLowerCase() + bit.slice(1)).join('.');
+    const target = message.target.split('.').map((bit: string): string => bit.charAt(0).toLowerCase() + bit.slice(1)).join('.');
 
     return {
       ...message,

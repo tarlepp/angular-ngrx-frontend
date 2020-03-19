@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, pluck } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { SnackbarService } from 'src/app/shared/services';
@@ -10,7 +10,7 @@ import { errorActions } from 'src/app/store/store-actions';
 @Injectable()
 export class ErrorEffects {
   // noinspection JSUnusedLocalSymbols
-  private snackbarError$ = createEffect((): Observable<void> =>
+  private snackbarError$: Observable<void> = createEffect((): Observable<void> =>
     this.actions$.pipe(
       ofType(errorActions.snackbar),
       pluck('error'),

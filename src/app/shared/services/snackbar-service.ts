@@ -5,14 +5,14 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
+import { ErrorMessageComponent } from 'src/app/shared/components';
+import { ErrorMessageServerInterface, ServerErrorInterface } from 'src/app/shared/interfaces';
 import { errorActions } from 'src/app/store/store-actions';
 import { ErrorState } from 'src/app/store/store-states';
-import { ErrorMessageServerInterface, ServerErrorInterface } from 'src/app/shared/interfaces';
-import { ErrorMessageComponent } from 'src/app/shared/components';
 
 @Injectable()
 export class SnackbarService {
-  private closeButtonTag = marker('snackbar.close-button');
+  private closeButtonTag: string = marker('snackbar.close-button');
 
   public constructor(
     private snackBar: MatSnackBar,
@@ -21,11 +21,11 @@ export class SnackbarService {
   ) { }
 
   public message(message: string, duration: number = 6000): Promise<MatSnackBarRef<SimpleSnackBar>> {
-    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve): void => {
-      const config = {
+    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
+      const config: MatSnackBarConfig = {
         duration,
         panelClass: ['snackbar'],
-      } as MatSnackBarConfig;
+      };
 
       this.translateService
         .get([message, this.closeButtonTag])
@@ -37,10 +37,10 @@ export class SnackbarService {
   }
 
   public error(error: ServerErrorInterface): Promise<MatSnackBarRef<SimpleSnackBar|ErrorMessageComponent>> {
-    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve): void => {
-      const config = {
+    return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
+      const config: MatSnackBarConfig = {
         panelClass: ['snackbar', 'snackbar--error'],
-      } as MatSnackBarConfig;
+      };
 
       let serverErrorMessages = [] as Array<ErrorMessageServerInterface>;
 

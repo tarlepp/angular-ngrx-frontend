@@ -1,13 +1,5 @@
-@import '~@angular/material/theming';
-
-@include mat-core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$angular-frontend-primary: mat-palette($mat-indigo);
-$angular-frontend-accent: mat-palette($mat-pink, A200, A100, A400);
-$angular-frontend-warn: mat-palette($mat-red);
+// Import application palettes with Angular Material theming
+@import 'palettes';
 
 // Base font families
 $font-family: Roboto, 'Helvetica Neue', sans-serif;

@@ -1,8 +1,7 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+// Import application palettes with Angular Material theming
+@import 'styles/palettes';
 
-// Plus imports for other components in your app.
+// Plus imports for other components in your application
 @import './styles/variables';
 @import './styles/animations';
 @import './styles/base';

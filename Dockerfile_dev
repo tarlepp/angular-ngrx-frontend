@@ -1,3 +1,4 @@
+# Fetch used node image
 FROM node:13.10.1
 
 # Let's use bash as a default shell
@@ -5,21 +6,25 @@ SHELL ["/bin/bash", "-c"]
 
 # Update package list and install necessary libraries
 RUN apt-get update && apt-get install -y \
-    nano git unzip jq bash-completion \
-    && rm -rf /var/lib/apt/lists/*
+  nano git unzip jq bash-completion \
+  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
+# Add source code to container
 ADD . .
 
 # Add necessary stuff to bash autocomplete
-RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
-RUN curl https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash >> /etc/bash.bashrc
+RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc \
+  && curl https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash >> /etc/bash.bashrc
 
-RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng
-RUN chmod +x docker-entrypoint-dev.sh
-RUN npm install -g npm-check-updates mversion
+# Link `ng` command, set entrypoint with `x` mark and install `ncu` and `mversion` tools
+RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
+  && chmod +x docker-entrypoint-dev.sh \
+  && npm install -g npm-check-updates mversion
 
+# Expose port 4200 outside
 EXPOSE 4200
 
+# Set custom entrypoint for dev container
 ENTRYPOINT ["/app/docker-entrypoint-dev.sh"]

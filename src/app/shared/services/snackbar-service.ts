@@ -14,12 +14,19 @@ import { ErrorState } from 'src/app/store/store-states';
 export class SnackbarService {
   private closeButtonTag: string = marker('snackbar.close-button');
 
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   public constructor(
     private snackBar: MatSnackBar,
     private errorStore: Store<ErrorState>,
     private translateService: TranslateService,
   ) { }
 
+  /**
+   * Method to create plain snackbar message with specified content.
+   */
   public message(message: string, duration: number = 6000): Promise<MatSnackBarRef<SimpleSnackBar>> {
     return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
       const config: MatSnackBarConfig = {
@@ -36,16 +43,22 @@ export class SnackbarService {
     });
   }
 
+  /**
+   * Method to create error snackbar message from specified server error. This
+   * will either use simple snackbar or custom snackbar component if that error
+   * contains data that can be shown in that separated component - these errors
+   * are usually backend validation related errors.
+   */
   public error(error: ServerErrorInterface): Promise<MatSnackBarRef<SimpleSnackBar|ErrorMessageComponent>> {
     return new Promise<MatSnackBarRef<SimpleSnackBar>>((resolve: any): void => {
       const config: MatSnackBarConfig = {
         panelClass: ['snackbar', 'snackbar--error'],
       };
 
-      let serverErrorMessages = [] as Array<ErrorMessageServerInterface>;
+      let serverErrorMessages: Array<ErrorMessageServerInterface> = [];
 
       try {
-        serverErrorMessages = JSON.parse(error.message) as Array<ErrorMessageServerInterface>;
+        serverErrorMessages = JSON.parse(error.message);
 
         if (!Array.isArray(serverErrorMessages)) {
           serverErrorMessages = [];

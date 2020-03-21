@@ -11,7 +11,7 @@ if (environment.production) {
 
 // Load application configuration before bootstrapping application main module
 ConfigurationService
-  .loadStatic()
+  .init()
   .then((): void => {
     setTimeout((): void => {
       platformBrowserDynamic()

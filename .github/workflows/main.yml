@@ -22,10 +22,10 @@ jobs:
       - name: Make checkout
         uses: actions/checkout@v1
 
-      - name: Use Node.js 13.8
+      - name: Use Node.js 13.10.1
         uses: actions/setup-node@v1
         with:
-          node-version: 13.8
+          node-version: 13.10.1
 
       - name: Install dependencies
         run: yarn install
@@ -85,10 +85,10 @@ jobs:
       - name: Make checkout
         uses: actions/checkout@v1
 
-      - name: Use Node.js 13.8
+      - name: Use Node.js 13.10.1
         uses: actions/setup-node@v1
         with:
-          node-version: 13.8
+          node-version: 13.10.1
 
       - name: Install dependencies
         run: yarn install

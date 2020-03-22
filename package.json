@@ -59,7 +59,7 @@
     "@angular/cli": "9.0.7",
     "@angular/compiler-cli": "9.0.7",
     "@angular/language-service": "9.0.7",
-    "@biesbjerg/ngx-translate-extract": "5.0.0",
+    "@biesbjerg/ngx-translate-extract": "5.0.1",
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
     "@types/jasmine": "3.5.9",
     "@types/jasminewd2": "2.0.8",
@@ -73,7 +73,7 @@
     "karma-jasmine": "3.1.1",
     "karma-jasmine-html-reporter": "1.5.2",
     "protractor": "5.4.3",
-    "ts-node": "8.7.0",
+    "ts-node": "8.8.1",
     "tslint": "6.1.0",
     "typescript": "3.7.5"
   }

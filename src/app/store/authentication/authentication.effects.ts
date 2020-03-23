@@ -5,19 +5,33 @@ import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Observable, from, of } from 'rxjs';
-import { catchError, map, pluck, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, pluck, switchMap } from 'rxjs/operators';
 
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
-import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { SnackbarService } from 'src/app/shared/services';
 import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
-import { AuthenticationLoginType, AuthenticationProfileType, LoginSuccessTypes } from 'src/app/store/store-types';
+import { AuthenticationLoginType, AuthenticationProfileType } from 'src/app/store/store-types';
 import { AuthenticationAction } from 'src/app/store/store.action';
 
 @Injectable()
 export class AuthenticationEffects {
   // noinspection JSUnusedLocalSymbols
+  /**
+   * NgRx effect for `login` action, so that we're actually making that login
+   * HTTP request to our backend and catch possible errors within that request.
+   *
+   * If the login request is successfully this effect will trigger following
+   * store actions;
+   *  - layoutActions.updateLocalization
+   *  - authenticationActions.loginSuccess
+   *
+   * First one of these will update application localization data so that user
+   * will see correct translations etc. within application.
+   *
+   * Second one will trigger user profile loading, that information is used to
+   * show some user related messages, etc. in application.
+   */
   private login$: Observable<TypedAction<AuthenticationLoginType>> = createEffect(
     (): Observable<TypedAction<AuthenticationLoginType>> => this.actions$
     .pipe(
@@ -27,7 +41,7 @@ export class AuthenticationEffects {
         from(this.authService
           .authenticate(credentials)
           .pipe(
-            map((userData: UserDataInterface): TypedAction<AuthenticationAction.LOGIN_SUCCESS> => {
+            mergeMap((userData: UserDataInterface): Array<TypedAction<AuthenticationLoginType>> => {
               this.snackbarService
                 .message(marker('messages.authentication.login'))
                 .finally();
@@ -36,7 +50,10 @@ export class AuthenticationEffects {
                 .navigate(['/'])
                 .finally();
 
-              return authenticationActions.loginSuccess({ userData });
+              return [
+                layoutActions.updateLocalization({ localization: userData.localization }),
+                authenticationActions.loginSuccess({ userData }),
+              ];
             }),
             catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.LOGIN_FAILURE>> =>
               of(authenticationActions.loginFailure({ error: httpErrorResponse.error })),
@@ -48,20 +65,28 @@ export class AuthenticationEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private loginSuccess$: Observable<TypedAction<LoginSuccessTypes>> = createEffect(
-    (): Observable<TypedAction<LoginSuccessTypes>> => this.actions$
+  /**
+   * NgRx effect that is triggered when `login_success` action happens in
+   * application lifecycle. This will trigger to fetch user profile information
+   * from backend.
+   *
+   * This effect will be also triggered if/when user reloads application page
+   * manually if user token that is stored to local storage is valid one.
+   */
+  private loginSuccess$: Observable<TypedAction<AuthenticationAction.PROFILE>> = createEffect(
+    (): Observable<TypedAction<AuthenticationAction.PROFILE>> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGIN_SUCCESS),
-      pluck('userData'),
-      map((userData: UserDataInterface): LocalizationInterface => userData.localization),
-      switchMap((localization: LocalizationInterface): Array<TypedAction<LoginSuccessTypes>> => [
-        authenticationActions.profile(),
-        layoutActions.updateLocalization({ localization }),
-      ]),
+      switchMap((): Observable<TypedAction<AuthenticationAction.PROFILE>> => of(authenticationActions.profile())),
     ),
   );
 
   // noinspection JSUnusedLocalSymbols
+  /**
+   * NgRx effect to handle `AuthenticationAction.PROFILE` action effects,
+   * within this we want to to actually fetch user profile information from
+   * backend and catch possible errors while fetching that information.
+   */
   private profile$: Observable<TypedAction<AuthenticationProfileType>> = createEffect(
     (): Observable<TypedAction<AuthenticationProfileType>> => this.actions$
     .pipe(
@@ -82,6 +107,15 @@ export class AuthenticationEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
+  /**
+   * NgRx effect that is triggered within `AuthenticationAction.LOGOUT` action.
+   * Within this event we need to do following;
+   *  1) Logout user properly - see `AuthenticationService` for details
+   *  2) Show possible logout message, this one is not needed
+   *  3) Redirect user back to application main route
+   *
+   * Within this effect we won't dispatch any other store actions.
+   */
   private logout$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(AuthenticationAction.LOGOUT),
@@ -103,6 +137,10 @@ export class AuthenticationEffects {
     { dispatch: false },
   );
 
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   public constructor(
     private actions$: Actions,
     private router: Router,

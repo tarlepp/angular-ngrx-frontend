@@ -1042,10 +1042,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@biesbjerg/ngx-translate-extract@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@biesbjerg/ngx-translate-extract/-/ngx-translate-extract-6.0.0.tgz#6d7fbcc549c61ce77ff1537d713ddc8a4d8d613d"
-  integrity sha512-dXfGVdWAwo29wyO81w966MuOGq83N65PAHRz2HFDVaDIuYn5fyfnylXg0wwg7qKvW7kUVuyj0H3vgf2lJj0tYQ==
+"@biesbjerg/ngx-translate-extract@6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@biesbjerg/ngx-translate-extract/-/ngx-translate-extract-6.0.3.tgz#9efae5376f007e1f871818e17cd9911adf9318dd"
+  integrity sha512-FWpToi3s4X631vBsOqZ52d1f96g5p4fKLRqPUhHeYVuQskHV4pVCwXg83gio/FoiHeHtiPIvLy8bQqqoFnxEVA==
   dependencies:
     "@angular/compiler" "^9.0.7"
     "@phenomnomnominal/tsquery" "^4.0.0"

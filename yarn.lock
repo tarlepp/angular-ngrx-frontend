@@ -203,14 +203,14 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-9.0.7.tgz#c204467383ee5f194a73a365ea7c543c6900bb54"
   integrity sha512-IZG1kvw48JyFRy7bfMHqBixWrEHZmXmkP5DWsi5Tw6KusaczkMghI20BevCkodPcajXWHAUHNKyp1tlE3OnH0w==
 
-"@angular/localize@9.0.7":
-  version "9.0.7"
-  resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-9.0.7.tgz#c40846e679917ee1575b009f78de822ac100add0"
-  integrity sha512-nlmcxEVZmz4ty1MXE1OFnHMYndedQUunZY4MB3lm7c8MJrRnI5x7zAOvkwI+sUF0Hy3rfjkO7ddOzGBfDtjPPA==
+"@angular/localize@9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-9.1.0.tgz#99ed643fd1b60942e0e890236c75381a026040b6"
+  integrity sha512-llM46gLyxW6jD0VQcLSGLMB0nZ0FIWAp1W2BMWbUspmcSCEcLmdhSWKPpZLFt/vGtpvGYSY/LDeScaHSRmAe+g==
   dependencies:
     "@babel/core" "7.8.3"
     glob "7.1.2"
-    yargs "13.1.0"
+    yargs "15.3.0"
 
 "@angular/material@9.1.3":
   version "9.1.3"
@@ -8985,7 +8985,7 @@ yargs-parser@^13.0.0:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs-parser@^18.1.1:
+yargs-parser@^18.1.0, yargs-parser@^18.1.1:
   version "18.1.1"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-18.1.1.tgz#bf7407b915427fc760fcbbccc6c82b4f0ffcbd37"
   integrity sha512-KRHEsOM16IX7XuLnMOqImcPNbLVXMNHYAoFc3BKR8Ortl5gzDbtXvvEoGx9imk5E+X1VeNKNlcHr8B8vi+7ipA==
@@ -9027,6 +9027,23 @@ yargs@13.1.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^13.0.0"
+
+yargs@15.3.0:
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.3.0.tgz#403af6edc75b3ae04bf66c94202228ba119f0976"
+  integrity sha512-g/QCnmjgOl1YJjGsnUg2SatC7NUYEiLXJqxNOQU9qSpjzGtGXda9b+OKccr1kLTy8BN9yqEyqfq5lxlwdc13TA==
+  dependencies:
+    cliui "^6.0.0"
+    decamelize "^1.2.0"
+    find-up "^4.1.0"
+    get-caller-file "^2.0.1"
+    require-directory "^2.1.1"
+    require-main-filename "^2.0.0"
+    set-blocking "^2.0.0"
+    string-width "^4.2.0"
+    which-module "^2.0.0"
+    y18n "^4.0.0"
+    yargs-parser "^18.1.0"
 
 yargs@^15.3.1:
   version "15.3.1"

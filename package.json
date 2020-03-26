@@ -58,7 +58,7 @@
     "@angular-devkit/build-angular": "0.900.7",
     "@angular/cli": "9.0.7",
     "@angular/compiler-cli": "9.0.7",
-    "@angular/language-service": "9.0.7",
+    "@angular/language-service": "9.1.0",
     "@biesbjerg/ngx-translate-extract": "6.0.3",
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
     "@types/jasmine": "3.5.10",

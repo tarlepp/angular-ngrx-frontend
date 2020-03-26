@@ -11,6 +11,7 @@ import {
 import { layoutActions } from 'src/app/store/store-actions';
 import { LayoutState } from 'src/app/store/store-states';
 
+// Initial state of `Layout` store.
 const initialState: LayoutState = {
   language: Language.DEFAULT,
   locale: Locale.DEFAULT,
@@ -25,6 +26,11 @@ const initialState: LayoutState = {
 
 const reducer = createReducer(
   initialState,
+  /**
+   * Reducer for `layoutActions.changeLanguage` action. Within this reducer we
+   * check that given `language` is valid one and if not fallback to `default`
+   * language and then store that normalized language to this state.
+   */
   on(
     layoutActions.changeLanguage,
     (state: LayoutState, { language }: LanguageValueInterface): LayoutState => ({
@@ -32,6 +38,11 @@ const reducer = createReducer(
       language: Object.values(Language).includes(language) ? language : Language.DEFAULT,
     }),
   ),
+  /**
+   * Reducer for `layoutActions.changeLocale` action. Within this reducer we
+   * check that given `locale` is valid one and if not fallback to `default`
+   * locale and then store that normalized locale to this state.
+   */
   on(
     layoutActions.changeLocale,
     (state: LayoutState, { locale }: LocaleValueInterface): LayoutState => ({
@@ -39,6 +50,12 @@ const reducer = createReducer(
       locale: Object.values(Locale).includes(locale) ? locale : Locale.DEFAULT,
     }),
   ),
+  /**
+   * Reducer for `layoutActions.changeTimezone` action. Within this reducer we
+   * are just storing given timezone to this state.
+   *
+   * TODO: should we validate these somehow?
+   */
   on(
     layoutActions.changeTimezone,
     (state: LayoutState, { timezone }: StringValueInterface): LayoutState => ({
@@ -46,6 +63,17 @@ const reducer = createReducer(
       timezone,
     }),
   ),
+  /**
+   * Reducer for `layoutActions.changeViewport` action. Within this reducer we
+   * are actually updating multiple properties of this state;
+   *  - viewport, see src/app/shared/enums/viewport.enum.ts
+   *  - device, according to src/app/shared/constants/viewports.constant.ts
+   *  - desktop
+   *  - tablet
+   *  - mobile
+   *
+   * Note that only one (1) of those last three can be `true`.
+   */
   on(
     layoutActions.changeViewport,
     (state: LayoutState, { viewport }: ViewportValueInterface): LayoutState => {
@@ -65,6 +93,7 @@ const reducer = createReducer(
       };
     },
   ),
+  // Reducer for `layoutActions.scrollTo` action to store anchor to this state.
   on(
     layoutActions.scrollTo,
     (state: LayoutState, { anchor }: StringValueInterface): LayoutState => ({
@@ -72,6 +101,10 @@ const reducer = createReducer(
       anchor,
     }),
   ),
+  /**
+   * Reducer for `layoutActions.clearScrollTo` action to clear anchor from this
+   * state.
+   */
   on(
     layoutActions.clearScrollTo,
     (state: LayoutState): LayoutState => ({
@@ -81,6 +114,7 @@ const reducer = createReducer(
   ),
 );
 
+// Export error `Layout` store reducer.
 export function layoutReducer(state: LayoutState, action: Action): LayoutState {
   return reducer(state, action);
 }

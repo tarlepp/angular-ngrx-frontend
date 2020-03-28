@@ -1,3 +1,4 @@
+// Version store action definitions.
 export enum VersionAction {
   FETCH_FRONTEND_VERSION = '[Version] Fetch frontend version',
   FETCH_FRONTEND_VERSION_SUCCESS = '[Version] Fetch frontend version success',

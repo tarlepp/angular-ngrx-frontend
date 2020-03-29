@@ -5,13 +5,13 @@ import { map, pluck } from 'rxjs/operators';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { SnackbarService } from 'src/app/shared/services';
-import { ErrorAction } from 'src/app/store/store.action';
+import { errorActions } from 'src/app/store/store-actions';
 
 @Injectable()
 export class ErrorEffects {
   // noinspection JSUnusedLocalSymbols
   /**
-   * NgRx effect that is triggered within `ErrorAction.SNACKBAR` action.
+   * NgRx effect that is triggered within `errorActions.snackbar` action.
    * This effect will call `SnackbarService` to create snackbar message
    * about specified error.
    *
@@ -19,7 +19,7 @@ export class ErrorEffects {
    */
   private snackbarError$: Observable<void> = createEffect((): Observable<void> =>
     this.actions$.pipe(
-      ofType(ErrorAction.SNACKBAR),
+      ofType(errorActions.snackbar),
       pluck('error'),
       map((error: ServerErrorInterface): void => {
         this.snackbarService

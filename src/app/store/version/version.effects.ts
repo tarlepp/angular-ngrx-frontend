@@ -16,6 +16,22 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class VersionEffects {
   // noinspection JSUnusedLocalSymbols
+  /**
+   * NgRx effect for `VersionAction.FETCH_FRONTEND_VERSION` action, within this
+   * we're are changing that original action observable to another one.
+   *
+   * This effect will trigger GET HTTP request to `/assets/version.json` which
+   * contains current version of this frontend application.
+   *
+   * And if/when there is a new deployment of this frontend application that
+   * version file is updated on build process - so we always have the latest
+   * version information on that file.
+   *
+   * This action is triggered sequentially in each X minutes on the application
+   * footer component. Also this action is triggered if/when our backend
+   * version has been changed - that is checked on each backend request via
+   * simple HTTP interceptor.
+   */
   private fetchFrontendVersion$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
     (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$
     .pipe(
@@ -36,6 +52,16 @@ export class VersionEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
+  /**
+   * NgRx effect for `VersionAction.FETCH_BACKEND_VERSION` action, within this
+   * we're are changing that original action observable to another one.
+   *
+   * This effect will trigger GET HTTP request to backend version API endpoint
+   * which will return the current version of the backend application.
+   *
+   * This action is just dispatched once in application `footer` component
+   * when it's initialized.
+   */
   private fetchBackendVersion$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<BackendVersionTypes>> => this.actions$
     .pipe(
@@ -56,6 +82,15 @@ export class VersionEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
+  /**
+   * NgRx effect for `VersionAction.FETCH_FRONTEND_VERSION_SUCCESS` action,
+   * within this we're checking if currently running application version
+   * differs from what we got to effect.
+   *
+   * If those versions are different it means that application has been new
+   * version available and within that that use case we need to inform current
+   * user that there is a new version available of this application.
+   */
   private versionChanged$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
       ofType(VersionAction.FETCH_FRONTEND_VERSION_SUCCESS),
@@ -81,5 +116,9 @@ export class VersionEffects {
     { dispatch: false },
   );
 
+  /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
   public constructor(private actions$: Actions, private versionService: VersionService, private dialog: MatDialog) { }
 }

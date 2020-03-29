@@ -5,9 +5,7 @@ import { ServerErrorValueInterface } from 'src/app/shared/interfaces';
 import { authenticationActions } from 'src/app/store/store-actions';
 import { AuthenticationState } from 'src/app/store/store-states';
 
-/**
- * Initial state of `Authentication` store.
- */
+// Initial state of `Authentication` store.
 const initialState: AuthenticationState = {
   loading: false,
   loggedIn: false,
@@ -90,6 +88,7 @@ const reducer = createReducer(
   on(authenticationActions.logout, (): AuthenticationState => initialState),
 );
 
+// Export `Authentication` store reducer.
 export function authenticationReducer(state: AuthenticationState, action: Action): AuthenticationState {
   return reducer(state, action);
 }

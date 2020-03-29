@@ -1,6 +1,4 @@
-/**
- * Authentication store action definitions.
- */
+// Authentication store action definitions.
 export enum AuthenticationAction {
   LOGIN = '[Authentication] Login',
   LOGIN_SUCCESS = '[Authentication] Login success',

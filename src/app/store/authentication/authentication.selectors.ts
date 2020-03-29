@@ -10,17 +10,11 @@ import { AuthenticationState } from 'src/app/store/store-states';
  *
  * Simple usage example;
  *
- *  public constructor(private authenticationStore: Store<AuthenticationState>) {
- *    this.subscription = new Subscription();
- *  }
+ *  public constructor(private authenticationStore: Store<AuthenticationState>) { }
  *
  *  public ngOnInit(): void {
  *    this.loading$ = this.authenticationStore.select(authenticationSelectors.loading);
  *    this.loggedIn$ = this.authenticationStore.select(authenticationSelectors.loggedIn);
- *  }
- *
- *  public ngOnDestroy(): void {
- *    this.subscription.unsubscribe();
  *  }
  */
 

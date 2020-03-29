@@ -36,7 +36,7 @@ import { AuthenticationAction } from 'src/app/store/store.action';
 // Login action that triggers request to backend.
 const login = createAction(AuthenticationAction.LOGIN, props<{ credentials: CredentialsRequestInterface }>());
 
-// Login success action that is triggered via effects.
+// Login success action that is triggered via effects and from application main component.
 const loginSuccess = createAction(AuthenticationAction.LOGIN_SUCCESS, props<{ userData: UserDataInterface }>());
 
 // Login failure action that is triggered via effects.

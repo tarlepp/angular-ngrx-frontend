@@ -1,4 +1,5 @@
 export * from 'src/app/shared/interfaces/application-configuration-interface';
+export * from 'src/app/shared/interfaces/dictionary.interface';
 export * from 'src/app/shared/interfaces/environment.interface';
 export * from 'src/app/shared/interfaces/error-message.interface';
 export * from 'src/app/shared/interfaces/error-message-client.interface';
@@ -9,6 +10,5 @@ export * from 'src/app/shared/interfaces/localization.interface';
 export * from 'src/app/shared/interfaces/server-error.interface';
 export * from 'src/app/shared/interfaces/server-error-debug.interface';
 export * from 'src/app/shared/interfaces/server-error-value.interface';
-export * from 'src/app/shared/interfaces/string-value.interface';
 export * from 'src/app/shared/interfaces/version.interface';
 export * from 'src/app/shared/interfaces/viewport-value.interface';

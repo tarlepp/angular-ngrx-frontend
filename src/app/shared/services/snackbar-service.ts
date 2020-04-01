@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
 import { ErrorMessageComponent } from 'src/app/shared/components';
-import { ErrorMessageServerInterface, ServerErrorInterface } from 'src/app/shared/interfaces';
+import { DictionaryInterface, ErrorMessageServerInterface, ServerErrorInterface } from 'src/app/shared/interfaces';
 import { errorActions } from 'src/app/store/store-actions';
 import { ErrorState } from 'src/app/store/store-states';
 
@@ -37,7 +37,7 @@ export class SnackbarService {
       this.translateService
         .get([message, this.closeButtonTag])
         .pipe(take(1))
-        .subscribe((texts: {[key: string]: string}): void =>
+        .subscribe((texts: DictionaryInterface<string>): void =>
           resolve(this.snackBar.open(texts[message], texts[this.closeButtonTag], config)),
         );
     });

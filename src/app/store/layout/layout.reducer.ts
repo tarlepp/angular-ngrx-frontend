@@ -3,9 +3,9 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { Viewports } from 'src/app/shared/constants';
 import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
 import {
+  DictionaryInterface,
   LanguageValueInterface,
   LocaleValueInterface,
-  StringValueInterface,
   ViewportValueInterface,
 } from 'src/app/shared/interfaces';
 import { layoutActions } from 'src/app/store/store-actions';
@@ -58,7 +58,7 @@ const reducer = createReducer(
    */
   on(
     layoutActions.changeTimezone,
-    (state: LayoutState, { timezone }: StringValueInterface): LayoutState => ({
+    (state: LayoutState, { timezone }: DictionaryInterface<string>): LayoutState => ({
       ...state,
       timezone,
     }),
@@ -96,7 +96,7 @@ const reducer = createReducer(
   // Reducer for `layoutActions.scrollTo` action to store anchor to this state.
   on(
     layoutActions.scrollTo,
-    (state: LayoutState, { anchor }: StringValueInterface): LayoutState => ({
+    (state: LayoutState, { anchor }: DictionaryInterface<string>): LayoutState => ({
       ...state,
       anchor,
     }),

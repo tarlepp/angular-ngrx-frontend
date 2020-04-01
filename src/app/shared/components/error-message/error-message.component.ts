@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
 import {
+  DictionaryInterface,
   ErrorMessageClientInterface,
   ErrorMessageInterface,
   ErrorMessageServerInterface,
@@ -80,7 +81,7 @@ export class ErrorMessageComponent implements OnInit {
         ...clientMessages.map((message: ErrorMessageClientInterface): string => message.messageProperty),
       ])
       .pipe(take(1))
-      .subscribe((texts: { [key: string]: string }): void => {
+      .subscribe((texts: DictionaryInterface<string>): void => {
         // Determine messages to show in component
         const messages = clientMessages.map(this.processTranslations(texts), clientMessages);
 
@@ -111,7 +112,7 @@ export class ErrorMessageComponent implements OnInit {
    * Also note that this `console.warn` message is only shown non-production
    * environment.
    */
-  private processTranslations(texts: { [key: string]: string }): (message: ErrorMessageClientInterface) => ErrorMessageClientInterface {
+  private processTranslations(texts: DictionaryInterface<string>): (message: ErrorMessageClientInterface) => ErrorMessageClientInterface {
     return (message: ErrorMessageClientInterface): ErrorMessageClientInterface => {
       const properties = ['messageProperty', 'messageText'];
 

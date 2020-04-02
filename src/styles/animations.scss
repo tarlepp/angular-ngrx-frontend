@@ -1,7 +1,7 @@
 @import './variables';
 
 .ghost {
-  animation: ghost-pulse 2.0s ease infinite;
+  animation: ghost-pulse 2s ease infinite;
 
   &--text {
     color: transparent !important;
@@ -20,7 +20,8 @@
 }
 
 @keyframes ghost-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: .67;
   }
 

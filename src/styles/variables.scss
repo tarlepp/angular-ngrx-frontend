@@ -20,8 +20,8 @@ $warn-color-dark: mat-color($angular-frontend-warn, 900);
 $spacing: 32px;
 $spacing-half: $spacing / 2;
 $spacing-quarter: $spacing / 4;
-$spacing-half-quarter: $spacing * 0.75;
-$spacing-quarter-half-quarter: $spacing * 0.375;
+$spacing-half-quarter: $spacing * .75;
+$spacing-quarter-half-quarter: $spacing * .375;
 $spacing-1-5x: $spacing * 1.5;
 $spacing-2x: $spacing * 2;
 

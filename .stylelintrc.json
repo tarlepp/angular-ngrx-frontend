@@ -1,0 +1,18 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "number-leading-zero": "never",
+    "max-nesting-depth": 4,
+    "selector-max-compound-selectors": 4,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["ng-deep"]
+      }
+    ],
+    "order/properties-alphabetical-order": null
+  }
+}

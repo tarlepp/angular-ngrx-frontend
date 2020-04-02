@@ -19,7 +19,8 @@
     "build": "ng build",
     "build-prod": "ng build --prod --build-optimizer --configuration=production",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint:ts": "ng lint",
+    "lint:scss": "npx stylelint '**/*.scss'",
     "e2e": "ng e2e",
     "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --format-indentation '  ' --sort --format namespaced-json --null-as-default-value && for files in src/assets/i18n/*.json; do echo >> $files; done;",
     "postinstall": "node version.js"

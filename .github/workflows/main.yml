@@ -34,7 +34,7 @@ jobs:
         run: yarn lint:ts
 
   lint-scss:
-    name: Lint application code
+    name: Lint application SCSS files
     runs-on: ubuntu-latest
 
     steps:

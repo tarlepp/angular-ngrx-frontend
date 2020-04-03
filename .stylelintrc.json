@@ -1,10 +1,12 @@
 {
-  "extends": "stylelint-config-sass-guidelines",
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-angular-material"
+  ],
   "plugins": [
     "stylelint-scss"
   ],
   "rules": {
-    "number-leading-zero": "never",
     "max-nesting-depth": 4,
     "selector-max-compound-selectors": 4,
     "selector-pseudo-element-no-unknown": [
@@ -13,6 +15,22 @@
         "ignorePseudoElements": ["ng-deep"]
       }
     ],
-    "order/properties-alphabetical-order": null
+    "string-quotes": "single",
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "app-root"
+        ]
+      }
+    ],
+    "declaration-property-unit-whitelist": null,
+    "no-empty-source": null,
+    "selector-class-pattern": null,
+    "selector-max-type": null,
+    "order/properties-alphabetical-order": null,
+    "scss/dollar-variable-pattern": null,
+    "scss/at-function-pattern": null,
+    "scss/at-mixin-pattern": null
   }
 }

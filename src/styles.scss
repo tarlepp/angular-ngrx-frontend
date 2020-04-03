@@ -11,7 +11,7 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+@include mat-core;
 
 // Create the theme object (a Sass map containing all of the palettes).
 $angular-frontend-theme: mat-light-theme($angular-frontend-primary, $angular-frontend-accent, $angular-frontend-warn);

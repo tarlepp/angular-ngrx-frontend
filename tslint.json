@@ -136,12 +136,12 @@
           {
             "name": "3rd party",
             "order": 10,
-            "match": "^(?!src\/)([@]|[a-z])"
+            "match": "^(?!src\/|package.json)([@]|[a-z])"
           },
           {
             "name": "local",
             "order": 20,
-            "match": "^(src\/)"
+            "match": "^(src\/|package.json)"
           }
         ]
       }

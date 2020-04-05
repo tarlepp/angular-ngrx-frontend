@@ -11,6 +11,7 @@ import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 import { UserDataInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { Language, Viewport } from 'src/app/shared/enums';
+import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
 import { authenticationSelectors } from 'src/app/store/store-selectors';
 import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.setTokenInterval();
-    this.initializeLanguage();
+    this.initializeLocalization();
 
     /**
      * Each time `NavigationEnd` event is dispatched from router, we want to
@@ -177,15 +178,31 @@ export class AppComponent implements OnInit, OnDestroy {
    * determine current user language from browser if user has not yet choose
    * language.
    */
-  private initializeLanguage(): void {
+  private initializeLocalization(): void {
     this.translateService.setDefaultLang(Language.DEFAULT);
 
     let language = this.localStorage.retrieve('language');
+    let locale = this.localStorage.retrieve('locale');
+    let timezone = this.localStorage.retrieve('timezone');
 
     if (language === null) {
       language = navigator.language.split('-')[0].toLowerCase();
     }
 
-    this.layoutStore.dispatch(layoutActions.changeLanguage({ language }));
+    if (locale === null) {
+      locale = Intl.NumberFormat().resolvedOptions().locale.split('-')[0].toLowerCase();
+    }
+
+    if (timezone === null) {
+      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    }
+
+    const localization: LocalizationInterface = {
+      language,
+      locale,
+      timezone,
+    };
+
+    this.layoutStore.dispatch(layoutActions.updateLocalization({ localization }));
   }
 }

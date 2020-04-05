@@ -69,8 +69,7 @@ export class LayoutEffects {
    *  1) Change moment.js library locale setting, this will affect to shown
    *     time, date and datetime values in application that are formatted by
    *     this library.
-   *  2) TODO:
-   *     Store new language to local storage, so that if user refresh the
+   *  2) Store new locale to local storage, so that if user refresh the
    *     page he/she will get the same locale that he/she earlier chose.
    *
    * Within this effect we won't dispatch any other store actions.
@@ -79,7 +78,11 @@ export class LayoutEffects {
     .pipe(
       ofType(LayoutAction.CHANGE_LOCALE),
       pluck('locale'),
-      map((locale: Locale): void => moment.locale(locale)),
+      map((locale: Locale): void => {
+        moment.locale(locale);
+
+        this.localStorageService.store('locale', locale);
+      }),
     ),
     { dispatch: false },
   );
@@ -91,8 +94,7 @@ export class LayoutEffects {
    *  1) Change moment.js library default timezone setting, this will affect
    *     to shown time, date and datetime values in application that are
    *     formatted by this library.
-   *  2) TODO:
-   *     Store new timezone to local storage, so that if user refresh the
+   *  2) Store new timezone to local storage, so that if user refresh the
    *     page he/she will get the same timezone that he/she earlier chose.
    *
    * Within this effect we won't dispatch any other store actions.
@@ -101,7 +103,11 @@ export class LayoutEffects {
     .pipe(
       ofType(LayoutAction.CHANGE_TIMEZONE),
       pluck('timezone'),
-      map((timezone: string): void => moment.tz.setDefault(timezone)),
+      map((timezone: string): void => {
+        moment.tz.setDefault(timezone);
+
+        this.localStorageService.store('timezone', timezone);
+      }),
     ),
     { dispatch: false },
   );

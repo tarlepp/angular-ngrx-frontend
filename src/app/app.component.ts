@@ -4,6 +4,7 @@ import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import * as moment from 'moment-timezone';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
@@ -194,7 +195,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     if (timezone === null) {
-      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      timezone = moment.tz.guess(true);
     }
 
     const localization: LocalizationInterface = {

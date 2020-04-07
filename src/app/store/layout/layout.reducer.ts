@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import * as moment from 'moment-timezone';
 
 import { Viewports } from 'src/app/shared/constants';
 import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
@@ -52,15 +53,15 @@ const reducer = createReducer(
   ),
   /**
    * Reducer for `layoutActions.changeTimezone` action. Within this reducer we
-   * are just storing given timezone to this state.
-   *
-   * TODO: should we validate these somehow?
+   * check that given `timezone` is valid one and if not fallback to `default`
+   * which is `Europe/Helsinki` and then store that normalized timezone to this
+   * state.
    */
   on(
     layoutActions.changeTimezone,
     (state: LayoutState, { timezone }: DictionaryInterface<string>): LayoutState => ({
       ...state,
-      timezone,
+      timezone: moment.tz.names().includes(timezone) ? timezone : 'Europe/Helsinki',
     }),
   ),
   /**

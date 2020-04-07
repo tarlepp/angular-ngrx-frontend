@@ -1402,6 +1402,20 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
+"@types/moment-timezone@0.5.13":
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/@types/moment-timezone/-/moment-timezone-0.5.13.tgz#0317ccc91eb4c7f4901704166166395c39276528"
+  integrity sha512-SWk1qM8DRssS5YR9L4eEX7WUhK/wc96aIr4nMa6p0kTk9YhGGOJjECVhIdPEj13fvJw72Xun69gScXSZ/UmcPg==
+  dependencies:
+    moment ">=2.14.0"
+
+"@types/moment@2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@types/moment/-/moment-2.13.0.tgz#604ebd189bc3bc34a1548689404e61a2a4aac896"
+  integrity sha1-YE69GJvDvDShVIaJQE5hoqSqyJY=
+  dependencies:
+    moment "*"
+
 "@types/node@*":
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.1.tgz#6d11a8c2d58405b3db9388ab740106cbfa64c3c9"
@@ -6744,7 +6758,7 @@ moment-timezone@0.5.28:
   dependencies:
     moment ">= 2.9.0"
 
-moment@2.24.0, "moment@>= 2.9.0":
+moment@*, moment@2.24.0, "moment@>= 2.9.0", moment@>=2.14.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==

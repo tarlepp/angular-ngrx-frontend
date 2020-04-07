@@ -64,6 +64,8 @@
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
     "@types/jasmine": "3.5.10",
     "@types/jasminewd2": "2.0.8",
+    "@types/moment": "2.13.0",
+    "@types/moment-timezone": "0.5.13",
     "@types/node": "13.11.0",
     "codelyzer": "5.2.2",
     "jasmine-core": "3.5.0",

@@ -97,20 +97,16 @@ jobs:
           args: './doc/USAGE_CHECKLIST.md'
 
   build:
-    name: Build application
+    name: Build application Docker image
     runs-on: ubuntu-latest
 
     steps:
       - name: Make checkout
         uses: actions/checkout@v1
 
-      - name: Use Node.js 13.10.1
-        uses: actions/setup-node@v1
-        with:
-          node-version: 13.10.1
+      - name: Set tag var
+        id: vars
+        run: echo ::set-output name=docker_tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Run `yarn build-prod`
-        run: yarn build-prod
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag angular-ngrx-frontend:${{ steps.vars.outputs.docker_tag }}

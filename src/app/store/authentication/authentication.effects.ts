@@ -10,9 +10,9 @@ import { catchError, map, mergeMap, pluck, switchMap } from 'rxjs/operators';
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { SnackbarService } from 'src/app/shared/services';
-import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
+import { authenticationActions, layoutActions, versionActions } from 'src/app/store/store-actions';
 import { AuthenticationLoginType, AuthenticationProfileType } from 'src/app/store/store-types';
-import { AuthenticationAction } from 'src/app/store/store.action';
+import { AuthenticationAction, VersionAction } from 'src/app/store/store.action';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -114,14 +114,17 @@ export class AuthenticationEffects {
    *  1) Logout user properly - see `AuthenticationService` for details
    *  2) Show possible logout message, this one is not needed
    *  3) Redirect user back to application main route
+   *  4) Trigger frontend version fetch, because user might be logout
+   *     from application just because backend version has been changed.
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private logout$: Observable<void> = createEffect((): Observable<void> => this.actions$
+  private logout$: Observable<TypedAction<VersionAction.FETCH_FRONTEND_VERSION>> = createEffect(
+    (): Observable<TypedAction<VersionAction.FETCH_FRONTEND_VERSION>> => this.actions$
     .pipe(
       ofType(authenticationActions.logout),
       pluck('message'),
-      map((message?: string): void => {
+      map((message?: string): TypedAction<VersionAction.FETCH_FRONTEND_VERSION> => {
         this.authService.logout();
 
         if (message) {
@@ -133,9 +136,10 @@ export class AuthenticationEffects {
         this.router
           .navigate(['/'])
           .finally();
+
+        return versionActions.fetchFrontendVersion();
       }),
     ),
-    { dispatch: false },
   );
 
   /**

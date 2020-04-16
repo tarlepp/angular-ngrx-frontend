@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Angular Frontend</title>
+    <title>Angular NgRx Frontend</title>
 
     <base href="/" />
 
@@ -28,43 +28,45 @@
       }
 
       .app-loading {
-        opacity: 0;
+        display: flex;
         position: fixed;
-        height: 100%;
-        width: 100%;
         top: 0;
         left: 0;
-        z-index: -1;
-        display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: -1;
       }
 
       .spinner {
-        margin: 200px auto;
+        position: relative;
         width: 80px;
         height: 80px;
-        position: relative;
+        margin: 200px auto;
       }
 
-      .cube1, .cube2 {
-        background-color: #3f51b5;
-        width: 30px;
-        height: 30px;
+      .cube1,
+      .cube2 {
         position: absolute;
         top: 0;
         left: 0;
+        width: 30px;
+        height: 30px;
+        background-color: #3f51b5;
         animation: sk-cubemove 1.8s infinite ease-in-out;
       }
 
       .cube2 {
-        animation-delay: -0.9s;
+        animation-delay: -.9s;
       }
 
       @keyframes fadein {
         from {
           opacity: 0;
         }
+
         to {
           opacity: 1;
         }
@@ -72,14 +74,22 @@
 
       @keyframes sk-cubemove {
         25% {
-          transform: translateX(82px) rotate(-90deg) scale(0.5);
-        } 50% {
+          transform: translateX(82px) rotate(-90deg) scale(.5);
+        }
+
+        50% {
           transform: translateX(82px) translateY(82px) rotate(-179deg);
-        } 50.1% {
+        }
+
+        50.1% {
           transform: translateX(82px) translateY(82px) rotate(-180deg);
-        } 75% {
-          transform: translateX(0px) translateY(82px) rotate(-270deg) scale(0.5);
-        } 100% {
+        }
+
+        75% {
+          transform: translateX(0) translateY(82px) rotate(-270deg) scale(.5);
+        }
+
+        100% {
           transform: rotate(-360deg);
         }
       }

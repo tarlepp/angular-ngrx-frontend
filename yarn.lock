@@ -122,10 +122,10 @@
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-9.1.2.tgz#01bb52d5a8813701bfacbba99338d88cfc0da9b4"
   integrity sha512-5UJ8SzCtFj4vZChVsni4K9oa4qE9tQ67bwnP6DKxkLEJKQWWyasYp+2siAi/7zD2ro2XA0qRMYhgQz5Vj6eBoQ==
 
-"@angular/cdk@9.2.1":
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-9.2.1.tgz#9a590b8d4671fe2fa47648297b5ea372267d238f"
-  integrity sha512-aSG1UNPszkSnpNuDCNd7ZgT29oQ8vqHPmoqjvJI0JkEv3i6uEs5tRuhWl3TK39wDNuwdlq0AY47XTa/0Ppb5RQ==
+"@angular/cdk@9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-9.2.0.tgz#587e4a9d5046fa89a68d8eddaee6b185e2915842"
+  integrity sha512-jeeznvNDpR9POuxzz8Y0zFvMynG9HCJo3ZPTqOjlOq8Lj8876+rLsHDvKEMeLdwlkdi1EweYJW1CLQzI+TwqDA==
   optionalDependencies:
     parse5 "^5.0.0"
 
@@ -183,6 +183,11 @@
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-9.1.2.tgz#52b22120ca3c7d27dccf4239c849158ad64fb435"
   integrity sha512-82DitvlZA5DoE++qiiJdgx6HE71h96sfLHCjjvYJHApoOcnX+zBZFBrflpbXK9W4YdvydU4Lc1Ql1eleQPeT/g==
 
+"@angular/compiler@^9.0.7":
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-9.0.7.tgz#3cf8f9f6dc6e787506a0bc9444c4abb857bb1068"
+  integrity sha512-hFpkuGpzxpK5h59LHHAjTFWsY6DCXZwgJFqvCuTPxWi/srvLGZRXrpC6Z1SlgHI9xxXaPfoa4uWw2VfA3BnqEg==
+
 "@angular/core@9.1.2":
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-9.1.2.tgz#30970d49dc3b53c0dc68cd75dbc2c96afc7fee62"
@@ -212,10 +217,10 @@
     glob "7.1.2"
     yargs "15.3.0"
 
-"@angular/material@9.2.1":
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-9.2.1.tgz#99264d2bd3279dfd631d797f592177d59a559e9f"
-  integrity sha512-nqn/0Eg04DxwnkRGSM1xnmGgtfHYOBcEPbFeTu8c1qAbjFEozd6tpw4y6dQrCCL/JLNIRQPsxsUsVnKeWDF/4Q==
+"@angular/material@9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-9.2.0.tgz#1b6f0a2e115f93885d7fc2dc4b258d8c9cf6821f"
+  integrity sha512-KKzEIVh6/m56m+Ao8p4PK0SyEr0574l3VP2swj1qPag3u+FYgemmXCGTaChrKdDsez+zeTCPXImBGXzE6NQ80Q==
 
 "@angular/platform-browser-dynamic@9.1.2":
   version "9.1.2"
@@ -1179,11 +1184,12 @@
   dependencies:
     tslib "^1.9.0"
 
-"@biesbjerg/ngx-translate-extract@6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@biesbjerg/ngx-translate-extract/-/ngx-translate-extract-6.0.4.tgz#283defea14f4fb7fce2453306d0a2a4c99c02317"
-  integrity sha512-loaQc0ZNpGClW6D4nDslEOZ0OQJnqWWWDkRnPqmv8BlbMHNH1M7hpoQdxa/8utZ6DiWr9D3/rbTK/YlB4V3bHA==
+"@biesbjerg/ngx-translate-extract@6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@biesbjerg/ngx-translate-extract/-/ngx-translate-extract-6.0.3.tgz#9efae5376f007e1f871818e17cd9911adf9318dd"
+  integrity sha512-FWpToi3s4X631vBsOqZ52d1f96g5p4fKLRqPUhHeYVuQskHV4pVCwXg83gio/FoiHeHtiPIvLy8bQqqoFnxEVA==
   dependencies:
+    "@angular/compiler" "^9.0.7"
     "@phenomnomnominal/tsquery" "^4.0.0"
     boxen "^4.2.0"
     colorette "^1.1.0"
@@ -1193,6 +1199,7 @@
     mkdirp "^1.0.3"
     path "^0.12.7"
     terminal-link "^2.1.1"
+    typescript "^3.8.3"
     yargs "^15.3.1"
 
 "@istanbuljs/schema@^0.1.2":
@@ -9940,10 +9947,10 @@ stylelint-order@^4.0.0:
     postcss "^7.0.26"
     postcss-sorting "^5.0.1"
 
-stylelint-scss@3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.17.0.tgz#20480ec52d0acf6fadde54e655f44a858af380da"
-  integrity sha512-zY6fLHailK3++UEtGOwa5BKeWemLOXUATRlV7H056Z+xCT224/TaLXR5x2zjPXFMEf89uqwv15yM9zhbwm/zDw==
+stylelint-scss@3.16.1:
+  version "3.16.1"
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.16.1.tgz#4164558f2113663e54101175588603e014cd0b9c"
+  integrity sha512-ATApYyUzIuwuppReVdAgjpJ77OXRQacV6Ff3vvYaT9z993ZOsSTEN+urdXsk9V28yWCLiAzcNjNZe01aw0VGBg==
   dependencies:
     lodash "^4.17.15"
     postcss-media-query-parser "^0.2.3"
@@ -10598,7 +10605,7 @@ typescript@3.6.5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.5.tgz#dae20114a7b4ff4bd642db9c8c699f2953e8bbdb"
   integrity sha512-BEjlc0Z06ORZKbtcxGrIvvwYs5hAnuo6TKdNFL55frVDlB+na3z5bsLhFaIxmT+dPWgBIjMo6aNnTOgHHmHgiQ==
 
-typescript@3.8.3:
+typescript@3.8.3, typescript@^3.8.3:
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
   integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==

@@ -106,7 +106,7 @@ jobs:
 
       - name: Set tag var
         id: vars
-        run: echo ::set-output name=docker_tag::$(echo ${GITHUB_REF})-${GITHUB_SHA}
+        run: echo ::set-output name=docker_tag::$(echo ${GITHUB_REF} | sed -r 's/[\/()\.]+/_/g')-${GITHUB_SHA}
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag angular-ngrx-frontend:${{ steps.vars.outputs.docker_tag }}

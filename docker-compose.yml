@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile_dev
     command: sh -c 'make start-yarn'
+    user: $HOST_UID:$HOST_GID
     ports:
       - 4200:4200
     volumes:

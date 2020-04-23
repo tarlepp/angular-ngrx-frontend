@@ -17,8 +17,7 @@ supported make commands, note that you can get this same list with just
 running `make` command:
 
 ```bash
-bash                 # Get bash inside PHP container
-fix-permissions      # Fix file permissions
+bash                 # Get bash inside Node container
 start-build          # Start application in development mode and build containers
 start                # Start application in development mode
 start-yarn           # Run start command with yarn

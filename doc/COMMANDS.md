@@ -43,9 +43,9 @@ Below you can see a list of all those custom commands that you most likely
 need to use at some point of development process:
 
 ```bash
-extract-translations    # Extract translations, see TRANSLATIONS.md for detailed information
-lint:scss               # Lint all SCSS files using stylelint tool - https://stylelint.io/
-lint:ts                 # Lint all TypeScript files using TSLint tool - https://palantir.github.io/tslint/
+extract-translations    # Extract translations, see TRANSLATIONS.md
+lint:scss               # Lint SCSS files by https://stylelint.io/
+lint:ts                 # Lint TS files by https://palantir.github.io/tslint/
 ```
 
 Example:

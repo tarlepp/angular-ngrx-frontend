@@ -1,8 +1,8 @@
 # Fetch build image
-FROM node:14.1.0 as build
+FROM node:14.2.0 as build
 
 # Install correct version of Angular CLI tool
-RUN npm install -g @angular/cli@9.1.4
+RUN npm install -g @angular/cli@9.1.5
 
 # Copy sources to container
 COPY ./ /src/

@@ -78,6 +78,12 @@ jobs:
           config: './markdown-lint.yml'
           args: './doc/CONCEPTS_AND_FEATURES.md'
 
+      - name: Lint `doc/README.md`
+        uses: avto-dev/markdown-lint@v1
+        with:
+          config: './markdown-lint.yml'
+          args: './doc/README.md'
+
       - name: Lint `doc/SPEED_UP_DOCKER_COMPOSE.md`
         uses: avto-dev/markdown-lint@v1
         with:
@@ -89,6 +95,12 @@ jobs:
         with:
           config: './markdown-lint.yml'
           args: './doc/TOOLS.md'
+
+      - name: Lint `doc/TRANSLATIONS.md`
+        uses: avto-dev/markdown-lint@v1
+        with:
+          config: './markdown-lint.yml'
+          args: './doc/TRANSLATIONS.md'
 
       - name: Lint `doc/USAGE_CHECKLIST.md`
         uses: avto-dev/markdown-lint@v1

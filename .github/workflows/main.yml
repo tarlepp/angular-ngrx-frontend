@@ -60,13 +60,13 @@ jobs:
       - name: Make checkout
         uses: actions/checkout@v1
 
-      - name: Lint `README.md`
+      - name: Lint `./README.md`
         uses: avto-dev/markdown-lint@v1
         with:
           config: './markdown-lint.yml'
           args: './README.md'
 
-      - name: Lint `doc/*.md`
+      - name: Lint all the resource docs under `./doc/` directory
         uses: avto-dev/markdown-lint@v1
         with:
           config: './markdown-lint.yml'

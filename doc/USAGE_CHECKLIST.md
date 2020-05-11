@@ -26,3 +26,10 @@ started to use this template.
       jobs to check application code.
   * [ ] [main.yml](../.github/workflows/main.yml) - Check file contents and
         modify it for your needs.
+  * [ ] [vulnerability-scan.yml](../.github/workflows/vulnerability-scan.yml) -
+        Check file contents and modify it for your needs.
+* [ ] Delete this file.
+
+---
+
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

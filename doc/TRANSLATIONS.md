@@ -120,3 +120,7 @@ different languages and there isn't any redundant translations tags.
 * [Great tutorial](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-angular7-app-with-ngx-translate)
 * [Github](https://github.com/ngx-translate/core)
 * [Ngx-Translate home page](http://www.ngx-translate.com/)
+
+---
+
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

@@ -98,10 +98,12 @@ make start-build
 
 ## Resources
 
+* [Resource index](doc/README.md)
 * [Custom commands](doc/COMMANDS.md)
 * [Concepts and features](doc/CONCEPTS_AND_FEATURES.md)
 * [Speed problems with application?](doc/SPEED_UP_DOCKER_COMPOSE.md)
 * [Tools](doc/TOOLS.md)
+* [Translations](doc/TRANSLATIONS.md)
 * [Usage checklist](doc/USAGE_CHECKLIST.md)
 
 ## External links / resources

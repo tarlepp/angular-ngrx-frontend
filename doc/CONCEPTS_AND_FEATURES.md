@@ -1,7 +1,7 @@
 # What is this?
 
 This document contains information about main concepts and features how this
-application is built and how you can use it.
+application is build and how you can use it.
 
 ## Table of Contents
 
@@ -153,3 +153,7 @@ so that error is shown within Angular Material snackbar.
 * [@ngrx/store](https://ngrx.io/guide/store)
 * [@ngx-translate/core](http://www.ngx-translate.com/)
 * [ngx-webstorage](https://github.com/PillowPillow/ng2-webstorage)
+
+---
+
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

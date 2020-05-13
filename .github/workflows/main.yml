@@ -60,41 +60,17 @@ jobs:
       - name: Make checkout
         uses: actions/checkout@v1
 
-      - name: Lint `README.md`
+      - name: Lint `./README.md`
         uses: avto-dev/markdown-lint@v1
         with:
           config: './markdown-lint.yml'
           args: './README.md'
 
-      - name: Lint `doc/COMMANDS.md`
+      - name: Lint all the resource docs under `./doc/` directory
         uses: avto-dev/markdown-lint@v1
         with:
           config: './markdown-lint.yml'
-          args: './doc/COMMANDS.md'
-
-      - name: Lint `doc/CONCEPTS_AND_FEATURES.md`
-        uses: avto-dev/markdown-lint@v1
-        with:
-          config: './markdown-lint.yml'
-          args: './doc/CONCEPTS_AND_FEATURES.md'
-
-      - name: Lint `doc/SPEED_UP_DOCKER_COMPOSE.md`
-        uses: avto-dev/markdown-lint@v1
-        with:
-          config: './markdown-lint.yml'
-          args: './doc/SPEED_UP_DOCKER_COMPOSE.md'
-
-      - name: Lint `doc/TOOLS.md`
-        uses: avto-dev/markdown-lint@v1
-        with:
-          config: './markdown-lint.yml'
-          args: './doc/TOOLS.md'
-
-      - name: Lint `doc/USAGE_CHECKLIST.md`
-        uses: avto-dev/markdown-lint@v1
-        with:
-          config: './markdown-lint.yml'
-          args: './doc/USAGE_CHECKLIST.md'
+          args: './doc/*.md'
 
   build:
     name: Build application Docker image

@@ -17,7 +17,7 @@ npm-check-updates upgrades your package.json dependencies to the latest
 versions, ignoring specified versions.
 
 npm-check-updates maintains your existing semantic versioning policies, i.e.,
-it will upgrade "express": "^4.0.0" to "express": "^5.0.0".
+it will upgrade `"express": "^4.0.0"` to `"express": "^5.0.0"`.
 
 * [Website](https://github.com/tjunnone/npm-check-updates)
 
@@ -30,3 +30,7 @@ or just not a `package.json` file. mversion can easily bump your version and
 optionally commit and create a tag.
 
 * [Website](https://github.com/mikaelbr/mversion)
+
+---
+
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

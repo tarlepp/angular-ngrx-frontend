@@ -83,3 +83,7 @@ To start application you just need to use command;
 ```bash
 docker-sync-stack start
 ```
+
+---
+
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

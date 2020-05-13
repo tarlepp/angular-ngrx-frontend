@@ -5,12 +5,12 @@ This document contains information on how to use translations in the application
 ## Table of Contents
 
 * [What is this?](#what-is-this)
-   * [Table of Contents](#table-of-contents)
-   * [Basic usage](#basic-usage)
-      * [In template files](#in-template-files)
-      * [In TypeScript code](#in-typescript-code)
-   * [Workflow](#workflow)
-   * [Resources](#resources)
+  * [Table of Contents](#table-of-contents)
+  * [Basic usage](#basic-usage)
+    * [In template files](#in-template-files)
+    * [In TypeScript code](#in-typescript-code)
+  * [Workflow](#workflow)
+  * [Resources](#resources)
 
 ## Basic usage
 
@@ -120,3 +120,7 @@ different languages and there isn't any redundant translations tags.
 * [Great tutorial](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-angular7-app-with-ngx-translate)
 * [Github](https://github.com/ngx-translate/core)
 * [Ngx-Translate home page](http://www.ngx-translate.com/)
+
+---
+
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

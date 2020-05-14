@@ -2,7 +2,7 @@
 FROM node:14.2.0 as build
 
 # Install correct version of Angular CLI tool
-RUN npm install -g @angular/cli@9.1.5
+RUN npm install -g @angular/cli@9.1.6
 
 # Copy sources to container
 COPY ./ /src/

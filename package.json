@@ -60,7 +60,7 @@
     "@angular/cli": "9.1.6",
     "@angular/compiler-cli": "9.1.7",
     "@angular/language-service": "9.1.7",
-    "@biesbjerg/ngx-translate-extract": "6.0.4",
+    "@biesbjerg/ngx-translate-extract": "6.1.0",
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
     "@types/jasmine": "3.5.10",
     "@types/jasminewd2": "2.0.8",

@@ -48,7 +48,7 @@
     "@ngrx/store": "9.2.0",
     "@ngrx/store-devtools": "9.2.0",
     "@ngx-translate/core": "12.1.2",
-    "@ngx-translate/http-loader": "4.0.0",
+    "@ngx-translate/http-loader": "5.0.0",
     "moment": "2.26.0",
     "moment-timezone": "0.5.31",
     "ngx-moment": "4.0.1",

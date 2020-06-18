@@ -48,19 +48,18 @@
     "@ngrx/store": "9.2.0",
     "@ngrx/store-devtools": "9.2.0",
     "@ngx-translate/core": "12.1.2",
-    "@ngx-translate/http-loader": "4.0.0",
+    "@ngx-translate/http-loader": "5.0.0",
     "moment": "2.26.0",
     "moment-timezone": "0.5.31",
     "ngx-moment": "4.0.1",
     "ngx-webstorage": "5.0.0",
     "rxjs": "6.5.5",
     "tslib": "1.13.0",
-    "zone.js": "0.10.3",
-    "snyk": "^1.341.1"
+    "zone.js": "0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.901.8",
-    "@angular/cli": "9.1.8",
+    "@angular-devkit/build-angular": "0.901.9",
+    "@angular/cli": "9.1.9",
     "@angular/compiler-cli": "9.1.11",
     "@angular/language-service": "9.1.11",
     "@biesbjerg/ngx-translate-extract": "7.0.0",
@@ -79,13 +78,14 @@
     "karma-jasmine": "3.3.1",
     "karma-jasmine-html-reporter": "1.5.4",
     "protractor": "7.0.0",
-    "stylelint": "13.6.0",
+    "stylelint": "13.6.1",
     "stylelint-config-angular-material": "1.0.0",
     "stylelint-config-sass-guidelines": "7.0.0",
-    "stylelint-scss": "3.17.2",
+    "stylelint-scss": "3.18.0",
     "ts-node": "8.10.2",
     "tslint": "6.1.2",
-    "typescript": "3.8.3"
+    "typescript": "3.8.3",
+    "snyk": "1.345.1"
   },
   "snyk": true
 }

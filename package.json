@@ -85,7 +85,7 @@
     "ts-node": "8.10.2",
     "tslint": "6.1.2",
     "typescript": "3.8.3",
-    "snyk": "1.345.1"
+    "snyk": "1.346.0"
   },
   "snyk": true
 }

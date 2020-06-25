@@ -19,7 +19,6 @@ import { LayoutState } from 'src/app/store/layout/layout.state';
  * locale changes to work as expected. And this might cause some performance
  * issues - or not - dunno.
  */
-// TODO: Add Angular decorator.
 @Pipe({
   name: 'localDate',
   pure: false,

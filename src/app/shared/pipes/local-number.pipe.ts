@@ -23,11 +23,11 @@ import { LayoutState } from 'src/app/store/store-states';
  * locale changes to work as expected. And this might cause some performance issues
  * - or not dunno.
  */
+// TODO: Add Angular decorator.
 @Pipe({
   name: 'localNumber',
   pure: false,
 })
-
 export class LocalNumberPipe implements PipeTransform, OnDestroy {
   private locale: Locale;
   private subscriptions: Subscription;

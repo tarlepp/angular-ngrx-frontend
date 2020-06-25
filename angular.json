@@ -30,7 +30,15 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "@angular/common/locales/en",
+              "@angular/common/locales/fi",
+              "@angular/common/locales/extra/en",
+              "@angular/common/locales/extra/fi",
+              "moment-timezone",
+              "zone.js/dist/zone-error"
+            ]
           },
           "configurations": {
             "production": {

@@ -27,7 +27,6 @@ import { LayoutState } from 'src/app/store/store-states';
   name: 'localNumber',
   pure: false,
 })
-
 export class LocalNumberPipe implements PipeTransform, OnDestroy {
   private locale: Locale;
   private subscriptions: Subscription;

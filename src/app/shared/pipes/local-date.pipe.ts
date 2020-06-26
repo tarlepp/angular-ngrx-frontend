@@ -23,7 +23,6 @@ import { LayoutState } from 'src/app/store/layout/layout.state';
   name: 'localDate',
   pure: false,
 })
-
 export class LocalDatePipe implements PipeTransform, OnDestroy {
   private locale: Locale;
   private timezone: string;

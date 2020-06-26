@@ -9,7 +9,7 @@
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-import 'zone.js/dist/zone-error';
+// import 'zone.js/dist/zone-error';
 
 import { version } from 'package.json';
 import { EnvironmentInterface } from 'src/app/shared/interfaces';  // Included with Angular CLI.

@@ -30,7 +30,7 @@ export class ErrorMessageComponent implements OnInit {
    * here!
    */
   private static markTexts(): void {
-    marker([])
+    marker([]);
   }
 
   /**
@@ -123,7 +123,7 @@ export class ErrorMessageComponent implements OnInit {
 
         // If translated text is the same as the property definition (text tag) itself - we don't have translation
         if (texts[message[property]] === message[property]) {
-           if (!environment.production) {
+          if (!environment.production) {
             console.warn(`Missing translation! '${message[property]}' - This is only shown in non 'production' environments.`);
           }
 

@@ -53,7 +53,7 @@
     "moment-timezone": "0.5.31",
     "ngx-moment": "4.0.1",
     "ngx-webstorage": "5.0.0",
-    "rxjs": "6.5.5",
+    "rxjs": "6.6.0",
     "tslib": "2.0.0",
     "zone.js": "0.10.3"
   },

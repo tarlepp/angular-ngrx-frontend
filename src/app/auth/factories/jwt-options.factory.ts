@@ -10,10 +10,10 @@ import { ConfigurationService } from 'src/app/shared/services';
 export function jwtOptionsFactory(localStorage: LocalStorageService): JwtModuleOptions['config'] {
   return {
     tokenGetter: (): any => localStorage.retrieve('token'), // Get token from local storage
-    whitelistedDomains: [ // White list our backend API host
+    allowedDomains: [ // Allowed domains with Json Web Token
       new URL(ConfigurationService.configuration.apiUrl).host,
     ],
-    blacklistedRoutes: [ // Black list our auth token get route
+    disallowedRoutes: [ // Disallowed routes for Json Web Token
       ConfigurationService.configuration.tokenUrl,
     ],
   };

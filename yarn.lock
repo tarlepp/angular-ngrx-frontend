@@ -127,10 +127,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/cdk@10.1.2":
-  version "10.1.2"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-10.1.2.tgz#0c16ad767be4daaeb13d16652ba66bcfd79d5e1e"
-  integrity sha512-nK2+UppQvD8wz4Ur0MAa9mVKa1rZsJLYmJtZzQ0tRNFdgdhCQZe/PIYxvrR0uByoe5lYsjtKESjltb9PxZE08g==
+"@angular/cdk@10.1.3":
+  version "10.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-10.1.3.tgz#4a8d7dcdbe344b4d7e8e0ed5c25c19b78313b494"
+  integrity sha512-xMV1M41mfuaQod4rtAG/duYiWffGIC2C87E1YuyHTh8SEcHopGVRQd2C8PWH+iwinPbes7AjU1uzCEvmOYikrA==
   dependencies:
     tslib "^2.0.0"
   optionalDependencies:
@@ -240,10 +240,10 @@
     glob "7.1.2"
     yargs "15.3.0"
 
-"@angular/material@10.1.2":
-  version "10.1.2"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-10.1.2.tgz#92efd28099869d7a16acb9d7f49c3a3d396ddba9"
-  integrity sha512-iNSfkPdRfXPW+VJQ66qKQvmR5FCQY/ZP1Vz+bi+fYsdNrT/yYEA8UT9xcAMw5C14i4d86zpIk3hSC0hz+9vQtQ==
+"@angular/material@10.1.3":
+  version "10.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-10.1.3.tgz#016fafae127a6c3ac9594790074418bad3f69d4c"
+  integrity sha512-6ygbCVcejFydmZUlOcNreiWQTvL4kOrEp/M51DV70hqffTnxajCzaRe2MQhxisENB/bR8mtMvf8YY3Rsys/HCw==
   dependencies:
     tslib "^2.0.0"
 
@@ -1459,30 +1459,40 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.6.4"
 
-"@ngrx/effects@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-9.2.0.tgz#155bfcfd528aa993fd19f60f9536385984a80910"
-  integrity sha512-8V09zDIPehGpzgfcgyczelovsVYJvDQhN9wHt37K5A+YCG0CI8nj8FmKokHATwv/S62YqFrOVnr/TZacxpDhBw==
+"@ngrx/effects@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-10.0.0.tgz#d58151b1d7f5731ea42de7ed239bbab3d5866542"
+  integrity sha512-HHcQQ6mj1Cd0rQgnX5Wp3f7G8PKhh+Rk+jofsOsE6aHQPuuNhmnDwSA1U4PT4sXNv6JmFi5GjUqBz+tuw83oFQ==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/entity@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-9.2.0.tgz#4acdd74edf72f7ab061ca9295ee323d1978a4329"
-  integrity sha512-xSnS4EmksfvIobl2KMpljE1RMYuJGq7j5cCb9TnlsXkEc7cUa0TyGviSsxceSpk9WKtKARPR/AcVrVCESucF6Q==
+"@ngrx/entity@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-10.0.0.tgz#ad46f448c856c4c5902b7f9446af88a580f4d50d"
+  integrity sha512-vm8vR6hbJKuIq+PjX4C7li3thPPt1Wnrl9Zf2VYgSP+Mr6vaU0Q+5UgBIRbMDKS1AthGPv+MDVI+kAOlhOyDog==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/router-store@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-9.2.0.tgz#e84bb25b3480d06605d1006fd50983dd541c7c5d"
-  integrity sha512-thu6aU9YWM64oNEk4Srx/mNSeQ2SPJKlTji8MSzfr06qgCMyPSXZBYlfs8HqY+af3eB7XBEhb/4ew4JJ6xC9zw==
+"@ngrx/router-store@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-10.0.0.tgz#e162e69da138f5a3e2d194f9e81d76d117cd2124"
+  integrity sha512-naK+IlgTQNEWWlKndQIBS/EQZ2h3pRF4owF+4kVpn+OI5Il7+Nugf0spj+0IFGd21Z7YvBe9C54SQPOPP4HARg==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/store-devtools@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-9.2.0.tgz#298b86b0c4ea483313b67d64a68b2d3376a5a04f"
-  integrity sha512-/FvgcpjO4IvwNFnRVoHGikAvckr6fxKf4NgYoTQ9giI8xavolLvuQUHxzH20legi5dgZz34ii2m2g1Q7OxEV8w==
+"@ngrx/store-devtools@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-10.0.0.tgz#018716afd3df89bd2fa1f603966878f82e80d727"
+  integrity sha512-+7SSPW9H+IdGX04QYmfgqYOeFM++PLD6CxGRUkIIc+6jFovanMS6CVKw6V+WeerPwoZaRn43cMIDj9FChMQ4oA==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/store@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-9.2.0.tgz#39f663f98b5332b33c8d197be3ab08bafd85bc88"
-  integrity sha512-V8AI3mxbMztVpbZpALkLZYlGkofKcu9GaOCY5e+sZ1VcJ90oxhFjBpnmd6MuVdmhep1XAHALb1B8ZbBFn+xsgQ==
+"@ngrx/store@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-10.0.0.tgz#a355f0fdf6129b78b82fb57cacdb277bde0de066"
+  integrity sha512-+mhTGJXjc+55KI1pWV5SSuP+JBAr35U1AbnBYJqqXuwJVXnJ8+n6gAr06qpPN+YMf+zRQDFwAIrqyFOfMqeJHg==
+  dependencies:
+    tslib "^2.0.0"
 
 "@ngtools/webpack@10.0.5":
   version "10.0.5"
@@ -7196,15 +7206,10 @@ istanbul-reports@^3.0.2:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
-jasmine-core@3.6.0:
+jasmine-core@3.6.0, jasmine-core@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.6.0.tgz#491f3bb23941799c353ceb7a45b38a950ebc5a20"
   integrity sha512-8uQYa7zJN8hq9z+g8z1bqCfdC8eoDAeVnM5sfqs7KHv9/ifoJ500m018fpFc7RDaO6SWCLCXwo/wPSNcdYTgcw==
-
-jasmine-core@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.5.0.tgz#132c23e645af96d85c8bca13c8758b18429fc1e4"
-  integrity sha512-nCeAiw37MIMA9w9IXso7bRaLl+c/ef3wnxsoSAlYrzS+Ot0zTG6nU8G/cIfGkqpkjX2wNaIW9RFG0TwIFnG6bA==
 
 jasmine-core@~2.8.0:
   version "2.8.0"
@@ -7423,12 +7428,12 @@ karma-jasmine-html-reporter@1.5.4:
   resolved "https://registry.yarnpkg.com/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-1.5.4.tgz#669f33d694d88fce1b0ccfda57111de716cb0192"
   integrity sha512-PtilRLno5O6wH3lDihRnz0Ba8oSn0YUJqKjjux1peoYGwo0AQqrWRbdWk/RLzcGlb+onTyXAnHl6M+Hu3UxG/Q==
 
-karma-jasmine@3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-3.3.1.tgz#c01b1a2ec973e1531c1f6535e1d7d66b8e4275c2"
-  integrity sha512-Nxh7eX9mOQMyK0VSsMxdod+bcqrR/ikrmEiWj5M6fwuQ7oI+YEF1FckaDsWfs6TIpULm9f0fTKMjF7XcrvWyqQ==
+karma-jasmine@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-4.0.0.tgz#2d172dc5afdd047892a23563ec4db480e93d22c7"
+  integrity sha512-6hFwluoj6i/ItzG1D3MEfBHrAgKqyS+KsAqaFqeIsJth1B+pCIh6AItT94w7Z5FZlOA7Qcs9qoibUMocM9yBPw==
   dependencies:
-    jasmine-core "^3.5.0"
+    jasmine-core "^3.6.0"
 
 karma-source-map-support@1.4.0:
   version "1.4.0"
@@ -11863,10 +11868,10 @@ snyk-try-require@1.3.1, snyk-try-require@^1.1.1, snyk-try-require@^1.3.1:
     lru-cache "^4.0.0"
     then-fs "^2.0.0"
 
-snyk@1.370.1:
-  version "1.370.1"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.370.1.tgz#2363792fbfe1ba8737bb5b84e344e2625ad15134"
-  integrity sha512-lvag7aVp1KCo9xI9k1MAHFVAtk0hL6TYjqiaTiHYxfRuaP72u7t3/DEOI4EpQ6xXypPrdg+D3UZDArcGA5qGrA==
+snyk@1.373.0:
+  version "1.373.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.373.0.tgz#5c1813bb0a771e5a2952732ade203be469e15be0"
+  integrity sha512-P/BF3DnMbP2NFHw4RcQ2w4MwashUH2/lkezNq0bn51OJqktfrn/aebcJxe6RtSKemww5z8DSen8D2REz1Vzc6Q==
   dependencies:
     "@snyk/cli-interface" "2.8.1"
     "@snyk/dep-graph" "1.18.3"

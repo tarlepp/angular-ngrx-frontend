@@ -1,9 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Store, select } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { authenticationActions } from 'src/app/store/store-actions';
 import { authenticationSelectors } from 'src/app/store/store-selectors';
 import { AuthenticationState } from 'src/app/store/store-states';
@@ -15,8 +17,12 @@ import { AuthenticationState } from 'src/app/store/store-states';
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
+  @ViewChild('loginFormElement')
+  public loginFormElement: NgForm;
+
   public loginForm: FormGroup;
   public loading: boolean;
+  public focus: boolean;
 
   private subscriptions: Subscription;
 
@@ -25,6 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
    * within this component and initialize needed properties.
    */
   public constructor(private formBuilder: FormBuilder, private authenticationStore: Store<AuthenticationState>) {
+    this.focus = true;
     this.subscriptions = new Subscription();
   }
 
@@ -40,6 +47,20 @@ export class LoginComponent implements OnInit, OnDestroy {
       .add(this.authenticationStore
         .select(authenticationSelectors.loading)
         .subscribe((loading: boolean): boolean => this.loading = loading),
+      );
+
+    // Reset login form if error happens
+    this.subscriptions
+      .add(this.authenticationStore
+        .pipe(
+          select(authenticationSelectors.error),
+          filter((error: ServerErrorInterface|null): boolean => error !== null),
+        )
+        .subscribe((): void => {
+          this.loginForm.reset();
+          this.loginFormElement.resetForm();
+          this.focus = true;
+        }),
       );
 
     // Initialize login form
@@ -64,6 +85,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     const credentials: CredentialsRequestInterface = {
       ...this.loginForm.value,
     };
+
+    this.focus = false;
 
     this.authenticationStore.dispatch(authenticationActions.login({ credentials }));
   }

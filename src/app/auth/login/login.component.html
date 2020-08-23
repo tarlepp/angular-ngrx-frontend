@@ -5,6 +5,7 @@
   <div class="login-container mat-elevation-z8 margin-vertical">
     <form autocomplete="off"
           fxLayout="column"
+          #loginFormElement="ngForm"
           [formGroup]="loginForm"
           (ngSubmit)="submit()"
           [class.ghost]="loading"
@@ -12,22 +13,26 @@
       <h1 class="mat-title">{{ 'component.auth.login.title' | translate }}</h1>
 
       <mat-form-field>
-        <input type="text" placeholder="{{ 'component.auth.login.username' | translate }}"
-               formControlName="username"
-               matInput
-               [appAutoFocus]="true"
-               [readonly]="loading"
-        />
+        <label>
+          <input type="text" placeholder="{{ 'component.auth.login.username' | translate }}"
+                 formControlName="username"
+                 matInput
+                 [appAutoFocus]="focus"
+                 [readonly]="loading"
+          />
+        </label>
 
         <mat-error>{{ 'component.auth.login.error-username' | translate }}</mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlexOffset="8px">
-        <input type="password" placeholder="{{ 'component.auth.login.password' | translate }}"
-               formControlName="password"
-               matInput
-               [readonly]="loading"
-        />
+        <label>
+          <input type="password" placeholder="{{ 'component.auth.login.password' | translate }}"
+                 formControlName="password"
+                 matInput
+                 [readonly]="loading"
+          />
+        </label>
 
         <mat-error>{{ 'component.auth.login.error-password' | translate }}</mat-error>
       </mat-form-field>

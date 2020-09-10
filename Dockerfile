@@ -1,5 +1,5 @@
 # Fetch build image
-FROM node:14.8.0 as build
+FROM node:14.10.0 as build
 
 # Install correct version of Angular CLI tool
 RUN npm install -g @angular/cli@10.0.8

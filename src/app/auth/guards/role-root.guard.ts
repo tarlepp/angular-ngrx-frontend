@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanActivateChild,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -13,15 +20,15 @@ export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateC
    * Constructor of the class, where we DI all services that we need to use
    * within this guard.
    */
-  public constructor(protected authenticationStore: Store<AuthenticationState>) {
-    super(authenticationStore);
+  public constructor(protected router: Router, protected authenticationStore: Store<AuthenticationState>) {
+    super(router, authenticationStore);
   }
 
   /**
    * Purpose of this guard is to check that user has `Role.ROLE_ROOT` or not.
    * This method is used within route definition `canActivate` definition.
    */
-  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree> {
     return this.checkRole(Role.ROLE_ROOT);
   }
 
@@ -29,7 +36,7 @@ export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateC
    * Purpose of this guard is to check that user has `Role.ROLE_ROOT` or not.
    * This method is used within route definition `canActivateChild` definition.
    */
-  public canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  public canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree> {
     return this.checkRole(Role.ROLE_ROOT);
   }
 }

@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 import { Observable, Observer } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -20,20 +20,17 @@ export abstract class BaseAuth {
    * Method will redirect user either to `/` or `/auth/login` depending if user
    * needs to be authenticated or not.
    */
-  protected makeCheck(needsToBeAuthenticated: boolean): Observable<boolean> {
-    return new Observable((observer: Observer<boolean>): void => {
+  protected makeCheck(needsToBeAuthenticated: boolean): Observable<boolean|UrlTree> {
+    return new Observable((observer: Observer<boolean|UrlTree>): void => {
       this.authenticationService
         .isAuthenticated()
         .pipe(take(1))
         .subscribe((authenticated: boolean): void => {
-          observer.next(authenticated === needsToBeAuthenticated);
+          const output = (authenticated !== needsToBeAuthenticated)
+            ? this.router.parseUrl(authenticated ? '/' : '/auth/login')
+            : authenticated === needsToBeAuthenticated;
 
-          if (authenticated !== needsToBeAuthenticated) {
-            this.router
-              .navigate(authenticated ? ['/'] : ['/auth/login'])
-              .finally();
-          }
-
+          observer.next(output);
           observer.complete();
         });
     });

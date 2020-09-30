@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanActivateChild,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { BaseAuth } from 'src/app/auth/guards/base-auth';
@@ -22,7 +29,7 @@ export class AnonymousGuard extends BaseAuth implements CanActivate, CanActivate
    *
    * This method is used within route definition `canActivate` definition.
    */
-  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree> {
     return this.makeCheck(false);
   }
 
@@ -33,7 +40,7 @@ export class AnonymousGuard extends BaseAuth implements CanActivate, CanActivate
    *
    * This method is used within route definition `canActivateChild` definition.
    */
-  public canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  public canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree> {
     return this.makeCheck(false);
   }
 }

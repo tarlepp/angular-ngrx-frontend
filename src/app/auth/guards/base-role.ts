@@ -1,5 +1,6 @@
-import { Store, select } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
+import { Router, UrlTree } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable, combineLatest, of } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 
 import { Role } from 'src/app/auth/enums';
@@ -11,7 +12,7 @@ export abstract class BaseRole {
    * Constructor of the class. This is called from classes that extends this
    * abstract class.
    */
-  protected constructor(protected authenticationStore: Store<AuthenticationState>) { }
+  protected constructor(protected router: Router, protected authenticationStore: Store<AuthenticationState>) { }
 
   /**
    * Helper method to make check if user has certain role or not. This is used
@@ -24,12 +25,26 @@ export abstract class BaseRole {
    * Method will redirect user either to `/` or `/auth/login` depending if user
    * needs to be authenticated or not.
    */
-  protected checkRole(role: Role): Observable<boolean> {
-    return this.authenticationStore
-      .pipe(
-        select(authenticationSelectors.roles),
-        take(1),
-        switchMap((roles: Array<Role>): Observable<boolean> => of(roles.includes(role))),
-      );
+  protected checkRole(role: Role): Observable<boolean|UrlTree> {
+    return combineLatest([
+      this.authenticationStore.select(authenticationSelectors.loggedIn),
+      this.authenticationStore.select(authenticationSelectors.roles),
+    ])
+    .pipe(
+      take(1),
+      switchMap(([loggedIn, roles]: [boolean, Array<Role>]): Observable<boolean|UrlTree> => {
+        let output;
+
+        if (loggedIn === false) {
+          output = this.router.parseUrl('/auth/login');
+        } else if (roles.includes(role) === false) {
+          output = this.router.parseUrl('/');
+        } else {
+          output = true;
+        }
+
+        return of(output);
+      }),
+    );
   }
 }

@@ -1,6 +1,6 @@
 import { Router, UrlTree } from '@angular/router';
-import { Observable, Observer } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators';
 
 import { AuthenticationService } from 'src/app/auth/services';
 
@@ -21,18 +21,15 @@ export abstract class BaseAuth {
    * needs to be authenticated or not.
    */
   protected makeCheck(needsToBeAuthenticated: boolean): Observable<boolean|UrlTree> {
-    return new Observable((observer: Observer<boolean|UrlTree>): void => {
-      this.authenticationService
-        .isAuthenticated()
-        .pipe(take(1))
-        .subscribe((authenticated: boolean): void => {
-          const output = (authenticated !== needsToBeAuthenticated)
+    return this.authenticationService
+      .isAuthenticated()
+      .pipe(
+        take(1),
+        switchMap((authenticated: boolean): Observable<boolean|UrlTree> => of(
+          (authenticated !== needsToBeAuthenticated)
             ? this.router.parseUrl(authenticated ? '/' : '/auth/login')
-            : authenticated === needsToBeAuthenticated;
-
-          observer.next(output);
-          observer.complete();
-        });
-    });
+            : authenticated === needsToBeAuthenticated,
+        )),
+      );
   }
 }

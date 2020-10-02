@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 
 import { Role } from 'src/app/auth/enums';
 import { BaseRole } from 'src/app/auth/guards/base-role';
-import { AuthenticationState } from 'src/app/store/store-states';
+import { AppState } from 'src/app/store';
 
 @Injectable()
 export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateChild {
@@ -20,8 +20,8 @@ export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateC
    * Constructor of the class, where we DI all services that we need to use
    * within this guard.
    */
-  public constructor(protected router: Router, protected authenticationStore: Store<AuthenticationState>) {
-    super(router, authenticationStore);
+  public constructor(protected router: Router, protected store: Store<AppState>) {
+    super(router, store);
   }
 
   /**

@@ -5,14 +5,20 @@ import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Observable, from, of } from 'rxjs';
-import { catchError, map, mergeMap, pluck, switchMap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, mergeMap, pluck, switchMap, tap } from 'rxjs/operators';
 
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { SnackbarService } from 'src/app/shared/services';
-import { authenticationActions, layoutActions, versionActions } from 'src/app/store/store-actions';
-import { AuthenticationLoginType, AuthenticationProfileType } from 'src/app/store/store-types';
-import { AuthenticationAction, VersionAction } from 'src/app/store/store.action';
+import {
+  AuthenticationLoginTypes,
+  AuthenticationProfileTypes,
+  AuthenticationType,
+  VersionType,
+  authenticationActions,
+  layoutActions,
+  versionActions,
+} from 'src/app/store';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -33,16 +39,20 @@ export class AuthenticationEffects {
    * Second one will trigger user profile loading, that information is used to
    * show some user related messages, etc. in application.
    */
-  private login$: Observable<TypedAction<AuthenticationLoginType>> = createEffect(
-    (): Observable<TypedAction<AuthenticationLoginType>> => this.actions$
+  private login$: Observable<TypedAction<AuthenticationLoginTypes>> = createEffect(
+    (): Observable<TypedAction<AuthenticationLoginTypes>> => this.actions$
     .pipe(
       ofType(authenticationActions.login),
       pluck('credentials'),
-      switchMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationLoginType>> =>
+      exhaustMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationLoginTypes>> =>
         from(this.authService
           .authenticate(credentials)
           .pipe(
-            mergeMap((userData: UserDataInterface): Array<TypedAction<AuthenticationLoginType>> => {
+            mergeMap((userData: UserDataInterface): Array<TypedAction<AuthenticationLoginTypes>> => [
+              layoutActions.updateLocalization({ localization: userData.localization }),
+              authenticationActions.loginSuccess({ userData }),
+            ]),
+            tap((): void => {
               this.snackbarService
                 .message(marker('messages.authentication.login'))
                 .finally();
@@ -50,13 +60,8 @@ export class AuthenticationEffects {
               this.router
                 .navigate(['/'])
                 .finally();
-
-              return [
-                layoutActions.updateLocalization({ localization: userData.localization }),
-                authenticationActions.loginSuccess({ userData }),
-              ];
             }),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.LOGIN_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationType.LOGIN_FAILURE>> =>
               of(authenticationActions.loginFailure({ error: httpErrorResponse.error })),
             ),
           ),
@@ -74,11 +79,11 @@ export class AuthenticationEffects {
    * This effect will be also triggered if/when user reloads application page
    * manually if user token that is stored to local storage is valid one.
    */
-  private loginSuccess$: Observable<TypedAction<AuthenticationAction.PROFILE>> = createEffect(
-    (): Observable<TypedAction<AuthenticationAction.PROFILE>> => this.actions$
+  private loginSuccess$: Observable<TypedAction<AuthenticationType.PROFILE>> = createEffect(
+    (): Observable<TypedAction<AuthenticationType.PROFILE>> => this.actions$
     .pipe(
       ofType(authenticationActions.loginSuccess),
-      switchMap((): Observable<TypedAction<AuthenticationAction.PROFILE>> => of(authenticationActions.profile())),
+      map((): TypedAction<AuthenticationType.PROFILE> => authenticationActions.profile()),
     ),
   );
 
@@ -88,17 +93,17 @@ export class AuthenticationEffects {
    * within this we want to actually fetch user profile information from
    * backend and catch possible errors while fetching that information.
    */
-  private profile$: Observable<TypedAction<AuthenticationProfileType>> = createEffect(
-    (): Observable<TypedAction<AuthenticationProfileType>> => this.actions$
+  private profile$: Observable<TypedAction<AuthenticationProfileTypes>> = createEffect(
+    (): Observable<TypedAction<AuthenticationProfileTypes>> => this.actions$
     .pipe(
       ofType(authenticationActions.profile),
-      switchMap((): Observable<TypedAction<AuthenticationProfileType>> =>
+      switchMap((): Observable<TypedAction<AuthenticationProfileTypes>> =>
         from(this.authService.getProfile()
           .pipe(
-            map((profile: UserProfileInterface): TypedAction<AuthenticationAction.PROFILE_SUCCESS> =>
+            map((profile: UserProfileInterface): TypedAction<AuthenticationType.PROFILE_SUCCESS> =>
               authenticationActions.profileSuccess({ profile }),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationAction.PROFILE_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationType.PROFILE_FAILURE>> =>
               of(authenticationActions.profileFailure({ error: httpErrorResponse.error })),
             ),
           ),
@@ -116,15 +121,13 @@ export class AuthenticationEffects {
    *  3) Redirect user back to application main route
    *  4) Trigger frontend version fetch, because user might be logout
    *     from application just because backend version has been changed.
-   *
-   * Within this effect we won't dispatch any other store actions.
    */
-  private logout$: Observable<TypedAction<VersionAction.FETCH_FRONTEND_VERSION>> = createEffect(
-    (): Observable<TypedAction<VersionAction.FETCH_FRONTEND_VERSION>> => this.actions$
+  private logout$: Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> = createEffect(
+    (): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$
     .pipe(
       ofType(authenticationActions.logout),
       pluck('message'),
-      map((message?: string): TypedAction<VersionAction.FETCH_FRONTEND_VERSION> => {
+      tap((message?: string): void => {
         this.authService.logout();
 
         if (message) {
@@ -136,9 +139,8 @@ export class AuthenticationEffects {
         this.router
           .navigate(['/'])
           .finally();
-
-        return versionActions.fetchFrontendVersion();
       }),
+      map((): TypedAction<VersionType.FETCH_FRONTEND_VERSION> => versionActions.fetchFrontendVersion()),
     ),
   );
 

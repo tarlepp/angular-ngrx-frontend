@@ -4,11 +4,11 @@ import { ServerErrorInterface } from 'src/app/shared/interfaces';
 /**
  * Interface definition for our authentication store contents.
  *
- *  loading
+ *  isLoading
  *    Is store in "loading" state or not, this will be `true` when we're
  *    making login or fetching users profile.
  *
- *  loggedIn
+ *  isLoggedIn
  *    Is current user logged in to application or not.
  *
  *  userData
@@ -21,8 +21,8 @@ import { ServerErrorInterface } from 'src/app/shared/interfaces';
  *    Possible error from backend, can be null.
  */
 export interface AuthenticationState {
-  loading: boolean;
-  loggedIn: boolean;
+  isLoading: boolean;
+  isLoggedIn: boolean;
   userData: UserDataInterface|null;
   profile: UserProfileInterface|null;
   error: ServerErrorInterface|null;

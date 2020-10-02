@@ -21,13 +21,13 @@ import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
  *  device
  *    Current device definition of user browser who is using application.
  *
- *  desktop
+ *  isDesktop
  *    Is user using this application with desktop device or not.
  *
- *  tablet
+ *  isTablet
  *    Is user using this application with tablet device or not.
  *
- *  mobile
+ *  isMobile
  *    Is user using this application with mobile device or not.
  *
  *  anchor
@@ -39,8 +39,8 @@ export interface LayoutState {
   timezone: string;
   viewport: Viewport;
   device: Device;
-  desktop: boolean;
-  tablet: boolean;
-  mobile: boolean;
+  isDesktop: boolean;
+  isTablet: boolean;
+  isMobile: boolean;
   anchor: string|null;
 }

@@ -1,8 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import { ServerErrorValueInterface } from 'src/app/shared/interfaces';
-import { errorActions } from 'src/app/store/store-actions';
-import { ErrorState } from 'src/app/store/store-states';
+import { ErrorState, errorActions } from 'src/app/store';
 
 // Initial state of `Error` store.
 const initialState: ErrorState = {
@@ -13,7 +12,7 @@ const reducer = createReducer(
   initialState,
   // Action to store specified error to store.
   on(
-    errorActions.snackbar,
+    errorActions.showSnackbar,
     (state: ErrorState, { error }: ServerErrorValueInterface): ErrorState => ({
       ...state,
       errorSnackbar: error,

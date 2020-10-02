@@ -8,13 +8,13 @@
  * You can fetch currently logged in user roles by following code examples.
  *
  * Authentication store;
- *  constructor(private authenticationStore: Store<AuthenticationState>) { }
+ *  constructor(private store: Store<AppState>) { }
  *
  *  public ngOnInit(): void {
  *    this.subscription
- *      .add(this.authenticationStore
+ *      .add(this.store
  *        .select(authenticationSelectors.roles)
- *        .subscribe((roles: Array<Role>): Array<Role> => this.rolesA = roles),
+ *        .subscribe((roles: Array<Role>): Array<Role> => this.roles = roles),
  *      );
  *  }
  *

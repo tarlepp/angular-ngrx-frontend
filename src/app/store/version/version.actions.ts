@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { VersionAction } from 'src/app/store/store.action';
+import { VersionType } from 'src/app/store/store.type';
 
 /**
  * Version store actions definitions, that you can dispatch to make
@@ -13,38 +13,38 @@ import { VersionAction } from 'src/app/store/store.action';
  */
 
 // Action to trigger frontend version fetch
-const fetchFrontendVersion = createAction(VersionAction.FETCH_FRONTEND_VERSION);
+const fetchFrontendVersion = createAction(VersionType.FETCH_FRONTEND_VERSION);
 
 /**
  * Frontend version success action that is triggered via effects.
  *
  * @internal
  */
-const fetchFrontendVersionSuccess = createAction(VersionAction.FETCH_FRONTEND_VERSION_SUCCESS, props<{ version: string }>());
+const fetchFrontendVersionSuccess = createAction(VersionType.FETCH_FRONTEND_VERSION_SUCCESS, props<{ version: string }>());
 
 /**
  * Frontend version failure action that is triggered via effects.
  *
  * @internal
  */
-const fetchFrontendVersionFailure = createAction(VersionAction.FETCH_FRONTEND_VERSION_FAILURE, props<{ error: ServerErrorInterface }>());
+const fetchFrontendVersionFailure = createAction(VersionType.FETCH_FRONTEND_VERSION_FAILURE, props<{ error: ServerErrorInterface }>());
 
 // Action to trigger backend version fetch
-const fetchBackendVersion = createAction(VersionAction.FETCH_BACKEND_VERSION);
+const fetchBackendVersion = createAction(VersionType.FETCH_BACKEND_VERSION);
 
 /**
  * Backend version success action that is triggered via effects.
  *
  * @internal
  */
-const fetchBackendVersionSuccess = createAction(VersionAction.FETCH_BACKEND_VERSION_SUCCESS, props<{ version: string }>());
+const fetchBackendVersionSuccess = createAction(VersionType.FETCH_BACKEND_VERSION_SUCCESS, props<{ version: string }>());
 
 /**
  * Backend version failure action that is triggered via effects.
  *
  * @internal
  */
-const fetchBackendVersionFailure = createAction(VersionAction.FETCH_BACKEND_VERSION_FAILURE, props<{ error: ServerErrorInterface }>());
+const fetchBackendVersionFailure = createAction(VersionType.FETCH_BACKEND_VERSION_FAILURE, props<{ error: ServerErrorInterface }>());
 
 // Export all store actions, so that those can be used easily.
 export const versionActions = {

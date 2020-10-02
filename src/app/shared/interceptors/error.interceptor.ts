@@ -5,10 +5,9 @@ import { Store } from '@ngrx/store';
 import { Observable, noop, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { ServerErrorInterface, ServerErrorValueInterface } from 'src/app/shared/interfaces';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { ConfigurationService } from 'src/app/shared/services';
-import { authenticationActions, errorActions } from 'src/app/store/store-actions';
-import { AuthenticationState, ErrorState } from 'src/app/store/store-states';
+import { AppState, authenticationActions, errorActions } from 'src/app/store';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -16,11 +15,7 @@ export class ErrorInterceptor implements HttpInterceptor {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(
-    private router: Router,
-    private errorStore: Store<ErrorState>,
-    private authenticationStore: Store<AuthenticationState>,
-  ) { }
+  public constructor(private router: Router, private store: Store<AppState>) { }
 
   /**
    * Interceptor to handle possible HTTP errors from backend. Within this
@@ -83,7 +78,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
       return;
     } else if (httpErrorResponse.status === 401 && sameHost && notTokenUrl) { // Unauthorized request
-      this.authenticationStore.dispatch(authenticationActions.logout({ message: 'Unauthorized' }));
+      this.store.dispatch(authenticationActions.logout({ message: 'Unauthorized' }));
 
       return;
     }
@@ -110,6 +105,6 @@ export class ErrorInterceptor implements HttpInterceptor {
       error.message = httpErrorResponse.message;
     }
 
-    this.errorStore.dispatch(errorActions.snackbar({ error }));
+    this.store.dispatch(errorActions.showSnackbar({ error }));
   }
 }

@@ -1,5 +1,5 @@
 // Error store action definitions.
-export enum ErrorAction {
-  SNACKBAR = '[Error] Snackbar',
+export enum ErrorType {
+  SHOW_SNACKBAR = '[Error] Show snackbar',
   CLEAR_SNACKBAR = '[Error] Clear snackbar',
 }

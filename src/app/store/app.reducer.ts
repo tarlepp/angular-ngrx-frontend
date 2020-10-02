@@ -2,12 +2,14 @@ import { routerReducer } from '@ngrx/router-store';
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 
 import { AppState } from 'src/app/store/app.state';
-import { authenticationReducer, errorReducer, layoutReducer, versionReducer } from 'src/app/store/store-reducer';
+import { authenticationReducer } from 'src/app/store/authentication/authentication.reducer';
+import { errorReducer } from 'src/app/store/error/error.reducer';
+import { layoutReducer } from 'src/app/store/layout/layout.reducer';
+import { versionReducer } from 'src/app/store/version/version.reducer';
 import { environment } from 'src/environments/environment';
 
 /**
- * Application NgRx reducers that we are using within this application. Each of
- * these reducers are imported from `store-reducer` barrel file.
+ * Application NgRx reducers that we are using within this application.
  */
 export const reducers: ActionReducerMap<AppState> = {
   router: routerReducer,

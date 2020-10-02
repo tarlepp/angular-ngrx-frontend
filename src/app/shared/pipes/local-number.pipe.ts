@@ -4,8 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { Locale } from 'src/app/shared/enums';
-import { layoutSelectors } from 'src/app/store/store-selectors';
-import { LayoutState } from 'src/app/store/store-states';
+import { AppState, layoutSelectors } from 'src/app/store';
 
 /**
  * Locale aware number pipe that uses Angular internal `DecimalPipe` implementation
@@ -35,12 +34,12 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private layoutStore: Store<LayoutState>) {
+  public constructor(private store: Store<AppState>) {
     this.subscriptions = new Subscription();
 
     // Subscribe to locale changes
     this.subscriptions
-      .add(this.layoutStore
+      .add(this.store
         .select(layoutSelectors.locale)
         .subscribe((locale: Locale): Locale => this.locale = locale),
       );

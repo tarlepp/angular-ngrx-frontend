@@ -7,8 +7,7 @@ import { take } from 'rxjs/operators';
 
 import { ErrorMessageComponent } from 'src/app/shared/components';
 import { DictionaryInterface, ErrorMessageServerInterface, ServerErrorInterface } from 'src/app/shared/interfaces';
-import { errorActions } from 'src/app/store/store-actions';
-import { ErrorState } from 'src/app/store/store-states';
+import { AppState, errorActions } from 'src/app/store';
 
 @Injectable()
 export class SnackbarService {
@@ -20,8 +19,8 @@ export class SnackbarService {
    */
   public constructor(
     private snackBar: MatSnackBar,
-    private errorStore: Store<ErrorState>,
     private translateService: TranslateService,
+    private store: Store<AppState>,
   ) { }
 
   /**
@@ -79,7 +78,7 @@ export class SnackbarService {
 
           matSnackBarRef
             .afterDismissed()
-            .subscribe((): void => this.errorStore.dispatch(errorActions.clearSnackbar()));
+            .subscribe((): void => this.store.dispatch(errorActions.clearSnackbar()));
 
           resolve(matSnackBarRef);
         });

@@ -13,9 +13,7 @@ import { UserDataInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { Language, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
-import { authenticationSelectors } from 'src/app/store/store-selectors';
-import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
+import { AppState, authenticationActions, authenticationSelectors, layoutActions } from 'src/app/store';
 
 @Component({
   selector: 'app-root',
@@ -36,9 +34,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private localStorage: LocalStorageService,
     private translateService: TranslateService,
-    private authenticationStore: Store<AuthenticationState>,
+    private store: Store<AppState>,
     private authenticationService: AuthenticationService,
-    private layoutStore: Store<LayoutState>,
     private mediaObserver: MediaObserver,
   ) {
     this.loggedIn = false;
@@ -66,7 +63,7 @@ export class AppComponent implements OnInit, OnDestroy {
           filter((event: RouterEvent): boolean => event instanceof NavigationEnd),
           distinctUntilChanged(),
         )
-        .subscribe((): void => this.layoutStore.dispatch(layoutActions.scrollToTop())),
+        .subscribe((): void => this.store.dispatch(layoutActions.scrollToTop())),
       );
 
     /**
@@ -97,15 +94,15 @@ export class AppComponent implements OnInit, OnDestroy {
           if (userData === null && this.loggedIn) {
             this.logout(null);
           } else if (userData !== null && !this.loggedIn) {
-            this.authenticationStore.dispatch(authenticationActions.loginSuccess({ userData }));
+            this.store.dispatch(authenticationActions.loginSuccess({ userData }));
           }
         }),
       );
 
     // Is used logged in to application or not.
     this.subscription
-      .add(this.authenticationStore
-        .select(authenticationSelectors.loggedIn)
+      .add(this.store
+        .select(authenticationSelectors.isLoggedIn)
         .subscribe((loggedIn: boolean): boolean => this.loggedIn = loggedIn),
       );
 
@@ -126,7 +123,7 @@ export class AppComponent implements OnInit, OnDestroy {
           distinctUntilChanged((prev: MediaChange, curr: MediaChange): boolean => prev.mqAlias === curr.mqAlias),
         )
         .subscribe((mediaChange: MediaChange): void =>
-          this.layoutStore.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
+          this.store.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
         ),
       );
   }
@@ -171,7 +168,7 @@ export class AppComponent implements OnInit, OnDestroy {
    * Helper method to dispatch `logout` event to `Authentication` store.
    */
   private logout(message?: string): void {
-    this.authenticationStore.dispatch(authenticationActions.logout({ message }));
+    this.store.dispatch(authenticationActions.logout({ message }));
   }
 
   /**
@@ -204,6 +201,6 @@ export class AppComponent implements OnInit, OnDestroy {
       timezone,
     };
 
-    this.layoutStore.dispatch(layoutActions.updateLocalization({ localization }));
+    this.store.dispatch(layoutActions.updateLocalization({ localization }));
   }
 }

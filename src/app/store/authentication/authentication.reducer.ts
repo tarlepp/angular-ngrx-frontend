@@ -2,13 +2,12 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 import { UserDataValueInterface, UserProfileValueInterface } from 'src/app/auth/interfaces';
 import { ServerErrorValueInterface } from 'src/app/shared/interfaces';
-import { authenticationActions } from 'src/app/store/store-actions';
-import { AuthenticationState } from 'src/app/store/store-states';
+import { AuthenticationState, authenticationActions } from 'src/app/store';
 
 // Initial state of `Authentication` store.
 const initialState: AuthenticationState = {
-  loading: false,
-  loggedIn: false,
+  isLoading: false,
+  isLoggedIn: false,
   userData: null,
   profile: null,
   error: null,
@@ -24,8 +23,8 @@ const reducer = createReducer(
     authenticationActions.login,
     (state: AuthenticationState): AuthenticationState => ({
       ...state,
-      loading: true,
-      loggedIn: false,
+      isLoading: true,
+      isLoggedIn: false,
       error: null,
     }),
   ),
@@ -37,8 +36,8 @@ const reducer = createReducer(
     authenticationActions.loginSuccess,
     (state: AuthenticationState, { userData }: UserDataValueInterface): AuthenticationState => ({
       ...state,
-      loading: false,
-      loggedIn: true,
+      isLoading: false,
+      isLoggedIn: true,
       userData,
     }),
   ),
@@ -50,7 +49,7 @@ const reducer = createReducer(
     authenticationActions.profile,
     (state: AuthenticationState): AuthenticationState => ({
       ...state,
-      loading: true,
+      isLoading: true,
       profile: null,
     }),
   ),
@@ -62,7 +61,7 @@ const reducer = createReducer(
     authenticationActions.profileSuccess,
     (state: AuthenticationState, { profile }: UserProfileValueInterface): AuthenticationState => ({
       ...state,
-      loading: false,
+      isLoading: false,
       profile,
     }),
   ),
@@ -75,8 +74,8 @@ const reducer = createReducer(
     authenticationActions.profileFailure,
     (state: AuthenticationState, { error }: ServerErrorValueInterface): AuthenticationState => ({
       ...state,
-      loading: false,
-      loggedIn: false,
+      isLoading: false,
+      isLoggedIn: false,
       error,
     }),
   ),

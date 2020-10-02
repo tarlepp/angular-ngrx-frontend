@@ -21,7 +21,8 @@ import {
 } from 'src/app/shared/components';
 import { HttpLoaderFactory } from 'src/app/shared/factories';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { effects, metaReducers, reducers } from 'src/app/store';
+import { effects } from 'src/app/store/app.effects';
+import { metaReducers, reducers } from 'src/app/store/app.reducer';
 import { environment } from 'src/environments/environment';
 
 registerLocales();

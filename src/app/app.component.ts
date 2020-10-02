@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -31,12 +30,11 @@ export class AppComponent implements OnInit, OnDestroy {
    * within this component and initialize needed properties.
    */
   public constructor(
-    private router: Router,
     private localStorage: LocalStorageService,
     private translateService: TranslateService,
+    private mediaObserver: MediaObserver,
     private store: Store<AppState>,
     private authenticationService: AuthenticationService,
-    private mediaObserver: MediaObserver,
   ) {
     this.loggedIn = false;
     this.subscription = new Subscription();
@@ -51,20 +49,6 @@ export class AppComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.setTokenInterval();
     this.initializeLocalization();
-
-    /**
-     * Each time `NavigationEnd` event is dispatched from router, we want to
-     * scroll browser to top of the page. This basically happens each time user
-     * navigates to another route within application.
-     */
-    this.subscription
-      .add(this.router.events
-        .pipe(
-          filter((event: RouterEvent): boolean => event instanceof NavigationEnd),
-          distinctUntilChanged(),
-        )
-        .subscribe((): void => this.store.dispatch(layoutActions.scrollToTop())),
-      );
 
     /**
      * We need to reset current token interval and start new one when user

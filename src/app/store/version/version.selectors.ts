@@ -18,14 +18,14 @@ import { VersionState } from 'src/app/store';
  */
 
 // Feature selector for `version` store.
-const versionState = createFeatureSelector<VersionState>('version');
+const featureSelector = createFeatureSelector<VersionState>('version');
 
 // Common selectors for this store
-const frontend = createSelector(versionState, (state: VersionState): string => state.frontend);
-const backend = createSelector(versionState, (state: VersionState): string => state.backend);
-const isLoadingFrontend = createSelector(versionState, (state: VersionState): boolean => state.isLoadingFrontend);
-const isLoadingBackend = createSelector(versionState, (state: VersionState): boolean => state.isLoadingBackend);
-const error = createSelector(versionState, (state: VersionState): ServerErrorInterface|null => state.error);
+const frontend = createSelector(featureSelector, (state: VersionState): string => state.frontend);
+const backend = createSelector(featureSelector, (state: VersionState): string => state.backend);
+const isLoadingFrontend = createSelector(featureSelector, (state: VersionState): boolean => state.isLoadingFrontend);
+const isLoadingBackend = createSelector(featureSelector, (state: VersionState): boolean => state.isLoadingBackend);
+const error = createSelector(featureSelector, (state: VersionState): ServerErrorInterface|null => state.error);
 
 // Selector for frontend/backend version loading state.
 const isLoading = createSelector(isLoadingFrontend, isLoadingBackend, (a: boolean, b: boolean): boolean => a || b);

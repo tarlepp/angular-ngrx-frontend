@@ -19,17 +19,17 @@ import { LayoutState } from 'src/app/store';
  */
 
 // Feature selector for `layout` store
-const layoutState = createFeatureSelector<LayoutState>('layout');
+const featureSelector = createFeatureSelector<LayoutState>('layout');
 
 // Common selectors for this store
-const language = createSelector(layoutState, (state: LayoutState): Language => state.language);
-const locale = createSelector(layoutState, (state: LayoutState): Locale => state.locale);
-const timezone = createSelector(layoutState, (state: LayoutState): string => state.timezone);
-const viewport = createSelector(layoutState, (state: LayoutState): Viewport => state.viewport);
-const device = createSelector(layoutState, (state: LayoutState): Device => state.device);
-const isMobile = createSelector(layoutState, (state: LayoutState): boolean => state.isMobile);
-const isTablet = createSelector(layoutState, (state: LayoutState): boolean => state.isTablet);
-const isDesktop = createSelector(layoutState, (state: LayoutState): boolean => state.isDesktop);
+const language = createSelector(featureSelector, (state: LayoutState): Language => state.language);
+const locale = createSelector(featureSelector, (state: LayoutState): Locale => state.locale);
+const timezone = createSelector(featureSelector, (state: LayoutState): string => state.timezone);
+const viewport = createSelector(featureSelector, (state: LayoutState): Viewport => state.viewport);
+const device = createSelector(featureSelector, (state: LayoutState): Device => state.device);
+const isMobile = createSelector(featureSelector, (state: LayoutState): boolean => state.isMobile);
+const isTablet = createSelector(featureSelector, (state: LayoutState): boolean => state.isTablet);
+const isDesktop = createSelector(featureSelector, (state: LayoutState): boolean => state.isDesktop);
 
 /**
  * Selector for `localization` data, which contains;

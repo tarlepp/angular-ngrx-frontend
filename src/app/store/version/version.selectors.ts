@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { createSelectorServerError } from 'src/app/shared/utils';
 import { VersionState } from 'src/app/store';
 
 /**
@@ -12,8 +12,8 @@ import { VersionState } from 'src/app/store';
  *
  *  public ngOnInit(): void {
  *    // Initialize `versionFrontend$` and `versionBackend$` observables
- *    this.versionFrontend$ = this.store.select(VersionSelectors.versionFrontend);
- *    this.versionBackend$ = this.store.select(VersionSelectors.versionBackend);
+ *    this.versionFrontend$ = this.store.select(versionSelectors.frontend);
+ *    this.versionBackend$ = this.store.select(versionSelectors.backend);
  *  }
  */
 
@@ -25,7 +25,7 @@ const frontend = createSelector(featureSelector, (state: VersionState): string =
 const backend = createSelector(featureSelector, (state: VersionState): string => state.backend);
 const isLoadingFrontend = createSelector(featureSelector, (state: VersionState): boolean => state.isLoadingFrontend);
 const isLoadingBackend = createSelector(featureSelector, (state: VersionState): boolean => state.isLoadingBackend);
-const error = createSelector(featureSelector, (state: VersionState): ServerErrorInterface|null => state.error);
+const error = createSelectorServerError(featureSelector);
 
 // Selector for frontend/backend version loading state.
 const isLoading = createSelector(isLoadingFrontend, isLoadingBackend, (a: boolean, b: boolean): boolean => a || b);

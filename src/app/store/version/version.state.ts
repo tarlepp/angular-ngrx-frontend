@@ -1,4 +1,5 @@
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { ServerErrorAwareState } from 'src/app/store/aware-states';
 
 /**
  * Interface definition for application version store contents.
@@ -18,10 +19,9 @@ import { ServerErrorInterface } from 'src/app/shared/interfaces';
  *  error
  *    Latest error from loading frontend/backend version.
  */
-export interface VersionState {
+export interface VersionState extends ServerErrorAwareState {
   frontend: string;
   backend: string;
   isLoadingFrontend: boolean;
   isLoadingBackend: boolean;
-  error: ServerErrorInterface|null;
 }

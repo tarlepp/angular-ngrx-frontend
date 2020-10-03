@@ -1,5 +1,5 @@
 import { UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { IsLoadingAwareState, ServerErrorAwareState } from 'src/app/store/aware-states';
 
 /**
  * Interface definition for our authentication store contents.
@@ -20,10 +20,8 @@ import { ServerErrorInterface } from 'src/app/shared/interfaces';
  *  error
  *    Possible error from backend, can be null.
  */
-export interface AuthenticationState {
-  isLoading: boolean;
+export interface AuthenticationState extends IsLoadingAwareState, ServerErrorAwareState {
   isLoggedIn: boolean;
   userData: UserDataInterface|null;
   profile: UserProfileInterface|null;
-  error: ServerErrorInterface|null;
 }

@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { Role } from 'src/app/auth/enums';
 import { UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
+import { createSelectorIsLoading, createSelectorServerError } from 'src/app/shared/utils';
 import { AuthenticationState } from 'src/app/store';
 
 /**
@@ -22,12 +22,12 @@ import { AuthenticationState } from 'src/app/store';
 const featureSelector = createFeatureSelector<AuthenticationState>('authentication');
 
 // Common selectors for this store
-const isLoading = createSelector(featureSelector, (state: AuthenticationState): boolean => state.isLoading);
+const isLoading = createSelectorIsLoading(featureSelector);
 const isLoggedIn = createSelector(featureSelector, (state: AuthenticationState): boolean => state.isLoggedIn);
 const profile = createSelector(featureSelector, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const roles = createSelector(featureSelector, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
 const userData = createSelector(featureSelector, (state: AuthenticationState): UserDataInterface|null => state.userData);
-const error = createSelector(featureSelector, (state: AuthenticationState): ServerErrorInterface|null => state.error);
+const error = createSelectorServerError(featureSelector);
 
 // Export all store selectors, so that those can be used easily.
 export const authenticationSelectors = {

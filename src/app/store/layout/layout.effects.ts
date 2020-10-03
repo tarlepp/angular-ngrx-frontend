@@ -4,20 +4,18 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Observable, of } from 'rxjs';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, mergeMap, pluck, tap } from 'rxjs/operators';
 
 import { Language, Locale } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { layoutActions } from 'src/app/store/store-actions';
-import { LocalizationTypes } from 'src/app/store/store-types';
-import { LayoutAction } from 'src/app/store/store.action';
+import { LayoutType, LocalizationTypes, layoutActions } from 'src/app/store';
 
 @Injectable()
 export class LayoutEffects {
   // noinspection JSUnusedLocalSymbols
   /**
-   * NgRx effect for `LayoutAction.UPDATE_LOCALIZATION` action, within this
+   * NgRx effect for `layoutActions.updateLocalization` action, within this
    * we area actually switching this original action observable to multiple
    * new action observables which are making following;
    *  1) Change language.
@@ -26,12 +24,12 @@ export class LayoutEffects {
    *
    * Each of these actions you can find from this effect class.
    */
-  private changeLocalization$: Observable<TypedAction<LocalizationTypes>> = createEffect(
+  private updateLocalization$: Observable<TypedAction<LocalizationTypes>> = createEffect(
     (): Observable<TypedAction<LocalizationTypes>> => this.actions$
     .pipe(
-      ofType(LayoutAction.UPDATE_LOCALIZATION),
+      ofType(layoutActions.updateLocalization),
       pluck('localization'),
-      switchMap((localization: LocalizationInterface): Array<TypedAction<LocalizationTypes>> => [
+      mergeMap((localization: LocalizationInterface): Array<TypedAction<LocalizationTypes>> => [
         layoutActions.changeLanguage({ language: localization.language }),
         layoutActions.changeLocale({ locale: localization.locale }),
         layoutActions.changeTimezone({ timezone: localization.timezone }),
@@ -41,7 +39,7 @@ export class LayoutEffects {
 
   // noinspection JSUnusedLocalSymbols
   /**
-   * NgRx effect for `LayoutAction.CHANGE_LANGUAGE` action, which will do
+   * NgRx effect for `layoutActions.changeLanguage` action, which will do
    * following jobs;
    *  1) Change the language within translate service, this will trigger
    *     application to change all translations to match this new language.
@@ -52,7 +50,7 @@ export class LayoutEffects {
    */
   private changeLanguage$: Observable<void> = createEffect((): Observable<void> => this.actions$
       .pipe(
-        ofType(LayoutAction.CHANGE_LANGUAGE),
+        ofType(layoutActions.changeLanguage),
         pluck('language'),
         map((language: Language): void => {
           this.translateService.use(language);
@@ -64,7 +62,7 @@ export class LayoutEffects {
 
   // noinspection JSUnusedLocalSymbols
   /**
-   * NgRx effect for `LayoutAction.CHANGE_LOCALE` action, which will do
+   * NgRx effect for `layoutActions.changeLocale` action, which will do
    * following jobs;
    *  1) Change moment.js library locale setting, this will affect to shown
    *     time, date and datetime values in application that are formatted by
@@ -76,7 +74,7 @@ export class LayoutEffects {
    */
   private changeLocale$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
-      ofType(LayoutAction.CHANGE_LOCALE),
+      ofType(layoutActions.changeLocale),
       pluck('locale'),
       map((locale: Locale): void => {
         moment.locale(locale);
@@ -89,7 +87,7 @@ export class LayoutEffects {
 
   // noinspection JSUnusedLocalSymbols
   /**
-   * NgRx effect for `LayoutAction.CHANGE_TIMEZONE` action, which will do
+   * NgRx effect for `layoutActions.changeTimezone` action, which will do
    * following jobs;
    *  1) Change moment.js library default timezone setting, this will affect
    *     to shown time, date and datetime values in application that are
@@ -101,7 +99,7 @@ export class LayoutEffects {
    */
   private changeTimezone$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
-      ofType(LayoutAction.CHANGE_TIMEZONE),
+      ofType(layoutActions.changeTimezone),
       pluck('timezone'),
       map((timezone: string): void => {
         moment.tz.setDefault(timezone);
@@ -114,34 +112,34 @@ export class LayoutEffects {
 
   // noinspection JSUnusedLocalSymbols
   /**
-   * NgRx effect for `LayoutAction.SCROLL_TO_TOP` action, purpose of this is to
+   * NgRx effect for `layoutActions.scrollToTop` action, purpose of this is to
    * make user browser to scroll to top of the page.
    *
    * Within this event we just switch that original action observable to common
    * `LayoutAction.SCROLL_TO` action which effect will actually do that scroll
    * in browser.
    */
-  private scrollToTop$: Observable<TypedAction<LayoutAction.SCROLL_TO>> = createEffect(
-    (): Observable<TypedAction<LayoutAction.SCROLL_TO>> => this.actions$
+  private scrollToTop$: Observable<TypedAction<LayoutType.SCROLL_TO>> = createEffect(
+    (): Observable<TypedAction<LayoutType.SCROLL_TO>> => this.actions$
     .pipe(
-      ofType(LayoutAction.SCROLL_TO_TOP),
-      switchMap((): Observable<TypedAction<LayoutAction.SCROLL_TO>> => of(layoutActions.scrollTo({ anchor: '#top-page' }))),
+      ofType(layoutActions.scrollToTop),
+      map((): TypedAction<LayoutType.SCROLL_TO> => layoutActions.scrollTo({ anchor: '#top-page' })),
     ),
   );
 
   // noinspection JSUnusedLocalSymbols
   /**
-   * NgRx effect for `LayoutAction.SCROLL_TO` action, purpose of this action is
+   * NgRx effect for `layoutActions.scrollTo` action, purpose of this action is
    * to scroll user browser to specified HTML anchor and after that switch that
    * original action observable to `LayoutAction.CLEAR_SCROLL_TO` which clear
    * that scroll to state in layout store.
    */
-  private scrollTo$: Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> = createEffect(
-    (): Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> => this.actions$
+  private scrollTo$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
+    (): Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> => this.actions$
     .pipe(
-      ofType(LayoutAction.SCROLL_TO),
+      ofType(layoutActions.scrollTo),
       pluck('anchor'),
-      switchMap((anchor: string): Observable<TypedAction<LayoutAction.CLEAR_SCROLL_TO>> => {
+      tap((anchor: string): void => {
         setTimeout((): void => {
           const element = document.querySelector(anchor);
 
@@ -149,9 +147,8 @@ export class LayoutEffects {
             element.scrollIntoView({ behavior: 'smooth' });
           }
         });
-
-        return of(layoutActions.clearScrollTo());
       }),
+      map((): TypedAction<LayoutType.CLEAR_SCROLL_TO> => layoutActions.clearScrollTo()),
     ),
   );
 

@@ -6,9 +6,7 @@ import { filter } from 'rxjs/operators';
 
 import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { authenticationActions } from 'src/app/store/store-actions';
-import { authenticationSelectors } from 'src/app/store/store-selectors';
-import { AuthenticationState } from 'src/app/store/store-states';
+import { AppState, authenticationActions, authenticationSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private formBuilder: FormBuilder, private authenticationStore: Store<AuthenticationState>) {
+  public constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {
     this.focus = true;
     this.subscriptions = new Subscription();
   }
@@ -44,14 +42,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     // Loading state of `Authentication` store
     this.subscriptions
-      .add(this.authenticationStore
-        .select(authenticationSelectors.loading)
+      .add(this.store
+        .select(authenticationSelectors.isLoading)
         .subscribe((loading: boolean): boolean => this.loading = loading),
       );
 
     // Reset login form if error happens
     this.subscriptions
-      .add(this.authenticationStore
+      .add(this.store
         .pipe(
           select(authenticationSelectors.error),
           filter((error: ServerErrorInterface|null): boolean => error !== null),
@@ -88,6 +86,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.focus = false;
 
-    this.authenticationStore.dispatch(authenticationActions.login({ credentials }));
+    this.store.dispatch(authenticationActions.login({ credentials }));
   }
 }

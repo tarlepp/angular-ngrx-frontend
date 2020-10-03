@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { ErrorAction } from 'src/app/store/store.action';
+import { ErrorType } from 'src/app/store/store.type';
 
 /**
  * Error store actions definitions, each of these actions will change the
@@ -9,7 +9,7 @@ import { ErrorAction } from 'src/app/store/store.action';
  *
  * Simple usage example;
  *
- *  public constructor(private errorStore: Store<ErrorState>) { }
+ *  public constructor(private store: Store<AppState>) { }
  *
  *  public ngOnInit(): void {
  *    const error: ServerErrorInterface = {
@@ -20,7 +20,7 @@ import { ErrorAction } from 'src/app/store/store.action';
  *    };
  *
  *    // Dispatch action to show error in snackbar
- *    this.errorStore.dispatch(errorActions.snackbar({ error }));
+ *    this.store.dispatch(errorActions.showSnackbar({ error }));
  *  }
  */
 
@@ -30,7 +30,7 @@ import { ErrorAction } from 'src/app/store/store.action';
  * HTTP error occurred. But there is no reason for you not to use this
  * if there is some special need to show some error message easily.
  */
-const snackbar = createAction(ErrorAction.SNACKBAR, props<{ error: ServerErrorInterface }>());
+const showSnackbar = createAction(ErrorType.SHOW_SNACKBAR, props<{ error: ServerErrorInterface }>());
 
 /**
  * Action to clear snackbar error, this is called from snackbar service
@@ -39,10 +39,10 @@ const snackbar = createAction(ErrorAction.SNACKBAR, props<{ error: ServerErrorIn
  *
  * @internal
  */
-const clearSnackbar = createAction(ErrorAction.CLEAR_SNACKBAR);
+const clearSnackbar = createAction(ErrorType.CLEAR_SNACKBAR);
 
 // Export all store actions, so that those can be used easily.
 export const errorActions = {
-  snackbar,
+  showSnackbar,
   clearSnackbar,
 };

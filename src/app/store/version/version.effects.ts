@@ -8,9 +8,7 @@ import { catchError, filter, map, pluck, switchMap } from 'rxjs/operators';
 
 import { VersionChangeDialogComponent } from 'src/app/shared/components';
 import { VersionService } from 'src/app/shared/services';
-import { versionActions } from 'src/app/store/store-actions';
-import { BackendVersionTypes, FrontendVersionTypes } from 'src/app/store/store-types';
-import { VersionAction } from 'src/app/store/store.action';
+import { BackendVersionTypes, FrontendVersionTypes, VersionType, versionActions } from 'src/app/store';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -35,14 +33,14 @@ export class VersionEffects {
   private fetchFrontendVersion$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
     (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$
     .pipe(
-      ofType(VersionAction.FETCH_FRONTEND_VERSION),
+      ofType(VersionType.FETCH_FRONTEND_VERSION),
       switchMap((): Observable<TypedAction<FrontendVersionTypes>> =>
         from(this.versionService.fetchFrontendVersion()
           .pipe(
-            map((version: string): TypedAction<VersionAction.FETCH_FRONTEND_VERSION_SUCCESS> =>
+            map((version: string): TypedAction<VersionType.FETCH_FRONTEND_VERSION_SUCCESS> =>
               versionActions.fetchFrontendVersionSuccess({ version }),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<VersionAction.FETCH_FRONTEND_VERSION_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION_FAILURE>> =>
               of(versionActions.fetchFrontendVersionFailure({ error: httpErrorResponse.error })),
             ),
           ),
@@ -65,14 +63,14 @@ export class VersionEffects {
   private fetchBackendVersion$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<BackendVersionTypes>> => this.actions$
     .pipe(
-      ofType(VersionAction.FETCH_BACKEND_VERSION),
+      ofType(VersionType.FETCH_BACKEND_VERSION),
       switchMap((): Observable<TypedAction<BackendVersionTypes>> =>
         from(this.versionService.fetchBackendVersion()
           .pipe(
-            map((version: string): TypedAction<VersionAction.FETCH_BACKEND_VERSION_SUCCESS> =>
+            map((version: string): TypedAction<VersionType.FETCH_BACKEND_VERSION_SUCCESS> =>
               versionActions.fetchBackendVersionSuccess({ version }),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<VersionAction.FETCH_BACKEND_VERSION_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<VersionType.FETCH_BACKEND_VERSION_FAILURE>> =>
               of(versionActions.fetchBackendVersionFailure({ error: httpErrorResponse.error })),
             ),
           ),
@@ -93,7 +91,7 @@ export class VersionEffects {
    */
   private versionChanged$: Observable<void> = createEffect((): Observable<void> => this.actions$
     .pipe(
-      ofType(VersionAction.FETCH_FRONTEND_VERSION_SUCCESS),
+      ofType(VersionType.FETCH_FRONTEND_VERSION_SUCCESS),
       pluck('version'),
       filter((version: string): boolean => environment.version !== version),
       map((versionNew: string): void => {

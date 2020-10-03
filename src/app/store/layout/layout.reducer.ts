@@ -9,8 +9,7 @@ import {
   LocaleValueInterface,
   ViewportValueInterface,
 } from 'src/app/shared/interfaces';
-import { layoutActions } from 'src/app/store/store-actions';
-import { LayoutState } from 'src/app/store/store-states';
+import { LayoutState, layoutActions } from 'src/app/store';
 
 // Initial state of `Layout` store.
 const initialState: LayoutState = {
@@ -19,9 +18,9 @@ const initialState: LayoutState = {
   timezone: 'UTC',
   viewport: Viewport.XL,
   device: Device.DESKTOP,
-  desktop: true,
-  tablet: false,
-  mobile: false,
+  isDesktop: true,
+  isTablet: false,
+  isMobile: false,
   anchor: null,
 };
 
@@ -88,9 +87,9 @@ const reducer = createReducer(
         ...state,
         viewport,
         device,
-        desktop: device === Device.DESKTOP,
-        tablet: device === Device.TABLET,
-        mobile: device === Device.MOBILE,
+        isDesktop: device === Device.DESKTOP,
+        isTablet: device === Device.TABLET,
+        isMobile: device === Device.MOBILE,
       };
     },
   ),

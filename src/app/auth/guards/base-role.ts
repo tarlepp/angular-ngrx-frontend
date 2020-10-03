@@ -4,15 +4,14 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 
 import { Role } from 'src/app/auth/enums';
-import { authenticationSelectors } from 'src/app/store/store-selectors';
-import { AuthenticationState } from 'src/app/store/store-states';
+import { AppState, authenticationSelectors } from 'src/app/store';
 
 export abstract class BaseRole {
   /**
    * Constructor of the class. This is called from classes that extends this
    * abstract class.
    */
-  protected constructor(protected router: Router, protected authenticationStore: Store<AuthenticationState>) { }
+  protected constructor(protected router: Router, protected store: Store<AppState>) { }
 
   /**
    * Helper method to make check if user has certain role or not. This is used
@@ -27,8 +26,8 @@ export abstract class BaseRole {
    */
   protected checkRole(role: Role): Observable<boolean|UrlTree> {
     return combineLatest([
-      this.authenticationStore.select(authenticationSelectors.loggedIn),
-      this.authenticationStore.select(authenticationSelectors.roles),
+      this.store.select(authenticationSelectors.isLoggedIn),
+      this.store.select(authenticationSelectors.roles),
     ])
     .pipe(
       take(1),

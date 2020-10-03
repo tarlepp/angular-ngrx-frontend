@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { Language, Locale, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { LayoutAction } from 'src/app/store/store.action';
+import { LayoutType } from 'src/app/store/store.type';
 
 /**
  * Layout store actions definitions, each of these actions will change
@@ -10,14 +10,14 @@ import { LayoutAction } from 'src/app/store/store.action';
  *
  * Simple usage example;
  *
- *  public constructor(private layoutStore: Store<LayoutState>) {
+ *  public constructor(private store: Store<AppState>) {
  *    this.subscription = new Subscription();
  *  }
  *
  *  public ngOnInit(): void {
  *    // Subscribe to language changes
  *    this.subscriptions
- *      .add(this.layoutStore
+ *      .add(this.store
  *        .select(layoutSelectors.language)
  *        .subscribe((language: Language): void => console.log(language)),
  *      );
@@ -29,18 +29,18 @@ import { LayoutAction } from 'src/app/store/store.action';
  *
  *  public changeLanguage(language: Language): void {
  *    // Dispatch action to change language
- *    this.layoutStore.dispatch(layoutActions.changeLanguage({ language }));
+ *    this.store.dispatch(layoutActions.changeLanguage({ language }));
  *  }
  */
 
 // Action to trigger language change in application.
-const changeLanguage = createAction(LayoutAction.CHANGE_LANGUAGE, props<{ language: Language }>());
+const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language: Language }>());
 
 // Action to trigger locale change in application.
-const changeLocale = createAction(LayoutAction.CHANGE_LOCALE, props<{ locale: Locale }>());
+const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
 
 // Action to trigger timezone change in application.
-const changeTimezone = createAction(LayoutAction.CHANGE_TIMEZONE, props<{ timezone: string }>());
+const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
 
 /**
  * Action to change viewport - This is to be used only in our application
@@ -48,26 +48,26 @@ const changeTimezone = createAction(LayoutAction.CHANGE_TIMEZONE, props<{ timezo
  *
  * @internal
  */
-const changeViewport = createAction(LayoutAction.CHANGE_VIEWPORT, props<{ viewport: Viewport }>());
+const changeViewport = createAction(LayoutType.CHANGE_VIEWPORT, props<{ viewport: Viewport }>());
 
 // Action to trigger `language`, `locale` and `timezone` change in application.
-const updateLocalization = createAction(LayoutAction.UPDATE_LOCALIZATION, props<{ localization: LocalizationInterface }>());
+const updateLocalization = createAction(LayoutType.UPDATE_LOCALIZATION, props<{ localization: LocalizationInterface }>());
 
 // Action to trigger browser to scroll specified anchor.
-const scrollTo = createAction(LayoutAction.SCROLL_TO, props<{ anchor: string }>());
+const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string }>());
 
 /**
  * Action to trigger browser to scroll to top of the page. This action is
  * dispatched with every `RouterEvent.NavigationEnd` event.
  */
-const scrollToTop = createAction(LayoutAction.SCROLL_TO_TOP);
+const scrollToTop = createAction(LayoutType.SCROLL_TO_TOP);
 
 /**
  * Action to clear layout store current `scrollTo` information.
  *
  * @internal
  */
-const clearScrollTo = createAction(LayoutAction.CLEAR_SCROLL_TO);
+const clearScrollTo = createAction(LayoutType.CLEAR_SCROLL_TO);
 
 // Export all `Layout` store actions, so that those can be used easily.
 export const layoutActions = {

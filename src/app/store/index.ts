@@ -1,6 +1,13 @@
 /**
- * Main barrel file for NgRx effects, reducers and meta-reducers.
+ * Main barrel file for NgRx store main state, actions, selectors, sub states,
+ * action type enums and combined type definitions.
+ *
+ * You should use this barrel file with import statements within this
+ * application when you're using NgRx related stuff.
  */
 
-export { effects } from 'src/app/store/app.effects';
-export { reducers, metaReducers } from 'src/app/store/app.reducer';
+export * from 'src/app/store/app.state';
+export * from 'src/app/store/store.actions';
+export * from 'src/app/store/store.selectors';
+export * from 'src/app/store/store.states';
+export * from 'src/app/store/store.type';

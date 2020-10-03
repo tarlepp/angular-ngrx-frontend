@@ -6,13 +6,13 @@ import { createFeatureSelector } from '@ngrx/store';
  *
  * Simple usage example;
  *
- *  public constructor(private routerStore: Store<RouterReducerState>) {
+ *  public constructor(private store: Store<AppState>) {
  *    this.subscription = new Subscription();
  *  }
  *
  *  public ngOnInit(): void {
  *    this.subscription
- *      .add(this.routerStore
+ *      .add(this.store
  *        .select(routerSelectors.selectCurrentRoute)
  *        .subscribe((currentRoute: any): void => {
  *          ...
@@ -25,8 +25,9 @@ import { createFeatureSelector } from '@ngrx/store';
  *  }
  */
 
-const routerSelector = createFeatureSelector<RouterReducerState>('router');
+// Feature selector for `layout` store
+const featureSelector = createFeatureSelector<RouterReducerState>('router');
 
 export const routerSelectors  = {
-  ...getSelectors(routerSelector),
+  ...getSelectors(featureSelector),
 };

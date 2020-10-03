@@ -5,9 +5,7 @@ import { Observable, noop, of } from 'rxjs';
 import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { ConfigurationService } from 'src/app/shared/services';
-import { VersionState } from 'src/app/store/store-states';
-import { versionActions } from 'src/app/store/version/version.actions';
-import { versionSelectors } from 'src/app/store/version/version.selectors';
+import { AppState, versionActions, versionSelectors } from 'src/app/store';
 
 @Injectable()
 export class BackendVersionInterceptor implements HttpInterceptor {
@@ -15,7 +13,7 @@ export class BackendVersionInterceptor implements HttpInterceptor {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private versionStore: Store<VersionState>) { }
+  public constructor(private store: Store<AppState>) { }
 
   /**
    * Backend version interceptor which purpose is to update backend version
@@ -58,15 +56,15 @@ export class BackendVersionInterceptor implements HttpInterceptor {
       filter((event: HttpResponse<any>): boolean => new URL(event.url).host === new URL(apiUrl).host),
       filter((event: HttpResponse<any>): boolean => !event.url.includes('/version')),
       filter((event: HttpResponse<any>): boolean => event.headers.has('X-API-VERSION')),
-      withLatestFrom(this.versionStore.select(versionSelectors.versionBackend)),
+      withLatestFrom(this.store.select(versionSelectors.backend)),
       filter(([event, version]: [HttpResponse<any>, string]): boolean =>
         version !== '0.0.0' && event.headers.get('X-API-VERSION') !== version,
       ),
       map(([event ]: [HttpResponse<any>, string]): string => event.headers.get('X-API-VERSION')),
     )
     .subscribe((version: string): void => {
-      this.versionStore.dispatch(versionActions.fetchBackendVersionSuccess({ version }));
-      this.versionStore.dispatch(versionActions.fetchFrontendVersion());
+      this.store.dispatch(versionActions.fetchBackendVersionSuccess({ version }));
+      this.store.dispatch(versionActions.fetchFrontendVersion());
     });
   }
 }

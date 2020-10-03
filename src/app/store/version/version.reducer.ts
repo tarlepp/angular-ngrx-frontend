@@ -1,16 +1,15 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import { ServerErrorValueInterface, VersionInterface } from 'src/app/shared/interfaces';
-import { versionActions } from 'src/app/store/store-actions';
-import { VersionState } from 'src/app/store/store-states';
+import { VersionState, versionActions } from 'src/app/store';
 import { environment } from 'src/environments/environment';
 
 // Initial state of `Version` store.
 const initialState: VersionState = {
   frontend: environment.version,
   backend: '0.0.0',
-  loadingFrontend: false,
-  loadingBackend: false,
+  isLoadingFrontend: false,
+  isLoadingBackend: false,
   error: null,
 };
 
@@ -24,7 +23,7 @@ const reducer = createReducer(
     versionActions.fetchFrontendVersion,
     (state: VersionState): VersionState => ({
       ...state,
-      loadingFrontend: true,
+      isLoadingFrontend: true,
       error: null,
     }),
   ),
@@ -36,7 +35,7 @@ const reducer = createReducer(
     versionActions.fetchFrontendVersionSuccess,
     (state: VersionState, { version }: VersionInterface): VersionState => ({
       ...state,
-      loadingFrontend: false,
+      isLoadingFrontend: false,
       frontend: version,
     }),
   ),
@@ -48,7 +47,7 @@ const reducer = createReducer(
     versionActions.fetchFrontendVersionFailure,
     (state: VersionState, { error }: ServerErrorValueInterface): VersionState => ({
       ...state,
-      loadingFrontend: false,
+      isLoadingFrontend: false,
       error,
     }),
   ),
@@ -60,7 +59,7 @@ const reducer = createReducer(
     versionActions.fetchBackendVersion,
     (state: VersionState): VersionState => ({
       ...state,
-      loadingBackend: true,
+      isLoadingBackend: true,
       error: null,
     }),
   ),
@@ -72,7 +71,7 @@ const reducer = createReducer(
     versionActions.fetchBackendVersionSuccess,
     (state: VersionState, { version }: VersionInterface): VersionState => ({
       ...state,
-      loadingBackend: false,
+      isLoadingBackend: false,
       backend: version,
     }),
   ),
@@ -84,7 +83,7 @@ const reducer = createReducer(
     versionActions.fetchBackendVersionFailure,
     (state: VersionState, { error }: ServerErrorValueInterface): VersionState => ({
       ...state,
-      loadingBackend: false,
+      isLoadingBackend: false,
       error,
     }),
   ),

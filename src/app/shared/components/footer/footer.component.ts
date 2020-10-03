@@ -2,9 +2,7 @@ import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, V
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, interval } from 'rxjs';
 
-import { versionActions } from 'src/app/store/store-actions';
-import { versionSelectors } from 'src/app/store/store-selectors';
-import { VersionState } from 'src/app/store/store-states';
+import { AppState, versionActions, versionSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-footer',
@@ -27,7 +25,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  constructor(private versionStore: Store<VersionState>) {
+  constructor(private store: Store<AppState>) {
     this.subscriptions = new Subscription();
   }
 
@@ -39,17 +37,17 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   public ngOnInit(): void {
     // Initialize `versionFrontend$` and `versionBackend$` observables, that are used in component
-    this.versionFrontend$ = this.versionStore.select(versionSelectors.versionFrontend);
-    this.versionBackend$ = this.versionStore.select(versionSelectors.versionBackend);
+    this.versionFrontend$ = this.store.select(versionSelectors.frontend);
+    this.versionBackend$ = this.store.select(versionSelectors.backend);
 
     // Lets check if frontend version has been changed every 5 minutes
     this.subscriptions
       .add(interval(1000 * 60 * 5)
-        .subscribe((): void => this.versionStore.dispatch(versionActions.fetchFrontendVersion())),
+        .subscribe((): void => this.store.dispatch(versionActions.fetchFrontendVersion())),
       );
 
     // Fetch initial version of backend
-    this.versionStore.dispatch(versionActions.fetchBackendVersion());
+    this.store.dispatch(versionActions.fetchBackendVersion());
   }
 
   /**

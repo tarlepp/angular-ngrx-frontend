@@ -6,9 +6,13 @@ import { Observable, Subscription } from 'rxjs';
 
 import { UserProfileInterface } from 'src/app/auth/interfaces';
 import { Language } from 'src/app/shared/enums';
-import { authenticationActions, layoutActions } from 'src/app/store/store-actions';
-import { authenticationSelectors, layoutSelectors } from 'src/app/store/store-selectors';
-import { AuthenticationState, LayoutState } from 'src/app/store/store-states';
+import {
+  AppState,
+  authenticationActions,
+  authenticationSelectors,
+  layoutActions,
+  layoutSelectors,
+} from 'src/app/store';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private authenticationStore: Store<AuthenticationState>, private layoutStore: Store<LayoutState>) {
+  public constructor(private store: Store<AppState>) {
     this.currentLanguage = Language.DEFAULT;
     this.subscriptions = new Subscription();
 
@@ -54,18 +58,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     // Loading state of `Authentication` store
-    this.loading$ = this.authenticationStore.select(authenticationSelectors.loading);
+    this.loading$ = this.store.select(authenticationSelectors.isLoading);
 
     // Subscribe to user profile changes
     this.subscriptions
-      .add(this.authenticationStore
+      .add(this.store
         .select(authenticationSelectors.profile)
         .subscribe((profile: UserProfileInterface|null): UserProfileInterface|null => this.profile = profile),
       );
 
     // Subscribe to language changes
     this.subscriptions
-      .add(this.layoutStore
+      .add(this.store
         .select(layoutSelectors.language)
         .subscribe((language: Language): Language => this.currentLanguage = language),
       );
@@ -86,13 +90,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
    */
   public logout(): void {
     this.userMenu.closeMenu();
-    this.authenticationStore.dispatch(authenticationActions.logout({ message: marker('messages.authentication.logout') }));
+    this.store.dispatch(authenticationActions.logout({ message: marker('messages.authentication.logout') }));
   }
 
   /**
    * Method to dispatch change language action to layout store.
    */
   public changeLanguage(language: Language): void {
-    this.layoutStore.dispatch(layoutActions.changeLanguage({ language }));
+    this.store.dispatch(layoutActions.changeLanguage({ language }));
   }
 }

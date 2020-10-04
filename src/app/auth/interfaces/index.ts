@@ -1,3 +1,4 @@
+export * from 'src/app/auth/interfaces/auth-guard-meta-data.interface';
 export * from 'src/app/auth/interfaces/credentials-request.interface';
 export * from 'src/app/auth/interfaces/credentials-response.interface';
 export * from 'src/app/auth/interfaces/role.interface';

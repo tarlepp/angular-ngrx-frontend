@@ -29,7 +29,7 @@ export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateC
    * This method is used within route definition `canActivate` definition.
    */
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree> {
-    return this.checkRole(Role.ROLE_ROOT);
+    return this.checkRole(Role.ROLE_ROOT, route.data?.roleGuardMeta ?? null);
   }
 
   /**
@@ -37,6 +37,6 @@ export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateC
    * This method is used within route definition `canActivateChild` definition.
    */
   public canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean|UrlTree> {
-    return this.checkRole(Role.ROLE_ROOT);
+    return this.checkRole(Role.ROLE_ROOT, childRoute.data?.roleGuardMeta ?? null);
   }
 }

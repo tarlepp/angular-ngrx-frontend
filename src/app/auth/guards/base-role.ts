@@ -1,9 +1,10 @@
 import { Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, combineLatest, of } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 import { Role } from 'src/app/auth/enums';
+import { RoleGuardMetaDataInterface } from 'src/app/auth/interfaces';
 import { AppState, authenticationSelectors } from 'src/app/store';
 
 export abstract class BaseRole {
@@ -21,28 +22,65 @@ export abstract class BaseRole {
    *  - RoleRootGuard
    *  - RoleUserGuard
    *
-   * Method will redirect user either to `/` or `/auth/login` depending if user
-   * needs to be authenticated or not.
+   * By default this method will redirect user either to `/` or `/auth/login`
+   * depending if user is not logged in or user doesn't have the specified
+   * role.
+   *
+   * You can override this behaviour by setting `data` option to your route
+   * definition where you can configure following;
+   *  - `redirect`, Redirect if not logged in or no role, defaults to true
+   *  - `routeNotLoggedIn`, Not logged in route, defaults to '/auth/login'
+   *  - `routeNoRole`, No specified role route, defaults to '/'
+   *
+   * Simple example about that route configuration;
+   *
+   *  export const FeatureRoutes: Routes = [
+   *    {
+   *      path: 'foo',
+   *      canActivate: [
+   *        RoleAdminGuard,
+   *      ],
+   *      component: FooComponent,
+   *      data: {
+   *        roleGuardMeta: {
+   *          redirect: true,
+   *          routeNotLoggedIn: '/some/route',
+   *          routeNoRole: '/some/another/route',
+   *        },
+   *      },
+   *    },
+   *  ];
+   *
+   * Also note that you don't need to provide all those if you just need to
+   * change one of those for your needs - and if the defaults are fine for your
+   * use case then you don't need to specify that `roleGuardMeta` at all.
    */
-  protected checkRole(role: Role): Observable<boolean|UrlTree> {
+  protected checkRole(role: Role, routeMetaData: RoleGuardMetaDataInterface|null): Observable<boolean|UrlTree> {
+    const metaData: RoleGuardMetaDataInterface = {
+      redirect: true,
+      routeNotLoggedIn: '/auth/login',
+      routeNoRole: '/',
+      ...routeMetaData,
+    };
+
     return combineLatest([
       this.store.select(authenticationSelectors.isLoggedIn),
       this.store.select(authenticationSelectors.roles),
     ])
     .pipe(
       take(1),
-      switchMap(([loggedIn, roles]: [boolean, Array<Role>]): Observable<boolean|UrlTree> => {
+      map(([loggedIn, roles]: [boolean, Array<Role>]): boolean|UrlTree => {
         let output;
 
         if (loggedIn === false) {
-          output = this.router.parseUrl('/auth/login');
+          output = metaData.redirect ? this.router.parseUrl(metaData.routeNotLoggedIn) : false;
         } else if (roles.includes(role) === false) {
-          output = this.router.parseUrl('/');
+          output = metaData.redirect ? this.router.parseUrl(metaData.routeNoRole) : false;
         } else {
           output = true;
         }
 
-        return of(output);
+        return output;
       }),
     );
   }

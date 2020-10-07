@@ -2,6 +2,7 @@ export * from 'src/app/auth/interfaces/auth-guard-meta-data.interface';
 export * from 'src/app/auth/interfaces/credentials-request.interface';
 export * from 'src/app/auth/interfaces/credentials-response.interface';
 export * from 'src/app/auth/interfaces/role.interface';
+export * from 'src/app/auth/interfaces/role-guard-meta-data.interface';
 export * from 'src/app/auth/interfaces/user-data.interface';
 export * from 'src/app/auth/interfaces/user-data-value.interface';
 export * from 'src/app/auth/interfaces/user-group.interface';

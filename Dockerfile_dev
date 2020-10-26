@@ -23,6 +23,10 @@ RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
   && chmod +x docker-entrypoint-dev.sh \
   && npm install -g npm-check-updates mversion
 
+# Add simple autocomplete support for `ng` command
+RUN NG_COMMANDS="add build config doc e2e generate help lint new run serve test update version xi18n" \
+  && complete -W "$NG_COMMANDS" ng
+
 # Expose port 4200 outside
 EXPOSE 4200
 

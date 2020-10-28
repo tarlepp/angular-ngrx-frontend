@@ -16,7 +16,8 @@ ADD . .
 
 # Add necessary stuff to bash autocomplete
 RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc \
-  && curl https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash >> /etc/bash.bashrc
+  && curl https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash >> /etc/bash.bashrc \
+  && printf '\nNG_COMMANDS="add build config doc e2e generate help lint new run serve test update version xi18n"\ncomplete -W "$NG_COMMANDS" ng\n' >> /etc/bash.bashrc
 
 # Link `ng` command, set entrypoint with `x` mark and install `ncu` and `mversion` tools
 RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \

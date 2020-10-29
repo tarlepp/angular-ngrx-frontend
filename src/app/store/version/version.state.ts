@@ -1,4 +1,3 @@
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { ServerErrorAwareState } from 'src/app/store/aware-states';
 
 /**

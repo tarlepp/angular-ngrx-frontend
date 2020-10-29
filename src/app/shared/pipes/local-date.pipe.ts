@@ -15,8 +15,9 @@ import { AppState, layoutSelectors } from 'src/app/store';
  *  {{ '1982-10-12T15:59:11+00:00' | localDate : 'LLLL' }}
  *
  * Note that this pipe isn't `pure` one, because otherwise we cannot get those
- * locale changes to work as expected. And this might cause some performance
- * issues - or not - dunno.
+ * possible locale / timezone changes to work as expected. Internally this pipe
+ * is using local cache, so that we don't do fire unnecessary moment function
+ * calls on every change-detection cycle.
  */
 @Pipe({
   name: 'localDate',
@@ -26,6 +27,9 @@ export class LocalDatePipe implements PipeTransform, OnDestroy {
   private locale: Locale;
   private timezone: string;
   private subscriptions: Subscription;
+  private cachedLocale: Locale;
+  private cachedTimezone: string;
+  private cachedOutput: string;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
@@ -56,8 +60,18 @@ export class LocalDatePipe implements PipeTransform, OnDestroy {
   /**
    * Angular invokes the `transform` method with the value of a binding as the
    * first argument, and any parameters as the second argument in list form.
+   *
+   * Note that we use local cache here, so that we don't fire those moment
+   * library function calls on every change-detection cycle.
    */
-  public transform(value: string, format?: string): string {
-    return moment(value).tz(this.timezone).locale(this.locale).format(format || 'x').toString();
+  public transform(value: string|Date, format?: string): string {
+    if (this.cachedLocale !== this.locale || this.cachedTimezone !== this.timezone) {
+      this.cachedLocale = this.locale;
+      this.cachedTimezone = this.timezone;
+
+      this.cachedOutput = moment(value).tz(this.timezone).locale(this.locale).format(format || 'x').toString();
+    }
+
+    return this.cachedOutput;
   }
 }

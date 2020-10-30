@@ -11,7 +11,7 @@ import { AppState, layoutSelectors } from 'src/app/store';
  * within application user specified locale.
  *
  * Usage;
- *  {{ someNumber | localNumber [ : digitsInfo [ : locale ] ] }}
+ *  {{ someNumber | localNumber [ : digitsInfo [ : locale ] ] }}
  *
  * This pipes accepts the same pipe arguments than Angular original `DecimalPipe`
  * implementation, the only main difference is that user locale is used automatically,
@@ -19,8 +19,9 @@ import { AppState, layoutSelectors } from 'src/app/store';
  * core pipe.
  *
  * Note that this pipe isn't `pure` one, because otherwise we cannot get those
- * locale changes to work as expected. And this might cause some performance issues
- * - or not dunno.
+ * possible locale changes to work as expected. Internally this pipe is using
+ * local cache, so that we don't do fire unnecessary function calls on every
+ * change-detection cycle.
  */
 @Pipe({
   name: 'localNumber',
@@ -29,6 +30,8 @@ import { AppState, layoutSelectors } from 'src/app/store';
 export class LocalNumberPipe implements PipeTransform, OnDestroy {
   private locale: Locale;
   private subscriptions: Subscription;
+  private cachedLocale: Locale;
+  private cachedOutput: string;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
@@ -56,10 +59,21 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
   /**
    * Angular invokes the `transform` method with the value of a binding as the
    * first argument, and any parameters as the second argument in list form.
+   *
+   * Note that we use local cache here, so that we don't fire function calls on
+   * every change-detection cycle.
    */
   public transform(value: any, format?: string, locale?: string): string {
-    return value === undefined || value === null || value === ''
-      ? ''
-      : formatNumber(value, locale || this.locale, format);
+    const currentLocale = locale as Locale || this.locale;
+
+    if (currentLocale !== this.cachedLocale) {
+      this.cachedLocale = currentLocale;
+
+      this.cachedOutput = value === undefined || value === null || value === ''
+        ? ''
+        : formatNumber(value, currentLocale, format);
+    }
+
+    return this.cachedOutput;
   }
 }

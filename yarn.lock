@@ -238,14 +238,14 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-11.0.0.tgz#fda2e5d2ea4cac56662b04ca72a5a0b8c2dd169d"
   integrity sha512-lwUVlaiIASNbKQ/EtCK5KOVIlpiyVvysN6idAD0rJHr6BRtrlqwiayNYbV5as5IJyPYLf2E8au3an9j0E/PFDw==
 
-"@angular/localize@11.0.0":
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-11.0.0.tgz#8fcb2a322d030cb2ffd4a35befaabe730f7e5fd8"
-  integrity sha512-jd23nuy1//DLUoaLRh/dj7C3Mb1z9i4hrirOOFDvErWDvydJJf4gM5GvEM72Mle4nVjMsRdEZJYN8Of8EWJXSQ==
+"@angular/localize@11.0.2":
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-11.0.2.tgz#de0fce15d31c958478c280b3aecb398841146f9f"
+  integrity sha512-G7v/WPjno5QgY2XvYqK9pKP5lsaE17rP6/FIYhTFoA2TTSTJQ0mWlIQigcTvr+AT2t4U6nFJeteGuyIIvpMJYg==
   dependencies:
     "@babel/core" "7.8.3"
     glob "7.1.2"
-    yargs "15.3.0"
+    yargs "^16.1.1"
 
 "@angular/material@11.0.0":
   version "11.0.0"
@@ -12477,7 +12477,7 @@ y18n@^4.0.0:
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
   integrity sha512-r9S/ZyXu/Xu9q1tYlpsLIsa3EeLXXk0VwlxqTcFRfg9EhMW+17kbt9G0NrgCmhGb5vT2hyhJZLfDGx+7+5Uj/w==
 
-y18n@^5.0.2:
+y18n@^5.0.2, y18n@^5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.5.tgz#8769ec08d03b1ea2df2500acef561743bbb9ab18"
   integrity sha512-hsRUr4FFrvhhRH12wOdfs38Gy7k2FFzB9qgN9v3aLykRq0dRcdcpz5C9FxdS2NuhOrI/628b/KSTJ3rwHysYSg==
@@ -12584,6 +12584,19 @@ yargs@^16.0.3:
     require-directory "^2.1.1"
     string-width "^4.2.0"
     y18n "^5.0.2"
+    yargs-parser "^20.2.2"
+
+yargs@^16.1.1:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.1.1.tgz#5a4a095bd1ca806b0a50d0c03611d38034d219a1"
+  integrity sha512-hAD1RcFP/wfgfxgMVswPE+z3tlPFtxG8/yWUrG2i17sTWGCGqWnxKcLTF4cUKDUK8fzokwsmO9H0TDkRbMHy8w==
+  dependencies:
+    cliui "^7.0.2"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.0"
+    y18n "^5.0.5"
     yargs-parser "^20.2.2"
 
 yeast@0.1.2:

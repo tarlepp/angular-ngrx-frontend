@@ -1,5 +1,5 @@
 # Fetch used node image
-FROM node:15.2.0
+FROM node:15.2.1
 
 # Let's use bash as a default shell
 SHELL ["/bin/bash", "-c"]

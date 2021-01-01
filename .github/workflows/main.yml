@@ -72,9 +72,33 @@ jobs:
           config: './markdown-lint.yml'
           args: './doc/*.md'
 
+  check-translations:
+    name: Check that translations are up-to-date
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make checkout
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 15.4.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.4.0
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run `yarn run extract-translations && git diff --exit-code`
+        run: yarn run extract-translations && git diff --exit-code
+
   build:
     name: Build application Docker image
     runs-on: ubuntu-latest
+    needs:
+      - lint-typescript
+      - lint-scss
+      - lint-documentation
+      - check-translations
 
     steps:
       - name: Make checkout

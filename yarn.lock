@@ -7644,10 +7644,10 @@ ngx-moment@5.0.0:
   dependencies:
     tslib "^2.0.0"
 
-ngx-webstorage@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-7.0.0.tgz#5301f4f057dd123a7ae6ccef500c2c614ef6a636"
-  integrity sha512-2HBCJcy7EC4uVspJ0ymmDDmJONwLRiG7CiLaYMSdg3qw5C8LtunpmvBWitLHszkNDO2jszEu6+xQ+WneSkrh8g==
+ngx-webstorage@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-7.0.1.tgz#bf6d0ab664649c3644e6079f3a5886fa1156a2ec"
+  integrity sha512-E3J/Gmk6mM0jmlwfCLf8bx92t5ZyC5BS0EUgJQzbLgFynYcwq7xkwXG4J5uOJ3fc3jcCCNgnu2v6R1PyLcp/oQ==
   dependencies:
     tslib "^2.0.0"
 

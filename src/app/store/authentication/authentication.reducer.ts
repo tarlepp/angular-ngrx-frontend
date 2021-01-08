@@ -79,6 +79,13 @@ const reducer = createReducer(
       error,
     }),
   ),
+  on(
+    authenticationActions.resetError,
+    (state: AuthenticationState): AuthenticationState => ({
+      ...state,
+      error: null,
+    }),
+  ),
   /**
    * If/when user makes logout within this application we need to reset this
    * store state to initial one, so that there isn't anything user related

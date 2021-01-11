@@ -33,26 +33,15 @@ import { AuthenticationType } from 'src/app/store/store.type';
  *  }
  */
 
-// Login action that triggers request to backend.
+// Common actions for authentication store
 const login = createAction(AuthenticationType.LOGIN, props<{ credentials: CredentialsRequestInterface }>());
-
-// Login success action that is triggered via effects and from application main component.
 const loginSuccess = createAction(AuthenticationType.LOGIN_SUCCESS, props<{ userData: UserDataInterface }>());
-
-// Login failure action that is triggered via effects.
 const loginFailure = createAction(AuthenticationType.LOGIN_FAILURE, props<{ error: ServerErrorInterface }>());
-
-// Profile action that triggers request to backend
 const profile = createAction(AuthenticationType.PROFILE);
-
-// Profile success action that is triggered via effects.
 const profileSuccess = createAction(AuthenticationType.PROFILE_SUCCESS, props<{ profile: UserProfileInterface }>());
-
-// Profile failure action that is triggered via effects.
 const profileFailure = createAction(AuthenticationType.PROFILE_FAILURE, props<{ error: ServerErrorInterface }>());
-
-// Logout action that triggers user logout process within application
 const logout = createAction(AuthenticationType.LOGOUT, props<{ message?: string }>());
+const resetError = createAction(AuthenticationType.RESET_ERROR);
 
 // Export all store actions, so that those can be used easily.
 export const authenticationActions = {
@@ -63,4 +52,5 @@ export const authenticationActions = {
   profileSuccess,
   profileFailure,
   logout,
+  resetError,
 };

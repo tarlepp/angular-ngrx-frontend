@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
-import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { AppState, authenticationActions, authenticationSelectors } from 'src/app/store';
 
 @Component({
@@ -23,6 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public focus: boolean;
 
   private subscriptions: Subscription;
+  private isError: boolean;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
@@ -31,6 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {
     this.focus = true;
     this.subscriptions = new Subscription();
+    this.isError = false;
   }
 
   /**
@@ -50,14 +50,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     // Reset login form if error happens
     this.subscriptions
       .add(this.store
-        .pipe(
-          select(authenticationSelectors.error),
-          filter((error: ServerErrorInterface|null): boolean => error !== null),
-        )
+        .pipe(authenticationSelectors.filteredError)
         .subscribe((): void => {
           this.loginForm.reset();
           this.loginFormElement.resetForm();
           this.focus = true;
+          this.isError = true;
         }),
       );
 
@@ -74,6 +72,10 @@ export class LoginComponent implements OnInit, OnDestroy {
    */
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+
+    if (this.isError) {
+      this.store.dispatch(authenticationActions.resetError());
+    }
   }
 
   /**

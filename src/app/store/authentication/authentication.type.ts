@@ -9,6 +9,7 @@ export enum AuthenticationType {
   PROFILE_SUCCESS = '[Authentication] Profile success',
   PROFILE_FAILURE = '[Authentication] Profile failure',
   LOGOUT = '[Authentication] Logout',
+  RESET_ERROR = '[Authentication] Reset error',
 }
 
 // Authentication login types

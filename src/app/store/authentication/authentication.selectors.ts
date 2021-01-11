@@ -1,7 +1,10 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, select } from '@ngrx/store';
+import { pipe } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { Role } from 'src/app/auth/enums';
 import { UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
+import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { createSelectorIsLoading, createSelectorServerError } from 'src/app/shared/utils';
 import { AuthenticationState } from 'src/app/store';
 
@@ -29,6 +32,12 @@ const roles = createSelector(featureSelector, (state: AuthenticationState): Arra
 const userData = createSelector(featureSelector, (state: AuthenticationState): UserDataInterface|null => state.userData);
 const error = createSelectorServerError(featureSelector);
 
+// Filtered error selector - this will always return `ServerErrorInterface`
+const filteredError = pipe(
+  select(error),
+  filter((x: ServerErrorInterface|null): boolean => x !== null),
+);
+
 // Export all store selectors, so that those can be used easily.
 export const authenticationSelectors = {
   isLoading,
@@ -37,4 +46,5 @@ export const authenticationSelectors = {
   roles,
   userData,
   error,
+  filteredError,
 };

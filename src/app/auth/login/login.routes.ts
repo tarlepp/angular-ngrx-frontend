@@ -7,7 +7,7 @@ export const LoginRoutes: Routes = [
   {
     path: 'login',
     canActivate: [
-      AnonymousGuard,
+      //AnonymousGuard,
     ],
     component: LoginComponent,
     children: [

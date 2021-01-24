@@ -7,7 +7,7 @@ import { LoginRoutes } from 'src/app/auth/login/login.routes';
   imports: [
     RouterModule.forChild([
       {
-        path: 'auth',
+        path: '',
         children: [
           ...LoginRoutes,
           {

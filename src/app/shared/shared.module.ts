@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { MomentModule } from 'ngx-moment';
 
@@ -20,7 +19,6 @@ import { Services } from 'src/app/shared/services';
     ...Pipes,
   ],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     FlexLayoutModule,
     ReactiveFormsModule,
@@ -32,7 +30,6 @@ import { Services } from 'src/app/shared/services';
     ...Components,
     ...Directives,
     ...Pipes,
-    BrowserAnimationsModule,
     CommonModule,
     FlexLayoutModule,
     ReactiveFormsModule,

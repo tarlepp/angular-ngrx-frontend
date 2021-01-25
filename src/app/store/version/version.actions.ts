@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { VersionType } from 'src/app/store/store.type';
+import { VersionType } from 'src/app/store/store.types';
 
 /**
  * Version store actions definitions, that you can dispatch to make

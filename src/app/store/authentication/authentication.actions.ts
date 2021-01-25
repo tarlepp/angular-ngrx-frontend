@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { AuthenticationType } from 'src/app/store/store.type';
+import { AuthenticationType } from 'src/app/store/store.types';
 
 /**
  * Authentication store actions definitions, each of these actions will change

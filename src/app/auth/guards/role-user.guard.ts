@@ -14,7 +14,9 @@ import { Role } from 'src/app/auth/enums';
 import { BaseRole } from 'src/app/auth/guards/base-role';
 import { AppState } from 'src/app/store';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class RoleUserGuard extends BaseRole implements CanActivate, CanActivateChild {
   /**
    * Constructor of the class, where we DI all services that we need to use

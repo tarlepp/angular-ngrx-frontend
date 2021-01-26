@@ -1,17 +1,19 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { NgxWebstorageModule } from 'ngx-webstorage';
+import { LocalStorageService, NgxWebstorageModule } from 'ngx-webstorage';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { registerLocales } from 'src/app/app.locales';
-import { AuthModule } from 'src/app/auth/auth.module';
+import { jwtOptionsFactory } from 'src/app/auth/factories';
 import { LandingModule } from 'src/app/landing/landing.module';
 import {
   ErrorMessageComponent,
@@ -37,8 +39,8 @@ registerLocales();
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    AuthModule,
     LandingModule,
     AppRoutingModule,
     SharedModule,
@@ -71,6 +73,16 @@ registerLocales();
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
+      },
+    }),
+    NgxWebstorageModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [
+          LocalStorageService,
+        ],
       },
     }),
   ],

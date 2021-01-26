@@ -31,8 +31,7 @@ export class VersionEffects {
    * simple HTTP interceptor.
    */
   private fetchFrontendVersion$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
-    (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$.pipe(
       ofType(VersionType.FETCH_FRONTEND_VERSION),
       switchMap((): Observable<TypedAction<FrontendVersionTypes>> =>
         from(this.versionService.fetchFrontendVersion()
@@ -61,8 +60,7 @@ export class VersionEffects {
    * when it's initialized.
    */
   private fetchBackendVersion$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
-    (): Observable<TypedAction<BackendVersionTypes>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<BackendVersionTypes>> => this.actions$.pipe(
       ofType(VersionType.FETCH_BACKEND_VERSION),
       switchMap((): Observable<TypedAction<BackendVersionTypes>> =>
         from(this.versionService.fetchBackendVersion()
@@ -89,8 +87,8 @@ export class VersionEffects {
    * version available and within that that use case we need to inform current
    * user that there is a new version available of this application.
    */
-  private versionChanged$: Observable<void> = createEffect((): Observable<void> => this.actions$
-    .pipe(
+  private versionChanged$: Observable<void> = createEffect(
+    (): Observable<void> => this.actions$.pipe(
       ofType(VersionType.FETCH_FRONTEND_VERSION_SUCCESS),
       pluck('version'),
       filter((version: string): boolean => environment.version !== version),

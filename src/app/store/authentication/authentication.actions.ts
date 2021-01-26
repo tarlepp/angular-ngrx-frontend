@@ -33,7 +33,7 @@ import { AuthenticationType } from 'src/app/store/store.types';
  *  }
  */
 
-// Common actions for authentication store
+// Common actions for authentication feature store
 const login = createAction(AuthenticationType.LOGIN, props<{ credentials: CredentialsRequestInterface }>());
 const loginSuccess = createAction(AuthenticationType.LOGIN_SUCCESS, props<{ userData: UserDataInterface }>());
 const loginFailure = createAction(AuthenticationType.LOGIN_FAILURE, props<{ error: ServerErrorInterface }>());

@@ -91,7 +91,7 @@ const reducer = createReducer(
    * store state to initial one, so that there isn't anything user related
    * stuff on our store.
    */
-  on(authenticationActions.logout, (): AuthenticationState => initialState),
+  on(authenticationActions.logout, (): AuthenticationState => ({ ...initialState })),
 );
 
 // Export `Authentication` store reducer.

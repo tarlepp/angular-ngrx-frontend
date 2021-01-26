@@ -22,7 +22,7 @@ import {
 import { HttpLoaderFactory } from 'src/app/shared/factories';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { effects } from 'src/app/store/app.effects';
-import { metaReducers, reducers } from 'src/app/store/app.reducer';
+import { metaReducers, reducers } from 'src/app/store/app.reducers';
 import { environment } from 'src/environments/environment';
 
 registerLocales();

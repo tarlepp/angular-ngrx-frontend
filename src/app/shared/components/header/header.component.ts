@@ -99,4 +99,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public changeLanguage(language: Language): void {
     this.store.dispatch(layoutActions.changeLanguage({ language }));
   }
+
+  /**
+   * Method to dispatch toggle theme action to layout feature store.
+   */
+  public toggleTheme(): void {
+    this.store.dispatch(layoutActions.toggleTheme());
+  }
 }

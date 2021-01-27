@@ -10,5 +10,6 @@ export * from 'src/app/shared/interfaces/localization.interface';
 export * from 'src/app/shared/interfaces/server-error.interface';
 export * from 'src/app/shared/interfaces/server-error-debug.interface';
 export * from 'src/app/shared/interfaces/server-error-value.interface';
+export * from 'src/app/shared/interfaces/theme-value.interface';
 export * from 'src/app/shared/interfaces/version.interface';
 export * from 'src/app/shared/interfaces/viewport-value.interface';

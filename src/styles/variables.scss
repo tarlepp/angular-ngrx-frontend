@@ -50,6 +50,17 @@ $opacities: (
   '100': '1',
 );
 
+// Degrees
+$degrees: (
+  '45': '45deg',
+  '90': '90deg',
+  '135': '135deg',
+  '180': '180deg',
+  '225': '225deg',
+  '270': '270deg',
+  '315': '315deg'
+);
+
 // Font-sizes
 $font-size-normal: 16px;
 $font-size-list: 13px;

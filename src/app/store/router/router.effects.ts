@@ -16,8 +16,7 @@ export class RouterEffects {
    * navigates to another route within this application.
    */
   private routerNavigatedAction$: Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> = createEffect(
-    (): Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> => this.actions$.pipe(
       ofType(routerNavigatedAction),
       map((): TypedAction<LayoutType.SCROLL_TO_TOP> => layoutActions.scrollToTop()),
     ),

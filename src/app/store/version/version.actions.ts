@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { VersionType } from 'src/app/store/store.type';
+import { VersionType } from 'src/app/store/store.types';
 
 /**
  * Version store actions definitions, that you can dispatch to make
@@ -12,8 +12,9 @@ import { VersionType } from 'src/app/store/store.type';
  * these actions at all.
  */
 
-// Action to trigger frontend version fetch
+// Common actions for version feature store
 const fetchFrontendVersion = createAction(VersionType.FETCH_FRONTEND_VERSION);
+const fetchBackendVersion = createAction(VersionType.FETCH_BACKEND_VERSION);
 
 /**
  * Frontend version success action that is triggered via effects.
@@ -28,9 +29,6 @@ const fetchFrontendVersionSuccess = createAction(VersionType.FETCH_FRONTEND_VERS
  * @internal
  */
 const fetchFrontendVersionFailure = createAction(VersionType.FETCH_FRONTEND_VERSION_FAILURE, props<{ error: ServerErrorInterface }>());
-
-// Action to trigger backend version fetch
-const fetchBackendVersion = createAction(VersionType.FETCH_BACKEND_VERSION);
 
 /**
  * Backend version success action that is triggered via effects.

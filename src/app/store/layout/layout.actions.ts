@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { Language, Locale, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { LayoutType } from 'src/app/store/store.type';
+import { LayoutType } from 'src/app/store/store.types';
 
 /**
  * Layout store actions definitions, each of these actions will change
@@ -33,14 +33,20 @@ import { LayoutType } from 'src/app/store/store.type';
  *  }
  */
 
-// Action to trigger language change in application.
+// Common actions for layout feature store
 const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language: Language }>());
-
-// Action to trigger locale change in application.
 const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
-
-// Action to trigger timezone change in application.
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
+const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string }>());
+
+/**
+ * Action to trigger browser to scroll to top of the page. This action is
+ * dispatched with every `RouterEvent.NavigationEnd` event.
+ */
+const scrollToTop = createAction(LayoutType.SCROLL_TO_TOP);
+
+// Action to trigger `language`, `locale` and `timezone` change in application
+const updateLocalization = createAction(LayoutType.UPDATE_LOCALIZATION, props<{ localization: LocalizationInterface }>());
 
 /**
  * Action to change viewport - This is to be used only in our application
@@ -49,18 +55,6 @@ const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone
  * @internal
  */
 const changeViewport = createAction(LayoutType.CHANGE_VIEWPORT, props<{ viewport: Viewport }>());
-
-// Action to trigger `language`, `locale` and `timezone` change in application.
-const updateLocalization = createAction(LayoutType.UPDATE_LOCALIZATION, props<{ localization: LocalizationInterface }>());
-
-// Action to trigger browser to scroll specified anchor.
-const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string }>());
-
-/**
- * Action to trigger browser to scroll to top of the page. This action is
- * dispatched with every `RouterEvent.NavigationEnd` event.
- */
-const scrollToTop = createAction(LayoutType.SCROLL_TO_TOP);
 
 /**
  * Action to clear layout store current `scrollTo` information.

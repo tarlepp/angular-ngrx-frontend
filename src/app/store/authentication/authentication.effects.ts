@@ -40,8 +40,7 @@ export class AuthenticationEffects {
    * show some user related messages, etc. in application.
    */
   private login$: Observable<TypedAction<AuthenticationLoginTypes>> = createEffect(
-    (): Observable<TypedAction<AuthenticationLoginTypes>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<AuthenticationLoginTypes>> => this.actions$.pipe(
       ofType(authenticationActions.login),
       pluck('credentials'),
       exhaustMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationLoginTypes>> =>
@@ -80,8 +79,7 @@ export class AuthenticationEffects {
    * manually if user token that is stored to local storage is valid one.
    */
   private loginSuccess$: Observable<TypedAction<AuthenticationType.PROFILE>> = createEffect(
-    (): Observable<TypedAction<AuthenticationType.PROFILE>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<AuthenticationType.PROFILE>> => this.actions$.pipe(
       ofType(authenticationActions.loginSuccess),
       map((): TypedAction<AuthenticationType.PROFILE> => authenticationActions.profile()),
     ),
@@ -94,8 +92,7 @@ export class AuthenticationEffects {
    * backend and catch possible errors while fetching that information.
    */
   private profile$: Observable<TypedAction<AuthenticationProfileTypes>> = createEffect(
-    (): Observable<TypedAction<AuthenticationProfileTypes>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<AuthenticationProfileTypes>> => this.actions$.pipe(
       ofType(authenticationActions.profile),
       switchMap((): Observable<TypedAction<AuthenticationProfileTypes>> =>
         from(this.authService.getProfile()
@@ -123,8 +120,7 @@ export class AuthenticationEffects {
    *     from application just because backend version has been changed.
    */
   private logout$: Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> = createEffect(
-    (): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$.pipe(
       ofType(authenticationActions.logout),
       pluck('message'),
       tap((message?: string): void => {

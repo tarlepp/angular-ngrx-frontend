@@ -2,10 +2,13 @@ import { routerReducer } from '@ngrx/router-store';
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 
 import { AppState } from 'src/app/store/app.state';
-import { authenticationReducer } from 'src/app/store/authentication/authentication.reducer';
-import { errorReducer } from 'src/app/store/error/error.reducer';
-import { layoutReducer } from 'src/app/store/layout/layout.reducer';
-import { versionReducer } from 'src/app/store/version/version.reducer';
+import {
+  authenticationReducer,
+  errorReducer,
+  layoutReducer,
+  localStorageSyncReducer,
+  versionReducer,
+} from 'src/app/store/store.reducers';
 import { environment } from 'src/environments/environment';
 
 /**
@@ -19,4 +22,4 @@ export const reducers: ActionReducerMap<AppState> = {
   version: versionReducer,
 };
 
-export const metaReducers: MetaReducer<AppState>[] = environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer];

@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { ErrorType } from 'src/app/store/store.type';
+import { ErrorType } from 'src/app/store/store.types';
 
 /**
  * Error store actions definitions, each of these actions will change the

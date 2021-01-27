@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { AuthenticationType } from 'src/app/store/store.type';
+import { AuthenticationType } from 'src/app/store/store.types';
 
 /**
  * Authentication store actions definitions, each of these actions will change
@@ -33,7 +33,7 @@ import { AuthenticationType } from 'src/app/store/store.type';
  *  }
  */
 
-// Common actions for authentication store
+// Common actions for authentication feature store
 const login = createAction(AuthenticationType.LOGIN, props<{ credentials: CredentialsRequestInterface }>());
 const loginSuccess = createAction(AuthenticationType.LOGIN_SUCCESS, props<{ userData: UserDataInterface }>());
 const loginFailure = createAction(AuthenticationType.LOGIN_FAILURE, props<{ error: ServerErrorInterface }>());

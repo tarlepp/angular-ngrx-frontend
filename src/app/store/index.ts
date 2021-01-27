@@ -10,4 +10,4 @@ export * from 'src/app/store/app.state';
 export * from 'src/app/store/store.actions';
 export * from 'src/app/store/store.selectors';
 export * from 'src/app/store/store.states';
-export * from 'src/app/store/store.type';
+export * from 'src/app/store/store.types';

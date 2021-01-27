@@ -25,8 +25,7 @@ export class LayoutEffects {
    * Each of these actions you can find from this effect class.
    */
   private updateLocalization$: Observable<TypedAction<LocalizationTypes>> = createEffect(
-    (): Observable<TypedAction<LocalizationTypes>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<LocalizationTypes>> => this.actions$.pipe(
       ofType(layoutActions.updateLocalization),
       pluck('localization'),
       mergeMap((localization: LocalizationInterface): Array<TypedAction<LocalizationTypes>> => [
@@ -48,15 +47,15 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeLanguage$: Observable<void> = createEffect((): Observable<void> => this.actions$
-      .pipe(
-        ofType(layoutActions.changeLanguage),
-        pluck('language'),
-        map((language: Language): void => {
-          this.translateService.use(language);
-          this.localStorageService.store('language', language);
-        }),
-      ),
+  private changeLanguage$: Observable<void> = createEffect(
+    (): Observable<void> => this.actions$.pipe(
+      ofType(layoutActions.changeLanguage),
+      pluck('language'),
+      map((language: Language): void => {
+        this.translateService.use(language);
+        this.localStorageService.store('language', language);
+      }),
+    ),
     { dispatch: false },
   );
 
@@ -72,8 +71,8 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeLocale$: Observable<void> = createEffect((): Observable<void> => this.actions$
-    .pipe(
+  private changeLocale$: Observable<void> = createEffect(
+    (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeLocale),
       pluck('locale'),
       map((locale: Locale): void => {
@@ -97,8 +96,8 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeTimezone$: Observable<void> = createEffect((): Observable<void> => this.actions$
-    .pipe(
+  private changeTimezone$: Observable<void> = createEffect(
+    (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeTimezone),
       pluck('timezone'),
       map((timezone: string): void => {
@@ -120,8 +119,7 @@ export class LayoutEffects {
    * in browser.
    */
   private scrollToTop$: Observable<TypedAction<LayoutType.SCROLL_TO>> = createEffect(
-    (): Observable<TypedAction<LayoutType.SCROLL_TO>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<LayoutType.SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollToTop),
       map((): TypedAction<LayoutType.SCROLL_TO> => layoutActions.scrollTo({ anchor: '#top-page' })),
     ),
@@ -135,8 +133,7 @@ export class LayoutEffects {
    * that scroll to state in layout store.
    */
   private scrollTo$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
-    (): Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> => this.actions$
-    .pipe(
+    (): Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollTo),
       pluck('anchor'),
       tap((anchor: string): void => {

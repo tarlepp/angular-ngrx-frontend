@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
+import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { LayoutState } from 'src/app/store';
 
@@ -22,6 +22,7 @@ import { LayoutState } from 'src/app/store';
 const featureSelector = createFeatureSelector<LayoutState>('layout');
 
 // Common selectors for this store
+const theme = createSelector(featureSelector, (state: LayoutState): Theme => state.theme);
 const language = createSelector(featureSelector, (state: LayoutState): Language => state.language);
 const locale = createSelector(featureSelector, (state: LayoutState): Locale => state.locale);
 const timezone = createSelector(featureSelector, (state: LayoutState): string => state.timezone);
@@ -45,6 +46,7 @@ const localization = createSelector(locale, language, timezone, (a: Locale,  b: 
 
 // Export all store selectors, so that those can be used easily.
 export const layoutSelectors = {
+  theme,
   language,
   locale,
   timezone,

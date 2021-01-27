@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Language, Locale, Viewport } from 'src/app/shared/enums';
+import { Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { LayoutType } from 'src/app/store/store.types';
 
@@ -38,6 +38,8 @@ const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language
 const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
 const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string }>());
+const toggleTheme = createAction(LayoutType.TOGGLE_THEME);
+const setTheme = createAction(LayoutType.SET_THEME, props<{ theme: Theme }>());
 
 /**
  * Action to trigger browser to scroll to top of the page. This action is
@@ -71,6 +73,8 @@ export const layoutActions = {
   updateLocalization,
   changeViewport,
   scrollTo,
+  toggleTheme,
+  setTheme,
   scrollToTop,
   clearScrollTo,
 };

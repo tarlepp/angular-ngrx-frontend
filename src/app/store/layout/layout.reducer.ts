@@ -2,17 +2,19 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as moment from 'moment-timezone';
 
 import { Viewports } from 'src/app/shared/constants';
-import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
+import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 import {
   DictionaryInterface,
   LanguageValueInterface,
   LocaleValueInterface,
+  ThemeValueInterface,
   ViewportValueInterface,
 } from 'src/app/shared/interfaces';
 import { LayoutState, layoutActions } from 'src/app/store';
 
 // Initial state of `Layout` store.
 const initialState: LayoutState = {
+  theme: Theme.DEFAULT,
   language: Language.DEFAULT,
   locale: Locale.DEFAULT,
   timezone: 'UTC',
@@ -26,6 +28,13 @@ const initialState: LayoutState = {
 
 const reducer = createReducer(
   initialState,
+  on(
+    layoutActions.setTheme,
+    (state: LayoutState, { theme }: ThemeValueInterface): LayoutState => ({
+      ...state,
+      theme,
+    }),
+  ),
   /**
    * Reducer for `layoutActions.changeLanguage` action. Within this reducer we
    * check that given `language` is valid one and if not fallback to `default`

@@ -1,7 +1,11 @@
-import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
+import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 
 /**
  * Interface definition for our layout store contents.
+ *
+ *  theme
+ *    Current theme that is used within application this will affect the
+ *    overall look of your application
  *
  *  language
  *    Current language that is used within application, this will affect all
@@ -34,6 +38,7 @@ import { Device, Language, Locale, Viewport } from 'src/app/shared/enums';
  *    HTML anchor definition where we want to scroll user browser.
  */
 export interface LayoutState {
+  theme: Theme;
   language: Language;
   locale: Locale;
   timezone: string;

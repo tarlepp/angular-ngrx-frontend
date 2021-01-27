@@ -12,7 +12,9 @@ import { Observable } from 'rxjs';
 import { BaseAuth } from 'src/app/auth/guards/base-auth';
 import { AuthenticationService } from 'src/app/auth/services';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AnonymousGuard extends BaseAuth implements CanActivate, CanActivateChild {
   /**
    * Constructor of the class, where we DI all services that we need to use

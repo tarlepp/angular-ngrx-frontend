@@ -14,7 +14,9 @@ import {
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { ConfigurationService } from 'src/app/shared/services';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthenticationService {
   private readonly userData$: BehaviorSubject<UserDataInterface|null>;
 

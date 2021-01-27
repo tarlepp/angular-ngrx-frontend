@@ -1,0 +1,138 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+
+// Application specified styles for theming
+@import '~src/styles/palettes/app-palette-accent';
+@import '~src/styles/palettes/app-palette-grey';
+@import '~src/styles/palettes/app-palette-primary';
+@import '~src/styles/palettes/app-palette-warn';
+@import '~src/styles/variables';
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat-typography-config(
+  $font-family: $font-family,
+  $display-4: mat-typography-level(112px, 112px, 300, $letter-spacing: -.05em),
+  $display-3: mat-typography-level(56px, 56px, 400, $letter-spacing: -.02em),
+  $display-2: mat-typography-level(45px, 48px, 400, $letter-spacing: -.005em),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(20px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(15px, 24px, 400),
+  $body-2: mat-typography-level(14px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(12px, 20px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+  // Line-height must be unit-less fraction of the font-size.
+  $input: mat-typography-level(inherit, 1.125, 400)
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core($custom-typography);
+
+// Define the used palettes by application specified palette configuration
+$palette-primary: mat-palette($app-palette-primary, 500);
+$palette-accent: mat-palette($app-palette-accent);
+$palette-warn: mat-palette($app-palette-warn);
+
+// Background palette for light themes.
+$mat-light-theme-background: (
+  status-bar: map-get($app-palette-grey, 300),
+  app-bar: map-get($app-palette-grey, 100),
+  background: map-get($app-palette-grey, 50),
+  hover: rgba(black, .04), // TODO(kara): check style with Material Design UX
+  card: white,
+  dialog: white,
+  disabled-button: rgba(black, .12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map-get($app-palette-grey, 300),
+  selected-disabled-button: map-get($app-palette-grey, 400),
+  disabled-button-toggle: map-get($app-palette-grey, 200),
+  unselected-chip: map-get($app-palette-grey, 300),
+  disabled-list-option: map-get($app-palette-grey, 200),
+  tooltip: map-get($app-palette-grey, 700),
+);
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+  status-bar: black,
+  app-bar: map-get($app-palette-grey, 900),
+  background: map-get($app-palette-grey, 500),
+  hover: rgba(white, .04), // TODO(kara): check style with Material Design UX
+  card: map-get($app-palette-grey, 600),
+  dialog: map-get($app-palette-grey, 800),
+  disabled-button: rgba(white, .12),
+  raised-button: map-get($app-palette-grey, 800),
+  focused-button: $light-focused,
+  selected-button: map-get($app-palette-grey, 900),
+  selected-disabled-button: map-get($app-palette-grey, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map-get($app-palette-grey, 700),
+  disabled-list-option: black,
+  tooltip: map-get($app-palette-grey, 700),
+);
+
+// Foreground palette for light themes.
+$mat-light-theme-foreground: (
+  base: black,
+  divider: $dark-dividers,
+  dividers: $dark-dividers,
+  disabled: $dark-disabled-text,
+  disabled-button: rgba(black, .26),
+  disabled-text: $dark-disabled-text,
+  elevation: black,
+  hint-text: $dark-disabled-text,
+  secondary-text: $dark-secondary-text,
+  icon: rgba(black, .54),
+  icons: rgba(black, .54),
+  text: rgba(black, .87),
+  slider-min: rgba(black, .87),
+  slider-off: rgba(black, .26),
+  slider-off-active: rgba(black, .38),
+);
+
+// Foreground palette for dark themes.
+$mat-dark-theme-foreground: (
+  base: black,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(white, .3),
+  disabled-text: $light-disabled-text,
+  elevation: black,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: white,
+  icons: white,
+  text: white,
+  slider-min: white,
+  slider-off: rgba(white, .3),
+  slider-off-active: rgba(white, .3),
+);
+
+// Create light theme
+$light-theme: mat-light-theme(
+  (
+    color: (
+      primary: $palette-primary,
+      accent: $palette-accent,
+      warn: $palette-warn,
+    )
+  )
+);
+
+// Create dark theme
+$dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $palette-primary,
+      accent: $palette-accent,
+      warn: $palette-warn,
+    )
+  )
+);

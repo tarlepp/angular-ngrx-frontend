@@ -1,21 +1,26 @@
-@import './variables';
+@import '~src/styles/variables';
 
 .ghost {
   animation: ghost-pulse 2s ease infinite;
 
   &--text {
     color: transparent !important;
-    text-shadow: 0 0 8px $text-color;
-  }
-
-  &--text-white {
-    color: transparent !important;
-    text-shadow: 0 0 8px $white;
+    text-shadow: 0 0 8px var(--theme-text-color);
   }
 
   &--text-primary {
     color: transparent !important;
-    text-shadow: 0 0 8px $primary-color;
+    text-shadow: 0 0 8px var(--theme-primary-color);
+  }
+
+  &--text-accent {
+    color: transparent !important;
+    text-shadow: 0 0 8px var(--theme-accent-color);
+  }
+
+  &--text-warn {
+    color: transparent !important;
+    text-shadow: 0 0 8px var(--theme-warn-color);
   }
 }
 

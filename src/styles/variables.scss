@@ -1,20 +1,6 @@
-// Import application palettes with Angular Material theming
-@import 'palettes';
-
 // Base font families
 $font-family: Roboto, 'Helvetica Neue', sans-serif;
 $font-family-monospace: Monaco, monospace;
-
-// Colors
-$white: #fff;
-$text-color: mat-color($mat-light-theme-foreground, text);
-$icon-color: mat-color($mat-light-theme-foreground, icon);
-$primary-color: mat-color($angular-frontend-primary, 500);
-$primary-color-light: mat-color($angular-frontend-primary, 200);
-$primary-color-dark: mat-color($angular-frontend-primary, 900);
-$accent-color: mat-color($angular-frontend-accent, 500);
-$warn-color: mat-color($angular-frontend-warn, 500);
-$warn-color-dark: mat-color($angular-frontend-warn, 900);
 
 // Paddings & Margins
 $spacing: 32px;

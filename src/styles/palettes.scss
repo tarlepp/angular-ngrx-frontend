@@ -1,8 +1,0 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-
-@import '~@angular/material/theming';
-
-$angular-frontend-primary: mat-palette($mat-indigo);
-$angular-frontend-accent: mat-palette($mat-pink, A200, A100, A400);
-$angular-frontend-warn: mat-palette($mat-red);

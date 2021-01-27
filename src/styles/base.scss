@@ -1,4 +1,4 @@
-@import './variables';
+@import '~src/styles/variables';
 
 .no-padding {
   padding: 0 !important;
@@ -137,8 +137,20 @@
   overflow: hidden;
 }
 
-.text-primary {
-  color: $primary-color;
+.text-color-primary {
+  color: var(--theme-primary-color) !important;
+}
+
+.text-color-accent {
+  color: var(--theme-accent-color) !important;
+}
+
+.text-color-warn {
+  color: var(--theme-warn-color) !important;
+}
+
+.text-color-normal {
+  color: var(--theme-text-color) !important;
 }
 
 .text-left {
@@ -179,10 +191,6 @@
 
 .text-normal {
   font-size: $font-size-normal !important;
-}
-
-.text-color-normal {
-  color: $text-color !important;
 }
 
 .text-small {

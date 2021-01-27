@@ -1,22 +1,78 @@
 // Import application palettes with Angular Material theming
-@import 'styles/palettes';
+@import '~src/styles/theme';
 
 // Plus imports for other components in your application
-@import './styles/variables';
-@import './styles/animations';
-@import './styles/base';
-@import './styles/layout';
-@import './styles/mixins';
+@import '~src/styles/variables';
+@import '~src/styles/animations';
+@import '~src/styles/base';
+@import '~src/styles/layout';
+@import '~src/styles/mixins';
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core;
+// Light theme common variables
+$light-color-config: mat-get-color-config($light-theme);
+$light-background: mat_color(map_get($light-color-config, background), 'card');
+$light-text-color: mat_color(map_get($light-color-config, foreground), 'text');
+$light-primary-color: mat-color(map_get($light-color-config, primary), 500);
+$light-accent-color: mat-color(map_get($light-color-config, accent), 500);
+$light-warn-color: mat-color(map_get($light-color-config, warn), 500);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$angular-frontend-theme: mat-light-theme($angular-frontend-primary, $angular-frontend-accent, $angular-frontend-warn);
+// Dark theme common variables
+$dark-color-config: mat-get-color-config($dark-theme);
+$dark-background: mat_color(map_get($dark-color-config, background), 'card');
+$dark-text-color: mat_color(map_get($dark-color-config, foreground), 'text');
+$dark-primary-color: mat-color(map_get($dark-color-config, primary), 500);
+$dark-accent-color: mat-color(map_get($dark-color-config, accent), 500);
+$dark-warn-color: mat-color(map_get($dark-color-config, warn), 500);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($angular-frontend-theme);
+// Include the default theme styles (color and default density)
+.light-theme {
+  @include angular-material-theme($light-theme);
+
+  /**
+   * You can use these `--theme-*` in component specified SCSS files just by
+   * using following syntax;
+   *
+   *  .some-css-class {
+   *    color: var(--theme-text-color);
+   *  }
+   */
+  /* stylelint-disable */
+  --theme-background: #{$light-background};
+  --theme-text-color: #{$light-text-color};
+  --theme-primary-color: #{$light-primary-color};
+  --theme-accent-color: #{$light-accent-color};
+  --theme-warn-color: #{$light-warn-color};
+  /* stylelint-enable */
+
+  color: $light-text-color;
+}
+
+// Include the dark color styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.dark-theme {
+  @include angular-material-color($dark-theme);
+
+  /**
+  * You can use these `--theme-*` in component specified SCSS files just by
+  * using following syntax;
+  *
+  *  .some-css-class {
+  *    color: var(--theme-text-color);
+  *  }
+  */
+  /* stylelint-disable */
+  --theme-background: #{$dark-background};
+  --theme-text-color: #{$dark-text-color};
+  --theme-primary-color: #{$dark-primary-color};
+  --theme-accent-color: #{$dark-accent-color};
+  --theme-warn-color: #{$dark-warn-color};
+  /* stylelint-enable */
+
+  color: $dark-text-color;
+
+  // This is needed for dark theme for some weird reason...
+  .mat-toolbar-single-row {
+    height: 64px;
+  }
+}

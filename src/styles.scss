@@ -1,7 +1,7 @@
 // Import application palettes with Angular Material theming
 @import '~src/styles/theme';
 
-// Plus imports for other components in your application
+// Plus imports for other common styles that we need
 @import '~src/styles/variables';
 @import '~src/styles/animations';
 @import '~src/styles/base';
@@ -24,7 +24,7 @@ $dark-primary-color: mat-color(map_get($dark-color-config, primary), 500);
 $dark-accent-color: mat-color(map_get($dark-color-config, accent), 500);
 $dark-warn-color: mat-color(map_get($dark-color-config, warn), 500);
 
-// Include the default theme styles (color and default density)
+// Include the light theme styles (color and default density)
 .light-theme {
   @include angular-material-theme($light-theme);
 
@@ -47,9 +47,7 @@ $dark-warn-color: mat-color(map_get($dark-color-config, warn), 500);
   color: $light-text-color;
 }
 
-// Include the dark color styles inside of a block with a CSS class. You can make this
-// CSS class whatever you want. In this example, any component inside of an element with
-// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+// Include the dark theme styles (color and default density)
 .dark-theme {
   @include angular-material-color($dark-theme);
 

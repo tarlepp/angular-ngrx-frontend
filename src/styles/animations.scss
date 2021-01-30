@@ -13,14 +13,29 @@
     text-shadow: 0 0 8px var(--theme-primary-color);
   }
 
+  &--text-primary-contrast {
+    color: transparent !important;
+    text-shadow: 0 0 8px var(--theme-primary-color-contrast);
+  }
+
   &--text-accent {
     color: transparent !important;
     text-shadow: 0 0 8px var(--theme-accent-color);
   }
 
+  &--text-accent-contrast {
+    color: transparent !important;
+    text-shadow: 0 0 8px var(--theme-accent-color-contrast);
+  }
+
   &--text-warn {
     color: transparent !important;
     text-shadow: 0 0 8px var(--theme-warn-color);
+  }
+
+  &--text-warn-contrast {
+    color: transparent !important;
+    text-shadow: 0 0 8px var(--theme-warn-color-contrast);
   }
 }
 

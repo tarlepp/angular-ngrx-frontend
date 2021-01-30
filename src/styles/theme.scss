@@ -1,5 +1,8 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
+/**
+ * Custom Theming for Angular Material
+ *
+ * For more information: https://material.angular.io/guide/theming
+ */
 @import '~@angular/material/theming';
 
 // Application specified styles for theming
@@ -9,8 +12,10 @@
 @import '~src/styles/palettes/app-palette-warn';
 @import '~src/styles/variables';
 
-// Define a custom typography config that overrides the font-family as well as the
-// `headlines` and `body-1` levels.
+/**
+ * Define a custom typography config that overrides the font-family as well as
+ * the `headlines` and `body-1` levels.
+ */
 $custom-typography: mat-typography-config(
   $font-family: $font-family,
   $display-4: mat-typography-level(112px, 112px, 300, $letter-spacing: -.05em),
@@ -29,9 +34,12 @@ $custom-typography: mat-typography-config(
   $input: mat-typography-level(inherit, 1.125, 400)
 );
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// **Be sure that you only ever include this mixin once!**
+/**
+ * Include the common styles for Angular Material. We include this here so that
+ * you only have to load a single css file for Angular Material in your app.
+ *
+ * **Be sure that you only ever include this mixin once!**
+ */
 @include mat-core($custom-typography);
 
 // Define the used palettes by application specified palette configuration

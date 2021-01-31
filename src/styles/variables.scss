@@ -6,8 +6,7 @@ $font-family-monospace: Monaco, monospace;
 $spacing: 32px;
 $spacing-half: $spacing / 2;
 $spacing-quarter: $spacing / 4;
-$spacing-half-quarter: $spacing * .75;
-$spacing-quarter-half-quarter: $spacing * .375;
+$spacing-half-quarter: $spacing-quarter / 2;
 $spacing-1-5x: $spacing * 1.5;
 $spacing-2x: $spacing * 2;
 
@@ -17,13 +16,12 @@ $orientations: (vertical, horizontal);
 
 // Sizes
 $sizes: (
+  '': $spacing,
   '-half': $spacing-half,
   '-quarter': $spacing-quarter,
   '-half-quarter': $spacing-half-quarter,
-  '-quarter-half-quarter': $spacing-quarter-half-quarter,
   '-1-5x': $spacing-1-5x,
   '-2x': $spacing-2x,
-  '': $spacing,
 );
 
 // Opacities

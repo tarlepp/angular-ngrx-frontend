@@ -31,3 +31,25 @@
 @mixin transition-ease-in-out-all() {
   @include transition(all $interval ease-in-out);
 }
+
+@mixin scroll-bar() {
+  &::-webkit-scrollbar {
+    width: $spacing-quarter;
+    height: $spacing-quarter;
+    border-radius: $spacing-half;
+  }
+
+  ::-webkit-scrollbar:horizontal {
+    height: $spacing-quarter;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $spacing-half;
+    background: var(--theme-primary-color);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: $spacing-half;
+    background: var(--theme-primary-color-contrast);
+  }
+}

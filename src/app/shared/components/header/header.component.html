@@ -7,7 +7,7 @@
     <a mat-button
        routerLink="/"
     >
-      {{ 'component.header.title' | translate }}
+      {{ 'component.header.title' | translate }}
     </a>
 
     <div fxLayout="row"
@@ -43,6 +43,14 @@
     </a>
 
     <button mat-menu-item
+            (click)="toggleTheme()"
+    >
+      <mat-icon class="rotate-45">brightness_2</mat-icon>
+
+      <span>{{ 'component.header.menu.theme' | translate }}</span>
+    </button>
+
+    <button mat-menu-item
             [matMenuTriggerFor]="languageMenu"
     >
       <mat-icon>language</mat-icon>
@@ -62,6 +70,14 @@
 
       <span>{{ 'component.header.menu.profile' | translate }}</span>
     </a>
+
+    <button mat-menu-item
+            (click)="toggleTheme()"
+    >
+      <mat-icon class="rotate-45">brightness_2</mat-icon>
+
+      <span>{{ 'component.header.menu.theme' | translate }}</span>
+    </button>
 
     <button mat-menu-item
             [matMenuTriggerFor]="languageMenu"

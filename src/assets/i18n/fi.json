@@ -25,7 +25,8 @@
         },
         "login": "Kirjaudu sisään",
         "logout": "Kirjaudu ulos",
-        "profile": "Profiili"
+        "profile": "Profiili",
+        "theme": "Vaihda teema"
       },
       "title": null
     },

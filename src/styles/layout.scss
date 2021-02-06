@@ -1,4 +1,4 @@
-@import './variables';
+@import '~src/styles/variables';
 
 html,
 body {
@@ -7,7 +7,6 @@ body {
 
 body {
   margin: 0;
-  color: $text-color;
   font-family: $font-family;
 }
 

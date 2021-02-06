@@ -12,9 +12,11 @@
     >
       <h1 class="mat-title">{{ 'component.auth.login.title' | translate }}</h1>
 
-      <mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'component.auth.login.username' | translate }}</mat-label>
+
         <label>
-          <input type="text" placeholder="{{ 'component.auth.login.username' | translate }}"
+          <input type="text"
                  formControlName="username"
                  matInput
                  [appAutoFocus]="focus"
@@ -25,9 +27,13 @@
         <mat-error>{{ 'component.auth.login.error-username' | translate }}</mat-error>
       </mat-form-field>
 
-      <mat-form-field fxFlexOffset="8px">
+      <mat-form-field appearance="fill"
+                      fxFlexOffset="8px"
+      >
+        <mat-label>{{ 'component.auth.login.password' | translate }}</mat-label>
+
         <label>
-          <input type="password" placeholder="{{ 'component.auth.login.password' | translate }}"
+          <input type="password"
                  formControlName="password"
                  matInput
                  [readonly]="loading"

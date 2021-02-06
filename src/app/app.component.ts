@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -10,9 +10,15 @@ import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
 import { UserDataInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
-import { Language, Viewport } from 'src/app/shared/enums';
+import { Language, Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { AppState, authenticationActions, authenticationSelectors, layoutActions } from 'src/app/store';
+import {
+  AppState,
+  authenticationActions,
+  authenticationSelectors,
+  layoutActions,
+  layoutSelectors,
+} from 'src/app/store';
 
 @Component({
   selector: 'app-root',
@@ -110,6 +116,14 @@ export class AppComponent implements OnInit, OnDestroy {
           this.store.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
         ),
       );
+
+    // Ensure that we're using correct theme on application init
+    this.store
+      .pipe(
+        select(layoutSelectors.theme),
+        take(1),
+      )
+      .subscribe((theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })));
   }
 
   /**

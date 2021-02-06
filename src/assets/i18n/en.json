@@ -25,7 +25,8 @@
         },
         "login": "Login",
         "logout": "Logout",
-        "profile": "Profile"
+        "profile": "Profile",
+        "theme": "Toggle theme"
       },
       "title": "Angular NgRx frontend"
     },

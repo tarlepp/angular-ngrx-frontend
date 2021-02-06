@@ -1,27 +1,12 @@
-// Import application palettes with Angular Material theming
-@import 'palettes';
-
 // Base font families
 $font-family: Roboto, 'Helvetica Neue', sans-serif;
 $font-family-monospace: Monaco, monospace;
-
-// Colors
-$white: #fff;
-$text-color: mat-color($mat-light-theme-foreground, text);
-$icon-color: mat-color($mat-light-theme-foreground, icon);
-$primary-color: mat-color($angular-frontend-primary, 500);
-$primary-color-light: mat-color($angular-frontend-primary, 200);
-$primary-color-dark: mat-color($angular-frontend-primary, 900);
-$accent-color: mat-color($angular-frontend-accent, 500);
-$warn-color: mat-color($angular-frontend-warn, 500);
-$warn-color-dark: mat-color($angular-frontend-warn, 900);
 
 // Paddings & Margins
 $spacing: 32px;
 $spacing-half: $spacing / 2;
 $spacing-quarter: $spacing / 4;
-$spacing-half-quarter: $spacing * .75;
-$spacing-quarter-half-quarter: $spacing * .375;
+$spacing-half-quarter: $spacing-quarter / 2;
 $spacing-1-5x: $spacing * 1.5;
 $spacing-2x: $spacing * 2;
 
@@ -31,23 +16,39 @@ $orientations: (vertical, horizontal);
 
 // Sizes
 $sizes: (
+  '': $spacing,
   '-half': $spacing-half,
   '-quarter': $spacing-quarter,
   '-half-quarter': $spacing-half-quarter,
-  '-quarter-half-quarter': $spacing-quarter-half-quarter,
   '-1-5x': $spacing-1-5x,
   '-2x': $spacing-2x,
-  '': $spacing,
 );
 
 // Opacities
 $opacities: (
+  '0': '0',
   '7': '.07',
+  '17': '.17',
   '27': '.27',
+  '37': '.37',
   '47': '.47',
+  '57': '.57',
   '67': '.67',
+  '77': '.77',
   '87': '.87',
+  '97': '.97',
   '100': '1',
+);
+
+// Degrees
+$degrees: (
+  '45': '45deg',
+  '90': '90deg',
+  '135': '135deg',
+  '180': '180deg',
+  '225': '225deg',
+  '270': '270deg',
+  '315': '315deg'
 );
 
 // Font-sizes

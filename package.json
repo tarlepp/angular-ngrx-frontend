@@ -51,7 +51,7 @@
     "@ngx-translate/http-loader": "6.0.0",
     "moment": "2.29.1",
     "moment-timezone": "0.5.33",
-    "ngrx-store-localstorage": "10.1.2",
+    "ngrx-store-localstorage": "11.0.0",
     "ngx-moment": "5.0.0",
     "ngx-webstorage": "7.0.1",
     "rxjs": "6.6.3",

@@ -7941,10 +7941,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ngrx-store-localstorage@10.1.2:
-  version "10.1.2"
-  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-10.1.2.tgz#60d0c530455a810f9fa7c43338d67575a8b38f7f"
-  integrity sha512-km01scSMG150yR6/INCHE53MaTAMhuWdXdb5uvwqbL7vAQfd7I3PLRS4snYKipyvk+9VuqVDaZNRq4l07u9qbA==
+ngrx-store-localstorage@11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-11.0.0.tgz#408b357041b68ffdf43f2274b03111f54e9d09e7"
+  integrity sha512-/bLA9/0orlEffBGH4Nqp5XwdgFX9XkpBD5p2ZwRYPPYAHi+bs4yFdKl6c4RvKsS9IOGHXiO5mm2vLaK+n7mvTw==
   dependencies:
     deepmerge "^3.2.0"
     tslib "^2.0.0"

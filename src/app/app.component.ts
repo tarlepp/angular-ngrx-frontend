@@ -84,7 +84,13 @@ export class AppComponent implements OnInit, OnDestroy {
           if (userData === null && this.loggedIn) {
             this.logout(null);
           } else if (userData !== null && !this.loggedIn) {
-            this.store.dispatch(authenticationActions.loginSuccess({ userData }));
+            this.authenticationService
+              .isAuthenticated()
+              .pipe(take(1))
+              .subscribe((loggedIn: boolean): void => loggedIn
+                ? this.store.dispatch(authenticationActions.loginSuccess({ userData }))
+                : this.logout(marker('messages.authentication.timeout')),
+              );
           }
         }),
       );

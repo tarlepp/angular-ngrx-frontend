@@ -4,7 +4,6 @@ import * as moment from 'moment-timezone';
 import { Viewports } from 'src/app/shared/constants';
 import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 import {
-  DictionaryInterface,
   LanguageValueInterface,
   LocaleValueInterface,
   ThemeValueInterface,
@@ -67,7 +66,7 @@ const reducer = createReducer(
    */
   on(
     layoutActions.changeTimezone,
-    (state: LayoutState, { timezone }: DictionaryInterface<string>): LayoutState => ({
+    (state: LayoutState, { timezone }: { timezone: string }): LayoutState => ({
       ...state,
       timezone: moment.tz.names().includes(timezone) ? timezone : 'Europe/Helsinki',
     }),
@@ -105,7 +104,7 @@ const reducer = createReducer(
   // Reducer for `layoutActions.scrollTo` action to store anchor to this state.
   on(
     layoutActions.scrollTo,
-    (state: LayoutState, { anchor }: DictionaryInterface<string>): LayoutState => ({
+    (state: LayoutState, { anchor }: { anchor: string }): LayoutState => ({
       ...state,
       anchor,
     }),

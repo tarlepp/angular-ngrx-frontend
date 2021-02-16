@@ -8,7 +8,16 @@ import { LocalStorageConfig, localStorageSync } from 'ngrx-store-localstorage';
  */
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   const config: LocalStorageConfig = {
-    keys: ['authentication', 'layout', 'version'],
+    keys: [
+      {
+        authentication: [
+          'userData',
+          'profile',
+        ],
+      },
+      'layout',
+      'version',
+    ],
     rehydrate: true,
     storage: sessionStorage,
     restoreDates: false,

@@ -1668,6 +1668,25 @@
     tslib "^1.9.3"
     xml-js "^1.6.11"
 
+"@snyk/java-call-graph-builder@1.20.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@snyk/java-call-graph-builder/-/java-call-graph-builder-1.20.0.tgz#ffca734cf7ce276a69277963149358190eaac3e5"
+  integrity sha512-NX8bpIu7oG5cuSSm6WvtxqcCuJs2gRjtKhtuSeF1p5TYXyESs3FXQ0nHjfY90LiyTTc+PW/UBq6SKbBA6bCBww==
+  dependencies:
+    "@snyk/graphlib" "2.1.9-patch.3"
+    ci-info "^2.0.0"
+    debug "^4.1.1"
+    glob "^7.1.6"
+    jszip "^3.2.2"
+    needle "^2.3.3"
+    progress "^2.0.3"
+    snyk-config "^4.0.0-rc.2"
+    source-map-support "^0.5.7"
+    temp-dir "^2.0.0"
+    tmp "^0.2.1"
+    tslib "^1.9.3"
+    xml-js "^1.6.11"
+
 "@snyk/rpm-parser@^2.0.0":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@snyk/rpm-parser/-/rpm-parser-2.2.1.tgz#b61ccf5478684b203576bd2be68de434ccbb0069"
@@ -1796,10 +1815,10 @@
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.1.tgz#f8b95def0016411c58c7adb4791dff29bc62992c"
   integrity sha512-eeSCVhBsgwHNS1FmaMu4zrLxfykCTWJMLFZv7lmyrZQjw7foUUXoPu4GukSN9v7JvUw7X+/aDH3kCaymirBSTg==
 
-"@types/jasmine@3.6.3":
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.3.tgz#824df555b8a5114f91619e78d8f59624d6f23050"
-  integrity sha512-5QKAG8WfC9XrOgYLXPrxv1G2IIUE6zDyzTWamhNWJO0LqPRUbZ0q0zGHDhDJ7MpFloUuyME/jpBIdPjq3/P3jA==
+"@types/jasmine@3.6.4":
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.4.tgz#22ade1b692d5656f859ef9bc6c62d88632cc27e0"
+  integrity sha512-CTdMERA4iGNcxeqzD7pavb4WLIFq6bGnx6nIJD+1D4Knx24GE6QBPrWVhO8UlIy7gf7rbIt3ZD7iIzryRD2TgA==
 
 "@types/jasminewd2@2.0.8":
   version "2.0.8"
@@ -1861,10 +1880,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.13.tgz#9e425079799322113ae8477297ae6ef51b8e0cdf"
   integrity sha512-vbxr0VZ8exFMMAjCW8rJwaya0dMCDyYW2ZRdTyjtrCvJoENMpdUHOT/eTzvgyA5ZnqRZ/sI0NwqAxNHKYokLJQ==
 
-"@types/node@14.14.28":
-  version "14.14.28"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.28.tgz#cade4b64f8438f588951a6b35843ce536853f25b"
-  integrity sha512-lg55ArB+ZiHHbBBttLpzD07akz0QPrZgUODNakeC09i62dnrywr9mFErHuaPlB6I7z+sEbK+IYmplahvplCj2g==
+"@types/node@14.14.31":
+  version "14.14.31"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.31.tgz#72286bd33d137aa0d152d47ec7c1762563d34055"
+  integrity sha512-vFHy/ezP5qI0rFgJ7aQnjDXwAMrG0KqqIH7tQG5PPv3BWBayOPIQNBjVc/P6hhdZfMx51REc6tfDNXHUio893g==
 
 "@types/node@^14.14.10":
   version "14.14.22"
@@ -10846,14 +10865,14 @@ snyk-go-plugin@1.16.5:
     tmp "0.2.1"
     tslib "^1.10.0"
 
-snyk-gradle-plugin@3.12.5:
-  version "3.12.5"
-  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-3.12.5.tgz#7e5ed9179ad7972663867f0b443144765d6e4329"
-  integrity sha512-Z4qEzzPuRO1BxfL0vgfv4pzJ58ox6dksf8i18Vi1+yqDKmYEHmcMBYe33faFPJFZYf1PP7RerADpPssFJiYyLg==
+snyk-gradle-plugin@3.13.0:
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/snyk-gradle-plugin/-/snyk-gradle-plugin-3.13.0.tgz#3c31d539d9763866ef1f41034cd8e97d6236731f"
+  integrity sha512-t7tibuRHMX0ot5woZlFpblTH20j8BKWxO4wwC7+dGsvS9VtXrlG73moeE5EXfOPb2E8OA7STPKGsEibVIl/j2w==
   dependencies:
     "@snyk/cli-interface" "2.11.0"
     "@snyk/dep-graph" "^1.23.1"
-    "@snyk/java-call-graph-builder" "1.19.1"
+    "@snyk/java-call-graph-builder" "1.20.0"
     "@types/debug" "^4.1.4"
     chalk "^3.0.0"
     debug "^4.1.1"
@@ -11040,10 +11059,10 @@ snyk-try-require@1.3.1, snyk-try-require@^1.1.1, snyk-try-require@^1.3.1:
     lru-cache "^4.0.0"
     then-fs "^2.0.0"
 
-snyk@1.456.0:
-  version "1.456.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.456.0.tgz#f2ddbf8f01d1a7bd536294ee4a39058dfd140751"
-  integrity sha512-ZcZP86DNEfny34eW626lB9FikIUmiynQuJkydf4C7Kzx1szrmQhSGaXkRohBGXBhapzildNauhVX7327aTGk8Q==
+snyk@1.458.0:
+  version "1.458.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.458.0.tgz#33db237bdad2e58632252165c9da7e4a50602a65"
+  integrity sha512-w/ZCb8rOyFDn09OmoyuLDQcmW63rSfbVsXINM+bvT9UJ4ML4JRWA2qKURcaMy9RnkXEK3gPYstly7ezb9iF82g==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"
@@ -11088,7 +11107,7 @@ snyk@1.456.0:
     snyk-cpp-plugin "2.2.1"
     snyk-docker-plugin "4.17.2"
     snyk-go-plugin "1.16.5"
-    snyk-gradle-plugin "3.12.5"
+    snyk-gradle-plugin "3.13.0"
     snyk-module "3.1.0"
     snyk-mvn-plugin "2.25.3"
     snyk-nodejs-lockfile-parser "1.30.2"

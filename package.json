@@ -62,7 +62,7 @@
     "@angular-devkit/build-angular": "0.1102.1",
     "@angular/cli": "11.2.1",
     "@angular/compiler-cli": "11.2.1",
-    "@angular/language-service": "11.2.1",
+    "@angular/language-service": "11.2.2",
     "@biesbjerg/ngx-translate-extract": "7.0.3",
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
     "@types/jasmine": "3.6.4",

@@ -69,6 +69,10 @@
             "format": ["UPPER_CASE"]
           },
           {
+            "selector": "typeParameter",
+            "format": ["camelCase", "UPPER_CASE"]
+          },
+          {
             "selector": ["class", "enum", "interface", "typeAlias"],
             "format": ["PascalCase"]
           }

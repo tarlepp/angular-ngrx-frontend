@@ -53,8 +53,10 @@
             "ignoreParameters": true
           }
         ],
+        "@typescript-eslint/no-invalid-this": ["error"],
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-this-alias": "error",
+        "@typescript-eslint/no-useless-constructor": ["error"],
         "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/naming-convention" : [
           "error",
@@ -97,7 +99,7 @@
             "allowEmptyCatch": true
           }
         ],
-        "no-invalid-this": "error",
+        "no-invalid-this": "off",
         "no-new-func": "error",
         "no-param-reassign": "error",
         "no-redeclare": "error",
@@ -105,7 +107,7 @@
         "no-sequences": "error",
         "no-sparse-arrays": "error",
         "no-template-curly-in-string": "error",
-        "no-useless-constructor": "error",
+        "no-useless-constructor": "off",
         "no-void": "error",
         "no-shadow": "off",
         "prefer-object-spread": "error"

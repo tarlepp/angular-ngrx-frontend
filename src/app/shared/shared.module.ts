@@ -10,7 +10,7 @@ import { Directives } from 'src/app/shared/directives';
 import { HttpInterceptors } from 'src/app/shared/interceptors';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { Pipes } from 'src/app/shared/pipes';
-import { Services } from 'src/app/shared/services';
+import { services } from 'src/app/shared/services';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { Services } from 'src/app/shared/services';
   ],
   providers: [
     ...HttpInterceptors,
-    ...Services,
+    ...services,
   ],
 })
 

@@ -7,7 +7,7 @@ import { MomentModule } from 'ngx-moment';
 
 import { Components } from 'src/app/shared/components';
 import { Directives } from 'src/app/shared/directives';
-import { HttpInterceptors } from 'src/app/shared/interceptors';
+import { httpInterceptors } from 'src/app/shared/interceptors';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { pipes } from 'src/app/shared/pipes';
 import { services } from 'src/app/shared/services';
@@ -38,7 +38,7 @@ import { services } from 'src/app/shared/services';
     TranslateModule,
   ],
   providers: [
-    ...HttpInterceptors,
+    ...httpInterceptors,
     ...services,
   ],
 })

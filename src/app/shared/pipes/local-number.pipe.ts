@@ -63,15 +63,13 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
    * Note that we use local cache here, so that we don't fire function calls on
    * every change-detection cycle.
    */
-  public transform(value: any, format?: string, locale?: string): string {
+  public transform(value: number|string|null, format?: string, locale?: string): string {
     const currentLocale = locale as Locale || this.locale;
 
     if (currentLocale !== this.cachedLocale) {
       this.cachedLocale = currentLocale;
 
-      this.cachedOutput = value === undefined || value === null || value === ''
-        ? ''
-        : formatNumber(value, currentLocale, format);
+      this.cachedOutput = value !== null && Number.isFinite(+value) ? formatNumber(+value, currentLocale, format) : '';
     }
 
     return this.cachedOutput;

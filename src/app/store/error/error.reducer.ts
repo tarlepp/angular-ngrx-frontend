@@ -29,6 +29,4 @@ const reducer = createReducer(
 );
 
 // Export error store reducer.
-export function errorReducer(state: ErrorState, action: Action): ErrorState {
-  return reducer(state, action);
-}
+export const errorReducer = (state: ErrorState, action: Action): ErrorState => reducer(state, action);

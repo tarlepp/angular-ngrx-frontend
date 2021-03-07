@@ -123,6 +123,4 @@ const reducer = createReducer(
 );
 
 // Export error `Layout` store reducer.
-export function layoutReducer(state: LayoutState, action: Action): LayoutState {
-  return reducer(state, action);
-}
+export const layoutReducer = (state: LayoutState, action: Action): LayoutState => reducer(state, action);

@@ -90,6 +90,4 @@ const reducer = createReducer(
 );
 
 // Export error `Version` store reducer.
-export function versionReducer(state: VersionState, action: Action): VersionState {
-  return reducer(state, action);
-}
+export const versionReducer = (state: VersionState, action: Action): VersionState => reducer(state, action);

@@ -6,7 +6,7 @@ import { LocalStorageConfig, localStorageSync } from 'ngrx-store-localstorage';
  * specified parts of our store are stored to `sessionStorage` and if/when user
  * reloads (hits eg. F5) store state will be initialized with previous data.
  */
-export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+export const localStorageSyncReducer = (reducer: ActionReducer<any>): ActionReducer<any> => {
   const config: LocalStorageConfig = {
     keys: [
       {
@@ -25,4 +25,4 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
   };
 
   return localStorageSync(config)(reducer);
-}
+};

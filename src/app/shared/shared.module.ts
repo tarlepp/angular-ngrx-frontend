@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MomentModule } from 'ngx-moment';
 
-import { Components } from 'src/app/shared/components';
-import { Directives } from 'src/app/shared/directives';
+import { components } from 'src/app/shared/components';
+import { directives } from 'src/app/shared/directives';
 import { httpInterceptors } from 'src/app/shared/interceptors';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { pipes } from 'src/app/shared/pipes';
@@ -14,8 +14,8 @@ import { services } from 'src/app/shared/services';
 
 @NgModule({
   declarations: [
-    ...Components,
-    ...Directives,
+    ...components,
+    ...directives,
     ...pipes,
   ],
   imports: [
@@ -27,8 +27,8 @@ import { services } from 'src/app/shared/services';
     TranslateModule,
   ],
   exports: [
-    ...Components,
-    ...Directives,
+    ...components,
+    ...directives,
     ...pipes,
     CommonModule,
     FlexLayoutModule,

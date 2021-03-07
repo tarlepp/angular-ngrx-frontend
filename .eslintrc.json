@@ -67,12 +67,12 @@
             "format": ["PascalCase"]
           },
           {
-            "selector": "typeAlias",
-            "format": ["PascalCase"]
-          },
-          {
             "selector": "enumMember",
             "format": ["UPPER_CASE"]
+          },
+          {
+            "selector": "typeAlias",
+            "format": ["PascalCase"]
           }
         ],
         "arrow-parens": [

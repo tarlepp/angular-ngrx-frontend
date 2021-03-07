@@ -63,15 +63,11 @@
             "format": ["camelCase"]
           },
           {
-            "selector": "enum",
-            "format": ["PascalCase"]
-          },
-          {
             "selector": "enumMember",
             "format": ["UPPER_CASE"]
           },
           {
-            "selector": "typeAlias",
+            "selector": ["class", "enum", "interface", "typeAlias"],
             "format": ["PascalCase"]
           }
         ],

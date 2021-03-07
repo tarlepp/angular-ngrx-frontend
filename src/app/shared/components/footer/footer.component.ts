@@ -25,7 +25,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  constructor(private store: Store<AppState>) {
+  public constructor(private store: Store<AppState>) {
     this.subscriptions = new Subscription();
   }
 

@@ -69,6 +69,10 @@
             "format": ["UPPER_CASE"]
           },
           {
+            "selector": "objectLiteralProperty",
+            "format": ["camelCase", "PascalCase"]
+          },
+          {
             "selector": "typeParameter",
             "format": ["camelCase", "UPPER_CASE"]
           },

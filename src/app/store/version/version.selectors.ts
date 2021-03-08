@@ -8,7 +8,7 @@ import { VersionState } from 'src/app/store';
  *
  * Simple usage example;
  *
- *  constructor(private store: Store<AppState>) { }
+ *  constructor(private store: Store) { }
  *
  *  public ngOnInit(): void {
  *    // Initialize `versionFrontend$` and `versionBackend$` observables

@@ -1,11 +1,11 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, noop, of } from 'rxjs';
+import { noop, Observable, of } from 'rxjs';
 import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { ConfigurationService } from 'src/app/shared/services';
-import { AppState, versionActions, versionSelectors } from 'src/app/store';
+import { versionActions, versionSelectors } from 'src/app/store';
 
 @Injectable()
 export class BackendVersionInterceptor implements HttpInterceptor {
@@ -13,7 +13,7 @@ export class BackendVersionInterceptor implements HttpInterceptor {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store<AppState>) { }
+  public constructor(private store: Store) { }
 
   /**
    * Backend version interceptor which purpose is to update backend version

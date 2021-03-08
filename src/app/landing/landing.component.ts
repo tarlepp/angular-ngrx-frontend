@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { Device, Viewport } from 'src/app/shared/enums';
-import { AppState, layoutSelectors } from 'src/app/store';
+import { layoutSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-landing',
@@ -21,7 +21,7 @@ export class LandingComponent implements OnInit, OnDestroy {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store<AppState>) {
+  public constructor(private store: Store) {
     this.subscription = new Subscription();
   }
 

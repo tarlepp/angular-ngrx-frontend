@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import { Store, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -12,13 +12,7 @@ import { UserDataInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { Language, Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import {
-  AppState,
-  authenticationActions,
-  authenticationSelectors,
-  layoutActions,
-  layoutSelectors,
-} from 'src/app/store';
+import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private localStorage: LocalStorageService,
     private translateService: TranslateService,
     private mediaObserver: MediaObserver,
-    private store: Store<AppState>,
+    private store: Store,
     private authenticationService: AuthenticationService,
   ) {
     this.loggedIn = false;

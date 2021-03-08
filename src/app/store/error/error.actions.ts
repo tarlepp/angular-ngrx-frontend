@@ -9,7 +9,7 @@ import { ErrorType } from 'src/app/store/store.types';
  *
  * Simple usage example;
  *
- *  public constructor(private store: Store<AppState>) { }
+ *  public constructor(private store: Store) { }
  *
  *  public ngOnInit(): void {
  *    const error: ServerErrorInterface = {

@@ -12,7 +12,7 @@ export * from 'src/app/auth/guards/role-logged.guard';
 export * from 'src/app/auth/guards/role-root.guard';
 export * from 'src/app/auth/guards/role-user.guard';
 
-export const Guards = [
+export const authenticationGuards = [
   AnonymousGuard,
   AuthenticationGuard,
   RoleAdminGuard,

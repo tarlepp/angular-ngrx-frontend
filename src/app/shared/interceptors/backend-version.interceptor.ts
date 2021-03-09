@@ -37,13 +37,12 @@ export class BackendVersionInterceptor implements HttpInterceptor {
    *  6) Current version from store isn't `initial` value and it differs from
    *     response header value
    *
-   * And if all of those steps are ok, then we dispatch following actions;
-   *  - fetchBackendVersionSuccess
-   *  - fetchFrontendVersion
+   * And if all of those steps are ok, then we dispatch following action;
+   *  - newBackendVersion
    *
-   * First one will update version information to footer component and second
-   * one will trigger frontend version fetch instantly - just to make sure that
-   * we're using the latest version of frontend application.
+   * This will update version information to footer component and also trigger
+   * frontend version check  instantly - just to make sure that we're using the
+   * latest version of frontend application.
    *
    * If frontend version changes that will trigger opening a dialog that tells
    * user to reload application OR continue using it with old version.
@@ -62,9 +61,6 @@ export class BackendVersionInterceptor implements HttpInterceptor {
       ),
       map(([event ]: [HttpResponse<any>, string]): string => event.headers.get('X-API-VERSION')),
     )
-    .subscribe((version: string): void => {
-      this.store.dispatch(versionActions.fetchBackendVersionSuccess({ version }));
-      this.store.dispatch(versionActions.fetchFrontendVersion());
-    });
+    .subscribe((backendVersion: string): void => this.store.dispatch(versionActions.newBackendVersion({ backendVersion })));
   }
 }

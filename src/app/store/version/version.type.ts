@@ -6,6 +6,7 @@ export enum VersionType {
   FETCH_BACKEND_VERSION = '[Version] Fetch backend version',
   FETCH_BACKEND_VERSION_SUCCESS = '[Version] Fetch backend version success',
   FETCH_BACKEND_VERSION_FAILURE = '[Version] Fetch backend version failure',
+  NEW_BACKEND_VERSION = '[Version] New backend version - check if frontend version is also changed',
 }
 
 // Frontend version types
@@ -17,3 +18,7 @@ export type FrontendVersionTypes =
 export type BackendVersionTypes =
   VersionType.FETCH_BACKEND_VERSION_SUCCESS
   | VersionType.FETCH_BACKEND_VERSION_FAILURE;
+
+export type NewBackendVersionTypes =
+  VersionType.FETCH_FRONTEND_VERSION
+  | VersionType.FETCH_BACKEND_VERSION_SUCCESS;

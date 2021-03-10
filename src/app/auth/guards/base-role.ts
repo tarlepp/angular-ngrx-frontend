@@ -1,18 +1,18 @@
 import { Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { Role } from 'src/app/auth/enums';
 import { RoleGuardMetaDataInterface } from 'src/app/auth/interfaces';
-import { AppState, authenticationSelectors } from 'src/app/store';
+import { authenticationSelectors } from 'src/app/store';
 
 export abstract class BaseRole {
   /**
    * Constructor of the class. This is called from classes that extends this
    * abstract class.
    */
-  protected constructor(protected router: Router, protected store: Store<AppState>) { }
+  protected constructor(protected router: Router, protected store: Store) { }
 
   /**
    * Helper method to make check if user has certain role or not. This is used

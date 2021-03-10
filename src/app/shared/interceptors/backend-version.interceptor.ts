@@ -1,11 +1,11 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, noop, of } from 'rxjs';
+import { noop, Observable, of } from 'rxjs';
 import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { ConfigurationService } from 'src/app/shared/services';
-import { AppState, versionActions, versionSelectors } from 'src/app/store';
+import { versionActions, versionSelectors } from 'src/app/store';
 
 @Injectable()
 export class BackendVersionInterceptor implements HttpInterceptor {
@@ -13,7 +13,7 @@ export class BackendVersionInterceptor implements HttpInterceptor {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store<AppState>) { }
+  public constructor(private store: Store) { }
 
   /**
    * Backend version interceptor which purpose is to update backend version
@@ -37,13 +37,12 @@ export class BackendVersionInterceptor implements HttpInterceptor {
    *  6) Current version from store isn't `initial` value and it differs from
    *     response header value
    *
-   * And if all of those steps are ok, then we dispatch following actions;
-   *  - fetchBackendVersionSuccess
-   *  - fetchFrontendVersion
+   * And if all of those steps are ok, then we dispatch following action;
+   *  - newBackendVersion
    *
-   * First one will update version information to footer component and second
-   * one will trigger frontend version fetch instantly - just to make sure that
-   * we're using the latest version of frontend application.
+   * This will update version information to footer component and also trigger
+   * frontend version check  instantly - just to make sure that we're using the
+   * latest version of frontend application.
    *
    * If frontend version changes that will trigger opening a dialog that tells
    * user to reload application OR continue using it with old version.
@@ -62,9 +61,6 @@ export class BackendVersionInterceptor implements HttpInterceptor {
       ),
       map(([event ]: [HttpResponse<any>, string]): string => event.headers.get('X-API-VERSION')),
     )
-    .subscribe((version: string): void => {
-      this.store.dispatch(versionActions.fetchBackendVersionSuccess({ version }));
-      this.store.dispatch(versionActions.fetchFrontendVersion());
-    });
+    .subscribe((backendVersion: string): void => this.store.dispatch(versionActions.newBackendVersion({ backendVersion })));
   }
 }

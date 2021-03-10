@@ -5,7 +5,7 @@ export * from 'src/app/shared/services/configuration-service';
 export * from 'src/app/shared/services/snackbar-service';
 export * from 'src/app/shared/services/version.service';
 
-export const Services = [
+export const services = [
   SnackbarService,
   VersionService,
 ];

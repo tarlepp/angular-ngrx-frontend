@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as moment from 'moment-timezone';
 
-import { Viewports } from 'src/app/shared/constants';
+import { viewports } from 'src/app/shared/constants';
 import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 import {
   LanguageValueInterface,
@@ -85,9 +85,9 @@ const reducer = createReducer(
   on(
     layoutActions.changeViewport,
     (state: LayoutState, { viewport }: ViewportValueInterface): LayoutState => {
-      const device = Viewports[Device.MOBILE].includes(viewport)
+      const device = viewports[Device.MOBILE].includes(viewport)
         ? Device.MOBILE
-        : Viewports[Device.TABLET].includes(viewport)
+        : viewports[Device.TABLET].includes(viewport)
           ? Device.TABLET
           : Device.DESKTOP;
 
@@ -123,6 +123,4 @@ const reducer = createReducer(
 );
 
 // Export error `Layout` store reducer.
-export function layoutReducer(state: LayoutState, action: Action): LayoutState {
-  return reducer(state, action);
-}
+export const layoutReducer = (state: LayoutState, action: Action): LayoutState => reducer(state, action);

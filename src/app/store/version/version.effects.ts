@@ -3,16 +3,34 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
-import { Observable, from, of } from 'rxjs';
-import { catchError, filter, map, pluck, switchMap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { catchError, filter, map, mergeMap, pluck, switchMap } from 'rxjs/operators';
 
 import { VersionChangeDialogComponent } from 'src/app/shared/components';
 import { VersionService } from 'src/app/shared/services';
-import { BackendVersionTypes, FrontendVersionTypes, VersionType, versionActions } from 'src/app/store';
+import {
+  BackendVersionTypes,
+  FrontendVersionTypes,
+  NewBackendVersionTypes,
+  versionActions,
+  VersionType,
+} from 'src/app/store';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class VersionEffects {
+  // noinspection JSUnusedLocalSymbols
+  private fetchVersions$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
+    (): Observable<TypedAction<NewBackendVersionTypes>> => this.actions$.pipe(
+      ofType(VersionType.NEW_BACKEND_VERSION),
+      pluck('backendVersion'),
+      mergeMap((version: string): Array<TypedAction<NewBackendVersionTypes>> => [
+        versionActions.fetchBackendVersionSuccess({ version }),
+        versionActions.fetchFrontendVersion(),
+      ]),
+    ),
+  );
+
   // noinspection JSUnusedLocalSymbols
   /**
    * NgRx effect for `VersionAction.FETCH_FRONTEND_VERSION` action, within this

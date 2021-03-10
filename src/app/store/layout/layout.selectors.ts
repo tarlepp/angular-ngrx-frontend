@@ -9,7 +9,7 @@ import { LayoutState } from 'src/app/store';
  *
  * Simple usage example;
  *
- *  public constructor(private store: Store<AppState>) { }
+ *  public constructor(private store: Store) { }
  *
  *  public ngOnInit(): void {
  *    // Initialize `viewport$` and `device$` observables

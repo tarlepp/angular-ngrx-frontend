@@ -6,7 +6,7 @@ import { createFeatureSelector } from '@ngrx/store';
  *
  * Simple usage example;
  *
- *  public constructor(private store: Store<AppState>) {
+ *  public constructor(private store: Store) {
  *    this.subscription = new Subscription();
  *  }
  *

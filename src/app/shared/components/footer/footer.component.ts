@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription, interval } from 'rxjs';
+import { interval, Observable, Subscription } from 'rxjs';
 
-import { AppState, versionActions, versionSelectors } from 'src/app/store';
+import { versionActions, versionSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-footer',
@@ -25,7 +25,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  constructor(private store: Store<AppState>) {
+  public constructor(private store: Store) {
     this.subscriptions = new Subscription();
   }
 

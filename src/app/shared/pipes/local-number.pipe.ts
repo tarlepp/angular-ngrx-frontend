@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { Locale } from 'src/app/shared/enums';
-import { AppState, layoutSelectors } from 'src/app/store';
+import { layoutSelectors } from 'src/app/store';
 
 /**
  * Locale aware number pipe that uses Angular internal `DecimalPipe` implementation
@@ -37,7 +37,7 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store<AppState>) {
+  public constructor(private store: Store) {
     this.subscriptions = new Subscription();
 
     // Subscribe to locale changes
@@ -63,15 +63,13 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
    * Note that we use local cache here, so that we don't fire function calls on
    * every change-detection cycle.
    */
-  public transform(value: any, format?: string, locale?: string): string {
+  public transform(value: number|string|null, format?: string, locale?: string): string {
     const currentLocale = locale as Locale || this.locale;
 
     if (currentLocale !== this.cachedLocale) {
       this.cachedLocale = currentLocale;
 
-      this.cachedOutput = value === undefined || value === null || value === ''
-        ? ''
-        : formatNumber(value, currentLocale, format);
+      this.cachedOutput = value !== null && Number.isFinite(+value) ? formatNumber(+value, currentLocale, format) : '';
     }
 
     return this.cachedOutput;

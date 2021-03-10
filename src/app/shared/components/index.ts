@@ -5,4 +5,4 @@ export * from 'src/app/shared/components/oops/oops.component';
 export * from 'src/app/shared/components/version-change-dialog/version-change-dialog.component';
 
 // Only export components that are used commonly within another modules
-export const Components = [];
+export const components = [];

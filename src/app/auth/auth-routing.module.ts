@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { LoginRoutes } from 'src/app/auth/login/login.routes';
+import { loginRoutes } from 'src/app/auth/login/login.routes';
 
 @NgModule({
   imports: [
@@ -9,7 +9,7 @@ import { LoginRoutes } from 'src/app/auth/login/login.routes';
       {
         path: '',
         children: [
-          ...LoginRoutes,
+          ...loginRoutes,
           {
             path: '**',
             redirectTo: 'login',

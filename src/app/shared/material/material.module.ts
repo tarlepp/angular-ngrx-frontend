@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 // Only add Material modules that are used within _all_ other modules
-const MaterialModules = [
+const materialModules = [
   MatButtonModule,
   MatDialogModule,
   MatDividerModule,
@@ -30,7 +30,7 @@ const MaterialModules = [
 
 @NgModule({
   exports: [
-    ...MaterialModules,
+    ...materialModules,
   ],
 })
 

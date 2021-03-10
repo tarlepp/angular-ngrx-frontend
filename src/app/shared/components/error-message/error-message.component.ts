@@ -23,6 +23,18 @@ export class ErrorMessageComponent implements OnInit {
   public production: boolean = environment.production;
 
   /**
+   * Constructor of the class, where we DI all services that we need to use
+   * within this component and initialize needed properties.
+   */
+  public constructor(
+    @Inject(MAT_SNACK_BAR_DATA) private serverMessages: Array<ErrorMessageServerInterface>,
+    private snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
+    private translateService: TranslateService,
+  ) {
+    ErrorMessageComponent.markTexts();
+  }
+
+  /**
    * Method to mark all custom error messages so that those aren't removed when
    * you run `yarn extract-translations` command.
    *
@@ -51,18 +63,6 @@ export class ErrorMessageComponent implements OnInit {
       messageText: ['server-error', message.code, target, message.propertyPath].join('.'),
       messageProperty: ['server-error', 'property', target, message.propertyPath].join('.'),
     };
-  }
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    @Inject(MAT_SNACK_BAR_DATA) private serverMessages: Array<ErrorMessageServerInterface>,
-    private snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
-    private translateService: TranslateService,
-  ) {
-    ErrorMessageComponent.markTexts();
   }
 
   /**

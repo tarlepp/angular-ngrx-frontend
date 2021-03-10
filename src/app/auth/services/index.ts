@@ -2,6 +2,6 @@ import { AuthenticationService } from 'src/app/auth/services/authentication.serv
 
 export * from 'src/app/auth/services/authentication.service';
 
-export const Services = [
+export const authenticationServices = [
   AuthenticationService,
 ];

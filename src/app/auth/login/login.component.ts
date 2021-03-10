@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
-import { AppState, authenticationActions, authenticationSelectors } from 'src/app/store';
+import { authenticationActions, authenticationSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {
+  public constructor(private formBuilder: FormBuilder, private store: Store) {
     this.focus = true;
     this.subscriptions = new Subscription();
     this.isError = false;

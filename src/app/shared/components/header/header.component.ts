@@ -6,13 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 
 import { UserProfileInterface } from 'src/app/auth/interfaces';
 import { Language } from 'src/app/shared/enums';
-import {
-  AppState,
-  authenticationActions,
-  authenticationSelectors,
-  layoutActions,
-  layoutSelectors,
-} from 'src/app/store';
+import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-header',
@@ -34,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store<AppState>) {
+  public constructor(private store: Store) {
     this.currentLanguage = Language.DEFAULT;
     this.subscriptions = new Subscription();
 

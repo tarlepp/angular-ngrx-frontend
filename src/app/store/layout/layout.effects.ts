@@ -10,7 +10,7 @@ import { map, mergeMap, pluck, tap, withLatestFrom } from 'rxjs/operators';
 
 import { Language, Locale, Theme } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { AppState, LayoutType, LocalizationTypes, layoutActions, layoutSelectors } from 'src/app/store';
+import { layoutActions, layoutSelectors, LayoutType, LocalizationTypes } from 'src/app/store';
 
 @Injectable()
 export class LayoutEffects {
@@ -195,6 +195,6 @@ export class LayoutEffects {
     private actions$: Actions,
     private translateService: TranslateService,
     private localStorageService: LocalStorageService,
-    private store: Store<AppState>,
+    private store: Store,
   ) { }
 }

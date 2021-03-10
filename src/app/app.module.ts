@@ -21,7 +21,7 @@ import {
   HeaderComponent,
   VersionChangeDialogComponent,
 } from 'src/app/shared/components';
-import { HttpLoaderFactory } from 'src/app/shared/factories';
+import { httpLoaderFactory } from 'src/app/shared/factories';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { effects } from 'src/app/store/app.effects';
 import { metaReducers, reducers } from 'src/app/store/app.reducers';
@@ -71,7 +71,7 @@ registerLocales();
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: httpLoaderFactory,
         deps: [HttpClient],
       },
     }),

@@ -1,6 +1,6 @@
 import { Device, Viewport } from 'src/app/shared/enums';
 
-export const Viewports = {
+export const viewports = {
   [Device.MOBILE]: [
     Viewport.XS,
     Viewport.SM,

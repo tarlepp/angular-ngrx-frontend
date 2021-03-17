@@ -59,27 +59,44 @@
         "@typescript-eslint/no-this-alias": "error",
         "@typescript-eslint/no-useless-constructor": "error",
         "@typescript-eslint/restrict-plus-operands": "error",
-        "@typescript-eslint/naming-convention" : [
+        "@typescript-eslint/naming-convention": [
           "error",
           {
             "selector": "default",
-            "format": ["camelCase"]
+            "format": [
+              "camelCase"
+            ]
           },
           {
             "selector": "enumMember",
-            "format": ["UPPER_CASE"]
+            "format": [
+              "UPPER_CASE"
+            ]
           },
           {
             "selector": "objectLiteralProperty",
-            "format": ["camelCase", "PascalCase"]
+            "format": [
+              "camelCase",
+              "PascalCase"
+            ]
           },
           {
             "selector": "typeParameter",
-            "format": ["camelCase", "UPPER_CASE"]
+            "format": [
+              "camelCase",
+              "UPPER_CASE"
+            ]
           },
           {
-            "selector": ["class", "enum", "interface", "typeAlias"],
-            "format": ["PascalCase"]
+            "selector": [
+              "class",
+              "enum",
+              "interface",
+              "typeAlias"
+            ],
+            "format": [
+              "PascalCase"
+            ]
           }
         ],
         "arrow-parens": [

@@ -37,6 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private authenticationService: AuthenticationService,
   ) {
     this.loggedIn = false;
+    this.tokenInterval = 0;
     this.subscription = new Subscription();
   }
 
@@ -165,7 +166,7 @@ export class AppComponent implements OnInit, OnDestroy {
   /**
    * Helper method to dispatch `logout` event to `Authentication` store.
    */
-  private logout(message?: string): void {
+  private logout(message: string|null): void {
     this.store.dispatch(authenticationActions.logout({ message }));
   }
 

@@ -29,7 +29,7 @@ export class VersionService {
         .get(`/assets/version.json?t=${ ts }`)
         .pipe(take(1))
         .subscribe(
-          (data: VersionInterface): void => observer.next(data.version),
+          (data: VersionInterface|any): void => observer.next(data.version),
           (error: ServerErrorInterface): void => observer.error(error),
           (): void => observer.complete(),
         );
@@ -51,7 +51,7 @@ export class VersionService {
       .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ ts }`)
       .pipe(take(1))
       .subscribe(
-        (data: VersionInterface): void => observer.next(data.version),
+        (data: VersionInterface|any): void => observer.next(data.version),
         (error: ServerErrorInterface): void => observer.error(error),
         (): void => observer.complete(),
       );

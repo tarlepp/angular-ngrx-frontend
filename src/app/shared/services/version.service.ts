@@ -21,10 +21,10 @@ export class VersionService {
    * frontend application has been updated and user hasn't done hard reload
    * after that.
    */
-  public fetchFrontendVersion(): Observable<string | ServerErrorInterface> {
+  public fetchFrontendVersion(): Observable<string> {
     const ts = Math.round((new Date()).getTime() / 1000);
 
-    return new Observable((observer: Observer<string | ServerErrorInterface>): void => {
+    return new Observable((observer: Observer<string>): void => {
       this.http
         .get(`/assets/version.json?t=${ ts }`)
         .pipe(take(1))
@@ -43,10 +43,10 @@ export class VersionService {
    * After that point we will dispatch backend version changes from each API
    * endpoint request via specified HTTP interceptor.
    */
-  public fetchBackendVersion(): Observable<string | ServerErrorInterface> {
+  public fetchBackendVersion(): Observable<string> {
     const ts = Math.round((new Date()).getTime() / 1000);
 
-    return new Observable((observer: Observer<string | ServerErrorInterface>): void => {
+    return new Observable((observer: Observer<string>): void => {
       this.http
       .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ ts }`)
       .pipe(take(1))

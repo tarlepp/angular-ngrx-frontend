@@ -27,6 +27,10 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
    */
   public constructor(private store: Store) {
     this.subscriptions = new Subscription();
+
+    // Initialize `versionFrontend$` and `versionBackend$` observables, that are used in component
+    this.versionFrontend$ = this.store.select(versionSelectors.frontend);
+    this.versionBackend$ = this.store.select(versionSelectors.backend);
   }
 
   /**
@@ -36,10 +40,6 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
    * It is invoked only once when the directive is instantiated.
    */
   public ngOnInit(): void {
-    // Initialize `versionFrontend$` and `versionBackend$` observables, that are used in component
-    this.versionFrontend$ = this.store.select(versionSelectors.frontend);
-    this.versionBackend$ = this.store.select(versionSelectors.backend);
-
     // Lets check if frontend version has been changed every 5 minutes
     this.subscriptions
       .add(interval(1000 * 60 * 5)

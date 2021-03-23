@@ -17,10 +17,10 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('userMenu') private userMenu: MatMenuTrigger;
 
-  public profile?: UserProfileInterface;
-  public loading$: Observable<boolean>;
+  public profile: UserProfileInterface|null;
   public languages: Array<Language>;
   public currentLanguage: Language;
+  public loading$: Observable<boolean>;
 
   private subscriptions: Subscription;
 
@@ -29,6 +29,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * within this component and initialize needed properties.
    */
   public constructor(private store: Store) {
+    this.loading$ = this.store.select(authenticationSelectors.isLoading);
+    this.profile = null;
     this.currentLanguage = Language.DEFAULT;
     this.subscriptions = new Subscription();
 
@@ -51,9 +53,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * It is invoked only once when the directive is instantiated.
    */
   public ngOnInit(): void {
-    // Loading state of `Authentication` store
-    this.loading$ = this.store.select(authenticationSelectors.isLoading);
-
     // Subscribe to user profile changes
     this.subscriptions
       .add(this.store

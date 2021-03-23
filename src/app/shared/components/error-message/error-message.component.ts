@@ -31,6 +31,8 @@ export class ErrorMessageComponent implements OnInit {
     private snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
     private translateService: TranslateService,
   ) {
+    this.errors = [];
+
     ErrorMessageComponent.markTexts();
   }
 

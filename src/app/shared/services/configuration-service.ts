@@ -2,7 +2,7 @@ import { ApplicationConfigurationInterface } from 'src/app/shared/interfaces';
 import { environment } from 'src/environments/environment';
 
 export class ConfigurationService {
-  public static configuration: undefined|ApplicationConfigurationInterface;
+  public static configuration: ApplicationConfigurationInterface;
   public static initialized: boolean = false;
 
   private static configurationFile: string = `/assets/config/config.${ environment.name }.json`;

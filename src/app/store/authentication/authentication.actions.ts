@@ -40,7 +40,7 @@ const loginFailure = createAction(AuthenticationType.LOGIN_FAILURE, props<{ erro
 const profile = createAction(AuthenticationType.PROFILE);
 const profileSuccess = createAction(AuthenticationType.PROFILE_SUCCESS, props<{ profile: UserProfileInterface }>());
 const profileFailure = createAction(AuthenticationType.PROFILE_FAILURE, props<{ error: ServerErrorInterface }>());
-const logout = createAction(AuthenticationType.LOGOUT, props<{ message?: string }>());
+const logout = createAction(AuthenticationType.LOGOUT, props<{ message: string|null }>());
 const resetError = createAction(AuthenticationType.RESET_ERROR);
 
 // Export all store actions, so that those can be used easily.

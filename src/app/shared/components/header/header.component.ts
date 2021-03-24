@@ -16,7 +16,7 @@ import { languages } from 'src/app/shared/constants';
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
-  @ViewChild('userMenu') private userMenu: MatMenuTrigger;
+  @ViewChild('userMenu') private userMenu!: MatMenuTrigger;
 
   public profile: UserProfileInterface|null;
   public languages: Array<Language>;

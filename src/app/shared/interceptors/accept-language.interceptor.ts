@@ -22,7 +22,7 @@ export class AcceptLanguageInterceptor implements HttpInterceptor {
    * which language to use within that request.
    */
   public intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (new URL(httpRequest.url).host === new URL(ConfigurationService.configuration.apiUrl).host) {
+    if (httpRequest.url.includes(new URL(ConfigurationService.configuration.apiUrl).host)) {
       const modified = httpRequest.clone({
         setHeaders: {
           'Accept-Language': this.localStorage.retrieve('language') || Language.DEFAULT,

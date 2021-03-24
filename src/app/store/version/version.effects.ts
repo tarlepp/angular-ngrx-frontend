@@ -22,7 +22,7 @@ export class VersionEffects {
   // noinspection JSUnusedLocalSymbols
   private fetchVersions$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<NewBackendVersionTypes>> => this.actions$.pipe(
-      ofType(VersionType.NEW_BACKEND_VERSION),
+      ofType(versionActions.newBackendVersion),
       pluck('backendVersion'),
       mergeMap((version: string): Array<TypedAction<NewBackendVersionTypes>> => [
         versionActions.fetchBackendVersionSuccess({ version }),
@@ -50,7 +50,7 @@ export class VersionEffects {
    */
   private fetchFrontendVersion$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
     (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$.pipe(
-      ofType(VersionType.FETCH_FRONTEND_VERSION),
+      ofType(versionActions.fetchFrontendVersion),
       switchMap((): Observable<TypedAction<FrontendVersionTypes>> =>
         from(this.versionService.fetchFrontendVersion()
           .pipe(
@@ -79,7 +79,7 @@ export class VersionEffects {
    */
   private fetchBackendVersion$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<BackendVersionTypes>> => this.actions$.pipe(
-      ofType(VersionType.FETCH_BACKEND_VERSION),
+      ofType(versionActions.fetchBackendVersion),
       switchMap((): Observable<TypedAction<BackendVersionTypes>> =>
         from(this.versionService.fetchBackendVersion()
           .pipe(
@@ -107,7 +107,7 @@ export class VersionEffects {
    */
   private versionChanged$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
-      ofType(VersionType.FETCH_FRONTEND_VERSION_SUCCESS),
+      ofType(versionActions.fetchFrontendVersionSuccess),
       pluck('version'),
       filter((version: string): boolean => environment.version !== version),
       map((versionNew: string): void => {

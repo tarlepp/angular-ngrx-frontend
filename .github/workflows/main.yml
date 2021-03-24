@@ -108,7 +108,7 @@ jobs:
         run: yarn install
 
       - name: Run `yarn run check-translations`
-        run: yarn run check-translations
+        run: yarn run check-translations && git diff --exit-code
 
   build:
     name: Build application Docker image

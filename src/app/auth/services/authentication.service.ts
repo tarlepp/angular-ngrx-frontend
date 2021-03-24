@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
 import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 import {
   CredentialsRequestInterface,
@@ -44,7 +44,10 @@ export class AuthenticationService {
     return new Observable((observer: Observer<UserDataInterface>): void => {
       this.http
         .post(ConfigurationService.configuration.tokenUrl, credentials)
-        .pipe(take(1))
+        .pipe(
+          take(1),
+          map((response: unknown): CredentialsResponseInterface => response as CredentialsResponseInterface),
+        )
         .subscribe(
           (token: CredentialsResponseInterface): void => {
             this.localStorage.store('token', token.token);
@@ -76,7 +79,10 @@ export class AuthenticationService {
     return new Observable((observer: Observer<UserProfileInterface>): void => {
       this.http
         .get(url)
-        .pipe(take(1))
+        .pipe(
+          take(1),
+          map((response: unknown): UserProfileInterface => response as UserProfileInterface),
+        )
         .subscribe(
           (profile: UserProfileInterface): void => observer.next(profile),
           (error: ServerErrorInterface): void => observer.error(error),

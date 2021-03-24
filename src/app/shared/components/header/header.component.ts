@@ -7,6 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { UserProfileInterface } from 'src/app/auth/interfaces';
 import { Language } from 'src/app/shared/enums';
 import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
+import { languages } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-header',
@@ -34,10 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.currentLanguage = Language.DEFAULT;
     this.subscriptions = new Subscription();
 
-    this.languages = Object
-      .keys(Language)
-      .filter((key: string): boolean => key !== 'DEFAULT')
-      .map((key: string): Language => Language[key]);
+    this.languages = languages;
 
     // Note that if you add new language, you need to define it's text tag here
     marker([

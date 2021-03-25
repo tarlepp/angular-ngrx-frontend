@@ -28,7 +28,7 @@
         "profile": "Profiili",
         "theme": "Vaihda teema"
       },
-      "title": "--- MISSING TRANSLATION ---"
+      "title": "Angular NgRx frontend"
     },
     "oops": {
       "link": "Takaisin etusivulle - toivotaan että kaikki toimii...",
@@ -50,7 +50,7 @@
     "authentication": {
       "login": "Kirjauduit sisään.",
       "logout": "Kirjauduit ulos.",
-      "timeout": null
+      "timeout": "Istunto vanhentunut"
     }
   },
   "snackbar": {

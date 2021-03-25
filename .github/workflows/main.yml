@@ -91,6 +91,25 @@ jobs:
       - name: Run `yarn run extract-translations && git diff --exit-code`
         run: yarn run extract-translations && git diff --exit-code
 
+  check-untranslated-text:
+    name: Check that there are no untranslated text tags
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make checkout
+        uses: actions/checkout@v1
+
+      - name: Use Node.js 15.11.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.11.0
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run `yarn run check-translations`
+        run: yarn run check-translations
+
   build:
     name: Build application Docker image
     runs-on: ubuntu-latest

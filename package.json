@@ -23,6 +23,7 @@
     "lint:scss": "npx stylelint '**/*.scss'",
     "e2e": "ng e2e",
     "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --format-indentation '  ' --sort --format namespaced-json --null-as-default-value && for files in src/assets/i18n/*.json; do echo >> $files; done;",
+    "check-translations": "sed -i 's/_/__/g; s/: null/x_x/g; s/: \"--- MISSING TRANSLATION ---\"/: null/g; s/x_x/: \"--- MISSING TRANSLATION ---\"/g; s/__/_/g' ./src/assets/i18n/*.json && git diff --exit-code",
     "postinstall": "node version.js",
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect"

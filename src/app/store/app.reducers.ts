@@ -22,4 +22,4 @@ export const reducers: ActionReducerMap<AppState> = {
   version: versionReducer,
 };
 
-export const metaReducers: MetaReducer<AppState>[] = environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer];
+export const metaReducers: Array<MetaReducer<AppState>> = environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer];

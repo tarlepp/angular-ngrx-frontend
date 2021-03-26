@@ -109,8 +109,8 @@ export class AppComponent implements OnInit, OnDestroy {
       .add(this.mediaObserver
         .asObservable()
         .pipe(
-          filter((changes: MediaChange[]): boolean => changes.length > 0),
-          map((changes: MediaChange[]): MediaChange => changes[0]),
+          filter((changes: Array<MediaChange>): boolean => changes.length > 0),
+          map((changes: Array<MediaChange>): MediaChange => changes[0]),
           distinctUntilChanged((prev: MediaChange, curr: MediaChange): boolean => prev.mqAlias === curr.mqAlias),
         )
         .subscribe((mediaChange: MediaChange): void =>

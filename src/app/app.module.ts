@@ -86,7 +86,6 @@ registerLocales();
       },
     }),
   ],
-  providers: [],
   bootstrap: [
     AppComponent,
   ],

@@ -29,15 +29,18 @@ import { layoutSelectors } from 'src/app/store';
 })
 export class LocalNumberPipe implements PipeTransform, OnDestroy {
   private locale: Locale;
-  private subscriptions: Subscription;
   private cachedLocale: Locale;
-  private cachedOutput: string;
+  private cachedOutput: string|null;
+  private subscriptions: Subscription;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
   public constructor(private store: Store) {
+    this.locale = Locale.DEFAULT;
+    this.cachedLocale = Locale.DEFAULT;
+    this.cachedOutput = null;
     this.subscriptions = new Subscription();
 
     // Subscribe to locale changes
@@ -66,7 +69,7 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
   public transform(value: number|string|null, format?: string, locale?: string): string {
     const currentLocale = locale as Locale || this.locale;
 
-    if (currentLocale !== this.cachedLocale) {
+    if (this.cachedOutput === null || currentLocale !== this.cachedLocale) {
       this.cachedLocale = currentLocale;
 
       this.cachedOutput = value !== null && Number.isFinite(+value) ? formatNumber(+value, currentLocale, format) : '';

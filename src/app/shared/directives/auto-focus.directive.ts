@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular
 })
 
 export class AutoFocusDirective implements OnChanges {
-  @Input() private appAutoFocus: boolean;
+  @Input() public appAutoFocus: boolean;
 
   /**
    * Constructor of the class, where we DI all services that we need to use

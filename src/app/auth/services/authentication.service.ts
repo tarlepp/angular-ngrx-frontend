@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
 import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 import {
   CredentialsRequestInterface,
@@ -40,11 +40,14 @@ export class AuthenticationService {
    * Otherwise method will clear that `token` from local storage and dispatch
    * error to `userData$` observable stream.
    */
-  public authenticate(credentials: CredentialsRequestInterface): Observable<UserDataInterface|ServerErrorInterface> {
-    return new Observable((observer: Observer<UserDataInterface|ServerErrorInterface>): void => {
+  public authenticate(credentials: CredentialsRequestInterface): Observable<UserDataInterface> {
+    return new Observable((observer: Observer<UserDataInterface>): void => {
       this.http
         .post(ConfigurationService.configuration.tokenUrl, credentials)
-        .pipe(take(1))
+        .pipe(
+          take(1),
+          map((response: unknown): CredentialsResponseInterface => response as CredentialsResponseInterface),
+        )
         .subscribe(
           (token: CredentialsResponseInterface): void => {
             this.localStorage.store('token', token.token);
@@ -70,13 +73,16 @@ export class AuthenticationService {
    * This action is dispatched on successfully login and if user refresh page
    * and he/she is already logged in to application.
    */
-  public getProfile(): Observable<UserProfileInterface|ServerErrorInterface> {
+  public getProfile(): Observable<UserProfileInterface> {
     const url = ConfigurationService.configuration.apiUrl + '/profile';
 
-    return new Observable((observer: Observer<UserProfileInterface|ServerErrorInterface>): void => {
+    return new Observable((observer: Observer<UserProfileInterface>): void => {
       this.http
         .get(url)
-        .pipe(take(1))
+        .pipe(
+          take(1),
+          map((response: unknown): UserProfileInterface => response as UserProfileInterface),
+        )
         .subscribe(
           (profile: UserProfileInterface): void => observer.next(profile),
           (error: ServerErrorInterface): void => observer.error(error),

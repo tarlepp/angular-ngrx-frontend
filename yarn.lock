@@ -2028,10 +2028,10 @@
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.1.tgz#f8b95def0016411c58c7adb4791dff29bc62992c"
   integrity sha512-eeSCVhBsgwHNS1FmaMu4zrLxfykCTWJMLFZv7lmyrZQjw7foUUXoPu4GukSN9v7JvUw7X+/aDH3kCaymirBSTg==
 
-"@types/jasmine@3.6.7":
-  version "3.6.7"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.7.tgz#e762d3ead78538efb7900ab932d7daf334acb0b4"
-  integrity sha512-8dtfiykrpe4Ysn6ONj0tOjmpDIh1vWxPk80eutSeWmyaJvAZXZ84219fS4gLrvz05eidhp7BP17WVQBaXHSyXQ==
+"@types/jasmine@3.6.8":
+  version "3.6.8"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.6.8.tgz#19505386ee342a1ba95762e9b689eb907fd4daa8"
+  integrity sha512-KTG8ONQC2qm679pJiuNzv7TlkMopSOUvGxZ9nz5M/QFrbWc/36A9mg7jQ76JgNWYogkHmTKaEPRP8MROvFZVwA==
 
 "@types/jasminewd2@2.0.8":
   version "2.0.8"
@@ -2136,10 +2136,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.13.tgz#9e425079799322113ae8477297ae6ef51b8e0cdf"
   integrity sha512-vbxr0VZ8exFMMAjCW8rJwaya0dMCDyYW2ZRdTyjtrCvJoENMpdUHOT/eTzvgyA5ZnqRZ/sI0NwqAxNHKYokLJQ==
 
-"@types/node@14.14.35":
-  version "14.14.35"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.35.tgz#42c953a4e2b18ab931f72477e7012172f4ffa313"
-  integrity sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
+"@types/node@14.14.36":
+  version "14.14.36"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.36.tgz#5637905dbb15c30a33a3c65b9ef7c20e3c85ebad"
+  integrity sha512-kjivUwDJfIjngzbhooRnOLhGYz6oRFi+L+EpMjxroDYXwDw9lHrJJ43E+dJ6KAd3V3WxWAJ/qZE9XKYHhjPOFQ==
 
 "@types/node@^14.14.10":
   version "14.14.22"
@@ -12108,10 +12108,10 @@ snyk-try-require@^2.0.0:
     lodash.clonedeep "^4.3.0"
     lru-cache "^5.1.1"
 
-snyk@1.509.0:
-  version "1.509.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.509.0.tgz#7af0ef470cc429ffe9b2b44860d291e0542bfcab"
-  integrity sha512-3vdfa79Phr16O6Laun5zkNOxhQ7VIPeqb+aWwREkY3xOldLiZmOgQxfwKkllc/kImDmxB1CdDmRRwSJvPGMJ3Q==
+snyk@1.511.0:
+  version "1.511.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.511.0.tgz#e67e050e2171cbb0665aa7a48e406f667c320175"
+  integrity sha512-3fOXci3Qitz3cLC73S99Tp3r0TeqLkNGduY733vQaOTt40RMH1PgjuOJPVPNPgiBxPgmqNlxfDl/MwNK2zpT0g==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"
@@ -12153,6 +12153,7 @@ snyk@1.509.0:
     promise-queue "^2.2.5"
     proxy-agent "^3.1.1"
     proxy-from-env "^1.0.0"
+    rimraf "^2.6.3"
     semver "^6.0.0"
     snyk-config "4.0.0"
     snyk-cpp-plugin "2.2.1"

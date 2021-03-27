@@ -31,6 +31,8 @@ export class ErrorMessageComponent implements OnInit {
     private snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
     private translateService: TranslateService,
   ) {
+    this.errors = [];
+
     ErrorMessageComponent.markTexts();
   }
 
@@ -113,7 +115,7 @@ export class ErrorMessageComponent implements OnInit {
    * environment.
    */
   private processTranslations(texts: DictionaryInterface<string>): (message: ErrorMessageClientInterface) => ErrorMessageClientInterface {
-    return (message: ErrorMessageClientInterface): ErrorMessageClientInterface => {
+    return (message: ErrorMessageClientInterface|any): ErrorMessageClientInterface => {
       const properties = ['messageProperty', 'messageText'];
 
       properties.map((property: string): void => {

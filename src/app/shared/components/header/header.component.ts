@@ -7,6 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { UserProfileInterface } from 'src/app/auth/interfaces';
 import { Language } from 'src/app/shared/enums';
 import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
+import { languages } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-header',
@@ -15,12 +16,12 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
-  @ViewChild('userMenu') private userMenu: MatMenuTrigger;
+  @ViewChild('userMenu') private userMenu!: MatMenuTrigger;
 
-  public profile?: UserProfileInterface;
-  public loading$: Observable<boolean>;
+  public profile: UserProfileInterface|null;
   public languages: Array<Language>;
   public currentLanguage: Language;
+  public loading$: Observable<boolean>;
 
   private subscriptions: Subscription;
 
@@ -29,13 +30,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * within this component and initialize needed properties.
    */
   public constructor(private store: Store) {
+    this.loading$ = this.store.select(authenticationSelectors.isLoading);
+    this.profile = null;
     this.currentLanguage = Language.DEFAULT;
     this.subscriptions = new Subscription();
 
-    this.languages = Object
-      .keys(Language)
-      .filter((key: string): boolean => key !== 'DEFAULT')
-      .map((key: string): Language => Language[key]);
+    this.languages = languages;
 
     // Note that if you add new language, you need to define it's text tag here
     marker([
@@ -51,9 +51,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * It is invoked only once when the directive is instantiated.
    */
   public ngOnInit(): void {
-    // Loading state of `Authentication` store
-    this.loading$ = this.store.select(authenticationSelectors.isLoading);
-
     // Subscribe to user profile changes
     this.subscriptions
       .add(this.store

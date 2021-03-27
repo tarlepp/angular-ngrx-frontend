@@ -13,8 +13,7 @@ import { authenticationActions, authenticationSelectors } from 'src/app/store';
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
-  @ViewChild('loginFormElement')
-  public loginFormElement: NgForm;
+  @ViewChild('loginFormElement') public loginFormElement!: NgForm;
 
   public loginForm: FormGroup;
   public loading: boolean;
@@ -28,9 +27,16 @@ export class LoginComponent implements OnInit, OnDestroy {
    * within this component and initialize needed properties.
    */
   public constructor(private formBuilder: FormBuilder, private store: Store) {
+    this.loading = false;
     this.focus = true;
     this.subscriptions = new Subscription();
     this.isError = false;
+
+    // Initialize login form
+    this.loginForm = this.formBuilder.group({
+      username: [null, [Validators.required, Validators.minLength(3)]],
+      password: [null, [Validators.required]],
+    });
   }
 
   /**
@@ -58,12 +64,6 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.isError = true;
         }),
       );
-
-    // Initialize login form
-    this.loginForm = this.formBuilder.group({
-      username: [null, [Validators.required, Validators.minLength(3)]],
-      password: [null, [Validators.required]],
-    });
   }
 
   /**

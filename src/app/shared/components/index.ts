@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Type } from '@angular/core';
 
 export * from 'src/app/shared/components/error-message/error-message.component';
 export * from 'src/app/shared/components/footer/footer.component';
@@ -7,4 +7,4 @@ export * from 'src/app/shared/components/oops/oops.component';
 export * from 'src/app/shared/components/version-change-dialog/version-change-dialog.component';
 
 // Only export components that are used commonly within another modules
-export const components: Array<Component> = [];
+export const components: Array<Type<Component>> = [];

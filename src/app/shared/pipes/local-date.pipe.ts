@@ -26,16 +26,21 @@ import { layoutSelectors } from 'src/app/store';
 export class LocalDatePipe implements PipeTransform, OnDestroy {
   private locale: Locale;
   private timezone: string;
-  private subscriptions: Subscription;
   private cachedLocale: Locale;
   private cachedTimezone: string;
-  private cachedOutput: string;
+  private cachedOutput: string|null;
+  private subscriptions: Subscription;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
   public constructor(private store: Store) {
+    this.locale = Locale.DEFAULT;
+    this.timezone = 'Europe/Helsinki';
+    this.cachedLocale = Locale.DEFAULT;
+    this.cachedTimezone = 'Europe/Helsinki';
+    this.cachedOutput = null;
     this.subscriptions = new Subscription();
 
     // Subscribe to localization changes
@@ -65,7 +70,7 @@ export class LocalDatePipe implements PipeTransform, OnDestroy {
    * library function calls on every change-detection cycle.
    */
   public transform(value: string|Date, format?: string): string {
-    if (this.cachedLocale !== this.locale || this.cachedTimezone !== this.timezone) {
+    if (this.cachedOutput === null || this.cachedLocale !== this.locale || this.cachedTimezone !== this.timezone) {
       this.cachedLocale = this.locale;
       this.cachedTimezone = this.timezone;
 

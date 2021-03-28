@@ -123,7 +123,7 @@ export class AuthenticationEffects {
     (): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$.pipe(
       ofType(authenticationActions.logout),
       pluck('message'),
-      tap((message?: string): void => {
+      tap((message: string|null): void => {
         this.authService.logout();
 
         if (message) {

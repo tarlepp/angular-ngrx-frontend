@@ -95,4 +95,4 @@ const reducer = createReducer(
 );
 
 // Export `Authentication` store reducer.
-export const authenticationReducer = (state: AuthenticationState, action: Action): AuthenticationState => reducer(state, action);
+export const authenticationReducer = (state: AuthenticationState|undefined, action: Action): AuthenticationState => reducer(state, action);

@@ -15,7 +15,7 @@ export class RouterEffects {
    * scroll browser to top of the page. This basically happens each time user
    * navigates to another route within this application.
    */
-  private routerNavigatedAction$: Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> = createEffect(
+  private routerNavigatedActionEffect$: Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> = createEffect(
     (): Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> => this.actions$.pipe(
       ofType(routerNavigatedAction),
       map((): TypedAction<LayoutType.SCROLL_TO_TOP> => layoutActions.scrollToTop()),

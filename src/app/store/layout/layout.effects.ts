@@ -25,7 +25,7 @@ export class LayoutEffects {
    *
    * Each of these actions you can find from this effect class.
    */
-  private updateLocalization$: Observable<TypedAction<LocalizationTypes>> = createEffect(
+  private updateLocalizationEffect$: Observable<TypedAction<LocalizationTypes>> = createEffect(
     (): Observable<TypedAction<LocalizationTypes>> => this.actions$.pipe(
       ofType(layoutActions.updateLocalization),
       pluck('localization'),
@@ -48,7 +48,7 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeLanguage$: Observable<void> = createEffect(
+  private changeLanguageEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeLanguage),
       pluck('language'),
@@ -72,7 +72,7 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeLocale$: Observable<void> = createEffect(
+  private changeLocaleEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeLocale),
       pluck('locale'),
@@ -97,7 +97,7 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeTimezone$: Observable<void> = createEffect(
+  private changeTimezoneEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeTimezone),
       pluck('timezone'),
@@ -119,7 +119,7 @@ export class LayoutEffects {
    * `LayoutAction.SCROLL_TO` action which effect will actually do that scroll
    * in browser.
    */
-  private scrollToTop$: Observable<TypedAction<LayoutType.SCROLL_TO>> = createEffect(
+  private scrollToTopEffect$: Observable<TypedAction<LayoutType.SCROLL_TO>> = createEffect(
     (): Observable<TypedAction<LayoutType.SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollToTop),
       map((): TypedAction<LayoutType.SCROLL_TO> => layoutActions.scrollTo({ anchor: '#top-page' })),
@@ -133,7 +133,7 @@ export class LayoutEffects {
    * original action observable to `LayoutAction.CLEAR_SCROLL_TO` which clear
    * that scroll to state in layout store.
    */
-  private scrollTo$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
+  private scrollToEffect$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
     (): Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollTo),
       pluck('anchor'),
@@ -156,7 +156,7 @@ export class LayoutEffects {
    * toggle current theme and dispatch another action to set that toggled
    * theme, where actual domain logic is done.
    */
-  private toggleTheme$: Observable<TypedAction<LayoutType.SET_THEME>> = createEffect(
+  private toggleThemeEffect$: Observable<TypedAction<LayoutType.SET_THEME>> = createEffect(
     (): Observable<TypedAction<LayoutType.SET_THEME>> => this.actions$.pipe(
       ofType(layoutActions.toggleTheme),
       withLatestFrom(this.store.select(layoutSelectors.theme)),
@@ -171,7 +171,7 @@ export class LayoutEffects {
    * current theme as active in DOM perspective. This is done simple as just
    * removing and adding theme named CSS class to applications `body` element.
    */
-  private setTheme$: Observable<void> = createEffect(
+  private setThemeEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.setTheme),
       pluck('theme'),

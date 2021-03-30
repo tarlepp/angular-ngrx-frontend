@@ -39,7 +39,7 @@ export class AuthenticationEffects {
    * Second one will trigger user profile loading, that information is used to
    * show some user related messages, etc. in application.
    */
-  private login$: Observable<TypedAction<AuthenticationLoginTypes>> = createEffect(
+  private loginEffect$: Observable<TypedAction<AuthenticationLoginTypes>> = createEffect(
     (): Observable<TypedAction<AuthenticationLoginTypes>> => this.actions$.pipe(
       ofType(authenticationActions.login),
       pluck('credentials'),
@@ -78,7 +78,7 @@ export class AuthenticationEffects {
    * This effect will be also triggered if/when user reloads application page
    * manually if user token that is stored to local storage is valid one.
    */
-  private loginSuccess$: Observable<TypedAction<AuthenticationType.PROFILE>> = createEffect(
+  private loginSuccessEffect$: Observable<TypedAction<AuthenticationType.PROFILE>> = createEffect(
     (): Observable<TypedAction<AuthenticationType.PROFILE>> => this.actions$.pipe(
       ofType(authenticationActions.loginSuccess),
       map((): TypedAction<AuthenticationType.PROFILE> => authenticationActions.profile()),
@@ -91,7 +91,7 @@ export class AuthenticationEffects {
    * within this we want to actually fetch user profile information from
    * backend and catch possible errors while fetching that information.
    */
-  private profile$: Observable<TypedAction<AuthenticationProfileTypes>> = createEffect(
+  private profileEffect$: Observable<TypedAction<AuthenticationProfileTypes>> = createEffect(
     (): Observable<TypedAction<AuthenticationProfileTypes>> => this.actions$.pipe(
       ofType(authenticationActions.profile),
       switchMap((): Observable<TypedAction<AuthenticationProfileTypes>> =>
@@ -119,7 +119,7 @@ export class AuthenticationEffects {
    *  4) Trigger frontend version fetch, because user might be logout
    *     from application just because backend version has been changed.
    */
-  private logout$: Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> = createEffect(
+  private logoutEffect$: Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> = createEffect(
     (): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$.pipe(
       ofType(authenticationActions.logout),
       pluck('message'),

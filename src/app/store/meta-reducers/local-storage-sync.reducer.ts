@@ -16,7 +16,6 @@ export const localStorageSyncReducer = (reducer: ActionReducer<any>): ActionRedu
         ],
       },
       'layout',
-      'version',
     ],
     rehydrate: true,
     storage: sessionStorage,

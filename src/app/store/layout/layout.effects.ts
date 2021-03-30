@@ -54,7 +54,6 @@ export class LayoutEffects {
       pluck('language'),
       map((language: Language): void => {
         this.translateService.use(language);
-        this.localStorageService.store('language', language);
       }),
     ),
     { dispatch: false },
@@ -78,8 +77,6 @@ export class LayoutEffects {
       pluck('locale'),
       map((locale: Locale): void => {
         moment.locale(locale);
-
-        this.localStorageService.store('locale', locale);
       }),
     ),
     { dispatch: false },
@@ -103,8 +100,6 @@ export class LayoutEffects {
       pluck('timezone'),
       map((timezone: string): void => {
         moment.tz.setDefault(timezone);
-
-        this.localStorageService.store('timezone', timezone);
       }),
     ),
     { dispatch: false },
@@ -194,7 +189,6 @@ export class LayoutEffects {
   public constructor(
     private actions$: Actions,
     private translateService: TranslateService,
-    private localStorageService: LocalStorageService,
     private store: Store,
   ) { }
 }

@@ -173,7 +173,7 @@ export class LayoutEffects {
       map((theme: Theme): void => {
         const body = document.getElementsByTagName('body')[0];
 
-        if (body.classList.contains(theme) === false) {
+        if (!body.classList.contains(theme)) {
           body.classList.remove(theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
           body.classList.add(theme);
         }

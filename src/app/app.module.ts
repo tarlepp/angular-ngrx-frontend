@@ -26,6 +26,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { effects } from 'src/app/store/app.effects';
 import { metaReducers, reducers } from 'src/app/store/app.reducers';
 import { environment } from 'src/environments/environment';
+import { Language } from 'src/app/shared/enums';
 
 registerLocales();
 
@@ -69,6 +70,7 @@ registerLocales();
       ...effects,
     ]),
     TranslateModule.forRoot({
+      defaultLanguage: Language.DEFAULT,
       loader: {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,

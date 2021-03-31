@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
-import { LocalStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 import { map, mergeMap, pluck, tap, withLatestFrom } from 'rxjs/operators';
 

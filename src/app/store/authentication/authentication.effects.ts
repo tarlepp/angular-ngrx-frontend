@@ -4,20 +4,21 @@ import { Router } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
-import { Observable, from, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { catchError, exhaustMap, map, mergeMap, pluck, switchMap, tap } from 'rxjs/operators';
 
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { SnackbarService } from 'src/app/shared/services';
 import {
+  authenticationActions,
+  AuthenticationLoginSuccessTypes,
   AuthenticationLoginTypes,
   AuthenticationProfileTypes,
   AuthenticationType,
-  VersionType,
-  authenticationActions,
   layoutActions,
   versionActions,
+  VersionType,
 } from 'src/app/store';
 
 @Injectable()
@@ -47,10 +48,9 @@ export class AuthenticationEffects {
         from(this.authService
           .authenticate(credentials)
           .pipe(
-            mergeMap((userData: UserDataInterface): Array<TypedAction<AuthenticationLoginTypes>> => [
-              layoutActions.updateLocalization({ localization: userData.localization }),
+            map((userData: UserDataInterface): TypedAction<AuthenticationType.LOGIN_SUCCESS> =>
               authenticationActions.loginSuccess({ userData }),
-            ]),
+            ),
             tap((): void => {
               this.snackbarService
                 .message(marker('messages.authentication.login'))
@@ -78,10 +78,14 @@ export class AuthenticationEffects {
    * This effect will be also triggered if/when user reloads application page
    * manually if user token that is stored to local storage is valid one.
    */
-  private loginSuccessEffect$: Observable<TypedAction<AuthenticationType.PROFILE>> = createEffect(
-    (): Observable<TypedAction<AuthenticationType.PROFILE>> => this.actions$.pipe(
+  private loginSuccessEffect$: Observable<TypedAction<AuthenticationLoginSuccessTypes>> = createEffect(
+    (): Observable<TypedAction<AuthenticationLoginSuccessTypes>> => this.actions$.pipe(
       ofType(authenticationActions.loginSuccess),
-      map((): TypedAction<AuthenticationType.PROFILE> => authenticationActions.profile()),
+      pluck('userData'),
+      mergeMap((userData: UserDataInterface): Array<TypedAction<AuthenticationLoginSuccessTypes>> => [
+        layoutActions.updateLocalization({ localization: userData.localization }),
+        authenticationActions.profile(),
+      ]),
     ),
   );
 

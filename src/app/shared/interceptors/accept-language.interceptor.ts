@@ -25,6 +25,7 @@ export class AcceptLanguageInterceptor implements HttpInterceptor {
     if (httpRequest.url.includes(new URL(ConfigurationService.configuration.apiUrl).host)) {
       const modified = httpRequest.clone({
         setHeaders: {
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           'Accept-Language': this.localStorage.retrieve('language') || Language.DEFAULT,
         },
       });

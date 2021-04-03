@@ -5,6 +5,10 @@ import { Subscription } from 'rxjs';
 import { Role } from 'src/app/auth/enums';
 import { authenticationSelectors } from 'src/app/store';
 
+/**
+ * Note that this directive will only "hide" the element where you use this,
+ * so if that element contains some sensitive content - do not use this!
+ */
 @Directive({
   selector: '[appRequiredRole]',
 })

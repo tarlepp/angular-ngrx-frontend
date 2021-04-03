@@ -1,17 +1,10 @@
-import { Directive, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { Role } from 'src/app/auth/enums';
 import { authenticationSelectors } from 'src/app/store';
 
-/**
- * Note that this directive will only "hide" the element where you use this,
- * so if that element contains some sensitive content - do not use this!
- *
- * Users can easily toggle visibility of that element, use `*ngIf` instead,
- * then users needs to take long road to see what the element really contains.
- */
 @Directive({
   selector: '[appExcludedRole]',
 })
@@ -19,16 +12,17 @@ import { authenticationSelectors } from 'src/app/store';
 export class ExcludedRoleDirective implements OnInit, OnDestroy {
   @Input('appExcludedRole') public role?: Role | string;
 
-  @HostBinding('style.display') private display: string;
-
   private subscription: Subscription;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store) {
-    this.display = 'none';
+  public constructor(
+    private templateRef: TemplateRef<any>,
+    private container: ViewContainerRef,
+    private store: Store,
+  ) {
     this.subscription = new Subscription();
   }
 
@@ -42,7 +36,13 @@ export class ExcludedRoleDirective implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select(authenticationSelectors.hasRole(this.role)).subscribe(
         (hasRole: boolean): void => {
-          this.display = hasRole ? 'none' : '';
+          if (!hasRole) {
+            this.container.createEmbeddedView(this.templateRef);
+
+            return;
+          }
+
+          this.container.clear();
         },
       ),
     );

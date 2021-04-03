@@ -8,6 +8,9 @@ import { authenticationSelectors } from 'src/app/store';
 /**
  * Note that this directive will only "hide" the element where you use this,
  * so if that element contains some sensitive content - do not use this!
+ *
+ * Users can easily toggle visibility of that element, use `*ngIf` instead,
+ * then users needs to take long road to see what the element really contains.
  */
 @Directive({
   selector: '[appRequiredRole]',

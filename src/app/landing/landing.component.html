@@ -4,6 +4,14 @@
   </p>
 
   <p>
-    You're currently using this application in <em>{{ device$ | async }}</em> mode and using viewport: <em>{{ viewport$ | async }}</em>.
+    You're currently using this application in <em>{{ device$ | async }}</em> mode and using viewport: <em>{{ viewport$ | async }}</em>.
   </p>
+
+  <div [appRequiredRole]="'ROLE_ROOT'">
+    This is only shown to users who has `ROLE_ROOT` role.
+  </div>
+
+  <div [appExcludedRole]="'ROLE_ROOT'">
+    This is only shown to users who has not `ROLE_ROOT` role.
+  </div>
 </div>

@@ -5353,10 +5353,10 @@ eslint-plugin-jsdoc@32.3.0:
     semver "^7.3.4"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-ngrx@1.17.3:
-  version "1.17.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.17.3.tgz#71e3052e7ccde9cf1796b8e98e8c99b6b37ce718"
-  integrity sha512-FlOEeusKa3kNYqtlqNNiG2TbwAE7fyVvGZPAMojr6lx5Qy5tjeiZS5VVQUBFFy5vA5oVIZKGOmXSsFg2uPZEgw==
+eslint-plugin-ngrx@1.17.4:
+  version "1.17.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.17.4.tgz#3e66d014e7e967747f1e4eba249ef7b4d46eaa91"
+  integrity sha512-KDCqyhO3BJc3+7lUMQpkQP62EpNjf5BNo0Ij+a8UBT3tfypQdrDVeF84PfMaauuXLWCl6S7+T19biGbB+puzlw==
   dependencies:
     "@angular-devkit/schematics" "^11.0.1"
     "@typescript-eslint/experimental-utils" "^4.7.0"
@@ -12055,10 +12055,10 @@ snyk-try-require@^2.0.0:
     lodash.clonedeep "^4.3.0"
     lru-cache "^5.1.1"
 
-snyk@1.521.0:
-  version "1.521.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.521.0.tgz#d81e0dba1872e262c6a3e20bed533122204fd32c"
-  integrity sha512-eOjyyWJerI8/2hU/pI8GQDYKFrf+ACl+Bw1U0xDlT733p+YidYXsc5flJykR6uPglb756/2HZQCujfX3ViUTdQ==
+snyk@1.522.0:
+  version "1.522.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.522.0.tgz#fb33bf370b3ed7a445422f2c124507034ac3a7f8"
+  integrity sha512-KrF1W4HzGNkwafRNm0RZpX3bdnE0JmWhHTtFfPUxY/0LGGmUNqTbbMuQkyTtdT0dyUIdJnetuKuRItWf1R5Ygw==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"

@@ -10,7 +10,7 @@ import { authenticationSelectors } from 'src/app/store';
 })
 
 export class ExcludedRoleDirective implements OnInit, OnDestroy {
-  @Input('appExcludedRole') public role?: Role | string;
+  @Input('appExcludedRole') public role: Role | string;
 
   private subscription: Subscription;
 
@@ -23,6 +23,7 @@ export class ExcludedRoleDirective implements OnInit, OnDestroy {
     private container: ViewContainerRef,
     private store: Store,
   ) {
+    this.role = '';
     this.subscription = new Subscription();
   }
 

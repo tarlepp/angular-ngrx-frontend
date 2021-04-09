@@ -10,7 +10,7 @@ import { authenticationSelectors } from 'src/app/store';
 })
 
 export class RequiredRoleDirective implements OnInit, OnDestroy {
-  @Input('appRequiredRole') public role?: Role | string;
+  @Input('appRequiredRole') public role: Role | string;
 
   private subscription: Subscription;
 
@@ -23,6 +23,7 @@ export class RequiredRoleDirective implements OnInit, OnDestroy {
     private container: ViewContainerRef,
     private store: Store,
   ) {
+    this.role = '';
     this.subscription = new Subscription();
   }
 

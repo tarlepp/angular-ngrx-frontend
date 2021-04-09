@@ -30,7 +30,7 @@ const isLoggedIn = createSelector(featureSelector, (state: AuthenticationState):
 const profile = createSelector(featureSelector, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const roles = createSelector(featureSelector, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
 const userData = createSelector(featureSelector, (state: AuthenticationState): UserDataInterface|null => state.userData);
-const hasRole = (role?: Role|string): MemoizedSelector<any, boolean> => createSelector(
+const hasRole = (role: Role | string): MemoizedSelector<any, boolean> => createSelector(
   roles,
   (userRoles: Array<Role>): boolean => !!role && userRoles.includes(role as Role),
 );

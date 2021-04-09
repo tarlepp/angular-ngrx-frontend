@@ -34,6 +34,10 @@ const hasRole = (role: Role | string): MemoizedSelector<any, boolean> => createS
   roles,
   (userRoles: Array<Role>): boolean => !!role && userRoles.includes(role as Role),
 );
+const hasSomeRole = (haystack: Array<Role|string>): MemoizedSelector<any, boolean> => createSelector(
+  roles,
+  (userRoles: Array<Role>): boolean => userRoles.some(userRole => haystack.includes(userRole)),
+);
 const error = createSelectorServerError(featureSelector);
 
 // Filtered error selector - this will always return `ServerErrorInterface`
@@ -50,6 +54,7 @@ export const authenticationSelectors = {
   roles,
   userData,
   hasRole,
+  hasSomeRole,
   error,
   filteredError,
 };

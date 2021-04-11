@@ -9,8 +9,8 @@ import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 import { UserDataInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 import { Theme, Viewport } from 'src/app/shared/enums';
-import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-root',

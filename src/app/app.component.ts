@@ -132,17 +132,26 @@ export class AppComponent implements OnInit, OnDestroy {
      *  - isTablet
      *  - isDesktop
      */
-    this.subscription.add(this.mediaObserver
-      .asObservable()
+    this.subscription
+      .add(this.mediaObserver
+        .asObservable()
+        .pipe(
+          filter((changes: Array<MediaChange>): boolean => changes.length > 0),
+          map((changes: Array<MediaChange>): MediaChange => changes[0]),
+          distinctUntilChanged((prev: MediaChange, curr: MediaChange): boolean => prev.mqAlias === curr.mqAlias),
+        )
+        .subscribe((mediaChange: MediaChange): void =>
+          this.store.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
+        ),
+      );
+
+    // Ensure that we're using correct theme on application init
+    this.store
       .pipe(
-        filter((changes: MediaChange[]): boolean => changes.length > 0),
-        map((changes: MediaChange[]): MediaChange => changes[0]),
-        distinctUntilChanged((prev: MediaChange, curr: MediaChange): boolean => prev.mqAlias === curr.mqAlias),
+        select(layoutSelectors.theme),
+        take(1),
       )
-      .subscribe((mediaChange: MediaChange): void =>
-        this.store.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
-      ),
-    );
+      .subscribe((theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })));
   }
 
   /**

@@ -128,7 +128,30 @@
             "devDependencies": false
           }
         ],
-        "import/order": "error",
+        "import/order": [
+          "error",
+          {
+            "pathGroups": [
+              {
+                "pattern": "^(?!src\\/|package.json)([@]|[a-z])",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "^(src\\/|package.json)",
+                "group": "internal",
+                "position": "after"
+              }
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "groups": ["external", "internal"],
+            "newlines-between": "ignore",
+            "pathGroupsExcludedImportTypes": ["builtin"]
+          }
+        ],
         "ngrx/no-multiple-actions-in-effects": "off",
         "no-duplicate-case": "error",
         "no-empty": [

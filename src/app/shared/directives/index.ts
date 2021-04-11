@@ -1,5 +1,13 @@
-import { AutoFocusDirective } from 'src/app/shared/directives/auto-focus.directive';
+import { Type } from '@angular/core';
 
-export const directives = [
+import { AutoFocusDirective } from 'src/app/shared/directives/auto-focus.directive';
+import { ExcludedRoleDirective } from 'src/app/shared/directives/excluded-role.directive';
+import { IsLoggedInDirective } from 'src/app/shared/directives/is-logged-in.directive';
+import { RequiredRoleDirective } from 'src/app/shared/directives/required-role.directive';
+
+export const directives: Array<Type<any>> = [
   AutoFocusDirective,
+  ExcludedRoleDirective,
+  IsLoggedInDirective,
+  RequiredRoleDirective,
 ];

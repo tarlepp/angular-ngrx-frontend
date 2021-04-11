@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { UserProfileInterface } from 'src/app/auth/interfaces';
+import { languages } from 'src/app/shared/constants';
 import { Language } from 'src/app/shared/enums';
 import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
-import { languages } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-header',

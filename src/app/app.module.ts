@@ -21,6 +21,7 @@ import {
   HeaderComponent,
   VersionChangeDialogComponent,
 } from 'src/app/shared/components';
+import { Language } from 'src/app/shared/enums';
 import { httpLoaderFactory } from 'src/app/shared/factories';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { effects } from 'src/app/store/app.effects';
@@ -69,6 +70,7 @@ registerLocales();
       ...effects,
     ]),
     TranslateModule.forRoot({
+      defaultLanguage: Language.DEFAULT,
       loader: {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,

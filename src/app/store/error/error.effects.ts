@@ -17,7 +17,7 @@ export class ErrorEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private showSnackbar$: Observable<void> = createEffect((): Observable<void> =>
+  private showSnackbarEffect$: Observable<void> = createEffect((): Observable<void> =>
     this.actions$.pipe(
       ofType(errorActions.showSnackbar),
       pluck('error'),

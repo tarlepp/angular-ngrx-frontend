@@ -1,18 +1,25 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from 'ngx-webstorage';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Language } from 'src/app/shared/enums';
 import { ConfigurationService } from 'src/app/shared/services';
+import { layoutSelectors } from 'src/app/store';
 
 @Injectable()
 export class AcceptLanguageInterceptor implements HttpInterceptor {
+  private language: Language;
+
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private localStorage: LocalStorageService) { }
+  public constructor(private store: Store) {
+    this.language = Language.DEFAULT;
+
+    this.store.select(layoutSelectors.language).subscribe((language: Language): Language => this.language = language);
+  }
 
   /**
    * Identifies and handles a given HTTP request.
@@ -25,7 +32,8 @@ export class AcceptLanguageInterceptor implements HttpInterceptor {
     if (httpRequest.url.includes(new URL(ConfigurationService.configuration.apiUrl).host)) {
       const modified = httpRequest.clone({
         setHeaders: {
-          'Accept-Language': this.localStorage.retrieve('language') || Language.DEFAULT,
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          'Accept-Language': this.language,
         },
       });
 

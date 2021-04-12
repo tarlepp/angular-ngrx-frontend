@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
-import { LocalStorageService } from 'ngx-webstorage';
 import { Observable } from 'rxjs';
 import { map, mergeMap, pluck, tap, withLatestFrom } from 'rxjs/operators';
 
@@ -25,7 +24,7 @@ export class LayoutEffects {
    *
    * Each of these actions you can find from this effect class.
    */
-  private updateLocalization$: Observable<TypedAction<LocalizationTypes>> = createEffect(
+  private updateLocalizationEffect$: Observable<TypedAction<LocalizationTypes>> = createEffect(
     (): Observable<TypedAction<LocalizationTypes>> => this.actions$.pipe(
       ofType(layoutActions.updateLocalization),
       pluck('localization'),
@@ -48,13 +47,12 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeLanguage$: Observable<void> = createEffect(
+  private changeLanguageEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeLanguage),
       pluck('language'),
       map((language: Language): void => {
         this.translateService.use(language);
-        this.localStorageService.store('language', language);
       }),
     ),
     { dispatch: false },
@@ -72,14 +70,12 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeLocale$: Observable<void> = createEffect(
+  private changeLocaleEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeLocale),
       pluck('locale'),
       map((locale: Locale): void => {
         moment.locale(locale);
-
-        this.localStorageService.store('locale', locale);
       }),
     ),
     { dispatch: false },
@@ -97,14 +93,12 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeTimezone$: Observable<void> = createEffect(
+  private changeTimezoneEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeTimezone),
       pluck('timezone'),
       map((timezone: string): void => {
         moment.tz.setDefault(timezone);
-
-        this.localStorageService.store('timezone', timezone);
       }),
     ),
     { dispatch: false },
@@ -119,7 +113,7 @@ export class LayoutEffects {
    * `LayoutAction.SCROLL_TO` action which effect will actually do that scroll
    * in browser.
    */
-  private scrollToTop$: Observable<TypedAction<LayoutType.SCROLL_TO>> = createEffect(
+  private scrollToTopEffect$: Observable<TypedAction<LayoutType.SCROLL_TO>> = createEffect(
     (): Observable<TypedAction<LayoutType.SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollToTop),
       map((): TypedAction<LayoutType.SCROLL_TO> => layoutActions.scrollTo({ anchor: '#top-page' })),
@@ -133,7 +127,7 @@ export class LayoutEffects {
    * original action observable to `LayoutAction.CLEAR_SCROLL_TO` which clear
    * that scroll to state in layout store.
    */
-  private scrollTo$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
+  private scrollToEffect$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
     (): Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollTo),
       pluck('anchor'),
@@ -156,7 +150,7 @@ export class LayoutEffects {
    * toggle current theme and dispatch another action to set that toggled
    * theme, where actual domain logic is done.
    */
-  private toggleTheme$: Observable<TypedAction<LayoutType.SET_THEME>> = createEffect(
+  private toggleThemeEffect$: Observable<TypedAction<LayoutType.SET_THEME>> = createEffect(
     (): Observable<TypedAction<LayoutType.SET_THEME>> => this.actions$.pipe(
       ofType(layoutActions.toggleTheme),
       withLatestFrom(this.store.select(layoutSelectors.theme)),
@@ -171,14 +165,14 @@ export class LayoutEffects {
    * current theme as active in DOM perspective. This is done simple as just
    * removing and adding theme named CSS class to applications `body` element.
    */
-  private setTheme$: Observable<void> = createEffect(
+  private setThemeEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.setTheme),
       pluck('theme'),
       map((theme: Theme): void => {
         const body = document.getElementsByTagName('body')[0];
 
-        if (body.classList.contains(theme) === false) {
+        if (!body.classList.contains(theme)) {
           body.classList.remove(theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
           body.classList.add(theme);
         }
@@ -194,7 +188,6 @@ export class LayoutEffects {
   public constructor(
     private actions$: Actions,
     private translateService: TranslateService,
-    private localStorageService: LocalStorageService,
     private store: Store,
   ) { }
 }

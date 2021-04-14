@@ -1381,21 +1381,21 @@
   dependencies:
     tslib "^1.9.0"
 
-"@biesbjerg/ngx-translate-extract@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@biesbjerg/ngx-translate-extract/-/ngx-translate-extract-7.0.3.tgz#439330c6bee6deec4c2f556a308e34619c58c499"
-  integrity sha512-/k/5L4a3wvnR1JOdc5VrnVHPIBQnVDVKL51NDw7g7O9dR+e4U+gpwE5kmvb0yvve7jCPenK7ScYaIM9XtJPClw==
+"@biesbjerg/ngx-translate-extract@7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@biesbjerg/ngx-translate-extract/-/ngx-translate-extract-7.0.4.tgz#98190aa798dfe78a9f33904256891e76634fd52c"
+  integrity sha512-33hR94Fu26LK7Z+ImW2IdZiHfOcAzyIs1CdkUXg/536z2MqxBYqPoI9Ghsk6RTEfnsGa65wMgOcDXn7Ilhp8ew==
   dependencies:
     "@phenomnomnominal/tsquery" "^4.1.1"
-    boxen "^4.2.0"
-    colorette "^1.2.1"
+    boxen "^5.0.1"
+    colorette "^1.2.2"
     flat "^5.0.2"
     gettext-parser "^4.0.4"
     glob "^7.1.6"
     mkdirp "^1.0.4"
     path "^0.12.7"
     terminal-link "^2.1.1"
-    yargs "^16.0.3"
+    yargs "^16.2.0"
 
 "@deepcode/dcignore@^1.0.2":
   version "1.0.2"
@@ -1833,10 +1833,10 @@
     micromatch "^4.0.2"
     picomatch "^2.2.1"
 
-"@snyk/fix@1.526.0":
-  version "1.526.0"
-  resolved "https://registry.yarnpkg.com/@snyk/fix/-/fix-1.526.0.tgz#589bc5e6745b1f81f36cfa46199d98871113e7b7"
-  integrity sha512-+aMUNRhOdoN4YPGxXlN9+NwvKOr/DNBCGgC8DnNSujcJ9Nj1M8oHrnVoTy56/tgbJ8qyw/zwmCKAm383CfURKg==
+"@snyk/fix@1.540.0":
+  version "1.540.0"
+  resolved "https://registry.yarnpkg.com/@snyk/fix/-/fix-1.540.0.tgz#2b00a38271147f6cbef001b43a829f9efaf8691e"
+  integrity sha512-uC2QCjBbGz59RXdrjI6QUJrkCAzEAB73KD+zqHqvGeWgYEa9dbF78RJSFXzmT/0q8V43sTpSHq5nFUzcCrtvUg==
   dependencies:
     "@snyk/dep-graph" "^1.21.0"
     chalk "4.1.0"
@@ -3396,6 +3396,20 @@ boxen@^4.2.0:
     type-fest "^0.8.1"
     widest-line "^3.1.0"
 
+boxen@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/boxen/-/boxen-5.0.1.tgz#657528bdd3f59a772b8279b831f27ec2c744664b"
+  integrity sha512-49VBlw+PrWEF51aCmy7QIteYPIFZxSpvqBdP/2itCPPlJ49kj9zg/XPRFrdkne2W+CfwXUls8exMvu1RysZpKA==
+  dependencies:
+    ansi-align "^3.0.0"
+    camelcase "^6.2.0"
+    chalk "^4.1.0"
+    cli-boxes "^2.2.1"
+    string-width "^4.2.0"
+    type-fest "^0.20.2"
+    widest-line "^3.1.0"
+    wrap-ansi "^7.0.0"
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -3966,7 +3980,7 @@ clean-stack@^2.0.0:
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
   integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
 
-cli-boxes@^2.2.0:
+cli-boxes@^2.2.0, cli-boxes@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-2.2.1.tgz#ddd5035d25094fce220e9cab40a45840a440318f"
   integrity sha512-y4coMcylgSCdVinjiDBuR8PCC2bLjyGTwEmPb9NHR/QaNU6EUOXcTY/s6VjGMD6ENSEaeQYHCY0GNGS5jfMwPw==
@@ -4137,6 +4151,11 @@ colorette@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
   integrity sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
+
+colorette@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
+  integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
 colors@1.4.0, colors@^1.4.0:
   version "1.4.0"
@@ -12300,17 +12319,17 @@ snyk-try-require@^2.0.0:
     lodash.clonedeep "^4.3.0"
     lru-cache "^5.1.1"
 
-snyk@1.536.0:
-  version "1.536.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.536.0.tgz#eb25ff55c9dbe3bf37cee859d94026dbac68dedd"
-  integrity sha512-DdiqWky4TL3BZWcDgmk+hjkHc0NpU7Gaoi6BJSHi/S6/7xnrKBAqiZo3MNnbmOM5KoOLybvRhsu2rrqR4LqzKQ==
+snyk@1.540.0:
+  version "1.540.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.540.0.tgz#cd82998fe0821d760e1e77eee706e785023f6e73"
+  integrity sha512-CqW3p5pIbAV2NjjTvk9XCUBrCa1wiUeTiLyzbT++1qH0tFtzXaBuvnuwYy8tiPS5eEzM98UINHkdXbsnAXZy1w==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"
     "@snyk/cloud-config-parser" "^1.9.2"
     "@snyk/code-client" "3.4.0"
     "@snyk/dep-graph" "^1.27.1"
-    "@snyk/fix" "1.526.0"
+    "@snyk/fix" "1.540.0"
     "@snyk/gemfile" "1.2.0"
     "@snyk/graphlib" "^2.1.9-patch.3"
     "@snyk/inquirer" "^7.3.3-patch"
@@ -14702,7 +14721,7 @@ y18n@^4.0.0:
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.1.tgz#8db2b83c31c5d75099bb890b23f3094891e247d4"
   integrity sha512-wNcy4NvjMYL8gogWWYAO7ZFWFfHcbdbE57tZO8e4cbpj8tfUcwrwqSl3ad8HxpYWCdXcJUCeKKZS62Av1affwQ==
 
-y18n@^5.0.2, y18n@^5.0.5:
+y18n@^5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.5.tgz#8769ec08d03b1ea2df2500acef561743bbb9ab18"
   integrity sha512-hsRUr4FFrvhhRH12wOdfs38Gy7k2FFzB9qgN9v3aLykRq0dRcdcpz5C9FxdS2NuhOrI/628b/KSTJ3rwHysYSg==
@@ -14785,19 +14804,6 @@ yargs@^15.3.1, yargs@^15.4.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
-
-yargs@^16.0.3:
-  version "16.1.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.1.0.tgz#fc333fe4791660eace5a894b39d42f851cd48f2a"
-  integrity sha512-upWFJOmDdHN0syLuESuvXDmrRcWd1QafJolHskzaw79uZa7/x53gxQKiR07W59GWY1tFhhU/Th9DrtSfpS782g==
-  dependencies:
-    cliui "^7.0.2"
-    escalade "^3.1.1"
-    get-caller-file "^2.0.5"
-    require-directory "^2.1.1"
-    string-width "^4.2.0"
-    y18n "^5.0.2"
-    yargs-parser "^20.2.2"
 
 yargs@^16.1.1:
   version "16.1.1"

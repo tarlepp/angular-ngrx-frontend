@@ -20,7 +20,7 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class VersionEffects {
   // noinspection JSUnusedLocalSymbols
-  private fetchVersions$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
+  private fetchVersionsEffect$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<NewBackendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.newBackendVersion),
       pluck('backendVersion'),
@@ -48,7 +48,7 @@ export class VersionEffects {
    * version has been changed - that is checked on each backend request via
    * simple HTTP interceptor.
    */
-  private fetchFrontendVersion$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
+  private fetchFrontendVersionEffect$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
     (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.fetchFrontendVersion),
       switchMap((): Observable<TypedAction<FrontendVersionTypes>> =>
@@ -77,7 +77,7 @@ export class VersionEffects {
    * This action is just dispatched once in application `footer` component
    * when it's initialized.
    */
-  private fetchBackendVersion$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
+  private fetchBackendVersionEffect$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<BackendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.fetchBackendVersion),
       switchMap((): Observable<TypedAction<BackendVersionTypes>> =>
@@ -105,7 +105,7 @@ export class VersionEffects {
    * version available and within that that use case we need to inform current
    * user that there is a new version available of this application.
    */
-  private versionChanged$: Observable<void> = createEffect(
+  private versionChangedEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(versionActions.fetchFrontendVersionSuccess),
       pluck('version'),

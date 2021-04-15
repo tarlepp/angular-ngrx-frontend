@@ -57,6 +57,18 @@
         "@typescript-eslint/no-invalid-this": "error",
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-this-alias": "error",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "vars": "all"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars-experimental": [
+          "error",
+          {
+            "ignoredNamesRegex": "(.)Effect\\$$"
+          }
+        ],
         "@typescript-eslint/no-useless-constructor": "error",
         "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/naming-convention": [
@@ -76,14 +88,13 @@
           {
             "selector": "objectLiteralProperty",
             "format": [
-              "camelCase",
-              "PascalCase"
+              "camelCase"
             ]
           },
           {
             "selector": "typeParameter",
             "format": [
-              "camelCase",
+              "PascalCase",
               "UPPER_CASE"
             ]
           },
@@ -117,7 +128,30 @@
             "devDependencies": false
           }
         ],
-        "import/order": "error",
+        "import/order": [
+          "error",
+          {
+            "pathGroups": [
+              {
+                "pattern": "^(?!src\\/|package.json)([@]|[a-z])",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "^(src\\/|package.json)",
+                "group": "internal",
+                "position": "after"
+              }
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "groups": ["external", "internal"],
+            "newlines-between": "ignore",
+            "pathGroupsExcludedImportTypes": ["builtin"]
+          }
+        ],
         "ngrx/no-multiple-actions-in-effects": "off",
         "no-duplicate-case": "error",
         "no-empty": [
@@ -134,6 +168,7 @@
         "no-sequences": "error",
         "no-sparse-arrays": "error",
         "no-template-curly-in-string": "error",
+        "no-unused-vars": "off",
         "no-useless-constructor": "off",
         "no-void": "error",
         "no-shadow": "off",

@@ -7,18 +7,18 @@ import { authenticationSelectors } from 'src/app/store';
 
 /**
  * This directive check if current user has "some" of the defined roles or not.
- * Note that if user have at least one of those roles it's enough to not
- * display that specified DOM element.
+ * Note that if user have at least one of those roles it's enough to display
+ * that specified DOM element.
  *
  * Usage example;
- *  <div *appExcludedSomeRole="['FOO', 'BAR', 'FOO_BAR']"> ... </div>
+ *  <div *appHasSomeRole="['FOO', 'BAR', 'FOO_BAR']"> ... </div>
  */
 @Directive({
-  selector: '[appExcludedSomeRole]',
+  selector: '[appHasSomeRole]',
 })
 
-export class ExcludedSomeRoleDirective implements OnInit, OnDestroy {
-  @Input('appExcludedSomeRole') public role: Array<Role | string>;
+export class HasSomeRoleDirective implements OnInit, OnDestroy {
+  @Input('appHasSomeRole') public role: Array<Role | string>;
 
   private subscription: Subscription;
 
@@ -45,7 +45,7 @@ export class ExcludedSomeRoleDirective implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select(authenticationSelectors.hasSomeRole(this.role)).subscribe(
         (hasRole: boolean): void => {
-          if (!hasRole) {
+          if (hasRole) {
             this.container.createEmbeddedView(this.templateRef);
 
             return;

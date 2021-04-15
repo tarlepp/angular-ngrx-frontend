@@ -5,20 +5,12 @@ import { Subscription } from 'rxjs';
 import { Role } from 'src/app/auth/enums';
 import { authenticationSelectors } from 'src/app/store';
 
-/**
- * This directive check if current user has "some" of the defined roles or not.
- * Note that if user have at least one of those roles it's enough to display
- * that specified DOM element.
- *
- * Usage example;
- *  <div *appRequiredSomeRole="['FOO', 'BAR', 'FOO_BAR']"> ... </div>
- */
 @Directive({
-  selector: '[appRequiredSomeRole]',
+  selector: '[appHasNotRole]',
 })
 
-export class RequiredSomeRoleDirective implements OnInit, OnDestroy {
-  @Input('appRequiredSomeRole') public role: Array<Role | string>;
+export class HasNotRoleDirective implements OnInit, OnDestroy {
+  @Input('appHasNotRole') public role: Role | string;
 
   private subscription: Subscription;
 
@@ -31,7 +23,7 @@ export class RequiredSomeRoleDirective implements OnInit, OnDestroy {
     private container: ViewContainerRef,
     private store: Store,
   ) {
-    this.role = [];
+    this.role = '';
     this.subscription = new Subscription();
   }
 
@@ -43,9 +35,9 @@ export class RequiredSomeRoleDirective implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.subscription.add(
-      this.store.select(authenticationSelectors.hasSomeRole(this.role)).subscribe(
+      this.store.select(authenticationSelectors.hasRole(this.role)).subscribe(
         (hasRole: boolean): void => {
-          if (hasRole) {
+          if (!hasRole) {
             this.container.createEmbeddedView(this.templateRef);
 
             return;

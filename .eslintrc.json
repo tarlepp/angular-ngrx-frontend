@@ -147,9 +147,14 @@
               "order": "asc",
               "caseInsensitive": true
             },
-            "groups": ["external", "internal"],
+            "groups": [
+              "external",
+              "internal"
+            ],
             "newlines-between": "ignore",
-            "pathGroupsExcludedImportTypes": ["builtin"]
+            "pathGroupsExcludedImportTypes": [
+              "builtin"
+            ]
           }
         ],
         "ngrx/no-multiple-actions-in-effects": "off",

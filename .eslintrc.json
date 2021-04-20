@@ -17,6 +17,7 @@
       },
       "extends": [
         "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates",
@@ -147,9 +148,14 @@
               "order": "asc",
               "caseInsensitive": true
             },
-            "groups": ["external", "internal"],
+            "groups": [
+              "external",
+              "internal"
+            ],
             "newlines-between": "ignore",
-            "pathGroupsExcludedImportTypes": ["builtin"]
+            "pathGroupsExcludedImportTypes": [
+              "builtin"
+            ]
           }
         ],
         "ngrx/no-multiple-actions-in-effects": "off",

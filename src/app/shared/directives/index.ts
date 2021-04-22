@@ -2,6 +2,7 @@ import { Type } from '@angular/core';
 
 import { AutoFocusDirective } from 'src/app/shared/directives/auto-focus.directive';
 import { HasAllRolesDirective } from 'src/app/shared/directives/has-all-roles.directive';
+import { HasNotAllRolesDirective } from 'src/app/shared/directives/has-not-all-roles.directive';
 import { HasNotRoleDirective } from 'src/app/shared/directives/has-not-role.directive';
 import { HasNotSomeRoleDirective } from 'src/app/shared/directives/has-not-some-role.directive';
 import { HasRoleDirective } from 'src/app/shared/directives/has-role.directive';
@@ -11,6 +12,7 @@ import { IsLoggedInDirective } from 'src/app/shared/directives/is-logged-in.dire
 export const directives: Array<Type<any>> = [
   AutoFocusDirective,
   HasAllRolesDirective,
+  HasNotAllRolesDirective,
   HasNotRoleDirective,
   HasNotSomeRoleDirective,
   HasRoleDirective,

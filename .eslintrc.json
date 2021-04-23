@@ -159,6 +159,7 @@
           }
         ],
         "ngrx/no-multiple-actions-in-effects": "off",
+        "ngrx/prefer-effect-callback-in-block-statement": "off",
         "no-duplicate-case": "error",
         "no-empty": [
           "error",

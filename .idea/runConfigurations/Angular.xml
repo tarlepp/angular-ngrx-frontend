@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Angular" type="NodeJSConfigurationType" path-to-node="docker-compose://[$PROJECT_DIR$/../once-oncenet2-frontend/docker-compose.yml]:node/node" working-dir="$PROJECT_DIR$">
-    <method v="2" />
-  </configuration>
-</component>

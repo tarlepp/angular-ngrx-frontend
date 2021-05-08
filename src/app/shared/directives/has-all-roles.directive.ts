@@ -6,11 +6,11 @@ import { Role } from 'src/app/auth/enums';
 import { authenticationSelectors } from 'src/app/store';
 
 @Directive({
-  selector: '[appRequiredRole]',
+  selector: '[appHasAllRoles]',
 })
 
-export class RequiredRoleDirective implements OnInit, OnDestroy {
-  @Input('appRequiredRole') public role?: Role | string;
+export class HasAllRolesDirective implements OnInit, OnDestroy {
+  @Input('appHasAllRoles') public roles: Array<Role | string>;
 
   private subscription: Subscription;
 
@@ -23,6 +23,7 @@ export class RequiredRoleDirective implements OnInit, OnDestroy {
     private container: ViewContainerRef,
     private store: Store,
   ) {
+    this.roles = [];
     this.subscription = new Subscription();
   }
 
@@ -34,9 +35,9 @@ export class RequiredRoleDirective implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.subscription.add(
-      this.store.select(authenticationSelectors.hasRole(this.role)).subscribe(
-        (hasRole: boolean): void => {
-          if (hasRole) {
+      this.store.select(authenticationSelectors.hasRoles(this.roles)).subscribe(
+        (hasRoles: boolean): void => {
+          if (hasRoles) {
             this.container.createEmbeddedView(this.templateRef);
 
             return;

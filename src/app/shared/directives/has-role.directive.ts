@@ -6,11 +6,11 @@ import { Role } from 'src/app/auth/enums';
 import { authenticationSelectors } from 'src/app/store';
 
 @Directive({
-  selector: '[appExcludedRole]',
+  selector: '[appHasRole]',
 })
 
-export class ExcludedRoleDirective implements OnInit, OnDestroy {
-  @Input('appExcludedRole') public role?: Role | string;
+export class HasRoleDirective implements OnInit, OnDestroy {
+  @Input('appHasRole') public role: Role | string;
 
   private subscription: Subscription;
 
@@ -23,6 +23,7 @@ export class ExcludedRoleDirective implements OnInit, OnDestroy {
     private container: ViewContainerRef,
     private store: Store,
   ) {
+    this.role = '';
     this.subscription = new Subscription();
   }
 
@@ -36,7 +37,7 @@ export class ExcludedRoleDirective implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select(authenticationSelectors.hasRole(this.role)).subscribe(
         (hasRole: boolean): void => {
-          if (!hasRole) {
+          if (hasRole) {
             this.container.createEmbeddedView(this.templateRef);
 
             return;

@@ -30,9 +30,17 @@ const isLoggedIn = createSelector(featureSelector, (state: AuthenticationState):
 const profile = createSelector(featureSelector, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const roles = createSelector(featureSelector, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
 const userData = createSelector(featureSelector, (state: AuthenticationState): UserDataInterface|null => state.userData);
-const hasRole = (role?: Role|string): MemoizedSelector<any, boolean> => createSelector(
+const hasRole = (role: Role | string): MemoizedSelector<any, boolean> => createSelector(
   roles,
-  (userRoles: Array<Role>): boolean => !!role && userRoles.includes(role as Role),
+  (userRoles: Array<Role>): boolean => userRoles.includes(role as Role),
+);
+const hasRoles = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
+  roles,
+  (userRoles: Array<Role>): boolean => haystack.every((role: Role | string): boolean => userRoles.includes(role as Role)),
+);
+const hasSomeRole = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
+  roles,
+  (userRoles: Array<Role>): boolean => haystack.some((role: Role | string): boolean => userRoles.includes(role as Role)),
 );
 const error = createSelectorServerError(featureSelector);
 
@@ -50,6 +58,8 @@ export const authenticationSelectors = {
   roles,
   userData,
   hasRole,
+  hasRoles,
+  hasSomeRole,
   error,
   filteredError,
 };

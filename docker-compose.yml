@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile_dev
     command: sh -c 'make start-yarn'
+    container_name: angular-ngrx-frontend
     user: $HOST_UID:$HOST_GID
     ports:
       - 4200:4200

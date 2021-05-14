@@ -11,11 +11,11 @@
  */
 // import 'zone.js/plugins/zone-error';
 
-import { version } from 'package.json';
+import packageInfo from 'package.json';
 import { EnvironmentInterface } from 'src/app/shared/interfaces';  // Included with Angular CLI.
 
 export const environment: EnvironmentInterface = {
   production: false,
   name: 'dev',
-  version,
+  version: packageInfo.version,
 };

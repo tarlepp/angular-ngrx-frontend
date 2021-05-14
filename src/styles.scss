@@ -1,3 +1,5 @@
+@use '~@angular/material' as mat;
+
 // Import application palettes with Angular Material theming
 @import '~src/styles/theme';
 
@@ -9,30 +11,30 @@
 @import '~src/styles/mixins';
 
 // Light theme common variables
-$light-color-config: mat-get-color-config($light-theme);
-$light-background: mat_color(map_get($light-color-config, background), 'card');
-$light-text-color: mat_color(map_get($light-color-config, foreground), 'text');
-$light-primary-color: mat-color(map_get($light-color-config, primary), 500);
-$light-primary-color-contrast: mat_contrast($app-palette-primary, 500);
-$light-accent-color: mat-color(map_get($light-color-config, accent), 500);
-$light-accent-color-contrast: mat_contrast($app-palette-accent, 500);
-$light-warn-color: mat-color(map_get($light-color-config, warn), 500);
-$light-warn-color-contrast: mat_contrast($app-palette-warn, 500);
+$light-color-config: mat.get-color-config($light-theme);
+$light-background: mat.get-color-from-palette(map_get($light-color-config, background), 'card');
+$light-text-color: mat.get-color-from-palette(map_get($light-color-config, foreground), 'text');
+$light-primary-color: mat.get-color-from-palette(map_get($light-color-config, primary), 500);
+$light-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, 500);
+$light-accent-color: mat.get-color-from-palette(map_get($light-color-config, accent), 500);
+$light-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, 500);
+$light-warn-color: mat.get-color-from-palette(map_get($light-color-config, warn), 500);
+$light-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, 500);
 
 // Dark theme common variables
-$dark-color-config: mat-get-color-config($dark-theme);
-$dark-background: mat_color(map_get($dark-color-config, background), 'card');
-$dark-text-color: mat_color(map_get($dark-color-config, foreground), 'text');
-$dark-primary-color: mat-color(map_get($dark-color-config, primary), 500);
-$dark-primary-color-contrast: mat_contrast($app-palette-primary, 500);
-$dark-accent-color: mat-color(map_get($dark-color-config, accent), 500);
-$dark-accent-color-contrast: mat_contrast($app-palette-accent, 500);
-$dark-warn-color: mat-color(map_get($dark-color-config, warn), 500);
-$dark-warn-color-contrast: mat_contrast($app-palette-warn, 500);
+$dark-color-config: mat.get-color-config($dark-theme);
+$dark-background: mat.get-color-from-palette(map_get($dark-color-config, background), 'card');
+$dark-text-color: mat.get-color-from-palette(map_get($dark-color-config, foreground), 'text');
+$dark-primary-color: mat.get-color-from-palette(map_get($dark-color-config, primary), 500);
+$dark-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, 500);
+$dark-accent-color: mat.get-color-from-palette(map_get($dark-color-config, accent), 500);
+$dark-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, 500);
+$dark-warn-color: mat.get-color-from-palette(map_get($dark-color-config, warn), 500);
+$dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, 500);
 
 // Include the light theme styles (color and default density)
 .light-theme {
-  @include angular-material-theme($light-theme);
+  @include mat.all-component-themes($light-theme);
 
   /**
    * You can use these `--theme-*` in component specified SCSS files just by
@@ -58,7 +60,7 @@ $dark-warn-color-contrast: mat_contrast($app-palette-warn, 500);
 
 // Include the dark theme styles (color and default density)
 .dark-theme {
-  @include angular-material-color($dark-theme);
+  @include mat.all-component-colors($dark-theme);
 
   /**
   * You can use these `--theme-*` in component specified SCSS files just by

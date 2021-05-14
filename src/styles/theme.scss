@@ -3,9 +3,10 @@
  *
  * For more information: https://material.angular.io/guide/theming
  */
-@import '~@angular/material/theming';
 
 // Application specified styles for theming
+@use '~@angular/material' as mat;
+
 @import '~src/styles/palettes/app-palette-accent';
 @import '~src/styles/palettes/app-palette-grey';
 @import '~src/styles/palettes/app-palette-primary';
@@ -16,22 +17,22 @@
  * Define a custom typography config that overrides the font-family as well as
  * the `headlines` and `body-1` levels.
  */
-$custom-typography: mat-typography-config(
+$custom-typography: mat.define-typography-config(
   $font-family: $font-family,
-  $display-4: mat-typography-level(112px, 112px, 300, $letter-spacing: -.05em),
-  $display-3: mat-typography-level(56px, 56px, 400, $letter-spacing: -.02em),
-  $display-2: mat-typography-level(45px, 48px, 400, $letter-spacing: -.005em),
-  $display-1: mat-typography-level(34px, 40px, 400),
-  $headline: mat-typography-level(24px, 32px, 400),
-  $title: mat-typography-level(20px, 32px, 500),
-  $subheading-2: mat-typography-level(16px, 28px, 400),
-  $subheading-1: mat-typography-level(15px, 24px, 400),
-  $body-2: mat-typography-level(14px, 24px, 500),
-  $body-1: mat-typography-level(14px, 20px, 400),
-  $caption: mat-typography-level(12px, 20px, 400),
-  $button: mat-typography-level(14px, 14px, 500),
+  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -.05em),
+  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -.02em),
+  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(16px, 28px, 400),
+  $subheading-1: mat.define-typography-level(15px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 24px, 500),
+  $body-1: mat.define-typography-level(14px, 20px, 400),
+  $caption: mat.define-typography-level(12px, 20px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
   // Line-height must be unit-less fraction of the font-size.
-  $input: mat-typography-level(inherit, 1.125, 400)
+  $input: mat.define-typography-level(inherit, 1.125, 400)
 );
 
 /**
@@ -40,15 +41,15 @@ $custom-typography: mat-typography-config(
  *
  * **Be sure that you only ever include this mixin once!**
  */
-@include mat-core($custom-typography);
+@include mat.core($custom-typography);
 
 // Define the used palettes by application specified palette configuration
-$palette-primary: mat-palette($app-palette-primary, 500);
-$palette-accent: mat-palette($app-palette-accent);
-$palette-warn: mat-palette($app-palette-warn);
+$palette-primary: mat.define-palette($app-palette-primary, 500);
+$palette-accent: mat.define-palette($app-palette-accent);
+$palette-warn: mat.define-palette($app-palette-warn);
 
 // Background palette for light themes.
-$mat-light-theme-background: (
+$light-theme-background-palette: (
   status-bar: map-get($app-palette-grey, 300),
   app-bar: map-get($app-palette-grey, 100),
   background: map-get($app-palette-grey, 50),
@@ -57,7 +58,6 @@ $mat-light-theme-background: (
   dialog: white,
   disabled-button: rgba(black, .12),
   raised-button: white,
-  focused-button: $dark-focused,
   selected-button: map-get($app-palette-grey, 300),
   selected-disabled-button: map-get($app-palette-grey, 400),
   disabled-button-toggle: map-get($app-palette-grey, 200),
@@ -67,7 +67,7 @@ $mat-light-theme-background: (
 );
 
 // Background palette for dark themes.
-$mat-dark-theme-background: (
+$dark-theme-background-palette: (
   status-bar: black,
   app-bar: map-get($app-palette-grey, 900),
   background: map-get($app-palette-grey, 500),
@@ -76,7 +76,6 @@ $mat-dark-theme-background: (
   dialog: map-get($app-palette-grey, 800),
   disabled-button: rgba(white, .12),
   raised-button: map-get($app-palette-grey, 800),
-  focused-button: $light-focused,
   selected-button: map-get($app-palette-grey, 900),
   selected-disabled-button: map-get($app-palette-grey, 800),
   disabled-button-toggle: black,
@@ -86,16 +85,16 @@ $mat-dark-theme-background: (
 );
 
 // Foreground palette for light themes.
-$mat-light-theme-foreground: (
+$light-theme-foreground-palette: (
   base: black,
-  divider: $dark-dividers,
-  dividers: $dark-dividers,
-  disabled: $dark-disabled-text,
+  divider: rgba(black, .12),
+  dividers: rgba(black, .12),
+  disabled: rgba(black, .38),
   disabled-button: rgba(black, .26),
-  disabled-text: $dark-disabled-text,
+  disabled-text: rgba(black, .38),
   elevation: black,
-  hint-text: $dark-disabled-text,
-  secondary-text: $dark-secondary-text,
+  hint-text: rgba(black, .38),
+  secondary-text: rgba(black, .54),
   icon: rgba(black, .54),
   icons: rgba(black, .54),
   text: rgba(black, .87),
@@ -105,16 +104,16 @@ $mat-light-theme-foreground: (
 );
 
 // Foreground palette for dark themes.
-$mat-dark-theme-foreground: (
+$dark-theme-foreground-palette: (
   base: black,
-  divider: $light-dividers,
-  dividers: $light-dividers,
-  disabled: $light-disabled-text,
+  divider: rgba(white, .12),
+  dividers: rgba(white, .12),
+  disabled: rgba(white, .5),
   disabled-button: rgba(white, .3),
-  disabled-text: $light-disabled-text,
+  disabled-text: rgba(white, .5),
   elevation: black,
-  hint-text: $light-disabled-text,
-  secondary-text: $light-secondary-text,
+  hint-text: rgba(white, .5),
+  secondary-text: rgba(white, .7),
   icon: white,
   icons: white,
   text: white,
@@ -124,7 +123,7 @@ $mat-dark-theme-foreground: (
 );
 
 // Create light theme
-$light-theme: mat-light-theme(
+$light-theme: mat.define-light-theme(
   (
     color: (
       primary: $palette-primary,
@@ -135,7 +134,7 @@ $light-theme: mat-light-theme(
 );
 
 // Create dark theme
-$dark-theme: mat-dark-theme(
+$dark-theme: mat.define-dark-theme(
   (
     color: (
       primary: $palette-primary,

@@ -5331,6 +5331,15 @@ eslint-etc@^4.0.0:
     tsutils "^3.17.1"
     tsutils-etc "^1.2.2"
 
+eslint-etc@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-etc/-/eslint-etc-4.0.5.tgz#f2384df9644d225d0ea6dcfc54fac63155fce04a"
+  integrity sha512-nbPVvnA5UbJBSjT9xQPZN6Ue7Etr+Npb6E+wTYNbyFP6dW2AP3u+ZBJrvzJF1FgwCxl+JLPeoICDGvhFdJ0m1w==
+  dependencies:
+    "@typescript-eslint/experimental-utils" "^4.0.0"
+    tsutils "^3.17.1"
+    tsutils-etc "^1.3.3"
+
 eslint-import-resolver-node@^0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.4.tgz#85ffa81942c25012d8231096ddf679c03042c717"
@@ -5384,13 +5393,14 @@ eslint-plugin-jsdoc@34.2.2:
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-ngrx@1.22.0:
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.22.0.tgz#71d15b747efdef9283f32ea2af233d89c2f21250"
-  integrity sha512-TmSCgcRagJ4SlSkpu1HMqL655rieaH4pLuMleHV8bgLpCleZsL37on0loIiHprx81y+3XbZKMuMIJP6ibYma5w==
+eslint-plugin-ngrx@1.23.0:
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.23.0.tgz#8a8073bd189cbcf51d2e2b2c1fc6a1a3de64fa42"
+  integrity sha512-i63t8qYcy3b0TKxfaVY9nIbT/GMZqKogRa/iJ2YR//l9feaerv6TX/IIGo/3rX1WXutV/foIXO1RGfJ/p55uDw==
   dependencies:
     "@angular-devkit/schematics" "^11.0.1"
     "@typescript-eslint/experimental-utils" "^4.7.0"
+    eslint-etc "^4.0.5"
     eslint-plugin-rxjs "^2.1.4"
     tsutils-etc "^1.3.1"
 
@@ -13439,6 +13449,14 @@ tsutils-etc@^1.2.2, tsutils-etc@^1.3.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/tsutils-etc/-/tsutils-etc-1.3.2.tgz#a4e05600f73f540c8f081654dc19802c7cb50d49"
   integrity sha512-hAQoELuJxKiJ7nISOuTFI+OKcwtbBTfQh47DquqG4R0bDvhfK6vXvykoKTNpBBS1n67vGvGPqEtnR9zE6dfWdg==
+  dependencies:
+    "@types/yargs" "^15.0.5"
+    yargs "^15.4.1"
+
+tsutils-etc@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/tsutils-etc/-/tsutils-etc-1.3.3.tgz#02f115b373e87d315e90e8fdb561cb02427fac95"
+  integrity sha512-wkO2RkTgpqkmplJTvyr3AJ+Mf1ptE4B1Pg0oWBIc7BmGCpkkpd9FXCmCu/e/rkcaz7nWxOH85Zfx5W3LKW1mwQ==
   dependencies:
     "@types/yargs" "^15.0.5"
     yargs "^15.4.1"

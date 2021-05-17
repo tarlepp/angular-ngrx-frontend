@@ -5378,10 +5378,10 @@ eslint-plugin-import@2.23.2:
     resolve "^1.20.0"
     tsconfig-paths "^3.9.0"
 
-eslint-plugin-jsdoc@34.6.3:
-  version "34.6.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-34.6.3.tgz#5a4770ae33fa429785936d6a3b61576d088b8c39"
-  integrity sha512-ixty4/Zl7cZ0fcvqQAWKuTzQ5hnWIirZOuJrzLtWV0RwF4E70/WG5vLXyppxDFbLCiwmYXjSkiqBfcKfm4VA3Q==
+eslint-plugin-jsdoc@34.7.0:
+  version "34.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-34.7.0.tgz#f970318d5004104f035d322794113a1a9a22e3d5"
+  integrity sha512-H2zrJorJfocd//PNNYsrPxWNAQjHONzIHGZ9CFYISyfZCOTXYUzH8CyA95LHYpZqGf5UEueHiwl+0bzWreqAjQ==
   dependencies:
     "@es-joy/jsdoccomment" "^0.6.0"
     comment-parser "1.1.5"
@@ -12111,10 +12111,10 @@ snyk-try-require@^2.0.0:
     lodash.clonedeep "^4.3.0"
     lru-cache "^5.1.1"
 
-snyk@1.595.0:
-  version "1.595.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.595.0.tgz#7fd2844c202092cb04842a2482fb6ac6657a0146"
-  integrity sha512-CjOQQh53NhLDC+h9aNwzXkG4otHkv9urLasL625wyEn3n1e+hkhAFFnZMTcI7FAlsyTV0jCYnA2mKJYdxlJiHw==
+snyk@1.596.0:
+  version "1.596.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.596.0.tgz#fca370b1d19970a48980893b54142502782cbc6b"
+  integrity sha512-QFR8SRQqmmun+H7fsStJfATUjGR6ungx1aAULHTysACB7K36Onicmpkr+hAioN/Zjm8BcIML4iufsCSG42E2PA==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"

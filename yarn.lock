@@ -2426,10 +2426,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.13.tgz#9e425079799322113ae8477297ae6ef51b8e0cdf"
   integrity sha512-vbxr0VZ8exFMMAjCW8rJwaya0dMCDyYW2ZRdTyjtrCvJoENMpdUHOT/eTzvgyA5ZnqRZ/sI0NwqAxNHKYokLJQ==
 
-"@types/node@15.3.0":
-  version "15.3.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.3.0.tgz#d6fed7d6bc6854306da3dea1af9f874b00783e26"
-  integrity sha512-8/bnjSZD86ZfpBsDlCIkNXIvm+h6wi9g7IqL+kmFkQ+Wvu3JrasgLElfiPgoo8V8vVfnEi0QVS12gbl94h9YsQ==
+"@types/node@15.3.1":
+  version "15.3.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.3.1.tgz#23a06b87eedb524016616e886b116b8fdcb180af"
+  integrity sha512-weaeiP4UF4XgF++3rpQhpIJWsCTS4QJw5gvBhQu6cFIxTwyxWIe3xbnrY/o2lTCQ0lsdb8YIUDUvLR4Vuz5rbw==
 
 "@types/node@^13.7.0":
   version "13.13.48"
@@ -4811,10 +4811,10 @@ deep-is@^0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
 
-deepmerge@^3.2.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.3.0.tgz#d3c47fd6f3a93d517b14426b0628a17b0125f5f7"
-  integrity sha512-GRQOafGHwMHpjPx9iCvTgpu9NojZ49q794EEL94JVEw6VaeA8XTUyBKvAkOOjBX9oJNiV6G3P+T+tihFjo2TqA==
+deepmerge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
 
 default-gateway@^4.2.0:
   version "4.2.0"
@@ -9040,13 +9040,13 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngrx-store-localstorage@11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-11.0.0.tgz#408b357041b68ffdf43f2274b03111f54e9d09e7"
-  integrity sha512-/bLA9/0orlEffBGH4Nqp5XwdgFX9XkpBD5p2ZwRYPPYAHi+bs4yFdKl6c4RvKsS9IOGHXiO5mm2vLaK+n7mvTw==
+ngrx-store-localstorage@12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-12.0.0.tgz#43489ed628265b4654a1eea6cad1f0bffa66a99e"
+  integrity sha512-FFLQT6bgD3M/j688oFJLMcXCb9w6JCU5GuVJHgmwPooLVGVQOutvbjZLSdTeyfUbWklcTV4Z5F6HvKZsqt/Xgg==
   dependencies:
-    deepmerge "^3.2.0"
-    tslib "^2.0.0"
+    deepmerge "^4.2.2"
+    tslib "^2.1.0"
 
 ngx-moment@5.0.0:
   version "5.0.0"
@@ -9055,10 +9055,10 @@ ngx-moment@5.0.0:
   dependencies:
     tslib "^2.0.0"
 
-ngx-webstorage@7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-7.0.1.tgz#bf6d0ab664649c3644e6079f3a5886fa1156a2ec"
-  integrity sha512-E3J/Gmk6mM0jmlwfCLf8bx92t5ZyC5BS0EUgJQzbLgFynYcwq7xkwXG4J5uOJ3fc3jcCCNgnu2v6R1PyLcp/oQ==
+ngx-webstorage@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-8.0.0.tgz#c469cb3afcfb7a443527cbbaa43b0e9b02e64c99"
+  integrity sha512-dpHgboSi6adnYpwiAQ2/PRJe8dcvSbM2qWTacTCUPVPeWlhLvTCtIl1GA9BNDiZzYuyA3dmXyqlcDl/Th9Pi2A==
   dependencies:
     tslib "^2.0.0"
 

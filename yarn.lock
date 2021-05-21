@@ -2431,10 +2431,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.13.tgz#9e425079799322113ae8477297ae6ef51b8e0cdf"
   integrity sha512-vbxr0VZ8exFMMAjCW8rJwaya0dMCDyYW2ZRdTyjtrCvJoENMpdUHOT/eTzvgyA5ZnqRZ/sI0NwqAxNHKYokLJQ==
 
-"@types/node@15.3.1":
-  version "15.3.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.3.1.tgz#23a06b87eedb524016616e886b116b8fdcb180af"
-  integrity sha512-weaeiP4UF4XgF++3rpQhpIJWsCTS4QJw5gvBhQu6cFIxTwyxWIe3xbnrY/o2lTCQ0lsdb8YIUDUvLR4Vuz5rbw==
+"@types/node@15.6.0":
+  version "15.6.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.6.0.tgz#f0ddca5a61e52627c9dcb771a6039d44694597bc"
+  integrity sha512-gCYSfQpy+LYhOFTKAeE8BkyGqaxmlFxe+n4DKM6DR0wzw/HISUE/hAmkC/KT8Sw5PCJblqg062b3z9gucv3k0A==
 
 "@types/node@^13.7.0":
   version "13.13.48"
@@ -12178,10 +12178,10 @@ snyk-try-require@^2.0.0:
     lodash.clonedeep "^4.3.0"
     lru-cache "^5.1.1"
 
-snyk@1.604.0:
-  version "1.604.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.604.0.tgz#659b851f17e5b48d061c675d28ad0848ae8c58e5"
-  integrity sha512-8KNKYPPOQNKEVTN9Gt8Ab20l7UGpFpk6GeFvEHLmQXbeHJn8S5cY2hL9dW85NtklQNjTecmVMmLVtvrP8UB41g==
+snyk@1.605.0:
+  version "1.605.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.605.0.tgz#1aff8975214e2a2f8b5f5d1cb62f948e97d00f35"
+  integrity sha512-Z7WXI/U4oa/vWzHcuNYXOwJgRyJ0Xzn2c4fZsbb64dYmmcaROBVPCO99XpyKixcnfqlodNw90CjvTTo4grYtXw==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"

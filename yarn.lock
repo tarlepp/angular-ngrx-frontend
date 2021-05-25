@@ -2451,10 +2451,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.13.tgz#9e425079799322113ae8477297ae6ef51b8e0cdf"
   integrity sha512-vbxr0VZ8exFMMAjCW8rJwaya0dMCDyYW2ZRdTyjtrCvJoENMpdUHOT/eTzvgyA5ZnqRZ/sI0NwqAxNHKYokLJQ==
 
-"@types/node@15.6.0":
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.6.0.tgz#f0ddca5a61e52627c9dcb771a6039d44694597bc"
-  integrity sha512-gCYSfQpy+LYhOFTKAeE8BkyGqaxmlFxe+n4DKM6DR0wzw/HISUE/hAmkC/KT8Sw5PCJblqg062b3z9gucv3k0A==
+"@types/node@15.6.1":
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.6.1.tgz#32d43390d5c62c5b6ec486a9bc9c59544de39a08"
+  integrity sha512-7EIraBEyRHEe7CH+Fm1XvgqU6uwZN8Q7jppJGcqjROMT29qhAuuOxYB1uEY5UMYQKEmA5D+5tBnhdaPXSsLONA==
 
 "@types/node@^13.7.0":
   version "13.13.48"
@@ -12174,10 +12174,10 @@ snyk-try-require@^2.0.0:
     lodash.clonedeep "^4.3.0"
     lru-cache "^5.1.1"
 
-snyk@1.606.0:
-  version "1.606.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.606.0.tgz#3115f491a2be772cb4273c26c0213cdc1be57f8b"
-  integrity sha512-xvJCdL5tGPnc1U1E1C7FjIQ80ZGm8MWQXY9Vvox/J+a69CgSgmFEP2UVTZZ9ndr3jGBAgr0/IKw+O+s1Jn4aYA==
+snyk@1.607.0:
+  version "1.607.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.607.0.tgz#b9533c2e51aee1147783619729d273eb0f538eff"
+  integrity sha512-qrHD51kTxAP+tLJ2GrwL6eBxzMPqZOOchxYiB1Op1mAmsxaJadq+FpTzCtx1B/cja0pmcQ+8wHa1PGA4pxKzVg==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"
@@ -12249,6 +12249,7 @@ snyk@1.606.0:
     update-notifier "^5.1.0"
     uuid "^3.3.2"
     wrap-ansi "^5.1.0"
+    yaml "^1.10.2"
 
 socket.io-adapter@~2.1.0:
   version "2.1.0"
@@ -14402,6 +14403,11 @@ yaml@^1.10.0, yaml@^1.9.2:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.0.tgz#3b593add944876077d4d683fee01081bd9fff31e"
   integrity sha512-yr2icI4glYaNG+KWONODapy2/jDdMSDnrONSjblABjD9B4Z5LgiircSt8m8sRZFNi08kG9Sm0uSHtEmP3zaEGg==
+
+yaml@^1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
+  integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
 yargs-parser@^13.1.2:
   version "13.1.2"

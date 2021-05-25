@@ -82,7 +82,7 @@ $mat-dark-theme-background: (
   tooltip: map-get($app-palette-grey, 700),
 );
 
-// Foreground palette for light themes.
+// Foreground (for texts) palette for light themes.
 $mat-light-theme-foreground: (
   base: black,
   divider: rgba(black, .12),
@@ -101,7 +101,7 @@ $mat-light-theme-foreground: (
   slider-off-active: rgba(black, .38),
 );
 
-// Foreground palette for dark themes.
+// Foreground (for texts) palette for dark themes.
 $mat-dark-theme-foreground: (
   base: white,
   divider: rgba(white, .12),
@@ -109,15 +109,15 @@ $mat-dark-theme-foreground: (
   disabled: rgba(white, .38),
   disabled-button: rgba(white, .26),
   disabled-text: rgba(white, .38),
-  elevation: black,
-  hint-text: rgba(black, .38),
-  secondary-text: rgba(black, .54),
-  icon: white,
-  icons: white,
-  text: white,
-  slider-min: white,
-  slider-off: rgba(white, .3),
-  slider-off-active: rgba(white, .3),
+  elevation: map-get($app-palette-grey, 100),
+  hint-text: rgba(white, .38),
+  secondary-text: rgba(white, .54),
+  icon: rgba(white, .54),
+  icons: rgba(white, .54),
+  text: rgba(white, .87),
+  slider-min: rgba(white, .87),
+  slider-off: rgba(white, .26),
+  slider-off-active: rgba(white, .38),
 );
 
 $light-theme: (

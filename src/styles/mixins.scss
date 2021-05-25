@@ -1,6 +1,5 @@
 @import '~src/styles/variables';
 
-/* stylelint-disable */
 @function depth($map) {
   $level: 1;
 
@@ -16,14 +15,17 @@
 /**
  * Use like;
  *  .foo {
- *    color: red;
  *    @include debug-map($light-theme);
+ *
+ *    color: #f00;
  *  }
  *
  * And after that just look compiled CSS file
  */
+/* stylelint-disable */
 @mixin debug-map($map) {
   @at-root {
+    //noinspection ALL
     @debug-map {
       __tostring__: inspect($map);
       __length__: length($map);

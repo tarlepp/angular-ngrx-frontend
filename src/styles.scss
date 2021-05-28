@@ -13,8 +13,11 @@
 
 // Light theme common variables
 $light-color-config: mat.get-color-config($light-theme);
-$light-background: mat.get-color-from-palette(map.get($light-color-config, background), 'card');
+$light-background: mat.get-color-from-palette(map.get($light-color-config, background), 'background');
+$light-background-component: mat.get-color-from-palette(map.get($light-color-config, background), 'card');
 $light-text-color: mat.get-color-from-palette(map.get($light-color-config, foreground), 'text');
+$light-text-color-hint: mat.get-color-from-palette(map.get($light-color-config, foreground), 'hint-text');
+$light-text-color-secondary: mat.get-color-from-palette(map.get($light-color-config, foreground), 'secondary-text');
 $light-primary-color: mat.get-color-from-palette(map.get($light-color-config, primary), 500);
 $light-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, 500);
 $light-accent-color: mat.get-color-from-palette(map_get($light-color-config, accent), 500);
@@ -24,8 +27,11 @@ $light-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-war
 
 // Dark theme common variables
 $dark-color-config: mat.get-color-config($dark-theme);
-$dark-background: mat.get-color-from-palette(map.get($dark-color-config, background), 'card');
+$dark-background: mat.get-color-from-palette(map.get($dark-color-config, background), 'background');
+$dark-background-component: mat.get-color-from-palette(map.get($dark-color-config, background), 'card');
 $dark-text-color: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'text');
+$dark-text-color-hint: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'hint-text');
+$dark-text-color-secondary: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'secondary-text');
 $dark-primary-color: mat.get-color-from-palette(map.get($dark-color-config, primary), 500);
 $dark-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, 500);
 $dark-accent-color: mat.get-color-from-palette(map.get($dark-color-config, accent), 500);
@@ -47,7 +53,10 @@ $dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn
    */
   /* stylelint-disable */
   --theme-background: #{$light-background};
+  --theme-background-component: #{$light-background-component};
   --theme-text-color: #{$light-text-color};
+  --theme-text-color-hint: #{$light-text-color-hint};
+  --theme-text-color-secondary: #{$light-text-color-secondary};
   --theme-primary-color: #{$light-primary-color};
   --theme-primary-color-contrast: #{$light-primary-color-contrast};
   --theme-accent-color: #{$light-accent-color};
@@ -73,7 +82,10 @@ $dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn
   */
   /* stylelint-disable */
   --theme-background: #{$dark-background};
+  --theme-background-component: #{$dark-background-component};
   --theme-text-color: #{$dark-text-color};
+  --theme-text-color-hint: #{$dark-text-color-hint};
+  --theme-text-color-secondary: #{$dark-text-color-secondary};
   --theme-primary-color: #{$dark-primary-color};
   --theme-primary-color-contrast: #{$dark-primary-color-contrast};
   --theme-accent-color: #{$dark-accent-color};

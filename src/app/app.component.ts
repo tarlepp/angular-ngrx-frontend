@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
@@ -111,18 +111,14 @@ export class AppComponent implements OnInit, OnDestroy {
    */
   private initLayout(): void {
     // Ensure that we're using correct theme on application init
-    this.store.pipe(
-      select(layoutSelectors.theme),
-      take(1),
-    )
-    .subscribe((theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })));
+    this.store.select(layoutSelectors.theme).pipe(take(1)).subscribe(
+      (theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })),
+    );
 
     // Ensure that we're using correct localization settings on application init
-    this.store.pipe(
-      select(layoutSelectors.localization),
-      take(1),
-    )
-    .subscribe((localization: LocalizationInterface): void => this.store.dispatch(layoutActions.updateLocalization({ localization })));
+    this.store.select(layoutSelectors.localization).pipe(take(1)).subscribe(
+      (localization: LocalizationInterface): void => this.store.dispatch(layoutActions.updateLocalization({ localization })),
+    );
 
     /**
      * If/when user changes browser size we need to update layout store state
@@ -146,12 +142,9 @@ export class AppComponent implements OnInit, OnDestroy {
       );
 
     // Ensure that we're using correct theme on application init
-    this.store
-      .pipe(
-        select(layoutSelectors.theme),
-        take(1),
-      )
-      .subscribe((theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })));
+    this.store.select(layoutSelectors.theme).pipe(take(1)).subscribe(
+      (theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })),
+    );
   }
 
   /**

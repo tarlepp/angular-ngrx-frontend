@@ -1,8 +1,8 @@
-import { version } from 'package.json';
+import packageInfo from 'package.json';
 import { EnvironmentInterface } from 'src/app/shared/interfaces';
 
 export const environment: EnvironmentInterface = {
   production: true,
   name: 'prod',
-  version,
+  version: packageInfo.version,
 };

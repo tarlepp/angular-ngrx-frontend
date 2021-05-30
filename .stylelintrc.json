@@ -12,7 +12,9 @@
     "selector-pseudo-element-no-unknown": [
       true,
       {
-        "ignorePseudoElements": ["ng-deep"]
+        "ignorePseudoElements": [
+          "ng-deep"
+        ]
       }
     ],
     "string-quotes": "single",
@@ -21,6 +23,46 @@
       {
         "ignoreTypes": [
           "app-root"
+        ]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules":  [
+          "at-root",
+          "content",
+          "each",
+          "else",
+          "error",
+          "for",
+          "function",
+          "include",
+          "if",
+          "mixin",
+          "return",
+          "warn",
+          "use"
+        ]
+      }
+    ],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules":  [
+          "at-root",
+          "content",
+          "each",
+          "else",
+          "error",
+          "for",
+          "function",
+          "include",
+          "if",
+          "mixin",
+          "return",
+          "warn",
+          "use"
         ]
       }
     ],

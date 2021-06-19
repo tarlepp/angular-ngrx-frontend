@@ -5467,10 +5467,10 @@ eslint-plugin-jsdoc@35.1.2:
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-ngrx@1.24.0:
-  version "1.24.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.24.0.tgz#14fbec315f453578a99ab38b257878002d814ac0"
-  integrity sha512-+RunqrPGETrnuDeuFfzSH5kAx7ZgtrZT/FRGDAQxXEeT0VHwwQhmy1NQTTZcNL9/wpRwBH+vtZrAUikMwf12qw==
+eslint-plugin-ngrx@1.26.0:
+  version "1.26.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.26.0.tgz#3e261ea28c4b5f400afb52f2896d1c0f23085f6c"
+  integrity sha512-cc/W0OkVLVoTqhX7PBFrrltXv4nLDcmcRdmk8QUqkahCV/4sa2oPu322ErpUS8H4IDluwSaLeYWj0jQNyQjIkQ==
   dependencies:
     "@angular-devkit/schematics" "^11.0.1"
     "@typescript-eslint/experimental-utils" "^4.7.0"

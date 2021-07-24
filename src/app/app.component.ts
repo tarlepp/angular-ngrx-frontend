@@ -112,7 +112,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private initLayout(): void {
     // Ensure that we're using correct theme on application init
     this.store.select(layoutSelectors.theme).pipe(take(1)).subscribe(
-      (theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })),
+      (theme: Theme): void => this.store.dispatch(layoutActions.changeTheme({ theme })),
     );
 
     // Ensure that we're using correct localization settings on application init
@@ -143,7 +143,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // Ensure that we're using correct theme on application init
     this.store.select(layoutSelectors.theme).pipe(take(1)).subscribe(
-      (theme: Theme): void => this.store.dispatch(layoutActions.setTheme({ theme })),
+      (theme: Theme): void => this.store.dispatch(layoutActions.changeTheme({ theme })),
     );
   }
 

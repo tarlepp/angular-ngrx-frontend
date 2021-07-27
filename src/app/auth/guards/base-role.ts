@@ -1,7 +1,6 @@
 import { Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { combineLatest, Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { Role } from 'src/app/auth/enums';
 import { RoleGuardMetaDataInterface } from 'src/app/auth/interfaces';
@@ -63,25 +62,6 @@ export abstract class BaseRole {
       ...routeMetaData,
     };
 
-    return combineLatest([
-      this.store.select(authenticationSelectors.isLoggedIn),
-      this.store.select(authenticationSelectors.roles),
-    ])
-    .pipe(
-      take(1),
-      map(([loggedIn, roles]: [boolean, Array<Role>]): boolean|UrlTree => {
-        let output;
-
-        if (loggedIn === false) {
-          output = metaData.redirect ? this.router.parseUrl(metaData.routeNotLoggedIn) : false;
-        } else if (roles.includes(role) === false) {
-          output = metaData.redirect ? this.router.parseUrl(metaData.routeNoRole) : false;
-        } else {
-          output = true;
-        }
-
-        return output;
-      }),
-    );
+    return this.store.select(authenticationSelectors.roleGuard(role, metaData, this.router));
   }
 }

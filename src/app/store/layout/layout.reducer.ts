@@ -28,7 +28,7 @@ const initialState: LayoutState = {
 const reducer = createReducer(
   initialState,
   on(
-    layoutActions.setTheme,
+    layoutActions.changeTheme,
     (state: LayoutState, { theme }: ThemeValueInterface): LayoutState => ({
       ...state,
       theme,

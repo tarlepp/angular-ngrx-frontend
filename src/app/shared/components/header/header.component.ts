@@ -3,10 +3,11 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { UserProfileInterface } from 'src/app/auth/interfaces';
 import { languages } from 'src/app/shared/constants';
-import { Language } from 'src/app/shared/enums';
+import { Language, Theme } from 'src/app/shared/enums';
 import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
 
 @Component({
@@ -92,9 +93,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Method to dispatch toggle theme action to layout feature store.
+   * Method to dispatch change theme action to layout feature store.
    */
-  public toggleTheme(): void {
-    this.store.dispatch(layoutActions.toggleTheme());
+  public changeTheme(): void {
+    this.store.select(layoutSelectors.theme)
+      .pipe(take(1))
+      .subscribe(
+        (theme: Theme): void => this.store.dispatch(layoutActions.changeTheme({ theme: theme === Theme.DARK ? Theme.LIGHT : Theme.DARK })),
+      );
   }
 }

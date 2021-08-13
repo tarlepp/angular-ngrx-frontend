@@ -38,8 +38,7 @@ const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language
 const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
 const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string }>());
-const toggleTheme = createAction(LayoutType.TOGGLE_THEME);
-const setTheme = createAction(LayoutType.SET_THEME, props<{ theme: Theme }>());
+const changeTheme = createAction(LayoutType.CHANGE_THEME, props<{ theme: Theme }>());
 
 /**
  * Action to trigger browser to scroll to top of the page. This action is
@@ -73,8 +72,7 @@ export const layoutActions = {
   updateLocalization,
   changeViewport,
   scrollTo,
-  toggleTheme,
-  setTheme,
+  changeTheme,
   scrollToTop,
   clearScrollTo,
 };

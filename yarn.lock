@@ -2070,10 +2070,10 @@
     "@types/graphlib" "^2.1.7"
     tslib "^1.9.3"
 
-"@snyk/cloud-config-parser@^1.9.2":
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/@snyk/cloud-config-parser/-/cloud-config-parser-1.9.2.tgz#e6c8e575db8527b33cf1ba766f86e1b3414cf6e1"
-  integrity sha512-m8Y2+3l4fxj96QMrTfiCEaXgCpDkCkJIX/5wv0V0RHuxpUiyh+KxC2yJ8Su4wybBj6v6hB9hB7h5/L+Gy4V4PA==
+"@snyk/cloud-config-parser@^1.10.2":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@snyk/cloud-config-parser/-/cloud-config-parser-1.10.2.tgz#8899fed6c17278aa33e23fe65c1099ac946532b2"
+  integrity sha512-ovA6iX59jLOVMfZr6rsqYNcOIjZTYAbm34bn41m3hRbCPuZkxe3JNKxjsEFCFkZQBnGSebrbz8TGoe81y0L2Cw==
   dependencies:
     esprima "^4.0.1"
     tslib "^1.10.0"
@@ -2688,10 +2688,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.13.tgz#9e425079799322113ae8477297ae6ef51b8e0cdf"
   integrity sha512-vbxr0VZ8exFMMAjCW8rJwaya0dMCDyYW2ZRdTyjtrCvJoENMpdUHOT/eTzvgyA5ZnqRZ/sI0NwqAxNHKYokLJQ==
 
-"@types/node@16.6.2":
-  version "16.6.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.6.2.tgz#331b7b9f8621c638284787c5559423822fdffc50"
-  integrity sha512-LSw8TZt12ZudbpHc6EkIyDM3nHVWKYrAvGy6EAJfNfjusbwnThqjqxUKKRwuV3iWYeW/LYMzNgaq3MaLffQ2xA==
+"@types/node@16.7.0":
+  version "16.7.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.0.tgz#f0374c4e89d1fc1ef705caad3021ba34c1a9294c"
+  integrity sha512-e66BrnjWQ3BRBZ2+iA5e85fcH9GLNe4S0n1H0T3OalK2sXg5XWEFTO4xvmGrYQ3edy+q6fdOh5t0/HOY8OAqBg==
 
 "@types/node@^13.7.0":
   version "13.13.48"
@@ -12526,14 +12526,14 @@ snyk-try-require@^2.0.0:
     lodash.clonedeep "^4.3.0"
     lru-cache "^5.1.1"
 
-snyk@1.683.0:
-  version "1.683.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.683.0.tgz#9cd1ce3742c6e4127f4addd5c2b2dff742619b66"
-  integrity sha512-cvdSuSuHyb7ijF68afG/Nbxm4wxnPQQCMjB0SYqTln+W7tMY8wLUr86QaQZIBN2Umb7zgY40gBRDq2R2nYVZGQ==
+snyk@1.684.0:
+  version "1.684.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.684.0.tgz#2871f7056d94a1ed7da40237e6a030edbac58cfd"
+  integrity sha512-Pwfr6hQdp6xrFA5Go3zOm+epQrfjygnbgsuH3g8j1eMXvFuq6pDbkvf802slTIb6kPLsIi2Ot9NW1AlT0oqutQ==
   dependencies:
     "@open-policy-agent/opa-wasm" "^1.2.0"
     "@snyk/cli-interface" "2.11.0"
-    "@snyk/cloud-config-parser" "^1.9.2"
+    "@snyk/cloud-config-parser" "^1.10.2"
     "@snyk/code-client" "4.0.0"
     "@snyk/dep-graph" "^1.27.1"
     "@snyk/fix" "1.650.0"

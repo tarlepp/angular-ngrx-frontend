@@ -10651,10 +10651,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@1.687.0:
-  version "1.687.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.687.0.tgz#5092620fba12c9777a34498f469b613afa6428c1"
-  integrity sha512-eFiCgTGAkAeeUtcSxD3+fBYjhF7JvYZ4KmbbXPO6UnWUfThm082kf2Aw9eS5RlD1hXO8P41d8DeCYzJgEoid9w==
+snyk@1.689.0:
+  version "1.689.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.689.0.tgz#f2f23d798fb3b0a083fa6f0d7299b1c5abeb72e0"
+  integrity sha512-WvnwZfvvhDoEW7CedaLNdOnlrhdrpiPBShRrzgAmtVqb6ifDYJq5OrJ58nXFRjCTZVSIIUZ1nuuOkpN29JRkmw==
 
 socket.io-adapter@~2.1.0:
   version "2.1.0"

@@ -1802,12 +1802,12 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha512-Fxt+AfXgjMoin2maPIYzFZnQjAXjAL0PHscM5pRTtatFqB+vZxAM9tLp2Optnuw3QOQC40jTNeGYFOMvyf7v9g==
 
-"@es-joy/jsdoccomment@0.10.7":
-  version "0.10.7"
-  resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.10.7.tgz#bdb5dfcaa5cff8b5435f0c9f2777b533075a9c52"
-  integrity sha512-aNKZEoMESDzOBjKxCWrFuG50mcpMeKVBnBNko4+IZZ5t9zXYs8GT1KB0ZaOq1YUsKumDRc6YII/TQm309MJ0KQ==
+"@es-joy/jsdoccomment@0.10.8":
+  version "0.10.8"
+  resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.10.8.tgz#b3152887e25246410ed4ea569a55926ec13b2b05"
+  integrity sha512-3P1JiGL4xaR9PoTKUHa2N/LKwa2/eUdRqGwijMWWgBqbFEqJUVpmaOi2TcjcemrsRMgFLBzQCK4ToPhrSVDiFQ==
   dependencies:
-    comment-parser "1.2.3"
+    comment-parser "1.2.4"
     esquery "^1.4.0"
     jsdoc-type-pratt-parser "1.1.1"
 
@@ -2201,10 +2201,15 @@
   dependencies:
     moment "*"
 
-"@types/node@*", "@types/node@16.7.1":
+"@types/node@*":
   version "16.7.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.1.tgz#c6b9198178da504dfca1fd0be9b2e1002f1586f0"
   integrity sha512-ncRdc45SoYJ2H4eWU9ReDfp3vtFqDYhjOsKlFFUDEn8V1Bgr2RjYal8YT5byfadWIRluhPFU6JiDOl0H6Sl87A==
+
+"@types/node@16.7.3":
+  version "16.7.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.3.tgz#8eef3b12df245e6275f083dba37730f29700a75a"
+  integrity sha512-S6gm2sm9xIRWTxD7Ttj8N1ZrYfqdqZEU38Nwnrhd6krk7zf8vdgMgzz8hpAX9CfmXaJfP+Vqy2EhJpVavNEocg==
 
 "@types/node@^14.14.10":
   version "14.14.22"
@@ -3754,10 +3759,10 @@ commander@^7.1.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
-comment-parser@1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-1.2.3.tgz#303a7eb99c9b2632efd594e183ccbd32042caf69"
-  integrity sha512-vnqDwBSXSsdAkGS5NjwMIPelE47q+UkEgWKHvCDNhVIIaQSUFY6sNnEYGzdoPGMdpV+7KR3ZkRd7oyWIjtuvJg==
+comment-parser@1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-1.2.4.tgz#489f3ee55dfd184a6e4bffb31baba284453cb760"
+  integrity sha512-pm0b+qv+CkWNriSTMsfnjChF9kH0kxz55y44Wo5le9qLxMj5xDQAaEd9ZN1ovSuk9CsrncWaFwgpOMg7ClJwkw==
 
 common-tags@^1.8.0:
   version "1.8.0"
@@ -4814,13 +4819,13 @@ eslint-plugin-import@2.24.2:
     resolve "^1.20.0"
     tsconfig-paths "^3.11.0"
 
-eslint-plugin-jsdoc@36.0.7:
-  version "36.0.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-36.0.7.tgz#6e6f9897fc2ff3b3934b09c2748b998bc03d2bf6"
-  integrity sha512-x73l/WCRQ1qCjLq46Ca7csuGd5o3y3vbJIa3cktg11tdf3UZleBdIXKN9Cf0xjs3tXYPEy2SoNXowT8ydnjNDQ==
+eslint-plugin-jsdoc@36.0.8:
+  version "36.0.8"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-36.0.8.tgz#cd72f76593c8fb3362374b0052d4d49b2711408a"
+  integrity sha512-brNjHvRuBy5CaV01mSp6WljrO/T8fHNj0DXG38odOGDnhI7HdcbLKX7DpSvg2Rfcifwh8GlnNFzx13sI05t3bg==
   dependencies:
-    "@es-joy/jsdoccomment" "0.10.7"
-    comment-parser "1.2.3"
+    "@es-joy/jsdoccomment" "0.10.8"
+    comment-parser "1.2.4"
     debug "^4.3.2"
     esquery "^1.4.0"
     jsdoc-type-pratt-parser "^1.1.1"
@@ -10614,10 +10619,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@1.687.0:
-  version "1.687.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.687.0.tgz#5092620fba12c9777a34498f469b613afa6428c1"
-  integrity sha512-eFiCgTGAkAeeUtcSxD3+fBYjhF7JvYZ4KmbbXPO6UnWUfThm082kf2Aw9eS5RlD1hXO8P41d8DeCYzJgEoid9w==
+snyk@1.693.0:
+  version "1.693.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.693.0.tgz#2d7ae4f86e952e665f1fbd87c7c7f2be5bb6efdf"
+  integrity sha512-pCkkT0L/ZFsCOhXBWvStS9xEDqfx7NRZ/n5rrrnM8Kgh+Lbi5pULFccb6BTax5ne9CrnQdBzE/GH1mElx63BoQ==
 
 socket.io-adapter@~2.1.0:
   version "2.1.0"

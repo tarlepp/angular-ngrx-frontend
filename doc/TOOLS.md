@@ -8,10 +8,10 @@ container.
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [npm-check-updates](#npm-check-updates)
-  * [mversion](#mversion)
+  * [npm-check-updates](#npm-check-updates-table-of-contents)
+  * [mversion](#mversion-table-of-contents)
 
-## npm-check-updates
+## npm-check-updates [ᐞ](#table-of-contents)
 
 npm-check-updates upgrades your package.json dependencies to the latest
 versions, ignoring specified versions.
@@ -21,7 +21,7 @@ it will upgrade `"express": "^4.0.0"` to `"express": "^5.0.0"`.
 
 * [Website](https://github.com/tjunnone/npm-check-updates)
 
-## mversion
+## mversion [ᐞ](#table-of-contents)
 
 A cross packaging manager module version handler/bumper. Imitates _npm version_
 to also work on other packaging files. For those times you have either have

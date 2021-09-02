@@ -7,10 +7,10 @@ application during development stage.
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [Makefile](#makefile)
-  * [Yarn](#yarn)
+  * [Makefile](#makefile-table-of-contents)
+  * [Yarn](#yarn-table-of-contents)
 
-## Makefile
+## Makefile [ᐞ](#table-of-contents)
 
 This project contains `Makefile` configuration so that you can easily run
 some generic commands via `make` command. Below is a list of currently
@@ -32,7 +32,7 @@ da_wunder@wunder-VirtualBox:~/PhpstormProjects/angular-ngrx-frontend$ make bash
 node@84a0da4d1c84:/app$
 ```
 
-## Yarn
+## Yarn [ᐞ](#table-of-contents)
 
 This project contains some custom scripts that are defined in [packages.json](../package.json)
 file that you can easily run just by using `yarn _command_here_`. Note

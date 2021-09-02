@@ -6,15 +6,15 @@ This document contains information on how to use translations in the application
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [Basic usage](#basic-usage)
-    * [In template files](#in-template-files)
-    * [In TypeScript code](#in-typescript-code)
-  * [Workflow](#workflow)
-  * [Resources](#resources)
+  * [Basic usage](#basic-usage-table-of-contents)
+    * [In template files](#in-template-files-table-of-contents)
+    * [In TypeScript code](#in-typescript-code-table-of-contents)
+  * [Workflow](#workflow-table-of-contents)
+  * [Resources](#resources-table-of-contents)
 
-## Basic usage
+## Basic usage [ᐞ](#table-of-contents)
 
-### Defining translations in the assets
+### Defining translations in the assets [ᐞ](#table-of-contents)
 
 Each language translations are stored in its own JSON file, for example
 `en.json`. In this application we are using nested (or so called
@@ -32,7 +32,7 @@ correctly.
 }
 ```
 
-### In template files
+### In template files [ᐞ](#table-of-contents)
 
 Translations are easy to use with `translate` pipe:
 
@@ -62,7 +62,7 @@ Then we have to use `[translateParams]` in template:
 >example.greeting</h1>
 ```
 
-### In TypeScript code
+### In TypeScript code [ᐞ](#table-of-contents)
 
 Sometimes we have to use translatable strings straight in our code. Luckily,
 there is a way to easily maintain these strings with the
@@ -89,7 +89,7 @@ component. eg.
 <p>{{ message | translate }}</p>
 ```
 
-## Workflow
+## Workflow [ᐞ](#table-of-contents)
 
 Manually tracking all the translatable keys in our templates and code is a pain
 in the $!@. Eventually some keys will be forgotten from some of our translation
@@ -115,7 +115,7 @@ Neat right? So recommend workflow with translations is just following:
 With that workflow your translation files will always be synced between
 different languages and there isn't any redundant translations tags.
 
-## Resources
+## Resources [ᐞ](#table-of-contents)
 
 * [Great tutorial](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-angular7-app-with-ngx-translate)
 * [Github](https://github.com/ngx-translate/core)

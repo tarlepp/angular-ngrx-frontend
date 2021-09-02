@@ -8,9 +8,9 @@ application.
 
 * [What is this](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [Resources](#resources)
+  * [Resources](#resources-table-of-contents)
 
-## Resources
+## Resources [ᐞ](#table-of-contents)
 
 * [Custom commands](COMMANDS.md)
 * [Concepts and features](CONCEPTS_AND_FEATURES.md)

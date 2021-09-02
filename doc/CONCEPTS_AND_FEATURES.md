@@ -7,22 +7,22 @@ application is build and how you can use it.
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [Main external components/libraries](#main-external-componentslibraries)
-    * [@angular/material](#angularmaterial)
-    * [@angular/flex-layout](#angularflex-layout)
-    * [@auth0/angular-jwt](#auth0angular-jwt)
-    * [@ngrx/store](#ngrxstore)
-    * [@ngx-translate/core](#ngx-translatecore)
-    * [ngx-webstorage](#ngx-webstorage)
-  * [Application stores](#application-stores)
-    * [Authentication](#authentication)
-    * [Error](#error)
-    * [Layout](#layout)
-  * [Interceptors](#interceptors)
-    * [Error interceptor](#error-interceptor)
-  * [Links](#links)
+  * [Main external components/libraries](#main-external-componentslibraries-table-of-contents)
+    * [@angular/material](#angularmaterial-table-of-contents)
+    * [@angular/flex-layout](#angularflex-layout-table-of-contents)
+    * [@auth0/angular-jwt](#auth0angular-jwt-table-of-contents)
+    * [@ngrx/store](#ngrxstore-table-of-contents)
+    * [@ngx-translate/core](#ngx-translatecore-table-of-contents)
+    * [ngx-webstorage](#ngx-webstorage-table-of-contents)
+  * [Application stores](#application-stores-table-of-contents)
+    * [Authentication](#authentication-table-of-contents)
+    * [Error](#error-interceptor-table-of-contents)
+    * [Layout](#layout-table-of-contents)
+  * [Interceptors](#interceptors-table-of-contents)
+    * [Error interceptor](#error-interceptor-table-of-contents)
+  * [Links](#links-table-of-contents)
 
-## Main external components/libraries
+## Main external components/libraries [ᐞ](#table-of-contents)
 
 This project uses specified components and libraries that have been tested with
 multiple similar Angular applications and these have proven to be rock solid
@@ -32,7 +32,7 @@ Note that if you want to use some another component/library and/or replace any
 of these to another one - no worries it's _your_ application, this template
 project just makes some assumptions.
 
-### @angular/material
+### @angular/material [ᐞ](#table-of-contents)
 
 UI component infrastructure and Material Design components for mobile and
 desktop Angular web applications.
@@ -43,20 +43,20 @@ or some another UI library.
 
 * [Website](https://material.angular.io/)
 
-### @angular/flex-layout
+### @angular/flex-layout [ᐞ](#table-of-contents)
 
 Provides HTML UI layout for Angular applications; using Flexbox and a
 Responsive API.
 
 * [Website](https://github.com/angular/flex-layout)
 
-### @auth0/angular-jwt
+### @auth0/angular-jwt [ᐞ](#table-of-contents)
 
 Helper library for handling JWTs in Angular 2+ apps.
 
 * [Website](https://github.com/auth0/angular2-jwt)
 
-### @ngrx/store
+### @ngrx/store [ᐞ](#table-of-contents)
 
 Store is RxJS powered state management for Angular applications, inspired by
 Redux. Store is a controlled state container designed to help write performant,
@@ -64,13 +64,13 @@ consistent applications on top of Angular.
 
 * [Website](https://ngrx.io/guide/store)
 
-### @ngx-translate/core
+### @ngx-translate/core [ᐞ](#table-of-contents)
 
 The internationalization (i18n) library for Angular.
 
 * [Website](http://www.ngx-translate.com/)
 
-### ngx-webstorage
+### ngx-webstorage [ᐞ](#table-of-contents)
 
 This library provides an easy to use service to manage the web storages (local
 and session) from your Angular application. It provides also two decorators to
@@ -78,7 +78,7 @@ synchronize the component attributes and the web storages.
 
 * [Website](https://github.com/PillowPillow/ng2-webstorage)
 
-## Application stores
+## Application stores [ᐞ](#table-of-contents)
 
 By default this application gives you couple `NgRx stores` that you can easily
 use within application to help you.
@@ -86,7 +86,7 @@ use within application to help you.
 If you want to get deeper look of each of those stores you just need to go
 through each of those code - no worries there isn't so much code really.
 
-### Authentication
+### Authentication [ᐞ](#table-of-contents)
 
 This store contains `authentication` information about current logged in user.
 This store contains following information;
@@ -101,7 +101,7 @@ Store state is updated automatically by user login / logout events. Also note
 that store is initialized by possible `token` value in `local storage` if/when
 user refresh page.
 
-### Error
+### Error [ᐞ](#table-of-contents)
 
 This store contains following `error` information;
 
@@ -111,7 +111,7 @@ Application `ErrorInterceptor` is using this store to show possible HTTP errors
 to user. With this store you can easily dispatch events to show some error
 message in your application.
 
-### Layout
+### Layout [ᐞ](#table-of-contents)
 
 This store contains following generic `layout` information;
 
@@ -131,7 +131,7 @@ used language to specified one + stores that language to `local storage`.
 `viewport` and `device` properties are updated automatically when user changes
 browser viewport.
 
-## Interceptors
+## Interceptors [ᐞ](#table-of-contents)
 
 Application contains some generic interceptors that will help you to
 development your application. Note that these interceptors relies that you're
@@ -139,13 +139,13 @@ using
 [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)
 or similar backend.
 
-### Error interceptor
+### Error interceptor [ᐞ](#table-of-contents)
 
 Generic HTTP error interceptor that will dispatch event to
 [Error store](#error),
 so that error is shown within Angular Material snackbar.
 
-## Links
+## Links [ᐞ](#table-of-contents)
 
 * [@angular/material](https://material.angular.io/)
 * [@angular/flex-layout](https://github.com/angular/flex-layout)

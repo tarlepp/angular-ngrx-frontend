@@ -4865,10 +4865,10 @@ eslint-plugin-import@2.24.2:
     resolve "^1.20.0"
     tsconfig-paths "^3.11.0"
 
-eslint-plugin-jsdoc@36.0.8:
-  version "36.0.8"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-36.0.8.tgz#cd72f76593c8fb3362374b0052d4d49b2711408a"
-  integrity sha512-brNjHvRuBy5CaV01mSp6WljrO/T8fHNj0DXG38odOGDnhI7HdcbLKX7DpSvg2Rfcifwh8GlnNFzx13sI05t3bg==
+eslint-plugin-jsdoc@36.1.0:
+  version "36.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-36.1.0.tgz#8dfe5f27edfb6aa3812e6d86ccaea849ddc86b03"
+  integrity sha512-Qpied2AJCQcScxfzTObLKRiP5QgLXjMU/ITjBagEV5p2Q/HpumD1EQtazdRYdjDSwPmXhwOl2yquwOGQ4HOJNw==
   dependencies:
     "@es-joy/jsdoccomment" "0.10.8"
     comment-parser "1.2.4"
@@ -4880,10 +4880,10 @@ eslint-plugin-jsdoc@36.0.8:
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-ngrx@1.30.0:
-  version "1.30.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.30.0.tgz#6114364d33aae3f1d69ac3bf61d4a09eb5ef8b0a"
-  integrity sha512-WOQom6hBKAa2eKSog+VPRgpwh63/Oa6RfVyMEbXNaNwzNRR3kCaFS8dFcArqkZrJQXaqDhU8F2LmZMB4pXkxOQ==
+eslint-plugin-ngrx@1.31.1:
+  version "1.31.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.31.1.tgz#699e1ebd7133f9be0cd7572651debd221b9a7058"
+  integrity sha512-0vRUr1V3gAz4IHUo3VykznDsMCpDee2gBPrUdH1U0hJlZ5TVpRKfV3yGxf4UnU6YgGZVyREkUafSv2Rv/j8Mug==
   dependencies:
     "@angular-devkit/schematics" "^12.2.2"
     "@typescript-eslint/experimental-utils" "^4.29.2"
@@ -10665,10 +10665,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@1.697.0:
-  version "1.697.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.697.0.tgz#3baad3794676754a37973312a34f266dd6b16f04"
-  integrity sha512-V07xQ53npbVQw9DldJr5SkGlFTUtlNxCCL5JUFA79EWY6pm8q6+eE/pzXif3/ywcF2K1/yiNM9DHmL5N+lGHmQ==
+snyk@1.701.0:
+  version "1.701.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.701.0.tgz#40321abad8bed1020114bba6c72e07a475cbe9d6"
+  integrity sha512-YBtzu+eDXkW7WNpyYt4p5RzMk/oS/Cb/qVTHFOOkqDnBqzFrs1mm5RwFgf5jT/ftnIUlm+sa/SoUEyTGJse5/A==
 
 socket.io-adapter@~2.1.0:
   version "2.1.0"

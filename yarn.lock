@@ -152,21 +152,12 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
-"@angular-eslint/builder@12.3.1":
-  version "12.3.1"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/builder/-/builder-12.3.1.tgz#e0a6768a9c7ee23623b1e363a23e59a333b6dabe"
-  integrity sha512-Py7Y9n0evIWGgEIrnMaLvalE1+Nw9HoY+fcYLYd9POfY0cug8j7hbkoPQ6rM7GzNHVcVsqEi/8C4DoF7RXXNRg==
+"@angular-eslint/builder@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/builder/-/builder-12.4.1.tgz#1a40d365565800c392941418194d1d16691ef744"
+  integrity sha512-mHYvPqCn55E4zqz9KG5hG5ecnftJxlo2hYftyY0enF9CHv95uHD90cVYDt4oc//QmAKqzyB9Rm4D6I8aCpeNnQ==
   dependencies:
-    "@nrwl/devkit" ">= 12.0.0 < 13.0.0"
-
-"@angular-eslint/eslint-plugin-template@12.3.1":
-  version "12.3.1"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-12.3.1.tgz#33260cd5356df5db7e27719443eabcf6c214e32e"
-  integrity sha512-pz+nO64ma/9Sp2aeRnQ+Vktt7Fo1Lay/J+CG//3TIc3lYsoCTj4h42P6yCcxxJ9b4N7SUxMAnchA8eE5mJS4Ug==
-  dependencies:
-    "@typescript-eslint/experimental-utils" "4.28.2"
-    aria-query "^4.2.2"
-    axobject-query "^2.2.0"
+    "@nrwl/devkit" "12.6.0"
 
 "@angular-eslint/eslint-plugin-template@12.4.1":
   version "12.4.1"
@@ -176,13 +167,6 @@
     "@typescript-eslint/experimental-utils" "4.28.2"
     aria-query "^4.2.2"
     axobject-query "^2.2.0"
-
-"@angular-eslint/eslint-plugin@12.3.1":
-  version "12.3.1"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-12.3.1.tgz#00ac44d5986d86113d65a5373746e1fc22fd8702"
-  integrity sha512-KBm27onYggRcusA/BxuSkDGpVnIs8yG4ARio8ZAhe0H2XIRJTzJZ7oIBBjugDau03AGX3VMG6wAXailjJvsywg==
-  dependencies:
-    "@typescript-eslint/experimental-utils" "4.28.2"
 
 "@angular-eslint/eslint-plugin@12.4.1":
   version "12.4.1"
@@ -202,10 +186,10 @@
     strip-json-comments "3.1.1"
     tmp "0.2.1"
 
-"@angular-eslint/template-parser@12.3.1":
-  version "12.3.1"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/template-parser/-/template-parser-12.3.1.tgz#561fe1bd3fb4a4d75cc55366d27818bca22204c9"
-  integrity sha512-6DkXqTaVEHZdcN3isHQ2CDoTsKLuJ5C1SYEOuFzOU1Zp85SvjxO92v6gPkFPKk0iQNVRmQS2XcKef6weehUUGA==
+"@angular-eslint/template-parser@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/template-parser/-/template-parser-12.4.1.tgz#5b6969324485486e5ef96688041cf4eb923ef2fd"
+  integrity sha512-t+DaFcoXKpilFvAAprD9cxfNOjMRbY3nIhIvigs3G3UaDS6HXisLKNhU+mBUjSXwJksQSp0fvNC4tbVlf3k6qg==
   dependencies:
     eslint-scope "^5.1.0"
 
@@ -2004,21 +1988,22 @@
     node-gyp "^7.1.0"
     read-package-json-fast "^2.0.1"
 
-"@nrwl/devkit@>= 12.0.0 < 13.0.0":
-  version "12.5.8"
-  resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-12.5.8.tgz#0450f9d2bb614fcc478086d1529e37ed91d9c884"
-  integrity sha512-Rhcx8fU30qfoaCMrMUND5lZIDu/0Fik26dE3flgKRgfeGprPSctq/w/k81+HJy7inGVvis20JBSeYH1HSPcePw==
+"@nrwl/devkit@12.6.0":
+  version "12.6.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/devkit/-/devkit-12.6.0.tgz#a2bdd4c144f05597302580bcf31443abdd9dc6be"
+  integrity sha512-tvw/4n2JD/38UuzdxFCoj1+x02BAKK4EvtLhwUK5XSBF0wDYFBp5rHfxvUD9ZcoiRRrZA4QGFjhDljrfj95F2A==
   dependencies:
-    "@nrwl/tao" "12.5.8"
+    "@nrwl/tao" "12.6.0"
     ejs "^3.1.5"
     ignore "^5.0.4"
+    rxjs "^6.5.4"
     semver "7.3.4"
     tslib "^2.0.0"
 
-"@nrwl/tao@12.5.8":
-  version "12.5.8"
-  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-12.5.8.tgz#20bde1f54210fb1d0a60f1814b5b1b6578169f7d"
-  integrity sha512-sbVxUnnZMLAFFwbEE/dx4W7U4fUKW5pTIIzlnNuzzTn8KDN3rAON6KqXF+KR/Ny9cGlmkBKlWSq8PvhUrSaZvw==
+"@nrwl/tao@12.6.0":
+  version "12.6.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-12.6.0.tgz#b0ef91cbc0a8b7747407d1f25b0be669d9a8ddc7"
+  integrity sha512-h6X+mqmTlZjA9nqlyPAu9TFNORHAMcC1BD8H8kA8lTHN1nktLHQ266qpHVLsxcqww2EYsVqQaKaOpUacck49+w==
   dependencies:
     chalk "4.1.0"
     enquirer "~2.3.6"
@@ -2222,10 +2207,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.4.tgz#68a9384694af63ceab8848e95d76d9a3519e84b6"
   integrity sha512-25QXpDsTiDnl2rZGUenagVMwO46way8dOUdvoC3R3p+6TrbpxeJBo/v87BEG1IHI31Jhaa8lPeSHcqwxsVBeYQ==
 
-"@types/node@16.7.13":
-  version "16.7.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.13.tgz#86fae356b03b5a12f2506c6cf6cd9287b205973f"
-  integrity sha512-pLUPDn+YG3FYEt/pHI74HmnJOWzeR+tOIQzUx93pi9M7D8OE7PSLr97HboXwk5F+JS+TLtWuzCOW97AHjmOXXA==
+"@types/node@16.9.0":
+  version "16.9.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.0.tgz#d9512fe037472dcb58931ce19f837348db828a62"
+  integrity sha512-nmP+VR4oT0pJUPFbKE4SXj3Yb4Q/kz3M9dSAO1GGMebRKWHQxLfDNmU/yh3xxCJha3N60nQ/JwXWwOE/ZSEVag==
 
 "@types/node@^14.14.10":
   version "14.14.22"
@@ -10681,10 +10666,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@1.701.0:
-  version "1.701.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.701.0.tgz#40321abad8bed1020114bba6c72e07a475cbe9d6"
-  integrity sha512-YBtzu+eDXkW7WNpyYt4p5RzMk/oS/Cb/qVTHFOOkqDnBqzFrs1mm5RwFgf5jT/ftnIUlm+sa/SoUEyTGJse5/A==
+snyk@1.704.0:
+  version "1.704.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.704.0.tgz#b0147971abbfc299feb6dd74f80e06809716b79b"
+  integrity sha512-vYt8Zp2O5Rce//JAqkivWKTSEGvSIvFMEPy6UM2tCUfRoQdk+398YP0l1yLsGfu8in4Q9A7H+Vy3om4fcFliYQ==
 
 socket.io-adapter@~2.1.0:
   version "2.1.0"

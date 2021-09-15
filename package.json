@@ -71,7 +71,7 @@
     "@angular/compiler-cli": "12.2.5",
     "@angular/language-service": "12.2.5",
     "@biesbjerg/ngx-translate-extract": "7.0.4",
-    "@types/jasmine": "3.9.0",
+    "@types/jasmine": "3.9.1",
     "@types/jasminewd2": "2.0.10",
     "@types/moment": "2.13.0",
     "@types/moment-timezone": "0.5.30",

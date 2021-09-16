@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * within this component and initialize needed properties.
    */
   public constructor(private store: Store) {
-    this.loading$ = this.store.select(authenticationSelectors.isLoading);
+    this.loading$ = this.store.select(authenticationSelectors.selectIsLoading);
     this.profile = null;
     this.currentLanguage = Language.DEFAULT;
     this.subscriptions = new Subscription();
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // Subscribe to user profile changes
     this.subscriptions
       .add(this.store
-        .select(authenticationSelectors.profile)
+        .select(authenticationSelectors.selectProfile)
         .subscribe((profile: UserProfileInterface|null): UserProfileInterface|null => this.profile = profile),
       );
 

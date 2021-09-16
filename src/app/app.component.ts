@@ -100,7 +100,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // Is used logged in to application or not.
     this.subscription.add(this.store
-      .select(authenticationSelectors.isLoggedIn)
+      .select(authenticationSelectors.selectIsLoggedIn)
       .subscribe((loggedIn: boolean): boolean => this.loggedIn = loggedIn),
     );
   }

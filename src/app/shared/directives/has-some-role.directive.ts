@@ -43,7 +43,7 @@ export class HasSomeRoleDirective implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.subscription.add(
-      this.store.select(authenticationSelectors.hasSomeRole(this.role)).subscribe(
+      this.store.select(authenticationSelectors.selectHasSomeRole(this.role)).subscribe(
         (hasRole: boolean): void => {
           if (hasRole) {
             this.container.createEmbeddedView(this.templateRef);

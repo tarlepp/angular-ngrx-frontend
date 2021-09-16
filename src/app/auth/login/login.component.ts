@@ -49,14 +49,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     // Loading state of `Authentication` store
     this.subscriptions
       .add(this.store
-        .select(authenticationSelectors.isLoading)
+        .select(authenticationSelectors.selectIsLoading)
         .subscribe((loading: boolean): boolean => this.loading = loading),
       );
 
     // Reset login form if error happens
     this.subscriptions
       .add(this.store
-        .pipe(authenticationSelectors.filteredError)
+        .pipe(authenticationSelectors.selectFilteredError)
         .subscribe((): void => {
           this.loginForm.reset();
           this.loginFormElement.resetForm();

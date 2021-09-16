@@ -26,8 +26,8 @@ import { createFeatureSelector } from '@ngrx/store';
  */
 
 // Feature selector for `layout` store
-const featureSelector = createFeatureSelector<RouterReducerState>('router');
+const selectFeatureSelector = createFeatureSelector<RouterReducerState>('router');
 
 export const routerSelectors  = {
-  ...getSelectors(featureSelector),
+  ...getSelectors(selectFeatureSelector),
 };

@@ -23,14 +23,14 @@ import { AuthenticationState } from 'src/app/store';
  */
 
 // Feature selector for `authentication` store
-const selectFeatureSelector = createFeatureSelector<AuthenticationState>('authentication');
+const selectFeature = createFeatureSelector<AuthenticationState>('authentication');
 
 // Common selectors for this store
-const selectIsLoading = createSelectorIsLoading(selectFeatureSelector);
-const selectIsLoggedIn = createSelector(selectFeatureSelector, (state: AuthenticationState): boolean => state.isLoggedIn);
-const selectProfile = createSelector(selectFeatureSelector, (state: AuthenticationState): UserProfileInterface|null => state.profile);
-const selectRoles = createSelector(selectFeatureSelector, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
-const selectUserData = createSelector(selectFeatureSelector, (state: AuthenticationState): UserDataInterface|null => state.userData);
+const selectIsLoading = createSelectorIsLoading(selectFeature);
+const selectIsLoggedIn = createSelector(selectFeature, (state: AuthenticationState): boolean => state.isLoggedIn);
+const selectProfile = createSelector(selectFeature, (state: AuthenticationState): UserProfileInterface|null => state.profile);
+const selectRoles = createSelector(selectFeature, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
+const selectUserData = createSelector(selectFeature, (state: AuthenticationState): UserDataInterface|null => state.userData);
 const selectHasRole = (role: Role | string): MemoizedSelector<any, boolean> => createSelector(
   selectRoles,
   (userRoles: Array<Role>): boolean => userRoles.includes(role as Role),
@@ -43,7 +43,7 @@ const selectHasSomeRole = (haystack: Array<Role | string>): MemoizedSelector<any
   selectRoles,
   (userRoles: Array<Role>): boolean => haystack.some((role: Role | string): boolean => userRoles.includes(role as Role)),
 );
-const selectError = createSelectorServerError(selectFeatureSelector);
+const selectError = createSelectorServerError(selectFeature);
 
 // Filtered error selector - this will always return `ServerErrorInterface`
 const selectFilteredError = pipe(

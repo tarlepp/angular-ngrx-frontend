@@ -19,18 +19,18 @@ import { LayoutState } from 'src/app/store';
  */
 
 // Feature selector for `layout` store
-const featureSelector = createFeatureSelector<LayoutState>('layout');
+const selectFeatureSelector = createFeatureSelector<LayoutState>('layout');
 
 // Common selectors for this store
-const theme = createSelector(featureSelector, (state: LayoutState): Theme => state.theme);
-const language = createSelector(featureSelector, (state: LayoutState): Language => state.language);
-const locale = createSelector(featureSelector, (state: LayoutState): Locale => state.locale);
-const timezone = createSelector(featureSelector, (state: LayoutState): string => state.timezone);
-const viewport = createSelector(featureSelector, (state: LayoutState): Viewport => state.viewport);
-const device = createSelector(featureSelector, (state: LayoutState): Device => state.device);
-const isMobile = createSelector(featureSelector, (state: LayoutState): boolean => state.isMobile);
-const isTablet = createSelector(featureSelector, (state: LayoutState): boolean => state.isTablet);
-const isDesktop = createSelector(featureSelector, (state: LayoutState): boolean => state.isDesktop);
+const selectTheme = createSelector(selectFeatureSelector, (state: LayoutState): Theme => state.theme);
+const selectLanguage = createSelector(selectFeatureSelector, (state: LayoutState): Language => state.language);
+const selectLocale = createSelector(selectFeatureSelector, (state: LayoutState): Locale => state.locale);
+const selectTimezone = createSelector(selectFeatureSelector, (state: LayoutState): string => state.timezone);
+const selectViewport = createSelector(selectFeatureSelector, (state: LayoutState): Viewport => state.viewport);
+const selectDevice = createSelector(selectFeatureSelector, (state: LayoutState): Device => state.device);
+const selectIsMobile = createSelector(selectFeatureSelector, (state: LayoutState): boolean => state.isMobile);
+const selectIsTablet = createSelector(selectFeatureSelector, (state: LayoutState): boolean => state.isTablet);
+const selectIsDesktop = createSelector(selectFeatureSelector, (state: LayoutState): boolean => state.isDesktop);
 
 /**
  * Selector for `localization` data, which contains;
@@ -38,22 +38,27 @@ const isDesktop = createSelector(featureSelector, (state: LayoutState): boolean 
  *  - language
  *  - timezone
  */
-const localization = createSelector(locale, language, timezone, (a: Locale,  b: Language, c: string): LocalizationInterface => ({
-  locale: a,
-  language: b,
-  timezone: c,
-}));
+const selectLocalization = createSelector(
+  selectLocale,
+  selectLanguage,
+  selectTimezone,
+  (a: Locale,  b: Language, c: string): LocalizationInterface => ({
+    locale: a,
+    language: b,
+    timezone: c,
+  }),
+);
 
 // Export all store selectors, so that those can be used easily.
 export const layoutSelectors = {
-  theme,
-  language,
-  locale,
-  timezone,
-  viewport,
-  device,
-  isMobile,
-  isTablet,
-  isDesktop,
-  localization,
+  selectTheme,
+  selectLanguage,
+  selectLocale,
+  selectTimezone,
+  selectViewport,
+  selectDevice,
+  selectIsMobile,
+  selectIsTablet,
+  selectIsDesktop,
+  selectLocalization,
 };

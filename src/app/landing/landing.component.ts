@@ -21,7 +21,7 @@ export class LandingComponent {
    */
   public constructor(private store: Store) {
     // Initialize `viewport$` and `device$` observables - remove these if you don't need these
-    this.viewport$ = this.store.select(layoutSelectors.viewport);
-    this.device$ = this.store.select(layoutSelectors.device);
+    this.viewport$ = this.store.select(layoutSelectors.selectViewport);
+    this.device$ = this.store.select(layoutSelectors.selectDevice);
   }
 }

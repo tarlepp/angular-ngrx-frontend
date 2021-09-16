@@ -18,24 +18,24 @@ import { VersionState } from 'src/app/store';
  */
 
 // Feature selector for `version` store.
-const featureSelector = createFeatureSelector<VersionState>('version');
+const selectFeatureSelector = createFeatureSelector<VersionState>('version');
 
 // Common selectors for this store
-const frontend = createSelector(featureSelector, (state: VersionState): string => state.frontend);
-const backend = createSelector(featureSelector, (state: VersionState): string => state.backend);
-const isLoadingFrontend = createSelector(featureSelector, (state: VersionState): boolean => state.isLoadingFrontend);
-const isLoadingBackend = createSelector(featureSelector, (state: VersionState): boolean => state.isLoadingBackend);
-const error = createSelectorServerError(featureSelector);
+const selectFrontendVersion = createSelector(selectFeatureSelector, (state: VersionState): string => state.frontend);
+const selectBackendVersion = createSelector(selectFeatureSelector, (state: VersionState): string => state.backend);
+const selectIsLoadingFrontendVersion = createSelector(selectFeatureSelector, (state: VersionState): boolean => state.isLoadingFrontend);
+const selectIsLoadingBackendVersion = createSelector(selectFeatureSelector, (state: VersionState): boolean => state.isLoadingBackend);
+const selectError = createSelectorServerError(selectFeatureSelector);
 
 // Selector for frontend/backend version loading state.
-const isLoading = createSelector(isLoadingFrontend, isLoadingBackend, (a: boolean, b: boolean): boolean => a || b);
+const selectIsLoading = createSelector(selectIsLoadingFrontendVersion, selectIsLoadingBackendVersion, (a: boolean, b: boolean): boolean => a || b);
 
 // Export all store selectors, so that those can be used easily.
 export const versionSelectors = {
-  frontend,
-  backend,
-  isLoadingFrontend,
-  isLoadingBackend,
-  isLoading,
-  error,
+  selectFrontendVersion,
+  selectBackendVersion,
+  selectIsLoadingFrontendVersion,
+  selectIsLoadingBackendVersion,
+  selectIsLoading,
+  selectError,
 };

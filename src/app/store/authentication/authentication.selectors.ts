@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import { Role } from 'src/app/auth/enums';
 import { RoleGuardMetaDataInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { createSelectorIsLoading, createSelectorServerError } from 'src/app/shared/utils';
+import { selectIsLoadingAwareState, selectServerErrorAwareState } from 'src/app/shared/utils';
 import { AuthenticationState } from 'src/app/store';
 
 /**
@@ -26,7 +26,6 @@ import { AuthenticationState } from 'src/app/store';
 const selectFeature = createFeatureSelector<AuthenticationState>('authentication');
 
 // Common selectors for this store
-const selectIsLoading = createSelectorIsLoading(selectFeature);
 const selectIsLoggedIn = createSelector(selectFeature, (state: AuthenticationState): boolean => state.isLoggedIn);
 const selectProfile = createSelector(selectFeature, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const selectRoles = createSelector(selectFeature, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
@@ -43,7 +42,10 @@ const selectHasSomeRole = (haystack: Array<Role | string>): MemoizedSelector<any
   selectRoles,
   (userRoles: Array<Role>): boolean => haystack.some((role: Role | string): boolean => userRoles.includes(role as Role)),
 );
-const selectError = createSelectorServerError(selectFeature);
+
+// Aware state selectors
+const selectIsLoading = selectIsLoadingAwareState(selectFeature);
+const selectError = selectServerErrorAwareState(selectFeature);
 
 // Filtered error selector - this will always return `ServerErrorInterface`
 const selectFilteredError = pipe(

@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { createSelectorServerError } from 'src/app/shared/utils';
+import { selectServerErrorAwareState } from 'src/app/shared/utils';
 import { VersionState } from 'src/app/store';
 
 /**
@@ -25,7 +25,9 @@ const selectFrontendVersion = createSelector(selectFeature, (state: VersionState
 const selectBackendVersion = createSelector(selectFeature, (state: VersionState): string => state.backend);
 const selectIsLoadingFrontendVersion = createSelector(selectFeature, (state: VersionState): boolean => state.isLoadingFrontend);
 const selectIsLoadingBackendVersion = createSelector(selectFeature, (state: VersionState): boolean => state.isLoadingBackend);
-const selectError = createSelectorServerError(selectFeature);
+
+// Aware state selectors
+const selectError = selectServerErrorAwareState(selectFeature);
 
 // Selector for frontend/backend version loading state.
 const selectIsLoading = createSelector(selectIsLoadingFrontendVersion, selectIsLoadingBackendVersion, (a: boolean, b: boolean): boolean => a || b);

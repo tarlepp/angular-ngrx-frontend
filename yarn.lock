@@ -4881,10 +4881,10 @@ eslint-plugin-jsdoc@36.1.0:
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-ngrx@1.32.0:
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.32.0.tgz#0b4d4326f2189a654c6c1acf388cdb4c8ba27c11"
-  integrity sha512-iggJgUGxRb9Wav4FjyELYwMLsQhJWcMJ7hQaVNTqhIgdDRDOe1yJ6HfSTKCvpf/NTpjQbCdqdAviZvcnsOhEPQ==
+eslint-plugin-ngrx@1.32.1:
+  version "1.32.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.32.1.tgz#c4b309ccaafcd3d0459168b2326a3a9e71ba2fc6"
+  integrity sha512-qiJ4wFPVh+QRnVxG3sqqCwQmUhxeREkEFnwv7wMJbCXjtSdrkbjQF97AEXAW8xvdGuWuhMEcQHvcr/++c4yHQQ==
   dependencies:
     "@angular-devkit/schematics" "^12.2.2"
     "@typescript-eslint/experimental-utils" "^4.29.2"
@@ -10666,10 +10666,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@1.704.0:
-  version "1.704.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.704.0.tgz#b0147971abbfc299feb6dd74f80e06809716b79b"
-  integrity sha512-vYt8Zp2O5Rce//JAqkivWKTSEGvSIvFMEPy6UM2tCUfRoQdk+398YP0l1yLsGfu8in4Q9A7H+Vy3om4fcFliYQ==
+snyk@1.705.0:
+  version "1.705.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.705.0.tgz#264d2e4e1ceab33ae50b0db84b4d10027c7c7ff7"
+  integrity sha512-jEtLbrjHmVynp23G+EMjL04vkVicpJAi6pM7uE9pdhG3g9dNKvDXBNxDcvwUR9+LtZY3lpWO8SlldIVl0IJ+ww==
 
 socket.io-adapter@~2.1.0:
   version "2.1.0"

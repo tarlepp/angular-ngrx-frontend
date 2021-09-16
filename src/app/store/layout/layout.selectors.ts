@@ -42,10 +42,10 @@ const selectLocalization = createSelector(
   selectLocale,
   selectLanguage,
   selectTimezone,
-  (a: Locale,  b: Language, c: string): LocalizationInterface => ({
-    locale: a,
-    language: b,
-    timezone: c,
+  (locale: Locale,  language: Language, timezone: string): LocalizationInterface => ({
+    locale,
+    language,
+    timezone,
   }),
 );
 

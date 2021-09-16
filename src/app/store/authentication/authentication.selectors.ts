@@ -50,7 +50,7 @@ const selectError = selectServerErrorAwareState(selectFeature);
 // Filtered error selector - this will always return `ServerErrorInterface`
 const selectFilteredError = pipe(
   select(selectError),
-  filter((x: ServerErrorInterface|null): boolean => x !== null),
+  filter((error: ServerErrorInterface|null): boolean => error !== null),
 );
 
 /**

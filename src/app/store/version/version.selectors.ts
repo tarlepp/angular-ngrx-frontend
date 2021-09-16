@@ -30,7 +30,11 @@ const selectIsLoadingBackendVersion = createSelector(selectFeature, (state: Vers
 const selectError = selectServerErrorAwareState(selectFeature);
 
 // Selector for frontend/backend version loading state.
-const selectIsLoading = createSelector(selectIsLoadingFrontendVersion, selectIsLoadingBackendVersion, (a: boolean, b: boolean): boolean => a || b);
+const selectIsLoading = createSelector(
+  selectIsLoadingFrontendVersion,
+  selectIsLoadingBackendVersion,
+  (isLoadingFrontend: boolean, isLoadingBackend: boolean): boolean => isLoadingFrontend || isLoadingBackend,
+);
 
 // Export all store selectors, so that those can be used easily.
 export const versionSelectors = {

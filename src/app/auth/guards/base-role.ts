@@ -62,6 +62,6 @@ export abstract class BaseRole {
       ...routeMetaData,
     };
 
-    return this.store.select(authenticationSelectors.roleGuard(role, metaData, this.router));
+    return this.store.select(authenticationSelectors.selectRoleGuard(role, metaData, this.router));
   }
 }

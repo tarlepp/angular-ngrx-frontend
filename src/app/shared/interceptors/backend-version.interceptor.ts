@@ -55,7 +55,7 @@ export class BackendVersionInterceptor implements HttpInterceptor {
       filter((event: HttpResponse<any>): boolean => new URL(event.url ?? '').host === new URL(apiUrl).host),
       filter((event: HttpResponse<any>): boolean => !event.url?.includes('/version') ?? false),
       filter((event: HttpResponse<any>): boolean => event.headers.has('X-API-VERSION')),
-      withLatestFrom(this.store.select(versionSelectors.backend)),
+      withLatestFrom(this.store.select(versionSelectors.selectBackendVersion)),
       filter(([event, version]: [HttpResponse<any>, string]): boolean =>
         version !== '0.0.0' && event.headers.get('X-API-VERSION') !== version,
       ),

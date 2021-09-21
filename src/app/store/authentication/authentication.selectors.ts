@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import { Role } from 'src/app/auth/enums';
 import { RoleGuardMetaDataInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { createSelectorIsLoading, createSelectorServerError } from 'src/app/shared/utils';
+import { selectIsLoadingAwareState, selectServerErrorAwareState } from 'src/app/shared/utils';
 import { AuthenticationState } from 'src/app/store';
 
 /**
@@ -14,41 +14,41 @@ import { AuthenticationState } from 'src/app/store';
  *
  * Simple usage example;
  *
- *  public constructor(private store: Store) { }
- *
- *  public ngOnInit(): void {
- *    this.isLoading$ = this.store.select(authenticationSelectors.isLoading);
- *    this.isLoggedIn$ = this.store.select(authenticationSelectors.isLoggedIn);
+ *  public constructor(private store: Store) {
+ *    this.isLoading$ = this.store.select(authenticationSelectors.selectIsLoading);
+ *    this.isLoggedIn$ = this.store.select(authenticationSelectors.selectIsLoggedIn);
  *  }
  */
 
 // Feature selector for `authentication` store
-const featureSelector = createFeatureSelector<AuthenticationState>('authentication');
+const selectFeature = createFeatureSelector<AuthenticationState>('authentication');
 
 // Common selectors for this store
-const isLoading = createSelectorIsLoading(featureSelector);
-const isLoggedIn = createSelector(featureSelector, (state: AuthenticationState): boolean => state.isLoggedIn);
-const profile = createSelector(featureSelector, (state: AuthenticationState): UserProfileInterface|null => state.profile);
-const roles = createSelector(featureSelector, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
-const userData = createSelector(featureSelector, (state: AuthenticationState): UserDataInterface|null => state.userData);
-const hasRole = (role: Role | string): MemoizedSelector<any, boolean> => createSelector(
-  roles,
+const selectIsLoggedIn = createSelector(selectFeature, (state: AuthenticationState): boolean => state.isLoggedIn);
+const selectProfile = createSelector(selectFeature, (state: AuthenticationState): UserProfileInterface|null => state.profile);
+const selectRoles = createSelector(selectFeature, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
+const selectUserData = createSelector(selectFeature, (state: AuthenticationState): UserDataInterface|null => state.userData);
+const selectHasRole = (role: Role | string): MemoizedSelector<any, boolean> => createSelector(
+  selectRoles,
   (userRoles: Array<Role>): boolean => userRoles.includes(role as Role),
 );
-const hasRoles = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
-  roles,
+const selectHasRoles = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
+  selectRoles,
   (userRoles: Array<Role>): boolean => haystack.every((role: Role | string): boolean => userRoles.includes(role as Role)),
 );
-const hasSomeRole = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
-  roles,
+const selectHasSomeRole = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
+  selectRoles,
   (userRoles: Array<Role>): boolean => haystack.some((role: Role | string): boolean => userRoles.includes(role as Role)),
 );
-const error = createSelectorServerError(featureSelector);
+
+// Aware state selectors
+const selectIsLoading = selectIsLoadingAwareState(selectFeature);
+const selectError = selectServerErrorAwareState(selectFeature);
 
 // Filtered error selector - this will always return `ServerErrorInterface`
-const filteredError = pipe(
-  select(error),
-  filter((x: ServerErrorInterface|null): boolean => x !== null),
+const selectFilteredError = pipe(
+  select(selectError),
+  filter((error: ServerErrorInterface|null): boolean => error !== null),
 );
 
 /**
@@ -61,10 +61,10 @@ const filteredError = pipe(
  * This selector can return a boolean or UrlTree value according to given
  * metaData object. See `BaseRole` class for more information about this.
  */
-const roleGuard = (role: Role, metaData: RoleGuardMetaDataInterface, router: Router): MemoizedSelector<any, boolean|UrlTree> =>
+const selectRoleGuard = (role: Role, metaData: RoleGuardMetaDataInterface, router: Router): MemoizedSelector<any, boolean|UrlTree> =>
   createSelector(
-    isLoggedIn,
-    roles,
+    selectIsLoggedIn,
+    selectRoles,
     (loggedIn: boolean, userRoles: Array<Role>): boolean|UrlTree => {
       let output;
 
@@ -82,15 +82,15 @@ const roleGuard = (role: Role, metaData: RoleGuardMetaDataInterface, router: Rou
 
 // Export all store selectors, so that those can be used easily.
 export const authenticationSelectors = {
-  isLoading,
-  isLoggedIn,
-  profile,
-  roles,
-  userData,
-  hasRole,
-  hasRoles,
-  hasSomeRole,
-  error,
-  filteredError,
-  roleGuard,
+  selectIsLoading,
+  selectIsLoggedIn,
+  selectProfile,
+  selectRoles,
+  selectUserData,
+  selectHasRole,
+  selectHasRoles,
+  selectHasSomeRole,
+  selectError,
+  selectFilteredError,
+  selectRoleGuard,
 };

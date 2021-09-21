@@ -29,8 +29,8 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscriptions = new Subscription();
 
     // Initialize `versionFrontend$` and `versionBackend$` observables, that are used in component
-    this.versionFrontend$ = this.store.select(versionSelectors.frontend);
-    this.versionBackend$ = this.store.select(versionSelectors.backend);
+    this.versionFrontend$ = this.store.select(versionSelectors.selectFrontendVersion);
+    this.versionBackend$ = this.store.select(versionSelectors.selectBackendVersion);
   }
 
   /**

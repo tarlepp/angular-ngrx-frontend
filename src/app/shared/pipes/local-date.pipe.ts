@@ -46,7 +46,7 @@ export class LocalDatePipe implements PipeTransform, OnDestroy {
     // Subscribe to localization changes
     this.subscriptions
       .add(this.store
-        .select(layoutSelectors.localization)
+        .select(layoutSelectors.selectLocalization)
         .subscribe((localization: LocalizationInterface): void => {
           this.locale = localization.locale;
           this.timezone = localization.timezone;

@@ -46,7 +46,7 @@ export class LocalNumberPipe implements PipeTransform, OnDestroy {
     // Subscribe to locale changes
     this.subscriptions
       .add(this.store
-        .select(layoutSelectors.locale)
+        .select(layoutSelectors.selectLocale)
         .subscribe((locale: Locale): Locale => this.locale = locale),
       );
   }

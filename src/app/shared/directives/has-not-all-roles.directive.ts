@@ -35,7 +35,7 @@ export class HasNotAllRolesDirective implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.subscription.add(
-      this.store.select(authenticationSelectors.hasRoles(this.role)).subscribe(
+      this.store.select(authenticationSelectors.selectHasRoles(this.role)).subscribe(
         (hasRoles: boolean): void => {
           if (!hasRoles) {
             this.container.createEmbeddedView(this.templateRef);

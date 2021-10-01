@@ -18,7 +18,7 @@ export class AcceptLanguageInterceptor implements HttpInterceptor {
   public constructor(private store: Store) {
     this.language = Language.DEFAULT;
 
-    this.store.select(layoutSelectors.language).subscribe((language: Language): Language => this.language = language);
+    this.store.select(layoutSelectors.selectLanguage).subscribe((language: Language): Language => this.language = language);
   }
 
   /**

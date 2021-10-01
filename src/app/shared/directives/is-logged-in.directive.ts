@@ -39,7 +39,7 @@ export class IsLoggedInDirective implements OnInit, OnDestroy {
    */
   public ngOnInit(): void {
     this.subscription.add(
-      this.store.select(authenticationSelectors.isLoggedIn).subscribe(
+      this.store.select(authenticationSelectors.selectIsLoggedIn).subscribe(
         (isLoggedIn: boolean): void => {
           if ((isLoggedIn && this.required)
             || (!isLoggedIn && !this.required)

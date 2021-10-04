@@ -4952,15 +4952,16 @@ eslint-plugin-jsdoc@36.1.0:
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-ngrx@1.42.5:
-  version "1.42.5"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.42.5.tgz#8d80d54d29a307168fd40f10d83bac23f41bea73"
-  integrity sha512-yrcY3dTqbeRgvUmQiN13/jnIII6dic/x9K2SVSmyg2YvJyKcnavQBEfKRkXGWjUkIIinZpN0mTagvMgfz2ZfPw==
+eslint-plugin-ngrx@1.45.0:
+  version "1.45.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.45.0.tgz#07b430ae4a6d04c45b0f41b0925642e31dfdd9be"
+  integrity sha512-YtOKte+aNVBv1a33tsqMourKxFPrQLUXckvskUDlBEEsR6xOFwjolM8bgUpf5oLE9yHKGsp8CdcdBmAQY50fhg==
   dependencies:
     "@angular-devkit/schematics" "^12.2.2"
     "@typescript-eslint/experimental-utils" "^4.31.1"
     eslint-etc "^4.2.4"
     eslint-plugin-rxjs "^3.3.6"
+    semver "^7.3.5"
 
 eslint-plugin-prefer-arrow@1.2.3:
   version "1.2.3"

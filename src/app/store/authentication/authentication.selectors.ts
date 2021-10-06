@@ -28,17 +28,17 @@ const selectIsLoggedIn = createSelector(selectFeature, (state: AuthenticationSta
 const selectProfile = createSelector(selectFeature, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const selectRoles = createSelector(selectFeature, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
 const selectUserData = createSelector(selectFeature, (state: AuthenticationState): UserDataInterface|null => state.userData);
-const selectHasRole = (role: Role | string): MemoizedSelector<any, boolean> => createSelector(
+const selectHasRole = (role: Role|string): MemoizedSelector<any, boolean> => createSelector(
   selectRoles,
   (userRoles: Array<Role>): boolean => userRoles.includes(role as Role),
 );
-const selectHasRoles = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
+const selectHasRoles = (haystack: Array<Role|string>): MemoizedSelector<any, boolean> => createSelector(
   selectRoles,
-  (userRoles: Array<Role>): boolean => haystack.every((role: Role | string): boolean => userRoles.includes(role as Role)),
+  (userRoles: Array<Role>): boolean => haystack.every((role: Role|string): boolean => userRoles.includes(role as Role)),
 );
-const selectHasSomeRole = (haystack: Array<Role | string>): MemoizedSelector<any, boolean> => createSelector(
+const selectHasSomeRole = (haystack: Array<Role|string>): MemoizedSelector<any, boolean> => createSelector(
   selectRoles,
-  (userRoles: Array<Role>): boolean => haystack.some((role: Role | string): boolean => userRoles.includes(role as Role)),
+  (userRoles: Array<Role>): boolean => haystack.some((role: Role|string): boolean => userRoles.includes(role as Role)),
 );
 
 // Aware state selectors

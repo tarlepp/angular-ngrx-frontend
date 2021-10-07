@@ -10,7 +10,7 @@ import { authenticationSelectors } from 'src/app/store';
 })
 
 export class HasNotRoleDirective implements OnInit, OnDestroy {
-  @Input('appHasNotRole') public role: Role | string;
+  @Input('appHasNotRole') public role: Role|string;
 
   private subscription: Subscription;
 

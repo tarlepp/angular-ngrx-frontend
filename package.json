@@ -69,7 +69,7 @@
     "@angular-eslint/template-parser": "12.5.0",
     "@angular/cli": "12.2.8",
     "@angular/compiler-cli": "12.2.8",
-    "@angular/language-service": "12.2.8",
+    "@angular/language-service": "12.2.9",
     "@biesbjerg/ngx-translate-extract": "7.0.4",
     "@types/jasmine": "3.9.1",
     "@types/jasminewd2": "2.0.10",

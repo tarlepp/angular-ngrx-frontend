@@ -2217,10 +2217,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.4.tgz#68a9384694af63ceab8848e95d76d9a3519e84b6"
   integrity sha512-25QXpDsTiDnl2rZGUenagVMwO46way8dOUdvoC3R3p+6TrbpxeJBo/v87BEG1IHI31Jhaa8lPeSHcqwxsVBeYQ==
 
-"@types/node@16.10.2":
-  version "16.10.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.2.tgz#5764ca9aa94470adb4e1185fe2e9f19458992b2e"
-  integrity sha512-zCclL4/rx+W5SQTzFs9wyvvyCwoK9QtBpratqz2IYJ3O8Umrn0m3nsTv0wQBk9sRGpvUe9CwPDrQFB10f1FIjQ==
+"@types/node@16.10.3":
+  version "16.10.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.3.tgz#7a8f2838603ea314d1d22bb3171d899e15c57bd5"
+  integrity sha512-ho3Ruq+fFnBrZhUYI46n/bV2GjwzSkwuT4dTf0GkuNFmnb8nq4ny2z9JEVemFi6bdEJanHLlYfy9c6FN9B9McQ==
 
 "@types/node@^14.14.10":
   version "14.14.22"
@@ -5049,10 +5049,10 @@ eslint-plugin-jsdoc@36.1.0:
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-ngrx@1.46.0:
-  version "1.46.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.46.0.tgz#3116227eec5f42fdee8c1dd748e7e384e241b783"
-  integrity sha512-RX2q3o/i68Jw/40sjVLfC64MsXoB35Dq+bNRYbUWteXy9gxxeczxb3qcoj/fmPxpxRmgk/gXybGy4PGJid11Vg==
+eslint-plugin-ngrx@1.46.1:
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ngrx/-/eslint-plugin-ngrx-1.46.1.tgz#f6b6981e9f523c22d9f1cc0ac6df64e7d1523235"
+  integrity sha512-BQR9CkzkcB4QUcLAIEKmdGpm3LiXNu4RBzDMvPwLlsbmYDY6At9x117BHa0PUTOl9WST6IvRFMqYEFkI6CMI3w==
   dependencies:
     "@angular-devkit/schematics" "^12.2.2"
     "@typescript-eslint/experimental-utils" "^4.31.1"
@@ -10834,10 +10834,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snyk@1.731.0:
-  version "1.731.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.731.0.tgz#d2fe4cdabf2fc471f57f3b5b5310242f9f85b546"
-  integrity sha512-1bRMFH7ZrjmaUkBnbOtCmLSSpAlj9vPKndBiP4hjCLysN8peVZ9SMdxGWhhJsmvqmRZYCdmPQyL+sKev8dsRkw==
+snyk@1.733.0:
+  version "1.733.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.733.0.tgz#e3982dfa0fba0ab1d0b2b84c07b6f109b2b4e0f2"
+  integrity sha512-Mi/wk9tw8ma4P2+2QwgzGDHcIG0Tfj0Wn7cliuUqd7CM8bg+Oryq3g4NcNK6mJZz0VaISF8MCIcIzbqV8v0JYg==
 
 socket.io-adapter@~2.1.0:
   version "2.1.0"

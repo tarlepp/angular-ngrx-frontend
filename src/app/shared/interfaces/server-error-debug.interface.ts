@@ -24,6 +24,6 @@ export interface ServerErrorDebugInterface {
   file: string;
   line: number;
   message: string;
-  trace: any;
+  trace: Array<any>;
   traceString: string;
 }

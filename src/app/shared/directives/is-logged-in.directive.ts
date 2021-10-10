@@ -14,7 +14,7 @@ import { authenticationSelectors } from 'src/app/store';
 })
 
 export class IsLoggedInDirective implements OnInit, OnDestroy {
-  @Input('appIsLoggedIn') public required?: boolean | string;
+  @Input('appIsLoggedIn') public required?: boolean|string;
 
   private subscription: Subscription;
 

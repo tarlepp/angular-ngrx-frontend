@@ -37,11 +37,12 @@ export class ErrorInterceptor implements HttpInterceptor {
       .handle(modified)
       .pipe(
         tap(noop, (error: HttpErrorResponse): void => this.handle(modified, error)),
-        catchError((error: any): Observable<never> => {
+        catchError((error: HttpErrorResponse): Observable<never> => {
           let payload = error;
 
           if (error && error.hasOwnProperty('error') && error.status === 0) {
             payload = {
+              ...error,
               error: {
                 code: 0,
                 message: error.message || `Unknown error - ${error.toString()}`,

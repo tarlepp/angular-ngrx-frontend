@@ -59,9 +59,9 @@ export class ConfigurationService {
 
               resolve();
             })
-            .catch((error: any): void => reject(`Invalid JSON in file '${ configurationFile }': ${ error }`));
+            .catch((error: string): void => reject(`Invalid JSON in file '${ configurationFile }' - ${ error }`));
         })
-        .catch((error: any): void => reject(`Could not load file '${ configurationFile }': ${ error }`));
+        .catch((error: string): void => reject(`Could not load file '${ configurationFile }' - ${ error }`));
     });
   }
 }

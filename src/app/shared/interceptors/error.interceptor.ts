@@ -55,7 +55,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             };
           }
 
-          return throwError(payload);
+          return throwError(() => payload);
         }),
       );
   }

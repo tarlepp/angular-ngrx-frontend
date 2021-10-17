@@ -74,7 +74,7 @@ export class AuthenticationService {
    * and he/she is already logged in to application.
    */
   public getProfile(): Observable<UserProfileInterface> {
-    const url = ConfigurationService.configuration.apiUrl + '/profile';
+    const url = ConfigurationService.configuration.apiUrl + '/v1/profile';
 
     return new Observable((observer: Observer<UserProfileInterface>): void => {
       this.http

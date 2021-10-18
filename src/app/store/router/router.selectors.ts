@@ -14,7 +14,7 @@ import { createFeatureSelector } from '@ngrx/store';
  *    this.subscription
  *      .add(this.store
  *        .select(routerSelectors.selectCurrentRoute)
- *        .subscribe((currentRoute: any): void => {
+ *        .subscribe((currentRoute: ActivatedRoute): void => {
  *          ...
  *        }),
  *      );

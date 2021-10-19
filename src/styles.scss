@@ -19,12 +19,12 @@ $light-text-color: mat.get-color-from-palette(map.get($light-color-config, foreg
 $light-text-color-disabled: mat.get-color-from-palette(map.get($light-color-config, foreground), 'disabled-text');
 $light-text-color-hint: mat.get-color-from-palette(map.get($light-color-config, foreground), 'hint-text');
 $light-text-color-secondary: mat.get-color-from-palette(map.get($light-color-config, foreground), 'secondary-text');
-$light-primary-color: mat.get-color-from-palette(map.get($light-color-config, primary), 500);
-$light-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, 500);
-$light-accent-color: mat.get-color-from-palette(map_get($light-color-config, accent), 500);
-$light-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, 500);
-$light-warn-color: mat.get-color-from-palette(map_get($light-color-config, warn), 500);
-$light-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, 500);
+$light-primary-color: mat.get-color-from-palette(map.get($light-color-config, primary), $light-hue-primary);
+$light-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, $light-hue-primary);
+$light-accent-color: mat.get-color-from-palette(map_get($light-color-config, accent), $light-hue-accent);
+$light-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, $light-hue-accent);
+$light-warn-color: mat.get-color-from-palette(map_get($light-color-config, warn), $light-hue-warn);
+$light-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, $light-hue-warn);
 
 // Dark theme common variables
 $dark-color-config: mat.get-color-config($dark-theme);
@@ -34,12 +34,12 @@ $dark-text-color: mat.get-color-from-palette(map.get($dark-color-config, foregro
 $dark-text-color-disabled: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'disabled-text');
 $dark-text-color-hint: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'hint-text');
 $dark-text-color-secondary: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'secondary-text');
-$dark-primary-color: mat.get-color-from-palette(map.get($dark-color-config, primary), 500);
-$dark-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, 500);
-$dark-accent-color: mat.get-color-from-palette(map.get($dark-color-config, accent), 500);
-$dark-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, 500);
-$dark-warn-color: mat.get-color-from-palette(map.get($dark-color-config, warn), 500);
-$dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, 500);
+$dark-primary-color: mat.get-color-from-palette(map.get($dark-color-config, primary), $dark-hue-primary);
+$dark-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, $dark-hue-primary);
+$dark-accent-color: mat.get-color-from-palette(map.get($dark-color-config, accent), $dark-hue-accent);
+$dark-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, $dark-hue-accent);
+$dark-warn-color: mat.get-color-from-palette(map.get($dark-color-config, warn), $dark-hue-warn);
+$dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, $dark-hue-warn);
 
 // Include the light theme styles (color and default density)
 .light-theme {

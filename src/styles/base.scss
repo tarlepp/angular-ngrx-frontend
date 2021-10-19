@@ -84,9 +84,19 @@
       margin-top: 0 !important;
       margin-bottom: 0 !important;
     }
+
+    .no-padding-#{$orientation} {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
   }
 
   @else {
+    .no-margin-#{$orientation} {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+
     .no-padding-#{$orientation} {
       padding-right: 0 !important;
       padding-left: 0 !important;

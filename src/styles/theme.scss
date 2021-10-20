@@ -40,12 +40,15 @@ $custom-typography: mat.define-typography-config(
 @include mat.core($custom-typography);
 
 // Define the used palettes by application specified palette configuration
-$palette-primary: mat.define-palette($app-palette-primary, 500);
-$palette-accent: mat.define-palette($app-palette-accent);
-$palette-warn: mat.define-palette($app-palette-warn);
+$light-palette-primary: mat.define-palette($app-palette-primary, $light-hue-primary);
+$light-palette-accent: mat.define-palette($app-palette-accent, $light-hue-accent);
+$light-palette-warn: mat.define-palette($app-palette-warn, $light-hue-warn);
+$dark-palette-primary: mat.define-palette($app-palette-primary, $dark-hue-primary);
+$dark-palette-accent: mat.define-palette($app-palette-accent, $dark-hue-accent);
+$dark-palette-warn: mat.define-palette($app-palette-warn, $dark-hue-warn);
 
 // Background palette for light themes.
-$mat-light-theme-background: (
+$light-theme-background: (
   status-bar: map-get($app-palette-grey, 300),
   app-bar: map-get($app-palette-grey, 100),
   background: map-get($app-palette-grey, 50),
@@ -64,7 +67,7 @@ $mat-light-theme-background: (
 );
 
 // Background palette for dark themes.
-$mat-dark-theme-background: (
+$dark-theme-background: (
   status-bar: black,
   app-bar: map-get($app-palette-grey, 800),
   background: map-get($app-palette-grey, 600),
@@ -83,7 +86,7 @@ $mat-dark-theme-background: (
 );
 
 // Foreground (for texts) palette for light themes.
-$mat-light-theme-foreground: (
+$light-theme-foreground: (
   base: black,
   divider: rgba(black, .12),
   dividers: rgba(black, .12),
@@ -102,7 +105,7 @@ $mat-light-theme-foreground: (
 );
 
 // Foreground (for texts) palette for dark themes.
-$mat-dark-theme-foreground: (
+$dark-theme-foreground: (
   base: white,
   divider: rgba(white, .12),
   dividers: rgba(white, .12),
@@ -121,19 +124,19 @@ $mat-dark-theme-foreground: (
 );
 
 $light-theme: (
-  primary: $palette-primary,
-  accent: $palette-accent,
-  warn: $palette-warn,
+  primary: $light-palette-primary,
+  accent: $light-palette-accent,
+  warn: $light-palette-warn,
   is-dark: false,
-  foreground: $mat-light-theme-foreground,
-  background: $mat-light-theme-background,
+  foreground: $light-theme-foreground,
+  background: $light-theme-background,
 );
 
 $dark-theme: (
-  primary: $palette-primary,
-  accent: $palette-accent,
-  warn: $palette-warn,
+  primary: $dark-palette-primary,
+  accent: $dark-palette-accent,
+  warn: $dark-palette-warn,
   is-dark: true,
-  foreground: $mat-dark-theme-foreground,
-  background: $mat-dark-theme-background,
+  foreground: $dark-theme-foreground,
+  background: $dark-theme-background,
 );

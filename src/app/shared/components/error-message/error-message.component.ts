@@ -20,18 +20,19 @@ import { environment } from 'src/environments/environment';
 
 export class ErrorMessageComponent implements OnInit {
   public errors: Array<ErrorMessageInterface>;
-  public production: boolean = environment.production;
+  public readonly production: boolean;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
   public constructor(
-    @Inject(MAT_SNACK_BAR_DATA) private serverMessages: Array<ErrorMessageServerInterface>,
-    private snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
-    private translateService: TranslateService,
+    @Inject(MAT_SNACK_BAR_DATA) private readonly serverMessages: Array<ErrorMessageServerInterface>,
+    private readonly snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
+    private readonly translateService: TranslateService,
   ) {
     this.errors = [];
+    this.production = environment.production;
 
     ErrorMessageComponent.markTexts();
   }

@@ -13,5 +13,8 @@ export class VersionChangeDialogComponent {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(@Inject(MAT_DIALOG_DATA) public data: VersionContentInterface) { }
+  public constructor(
+    @Inject(MAT_DIALOG_DATA) public readonly data: VersionContentInterface,
+  ) {
+  }
 }

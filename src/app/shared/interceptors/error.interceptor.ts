@@ -15,7 +15,10 @@ export class ErrorInterceptor implements HttpInterceptor {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private router: Router, private store: Store) { }
+  public constructor(
+    private readonly router: Router,
+    private readonly store: Store,
+  ) { }
 
   /**
    * Interceptor to handle possible HTTP errors from backend. Within this

@@ -36,7 +36,10 @@ export class ErrorInterceptor implements HttpInterceptor {
     return delegate
       .handle(modified)
       .pipe(
-        tap(noop, (error: HttpErrorResponse): void => this.handle(modified, error)),
+        tap({
+          next: noop,
+          error: (error: HttpErrorResponse): void => this.handle(modified, error),
+        }),
         catchError((error: HttpErrorResponse): Observable<never> => {
           let payload = error;
 
@@ -52,7 +55,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             };
           }
 
-          return throwError(payload);
+          return throwError(() => payload);
         }),
       );
   }

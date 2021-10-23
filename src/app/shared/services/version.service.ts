@@ -28,12 +28,12 @@ export class VersionService {
       this.http
         .get(`/assets/version.json?t=${ ts }`)
         .pipe(take(1))
-        .subscribe(
-          (data: VersionInterface|any): void => observer.next(data.version),
-          (error: ServerErrorInterface): void => observer.error(error),
-          (): void => observer.complete(),
-        );
-      });
+        .subscribe({
+          next: (data: VersionInterface|any): void => observer.next(data.version),
+          error: (error: ServerErrorInterface): void => observer.error(error),
+          complete: (): void => observer.complete(),
+        });
+    });
   }
 
   /**
@@ -48,13 +48,13 @@ export class VersionService {
 
     return new Observable((observer: Observer<string>): void => {
       this.http
-      .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ ts }`)
-      .pipe(take(1))
-      .subscribe(
-        (data: VersionInterface|any): void => observer.next(data.version),
-        (error: ServerErrorInterface): void => observer.error(error),
-        (): void => observer.complete(),
-      );
+        .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ ts }`)
+        .pipe(take(1))
+        .subscribe({
+          next: (data: VersionInterface|any): void => observer.next(data.version),
+          error: (error: ServerErrorInterface): void => observer.error(error),
+          complete: (): void => observer.complete(),
+        });
     });
   }
 }

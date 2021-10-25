@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
      */
     this.subscription.add(this.localStorage
       .observe('token')
-      .pipe(filter((value: any): boolean => value !== undefined))
+      .pipe(filter((value: string|undefined): boolean => value !== undefined))
       .subscribe((): void => this.setTokenInterval()),
     );
 

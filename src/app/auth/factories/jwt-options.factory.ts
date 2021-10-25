@@ -8,7 +8,7 @@ import { ConfigurationService } from 'src/app/shared/services';
  * application configuration.
  */
 export const jwtOptionsFactory = (localStorage: LocalStorageService): JwtModuleOptions['config'] => ({
-  tokenGetter: (): any => localStorage.retrieve('token'), // Get token from local storage
+  tokenGetter: (): string => localStorage.retrieve('token') ?? '', // Get token from local storage
   allowedDomains: [ // Allowed domains with Json Web Token
     new URL(ConfigurationService.configuration.apiUrl).host,
   ],

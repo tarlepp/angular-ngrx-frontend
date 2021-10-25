@@ -84,9 +84,19 @@
       margin-top: 0 !important;
       margin-bottom: 0 !important;
     }
+
+    .no-padding-#{$orientation} {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
   }
 
   @else {
+    .no-margin-#{$orientation} {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+
     .no-padding-#{$orientation} {
       padding-right: 0 !important;
       padding-left: 0 !important;
@@ -141,12 +151,24 @@
   color: var(--theme-primary-color) !important;
 }
 
+.text-color-primary-contrast {
+  color: var(--theme-primary-color-contrast) !important;
+}
+
 .text-color-accent {
   color: var(--theme-accent-color) !important;
 }
 
+.text-color-accent-contrast {
+  color: var(--theme-accent-color-contrast) !important;
+}
+
 .text-color-warn {
   color: var(--theme-warn-color) !important;
+}
+
+.text-color-warn-contrast {
+  color: var(--theme-warn-color-contrast) !important;
 }
 
 .text-color-normal {

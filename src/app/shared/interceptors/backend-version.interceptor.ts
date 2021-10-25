@@ -24,7 +24,10 @@ export class BackendVersionInterceptor implements HttpInterceptor {
   public intercept(httpRequest: HttpRequest<any>, delegate: HttpHandler): Observable<HttpEvent<any>> {
     return delegate
       .handle(httpRequest)
-      .pipe(tap((event: HttpEvent<any>): void => this.handle(of(event)), noop));
+      .pipe(tap({
+        next: (event: HttpEvent<any>): void => this.handle(of(event)),
+        error: noop,
+      }));
   }
 
   /**

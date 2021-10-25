@@ -28,6 +28,9 @@ const selectDevice = createSelector(selectFeature, (state: LayoutState): Device 
 const selectIsMobile = createSelector(selectFeature, (state: LayoutState): boolean => state.isMobile);
 const selectIsTablet = createSelector(selectFeature, (state: LayoutState): boolean => state.isTablet);
 const selectIsDesktop = createSelector(selectFeature, (state: LayoutState): boolean => state.isDesktop);
+const selectIsDefaultTheme = createSelector(selectTheme, (theme: Theme): boolean => theme === Theme.DEFAULT);
+const selectIsDarkTheme = createSelector(selectTheme, (theme: Theme): boolean => theme === Theme.DARK);
+const selectIsLightTheme = createSelector(selectTheme, (theme: Theme): boolean => theme === Theme.LIGHT);
 
 /**
  * Selector for `localization` data, which contains;
@@ -57,5 +60,8 @@ export const layoutSelectors = {
   selectIsMobile,
   selectIsTablet,
   selectIsDesktop,
+  selectIsDefaultTheme,
+  selectIsDarkTheme,
+  selectIsLightTheme,
   selectLocalization,
 };

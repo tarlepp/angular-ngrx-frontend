@@ -14,6 +14,7 @@ application.
 
 * [Custom commands](COMMANDS.md)
 * [Concepts and features](CONCEPTS_AND_FEATURES.md)
+* [Dependency update](DEPENDENCY_UPDATE.md)
 * [Speed problems with application?](SPEED_UP_DOCKER_COMPOSE.md)
 * [Tools](TOOLS.md)
 * [Translations](TRANSLATIONS.md)

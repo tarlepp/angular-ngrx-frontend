@@ -129,15 +129,14 @@ export class LayoutEffects {
   private scrollToEffect$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
     (): Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollTo),
-      pluck('anchor'),
-      tap((anchor: string): void => {
+      tap((payload: { anchor: string; instant?: boolean }): void => {
         setTimeout((): void => {
-          const element = document.querySelector(anchor);
+          const element = document.querySelector(payload.anchor);
 
           if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({ behavior: payload.instant ? 'auto' : 'smooth' });
           }
-        });
+        }, 0);
       }),
       map((): TypedAction<LayoutType.CLEAR_SCROLL_TO> => layoutActions.clearScrollTo()),
     ),

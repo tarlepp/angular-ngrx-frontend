@@ -37,7 +37,7 @@ import { LayoutType } from 'src/app/store/store.types';
 const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language: Language }>());
 const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
-const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string }>());
+const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string; instant?: boolean }>());
 const changeTheme = createAction(LayoutType.CHANGE_THEME, props<{ theme: Theme }>());
 
 /**

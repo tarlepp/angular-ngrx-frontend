@@ -48,19 +48,19 @@ export class AuthenticationService {
           take(1),
           map((response: unknown): CredentialsResponseInterface => response as CredentialsResponseInterface),
         )
-        .subscribe(
-          (token: CredentialsResponseInterface): void => {
+        .subscribe({
+          next: (token: CredentialsResponseInterface): void => {
             this.localStorage.store('token', token.token);
 
             observer.next(this.getUserData(token.token));
           },
-          (error: ServerErrorInterface): void => {
+          error: (error: ServerErrorInterface): void => {
             this.localStorage.clear('token');
 
             observer.error(error);
           },
-          (): void => observer.complete(),
-        );
+          complete: (): void => observer.complete(),
+        });
     });
   }
 
@@ -83,11 +83,11 @@ export class AuthenticationService {
           take(1),
           map((response: unknown): UserProfileInterface => response as UserProfileInterface),
         )
-        .subscribe(
-          (profile: UserProfileInterface): void => observer.next(profile),
-          (error: ServerErrorInterface): void => observer.error(error),
-          (): void => observer.complete(),
-        );
+        .subscribe({
+          next: (profile: UserProfileInterface): void => observer.next(profile),
+          error: (error: ServerErrorInterface): void => observer.error(error),
+          complete: (): void => observer.complete(),
+        });
     });
   }
 

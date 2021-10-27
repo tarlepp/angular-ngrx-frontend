@@ -9,6 +9,7 @@ export enum LayoutType {
   SCROLL_TO           = '[Layout] Scroll to anchor',
   SCROLL_TO_TOP       = '[Layout] Scroll to top of the page',
   CLEAR_SCROLL_TO     = '[Layout] Clear scroll to',
+  SNACKBAR_MESSAGE    = '[Layout] Show snackbar message',
 }
 
 export type LocalizationTypes =

@@ -29,7 +29,7 @@ export class SnackbarService {
   /**
    * Method to create plain snackbar message with specified content. MatSnackBarRef<TextOnlySnackBar>
    */
-  public message(message: string, duration: number = 6000, params?: Object): Promise<AppMessageSnackBarType> {
+  public message(message: string, duration: number = 6000, params?: unknown|any): Promise<AppMessageSnackBarType> {
     return new Promise<AppMessageSnackBarType>(
       (resolve: (value: AppMessageSnackBarType|PromiseLike<AppMessageSnackBarType>) => void): void => {
         const config: MatSnackBarConfig = {

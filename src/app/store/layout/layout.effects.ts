@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
-import { noop, Observable, switchMap } from 'rxjs';
+import { noop, Observable } from 'rxjs';
 import { map, mergeMap, pluck, tap } from 'rxjs/operators';
 
 import { Language, Locale, Theme } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { layoutActions, LayoutType, LocalizationTypes } from 'src/app/store';
 import { SnackbarService } from 'src/app/shared/services';
-import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { layoutActions, LayoutType, LocalizationTypes } from 'src/app/store';
 
 @Injectable()
 export class LayoutEffects {
@@ -174,12 +174,12 @@ export class LayoutEffects {
   private snackbarMessageEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.snackbarMessage),
-      tap((payload: { message: string; duration?: number, params?: Object }): Promise<MatSnackBarRef<SimpleSnackBar>> =>
+      tap((payload: { message: string; duration?: number; params?: unknown }): Promise<MatSnackBarRef<SimpleSnackBar>> =>
         this.snackbarService.message(payload.message, payload.duration, payload.params).finally(),
       ),
-      map((): void => noop())
+      map((): void => noop()),
     ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   /**

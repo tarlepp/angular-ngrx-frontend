@@ -59,9 +59,7 @@
         padding-top: #{$size} !important;
         padding-bottom: #{$size} !important;
       }
-    }
-
-    @else {
+    } @else {
       .margin-#{$orientation}#{$size-name} {
         margin-right: #{$size} !important;
         margin-left: #{$size} !important;
@@ -89,9 +87,7 @@
       padding-top: 0 !important;
       padding-bottom: 0 !important;
     }
-  }
-
-  @else {
+  } @else {
     .no-margin-#{$orientation} {
       margin-right: 0 !important;
       margin-left: 0 !important;

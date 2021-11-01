@@ -25,9 +25,9 @@ export class AuthenticationService {
    * within this component and initialize needed properties.
    */
   public constructor(
-    private http: HttpClient,
-    private localStorage: LocalStorageService,
-    private jwtHelper: JwtHelperService,
+    private readonly http: HttpClient,
+    private readonly localStorage: LocalStorageService,
+    private readonly jwtHelper: JwtHelperService,
   ) {
     this.userData$ = new BehaviorSubject<UserDataInterface|null>(null);
   }

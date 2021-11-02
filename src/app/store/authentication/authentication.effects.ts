@@ -149,9 +149,10 @@ export class AuthenticationEffects {
    * within this component and initialize needed properties.
    */
   public constructor(
-    private actions$: Actions,
-    private router: Router,
-    private authService: AuthenticationService,
-    private snackbarService: SnackbarService,
-  ) { }
+    private readonly actions$: Actions,
+    private readonly router: Router,
+    private readonly authService: AuthenticationService,
+    private readonly snackbarService: SnackbarService,
+  ) {
+  }
 }

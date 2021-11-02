@@ -15,18 +15,21 @@ import { authenticationActions, authenticationSelectors } from 'src/app/store';
 export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('loginFormElement') public loginFormElement!: NgForm;
 
-  public loginForm: FormGroup;
+  public readonly loginForm: FormGroup;
   public loading: boolean;
   public focus: boolean;
 
-  private subscriptions: Subscription;
+  private readonly subscriptions: Subscription;
   private isError: boolean;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private formBuilder: FormBuilder, private store: Store) {
+  public constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly store: Store,
+  ) {
     this.loading = false;
     this.focus = true;
     this.subscriptions = new Subscription();

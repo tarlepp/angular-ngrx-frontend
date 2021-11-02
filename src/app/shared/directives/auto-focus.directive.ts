@@ -11,7 +11,9 @@ export class AutoFocusDirective implements OnChanges {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private hostElement: ElementRef) {
+  public constructor(
+    private readonly hostElement: ElementRef,
+  ) {
     this.appAutoFocus = false;
   }
 

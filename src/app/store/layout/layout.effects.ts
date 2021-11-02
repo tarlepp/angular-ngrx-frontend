@@ -168,6 +168,9 @@ export class LayoutEffects {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private actions$: Actions, private translateService: TranslateService) {
+  public constructor(
+    private readonly actions$: Actions,
+    private readonly translateService: TranslateService,
+  ) {
   }
 }

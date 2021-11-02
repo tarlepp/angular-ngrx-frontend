@@ -14,17 +14,19 @@ type AppMessageSnackBarType = MatSnackBarRef<SimpleSnackBar>;
 
 @Injectable()
 export class SnackbarService {
-  private closeButtonTag: string = marker('snackbar.close-button');
+  private readonly closeButtonTag: string;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
   public constructor(
-    private snackBar: MatSnackBar,
-    private translateService: TranslateService,
-    private store: Store,
-  ) { }
+    private readonly snackBar: MatSnackBar,
+    private readonly translateService: TranslateService,
+    private readonly store: Store,
+  ) {
+    this.closeButtonTag = marker('snackbar.close-button');
+  }
 
   /**
    * Method to create plain snackbar message with specified content. MatSnackBarRef<TextOnlySnackBar>

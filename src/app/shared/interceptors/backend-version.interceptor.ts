@@ -13,7 +13,10 @@ export class BackendVersionInterceptor implements HttpInterceptor {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store) { }
+  public constructor(
+    private readonly store: Store,
+  ) {
+  }
 
   /**
    * Backend version interceptor which purpose is to update backend version

@@ -13,7 +13,10 @@ export class AuthenticationGuard extends BaseAuth implements CanActivate, CanAct
    * Constructor of the class, where we DI all services that we need to use
    * within this guard.
    */
-  public constructor(protected router: Router, protected authenticationService: AuthenticationService) {
+  public constructor(
+    protected readonly router: Router,
+    protected readonly authenticationService: AuthenticationService,
+  ) {
     super(router, authenticationService);
   }
 

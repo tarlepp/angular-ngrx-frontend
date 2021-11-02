@@ -34,5 +34,9 @@ export class ErrorEffects {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private actions$: Actions, private snackbarService: SnackbarService) { }
+  public constructor(
+    private readonly actions$: Actions,
+    private readonly snackbarService: SnackbarService,
+  ) {
+  }
 }

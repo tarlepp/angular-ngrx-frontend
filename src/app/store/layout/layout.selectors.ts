@@ -2,8 +2,8 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
-import { LayoutState } from 'src/app/store';
 import { selectBooleanValue, selectStringValue } from 'src/app/shared/utils';
+import { LayoutState } from 'src/app/store';
 
 /**
  * Selectors for `LayoutState` store.

@@ -1,7 +1,7 @@
 {
   "extends": [
     "stylelint-config-sass-guidelines",
-    "stylelint-config-angular-material"
+    "stylelint-config-standard-scss"
   ],
   "plugins": [
     "stylelint-scss"
@@ -66,7 +66,10 @@
         ]
       }
     ],
-    "declaration-property-unit-whitelist": null,
+    "alpha-value-notation": "number",
+    "color-function-notation": "legacy",
+    "number-leading-zero": "never",
+    "function-parentheses-space-inside": "never-single-line",
     "no-empty-source": null,
     "selector-class-pattern": null,
     "selector-max-type": null,

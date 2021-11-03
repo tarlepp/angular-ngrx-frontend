@@ -31,7 +31,7 @@ export class SnackbarService {
   /**
    * Method to create plain snackbar message with specified content. MatSnackBarRef<TextOnlySnackBar>
    */
-  public message(message: string, duration: number = 6000): Promise<AppMessageSnackBarType> {
+  public message(message: string, duration: number = 6000, params?: unknown|any): Promise<AppMessageSnackBarType> {
     return new Promise<AppMessageSnackBarType>(
       (resolve: (value: AppMessageSnackBarType|PromiseLike<AppMessageSnackBarType>) => void): void => {
         const config: MatSnackBarConfig = {
@@ -40,7 +40,7 @@ export class SnackbarService {
         };
 
         this.translateService
-          .get([message, this.closeButtonTag])
+          .get([message, this.closeButtonTag], params)
           .pipe(take(1))
           .subscribe((texts: DictionaryInterface<string>): void =>
             resolve(this.snackBar.open(texts[message], texts[this.closeButtonTag], config)),

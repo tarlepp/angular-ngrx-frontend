@@ -91,7 +91,7 @@
     "karma-jasmine": "4.0.1",
     "karma-jasmine-html-reporter": "1.7.0",
     "protractor": "7.0.0",
-    "snyk": "1.749.0",
+    "snyk": "1.750.0",
     "stylelint": "14.0.1",
     "stylelint-config-sass-guidelines": "9.0.1",
     "stylelint-config-standard-scss": "2.0.0",

@@ -40,50 +40,53 @@ $custom-typography: mat.define-typography-config(
 @include mat.core($custom-typography);
 
 // Define the used palettes by application specified palette configuration
-$palette-primary: mat.define-palette($app-palette-primary, 500);
-$palette-accent: mat.define-palette($app-palette-accent);
-$palette-warn: mat.define-palette($app-palette-warn);
+$light-palette-primary: mat.define-palette($app-palette-primary, $light-hue-primary);
+$light-palette-accent: mat.define-palette($app-palette-accent, $light-hue-accent);
+$light-palette-warn: mat.define-palette($app-palette-warn, $light-hue-warn);
+$dark-palette-primary: mat.define-palette($app-palette-primary, $dark-hue-primary);
+$dark-palette-accent: mat.define-palette($app-palette-accent, $dark-hue-accent);
+$dark-palette-warn: mat.define-palette($app-palette-warn, $dark-hue-warn);
 
 // Background palette for light themes.
-$mat-light-theme-background: (
-  status-bar: map-get($app-palette-grey, 300),
-  app-bar: map-get($app-palette-grey, 100),
-  background: map-get($app-palette-grey, 50),
+$light-theme-background: (
+  status-bar: mat.get-color-from-palette($app-palette-grey, 300),
+  app-bar: mat.get-color-from-palette($app-palette-grey, 100),
+  background: mat.get-color-from-palette($app-palette-grey, 50),
   hover: rgba(black, .04), // TODO(kara): check style with Material Design UX
   card: white,
   dialog: white,
   disabled-button: rgba(black, .12),
   raised-button: white,
   focused-button: rgba(black, .12),
-  selected-button: map-get($app-palette-grey, 300),
-  selected-disabled-button: map-get($app-palette-grey, 400),
-  disabled-button-toggle: map-get($app-palette-grey, 200),
-  unselected-chip: map-get($app-palette-grey, 300),
-  disabled-list-option: map-get($app-palette-grey, 200),
-  tooltip: map-get($app-palette-grey, 700),
+  selected-button: mat.get-color-from-palette($app-palette-grey, 300),
+  selected-disabled-button: mat.get-color-from-palette($app-palette-grey, 400),
+  disabled-button-toggle: mat.get-color-from-palette($app-palette-grey, 200),
+  unselected-chip: mat.get-color-from-palette($app-palette-grey, 300),
+  disabled-list-option: mat.get-color-from-palette($app-palette-grey, 200),
+  tooltip: mat.get-color-from-palette($app-palette-grey, 700),
 );
 
 // Background palette for dark themes.
-$mat-dark-theme-background: (
+$dark-theme-background: (
   status-bar: black,
-  app-bar: map-get($app-palette-grey, 800),
-  background: map-get($app-palette-grey, 600),
+  app-bar: mat.get-color-from-palette($app-palette-grey, 800),
+  background: mat.get-color-from-palette($app-palette-grey, 600),
   hover: rgba(white, .04), // TODO(kara): check style with Material Design UX
-  card: map-get($app-palette-grey, 500),
-  dialog: map-get($app-palette-grey, 800),
+  card: mat.get-color-from-palette($app-palette-grey, 500),
+  dialog: mat.get-color-from-palette($app-palette-grey, 800),
   disabled-button: rgba(white, .12),
-  raised-button: map-get($app-palette-grey, 800),
+  raised-button: mat.get-color-from-palette($app-palette-grey, 800),
   focused-button: rgba(white, .12),
-  selected-button: map-get($app-palette-grey, 900),
-  selected-disabled-button: map-get($app-palette-grey, 800),
+  selected-button: mat.get-color-from-palette($app-palette-grey, 900),
+  selected-disabled-button: mat.get-color-from-palette($app-palette-grey, 800),
   disabled-button-toggle: black,
-  unselected-chip: map-get($app-palette-grey, 700),
+  unselected-chip: mat.get-color-from-palette($app-palette-grey, 700),
   disabled-list-option: black,
-  tooltip: map-get($app-palette-grey, 700),
+  tooltip: mat.get-color-from-palette($app-palette-grey, 700),
 );
 
 // Foreground (for texts) palette for light themes.
-$mat-light-theme-foreground: (
+$light-theme-foreground: (
   base: black,
   divider: rgba(black, .12),
   dividers: rgba(black, .12),
@@ -102,7 +105,7 @@ $mat-light-theme-foreground: (
 );
 
 // Foreground (for texts) palette for dark themes.
-$mat-dark-theme-foreground: (
+$dark-theme-foreground: (
   base: white,
   divider: rgba(white, .12),
   dividers: rgba(white, .12),
@@ -120,20 +123,22 @@ $mat-dark-theme-foreground: (
   slider-off-active: rgba(white, .38),
 );
 
+// Light theme base definition
 $light-theme: (
-  primary: $palette-primary,
-  accent: $palette-accent,
-  warn: $palette-warn,
+  primary: $light-palette-primary,
+  accent: $light-palette-accent,
+  warn: $light-palette-warn,
   is-dark: false,
-  foreground: $mat-light-theme-foreground,
-  background: $mat-light-theme-background,
+  foreground: $light-theme-foreground,
+  background: $light-theme-background,
 );
 
+// Dark theme base definition
 $dark-theme: (
-  primary: $palette-primary,
-  accent: $palette-accent,
-  warn: $palette-warn,
+  primary: $dark-palette-primary,
+  accent: $dark-palette-accent,
+  warn: $dark-palette-warn,
   is-dark: true,
-  foreground: $mat-dark-theme-foreground,
-  background: $mat-dark-theme-background,
+  foreground: $dark-theme-foreground,
+  background: $dark-theme-background,
 );

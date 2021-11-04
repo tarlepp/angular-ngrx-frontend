@@ -37,8 +37,8 @@ import { LayoutType } from 'src/app/store/store.types';
 const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language: Language }>());
 const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
-const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string }>());
 const changeTheme = createAction(LayoutType.CHANGE_THEME, props<{ theme: Theme }>());
+const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string; instant?: boolean }>());
 
 /**
  * Action to trigger browser to scroll to top of the page. This action is
@@ -48,6 +48,11 @@ const scrollToTop = createAction(LayoutType.SCROLL_TO_TOP);
 
 // Action to trigger `language`, `locale` and `timezone` change in application
 const updateLocalization = createAction(LayoutType.UPDATE_LOCALIZATION, props<{ localization: LocalizationInterface }>());
+
+const snackbarMessage = createAction(
+  LayoutType.SNACKBAR_MESSAGE,
+  props<{ message: string; duration?: number; params?: any }>(),
+);
 
 /**
  * Action to change viewport - This is to be used only in our application
@@ -69,10 +74,11 @@ export const layoutActions = {
   changeLanguage,
   changeLocale,
   changeTimezone,
-  updateLocalization,
-  changeViewport,
-  scrollTo,
   changeTheme,
+  scrollTo,
   scrollToTop,
+  updateLocalization,
+  snackbarMessage,
   clearScrollTo,
+  changeViewport,
 };

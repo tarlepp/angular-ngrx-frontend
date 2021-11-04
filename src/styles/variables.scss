@@ -1,8 +1,8 @@
 @use 'sass:math';
 
 // Base font families
-$font-family: Roboto, 'Helvetica Neue', sans-serif;
-$font-family-monospace: Monaco, monospace;
+$font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+$font-family-monospace: 'Monaco', monospace;
 
 // Paddings & Margins
 $spacing: 32px;
@@ -67,3 +67,11 @@ $header-height: 64px;
 // Animations
 $interval: .4s;
 $interval-short: math.div($interval, 2);
+
+// Used hue definitions
+$light-hue-primary: 500;
+$light-hue-accent: 500;
+$light-hue-warn: 500;
+$dark-hue-primary: 500;
+$dark-hue-accent: 500;
+$dark-hue-warn: 500;

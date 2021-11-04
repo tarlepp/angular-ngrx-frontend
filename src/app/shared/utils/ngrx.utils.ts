@@ -1,4 +1,4 @@
-import { MemoizedSelector, createSelector } from '@ngrx/store';
+import { createSelector, MemoizedSelector } from '@ngrx/store';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { IsLoadingAwareState, ServerErrorAwareState } from 'src/app/store/aware-states';
@@ -14,11 +14,11 @@ import { IsLoadingAwareState, ServerErrorAwareState } from 'src/app/store/aware-
 // Helper selector for `IsLoadingAwareState` store features `isLoading` information
 // TODO try to avoid that `any` type with this...
 export const selectIsLoadingAwareState =
-  (selector: MemoizedSelector<any, any>): MemoizedSelector<any, boolean> =>
+  (selector: MemoizedSelector<IsLoadingAwareState, any>): MemoizedSelector<any, boolean> =>
     createSelector(selector, (state: IsLoadingAwareState): boolean => state.isLoading);
 
 // Helper selector for `ServerErrorAwareState` store features `error` information
 // TODO try to avoid that `any` type with this...
 export const selectServerErrorAwareState =
-  (selector: MemoizedSelector<any, any>): MemoizedSelector<any, ServerErrorInterface|null> =>
+  (selector: MemoizedSelector<ServerErrorAwareState, any>): MemoizedSelector<any, ServerErrorInterface|null> =>
     createSelector(selector, (state: ServerErrorAwareState): ServerErrorInterface|null => state.error);

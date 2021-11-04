@@ -15,7 +15,10 @@ export class ErrorInterceptor implements HttpInterceptor {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private router: Router, private store: Store) { }
+  public constructor(
+    private readonly router: Router,
+    private readonly store: Store,
+  ) { }
 
   /**
    * Interceptor to handle possible HTTP errors from backend. Within this
@@ -36,12 +39,16 @@ export class ErrorInterceptor implements HttpInterceptor {
     return delegate
       .handle(modified)
       .pipe(
-        tap(noop, (error: HttpErrorResponse): void => this.handle(modified, error)),
-        catchError((error: any): Observable<never> => {
+        tap({
+          next: noop,
+          error: (error: HttpErrorResponse): void => this.handle(modified, error),
+        }),
+        catchError((error: HttpErrorResponse): Observable<never> => {
           let payload = error;
 
           if (error && error.hasOwnProperty('error') && error.status === 0) {
             payload = {
+              ...error,
               error: {
                 code: 0,
                 message: error.message || `Unknown error - ${error.toString()}`,
@@ -51,7 +58,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             };
           }
 
-          return throwError(payload);
+          return throwError(() => payload);
         }),
       );
   }

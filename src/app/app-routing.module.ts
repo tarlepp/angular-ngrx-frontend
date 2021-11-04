@@ -19,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: (): any => import('src/app/auth/auth.module').then((m: any): AuthModule => m.AuthModule),
+    loadChildren: (): Promise<AuthModule> =>
+      import('src/app/auth/auth.module').then((module: typeof import('src/app/auth/auth.module')): AuthModule => module.AuthModule),
   },
   {
     path: '**',

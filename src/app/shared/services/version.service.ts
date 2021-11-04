@@ -12,7 +12,10 @@ export class VersionService {
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private http: HttpClient) { }
+  public constructor(
+    private readonly httpClient: HttpClient,
+  ) {
+  }
 
   /**
    * Method to fetch frontend side version information from static JSON file
@@ -25,15 +28,15 @@ export class VersionService {
     const ts = Math.round((new Date()).getTime() / 1000);
 
     return new Observable((observer: Observer<string>): void => {
-      this.http
+      this.httpClient
         .get(`/assets/version.json?t=${ ts }`)
         .pipe(take(1))
-        .subscribe(
-          (data: VersionInterface|any): void => observer.next(data.version),
-          (error: ServerErrorInterface): void => observer.error(error),
-          (): void => observer.complete(),
-        );
-      });
+        .subscribe({
+          next: (data: VersionInterface|any): void => observer.next(data.version),
+          error: (error: ServerErrorInterface): void => observer.error(error),
+          complete: (): void => observer.complete(),
+        });
+    });
   }
 
   /**
@@ -47,14 +50,14 @@ export class VersionService {
     const ts = Math.round((new Date()).getTime() / 1000);
 
     return new Observable((observer: Observer<string>): void => {
-      this.http
-      .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ ts }`)
-      .pipe(take(1))
-      .subscribe(
-        (data: VersionInterface|any): void => observer.next(data.version),
-        (error: ServerErrorInterface): void => observer.error(error),
-        (): void => observer.complete(),
-      );
+      this.httpClient
+        .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ ts }`)
+        .pipe(take(1))
+        .subscribe({
+          next: (data: VersionInterface|any): void => observer.next(data.version),
+          error: (error: ServerErrorInterface): void => observer.error(error),
+          complete: (): void => observer.complete(),
+        });
     });
   }
 }

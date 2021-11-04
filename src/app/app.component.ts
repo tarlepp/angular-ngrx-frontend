@@ -21,17 +21,17 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
 export class AppComponent implements OnInit, OnDestroy {
   private loggedIn: boolean;
   private tokenInterval: number;
-  private subscription: Subscription;
+  private readonly subscription: Subscription;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
   public constructor(
-    private localStorage: LocalStorageService,
-    private mediaObserver: MediaObserver,
-    private store: Store,
-    private authenticationService: AuthenticationService,
+    private readonly localStorage: LocalStorageService,
+    private readonly mediaObserver: MediaObserver,
+    private readonly store: Store,
+    private readonly authenticationService: AuthenticationService,
   ) {
     this.loggedIn = false;
     this.tokenInterval = 0;
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
      */
     this.subscription.add(this.localStorage
       .observe('token')
-      .pipe(filter((value: any): boolean => value !== undefined))
+      .pipe(filter((value: string|undefined): boolean => value !== undefined))
       .subscribe((): void => this.setTokenInterval()),
     );
 

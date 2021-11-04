@@ -17,26 +17,30 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
-  @ViewChild('userMenu') private userMenu!: MatMenuTrigger;
+  @ViewChild('userMenu') private readonly userMenu!: MatMenuTrigger;
 
   public profile: UserProfileInterface|null;
   public languages: Array<Language>;
   public currentLanguage: Language;
-  public loading$: Observable<boolean>;
+  public readonly loading$: Observable<boolean>;
 
-  private subscriptions: Subscription;
+  private readonly subscriptions: Subscription;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store) {
-    this.loading$ = this.store.select(authenticationSelectors.selectIsLoading);
+  public constructor(
+    private readonly store: Store,
+  ) {
     this.profile = null;
+    this.languages = languages;
     this.currentLanguage = Language.DEFAULT;
+
+    this.loading$ = this.store.select(authenticationSelectors.selectIsLoading);
+
     this.subscriptions = new Subscription();
 
-    this.languages = languages;
 
     // Note that if you add new language, you need to define it's text tag here
     marker([

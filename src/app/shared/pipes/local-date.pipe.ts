@@ -29,13 +29,15 @@ export class LocalDatePipe implements PipeTransform, OnDestroy {
   private cachedLocale: Locale;
   private cachedTimezone: string;
   private cachedOutput: string|null;
-  private subscriptions: Subscription;
+  private readonly subscriptions: Subscription;
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(private store: Store) {
+  public constructor(
+    private readonly store: Store,
+  ) {
     this.locale = Locale.DEFAULT;
     this.timezone = 'Europe/Helsinki';
     this.cachedLocale = Locale.DEFAULT;

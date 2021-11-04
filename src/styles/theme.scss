@@ -5,7 +5,7 @@
  *  - https://material.angular.io/guide/theming
  *  - https://materialtheme.arcsine.dev/
  */
-@use '~@angular/material' as mat;
+@use '@angular/material' as mat;
 
 // Application specified styles for theming
 @import '~src/styles/palettes/app-palette-accent';

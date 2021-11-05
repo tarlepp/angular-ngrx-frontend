@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import { Role } from 'src/app/auth/enums';
 import { RoleGuardMetaDataInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
-import { selectIsLoadingAwareState, selectServerErrorAwareState } from 'src/app/shared/utils';
+import { selectBooleanValue, selectServerErrorValue } from 'src/app/shared/utils';
 import { AuthenticationState } from 'src/app/store';
 
 /**
@@ -24,7 +24,7 @@ import { AuthenticationState } from 'src/app/store';
 const selectFeature = createFeatureSelector<AuthenticationState>('authentication');
 
 // Common selectors for this store
-const selectIsLoggedIn = createSelector(selectFeature, (state: AuthenticationState): boolean => state.isLoggedIn);
+const selectIsLoggedIn = selectBooleanValue(selectFeature, 'isLoggedInd');
 const selectProfile = createSelector(selectFeature, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const selectRoles = createSelector(selectFeature, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
 const selectUserData = createSelector(selectFeature, (state: AuthenticationState): UserDataInterface|null => state.userData);
@@ -42,8 +42,8 @@ const selectHasSomeRole = (haystack: Array<Role|string>): MemoizedSelector<any, 
 );
 
 // Aware state selectors
-const selectIsLoading = selectIsLoadingAwareState(selectFeature);
-const selectError = selectServerErrorAwareState(selectFeature);
+const selectIsLoading = selectBooleanValue(selectFeature, 'isLoading');
+const selectError = selectServerErrorValue(selectFeature, 'error');
 
 // Filtered error selector - this will always return `ServerErrorInterface`
 const selectFilteredError = pipe(
@@ -65,10 +65,10 @@ const selectRoleGuard = (role: Role, metaData: RoleGuardMetaDataInterface, route
   createSelector(
     selectIsLoggedIn,
     selectRoles,
-    (loggedIn: boolean, userRoles: Array<Role>): boolean|UrlTree => {
+    (isLoggedIn: boolean, userRoles: Array<Role>): boolean|UrlTree => {
       let output;
 
-      if (!loggedIn) {
+      if (!isLoggedIn) {
         output = metaData.redirect ? router.parseUrl(metaData.routeNotLoggedIn) : false;
       } else if (!userRoles.includes(role)) {
         output = metaData.redirect ? router.parseUrl(metaData.routeNoRole) : false;

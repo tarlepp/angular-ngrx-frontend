@@ -2,6 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { selectBooleanValue, selectStringValue } from 'src/app/shared/utils';
 import { LayoutState } from 'src/app/store';
 
 /**
@@ -22,12 +23,12 @@ const selectFeature = createFeatureSelector<LayoutState>('layout');
 const selectTheme = createSelector(selectFeature, (state: LayoutState): Theme => state.theme);
 const selectLanguage = createSelector(selectFeature, (state: LayoutState): Language => state.language);
 const selectLocale = createSelector(selectFeature, (state: LayoutState): Locale => state.locale);
-const selectTimezone = createSelector(selectFeature, (state: LayoutState): string => state.timezone);
+const selectTimezone = selectStringValue(selectFeature, 'timezone');
 const selectViewport = createSelector(selectFeature, (state: LayoutState): Viewport => state.viewport);
 const selectDevice = createSelector(selectFeature, (state: LayoutState): Device => state.device);
-const selectIsMobile = createSelector(selectFeature, (state: LayoutState): boolean => state.isMobile);
-const selectIsTablet = createSelector(selectFeature, (state: LayoutState): boolean => state.isTablet);
-const selectIsDesktop = createSelector(selectFeature, (state: LayoutState): boolean => state.isDesktop);
+const selectIsMobile = selectBooleanValue(selectFeature, 'isMobile');
+const selectIsTablet = selectBooleanValue(selectFeature, 'isTablet');
+const selectIsDesktop = selectBooleanValue(selectFeature, 'isDesktop');
 const selectIsDefaultTheme = createSelector(selectTheme, (theme: Theme): boolean => theme === Theme.DEFAULT);
 const selectIsDarkTheme = createSelector(selectTheme, (theme: Theme): boolean => theme === Theme.DARK);
 const selectIsLightTheme = createSelector(selectTheme, (theme: Theme): boolean => theme === Theme.LIGHT);

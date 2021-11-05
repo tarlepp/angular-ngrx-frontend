@@ -24,7 +24,7 @@ import { AuthenticationState } from 'src/app/store';
 const selectFeature = createFeatureSelector<AuthenticationState>('authentication');
 
 // Common selectors for this store
-const selectIsLoggedIn = selectBooleanValue(selectFeature, 'isLoggedInd');
+const selectIsLoggedIn = selectBooleanValue(selectFeature, 'isLoggedIn');
 const selectProfile = createSelector(selectFeature, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const selectRoles = createSelector(selectFeature, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
 const selectUserData = createSelector(selectFeature, (state: AuthenticationState): UserDataInterface|null => state.userData);

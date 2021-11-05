@@ -39,11 +39,11 @@ need to check proper instructions from official [Angular Update Guide](https://u
 
 ## Other updates [ᐞ](#table-of-contents)
 
-For time to time you need to update [browserslist](https://browserslist.dev/)
-database. You can do this with following command;
+For time to time it's a good idea to update library dependencies as well. You
+can do that with following command - that will update `yarn.lock` file.
 
 ```bash
-npx browserslist@latest --update-db
+yarn upgrade
 ```
 
 ## External links and resources [ᐞ](#table-of-contents)

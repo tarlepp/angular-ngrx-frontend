@@ -14,7 +14,10 @@ export class RoleRootGuard extends BaseRole implements CanActivate, CanActivateC
    * Constructor of the class, where we DI all services that we need to use
    * within this guard.
    */
-  public constructor(protected router: Router, protected store: Store) {
+  public constructor(
+    protected readonly router: Router,
+    protected readonly store: Store,
+  ) {
     super(router, store);
   }
 

@@ -38,6 +38,7 @@ const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language
 const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
 const changeTheme = createAction(LayoutType.CHANGE_THEME, props<{ theme: Theme }>());
+const setLanguage = createAction(LayoutType.SET_LANGUAGE, props<{ language: Language }>());
 const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string; instant?: boolean }>());
 
 /**
@@ -75,6 +76,7 @@ export const layoutActions = {
   changeLocale,
   changeTimezone,
   changeTheme,
+  setLanguage,
   scrollTo,
   scrollToTop,
   updateLocalization,

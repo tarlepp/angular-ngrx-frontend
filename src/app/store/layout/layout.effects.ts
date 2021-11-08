@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
-import { noop, Observable } from 'rxjs';
+import { noop, Observable, switchMap } from 'rxjs';
 import { map, mergeMap, pluck, tap } from 'rxjs/operators';
 
 import { Language, Locale, Theme } from 'src/app/shared/enums';
@@ -41,22 +42,22 @@ export class LayoutEffects {
   /**
    * NgRx effect for `layoutActions.changeLanguage` action, which will do
    * following jobs;
-   *  1) Change the language within translate service, this will trigger
+   *  1) Change HTML element `lang` attribute to match new language.
+   *  2) Change the language within translate service, this will trigger
    *     application to change all translations to match this new language.
-   *  2) Store new language to local storage, so that if user refresh the
-   *     page he/she will get the same language that he/she earlier chose.
-   *
-   * Within this effect we won't dispatch any other store actions.
+   *  3) Dispatch new action to actually set language to layout feature store
+   *     after language is loaded to application.
    */
-  private changeLanguageEffect$: Observable<void> = createEffect(
-    (): Observable<void> => this.actions$.pipe(
+  private changeLanguageEffect$: Observable<TypedAction<LayoutType.SET_LANGUAGE>> = createEffect(
+    (): Observable<TypedAction<LayoutType.SET_LANGUAGE>> => this.actions$.pipe(
       ofType(layoutActions.changeLanguage),
       pluck('language'),
-      map((language: Language): void => {
-        this.translateService.use(language);
-      }),
+      tap((language: Language): Language => this.document.documentElement.lang = language),
+      switchMap((language: Language): Observable<Record<string, unknown>> => this.translateService.use(language)),
+      map((): TypedAction<LayoutType.SET_LANGUAGE> =>
+        layoutActions.setLanguage({ language: this.translateService.currentLang as Language}),
+      ),
     ),
-    { dispatch: false },
   );
 
   // noinspection JSUnusedLocalSymbols
@@ -133,7 +134,7 @@ export class LayoutEffects {
       ofType(layoutActions.scrollTo),
       tap((payload: { anchor: string; instant?: boolean }): void => {
         setTimeout((): void => {
-          const element = document.querySelector(payload.anchor);
+          const element = this.document.querySelector(payload.anchor);
 
           if (element) {
             element.scrollIntoView({ behavior: payload.instant ? 'auto' : 'smooth' });
@@ -155,7 +156,7 @@ export class LayoutEffects {
       ofType(layoutActions.changeTheme),
       pluck('theme'),
       map((theme: Theme): void => {
-        const body = document.getElementsByTagName('body')[0];
+        const body = this.document.getElementsByTagName('body')[0];
 
         if (!body.classList.contains(theme)) {
           body.classList.remove(theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
@@ -187,6 +188,7 @@ export class LayoutEffects {
    * within this component and initialize needed properties.
    */
   public constructor(
+    @Inject(DOCUMENT) private readonly document: Document,
     private readonly actions$: Actions,
     private readonly translateService: TranslateService,
     private readonly snackbarService: SnackbarService,

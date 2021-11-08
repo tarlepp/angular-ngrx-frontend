@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
-import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { DictionaryInterface, LocalizationInterface } from 'src/app/shared/interfaces';
 import { LayoutType } from 'src/app/store/store.types';
 
 /**
@@ -51,7 +51,7 @@ const updateLocalization = createAction(LayoutType.UPDATE_LOCALIZATION, props<{ 
 
 const snackbarMessage = createAction(
   LayoutType.SNACKBAR_MESSAGE,
-  props<{ message: string; duration?: number; params?: any }>(),
+  props<{ message: string; duration?: number; params?: DictionaryInterface<string> }>(),
 );
 
 /**

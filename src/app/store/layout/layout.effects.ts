@@ -8,7 +8,7 @@ import { noop, Observable } from 'rxjs';
 import { map, mergeMap, pluck, tap } from 'rxjs/operators';
 
 import { Language, Locale, Theme } from 'src/app/shared/enums';
-import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { DictionaryInterface, LocalizationInterface } from 'src/app/shared/interfaces';
 import { SnackbarService } from 'src/app/shared/services';
 import { layoutActions, LayoutType, LocalizationTypes } from 'src/app/store';
 
@@ -174,8 +174,9 @@ export class LayoutEffects {
   private snackbarMessageEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.snackbarMessage),
-      tap((payload: { message: string; duration?: number; params?: unknown }): Promise<MatSnackBarRef<SimpleSnackBar>> =>
-        this.snackbarService.message(payload.message, payload.duration, payload.params).finally(),
+      tap(
+        (payload: { message: string; duration?: number; params?: DictionaryInterface<string> }): Promise<MatSnackBarRef<SimpleSnackBar>> =>
+          this.snackbarService.message(payload.message, payload.duration, payload.params).finally(),
       ),
       map((): void => noop()),
     ),

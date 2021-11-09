@@ -24,19 +24,19 @@ import { AuthenticationState } from 'src/app/store';
 const selectFeature = createFeatureSelector<AuthenticationState>('authentication');
 
 // Common selectors for this store
-const selectIsLoggedIn = selectBooleanValue(selectFeature, 'isLoggedInd');
+const selectIsLoggedIn = selectBooleanValue(selectFeature, 'isLoggedIn');
 const selectProfile = createSelector(selectFeature, (state: AuthenticationState): UserProfileInterface|null => state.profile);
 const selectRoles = createSelector(selectFeature, (state: AuthenticationState): Array<Role> => state.userData?.roles || []);
 const selectUserData = createSelector(selectFeature, (state: AuthenticationState): UserDataInterface|null => state.userData);
-const selectHasRole = (role: Role|string): MemoizedSelector<any, boolean> => createSelector(
+const selectHasRole = (role: Role|string): MemoizedSelector<Partial<AuthenticationState>, boolean> => createSelector(
   selectRoles,
   (userRoles: Array<Role>): boolean => userRoles.includes(role as Role),
 );
-const selectHasRoles = (haystack: Array<Role|string>): MemoizedSelector<any, boolean> => createSelector(
+const selectHasRoles = (haystack: Array<Role|string>): MemoizedSelector<Partial<AuthenticationState>, boolean> => createSelector(
   selectRoles,
   (userRoles: Array<Role>): boolean => haystack.every((role: Role|string): boolean => userRoles.includes(role as Role)),
 );
-const selectHasSomeRole = (haystack: Array<Role|string>): MemoizedSelector<any, boolean> => createSelector(
+const selectHasSomeRole = (haystack: Array<Role|string>): MemoizedSelector<Partial<AuthenticationState>, boolean> => createSelector(
   selectRoles,
   (userRoles: Array<Role>): boolean => haystack.some((role: Role|string): boolean => userRoles.includes(role as Role)),
 );
@@ -61,24 +61,25 @@ const selectFilteredError = pipe(
  * This selector can return a boolean or UrlTree value according to given
  * metaData object. See `BaseRole` class for more information about this.
  */
-const selectRoleGuard = (role: Role, metaData: RoleGuardMetaDataInterface, router: Router): MemoizedSelector<any, boolean|UrlTree> =>
-  createSelector(
-    selectIsLoggedIn,
-    selectRoles,
-    (isLoggedIn: boolean, userRoles: Array<Role>): boolean|UrlTree => {
-      let output;
+const selectRoleGuard =
+  (role: Role, metaData: RoleGuardMetaDataInterface, router: Router): MemoizedSelector<Partial<AuthenticationState>, boolean|UrlTree> =>
+    createSelector(
+      selectIsLoggedIn,
+      selectRoles,
+      (isLoggedIn: boolean, userRoles: Array<Role>): boolean|UrlTree => {
+        let output;
 
-      if (!isLoggedIn) {
-        output = metaData.redirect ? router.parseUrl(metaData.routeNotLoggedIn) : false;
-      } else if (!userRoles.includes(role)) {
-        output = metaData.redirect ? router.parseUrl(metaData.routeNoRole) : false;
-      } else {
-        output = true;
-      }
+        if (!isLoggedIn) {
+          output = metaData.redirect ? router.parseUrl(metaData.routeNotLoggedIn) : false;
+        } else if (!userRoles.includes(role)) {
+          output = metaData.redirect ? router.parseUrl(metaData.routeNoRole) : false;
+        } else {
+          output = true;
+        }
 
-      return output;
-    },
-  );
+        return output;
+      },
+    );
 
 // Export all store selectors, so that those can be used easily.
 export const authenticationSelectors = {

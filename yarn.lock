@@ -1728,10 +1728,15 @@
   dependencies:
     moment "*"
 
-"@types/node@*", "@types/node@16.11.6", "@types/node@>=10.0.0":
+"@types/node@*", "@types/node@>=10.0.0":
   version "16.11.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.6.tgz#6bef7a2a0ad684cf6e90fcfe31cecabd9ce0a3ae"
   integrity sha512-ua7PgUoeQFjmWPcoo9khiPum3Pd60k4/2ZGXt18sm2Slk0W0xZTqt5Y0Ny1NyBiN1EVQ/+FaF9NcY4Qe6rwk5w==
+
+"@types/node@16.11.7":
+  version "16.11.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.7.tgz#36820945061326978c42a01e56b61cd223dfdc42"
+  integrity sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -7602,10 +7607,10 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-snyk@1.755.0:
-  version "1.755.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.755.0.tgz#14af42de5ecfa524b6f6f0063f22f388d221a262"
-  integrity sha512-+8gd+P9ZJM6mXBhRU6rEGDYo0RkPAyflPc9k21UUWQaXIB0K7c0Fpz+N2sIoQG6pUFxvG8JsmDU/DlVxsqQCHQ==
+snyk@1.759.0:
+  version "1.759.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.759.0.tgz#b6d2f9c82e9f4b582b718563b66f3f0cd813a6a4"
+  integrity sha512-E3RlhUeOBaKuJdj6ZscQZuy94wLw8OmrsQIQX71IfK0KssQVjTRguTeeTWitFYK4OjHAjILpAAftxAP4Bz00Zw==
 
 socket.io-adapter@~2.3.2:
   version "2.3.2"

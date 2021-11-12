@@ -13,9 +13,10 @@ import { VersionType } from 'src/app/store/store.types';
  */
 
 // Common actions for version feature store
-const newBackendVersion = createAction(VersionType.NEW_BACKEND_VERSION, props<{ backendVersion: string }>());
+const fetchVersions = createAction(VersionType.FETCH_VERSIONS);
 const fetchFrontendVersion = createAction(VersionType.FETCH_FRONTEND_VERSION);
 const fetchBackendVersion = createAction(VersionType.FETCH_BACKEND_VERSION);
+const newBackendVersion = createAction(VersionType.NEW_BACKEND_VERSION, props<{ backendVersion: string }>());
 
 /**
  * Frontend version success action that is triggered via effects.
@@ -47,11 +48,12 @@ const fetchBackendVersionFailure = createAction(VersionType.FETCH_BACKEND_VERSIO
 
 // Export all store actions, so that those can be used easily.
 export const versionActions = {
-  newBackendVersion,
+  fetchVersions,
   fetchFrontendVersion,
   fetchFrontendVersionSuccess,
   fetchFrontendVersionFailure,
   fetchBackendVersion,
   fetchBackendVersionSuccess,
   fetchBackendVersionFailure,
+  newBackendVersion,
 };

@@ -1,5 +1,6 @@
 // Version store action definitions.
 export enum VersionType {
+  FETCH_VERSIONS = '[Version] Fetch versions',
   FETCH_FRONTEND_VERSION = '[Version] Fetch frontend version',
   FETCH_FRONTEND_VERSION_SUCCESS = '[Version] Fetch frontend version success',
   FETCH_FRONTEND_VERSION_FAILURE = '[Version] Fetch frontend version failure',
@@ -8,6 +9,10 @@ export enum VersionType {
   FETCH_BACKEND_VERSION_FAILURE = '[Version] Fetch backend version failure',
   NEW_BACKEND_VERSION = '[Version] New backend version - check if frontend version is also changed',
 }
+
+export type FetchVersionsTypes =
+  VersionType.FETCH_BACKEND_VERSION
+  | VersionType.FETCH_FRONTEND_VERSION;
 
 // Frontend version types
 export type FrontendVersionTypes =

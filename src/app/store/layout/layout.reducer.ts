@@ -35,12 +35,12 @@ const reducer = createReducer(
     }),
   ),
   /**
-   * Reducer for `layoutActions.changeLanguage` action. Within this reducer we
+   * Reducer for `layoutActions.setLanguage` action. Within this reducer we
    * check that given `language` is valid one and if not fallback to `default`
    * language and then store that normalized language to this state.
    */
   on(
-    layoutActions.changeLanguage,
+    layoutActions.setLanguage,
     (state: LayoutState, { language }: LanguageValueInterface): LayoutState => ({
       ...state,
       language: Object.values(Language).includes(language) ? language : Language.DEFAULT,

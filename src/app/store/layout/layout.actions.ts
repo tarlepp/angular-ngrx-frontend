@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
-import { LocalizationInterface } from 'src/app/shared/interfaces';
+import { DictionaryInterface, LocalizationInterface } from 'src/app/shared/interfaces';
 import { LayoutType } from 'src/app/store/store.types';
 
 /**
@@ -38,6 +38,7 @@ const changeLanguage = createAction(LayoutType.CHANGE_LANGUAGE, props<{ language
 const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Locale }>());
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
 const changeTheme = createAction(LayoutType.CHANGE_THEME, props<{ theme: Theme }>());
+const setLanguage = createAction(LayoutType.SET_LANGUAGE, props<{ language: Language }>());
 const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string; instant?: boolean }>());
 
 /**
@@ -51,7 +52,7 @@ const updateLocalization = createAction(LayoutType.UPDATE_LOCALIZATION, props<{ 
 
 const snackbarMessage = createAction(
   LayoutType.SNACKBAR_MESSAGE,
-  props<{ message: string; duration?: number; params?: any }>(),
+  props<{ message: string; duration?: number; params?: DictionaryInterface<string> }>(),
 );
 
 /**
@@ -75,6 +76,7 @@ export const layoutActions = {
   changeLocale,
   changeTimezone,
   changeTheme,
+  setLanguage,
   scrollTo,
   scrollToTop,
   updateLocalization,

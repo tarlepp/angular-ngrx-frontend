@@ -9,7 +9,7 @@ import { catchError, filter, map, mergeMap, pluck, switchMap } from 'rxjs/operat
 import { VersionChangeDialogComponent } from 'src/app/shared/components';
 import { VersionService } from 'src/app/shared/services';
 import {
-  BackendVersionTypes,
+  BackendVersionTypes, FetchVersionsTypes,
   FrontendVersionTypes,
   NewBackendVersionTypes,
   versionActions,
@@ -20,7 +20,18 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class VersionEffects {
   // noinspection JSUnusedLocalSymbols
-  private fetchVersionsEffect$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
+  private fetchVersionsEffect$: Observable<TypedAction<FetchVersionsTypes>> = createEffect(
+    (): Observable<TypedAction<FetchVersionsTypes>> => this.actions$.pipe(
+      ofType(versionActions.fetchVersions),
+      mergeMap((): Array<TypedAction<FetchVersionsTypes>> => [
+        versionActions.fetchBackendVersion(),
+        versionActions.fetchFrontendVersion(),
+      ]),
+    ),
+  );
+
+  // noinspection JSUnusedLocalSymbols
+  private newBackendVersionEffect$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<NewBackendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.newBackendVersion),
       pluck('backendVersion'),

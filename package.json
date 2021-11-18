@@ -61,13 +61,13 @@
     "zone.js": "0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "13.0.2",
+    "@angular-devkit/build-angular": "13.0.3",
     "@angular-eslint/builder": "12.6.1",
     "@angular-eslint/eslint-plugin": "12.6.1",
     "@angular-eslint/eslint-plugin-template": "12.6.1",
     "@angular-eslint/schematics": "12.6.1",
     "@angular-eslint/template-parser": "12.6.1",
-    "@angular/cli": "13.0.2",
+    "@angular/cli": "13.0.3",
     "@angular/compiler-cli": "13.0.1",
     "@angular/language-service": "13.0.1",
     "@biesbjerg/ngx-translate-extract": "7.0.4",

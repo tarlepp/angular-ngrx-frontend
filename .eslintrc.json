@@ -61,13 +61,8 @@
         "@typescript-eslint/no-unused-vars": [
           "error",
           {
-            "vars": "all"
-          }
-        ],
-        "@typescript-eslint/no-unused-vars-experimental": [
-          "error",
-          {
-            "ignoredNamesRegex": "(.)Effect\\$$"
+            "vars": "all",
+            "varsIgnorePattern": "(.)Effect\\$$"
           }
         ],
         "@typescript-eslint/no-useless-constructor": "error",

@@ -54,7 +54,7 @@
     "moment": "2.29.1",
     "moment-timezone": "0.5.34",
     "ngrx-store-localstorage": "12.0.1",
-    "ngx-moment": "5.0.0",
+    "ngx-moment": "6.0.0",
     "ngx-webstorage": "9.0.0",
     "rxjs": "7.4.0",
     "tslib": "2.3.1",

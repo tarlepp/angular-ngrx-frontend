@@ -5944,12 +5944,12 @@ ngrx-store-localstorage@12.0.1:
     deepmerge "^4.2.2"
     tslib "^2.1.0"
 
-ngx-moment@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-moment/-/ngx-moment-5.0.0.tgz#6500432a2fcda75fb236a632850e599db23c8177"
-  integrity sha512-LPpGPo4ccdh8RWnDbJdLTLGGGcwbRYMbn/j4PXM24754J7MZ0tgnBM+ncaVbwefUSSEMme8yMkNIxFiVxgOOvQ==
+ngx-moment@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-moment/-/ngx-moment-6.0.0.tgz#26b26aab997a483ddba113a484ed98bd1a33e1a7"
+  integrity sha512-/7wX65BL5LVbu07zGhkPRspZKGAfHNlWhjoiaTJNR2ZJZdf13eqbZC7mnIROeUgm2pt2sQG0Sh0B6D8KyUfgzg==
   dependencies:
-    tslib "^2.0.0"
+    tslib "^2.3.0"
 
 ngx-webstorage@9.0.0:
   version "9.0.0"

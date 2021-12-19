@@ -2,12 +2,13 @@ version: '3'
 services:
   node:
     container_name: angular-ngrx-frontend
+    hostname: node
     build:
       context: .
       dockerfile: ./Dockerfile_dev
     command: sh -c 'make start-yarn'
     user: $HOST_UID:$HOST_GID
     ports:
-      - 4200:4200
+      - "4200:4200"
     volumes:
       - ./:/app:cached

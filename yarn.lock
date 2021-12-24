@@ -1710,10 +1710,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.7.tgz#36820945061326978c42a01e56b61cd223dfdc42"
   integrity sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==
 
-"@types/node@17.0.2":
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.2.tgz#a4c07d47ff737e8ee7e586fe636ff0e1ddff070a"
-  integrity sha512-JepeIUPFDARgIs0zD/SKPgFsJEAF0X5/qO80llx59gOxFTboS9Amv3S+QfB7lqBId5sFXJ99BN0J6zFRvL9dDA==
+"@types/node@17.0.4":
+  version "17.0.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.4.tgz#fec0ce0526abb6062fd206d72a642811b887a111"
+  integrity sha512-6xwbrW4JJiJLgF+zNypN5wr2ykM9/jHcL7rQ8fZe2vuftggjzZeRSM4OwRc6Xk8qWjwJ99qVHo/JgOGmomWRog==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -5954,10 +5954,10 @@ ngrx-store-localstorage@12.0.1:
     deepmerge "^4.2.2"
     tslib "^2.1.0"
 
-ngx-moment@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-moment/-/ngx-moment-6.0.1.tgz#3a3753c086dc862faa7769485c61d36b06c8956c"
-  integrity sha512-pcduV4ixMpDSib2qEzIV5apFlXb6rqTTDD0E0l0XZb81XW+kPn6M0jcGmmltE5QcXaGAKvi0qgCniP5Yi4PU/A==
+ngx-moment@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-moment/-/ngx-moment-6.0.2.tgz#7acba9830746e9c2862d261150f2c8adb20eb4f6"
+  integrity sha512-HUvDyoJPZKLA3tc+GMQqDpVyCVT2SPfEiV7/CGj2Dwwsn//JhhQ8eTr+RzKqBzLysrXkCwlzulVVJaJ5A0FJEA==
   dependencies:
     tslib "^2.3.0"
 
@@ -7650,10 +7650,10 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-snyk@1.806.0:
-  version "1.806.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.806.0.tgz#775053dc1848f5ffa30a9e5a8c000798884cfa1d"
-  integrity sha512-X0Aso0+zA9YXrrIgW1G3GXRqsvW4j7gXS9QyxFUwPp9qp5dAX1sjNUuLrK/z0CpuIpT7MVOBrYHF/RkMJ2C+FA==
+snyk@1.809.0:
+  version "1.809.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.809.0.tgz#3e495deb15ae509ebc28612c56450a864c535ca3"
+  integrity sha512-iydRCBZev1P0Kf9dSW5AhA6EuVEGYMjm39VRA/NMm0/drxqvFWDkLm2pUuC6wtOSg1r4RuFXJTa3umoOnZ/V3A==
 
 socket.io-adapter@~2.3.2:
   version "2.3.2"

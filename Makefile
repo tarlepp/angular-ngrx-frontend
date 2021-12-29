@@ -38,6 +38,13 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose up
 endif
 
+start-production: ## Start application locally in production mode
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) PROD_MODE=1 docker-compose up
+endif
+
 stop: ## Stop application containers
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
@@ -55,6 +62,13 @@ endif
 start-yarn: ## Run start command with yarn
 ifeq ($(INSIDE_DOCKER), 1)
 	@yarn run start
+else
+	$(WARNING_DOCKER)
+endif
+
+start-yarn-prod: ## Run start-prod command with yarn
+ifeq ($(INSIDE_DOCKER), 1)
+	@yarn run start-prod
 else
 	$(WARNING_DOCKER)
 endif

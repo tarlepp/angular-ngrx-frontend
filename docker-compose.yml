@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile_dev
-    command: sh -c 'make start-yarn'
+    command: sh -c 'if [ -z $PROD_MODE ]; then make start-yarn; else make start-yarn-prod; fi'
     user: $HOST_UID:$HOST_GID
     ports:
       - "4200:4200"

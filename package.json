@@ -16,6 +16,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --disable-host-check",
+    "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --configuration=localProduction",
     "build": "ng build",
     "build-prod": "ng build --configuration production --build-optimizer --configuration=production",
     "test": "ng test",

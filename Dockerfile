@@ -1,5 +1,5 @@
 # Fetch build image
-FROM node:17.3.0 as build
+FROM node:17.3.1 as build
 
 # Copy sources to container
 COPY ./ /src/

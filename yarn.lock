@@ -266,10 +266,17 @@
     tslib "^2.3.0"
     yargs "^17.2.1"
 
-"@angular/compiler@13.1.1", "@angular/compiler@^13.0.2":
+"@angular/compiler@13.1.1":
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-13.1.1.tgz#56d1889fbe837ebfe595287cc5aa188cea9be615"
   integrity sha512-WS+BB4h2LOBAGQ+P+RcKDw43Z7yAB5m1RY2/MAI+qI339V97WlWEQXxSMvBhCuzJnww1SSZfHMADaB54Jdjx2g==
+  dependencies:
+    tslib "^2.3.0"
+
+"@angular/compiler@^13.1.1":
+  version "13.1.2"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-13.1.2.tgz#86afbe282d0ff407fd8aeb66a79a804f40e7efa4"
+  integrity sha512-xbM3eClhUIHEFR0Et1bVC18Q7+kJx+hNNWWQl63RNYYBxTZnZpXA3mYi6IcEasy7BHkobVW+5teqlibFQY4gfQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -1277,19 +1284,18 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@bartholomej/ngx-translate-extract@8.0.1":
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@bartholomej/ngx-translate-extract/-/ngx-translate-extract-8.0.1.tgz#4d9cc6ffbc2ce7f34d88cd15b28da2f382f58f43"
-  integrity sha512-mf/G8Xjz865xjLekZ6U0q5g6BO9ZF++tn3bDs1bPPOAKCw2BjBmwbMOftfGOdHYrVcSTa0yl2sqafZqYa4+waA==
+"@bartholomej/ngx-translate-extract@8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@bartholomej/ngx-translate-extract/-/ngx-translate-extract-8.0.2.tgz#24fd28c34d66a91b20e6c3b0e1cc1b70878b1bc7"
+  integrity sha512-QBayCNhuatTL5mJJzfGtBpbbViRqG+Vv0iQGyiTcoJv40Wv4G+70rQl1Q+I+CW6jcw5L1VfR+RDtKD6WkeuWZw==
   dependencies:
-    "@angular/compiler" "^13.0.2"
+    "@angular/compiler" "^13.1.1"
     "@phenomnomnominal/tsquery" "^4.1.1"
     boxen "^6.2.1"
     colorette "^2.0.16"
     flat "^5.0.2"
     gettext-parser "^4.2.0"
     glob "^7.2.0"
-    mkdirp "^1.0.4"
     path "^0.12.7"
     terminal-link "^3.0.0"
     yargs "^17.2.1"

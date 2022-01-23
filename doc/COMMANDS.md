@@ -18,11 +18,21 @@ supported make commands, note that you can get this same list with just
 running `make` command:
 
 ```bash
-bash            # Get bash inside Node container
-start-build     # Start application in development mode and build containers
-start           # Start application in development mode
-start-yarn      # Run start command with yarn
-stop            # Stop application containers
+bash                  # Get bash inside Node container
+check-translations    # Check missing translations
+extract-translations  # Extract translations from TypeScript and HTML template
+                      # files
+lint                  # Lint TypeScript and SCSS files
+lint-scss             # Lint SCSS files
+lint-ts               # Lint TypeScript files
+start-build           # Start application in development mode and build
+                      # containers
+start-production      # Start application locally in production mode
+start                 # Start application in development mode
+start-yarn-prod       # Run start-prod command with yarn
+start-yarn            # Run start command with yarn
+stop                  # Stop application containers
+
 ```
 
 Example:

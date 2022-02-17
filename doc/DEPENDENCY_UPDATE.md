@@ -21,16 +21,22 @@ application package dependencies.
 1. Get `bash` to the container with `make bash` command
 2. Use `ng update` to check Angular core package updates **and follow
    the instructions of this tool to update these packages**
-3. Use `ncu` to list remaining packages that can be updated. Then you can
-   * Change the versions to `package.json` file and restart the application
-     container - this will trigger `yarn` to install new versions of those
-     packages and also updates `yarn.lock` file properly.
-   * OR
-   * Run command `yarn upgrade <package>@<version>` which will update both
-     `package.json` and `yarn.lock`. After doing this for all needed packages,
-     restart the application container.
-4. Test that the application works.
-5. Profit ¯\\\_(ツ)_/¯
+3. Update rest of the packages, with one of the following commands:
+   1. Use `make update` command to use interactive yarn update command to
+      update all the packages.
+   * _OR_
+   2. Use `ncu` to list remaining packages that can be updated. Then you can
+      * Change the versions to `package.json` file and restart the application
+        container - this will trigger `yarn` to install new versions of those
+        packages and also updates `yarn.lock` file properly.
+      * Or just use `ncu -u` to automatically update all of those packages and
+        restart the application container.
+   * _OR_
+   3. Run command `yarn upgrade <package>@<version>` which will update both
+      `package.json` and `yarn.lock`. After doing this for all needed
+      packages, restart the application container.
+5. Test that the application works.
+6. Profit ¯\\\_(ツ)_/¯
 
 ## Major version update [ᐞ](#table-of-contents)
 

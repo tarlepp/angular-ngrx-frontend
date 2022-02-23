@@ -127,3 +127,14 @@ else
 	$(NOTICE_HOST)
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make check-translations
 endif
+
+update: ## Upgrade dependencies via yarn interactively
+ifeq ($(INSIDE_DOCKER), 1)
+	@echo "\033[32m\033[39m"
+	@yarn upgrade-interactive --latest
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make update
+endif

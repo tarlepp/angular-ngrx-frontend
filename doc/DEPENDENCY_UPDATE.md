@@ -30,9 +30,9 @@ application package dependencies.
          packages and also updates `yarn.lock` file properly.
        * Or just use `ncu -u` to automatically update all of those packages and
          restart the application container.
-   3. Run command `yarn upgrade <package>@<version>` which will update both
-      `package.json` and `yarn.lock`. After doing this for all needed
-      packages, restart the application container.
+    3. Run command `yarn upgrade <package>@<version>` which will update both
+       `package.json` and `yarn.lock`. After doing this for all needed
+       packages, restart the application container.
  5. Test that the application works.
  6. Profit ¯\\\_(ツ)_/¯
 

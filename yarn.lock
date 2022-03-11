@@ -4315,10 +4315,10 @@ eslint-plugin-import@2.25.4:
     resolve "^1.20.0"
     tsconfig-paths "^3.12.0"
 
-eslint-plugin-jsdoc@37.9.7:
-  version "37.9.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-37.9.7.tgz#ef46141aa2e5fcbb89adfa658eef8126435e9eac"
-  integrity sha512-8alON8yYcStY94o0HycU2zkLKQdcS+qhhOUNQpfONHHwvI99afbmfpYuPqf6PbLz5pLZldG3Te5I0RbAiTN42g==
+eslint-plugin-jsdoc@38.0.0:
+  version "38.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-38.0.0.tgz#e58ffd0d9188bd74ba9d3d3f07206ff2e2662bda"
+  integrity sha512-4ZWTq9Jjpr+aezCn/gjRq45C3wFpY16S+umce8q/s2kMmD6oJ/8u8jhPFGoOHUnkZzFNDzYiIUxF9+OmoayLbA==
   dependencies:
     "@es-joy/jsdoccomment" "~0.20.1"
     comment-parser "1.3.0"
@@ -5897,10 +5897,10 @@ jszip@^3.1.3:
     readable-stream "~2.3.6"
     set-immediate-shim "~1.0.1"
 
-karma-chrome-launcher@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/karma-chrome-launcher/-/karma-chrome-launcher-3.1.0.tgz#805a586799a4d05f4e54f72a204979f3f3066738"
-  integrity sha512-3dPs/n7vgz1rxxtynpzZTvb9y/GIaW8xjAwcIGttLbycqoFtI7yo1NGnQi6oFTherRE+GIhCAHZC4vEqWGhNvg==
+karma-chrome-launcher@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/karma-chrome-launcher/-/karma-chrome-launcher-3.1.1.tgz#baca9cc071b1562a1db241827257bfe5cab597ea"
+  integrity sha512-hsIglcq1vtboGPAN+DGCISCFOxW+ZVnIqhDQcCMqqCp+4dmJ0Qpq5QAjkbA0X2L9Mi6OBkHi2Srrbmm7pUKkzQ==
   dependencies:
     which "^1.2.1"
 
@@ -8112,10 +8112,10 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-snyk@1.865.0:
-  version "1.865.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.865.0.tgz#9e4e731a3e3bc708a7a3567f8d0f63be39569deb"
-  integrity sha512-Cgl23n7rBSZL4O8h31UKeDvZJdxuAVg5KId/zupE07H1JXR4IjBMU9J1MYyJVki08tt9MGFWPeUq4ppML1G5XQ==
+snyk@1.868.0:
+  version "1.868.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.868.0.tgz#b9b189cbac09c82b909f566649c00ef933e1e087"
+  integrity sha512-iIzTIgQELgCmqvi3XBdKf+6ButRQ/SKCvR91DJM2SKdnIrRAQykNU2NAzBY5IfM/RHcPqCxlCgeJxTumiswv9g==
 
 socket.io-adapter@~2.3.2:
   version "2.3.2"

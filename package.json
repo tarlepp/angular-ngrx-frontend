@@ -82,7 +82,7 @@
     "eslint": "8.11.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jsdoc": "38.0.6",
-    "eslint-plugin-ngrx": "2.0.4",
+    "eslint-plugin-ngrx": "2.1.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "jasmine-core": "4.0.1",
     "jasmine-spec-reporter": "7.0.0",

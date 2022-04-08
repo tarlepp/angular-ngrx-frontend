@@ -186,8 +186,16 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/conditional-complexity": "error",
+        "@angular-eslint/template/cyclomatic-complexity": "error",
+        "@angular-eslint/template/eqeqeq": "error",
+        "@angular-eslint/template/no-autofocus": "error",
         "@angular-eslint/template/no-call-expression": "error",
-        "@angular-eslint/template/no-duplicate-attributes": "error"
+        "@angular-eslint/template/no-distracting-elements": "error",
+        "@angular-eslint/template/no-duplicate-attributes": "error",
+        "@angular-eslint/template/no-negated-async": "error",
+        "@angular-eslint/template/no-positive-tabindex": "error"
       }
     }
   ]

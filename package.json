@@ -52,7 +52,7 @@
     "@ngrx/store-devtools": "13.1.0",
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "7.0.0",
-    "moment": "2.29.2",
+    "moment": "2.29.3",
     "moment-timezone": "0.5.34",
     "ngrx-store-localstorage": "13.0.1",
     "ngx-moment": "6.0.2",

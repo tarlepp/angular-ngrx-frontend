@@ -8146,10 +8146,10 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-snyk@1.912.0:
-  version "1.912.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.912.0.tgz#2660f6ad3eb6e5b34f0e46ccd07381d1f5494c1a"
-  integrity sha512-s2aPtRBRP9/dfMBGZ3nQ02Z93DkmbjSxUXkTSA2i5orFXLG4MuY/C63uGiNRGXKpaTQS0XwZlWzvo7hYJ4RCCQ==
+snyk@1.913.0:
+  version "1.913.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.913.0.tgz#645b09af248210de4c0a503e29ade5173ad108d5"
+  integrity sha512-CtmoL99ZQBmTJnexeE8NqtBz3IxXzny1000S0z78s0/Il+ox4wRU+BGFwvG37ObTJzF7iwwizcFtZITuOU9vPA==
 
 socket.io-adapter@~2.3.3:
   version "2.3.3"

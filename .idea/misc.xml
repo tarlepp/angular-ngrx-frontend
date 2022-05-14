@@ -6,9 +6,4 @@
   <component name="StylelintService">
     <option name="executable" value="/stylelint" />
   </component>
-  <component name="SwUserDefinedSpecifications">
-    <option name="specTypeByUrl">
-      <map />
-    </option>
-  </component>
 </project>

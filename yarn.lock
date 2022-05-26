@@ -5942,10 +5942,10 @@ karma-coverage-istanbul-reporter@3.0.3:
     istanbul-reports "^3.0.2"
     minimatch "^3.0.4"
 
-karma-jasmine-html-reporter@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-1.7.0.tgz#52c489a74d760934a1089bfa5ea4a8fcb84cc28b"
-  integrity sha512-pzum1TL7j90DTE86eFt48/s12hqwQuiD+e5aXx2Dc9wDEn2LfGq6RoAxEZZjFiN0RDSCOnosEKRZWxbQ+iMpQQ==
+karma-jasmine-html-reporter@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-2.0.0.tgz#76c26ce40e217dc36a630fbcd7b31c3462948bf2"
+  integrity sha512-SB8HNNiazAHXM1vGEzf8/tSyEhkfxuDdhYdPBX2Mwgzt0OuF2gicApQ+uvXLID/gXyJQgvrM9+1/2SxZFUUDIA==
 
 karma-jasmine@5.0.1:
   version "5.0.1"
@@ -8163,10 +8163,10 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-snyk@1.936.0:
-  version "1.936.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.936.0.tgz#f43e7f377ebf5de38f9a8ef74fbd1377cc39c9ad"
-  integrity sha512-7+9vuN9w/9jpluP4Dyk/fFWpVQFNOO8lsUsTUZkV/YPn/K/V6+UWyAZ8Yv3vzbeGONFkCMc039pdIn/CT2CK6Q==
+snyk@1.939.0:
+  version "1.939.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.939.0.tgz#6f2ac318af9094330a02ce3b865075f08ee88fee"
+  integrity sha512-dBnHzmH6cRzF4f83gxbSuSzUegzWZPGsyHddjIe9Mg3BtybYl/Yxav1C4QSMJYUZlwCOdQ+Up+8zUOY6F9wKZw==
 
 socket.io-adapter@~2.3.3:
   version "2.3.3"
@@ -8563,10 +8563,10 @@ stylelint-scss@^4.0.0:
     postcss-selector-parser "^6.0.6"
     postcss-value-parser "^4.1.0"
 
-stylelint@14.8.4:
-  version "14.8.4"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-14.8.4.tgz#e8bfa12cba88a244bcab4c94b6a7481c5b730963"
-  integrity sha512-VoyFmif50YNL2R1NC0NxbprTbvnihiqE9tdwb/IAUvlncoS3dEllSSEfvTaQQ6BTCp6iv6daIg5v7ryRSlBdgw==
+stylelint@14.8.5:
+  version "14.8.5"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-14.8.5.tgz#0fcbf5b6821283b5a249dde36d70f1158da0a2a3"
+  integrity sha512-e3t4H/hlWlspkcNUrkhf44RU3OpPTA7uBOoREGBzSwdEF+2g/+gbZq7WEpMP7BpopcSe/uLaTvDuL+URL7cdnQ==
   dependencies:
     balanced-match "^2.0.0"
     colord "^2.9.2"
@@ -8966,10 +8966,10 @@ typed-assert@^1.0.8:
   resolved "https://registry.yarnpkg.com/typed-assert/-/typed-assert-1.0.8.tgz#4bf9f1ce7f3f974d09c3afd7c68d12e1391a233c"
   integrity sha512-5NkbXZUlmCE73Fs7gvkp1XXJWHYetPkg60QnQ2NXQmBYNFxbBr2zA8GCtaH4K2s2WhOmSlgiSTmrjrcm5tnM5g==
 
-typescript@4.6.4:
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
-  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
+typescript@4.7.2:
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
+  integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
 
 ua-parser-js@^0.7.30:
   version "0.7.31"

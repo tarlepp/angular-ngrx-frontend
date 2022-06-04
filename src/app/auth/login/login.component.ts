@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
@@ -15,7 +15,7 @@ import { authenticationActions, authenticationSelectors } from 'src/app/store';
 export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('loginFormElement') public loginFormElement!: NgForm;
 
-  public readonly loginForm: FormGroup;
+  public readonly loginForm: UntypedFormGroup;
   public loading: boolean;
   public focus: boolean;
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
    * within this component and initialize needed properties.
    */
   public constructor(
-    private readonly formBuilder: FormBuilder,
+    private readonly formBuilder: UntypedFormBuilder,
     private readonly store: Store,
   ) {
     this.loading = false;

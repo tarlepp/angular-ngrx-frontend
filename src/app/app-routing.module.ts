@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: (): Promise<AuthModule> =>
+    loadChildren: (): Promise<any> =>
       import('src/app/auth/auth.module').then((module: typeof import('src/app/auth/auth.module')): AuthModule => module.AuthModule),
   },
   {

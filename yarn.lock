@@ -1451,6 +1451,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.0.tgz#65b12f12db55188422070e34687bf3af09870922"
   integrity sha512-rZ6vufeY/UjAgtyiJ4WvfF6XP6HizIyOfbZOg0RnecIwjrvH8Am3nN1BpKnnPZunYAkUcPPXDhwbxOtGop8cfQ==
 
+"@csstools/selector-specificity@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.1.tgz#b6b8d81780b9a9f6459f4bfe9226ac6aefaefe87"
+  integrity sha512-aG20vknL4/YjQF9BSV7ts4EWm/yrjagAN7OWBNmlbEOUiu0llj4OGrFoOKK3g2vey4/p2omKCoHrWtPxSwV3HA==
+
 "@discoveryjs/json-ext@0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
@@ -2070,10 +2075,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.36.tgz#c0d5f2fe76b47b63e0e0efc3d2049a9970d68794"
   integrity sha512-V3orv+ggDsWVHP99K3JlwtH20R7J4IhI1Kksgc+64q5VxgfRkQG8Ws3MFm/FZOKDYGy9feGFlZ70/HpCNe9QaA==
 
-"@types/node@17.0.41":
-  version "17.0.41"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.41.tgz#1607b2fd3da014ae5d4d1b31bc792a39348dfb9b"
-  integrity sha512-xA6drNNeqb5YyV5fO3OAEsnXLfO7uF0whiOfPTz5AeDo8KeZFmODKnvwPymMNO8qE/an8pVY/O50tig2SQCrGw==
+"@types/node@17.0.42":
+  version "17.0.42"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.42.tgz#d7e8f22700efc94d125103075c074396b5f41f9b"
+  integrity sha512-Q5BPGyGKcvQgAMbsr7qEGN/kIPN6zZecYYABeTDBizOsau+2NMdSVTar9UQw21A2+JyA2KRNDYaYrPB0Rpk2oQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -5645,7 +5650,12 @@ jake@^10.8.5:
     filelist "^1.0.1"
     minimatch "^3.0.4"
 
-jasmine-core@4.1.1, jasmine-core@^4.1.0:
+jasmine-core@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.2.0.tgz#0605bea284d6d78276f43c47de2532ecd4a73b00"
+  integrity sha512-OcFpBrIhnbmb9wfI8cqPSJ50pv3Wg4/NSgoZIqHzIwO/2a9qivJWzv8hUvaREIMYYJBas6AvfXATFdVuzzCqVw==
+
+jasmine-core@^4.1.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.1.1.tgz#1045091e16f4f19e1d72416eef5db01e64d5fbeb"
   integrity sha512-lmUfT5XcK9KKvt3lLYzn93hc4MGzlUBowExFVgzbSW0ZCrdeyS574dfsyfRhxbg81Wj4gk+RxUiTnj7KBfDA1g==
@@ -6442,10 +6452,10 @@ ngx-moment@6.0.2:
   dependencies:
     tslib "^2.3.0"
 
-ngx-webstorage@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-9.0.0.tgz#5126afa2dc5bda70fbfb85611b53cfefa071bc87"
-  integrity sha512-OighIRoNiGlJLM+mcb850ZkmEdY4JYnGNqKy91hlMgmD9zvUCwC+6pcv1NMncxBP9vnQAqRb65cdY5MBppGM/Q==
+ngx-webstorage@10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-10.0.1.tgz#5d4116194e33061c81754fa661f68702038b1fa5"
+  integrity sha512-OWmzAzby+/UrbRY/5d229Y4NzFn1a/u2WSEeZqzY5lwB/3d8ODZ6mlW/BZGIuuZ48Hp8tXMM3pFCz9+pEyzvDA==
   dependencies:
     tslib "^2.0.0"
 
@@ -8063,10 +8073,10 @@ smart-buffer@^4.2.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-snyk@1.947.0:
-  version "1.947.0"
-  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.947.0.tgz#98d033367e0533d9c35302d207e17aa9aa5d6843"
-  integrity sha512-/u+HyhaIaFhnrpn+aOiGR0ts9ZR7mr6uiqgRn5EQIwaFKpCFOEnOJTlQAM25ggomqmxRldArMMXe4dBWw855LA==
+snyk@1.949.0:
+  version "1.949.0"
+  resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.949.0.tgz#2b4d3ae4d720309c40b609aea727e698c02e301e"
+  integrity sha512-FcLoV6g19J1O754UGvSAb/+/L7e2IUiKlYrWn+6wCsooOxUjbzSkZqP6fxh0lTkFTG9LnQE0c5ZXP1jrT1nUaA==
 
 socket.io-adapter@~2.4.0:
   version "2.4.0"
@@ -8450,12 +8460,12 @@ stylelint-scss@4.2.0, stylelint-scss@^4.0.0:
     postcss-selector-parser "^6.0.6"
     postcss-value-parser "^4.1.0"
 
-stylelint@14.9.0:
-  version "14.9.0"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-14.9.0.tgz#6d68fc69916f1df54798a6cc42f1c69e86fbfe1e"
-  integrity sha512-+xsQ4uKS56RQs8AGYx2CXc9nhWyPR7c/G0RqyiKgWZx2LuE3VJnIhGRQXUfnGQXOqBPHxNjMCHiK5NNQRB52sw==
+stylelint@14.9.1:
+  version "14.9.1"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-14.9.1.tgz#6494ed38f148b1e75b402d678a3b6a8aae86dfda"
+  integrity sha512-RdAkJdPiLqHawCSnu21nE27MjNXaVd4WcOHA4vK5GtIGjScfhNnaOuWR2wWdfKFAvcWQPOYe311iveiVKSmwsA==
   dependencies:
-    "@csstools/selector-specificity" "^2.0.0"
+    "@csstools/selector-specificity" "^2.0.1"
     balanced-match "^2.0.0"
     colord "^2.9.2"
     cosmiconfig "^7.0.1"

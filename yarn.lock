@@ -6393,10 +6393,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngrx-store-localstorage@13.0.1:
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-13.0.1.tgz#91ec2f2e7258e532cb029bbc4a2bcae28adbaee5"
-  integrity sha512-h/IRpMXq1qXmHpdnTFvJJdcbJ8aXaCj20OKdHIDU3r7OBeZ26wvA9g6c3arnC2JZeSbDCc/mr8XfivIs7PizLg==
+ngrx-store-localstorage@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-14.0.0.tgz#fc48376077e58859a0373a633b310dd73c149d8b"
+  integrity sha512-78fw12dv7MTiYj7hbUMvcj/UUnPfmb7lBcT9hA5L/h4b7/y35z51voxum3mRYmCQqaT6K1PdxTf4uwJy8E99rA==
   dependencies:
     deepmerge "^4.2.2"
     tslib "^2.3.0"

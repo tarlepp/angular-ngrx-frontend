@@ -18,6 +18,7 @@ import { ConfigurationService } from 'src/app/shared/services';
   providedIn: 'root',
 })
 export class AuthenticationService {
+  private readonly jwtHelper: JwtHelperService;
   private readonly userData$: BehaviorSubject<UserDataInterface|null>;
 
   /**
@@ -27,8 +28,8 @@ export class AuthenticationService {
   public constructor(
     private readonly http: HttpClient,
     private readonly localStorage: LocalStorageService,
-    private readonly jwtHelper: JwtHelperService,
   ) {
+    this.jwtHelper = new JwtHelperService();
     this.userData$ = new BehaviorSubject<UserDataInterface|null>(null);
   }
 
@@ -37,7 +38,7 @@ export class AuthenticationService {
    * will store response Json Web Token (JWT) to local storage and dispatch
    * new value to `userData$` observable stream if/when request was ok.
    *
-   * Otherwise method will clear that `token` from local storage and dispatch
+   * Otherwise, method will clear that `token` from local storage and dispatch
    * error to `userData$` observable stream.
    */
   public authenticate(credentials: CredentialsRequestInterface): Observable<UserDataInterface> {

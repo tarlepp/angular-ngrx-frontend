@@ -54,7 +54,7 @@
     "@ngx-translate/http-loader": "7.0.0",
     "@snyk/protect": "1.989.0",
     "moment": "2.29.4",
-    "moment-timezone": "0.5.34",
+    "moment-timezone": "0.5.35",
     "ngrx-store-localstorage": "14.0.0",
     "ngx-moment": "6.0.2",
     "ngx-webstorage": "10.0.1",

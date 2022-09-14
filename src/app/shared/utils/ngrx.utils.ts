@@ -13,20 +13,20 @@ import { ServerErrorInterface } from 'src/app/shared/interfaces';
 // Helper selector for any boolean value from specified feature state
 export const selectBooleanValue =
   <T1, T2>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, boolean> =>
-    createSelector(selector, (state: T2): boolean => getValue<T2, boolean>(state, property));
+    createSelector(selector, (state: T2): boolean => getValue(state, property));
 
 // Helper selector for any string value from specified feature state
 export const selectStringValue =
   <T1, T2>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, string> =>
-    createSelector(selector, (state: T2): string => getValue<T2, string>(state, property));
+    createSelector(selector, (state: T2): string => getValue(state, property));
 
 // Helper selector for `ServerErrorInterface` value from specified feature state
 export const selectServerErrorValue =
   <T1, T2>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, ServerErrorInterface|null> =>
     createSelector(selector, (state: T2): ServerErrorInterface|null =>
-      getValue<T2, ServerErrorInterface|null>(state, property));
+      getValue(state, property));
 
-const getValue = <T1, T2>(state: T1, property: string): T2 => {
+const getValue = (state: any, property: string) => {
   if (!Object.keys(state).includes(property)) {
     throw new Error(`Property '${property}' is not defined in state ${JSON.stringify(state)}`);
   }

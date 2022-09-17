@@ -12,21 +12,21 @@ import { ServerErrorInterface } from 'src/app/shared/interfaces';
 
 // Helper selector for any boolean value from specified feature state
 export const selectBooleanValue =
-  <T1, T2>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, boolean> =>
+  <T1, T2 extends object>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, boolean> =>
     createSelector(selector, (state: T2): boolean => getValue<T2, boolean>(state, property));
 
 // Helper selector for any string value from specified feature state
 export const selectStringValue =
-  <T1, T2>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, string> =>
+  <T1, T2 extends object>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, string> =>
     createSelector(selector, (state: T2): string => getValue<T2, string>(state, property));
 
 // Helper selector for `ServerErrorInterface` value from specified feature state
 export const selectServerErrorValue =
-  <T1, T2>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, ServerErrorInterface|null> =>
+  <T1, T2 extends object>(selector: MemoizedSelector<T1, T2>, property: string): MemoizedSelector<T1, ServerErrorInterface|null> =>
     createSelector(selector, (state: T2): ServerErrorInterface|null =>
       getValue<T2, ServerErrorInterface|null>(state, property));
 
-const getValue = <T1, T2>(state: T1, property: string): T2 => {
+const getValue = <T1 extends object, T2>(state: T1, property: string): T2 => {
   if (!Object.keys(state).includes(property)) {
     throw new Error(`Property '${property}' is not defined in state ${JSON.stringify(state)}`);
   }

@@ -6,7 +6,7 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 # Update package list and install necessary libraries
 RUN apt-get update && apt-get install -y \
-  nano git unzip jq bash-completion python3-dev python3-pip python3-setuptools \
+  nano git unzip jq bash-completion python3-dev python3-pip python3-setuptools fish \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -26,7 +26,15 @@ RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
 
 USER node
 
-RUN pip3 install thefuck --user
+RUN pip3 install thefuck --user --no-warn-script-location
+
+RUN mkdir -p /home/node/.config/fish/completions \
+    && mkdir -p /home/node/.config/fish/functions
+
+RUN fish -c 'curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher' \
+    && fish -c 'fisher install jorgebucaran/nvm.fish'
+
+COPY ./docker/fish /home/node/.config/fish/
 
 # Add necessary stuff to bash autocomplete
 ENV PATH "$PATH:/home/node/.local/bin"

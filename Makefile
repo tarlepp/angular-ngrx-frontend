@@ -31,6 +31,13 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node bash
 endif
 
+fish: ## Get fish inside Node container
+ifeq ($(INSIDE_DOCKER_CONTAINER), 1)
+	$(WARNING_HOST)
+else
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node fish
+endif
+
 start: ## Start application in development mode
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)

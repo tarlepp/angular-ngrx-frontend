@@ -22,6 +22,7 @@ bash                  # Get bash inside Node container
 check-translations    # Check missing translations
 extract-translations  # Extract translations from TypeScript and HTML template
                       # files
+fish                  # Get fish inside Node container
 lint                  # Lint TypeScript and SCSS files
 lint-scss             # Lint SCSS files
 lint-ts               # Lint TypeScript files

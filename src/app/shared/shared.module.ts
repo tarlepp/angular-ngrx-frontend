@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { MomentModule } from 'ngx-moment';
+import { LuxonModule } from 'luxon-angular';
 
 import { components } from 'src/app/shared/components';
 import { directives } from 'src/app/shared/directives';
@@ -21,9 +21,9 @@ import { services } from 'src/app/shared/services';
   imports: [
     CommonModule,
     FlexLayoutModule,
+    LuxonModule,
     ReactiveFormsModule,
     MaterialModule,
-    MomentModule,
     TranslateModule,
   ],
   exports: [
@@ -32,9 +32,9 @@ import { services } from 'src/app/shared/services';
     ...pipes,
     CommonModule,
     FlexLayoutModule,
+    LuxonModule,
     ReactiveFormsModule,
     MaterialModule,
-    MomentModule,
     TranslateModule,
   ],
   providers: [

@@ -81,6 +81,7 @@
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
     "eslint": "8.24.0",
+    "eslint-plugin-deprecation": "1.3.2",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsdoc": "39.3.6",
     "eslint-plugin-ngrx": "2.1.4",

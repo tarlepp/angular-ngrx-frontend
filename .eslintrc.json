@@ -23,6 +23,9 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:ngrx/recommended"
       ],
+      "plugins": [
+        "deprecation"
+      ],
       "rules": {
         "@angular-eslint/component-selector": [
           "error",
@@ -118,6 +121,7 @@
           "error",
           "always"
         ],
+        "deprecation/deprecation": "warn",
         "import/no-extraneous-dependencies": [
           "error",
           {

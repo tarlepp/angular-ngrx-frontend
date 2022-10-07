@@ -4,7 +4,7 @@ import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
-import * as moment from 'moment-timezone';
+import { Settings } from 'luxon';
 import { noop, Observable, switchMap } from 'rxjs';
 import { map, mergeMap, pluck, tap } from 'rxjs/operators';
 
@@ -64,7 +64,7 @@ export class LayoutEffects {
   /**
    * NgRx effect for `layoutActions.changeLocale` action, which will do
    * following jobs;
-   *  1) Change moment.js library locale setting, this will affect to shown
+   *  1) Change Luxon library locale setting, this will affect to shown
    *     time, date and datetime values in application that are formatted by
    *     this library.
    *  2) Store new locale to local storage, so that if user refresh the
@@ -72,13 +72,11 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeLocaleEffect$: Observable<void> = createEffect(
-    (): Observable<void> => this.actions$.pipe(
+  private changeLocaleEffect$: Observable<Locale> = createEffect(
+    (): Observable<Locale> => this.actions$.pipe(
       ofType(layoutActions.changeLocale),
       pluck('locale'),
-      map((locale: Locale): void => {
-        moment.locale(locale);
-      }),
+      map((locale: Locale): Locale => Settings.defaultLocale = locale),
     ),
     { dispatch: false },
   );
@@ -95,13 +93,11 @@ export class LayoutEffects {
    *
    * Within this effect we won't dispatch any other store actions.
    */
-  private changeTimezoneEffect$: Observable<void> = createEffect(
-    (): Observable<void> => this.actions$.pipe(
+  private changeTimezoneEffect$: Observable<string> = createEffect(
+    (): Observable<string> => this.actions$.pipe(
       ofType(layoutActions.changeTimezone),
       pluck('timezone'),
-      map((timezone: string): void => {
-        moment.tz.setDefault(timezone);
-      }),
+      map((timezone: string): string => Settings.defaultZone = timezone),
     ),
     { dispatch: false },
   );

@@ -1,5 +1,4 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import * as moment from 'moment-timezone';
 
 import { viewports } from 'src/app/shared/constants';
 import { Device, Language, Locale, Theme, Viewport } from 'src/app/shared/enums';
@@ -68,7 +67,7 @@ const reducer = createReducer(
     layoutActions.changeTimezone,
     (state: LayoutState, { timezone }: { timezone: string }): LayoutState => ({
       ...state,
-      timezone: moment.tz.names().includes(timezone) ? timezone : 'Europe/Helsinki',
+      timezone: Intl.supportedValuesOf('timeZone').includes(timezone) ? timezone : 'Europe/Helsinki',
     }),
   ),
   /**

@@ -1,6 +1,6 @@
 import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as moment from 'moment-timezone';
+import { DateTime } from 'luxon';
 import { Subscription } from 'rxjs';
 
 import { Locale } from 'src/app/shared/enums';
@@ -8,11 +8,14 @@ import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { layoutSelectors } from 'src/app/store';
 
 /**
- * Locale and timezone aware date formatter pipe that can be used short hand
+ * Locale and timezone aware date formatter pipe that can be used shorthand
  * version instead of using multiple `am*` pipes.
  *
  * Usage;
  *  {{ '1982-10-12T15:59:11+00:00' | localDate : 'LLLL' }}
+ *
+ * See documentation about available tokens:
+ *  - https://moment.github.io/luxon/#/formatting?id=table-of-tokens
  *
  * Note that this pipe isn't `pure` one, because otherwise we cannot get those
  * possible locale / timezone changes to work as expected. Internally this pipe
@@ -76,7 +79,13 @@ export class LocalDatePipe implements PipeTransform, OnDestroy {
       this.cachedLocale = this.locale;
       this.cachedTimezone = this.timezone;
 
-      this.cachedOutput = moment(value).tz(this.timezone).locale(this.locale).format(format || 'x').toString();
+      //this.cachedOutput = moment(value).tz(this.timezone).locale(this.locale).format(format || 'x').toString();
+
+      this.cachedOutput = DateTime
+        .fromISO(value instanceof Date ? value.toDateString() : value)
+        .setZone(this.timezone)
+        .setLocale(this.locale)
+        .toFormat(format || 'F');
     }
 
     return this.cachedOutput;

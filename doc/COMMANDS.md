@@ -37,7 +37,6 @@ start-yarn-prod           # Run start-prod command with yarn
 start-yarn                # Run start command with yarn
 stop                      # Stop application containers
 update                    # Upgrade dependencies via yarn interactively
-
 ```
 
 Example:

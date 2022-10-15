@@ -5,7 +5,7 @@ import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { from, Observable, of } from 'rxjs';
-import { catchError, exhaustMap, map, mergeMap, pluck, switchMap, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 
 import { CredentialsRequestInterface, UserDataInterface, UserProfileInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
@@ -43,7 +43,7 @@ export class AuthenticationEffects {
   private loginEffect$: Observable<TypedAction<AuthenticationLoginTypes>> = createEffect(
     (): Observable<TypedAction<AuthenticationLoginTypes>> => this.actions$.pipe(
       ofType(authenticationActions.login),
-      pluck('credentials'),
+      map((action): CredentialsRequestInterface => action.credentials),
       exhaustMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationLoginTypes>> =>
         from(this.authService
           .authenticate(credentials)
@@ -81,7 +81,7 @@ export class AuthenticationEffects {
   private loginSuccessEffect$: Observable<TypedAction<AuthenticationLoginSuccessTypes>> = createEffect(
     (): Observable<TypedAction<AuthenticationLoginSuccessTypes>> => this.actions$.pipe(
       ofType(authenticationActions.loginSuccess),
-      pluck('userData'),
+      map((action): UserDataInterface => action.userData),
       mergeMap((userData: UserDataInterface): Array<TypedAction<AuthenticationLoginSuccessTypes>> => [
         layoutActions.updateLocalization({ localization: userData.localization }),
         authenticationActions.profile(),
@@ -126,7 +126,7 @@ export class AuthenticationEffects {
   private logoutEffect$: Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> = createEffect(
     (): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$.pipe(
       ofType(authenticationActions.logout),
-      pluck('message'),
+      map((action): string|null => action.message),
       tap((message: string|null): void => {
         this.authService.logout();
 

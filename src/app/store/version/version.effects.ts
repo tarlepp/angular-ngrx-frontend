@@ -4,12 +4,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { from, Observable, of } from 'rxjs';
-import { catchError, filter, map, mergeMap, pluck, switchMap } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, switchMap } from 'rxjs/operators';
 
 import { VersionChangeDialogComponent } from 'src/app/shared/components';
 import { VersionService } from 'src/app/shared/services';
 import {
-  BackendVersionTypes, FetchVersionsTypes,
+  BackendVersionTypes,
+  FetchVersionsTypes,
   FrontendVersionTypes,
   NewBackendVersionTypes,
   versionActions,
@@ -34,7 +35,7 @@ export class VersionEffects {
   private newBackendVersionEffect$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
     (): Observable<TypedAction<NewBackendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.newBackendVersion),
-      pluck('backendVersion'),
+      map((action): string => action.backendVersion),
       mergeMap((version: string): Array<TypedAction<NewBackendVersionTypes>> => [
         versionActions.fetchBackendVersionSuccess({ version }),
         versionActions.fetchFrontendVersion(),
@@ -119,7 +120,7 @@ export class VersionEffects {
   private versionChangedEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(versionActions.fetchFrontendVersionSuccess),
-      pluck('version'),
+      map((action): string => action.version),
       filter((version: string): boolean => environment.version !== version),
       map((versionNew: string): void => {
         this.dialog

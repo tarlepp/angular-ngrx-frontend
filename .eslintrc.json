@@ -121,7 +121,7 @@
           "error",
           "always"
         ],
-        "deprecation/deprecation": "warn",
+        "deprecation/deprecation": "error",
         "import/no-extraneous-dependencies": [
           "error",
           {

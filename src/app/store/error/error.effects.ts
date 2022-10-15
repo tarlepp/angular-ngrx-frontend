@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { ServerErrorInterface } from 'src/app/shared/interfaces';
 import { SnackbarService } from 'src/app/shared/services';
@@ -20,7 +20,7 @@ export class ErrorEffects {
   private showSnackbarEffect$: Observable<void> = createEffect((): Observable<void> =>
     this.actions$.pipe(
       ofType(errorActions.showSnackbar),
-      pluck('error'),
+      map((action): ServerErrorInterface => action.error),
       map((error: ServerErrorInterface): void => {
         this.snackbarService
           .error(error)

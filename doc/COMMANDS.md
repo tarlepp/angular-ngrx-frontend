@@ -18,22 +18,25 @@ supported make commands, note that you can get this same list with just
 running `make` command:
 
 ```bash
-bash                  # Get bash inside Node container
-check-translations    # Check missing translations
-extract-translations  # Extract translations from TypeScript and HTML template
-                      # files
-fish                  # Get fish inside Node container
-lint                  # Lint TypeScript and SCSS files
-lint-scss             # Lint SCSS files
-lint-ts               # Lint TypeScript files
-start-build           # Start application in development mode and build
-                      # containers
-start-production      # Start application locally in production mode
-start                 # Start application in development mode
-start-yarn-prod       # Run start-prod command with yarn
-start-yarn            # Run start command with yarn
-stop                  # Stop application containers
-update                # Upgrade dependencies via yarn interactively
+bash                      # Get bash inside Node container
+check-translations        # Check missing translations
+docker-kill-containers    # Kill all running docker containers
+docker-remove-containers  # Remove all docker containers
+docker-remove-images      # Remove all docker images
+extract-translations      # Extract translations from TypeScript and HTML
+                          # template files
+fish                      # Get fish inside Node container
+lint                      # Lint TypeScript and SCSS files
+lint-scss                 # Lint SCSS files
+lint-ts                   # Lint TypeScript files
+start-build               # Start application in development mode and build
+                          # containers
+start-production          # Start application locally in production mode
+start                     # Start application in development mode
+start-yarn-prod           # Run start-prod command with yarn
+start-yarn                # Run start command with yarn
+stop                      # Stop application containers
+update                    # Upgrade dependencies via yarn interactively
 ```
 
 Example:

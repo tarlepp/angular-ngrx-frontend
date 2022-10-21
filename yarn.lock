@@ -2067,10 +2067,10 @@
     "@angular-devkit/schematics" "14.2.4"
     jsonc-parser "3.1.0"
 
-"@snyk/protect@1.1019.0":
-  version "1.1019.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1019.0.tgz#c3287ac534a8fc85217b2ef9f5e4d77166f074b0"
-  integrity sha512-LuMrTKSuzQ6hcmD6H4mgjor1MwYJUVOT28ZuoFyNRwqW5Aowqf/0x5iZIYZDpTg5JR2yYARQS96uc3dbY3lDFA==
+"@snyk/protect@1.1040.0":
+  version "1.1040.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1040.0.tgz#bf6e2ba7a1ff6663f3ad40a94aada8b1f816c646"
+  integrity sha512-yOR+7AsLoDEtOFV9A5/2G9SlSQ8q6uUtOPL9hgZ8nVWa9G+DwEwP7KgyQul8WxgJ7SwAH3/1q4UwYPW9kiTL9A==
 
 "@tootallnate/once@2":
   version "2.0.0"

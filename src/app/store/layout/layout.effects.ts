@@ -6,7 +6,7 @@ import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import { Settings } from 'luxon';
 import { noop, Observable, switchMap } from 'rxjs';
-import { map, mergeMap, pluck, tap } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 
 import { Language, Locale, Theme } from 'src/app/shared/enums';
 import { DictionaryInterface, LocalizationInterface } from 'src/app/shared/interfaces';
@@ -29,7 +29,7 @@ export class LayoutEffects {
   private updateLocalizationEffect$: Observable<TypedAction<LocalizationTypes>> = createEffect(
     (): Observable<TypedAction<LocalizationTypes>> => this.actions$.pipe(
       ofType(layoutActions.updateLocalization),
-      pluck('localization'),
+      map((action): LocalizationInterface => action.localization),
       mergeMap((localization: LocalizationInterface): Array<TypedAction<LocalizationTypes>> => [
         layoutActions.changeLanguage({ language: localization.language }),
         layoutActions.changeLocale({ locale: localization.locale }),
@@ -51,7 +51,7 @@ export class LayoutEffects {
   private changeLanguageEffect$: Observable<TypedAction<LayoutType.SET_LANGUAGE>> = createEffect(
     (): Observable<TypedAction<LayoutType.SET_LANGUAGE>> => this.actions$.pipe(
       ofType(layoutActions.changeLanguage),
-      pluck('language'),
+      map((action): Language => action.language),
       tap((language: Language): Language => this.document.documentElement.lang = language),
       switchMap((language: Language): Observable<Record<string, unknown>> => this.translateService.use(language)),
       map((): TypedAction<LayoutType.SET_LANGUAGE> =>
@@ -75,7 +75,7 @@ export class LayoutEffects {
   private changeLocaleEffect$: Observable<Locale> = createEffect(
     (): Observable<Locale> => this.actions$.pipe(
       ofType(layoutActions.changeLocale),
-      pluck('locale'),
+      map((action): Locale => action.locale),
       map((locale: Locale): Locale => Settings.defaultLocale = locale),
     ),
     { dispatch: false },
@@ -96,7 +96,7 @@ export class LayoutEffects {
   private changeTimezoneEffect$: Observable<string> = createEffect(
     (): Observable<string> => this.actions$.pipe(
       ofType(layoutActions.changeTimezone),
-      pluck('timezone'),
+      map((action): string => action.timezone),
       map((timezone: string): string => Settings.defaultZone = timezone),
     ),
     { dispatch: false },
@@ -150,7 +150,7 @@ export class LayoutEffects {
   private setThemeEffect$: Observable<void> = createEffect(
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.changeTheme),
-      pluck('theme'),
+      map((action): Theme => action.theme),
       map((theme: Theme): void => {
         const body = this.document.getElementsByTagName('body')[0];
 

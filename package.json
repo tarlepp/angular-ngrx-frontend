@@ -54,7 +54,7 @@
     "@ngx-translate/http-loader": "7.0.0",
     "@snyk/protect": "1.1040.0",
     "luxon": "3.0.4",
-    "luxon-angular": "5.1.0",
+    "luxon-angular": "5.2.0",
     "ngrx-store-localstorage": "14.0.0",
     "ngx-material-luxon": "1.1.1",
     "ngx-webstorage": "10.0.1",

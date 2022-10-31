@@ -6110,10 +6110,10 @@ lru-cache@^7.4.4, lru-cache@^7.5.1, lru-cache@^7.7.1:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.10.1.tgz#db577f42a94c168f676b638d15da8fb073448cab"
   integrity sha512-BQuhQxPuRl79J5zSXRP+uNzPOyZw2oFI9JLRQ80XswSvg21KMKNtQza9eF42rfI/3Z40RvzBdXgziEkudzjo8A==
 
-luxon-angular@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/luxon-angular/-/luxon-angular-5.1.0.tgz#ec87e1e65461bc9bafa7aca82e7c6a5a830de053"
-  integrity sha512-VUOz+D6mPupopbPLEAssvJI0WJsbyhZryoMwz94uBMkYDhHa0l4a3DsNRROFmPHVgH0ulnKAT54rMd2k6UAFxg==
+luxon-angular@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/luxon-angular/-/luxon-angular-5.2.0.tgz#faa4f3f5d30da811e9038ddf03e32f18cbbfb093"
+  integrity sha512-SoUAZqQYZGwcyyuPKEQLgB1cLha2P3uu9SijwDP9093YDy988crKzcePFtABNjfl0yVQsgi9aVm3AMbKuDYlWg==
   dependencies:
     tslib "^2.0.0"
 

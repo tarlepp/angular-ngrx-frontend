@@ -52,7 +52,7 @@
     "@ngrx/store-devtools": "14.3.2",
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "7.0.0",
-    "@snyk/protect": "1.1040.0",
+    "@snyk/protect": "1.1049.0",
     "luxon": "3.0.4",
     "luxon-angular": "5.1.0",
     "ngrx-store-localstorage": "14.0.0",

@@ -1,5 +1,5 @@
 # Fetch build image
-FROM node:19.0.0 as build
+FROM node:19.0.1 as build
 
 # Copy sources to container
 COPY ./ /src/
@@ -9,7 +9,7 @@ WORKDIR /src/
 
 # Install all dependencies and make production build
 RUN yarn \
-  && yarn build-prod
+    && yarn build-prod
 
 # Fetch nginx image to host application
 FROM nginx:mainline-alpine

@@ -43,7 +43,7 @@ $dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn
 
 // Include the light theme styles (color and default density)
 .light-theme {
-  @include mat.all-component-themes($light-theme);
+  @include mat.all-legacy-component-themes($light-theme);
 
   /**
    * You can use these `--theme-*` in component specified SCSS files just by
@@ -73,7 +73,7 @@ $dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn
 
 // Include the dark theme styles (color and default density)
 .dark-theme {
-  @include mat.all-component-themes($dark-theme);
+  @include mat.all-legacy-component-themes($dark-theme);
 
   /**
   * You can use these `--theme-*` in component specified SCSS files just by

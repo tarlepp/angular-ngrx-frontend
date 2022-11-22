@@ -18,22 +18,20 @@
  * Define a custom typography config that overrides the font-family as well as
  * the `headlines` and `body-1` levels.
  */
-$custom-typography: mat.define-legacy-typography-config(
+$custom-typography: mat.define-typography-config(
   $font-family: $font-family,
-  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -.05em),
-  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -.02em),
-  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -.005em),
-  $display-1: mat.define-typography-level(34px, 40px, 400),
-  $headline: mat.define-typography-level(24px, 32px, 400),
-  $title: mat.define-typography-level(20px, 32px, 500),
-  $subheading-2: mat.define-typography-level(16px, 28px, 400),
-  $subheading-1: mat.define-typography-level(15px, 24px, 400),
-  $body-2: mat.define-typography-level(14px, 24px, 500),
-  $body-1: mat.define-typography-level(14px, 20px, 400),
+  $headline-1: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -.05em),
+  $headline-2: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -.02em),
+  $headline-3: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -.005em),
+  $headline-4: mat.define-typography-level(34px, 40px, 400),
+  $headline-5: mat.define-typography-level(24px, 32px, 400),
+  $headline-6: mat.define-typography-level(20px, 32px, 500),
+  $subtitle-1: mat.define-typography-level(16px, 28px, 400),
+  $body-1: mat.define-typography-level(15px, 24px, 400),
+  $subtitle-2: mat.define-typography-level(14px, 24px, 500),
+  $body-2: mat.define-typography-level(14px, 20px, 400),
   $caption: mat.define-typography-level(12px, 20px, 400),
   $button: mat.define-typography-level(14px, 14px, 500),
-  // Line-height must be unit-less fraction of the font-size.
-  $input: mat.define-typography-level(inherit, 1.125, 400)
 );
 
 // Compute font config
@@ -45,8 +43,8 @@ $custom-typography: mat.define-legacy-typography-config(
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($custom-typography);`
-@include mat.all-legacy-component-typographies($custom-typography);
-@include mat.legacy-core();
+@include mat.all-component-typographies($custom-typography);
+@include mat.core;
 
 // Define the used palettes by application specified palette configuration
 $light-palette-primary: mat.define-palette($app-palette-primary, $light-hue-primary);

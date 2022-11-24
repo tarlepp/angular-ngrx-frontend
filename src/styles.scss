@@ -41,10 +41,10 @@ $dark-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-ac
 $dark-warn-color: mat.get-color-from-palette(map.get($dark-color-config, warn), $dark-hue-warn);
 $dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, $dark-hue-warn);
 
-// Include the light theme styles (color and default density)
-.light-theme {
-  @include mat.all-component-themes($light-theme);
+// Include the light theme styles (color and default density) - This is for the baseline
+@include mat.all-component-themes($light-theme);
 
+.light-theme {
   /**
    * You can use these `--theme-*` in component specified SCSS files just by
    * using following syntax;
@@ -71,9 +71,9 @@ $dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn
   color: $light-text-color;
 }
 
-// Include the dark theme styles (color and default density)
 .dark-theme {
-  @include mat.all-component-themes($dark-theme);
+  // Include the dark theme styles (color and default density)
+  @include mat.all-component-colors($dark-theme);
 
   /**
   * You can use these `--theme-*` in component specified SCSS files just by

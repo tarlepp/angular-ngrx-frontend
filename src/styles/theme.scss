@@ -123,19 +123,23 @@ $dark-theme-foreground: (
 );
 
 // Light theme base definition
-$light-theme: mat.define-light-theme((
-  color: (
-    primary: $light-palette-primary,
-    accent: $light-palette-accent,
-    warn: $light-palette-warn,
-  ),
-));
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $light-palette-primary,
+      accent: $light-palette-accent,
+      warn: $light-palette-warn,
+    ),
+  )
+);
 
 // Dark theme base definition
-$dark-theme: mat.define-dark-theme((
-  color: (
-    primary: $dark-palette-primary,
-    accent: $dark-palette-accent,
-    warn: $dark-palette-warn,
-  ),
-));
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-palette-primary,
+      accent: $dark-palette-accent,
+      warn: $dark-palette-warn,
+    ),
+  )
+);

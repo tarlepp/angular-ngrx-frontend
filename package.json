@@ -57,7 +57,7 @@
     "luxon-angular": "5.2.0",
     "ngrx-store-localstorage": "14.0.0",
     "ngx-material-luxon": "1.1.1",
-    "ngx-webstorage": "10.0.1",
+    "ngx-webstorage": "11.1.1",
     "rxjs": "7.5.7",
     "tslib": "2.4.1",
     "zone.js": "0.12.0"

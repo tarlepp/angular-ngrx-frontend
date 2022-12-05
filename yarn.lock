@@ -2771,10 +2771,10 @@
     "@angular-devkit/schematics" "15.0.2"
     jsonc-parser "3.2.0"
 
-"@snyk/protect@1.1066.0":
-  version "1.1066.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1066.0.tgz#d75cb04af1697a20bcbbc9b5847442070a99a698"
-  integrity sha512-TAffuocY3QhZ7Md6ohi069PuH9KzwH1LI9kE1ZaLGSd4ydxzYIpWZi5fqJRemJ8nm6UofbtjpijcqaSPOsI7SA==
+"@snyk/protect@1.1067.0":
+  version "1.1067.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1067.0.tgz#300a2a9bd159548a1d005263cdfe5e5bf480d176"
+  integrity sha512-lU8YFKFKk2y8sYrflBMr7HEKMKBpEMiQrG1PCIqF6wKIK1V/46+ftY4r5MdwxKrfGHBqM/MCYbHysCrH1t+47w==
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -2898,10 +2898,10 @@
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.0.3.tgz#097ce710d70eb7f3662e96c1f75824dd22c27d5c"
   integrity sha512-Opp1LvvEuZdk8fSSvchK2mZwhVrsNT0JgJE9Di6MjnaIpmEXM8TLCPPrVtNTYh8+5MPdY8j9bAHMu2SSfwpZJg==
 
-"@types/jasmine@4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.3.0.tgz#1dfdfb226820911addb1b5a9031422be72c53aac"
-  integrity sha512-u1jWakf8CWvLfSEZyxmzkgBzOEvXH/szpT0e6G8BTkx5Eu0BhDn7sbc5dz0JBN/6Wwm9rBe+JAsk9tJRyH9ZkA==
+"@types/jasmine@4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-4.3.1.tgz#2d8ab5601c2fe7d9673dcb157e03f128ab5c5fff"
+  integrity sha512-Vu8l+UGcshYmV1VWwULgnV/2RDbBaO6i2Ptx7nd//oJPIZGhoI1YLST4VKagD2Pq/Bc2/7zvtvhM7F3p4SN7kQ==
 
 "@types/jasminewd2@2.0.10":
   version "2.0.10"

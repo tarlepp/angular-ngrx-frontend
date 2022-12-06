@@ -19,7 +19,7 @@
       ></mat-divider>
 
       <a href="https://www.github.com/tarlepp/angular-frontend" target="_blank"
-        mat-button
+         mat-button
       >
         GitHub
       </a>
@@ -28,12 +28,14 @@
                    [vertical]="true"
       ></mat-divider>
 
-      <small>
+      <small fxLayout="row"
+             fxLayoutAlign="start center"
+      >
         <span matTooltip="{{ 'component.footer.version.frontend' | translate }}">
           {{ versionFrontend$ | async }}
         </span>
 
-        <span>/</span>
+        <span class="margin-horizontal-quarter">/</span>
 
         <span matTooltip="{{ 'component.footer.version.backend' | translate }}">
           {{ versionBackend$ | async }}

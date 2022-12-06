@@ -60,10 +60,10 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
   public ngAfterViewInit(): void {
     // We need to move our footer below the current viewport to get nice look
     setTimeout((): void => {
-      const element = this.footerContainer.nativeElement;
+      const height = parseInt(this.footerContainer.nativeElement.offsetHeight, 10);
 
-      this.topOffset = `${ element.offsetHeight }px`;
-      this.topMargin = `-${ element.offsetHeight }px`;
+      this.topOffset = `${ height }px`;
+      this.topMargin = `-${ height }px`;
     }, 0);
   }
 

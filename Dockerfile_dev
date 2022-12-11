@@ -16,6 +16,7 @@ RUN apt-get update \
         python3-dev \
         python3-pip \
         python3-setuptools \
+        sudo \
         unzip \
     && rm -rf /var/lib/apt/lists/*
 
@@ -41,6 +42,10 @@ RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
 RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
     && chmod +x docker-entrypoint-dev.sh \
     && npm install -g npm-check-updates mversion
+
+# Add node user to sudo group and set password to `node`
+RUN usermod -a -G sudo node \
+    && usermod -p $(perl -e 'print crypt($ARGV[0], "password")' 'node') node
 
 USER node
 

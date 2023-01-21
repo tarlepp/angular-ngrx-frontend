@@ -121,7 +121,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint-fix
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix-scss
 endif
 
 extract-translations: ### Extract translations from TypeScript and HTML template files

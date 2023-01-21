@@ -26,6 +26,7 @@ docker-remove-images      # Remove all docker images
 extract-translations      # Extract translations from TypeScript and HTML
                           # template files
 fish                      # Get fish inside Node container
+fix-scss                  # Fix SCSS files
 lint                      # Lint TypeScript and SCSS files
 lint-scss                 # Lint SCSS files
 lint-ts                   # Lint TypeScript files

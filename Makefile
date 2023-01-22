@@ -19,6 +19,10 @@ WARNING_HOST = @printf "\033[31mThis command cannot be run inside docker contain
 WARNING_DOCKER = @printf "\033[31mThis command must be run inside docker container and it's not running!\nUse 'make start' command to get container running and after that run this command again.\033[39m\n"
 NOTICE_HOST = @printf "\033[33mRunning command from host machine by using 'docker-compose exec' command\033[39m\n"
 
+ifndef VERBOSE
+MAKEFLAGS += --no-print-directory
+endif
+
 .DEFAULT_GOAL := help
 .PHONY: help
 help:

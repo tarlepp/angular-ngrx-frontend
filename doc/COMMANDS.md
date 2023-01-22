@@ -27,6 +27,7 @@ extract-translations      # Extract translations from TypeScript and HTML
                           # template files
 fish                      # Get fish inside Node container
 fix-scss                  # Fix SCSS files
+fix-ts                    # Fix TypeScript files
 lint                      # Lint TypeScript and SCSS files
 lint-scss                 # Lint SCSS files
 lint-ts                   # Lint TypeScript files

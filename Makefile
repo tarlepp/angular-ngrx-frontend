@@ -113,6 +113,17 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint-scss
 endif
 
+fix-ts: ## Fix TypeScript files
+ifeq ($(INSIDE_DOCKER), 1)
+	@echo "\033[32mFixing TypeScript files\033[39m"
+	@yarn run fix:ts
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix-ts
+endif
+
 fix-scss: ## Fix SCSS files
 ifeq ($(INSIDE_DOCKER), 1)
 	@echo "\033[32mFixing SCSS files\033[39m"
@@ -121,7 +132,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint-fix
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix-scss
 endif
 
 extract-translations: ### Extract translations from TypeScript and HTML template files

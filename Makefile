@@ -19,6 +19,10 @@ WARNING_HOST = @printf "\033[31mThis command cannot be run inside docker contain
 WARNING_DOCKER = @printf "\033[31mThis command must be run inside docker container and it's not running!\nUse 'make start' command to get container running and after that run this command again.\033[39m\n"
 NOTICE_HOST = @printf "\033[33mRunning command from host machine by using 'docker-compose exec' command\033[39m\n"
 
+ifndef VERBOSE
+MAKEFLAGS += --no-print-directory
+endif
+
 .DEFAULT_GOAL := help
 .PHONY: help
 help:
@@ -111,6 +115,17 @@ else ifeq ($(strip $(IS_RUNNING)),)
 else
 	$(NOTICE_HOST)
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint-scss
+endif
+
+fix: ## Fix TypeScript and SCSS files
+ifeq ($(INSIDE_DOCKER), 1)
+	@make fix-ts
+	@make fix-scss
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix
 endif
 
 fix-ts: ## Fix TypeScript files

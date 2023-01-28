@@ -117,6 +117,17 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint-scss
 endif
 
+fix: ## Fix TypeScript and SCSS files
+ifeq ($(INSIDE_DOCKER), 1)
+	@make fix-ts
+	@make fix-scss
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix
+endif
+
 fix-ts: ## Fix TypeScript files
 ifeq ($(INSIDE_DOCKER), 1)
 	@echo "\033[32mFixing TypeScript files\033[39m"

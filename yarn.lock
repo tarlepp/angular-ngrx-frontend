@@ -2499,10 +2499,10 @@
     "@angular-devkit/schematics" "15.1.6"
     jsonc-parser "3.2.0"
 
-"@snyk/protect@1.1105.0":
-  version "1.1105.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1105.0.tgz#a5336b74c5e88122f571b664030b39572e04e354"
-  integrity sha512-wIRSrm7DcIqpi6JPEKsxenpSXOBj+z5sCUGN0O9YBZV57FYBxhlkOS0I9k6hvKhUmzcPeQ2zbgmGCTbOzhc6zw==
+"@snyk/protect@1.1108.0":
+  version "1.1108.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1108.0.tgz#3cb73bbb8c39e96bb7a5285b512476404c88307e"
+  integrity sha512-NJFFPiSTenMMfjqM4lm1N/CmuTWaD1DR5MQL1Saiwa8MhM2lz3c4gDMhpHCCR2VztlvOHmgdLMupFSCGfM1dJw==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"

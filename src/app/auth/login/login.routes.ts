@@ -9,7 +9,7 @@ export const loginRoutes: Routes = [
   {
     path: 'login',
     canActivate: [
-      (): Observable<boolean|UrlTree> => inject(AnonymousGuard).canActivate(inject(ActivatedRoute)),
+      (): Observable<boolean|UrlTree> => inject(AnonymousGuard).canActivate(inject(ActivatedRoute).snapshot),
     ],
     component: LoginComponent,
     children: [

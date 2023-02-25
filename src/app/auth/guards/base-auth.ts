@@ -33,7 +33,7 @@ export abstract class BaseAuth {
    *    {
    *      path: 'login',
    *      canActivate: [
-   *        AnonymousGuard,
+   *        () => inject(AnonymousGuard).canActivate(inject(ActivatedRoute)),
    *      ],
    *      component: LoginComponent,
    *      data: {

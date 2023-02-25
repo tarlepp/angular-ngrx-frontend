@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, UrlTree } from '@angular/router';
+import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { BaseAuth } from 'src/app/auth/guards/base-auth';
@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/auth/services';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationGuard extends BaseAuth implements CanActivate, CanActivateChild {
+export class AuthenticationGuard extends BaseAuth {
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this guard.
@@ -27,8 +27,8 @@ export class AuthenticationGuard extends BaseAuth implements CanActivate, CanAct
    *
    * This method is used within route definition `canActivate` definition.
    */
-  public canActivate(route: ActivatedRouteSnapshot): Observable<boolean|UrlTree> {
-    return this.makeCheck(true, route.data?.authGuardMeta ?? null);
+  public canActivate(route: ActivatedRoute): Observable<boolean|UrlTree> {
+    return this.makeCheck(true, route.snapshot.data?.authGuardMeta ?? null);
   }
 
   /**
@@ -38,7 +38,7 @@ export class AuthenticationGuard extends BaseAuth implements CanActivate, CanAct
    *
    * This method is used within route definition `canActivateChild` definition.
    */
-  public canActivateChild(childRoute: ActivatedRouteSnapshot): Observable<boolean|UrlTree> {
-    return this.makeCheck(true, childRoute.data?.authGuardMeta ?? null);
+  public canActivateChild(childRoute: ActivatedRoute): Observable<boolean|UrlTree> {
+    return this.makeCheck(true, childRoute.snapshot.data?.authGuardMeta ?? null);
   }
 }

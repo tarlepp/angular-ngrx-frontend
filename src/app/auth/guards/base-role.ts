@@ -37,7 +37,7 @@ export abstract class BaseRole {
    *    {
    *      path: 'foo',
    *      canActivate: [
-   *        RoleAdminGuard,
+   *        () => inject(RoleAdminGuard).canActivate(inject(ActivatedRoute)),
    *      ],
    *      component: FooComponent,
    *      data: {

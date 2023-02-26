@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { BaseRole } from 'src/app/auth/guards/base-role';
 @Injectable({
   providedIn: 'root',
 })
-export class RoleAdminGuard extends BaseRole implements CanActivate, CanActivateChild {
+export class RoleAdminGuard extends BaseRole {
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this guard.

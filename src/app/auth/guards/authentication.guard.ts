@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { BaseAuth } from 'src/app/auth/guards/base-auth';
@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/auth/services';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationGuard extends BaseAuth implements CanActivate, CanActivateChild {
+export class AuthenticationGuard extends BaseAuth {
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this guard.

@@ -2488,10 +2488,10 @@
     "@angular-devkit/schematics" "15.2.2"
     jsonc-parser "3.2.0"
 
-"@snyk/protect@1.1115.0":
-  version "1.1115.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1115.0.tgz#24f275be49aff2c3f0d45ab9b846c79da128f717"
-  integrity sha512-vx3wT+xRqz3m9MdGwzJLOraDQeKyeyELnr3VPp9qZzDNjLtVLh3SQuhrH7zDcSnBdRU1G1/tkVpTX8ojIwiiYQ==
+"@snyk/protect@1.1116.0":
+  version "1.1116.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1116.0.tgz#f8150cee1f9a6117418a674f0e1585f3dc1b0089"
+  integrity sha512-QuG0q9/t/PvdH6bkZj8YuIH2HAIGHw3i28Z8+4Q/Iyq+rauEIP3fkJmHpVKHP2dXAyymHLJHd+cD91U/Oiqz8A==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -2659,10 +2659,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.13.0.tgz#0400d1e6ce87e9d3032c19eb6c58205b0d3f7850"
   integrity sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==
 
-"@types/node@18.14.6":
-  version "18.14.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.14.6.tgz#ae1973dd2b1eeb1825695bb11ebfb746d27e3e93"
-  integrity sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==
+"@types/node@18.15.0":
+  version "18.15.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.0.tgz#286a65e3fdffd691e170541e6ecb0410b16a38be"
+  integrity sha512-z6nr0TTEOBGkzLGmbypWOGnpSpSIBorEhC4L+4HeQ2iezKCi4f77kyslRwvHeNitymGQ+oFyIWGP96l/DPSV9w==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"

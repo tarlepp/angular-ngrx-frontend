@@ -203,3 +203,11 @@ ifeq ($(INSIDE_DOCKER_CONTAINER), 1)
 else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker rmi $$(docker images -q)
 endif
+
+generate-ssl-cert: ## Generate self signed SSL certificate
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@echo "\033[32mGenerating self signed SSL certificate\033[39m"
+	@cd docker && ./create-keys.sh
+endif

@@ -15,7 +15,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl true --ssl-key docker/tls.key --ssl-cert docker/tls.crt --host 0.0.0.0 --disable-host-check",
+    "start": "ng serve --ssl true --ssl-key docker/ssl/tls.key --ssl-cert docker/ssl/tls.crt --host 0.0.0.0 --disable-host-check",
     "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --configuration=localProduction",
     "build": "ng build",
     "build-prod": "ng build --configuration production --build-optimizer --configuration=production",

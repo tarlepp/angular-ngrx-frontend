@@ -66,10 +66,10 @@ https):
 
 And this application is usable within your browser on `https://localhost:4200`
 address. When you first time open that site you will see "Your connection is
-not private" warning - see [this](./docker/README.md) to resolve that.
+not private" warning - see [this](./docker/ssl/README.md) to resolve that.
 
 Note that this frontend application assumes that your backend is running on
-`http://localhost:8000` address. Also note that _"default"_
+`https://localhost:8000` address. Also note that _"default"_
 [backend](https://github.com/tarlepp/symfony-flex-backend)
 is running on that address by default.
 

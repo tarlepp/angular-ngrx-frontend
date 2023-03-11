@@ -38,4 +38,4 @@ article - Specially that `Step 4: Adding CA as trusted to Chrome` part.
 
 ---
 
-[Back to main README.md](../README.md)
+[Back to main README.md](../../README.md)

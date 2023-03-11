@@ -59,15 +59,17 @@ running on development stage.
 ### 3. Using application [ᐞ](#table-of-contents)
 
 By default `make start` command starts Angular application on Docker container
-and exposes following port on `localhost`:
+and exposes following port on `localhost` (note that application is using
+https):
 
 * 4200 (Angular Live Development Server)
 
-And this application is usable within your browser on `http://localhost:4200`
-address.
+And this application is usable within your browser on `https://localhost:4200`
+address. When you first time open that site you will see "Your connection is
+not private" warning - see [this](./docker/ssl/README.md) to resolve that.
 
 Note that this frontend application assumes that your backend is running on
-`http://localhost:8000` address. Also note that _"default"_
+`https://localhost:8000` address. Also note that _"default"_
 [backend](https://github.com/tarlepp/symfony-flex-backend)
 is running on that address by default.
 

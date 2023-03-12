@@ -209,5 +209,5 @@ ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
 else
 	@echo "\033[32mGenerating self signed SSL certificate\033[39m"
-	@cd docker && ./create-keys.sh
+	@cd docker/ssl && ./create-keys.sh
 endif

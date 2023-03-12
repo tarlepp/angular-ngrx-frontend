@@ -29,6 +29,7 @@ fish                      # Get fish inside Node container
 fix                       # Fix TypeScript and SCSS files
 fix-scss                  # Fix SCSS files
 fix-ts                    # Fix TypeScript files
+generate-ssl-cert         # Generate self signed SSL certificate
 lint                      # Lint TypeScript and SCSS files
 lint-scss                 # Lint SCSS files
 lint-ts                   # Lint TypeScript files

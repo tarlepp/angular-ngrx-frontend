@@ -73,7 +73,6 @@
     "no-empty-source": null,
     "selector-class-pattern": null,
     "selector-max-type": null,
-    "order/properties-alphabetical-order": null,
     "scss/dollar-variable-pattern": null,
     "scss/at-function-pattern": null,
     "scss/at-mixin-pattern": null

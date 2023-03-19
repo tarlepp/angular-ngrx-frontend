@@ -13,9 +13,6 @@ body {
 app-root {
   display: flex;
   position: absolute;
-  top: $header-height;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: $header-height 0 0 0;
   flex-direction: column;
 }

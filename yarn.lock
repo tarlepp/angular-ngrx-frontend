@@ -2500,10 +2500,10 @@
     "@angular-devkit/schematics" "15.2.4"
     jsonc-parser "3.2.0"
 
-"@snyk/protect@1.1121.0":
-  version "1.1121.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1121.0.tgz#fbd4986ec19ccd674a5277b946c18b625eec5566"
-  integrity sha512-2DytMgYtDZMxQ8k5glizB/qCfv509tr+hxlTEd2pRwiFkuXO5NuN2xKRPpX+8UWZ34i8zvTw02TSwENdeMbqkA==
+"@snyk/protect@1.1122.0":
+  version "1.1122.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1122.0.tgz#cfb38c68f7f77a2cf8b1b2a0da29edf04c0a384f"
+  integrity sha512-2FjMNrAS+v9mMqoVGaf2MD2x8eglzTS0Ffp+zVMacXLhKPW3+GNB46uuS5AO4fShoU4EiySRqHznX83B8+y/7A==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"

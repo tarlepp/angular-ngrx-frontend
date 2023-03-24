@@ -78,7 +78,7 @@
     "@types/jasmine": "4.3.1",
     "@types/jasminewd2": "2.0.10",
     "@types/luxon": "3.2.0",
-    "@types/node": "18.15.3",
+    "@types/node": "18.15.6",
     "@typescript-eslint/eslint-plugin": "5.55.0",
     "@typescript-eslint/parser": "5.55.0",
     "eslint": "8.36.0",

@@ -2500,10 +2500,10 @@
     "@angular-devkit/schematics" "15.2.4"
     jsonc-parser "3.2.0"
 
-"@snyk/protect@1.1131.0":
-  version "1.1131.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1131.0.tgz#cb16398a4b93990bb280c4df45723c3556f1a101"
-  integrity sha512-s71Vg8hiBennhEZF332BXY4xHGBGI6tevTkm7rsXusO6yRFCiH1f6ykJ+vjusdJjbraHASzszKG9QWTeQH3uCw==
+"@snyk/protect@1.1133.0":
+  version "1.1133.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1133.0.tgz#bfc32b657b8955b171de3f461478f53e0a4fea71"
+  integrity sha512-JoQd0ejq74kHoqDE44wY+rLuo5bDuFrdz8O58hOD8S5cm3pzhXe1Td0lHdJ2Jg4W55UGV1iB4Nx/ruNOTx3A3g==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -4734,10 +4734,10 @@ eslint-plugin-import@2.27.5:
     semver "^6.3.0"
     tsconfig-paths "^3.14.1"
 
-eslint-plugin-jsdoc@40.1.0:
-  version "40.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-40.1.0.tgz#fec2f649a60167fa5a94f05ce2c6c041caaab129"
-  integrity sha512-ANvrhiu62VlSorARM0hup60VQsS3hNyp0Ca7cnJDj8tpJzM7tNhBVqMVYXSuLzEmqrpwx6aAh+NAN2DdAGG5fQ==
+eslint-plugin-jsdoc@40.1.1:
+  version "40.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-40.1.1.tgz#12ae46e5e64524c19fb7d01471c70015aa0863f0"
+  integrity sha512-KxrQCq9pPt7LNeDBlLlnuJMpDFZnEQTs4e25NrT4u5cWmPw2P7F03F2qwPz0GMdlRZTyMOofuPAdiWytvPubvA==
   dependencies:
     "@es-joy/jsdoccomment" "~0.37.0"
     comment-parser "1.3.1"

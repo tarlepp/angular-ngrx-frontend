@@ -19,6 +19,7 @@ speed-measure-plugin*.json
 .idea/**/tasks.xml
 .idea/dictionaries
 .idea/shelf
+.idea/php.xml
 
 # IDEs and editors
 .project

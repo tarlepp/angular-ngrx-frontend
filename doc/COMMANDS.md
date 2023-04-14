@@ -33,6 +33,7 @@ generate-ssl-cert         # Generate self signed SSL certificate
 lint                      # Lint TypeScript and SCSS files
 lint-scss                 # Lint SCSS files
 lint-ts                   # Lint TypeScript files
+project-stats             # Create simple project stats
 start-build               # Start application in development mode and build
                           # containers
 start-production          # Start application locally in production mode

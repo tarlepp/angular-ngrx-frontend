@@ -211,3 +211,14 @@ else
 	@echo "\033[32mGenerating self signed SSL certificate\033[39m"
 	@cd docker/ssl && ./create-keys.sh
 endif
+
+project-stats: ## Create simple project stats
+ifeq ($(INSIDE_DOCKER), 1)
+	@echo "\033[32mFixing SCSS files\033[39m"
+	@./scripts/project-stats.sh
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make project-stats
+endif

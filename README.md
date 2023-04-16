@@ -108,6 +108,7 @@ make start-build
 * [Tools](doc/TOOLS.md)
 * [Translations](doc/TRANSLATIONS.md)
 * [Usage checklist](doc/USAGE_CHECKLIST.md)
+* [Scripts](scripts/README.md)
 
 ## External links / resources [ᐞ](#table-of-contents)
 

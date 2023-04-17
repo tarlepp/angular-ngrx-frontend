@@ -94,7 +94,7 @@
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.0.0",
-    "postcss": "8.4.21",
+    "postcss": "8.4.22",
     "protractor": "7.0.0",
     "stylelint": "15.4.0",
     "stylelint-config-sass-guidelines": "10.0.0",

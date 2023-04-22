@@ -8,11 +8,11 @@ import {
   ThemeValueInterface,
   ViewportValueInterface,
 } from 'src/app/shared/interfaces';
-import { LayoutState, layoutActions } from 'src/app/store';
+import { layoutActions, LayoutState } from 'src/app/store';
 
 // Initial state of `Layout` store.
 const initialState: LayoutState = {
-  theme: Theme.DEFAULT,
+  theme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.DEFAULT,
   language: Language.DEFAULT,
   locale: Locale.DEFAULT,
   timezone: 'UTC',

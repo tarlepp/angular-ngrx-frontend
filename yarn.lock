@@ -1617,13 +1617,13 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@es-joy/jsdoccomment@~0.37.0":
-  version "0.37.0"
-  resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.37.0.tgz#aaafb4bb6c88288aa7899aef0f3b1b851c36f908"
-  integrity sha512-hjK0wnsPCYLlF+HHB4R/RbUjOWeLW2SlarB67+Do5WsKILOkmIZvvPJFbtWSmbypxcjpoECLAMzoao0D4Bg5ZQ==
+"@es-joy/jsdoccomment@~0.38.0":
+  version "0.38.0"
+  resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.38.0.tgz#2e74f8d824b4a4ec831eaabd4c3548fb11eae5cd"
+  integrity sha512-TFac4Bnv0ZYNkEeDnOWHQhaS1elWlvOCQxH06iHeu5iffs+hCaLVIZJwF+FqksQi68R4i66Pu+4DfFGvble+Uw==
   dependencies:
     comment-parser "1.3.1"
-    esquery "^1.4.0"
+    esquery "^1.5.0"
     jsdoc-type-pratt-parser "~4.0.0"
 
 "@esbuild/android-arm64@0.17.18":
@@ -2840,10 +2840,10 @@
   resolved "https://registry.yarnpkg.com/@sigstore/protobuf-specs/-/protobuf-specs-0.1.0.tgz#957cb64ea2f5ce527cc9cf02a096baeb0d2b99b4"
   integrity sha512-a31EnjuIDSX8IXBUib3cYLDRlPMU36AWX4xS8ysLaNu4ZzUesDiPt83pgrW2X1YLMe5L2HbDyaKK5BrL4cNKaQ==
 
-"@snyk/protect@1.1150.0":
-  version "1.1150.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1150.0.tgz#6803b46c2a2261c12525d6e4c8601010ace7977f"
-  integrity sha512-asMBcQdfnT5JkHzxVsFSOFC1K/OMA2YaYeTUhzr/uBXPx1PkQnaNpyvSdV7RuxS8Iwr1ZFItsJ7yT9tiyyX8bg==
+"@snyk/protect@1.1152.0":
+  version "1.1152.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1152.0.tgz#ebe3beb49e6bf457e4808630cac71a940dba5dce"
+  integrity sha512-GRPsVDwVLa/wA8LWP6beJUeJTBNo6hFpEFcKMVKSc6Q3boTuZhgK1YKQaS/C/IZVizlyHRLCbkxw3mJgf3nDuA==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -3024,10 +3024,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.13.0.tgz#0400d1e6ce87e9d3032c19eb6c58205b0d3f7850"
   integrity sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==
 
-"@types/node@18.16.3":
-  version "18.16.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.3.tgz#6bda7819aae6ea0b386ebc5b24bdf602f1b42b01"
-  integrity sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==
+"@types/node@20.1.0":
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.1.0.tgz#258805edc37c327cf706e64c6957f241ca4c4c20"
+  integrity sha512-O+z53uwx64xY7D6roOi4+jApDGFg0qn6WHcxe5QeqjMaTezBO/mxdfFXIVAVVyNWKx84OmPB3L8kbVYOTeN34A==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -5160,18 +5160,18 @@ eslint-plugin-import@2.27.5:
     semver "^6.3.0"
     tsconfig-paths "^3.14.1"
 
-eslint-plugin-jsdoc@41.1.1:
-  version "41.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-41.1.1.tgz#f5430aea369c4eb69c2fdc4030e09eb79d5f0518"
-  integrity sha512-dfH97DKLGtQ5dgEMzd+GSUuY+xX/yyAfjML3O0pEWmMMpylsG6Ro65s4ziYXKmixiENYK9CTQxCVRGqZUFN2Mw==
+eslint-plugin-jsdoc@43.2.0:
+  version "43.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-43.2.0.tgz#9d0df2329100a6956635f26211d0723c3ff91f15"
+  integrity sha512-Hst7XUfqh28UmPD52oTXmjaRN3d0KrmOZdgtp4h9/VHUJD3Evoo82ZGXi1TtRDWgWhvqDIRI63O49H0eH7NrZQ==
   dependencies:
-    "@es-joy/jsdoccomment" "~0.37.0"
+    "@es-joy/jsdoccomment" "~0.38.0"
     are-docs-informative "^0.0.2"
     comment-parser "1.3.1"
     debug "^4.3.4"
     escape-string-regexp "^4.0.0"
     esquery "^1.5.0"
-    semver "^7.3.8"
+    semver "^7.5.0"
     spdx-expression-parse "^3.0.1"
 
 eslint-plugin-ngrx@2.1.4:
@@ -5296,7 +5296,7 @@ esprima@^4.0.0:
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
-esquery@^1.0.1, esquery@^1.4.0:
+esquery@^1.0.1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/esquery/-/esquery-1.4.0.tgz#2148ffc38b82e8c7057dfed48425b3e61f0f24a5"
   integrity sha512-cCDispWt5vHHtwMY2YrAQ4ibFkAL8RbH5YGBnZBc90MolvvfkkQcJro/aZiAQUlQ3qgrYS6D6v8Gc5G5CQsc9w==
@@ -8257,12 +8257,20 @@ postcss-selector-parser@^6.0.11, postcss-selector-parser@^6.0.2, postcss-selecto
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
 
+postcss-selector-parser@^6.0.12:
+  version "6.0.12"
+  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.0.12.tgz#2efae5ffab3c8bfb2b7fbf0c426e3bca616c4abb"
+  integrity sha512-NdxGCAZdRrwVI1sy59+Wzrh+pMMHxapGnpfenDVlMEXoOcvt4pGE0JLK9YY2F5dLxcFYA/YbVQKhcGU+FtSYQg==
+  dependencies:
+    cssesc "^3.0.0"
+    util-deprecate "^1.0.2"
+
 postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@8.4.23, postcss@^8.4.21, postcss@^8.4.22:
+postcss@8.4.23, postcss@^8.4.21, postcss@^8.4.23:
   version "8.4.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.23.tgz#df0aee9ac7c5e53e1075c24a3613496f9e6552ab"
   integrity sha512-bQ3qMcpF6A/YjR55xtoTr0jGOlnPOKAIMdOWiv0EIT6HVPEaJiJB4NLljSbiHoC2RX7DN5Uvjtpbg1NPdwv1oA==
@@ -8877,6 +8885,13 @@ semver@^7.0.0, semver@^7.1.1, semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semve
   dependencies:
     lru-cache "^6.0.0"
 
+semver@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.0.tgz#ed8c5dc8efb6c629c88b23d41dc9bf40c1d96cd0"
+  integrity sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==
+  dependencies:
+    lru-cache "^6.0.0"
+
 send@0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/send/-/send-0.18.0.tgz#670167cc654b05f5aa4a767f9113bb371bc706be"
@@ -9414,10 +9429,10 @@ stylelint-scss@^4.6.0:
     postcss-selector-parser "^6.0.11"
     postcss-value-parser "^4.2.0"
 
-stylelint@15.6.0:
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-15.6.0.tgz#1d76176dd8b6307bc4645e428ad18ddd15edbafc"
-  integrity sha512-Cqzpc8tvJm77KaM8qUbhpJ/UYK55Ia0whQXj4b9IId9dlPICO7J8Lyo15SZWiHxKjlvy3p5FQor/3n6i8ignXg==
+stylelint@15.6.1:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-15.6.1.tgz#e4cd33a3af88587b99a5d1328aedd8c298b6dc81"
+  integrity sha512-d8icFBlVl93Elf3Z5ABQNOCe4nx69is3D/NZhDLAie1eyYnpxfeKe7pCfqzT5W4F8vxHCLSDfV8nKNJzogvV2Q==
   dependencies:
     "@csstools/css-parser-algorithms" "^2.1.1"
     "@csstools/css-tokenizer" "^2.1.1"
@@ -9446,11 +9461,11 @@ stylelint@15.6.0:
     micromatch "^4.0.5"
     normalize-path "^3.0.0"
     picocolors "^1.0.0"
-    postcss "^8.4.22"
+    postcss "^8.4.23"
     postcss-media-query-parser "^0.2.3"
     postcss-resolve-nested-selector "^0.1.1"
     postcss-safe-parser "^6.0.0"
-    postcss-selector-parser "^6.0.11"
+    postcss-selector-parser "^6.0.12"
     postcss-value-parser "^4.2.0"
     resolve-from "^5.0.0"
     string-width "^4.2.3"
@@ -9460,7 +9475,7 @@ stylelint@15.6.0:
     svg-tags "^1.0.0"
     table "^6.8.1"
     v8-compile-cache "^2.3.0"
-    write-file-atomic "^5.0.0"
+    write-file-atomic "^5.0.1"
 
 supports-color@^2.0.0:
   version "2.0.0"
@@ -10281,13 +10296,13 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-write-file-atomic@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-5.0.0.tgz#54303f117e109bf3d540261125c8ea5a7320fab0"
-  integrity sha512-R7NYMnHSlV42K54lwY9lvW6MnSm1HSJqZL3xiSgi9E7//FYaI74r2G0rd+/X6VAMkHEdzxQaU5HUOXWUz5kA/w==
+write-file-atomic@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-5.0.1.tgz#68df4717c55c6fa4281a7860b4c2ba0a6d2b11e7"
+  integrity sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==
   dependencies:
     imurmurhash "^0.1.4"
-    signal-exit "^3.0.7"
+    signal-exit "^4.0.1"
 
 ws@^8.13.0:
   version "8.13.0"

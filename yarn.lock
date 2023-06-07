@@ -2916,10 +2916,10 @@
   resolved "https://registry.yarnpkg.com/@sigstore/protobuf-specs/-/protobuf-specs-0.1.0.tgz#957cb64ea2f5ce527cc9cf02a096baeb0d2b99b4"
   integrity sha512-a31EnjuIDSX8IXBUib3cYLDRlPMU36AWX4xS8ysLaNu4ZzUesDiPt83pgrW2X1YLMe5L2HbDyaKK5BrL4cNKaQ==
 
-"@snyk/protect@1.1173.0":
-  version "1.1173.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1173.0.tgz#1c5fdb2c5f23492f7ab1c4f740f125ca96229800"
-  integrity sha512-PSJG7Y6lb9YeFr3Dz4gAHi4nQe+laYyS/+i2Nt3fXboE/d3d+X9izRljVxMwYcnE+inZPfomsCSZuUEUokieMw==
+"@snyk/protect@1.1175.0":
+  version "1.1175.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1175.0.tgz#291de6e262ce83afc23090646208815d5fc694c0"
+  integrity sha512-a7Kd79MMYoW1k/cevdjV9MuUcEfRjdABSxBl49fpcHmmGcz+fUd4fjXiiyJxZE/OqYwlAVr7GwHEbitSko1cVA==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"

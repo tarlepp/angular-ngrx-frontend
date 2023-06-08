@@ -99,7 +99,7 @@
     "stylelint": "15.6.3",
     "stylelint-config-sass-guidelines": "10.0.0",
     "stylelint-config-standard-scss": "9.0.0",
-    "stylelint-scss": "5.0.0",
+    "stylelint-scss": "5.0.1",
     "ts-node": "10.9.1",
     "typescript": "5.0.4"
   },

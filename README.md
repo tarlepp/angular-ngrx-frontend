@@ -2,6 +2,7 @@
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![CI](https://github.com/tarlepp/angular-ngrx-frontend/workflows/CI/badge.svg)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/tarlepp/angular-ngrx-frontend/badge)](https://securityscorecards.dev/viewer/?platform=github.com&org=tarlepp&repo=angular-ngrx-frontend)
 
 Angular NgRx powered frontend template project for
 [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)

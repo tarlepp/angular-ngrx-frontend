@@ -1,5 +1,5 @@
 # Fetch build image
-FROM node:20.2.0 as build
+FROM node:20.3.0 as build
 
 # Copy sources to container
 COPY ./ /src/

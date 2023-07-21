@@ -2646,10 +2646,10 @@
     make-fetch-happen "^11.0.1"
     tuf-js "^1.1.3"
 
-"@snyk/protect@1.1192.0":
-  version "1.1192.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1192.0.tgz#979ab2af8df0cf8a02ef98f8e1757adb21792880"
-  integrity sha512-fcTYk3ai0YNQdqyEfDIeQ+CDo2I145dZDc0pePc+4tPIaeXajC+OGpxDbp98KMQYjgWHRQ/sHa+oeT2XS3i0Qw==
+"@snyk/protect@1.1193.0":
+  version "1.1193.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1193.0.tgz#0b483e105a7a9ad1df8a3c2249d89374895cce76"
+  integrity sha512-/kNhccsKT5pWz/8rM7mpzalPFX8JArSkD+09HZJzDqV3VAQ78Jt3YE/jVkFtU+37J/OgsSAmcEqY1LcZxp/kwg==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -2811,10 +2811,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/luxon@3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-3.3.0.tgz#a61043a62c0a72696c73a0a305c544c96501e006"
-  integrity sha512-uKRI5QORDnrGFYgcdAVnHvEIvEZ8noTpP/Bg+HeUzZghwinDlIS87DEenV5r1YoOF9G4x600YsUXLWZ19rmTmg==
+"@types/luxon@3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-3.3.1.tgz#08727da7d81ee6a6c702b9dc6c8f86be010eb4dc"
+  integrity sha512-XOS5nBcgEeP2PpcqJHjCWhUCAzGfXIU8ILOSLpx2FhxqMW9KdxgCGXNOEKGVBfveKtIpztHzKK5vSRVLyW/NqA==
 
 "@types/mime@*":
   version "3.0.1"
@@ -7978,7 +7978,16 @@ postcss@8.4.24, postcss@^8.2.14, postcss@^8.4.21, postcss@^8.4.23:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@8.4.26, postcss@^8.4.25:
+postcss@8.4.27:
+  version "8.4.27"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.27.tgz#234d7e4b72e34ba5a92c29636734349e0d9c3057"
+  integrity sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==
+  dependencies:
+    nanoid "^3.3.6"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
+postcss@^8.4.25:
   version "8.4.26"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.26.tgz#1bc62ab19f8e1e5463d98cf74af39702a00a9e94"
   integrity sha512-jrXHFF8iTloAenySjM/ob3gSj7pCu0Ji49hnjqzsgSRa50hkWCKD0HQ+gMNJkW38jBI68MpAAg7ZWwHwX8NMMw==

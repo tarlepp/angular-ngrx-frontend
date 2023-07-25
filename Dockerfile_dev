@@ -1,5 +1,5 @@
 # Fetch used node image
-FROM node:20.3.1
+FROM node:20.4.0
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -49,7 +49,7 @@ RUN usermod -a -G sudo node \
 
 USER node
 
-RUN pip3 install thefuck --user --no-warn-script-location
+RUN pip3 install thefuck --user --no-warn-script-location --break-system-packages
 
 RUN mkdir -p /home/node/.config/fish/completions \
     && mkdir -p /home/node/.config/fish/functions

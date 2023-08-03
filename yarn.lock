@@ -2646,10 +2646,10 @@
     make-fetch-happen "^11.0.1"
     tuf-js "^1.1.3"
 
-"@snyk/protect@1.1196.0":
-  version "1.1196.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1196.0.tgz#be876f1d29d96ef7c5b521b48c82dee0daaa58e4"
-  integrity sha512-2CxqRVAzG+5pIpb9UYg5n7eIkpXSzGi1jJRS3oRajbTTCFlNhLgBhYHy7G8blUCEcBtWymRd7IfdFM35RK3WSg==
+"@snyk/protect@1.1199.0":
+  version "1.1199.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1199.0.tgz#b3c9e01d96ae4fbe5d40a47a17c3b6aac0f8c261"
+  integrity sha512-dQD2OvwrWpQjW+zJMojIuqHSk3naiC6dHYwutdlNW96ucrtB4U+4ro/hGHJQ4lEaSBrclfGEClltn2bQZ9xExQ==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"

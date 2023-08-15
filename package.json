@@ -79,7 +79,7 @@
     "@types/jasminewd2": "2.0.10",
     "@types/luxon": "3.3.1",
     "@types/node": "20.4.10",
-    "@typescript-eslint/eslint-plugin": "6.3.0",
+    "@typescript-eslint/eslint-plugin": "6.4.0",
     "@typescript-eslint/parser": "6.3.0",
     "eslint": "8.47.0",
     "eslint-plugin-deprecation": "1.5.0",

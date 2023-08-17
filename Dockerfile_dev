@@ -1,5 +1,5 @@
 # Fetch used node image
-FROM node:20.5.0
+FROM node:20.5.1
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -47,20 +47,30 @@ RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
 RUN usermod -a -G sudo node \
     && usermod -p $(perl -e 'print crypt($ARGV[0], "password")' 'node') node
 
+RUN mkdir -p /home/node/.config/fish/completions \
+    && mkdir -p /home/node/.config/fish/functions \
+    && mkdir -p /home/node/.local/share \
+    && chmod 777 -R /home/node
+
 USER node
 
 RUN pip3 install thefuck --user --no-warn-script-location --break-system-packages
-
-RUN mkdir -p /home/node/.config/fish/completions \
-    && mkdir -p /home/node/.config/fish/functions
 
 RUN fish -c 'curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher' \
     && fish -c 'fisher install jorgebucaran/nvm.fish'
 
 COPY ./docker/fish /home/node/.config/fish/
 
+USER root
+
+RUN chmod 777 -R /home/node /tmp \
+    && rm -rf /tmp/fish.node
+
+USER node
+
 # Add necessary stuff to bash autocomplete
 ENV PATH "$PATH:/home/node/.local/bin"
+ENV XDG_RUNTIME_PATH /home/node/.tmp
 
 RUN echo 'eval "$(thefuck --alias)"' >> /home/node/.bashrc
 

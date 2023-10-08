@@ -8,11 +8,11 @@
 @use '@angular/material' as mat;
 
 // Application specified styles for theming
-@import 'src/styles/palettes/app-palette-accent';
-@import 'src/styles/palettes/app-palette-grey';
-@import 'src/styles/palettes/app-palette-primary';
-@import 'src/styles/palettes/app-palette-warn';
-@import 'src/styles/variables';
+@import './palettes/app-palette-accent';
+@import './palettes/app-palette-grey';
+@import './palettes/app-palette-primary';
+@import './palettes/app-palette-warn';
+@import './variables';
 
 /**
  * Define a custom typography config that overrides the font-family as well as

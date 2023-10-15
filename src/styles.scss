@@ -2,14 +2,14 @@
 @use 'sass:map';
 
 // Import application palettes with Angular Material theming
-@import 'src/styles/theme';
+@import './styles/theme';
 
 // Plus imports for other common styles that we need
-@import 'src/styles/variables';
-@import 'src/styles/animations';
-@import 'src/styles/base';
-@import 'src/styles/layout';
-@import 'src/styles/mixins';
+@import './styles/variables';
+@import './styles/animations';
+@import './styles/base';
+@import './styles/layout';
+@import './styles/mixins';
 
 // Light theme common variables
 $light-color-config: mat.get-color-config($light-theme);

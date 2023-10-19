@@ -16,8 +16,9 @@ updates:
   groups:
     npm-dependencies:
       patterns:
-        - "@angular/*"
-        - "@ngrx/*"
+        - "@angular*"
+        - "@ngrx*"
+        - "*eslint*"
         - "*"
   open-pull-requests-limit: 10
   ignore:

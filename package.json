@@ -76,7 +76,7 @@
     "@angular/language-service": "16.2.9",
     "@bartholomej/ngx-translate-extract": "8.0.2",
     "@types/jasmine": "5.1.0",
-    "@types/jasminewd2": "2.0.11",
+    "@types/jasminewd2": "2.0.12",
     "@types/luxon": "3.3.2",
     "@types/node": "20.8.6",
     "@typescript-eslint/eslint-plugin": "6.7.5",

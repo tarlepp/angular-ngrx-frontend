@@ -4,11 +4,21 @@ updates:
   directory: "/"
   schedule:
     interval: daily
+  groups:
+    actions:
+      patterns:
+        - "*"
 - package-ecosystem: npm
   directory: "/"
   schedule:
     interval: daily
     time: "03:00"
+  groups:
+    npm-dependencies:
+      patterns:
+        - "@angular/*"
+        - "@ngrx/*"
+        - "*"
   open-pull-requests-limit: 10
   ignore:
   - dependency-name: snyk
@@ -228,6 +238,10 @@ updates:
   schedule:
     interval: daily
     time: "03:00"
+  groups:
+    actions:
+      patterns:
+        - "*"
   open-pull-requests-limit: 10
   ignore:
   - dependency-name: node

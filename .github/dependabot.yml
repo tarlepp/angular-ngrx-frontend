@@ -4,11 +4,22 @@ updates:
   directory: "/"
   schedule:
     interval: daily
+  groups:
+    action-dependencies:
+      patterns:
+        - "*"
 - package-ecosystem: npm
   directory: "/"
   schedule:
     interval: daily
     time: "03:00"
+  groups:
+    npm-dependencies:
+      patterns:
+        - "@angular*"
+        - "@ngrx*"
+        - "*eslint*"
+        - "*"
   open-pull-requests-limit: 10
   ignore:
   - dependency-name: snyk
@@ -228,6 +239,10 @@ updates:
   schedule:
     interval: daily
     time: "03:00"
+  groups:
+    docker-dependencies:
+      patterns:
+        - "*"
   open-pull-requests-limit: 10
   ignore:
   - dependency-name: node

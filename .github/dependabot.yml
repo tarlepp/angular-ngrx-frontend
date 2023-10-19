@@ -5,7 +5,7 @@ updates:
   schedule:
     interval: daily
   groups:
-    actions:
+    action-dependencies:
       patterns:
         - "*"
 - package-ecosystem: npm
@@ -239,7 +239,7 @@ updates:
     interval: daily
     time: "03:00"
   groups:
-    actions:
+    docker-dependencies:
       patterns:
         - "*"
   open-pull-requests-limit: 10

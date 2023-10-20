@@ -16,27 +16,12 @@ updates:
     angular-dependencies:
       patterns:
         - "@angular*"
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  groups:
     ngrx-dependencies:
       patterns:
         - "@ngrx*"
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  groups:
     type-dependencies:
       patterns:
         - "@types*"
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  groups:
     npm-dependencies:
       patterns:
         - "*"

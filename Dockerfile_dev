@@ -30,8 +30,8 @@ ENV LC_ALL en_US.UTF-8
 
 WORKDIR /app
 
-# Add source code to container
-ADD . .
+# Copy source code to container
+COPY . .
 
 # Add necessary stuff to bash autocomplete
 RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc \
@@ -45,7 +45,8 @@ RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
 
 # Add node user to sudo group and set password to `node`
 RUN usermod -a -G sudo node \
-    && usermod -p $(perl -e 'print crypt($ARGV[0], "password")' 'node') node
+    && usermod -p $(perl -e 'print crypt($ARGV[0], "password")' 'node') node \
+    && echo 'node ALL=(ALL) ALL' >> /etc/sudoers
 
 RUN mkdir -p /home/node/.config/fish/completions \
     && mkdir -p /home/node/.config/fish/functions \

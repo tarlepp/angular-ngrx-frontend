@@ -20,10 +20,10 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.8.0
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.8.0
 
@@ -39,10 +39,10 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.8.0
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.8.0
 
@@ -58,7 +58,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Lint `./README.md`
         uses: avto-dev/markdown-lint@v1
@@ -78,10 +78,10 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.8.0
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.8.0
 
@@ -97,10 +97,10 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.8.0
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.8.0
 
@@ -122,7 +122,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set tag var
         id: vars

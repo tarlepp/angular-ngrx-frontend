@@ -45,7 +45,7 @@
     "@angular/platform-browser": "16.2.11",
     "@angular/platform-browser-dynamic": "16.2.11",
     "@angular/router": "16.2.11",
-    "@auth0/angular-jwt": "5.1.2",
+    "@auth0/angular-jwt": "5.2.0",
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
     "@ngrx/effects": "16.3.0",
     "@ngrx/entity": "16.3.0",

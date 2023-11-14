@@ -3022,10 +3022,10 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
-"@snyk/protect@1.1243.0":
-  version "1.1243.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1243.0.tgz#d1685e4014593c768bbccf06ccf85bfd864894cd"
-  integrity sha512-G8rRfhsi9hd4HhlONEdltq/kexllQWPkNBlzlTyHO92PhV1MxdTev5IY5NzH5QkKw8l5UMVA/fyOceAMJt4zbw==
+"@snyk/protect@1.1245.0":
+  version "1.1245.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1245.0.tgz#9a53d1a0061f174691c426683c89921757d4d1c0"
+  integrity sha512-SwpF1IiEflKLgo9/ygWbWwD4gMB7dyar0ED1jse8x1dyuj9aG9THwBxNEFQ4AbrG+KS4vtvrN+UDpVoNdoiv0w==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -7688,10 +7688,10 @@ luxon-angular@6.0.0:
   dependencies:
     tslib "^2.0.0"
 
-luxon@3.4.3:
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.4.3.tgz#8ddf0358a9492267ffec6a13675fbaab5551315d"
-  integrity sha512-tFWBiv3h7z+T/tDaoxA8rqTxy1CHV6gHS//QdaH4pulbq/JuBSGgQspQQqcgnwdAx6pNI7cmvz5Sv/addzHmUg==
+luxon@3.4.4:
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.4.4.tgz#cf20dc27dc532ba41a169c43fdcc0063601577af"
+  integrity sha512-zobTr7akeGHnv7eBOXcRgMeCP6+uyYsczwmeRCauvpvaAltgNyTbLH/+VaEAPUeWBT+1GuNmz4wC/6jtQzbbVA==
 
 magic-string@0.25.7:
   version "0.25.7"

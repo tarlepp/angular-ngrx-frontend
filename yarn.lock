@@ -8091,10 +8091,10 @@ ngx-material-luxon@1.1.1:
   dependencies:
     tslib "^2.0.0"
 
-ngx-webstorage@12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-12.0.0.tgz#82da9f4d89946b28d1bc77fbaac6bb3d727db68d"
-  integrity sha512-S/EO9QBwfnoHBuj5hhqYKHBsxUmYaSq59ypXP9EUi1lhq7RyD0w2a01EpKXKESbIhsAkop1J/0NubM7kwo394w==
+ngx-webstorage@13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-webstorage/-/ngx-webstorage-13.0.0.tgz#679c2a61e9a1eb159b1fafdaa620b771f1e6da50"
+  integrity sha512-nkvVzcRcMfF4OPZ1a59O7X02UJgMdIcbFdOERpGMcrf1X5ChT5lk/YsnOXDdRZAUd9uKSn0PRjvfKFwBd9I22w==
   dependencies:
     tslib "^2.0.0"
 
@@ -10368,7 +10368,7 @@ tsconfig-paths@^4.1.2:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@2.6.2:
+tslib@2.6.2, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.4.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
@@ -10377,11 +10377,6 @@ tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.4.0:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.3.tgz#24944ba2d990940e6e982c4bea147aba80209913"
-  integrity sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==
 
 tsutils-etc@^1.4.1:
   version "1.4.2"

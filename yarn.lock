@@ -3030,10 +3030,10 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
-"@snyk/protect@1.1253.0":
-  version "1.1253.0"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1253.0.tgz#bf22d5cc7b434a6fdc096f2f1473b22a579d581c"
-  integrity sha512-5yCM4jL9D8TUYufOTEmZk91vjhWuZm7YBAuVvqQKS0E3RR7ylKmA+ekxQhpfIPMcr1TmtJRMbFWFuY3zW/bobQ==
+"@snyk/protect@1.1255.0":
+  version "1.1255.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1255.0.tgz#beedbaf12838b33e827927f182be11001a478fc5"
+  integrity sha512-per72Ckb49R3ajO/C5lUV8mnFH1PaOrEsGSq3qNdhSDh7Y1tu61Cz9S3dTBgTD1oIqeDxLMk8r0FcOSk1p9gZw==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"

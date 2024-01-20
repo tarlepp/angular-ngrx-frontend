@@ -1,5 +1,5 @@
 # Fetch used node image
-FROM node:21.3.0
+FROM node:21.4.0
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]

@@ -99,9 +99,9 @@
     "stylelint": "16.2.1",
     "stylelint-config-sass-guidelines": "11.0.0",
     "stylelint-config-standard-scss": "13.0.0",
-    "stylelint-scss": "6.1.0",
+    "stylelint-scss": "6.2.0",
     "ts-node": "10.9.2",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   },
   "snyk": true
 }

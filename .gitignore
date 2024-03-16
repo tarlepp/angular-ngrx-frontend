@@ -17,6 +17,7 @@ speed-measure-plugin*.json
 # User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml
+.idea/copilot
 .idea/dictionaries
 .idea/shelf
 .idea/php.xml

@@ -54,7 +54,7 @@
     "@ngrx/store-devtools": "17.2.0",
     "@ngx-translate/core": "15.0.0",
     "@ngx-translate/http-loader": "8.0.0",
-    "@snyk/protect": "1.1288.0",
+    "@snyk/protect": "1.1288.1",
     "luxon": "3.4.4",
     "luxon-angular": "6.0.0",
     "ngrx-store-localstorage": "17.0.0",
@@ -81,7 +81,7 @@
     "@types/node": "20.12.7",
     "@typescript-eslint/eslint-plugin": "7.6.0",
     "@typescript-eslint/parser": "7.6.0",
-    "eslint": "8.57.0",
+    "eslint": "9.0.0",
     "eslint-plugin-deprecation": "2.0.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-jsdoc": "48.2.3",
@@ -101,7 +101,7 @@
     "stylelint-config-standard-scss": "13.1.0",
     "stylelint-scss": "6.2.1",
     "ts-node": "10.9.2",
-    "typescript": "5.2.2"
+    "typescript": "5.4.5"
   },
   "snyk": true
 }

@@ -22,7 +22,7 @@ started to use this template.
       Below you see the parts that you should check/update;
   * [ ] Common properties; `name`, `description`, `author`, `license`,
         `homepage`, `keywords` and `bugs`
-* [ ] Update [docker-compose.yml](../docker-compose.yml) to match with your
+* [ ] Update [compose.yaml](../compose.yaml) to match with your
   application. Below you see the parts that you should check/update;
   * [ ] Change `container_name` to match your application
 * [ ] Github Actions - This application is using GitHub Actions to run multiple

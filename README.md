@@ -27,7 +27,7 @@ or any other backend that is providing similar API.
 
 ## Requirements [ᐞ](#table-of-contents)
 
-* [docker-compose](https://docs.docker.com/compose/install/)
+* [Docker Engine](https://docs.docker.com/engine/install/)
 
 ### Recommendations [ᐞ](#table-of-contents)
 
@@ -129,4 +129,4 @@ make start-build
 
 [The MIT License (MIT)](LICENSE)
 
-Copyright © 2023 Tarmo Leppänen
+Copyright © 2024 Tarmo Leppänen

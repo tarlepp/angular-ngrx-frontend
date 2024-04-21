@@ -1,5 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+compose.*.yaml
+
 # compiled output
 /dist
 /tmp

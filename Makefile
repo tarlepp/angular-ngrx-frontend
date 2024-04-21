@@ -17,7 +17,7 @@ endif
 
 WARNING_HOST = @printf "\033[31mThis command cannot be run inside docker container!\033[39m\n"
 WARNING_DOCKER = @printf "\033[31mThis command must be run inside docker container and it's not running!\nUse 'make start' command to get container running and after that run this command again.\033[39m\n"
-NOTICE_HOST = @printf "\033[33mRunning command from host machine by using 'docker-compose exec' command\033[39m\n"
+NOTICE_HOST = @printf "\033[33mRunning command from host machine by using 'docker compose exec' command\033[39m\n"
 
 ifndef VERBOSE
 MAKEFLAGS += --no-print-directory
@@ -32,42 +32,42 @@ bash: ## Get bash inside Node container
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
 else
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node bash
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node bash
 endif
 
 fish: ## Get fish inside Node container
 ifeq ($(INSIDE_DOCKER_CONTAINER), 1)
 	$(WARNING_HOST)
 else
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node fish
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node fish
 endif
 
 start: ## Start application in development mode
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
 else
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose up
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose up
 endif
 
 start-production: ## Start application locally in production mode
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
 else
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) PROD_MODE=1 docker-compose up
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) PROD_MODE=1 docker compose up
 endif
 
 stop: ## Stop application containers
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
 else
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose down
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose down
 endif
 
 start-build: ## Start application in development mode and build containers
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
 else
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose up --build
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose up --build
 endif
 
 start-yarn: ## Run start command with yarn
@@ -92,7 +92,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make lint
 endif
 
 lint-ts: ## Lint TypeScript files
@@ -103,7 +103,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint-ts
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make lint-ts
 endif
 
 lint-scss: ## Lint SCSS files
@@ -114,7 +114,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make lint-scss
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make lint-scss
 endif
 
 fix: ## Fix TypeScript and SCSS files
@@ -125,7 +125,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make fix
 endif
 
 fix-ts: ## Fix TypeScript files
@@ -136,7 +136,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix-ts
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make fix-ts
 endif
 
 fix-scss: ## Fix SCSS files
@@ -147,7 +147,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make fix-scss
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make fix-scss
 endif
 
 extract-translations: ### Extract translations from TypeScript and HTML template files
@@ -158,7 +158,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make extract-translations
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make extract-translations
 endif
 
 check-translations: ### Check missing translations
@@ -169,7 +169,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make check-translations
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make check-translations
 endif
 
 update: ## Upgrade dependencies via yarn interactively
@@ -180,7 +180,7 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make update
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make update
 endif
 
 docker-kill-containers: ## Kill all running docker containers
@@ -220,5 +220,5 @@ else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker-compose exec node make project-stats
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make project-stats
 endif

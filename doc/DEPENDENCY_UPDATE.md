@@ -2,7 +2,8 @@
 
 This documentation contains information on how to update package dependencies
 within this application. The documentation relies on that you are using
-`docker-compose` to run this application.
+[Docker Engine](https://docs.docker.com/engine/install/) to run this
+application.
 
 ## Table of Contents
 

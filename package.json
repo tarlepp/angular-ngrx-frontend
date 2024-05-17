@@ -62,7 +62,7 @@
     "ngx-webstorage": "13.0.1",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
-    "zone.js": "0.14.5"
+    "zone.js": "0.14.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "17.3.7",
@@ -81,10 +81,10 @@
     "@types/node": "20.12.11",
     "@typescript-eslint/eslint-plugin": "7.8.0",
     "@typescript-eslint/parser": "7.8.0",
-    "eslint": "8.57.0",
+    "eslint": "9.2.0",
     "eslint-plugin-deprecation": "2.0.0",
     "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-jsdoc": "48.2.4",
+    "eslint-plugin-jsdoc": "48.2.5",
     "eslint-plugin-ngrx": "2.1.4",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "jasmine-core": "5.1.2",
@@ -101,7 +101,7 @@
     "stylelint-config-standard-scss": "13.1.0",
     "stylelint-scss": "6.3.0",
     "ts-node": "10.9.2",
-    "typescript": "5.2.2"
+    "typescript": "5.4.5"
   },
   "snyk": true
 }

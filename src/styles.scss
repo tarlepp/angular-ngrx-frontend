@@ -12,34 +12,34 @@
 @import './styles/mixins';
 
 // Light theme common variables
-$light-color-config: mat.get-color-config($light-theme);
-$light-background: mat.get-color-from-palette(map.get($light-color-config, background), 'background');
-$light-background-component: mat.get-color-from-palette(map.get($light-color-config, background), 'card');
-$light-text-color: mat.get-color-from-palette(map.get($light-color-config, foreground), 'text');
-$light-text-color-disabled: mat.get-color-from-palette(map.get($light-color-config, foreground), 'disabled-text');
-$light-text-color-hint: mat.get-color-from-palette(map.get($light-color-config, foreground), 'hint-text');
-$light-text-color-secondary: mat.get-color-from-palette(map.get($light-color-config, foreground), 'secondary-text');
-$light-primary-color: mat.get-color-from-palette(map.get($light-color-config, primary), $light-hue-primary);
-$light-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, $light-hue-primary);
-$light-accent-color: mat.get-color-from-palette(map_get($light-color-config, accent), $light-hue-accent);
-$light-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, $light-hue-accent);
-$light-warn-color: mat.get-color-from-palette(map_get($light-color-config, warn), $light-hue-warn);
-$light-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, $light-hue-warn);
+$light-color-config: mat.m2-get-color-config($light-theme);
+$light-background: mat.m2-get-color-from-palette(map.get($light-color-config, background), 'background');
+$light-background-component: mat.m2-get-color-from-palette(map.get($light-color-config, background), 'card');
+$light-text-color: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'text');
+$light-text-color-disabled: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'disabled-text');
+$light-text-color-hint: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'hint-text');
+$light-text-color-secondary: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'secondary-text');
+$light-primary-color: mat.m2-get-color-from-palette(map.get($light-color-config, primary), $light-hue-primary);
+$light-primary-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-primary, $light-hue-primary);
+$light-accent-color: mat.m2-get-color-from-palette(map_get($light-color-config, accent), $light-hue-accent);
+$light-accent-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-accent, $light-hue-accent);
+$light-warn-color: mat.m2-get-color-from-palette(map_get($light-color-config, warn), $light-hue-warn);
+$light-warn-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-warn, $light-hue-warn);
 
 // Dark theme common variables
-$dark-color-config: mat.get-color-config($dark-theme);
-$dark-background: mat.get-color-from-palette(map.get($dark-color-config, background), 'background');
-$dark-background-component: mat.get-color-from-palette(map.get($dark-color-config, background), 'card');
-$dark-text-color: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'text');
-$dark-text-color-disabled: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'disabled-text');
-$dark-text-color-hint: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'hint-text');
-$dark-text-color-secondary: mat.get-color-from-palette(map.get($dark-color-config, foreground), 'secondary-text');
-$dark-primary-color: mat.get-color-from-palette(map.get($dark-color-config, primary), $dark-hue-primary);
-$dark-primary-color-contrast: mat.get-contrast-color-from-palette($app-palette-primary, $dark-hue-primary);
-$dark-accent-color: mat.get-color-from-palette(map.get($dark-color-config, accent), $dark-hue-accent);
-$dark-accent-color-contrast: mat.get-contrast-color-from-palette($app-palette-accent, $dark-hue-accent);
-$dark-warn-color: mat.get-color-from-palette(map.get($dark-color-config, warn), $dark-hue-warn);
-$dark-warn-color-contrast: mat.get-contrast-color-from-palette($app-palette-warn, $dark-hue-warn);
+$dark-color-config: mat.m2-get-color-config($dark-theme);
+$dark-background: mat.m2-get-color-from-palette(map.get($dark-color-config, background), 'background');
+$dark-background-component: mat.m2-get-color-from-palette(map.get($dark-color-config, background), 'card');
+$dark-text-color: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'text');
+$dark-text-color-disabled: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'disabled-text');
+$dark-text-color-hint: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'hint-text');
+$dark-text-color-secondary: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'secondary-text');
+$dark-primary-color: mat.m2-get-color-from-palette(map.get($dark-color-config, primary), $dark-hue-primary);
+$dark-primary-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-primary, $dark-hue-primary);
+$dark-accent-color: mat.m2-get-color-from-palette(map.get($dark-color-config, accent), $dark-hue-accent);
+$dark-accent-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-accent, $dark-hue-accent);
+$dark-warn-color: mat.m2-get-color-from-palette(map.get($dark-color-config, warn), $dark-hue-warn);
+$dark-warn-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-warn, $dark-hue-warn);
 
 // Include the light theme styles (color and default density) - This is for the baseline
 @include mat.all-component-themes($light-theme);

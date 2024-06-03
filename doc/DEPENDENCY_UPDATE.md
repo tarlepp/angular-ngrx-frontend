@@ -44,7 +44,7 @@ need to check proper instructions from official [Angular Update Guide](https://u
 
 ## Other updates [ᐞ](#table-of-contents)
 
-For time to time it's a good idea to update library dependencies as well. You
+From time to time it's a good idea to update library dependencies as well. You
 can do that with following command - that will update `yarn.lock` file.
 
 ```bash

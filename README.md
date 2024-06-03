@@ -79,7 +79,7 @@ is running on that address by default.
 After you've run `make start` command you can list all running containers with
 `docker ps` command.
 
-And to eg. get shell access inside one of those containers you can run following
+And to e.g. get shell access inside one of those containers you can run following
 shortcut command:
 
 ```bash
@@ -91,7 +91,7 @@ running.
 
 ### 5. Building containers [ᐞ](#table-of-contents)
 
-For time to time you probably need to build containers again. This is something
+From time to time you probably need to build containers again. This is something
 that you should do always if you have some problems to get containers up and
 running. This you can do with following command:
 

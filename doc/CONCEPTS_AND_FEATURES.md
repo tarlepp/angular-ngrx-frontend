@@ -72,7 +72,7 @@ The internationalization (i18n) library for Angular.
 
 ### ngx-webstorage [ᐞ](#table-of-contents)
 
-This library provides an easy to use service to manage the web storages (local
+This library provides an easy-to-use service to manage the web storages (local
 and session) from your Angular application. It provides also two decorators to
 synchronize the component attributes and the web storages.
 
@@ -80,7 +80,7 @@ synchronize the component attributes and the web storages.
 
 ## Application stores [ᐞ](#table-of-contents)
 
-By default this application gives you couple `NgRx stores` that you can easily
+By default, this application gives you couple `NgRx stores` that you can easily
 use within application to help you.
 
 If you want to get deeper look of each of those stores you just need to go

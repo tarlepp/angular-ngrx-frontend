@@ -24,7 +24,7 @@ it will upgrade `"express": "^4.0.0"` to `"express": "^5.0.0"`.
 ## mversion [ᐞ](#table-of-contents)
 
 A cross packaging manager module version handler/bumper. Imitates _npm version_
-to also work on other packaging files. For those times you have either have
+to also work on other packaging files. For those times you either have
 multiple packaging files (like `bower.json`, `component.json`, `manifest.json`)
 or just not a `package.json` file. mversion can easily bump your version and
 optionally commit and create a tag.

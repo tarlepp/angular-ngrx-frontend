@@ -73,7 +73,7 @@ to first import the marker function:
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 ```
 
-Then when you need to use a string in code, wrap it with the marker function.
+Then, when you need to use a string in code, wrap it with the marker function.
 This way we can automatically keep track on the translation keys with the
 mentioned package. The function itself does nothing — it only passes the string
 as a result.
@@ -83,7 +83,7 @@ const message = marker('that-form.this-message');
 ```
 
 This `message` variable can now be used as a normal translation tag in
-component. eg.
+component. e.g.
 
 ```html
 <p>{{ message | translate }}</p>
@@ -109,8 +109,8 @@ Neat right? So recommend workflow with translations is just following:
 
 1. Add your translations to your _templates_ or _code_ using that `marker`
    function.
-1. Run `yarn run extract-translations` command.
-1. Open your translation files and fill out those empty spots.
+2. Run `yarn run extract-translations` command.
+3. Open your translation files and fill out those empty spots.
 
 With that workflow your translation files will always be synced between
 different languages and there isn't any redundant translations tags.

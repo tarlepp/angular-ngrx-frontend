@@ -25,7 +25,7 @@ started to use this template.
 * [ ] Update [compose.yaml](../compose.yaml) to match with your
   application. Below you see the parts that you should check/update;
   * [ ] Change `container_name` to match your application
-* [ ] Github Actions - This application is using GitHub Actions to run multiple
+* [ ] GitHub Actions - This application is using GitHub Actions to run multiple
       jobs to check application code.
   * [ ] [main.yml](../.github/workflows/main.yml) - Check file contents and
         modify it for your needs.

@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,10 +38,12 @@ registerLocales();
     ErrorMessageComponent,
     VersionChangeDialogComponent,
   ],
+  bootstrap: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     LandingModule,
     AppRoutingModule,
     SharedModule,
@@ -88,9 +90,10 @@ registerLocales();
       },
     }),
   ],
-  bootstrap: [
-    AppComponent,
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
   ],
 })
 
-export class AppModule { }
+export class AppModule {
+}

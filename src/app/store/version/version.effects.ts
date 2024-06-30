@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store';
 import { from, Observable, of } from 'rxjs';
 import { catchError, filter, map, mergeMap, switchMap } from 'rxjs/operators';
 
@@ -21,10 +21,10 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class VersionEffects {
   // noinspection JSUnusedLocalSymbols
-  private fetchVersionsEffect$: Observable<TypedAction<FetchVersionsTypes>> = createEffect(
-    (): Observable<TypedAction<FetchVersionsTypes>> => this.actions$.pipe(
+  private fetchVersionsEffect$: Observable<Action<FetchVersionsTypes>> = createEffect(
+    (): Observable<Action<FetchVersionsTypes>> => this.actions$.pipe(
       ofType(versionActions.fetchVersions),
-      mergeMap((): Array<TypedAction<FetchVersionsTypes>> => [
+      mergeMap((): Array<Action<FetchVersionsTypes>> => [
         versionActions.fetchBackendVersion(),
         versionActions.fetchFrontendVersion(),
       ]),
@@ -32,11 +32,11 @@ export class VersionEffects {
   );
 
   // noinspection JSUnusedLocalSymbols
-  private newBackendVersionEffect$: Observable<TypedAction<NewBackendVersionTypes>> = createEffect(
-    (): Observable<TypedAction<NewBackendVersionTypes>> => this.actions$.pipe(
+  private newBackendVersionEffect$: Observable<Action<NewBackendVersionTypes>> = createEffect(
+    (): Observable<Action<NewBackendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.newBackendVersion),
       map((action): string => action.backendVersion),
-      mergeMap((version: string): Array<TypedAction<NewBackendVersionTypes>> => [
+      mergeMap((version: string): Array<Action<NewBackendVersionTypes>> => [
         versionActions.fetchBackendVersionSuccess({ version }),
         versionActions.fetchFrontendVersion(),
       ]),
@@ -60,16 +60,16 @@ export class VersionEffects {
    * version has been changed - that is checked on each backend request via
    * simple HTTP interceptor.
    */
-  private fetchFrontendVersionEffect$: Observable<TypedAction<FrontendVersionTypes>> = createEffect(
-    (): Observable<TypedAction<FrontendVersionTypes>> => this.actions$.pipe(
+  private fetchFrontendVersionEffect$: Observable<Action<FrontendVersionTypes>> = createEffect(
+    (): Observable<Action<FrontendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.fetchFrontendVersion),
-      switchMap((): Observable<TypedAction<FrontendVersionTypes>> =>
+      switchMap((): Observable<Action<FrontendVersionTypes>> =>
         from(this.versionService.fetchFrontendVersion()
           .pipe(
-            map((version: string): TypedAction<VersionType.FETCH_FRONTEND_VERSION_SUCCESS> =>
+            map((version: string): Action<VersionType.FETCH_FRONTEND_VERSION_SUCCESS> =>
               versionActions.fetchFrontendVersionSuccess({ version }),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<Action<VersionType.FETCH_FRONTEND_VERSION_FAILURE>> =>
               of(versionActions.fetchFrontendVersionFailure({ error: httpErrorResponse.error })),
             ),
           ),
@@ -89,16 +89,16 @@ export class VersionEffects {
    * This action is just dispatched once in application `footer` component
    * when it's initialized.
    */
-  private fetchBackendVersionEffect$: Observable<TypedAction<BackendVersionTypes>> = createEffect(
-    (): Observable<TypedAction<BackendVersionTypes>> => this.actions$.pipe(
+  private fetchBackendVersionEffect$: Observable<Action<BackendVersionTypes>> = createEffect(
+    (): Observable<Action<BackendVersionTypes>> => this.actions$.pipe(
       ofType(versionActions.fetchBackendVersion),
-      switchMap((): Observable<TypedAction<BackendVersionTypes>> =>
+      switchMap((): Observable<Action<BackendVersionTypes>> =>
         from(this.versionService.fetchBackendVersion()
           .pipe(
-            map((version: string): TypedAction<VersionType.FETCH_BACKEND_VERSION_SUCCESS> =>
+            map((version: string): Action<VersionType.FETCH_BACKEND_VERSION_SUCCESS> =>
               versionActions.fetchBackendVersionSuccess({ version }),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<VersionType.FETCH_BACKEND_VERSION_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<Action<VersionType.FETCH_BACKEND_VERSION_FAILURE>> =>
               of(versionActions.fetchBackendVersionFailure({ error: httpErrorResponse.error })),
             ),
           ),

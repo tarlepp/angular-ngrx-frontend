@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { Settings } from 'luxon';
 import { noop, Observable, switchMap } from 'rxjs';
@@ -26,11 +26,11 @@ export class LayoutEffects {
    *
    * Each of these actions you can find from this effect class.
    */
-  private updateLocalizationEffect$: Observable<TypedAction<LocalizationTypes>> = createEffect(
-    (): Observable<TypedAction<LocalizationTypes>> => this.actions$.pipe(
+  private updateLocalizationEffect$: Observable<Action<LocalizationTypes>> = createEffect(
+    (): Observable<Action<LocalizationTypes>> => this.actions$.pipe(
       ofType(layoutActions.updateLocalization),
       map((action): LocalizationInterface => action.localization),
-      mergeMap((localization: LocalizationInterface): Array<TypedAction<LocalizationTypes>> => [
+      mergeMap((localization: LocalizationInterface): Array<Action<LocalizationTypes>> => [
         layoutActions.changeLanguage({ language: localization.language }),
         layoutActions.changeLocale({ locale: localization.locale }),
         layoutActions.changeTimezone({ timezone: localization.timezone }),
@@ -48,13 +48,13 @@ export class LayoutEffects {
    *  3) Dispatch new action to actually set language to layout feature store
    *     after language is loaded to application.
    */
-  private changeLanguageEffect$: Observable<TypedAction<LayoutType.SET_LANGUAGE>> = createEffect(
-    (): Observable<TypedAction<LayoutType.SET_LANGUAGE>> => this.actions$.pipe(
+  private changeLanguageEffect$: Observable<Action<LayoutType.SET_LANGUAGE>> = createEffect(
+    (): Observable<Action<LayoutType.SET_LANGUAGE>> => this.actions$.pipe(
       ofType(layoutActions.changeLanguage),
       map((action): Language => action.language),
       tap((language: Language): Language => this.document.documentElement.lang = language),
       switchMap((language: Language): Observable<Record<string, unknown>> => this.translateService.use(language)),
-      map((): TypedAction<LayoutType.SET_LANGUAGE> =>
+      map((): Action<LayoutType.SET_LANGUAGE> =>
         layoutActions.setLanguage({ language: this.translateService.currentLang as Language}),
       ),
     ),
@@ -111,10 +111,10 @@ export class LayoutEffects {
    * `LayoutAction.SCROLL_TO` action which effect will actually do that scroll
    * in browser.
    */
-  private scrollToTopEffect$: Observable<TypedAction<LayoutType.SCROLL_TO>> = createEffect(
-    (): Observable<TypedAction<LayoutType.SCROLL_TO>> => this.actions$.pipe(
+  private scrollToTopEffect$: Observable<Action<LayoutType.SCROLL_TO>> = createEffect(
+    (): Observable<Action<LayoutType.SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollToTop),
-      map((): TypedAction<LayoutType.SCROLL_TO> => layoutActions.scrollTo({ anchor: '#top-page' })),
+      map((): Action<LayoutType.SCROLL_TO> => layoutActions.scrollTo({ anchor: '#top-page' })),
     ),
   );
 
@@ -125,8 +125,8 @@ export class LayoutEffects {
    * original action observable to `LayoutAction.CLEAR_SCROLL_TO` which clear
    * that scroll to state in layout store.
    */
-  private scrollToEffect$: Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
-    (): Observable<TypedAction<LayoutType.CLEAR_SCROLL_TO>> => this.actions$.pipe(
+  private scrollToEffect$: Observable<Action<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
+    (): Observable<Action<LayoutType.CLEAR_SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollTo),
       tap((payload: { anchor: string; instant?: boolean }): void => {
         setTimeout((): void => {
@@ -137,7 +137,7 @@ export class LayoutEffects {
           }
         }, 0);
       }),
-      map((): TypedAction<LayoutType.CLEAR_SCROLL_TO> => layoutActions.clearScrollTo()),
+      map((): Action<LayoutType.CLEAR_SCROLL_TO> => layoutActions.clearScrollTo()),
     ),
   );
 

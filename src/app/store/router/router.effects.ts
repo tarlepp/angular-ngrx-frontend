@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { routerNavigatedAction } from '@ngrx/router-store';
-import { TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -15,10 +15,10 @@ export class RouterEffects {
    * scroll browser to top of the page. This basically happens each time user
    * navigates to another route within this application.
    */
-  private routerNavigatedActionEffect$: Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> = createEffect(
-    (): Observable<TypedAction<LayoutType.SCROLL_TO_TOP>> => this.actions$.pipe(
+  private routerNavigatedActionEffect$: Observable<Action<LayoutType.SCROLL_TO_TOP>> = createEffect(
+    (): Observable<Action<LayoutType.SCROLL_TO_TOP>> => this.actions$.pipe(
       ofType(routerNavigatedAction),
-      map((): TypedAction<LayoutType.SCROLL_TO_TOP> => layoutActions.scrollToTop()),
+      map((): Action<LayoutType.SCROLL_TO_TOP> => layoutActions.scrollToTop()),
     ),
   );
 

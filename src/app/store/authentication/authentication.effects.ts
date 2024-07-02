@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { TypedAction } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store';
 import { from, Observable, of } from 'rxjs';
 import { catchError, exhaustMap, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 
@@ -40,15 +40,15 @@ export class AuthenticationEffects {
    * Second one will trigger user profile loading, that information is used to
    * show some user related messages, etc. in application.
    */
-  private loginEffect$: Observable<TypedAction<AuthenticationLoginTypes>> = createEffect(
-    (): Observable<TypedAction<AuthenticationLoginTypes>> => this.actions$.pipe(
+  private loginEffect$: Observable<Action<AuthenticationLoginTypes>> = createEffect(
+    (): Observable<Action<AuthenticationLoginTypes>> => this.actions$.pipe(
       ofType(authenticationActions.login),
       map((action): CredentialsRequestInterface => action.credentials),
-      exhaustMap((credentials: CredentialsRequestInterface): Observable<TypedAction<AuthenticationLoginTypes>> =>
+      exhaustMap((credentials: CredentialsRequestInterface): Observable<Action<AuthenticationLoginTypes>> =>
         from(this.authService
           .authenticate(credentials)
           .pipe(
-            map((userData: UserDataInterface): TypedAction<AuthenticationType.LOGIN_SUCCESS> =>
+            map((userData: UserDataInterface): Action<AuthenticationType.LOGIN_SUCCESS> =>
               authenticationActions.loginSuccess({ userData }),
             ),
             tap((): void => {
@@ -60,7 +60,7 @@ export class AuthenticationEffects {
                 .navigate(['/'])
                 .finally();
             }),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationType.LOGIN_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<Action<AuthenticationType.LOGIN_FAILURE>> =>
               of(authenticationActions.loginFailure({ error: httpErrorResponse.error })),
             ),
           ),
@@ -78,11 +78,11 @@ export class AuthenticationEffects {
    * This effect will be also triggered if/when user reloads application page
    * manually if user token that is stored to local storage is valid one.
    */
-  private loginSuccessEffect$: Observable<TypedAction<AuthenticationLoginSuccessTypes>> = createEffect(
-    (): Observable<TypedAction<AuthenticationLoginSuccessTypes>> => this.actions$.pipe(
+  private loginSuccessEffect$: Observable<Action<AuthenticationLoginSuccessTypes>> = createEffect(
+    (): Observable<Action<AuthenticationLoginSuccessTypes>> => this.actions$.pipe(
       ofType(authenticationActions.loginSuccess),
       map((action): UserDataInterface => action.userData),
-      mergeMap((userData: UserDataInterface): Array<TypedAction<AuthenticationLoginSuccessTypes>> => [
+      mergeMap((userData: UserDataInterface): Array<Action<AuthenticationLoginSuccessTypes>> => [
         layoutActions.updateLocalization({ localization: userData.localization }),
         authenticationActions.profile(),
       ]),
@@ -95,16 +95,16 @@ export class AuthenticationEffects {
    * within this we want to actually fetch user profile information from
    * backend and catch possible errors while fetching that information.
    */
-  private profileEffect$: Observable<TypedAction<AuthenticationProfileTypes>> = createEffect(
-    (): Observable<TypedAction<AuthenticationProfileTypes>> => this.actions$.pipe(
+  private profileEffect$: Observable<Action<AuthenticationProfileTypes>> = createEffect(
+    (): Observable<Action<AuthenticationProfileTypes>> => this.actions$.pipe(
       ofType(authenticationActions.profile),
-      switchMap((): Observable<TypedAction<AuthenticationProfileTypes>> =>
+      switchMap((): Observable<Action<AuthenticationProfileTypes>> =>
         from(this.authService.getProfile()
           .pipe(
-            map((profile: UserProfileInterface): TypedAction<AuthenticationType.PROFILE_SUCCESS> =>
+            map((profile: UserProfileInterface): Action<AuthenticationType.PROFILE_SUCCESS> =>
               authenticationActions.profileSuccess({ profile }),
             ),
-            catchError((httpErrorResponse: HttpErrorResponse): Observable<TypedAction<AuthenticationType.PROFILE_FAILURE>> =>
+            catchError((httpErrorResponse: HttpErrorResponse): Observable<Action<AuthenticationType.PROFILE_FAILURE>> =>
               of(authenticationActions.profileFailure({ error: httpErrorResponse.error })),
             ),
           ),
@@ -123,8 +123,8 @@ export class AuthenticationEffects {
    *  4) Trigger frontend version fetch, because user might be logout
    *     from application just because backend version has been changed.
    */
-  private logoutEffect$: Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> = createEffect(
-    (): Observable<TypedAction<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$.pipe(
+  private logoutEffect$: Observable<Action<VersionType.FETCH_FRONTEND_VERSION>> = createEffect(
+    (): Observable<Action<VersionType.FETCH_FRONTEND_VERSION>> => this.actions$.pipe(
       ofType(authenticationActions.logout),
       map((action): string|null => action.message),
       tap((message: string|null): void => {
@@ -140,7 +140,7 @@ export class AuthenticationEffects {
           .navigate(['/'])
           .finally();
       }),
-      map((): TypedAction<VersionType.FETCH_FRONTEND_VERSION> => versionActions.fetchFrontendVersion()),
+      map((): Action<VersionType.FETCH_FRONTEND_VERSION> => versionActions.fetchFrontendVersion()),
     ),
   );
 

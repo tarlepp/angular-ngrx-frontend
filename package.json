@@ -47,6 +47,7 @@
     "@angular/router": "18.2.8",
     "@auth0/angular-jwt": "5.2.0",
     "@biesbjerg/ngx-translate-extract-marker": "1.0.0",
+    "@jsverse/transloco": "7.5.0",
     "@ngrx/effects": "18.1.0",
     "@ngrx/entity": "18.1.0",
     "@ngrx/operators": "^18.1.0",

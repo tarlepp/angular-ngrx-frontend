@@ -1,9 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { TranslocoService } from '@jsverse/transloco';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { TranslateService } from '@ngx-translate/core';
 import { Settings } from 'luxon';
 import { noop, Observable, switchMap } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
@@ -53,9 +53,9 @@ export class LayoutEffects {
       ofType(layoutActions.changeLanguage),
       map((action): Language => action.language),
       tap((language: Language): Language => this.document.documentElement.lang = language),
-      switchMap((language: Language): Observable<Record<string, unknown>> => this.translateService.use(language)),
+      tap((language: Language): TranslocoService => this.translocoService.setActiveLang(language as string)),
       map((): Action<LayoutType.SET_LANGUAGE> =>
-        layoutActions.setLanguage({ language: this.translateService.currentLang as Language}),
+        layoutActions.setLanguage({ language: this.translocoService.getActiveLang() as Language}),
       ),
     ),
   );
@@ -187,7 +187,7 @@ export class LayoutEffects {
   public constructor(
     @Inject(DOCUMENT) private readonly document: Document,
     private readonly actions$: Actions,
-    private readonly translateService: TranslateService,
+    private readonly translocoService: TranslocoService,
     private readonly snackbarService: SnackbarService,
   ) {
   }

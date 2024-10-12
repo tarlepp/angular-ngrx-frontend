@@ -5,7 +5,7 @@ import { TranslocoService } from '@jsverse/transloco';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Settings } from 'luxon';
-import { noop, Observable, switchMap } from 'rxjs';
+import { noop, Observable } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
 
 import { Language, Locale, Theme } from 'src/app/shared/enums';

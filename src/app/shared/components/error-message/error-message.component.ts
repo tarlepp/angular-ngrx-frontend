@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslocoService } from '@jsverse/transloco';
 import { take } from 'rxjs/operators';
 
 import {
@@ -29,7 +29,7 @@ export class ErrorMessageComponent implements OnInit {
   public constructor(
     @Inject(MAT_SNACK_BAR_DATA) private readonly serverMessages: Array<ErrorMessageServerInterface>,
     private readonly snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
-    private readonly translateService: TranslateService,
+    private readonly translateService: TranslocoService,
   ) {
     this.errors = [];
     this.production = environment.production;
@@ -79,7 +79,7 @@ export class ErrorMessageComponent implements OnInit {
 
     // Fetch possible custom translations for each error
     this.translateService
-      .get([
+      .selectTranslate([
         ...clientMessages.map((message: ErrorMessageClientInterface): string => message.messageText),
         ...clientMessages.map((message: ErrorMessageClientInterface): string => message.messageProperty),
       ])

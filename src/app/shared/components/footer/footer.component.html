@@ -31,13 +31,13 @@
       <small fxLayout="row"
              fxLayoutAlign="start center"
       >
-        <span matTooltip="{{ 'component.footer.version.frontend' | translate }}">
+        <span matTooltip="{{ 'component.footer.version.frontend' | transloco }}">
           {{ versionFrontend$ | async }}
         </span>
 
         <span class="margin-horizontal-quarter">/</span>
 
-        <span matTooltip="{{ 'component.footer.version.backend' | translate }}">
+        <span matTooltip="{{ 'component.footer.version.backend' | transloco }}">
           {{ versionBackend$ | async }}
         </span>
       </small>

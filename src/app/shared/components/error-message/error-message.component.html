@@ -5,14 +5,14 @@
         <div fxLayout="row"
              fxLayoutAlign="start start"
         >
-          <span>{{ error.property | translate }}</span>
+          <span>{{ error.property | transloco }}</span>
 
           <span>&nbsp;-&nbsp;</span>
 
-          <span>{{ error.message | translate }}</span>
+          <span>{{ error.message | transloco }}</span>
 
           <code *ngIf="!production"
-             matTooltip="{{ 'component.shared.error-message.not-used-production-environment' | translate }}"
+             matTooltip="{{ 'component.shared.error-message.not-used-production-environment' | transloco }}"
           >
             &nbsp;({{ error.debug }})
           </code>
@@ -29,7 +29,7 @@
             color="warn"
             (click)="dismiss()"
     >
-      {{ 'snackbar.close-button' | translate }}
+      {{ 'snackbar.close-button' | transloco }}
     </button>
   </div>
 </div>

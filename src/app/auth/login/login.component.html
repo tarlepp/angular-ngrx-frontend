@@ -10,10 +10,10 @@
           (ngSubmit)="submit()"
           [class.ghost]="loading"
     >
-      <h1 class="mat-headline-6">{{ 'component.auth.login.title' | translate }}</h1>
+      <h1 class="mat-headline-6">{{ 'component.auth.login.title' | transloco }}</h1>
 
       <mat-form-field appearance="fill">
-        <mat-label>{{ 'component.auth.login.username' | translate }}</mat-label>
+        <mat-label>{{ 'component.auth.login.username' | transloco }}</mat-label>
 
         <label>
           <input type="text"
@@ -24,13 +24,13 @@
           />
         </label>
 
-        <mat-error>{{ 'component.auth.login.error-username' | translate }}</mat-error>
+        <mat-error>{{ 'component.auth.login.error-username' | transloco }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill"
                       fxFlexOffset="8px"
       >
-        <mat-label>{{ 'component.auth.login.password' | translate }}</mat-label>
+        <mat-label>{{ 'component.auth.login.password' | transloco }}</mat-label>
 
         <label>
           <input type="password"
@@ -40,14 +40,14 @@
           />
         </label>
 
-        <mat-error>{{ 'component.auth.login.error-password' | translate }}</mat-error>
+        <mat-error>{{ 'component.auth.login.error-password' | transloco }}</mat-error>
       </mat-form-field>
 
       <button mat-raised-button
               color="primary"
               fxFlexOffset="16px"
               [disabled]="loginForm.invalid || loading"
-      >{{ 'component.auth.login.submit' | translate }}</button>
+      >{{ 'component.auth.login.submit' | transloco }}</button>
     </form>
   </div>
 </div>

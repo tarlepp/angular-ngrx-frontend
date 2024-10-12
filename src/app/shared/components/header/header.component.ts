@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { marker } from '@biesbjerg/ngx-translate-extract-marker';
+import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';

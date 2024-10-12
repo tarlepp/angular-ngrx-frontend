@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
-import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { TranslocoService } from '@jsverse/transloco';
+import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 

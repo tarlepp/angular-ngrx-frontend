@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { marker } from '@biesbjerg/ngx-translate-extract-marker';
+import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';

@@ -8,7 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { LocalStorageService, NgxWebstorageModule } from 'ngx-webstorage';
+import {
+  LocalStorageService,
+  provideNgxWebstorage,
+  withLocalStorage,
+  withNgxWebstorageConfig,
+  withSessionStorage,
+} from 'ngx-webstorage';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
@@ -48,7 +54,6 @@ registerLocales();
     LandingModule,
     AppRoutingModule,
     SharedModule,
-    NgxWebstorageModule.forRoot(),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
       routerState: RouterState.Minimal,
@@ -73,7 +78,6 @@ registerLocales();
       ...effects,
     ]),
     TranslocoModule,
-    NgxWebstorageModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
@@ -87,6 +91,14 @@ registerLocales();
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideHttpClient(),
+    provideNgxWebstorage(
+      withNgxWebstorageConfig({
+        separator: ':',
+        caseSensitive: true,
+      }),
+      withLocalStorage(),
+      withSessionStorage(),
+    ),
     provideTransloco({
       config: {
         availableLangs: languages,

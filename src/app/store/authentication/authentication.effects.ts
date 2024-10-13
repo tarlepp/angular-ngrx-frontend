@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker } from '@biesbjerg/ngx-translate-extract-marker';
+import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { from, Observable, of } from 'rxjs';

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
-import { marker } from '@biesbjerg/ngx-translate-extract-marker';
+import { TranslocoService } from '@jsverse/transloco';
+import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { Store } from '@ngrx/store';
-import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
 import { ErrorMessageComponent } from 'src/app/shared/components';
@@ -22,7 +22,7 @@ export class SnackbarService {
    */
   public constructor(
     private readonly snackBar: MatSnackBar,
-    private readonly translateService: TranslateService,
+    private readonly translocoService: TranslocoService,
     private readonly store: Store,
   ) {
     this.closeButtonTag = marker('snackbar.close-button');
@@ -39,8 +39,8 @@ export class SnackbarService {
           panelClass: ['snackbar'],
         };
 
-        this.translateService
-          .get([message, this.closeButtonTag], params)
+        this.translocoService
+          .selectTranslate([message, this.closeButtonTag], params)
           .pipe(take(1))
           .subscribe((texts: DictionaryInterface<string>): void =>
             resolve(this.snackBar.open(texts[message], texts[this.closeButtonTag], config)),
@@ -72,8 +72,8 @@ export class SnackbarService {
           }
         } catch (e) { }
 
-        this.translateService
-          .get(this.closeButtonTag)
+        this.translocoService
+          .selectTranslate(this.closeButtonTag)
           .pipe(take(1))
           .subscribe((closeButton: string): void => {
             let matSnackBarRef;

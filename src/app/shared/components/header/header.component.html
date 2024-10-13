@@ -7,7 +7,7 @@
     <a mat-button
        routerLink="/"
     >
-      {{ 'component.header.title' | translate }}
+      {{ 'component.header.title' | transloco }}
     </a>
 
     <div fxLayout="row"
@@ -39,7 +39,7 @@
     >
       <mat-icon>fingerprint</mat-icon>
 
-      <span>{{ 'component.header.menu.login' | translate }}</span>
+      <span>{{ 'component.header.menu.login' | transloco }}</span>
     </a>
 
     <button mat-menu-item
@@ -47,7 +47,7 @@
     >
       <mat-icon class="rotate-45">brightness_2</mat-icon>
 
-      <span>{{ 'component.header.menu.theme' | translate }}</span>
+      <span>{{ 'component.header.menu.theme' | transloco }}</span>
     </button>
 
     <button mat-menu-item
@@ -55,7 +55,7 @@
     >
       <mat-icon>language</mat-icon>
 
-      <span>{{ 'component.header.menu.language.title' | translate }}</span>
+      <span>{{ 'component.header.menu.language.title' | transloco }}</span>
     </button>
   </mat-menu>
 
@@ -68,7 +68,7 @@
     >
       <mat-icon>person</mat-icon>
 
-      <span>{{ 'component.header.menu.profile' | translate }}</span>
+      <span>{{ 'component.header.menu.profile' | transloco }}</span>
     </a>
 
     <button mat-menu-item
@@ -76,7 +76,7 @@
     >
       <mat-icon class="rotate-45">brightness_2</mat-icon>
 
-      <span>{{ 'component.header.menu.theme' | translate }}</span>
+      <span>{{ 'component.header.menu.theme' | transloco }}</span>
     </button>
 
     <button mat-menu-item
@@ -84,7 +84,7 @@
     >
       <mat-icon>language</mat-icon>
 
-      <span>{{ 'component.header.menu.language.title' | translate }}</span>
+      <span>{{ 'component.header.menu.language.title' | transloco }}</span>
     </button>
 
     <mat-divider class="margin-vertical-quarter"></mat-divider>
@@ -95,7 +95,7 @@
     >
       <mat-icon>exit_to_app</mat-icon>
 
-      <span>{{ 'component.header.menu.logout' | translate }}</span>
+      <span>{{ 'component.header.menu.logout' | transloco }}</span>
     </button>
   </mat-menu>
 
@@ -107,7 +107,7 @@
             [class.text-bold]="currentLanguage === language"
             (click)="changeLanguage(language)"
     >
-      {{ 'component.header.menu.language.' + language | translate }}
+      {{ 'component.header.menu.language.' + language | transloco }}
     </button>
   </mat-menu>
 </div>

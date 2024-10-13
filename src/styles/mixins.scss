@@ -7,7 +7,7 @@
   $level: 1;
 
   @each $key, $value in $map {
-    @if type-of($value) == 'map' {
+    @if meta.type-of($value) == 'map' {
       $level: math.max(depth($value) + 1, $level);
     }
   }

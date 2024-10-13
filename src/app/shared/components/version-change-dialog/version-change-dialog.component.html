@@ -1,17 +1,15 @@
 <h1 class="unselectable"
     mat-dialog-title
 >
-  {{ 'component.version-change-dialog.title' | translate }}
+  {{ 'component.version-change-dialog.title' | transloco }}
 </h1>
 
 <div class="unselectable"
      mat-dialog-content
 >
-  <p translate
-     [translateParams]="data"
-  >
-    component.version-change-dialog.content
-  </p>
+  <p [transloco]="'component.version-change-dialog.content'"
+     [translocoParams]="data"
+  ></p>
 </div>
 
 <div mat-dialog-actions
@@ -21,6 +19,6 @@
           color="primary"
           [mat-dialog-close]
   >
-    {{ 'component.version-change-dialog.button' | translate }}
+    {{ 'component.version-change-dialog.button' | transloco }}
   </button>
 </div>

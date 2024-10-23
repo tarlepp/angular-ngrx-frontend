@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Use Node.js 23.0.0
         uses: actions/setup-node@v4.0.4
@@ -43,7 +43,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Use Node.js 23.0.0
         uses: actions/setup-node@v4.0.4
@@ -62,7 +62,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Lint `./README.md`
         uses: avto-dev/markdown-lint@v1.5.0
@@ -82,7 +82,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Use Node.js 23.0.0
         uses: actions/setup-node@v4.0.4
@@ -101,7 +101,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Use Node.js 23.0.0
         uses: actions/setup-node@v4.0.4
@@ -126,7 +126,7 @@ jobs:
 
     steps:
       - name: Make checkout
-        uses: actions/checkout@v4.2.1
+        uses: actions/checkout@v4.2.2
 
       - name: Set tag var
         id: vars
@@ -136,7 +136,7 @@ jobs:
         run: docker build . --file Dockerfile --tag angular-ngrx-frontend:${{ steps.vars.outputs.DOCKER_TAG }}
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.27.0
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: 'angular-ngrx-frontend:${{ steps.vars.outputs.DOCKER_TAG }}'
           format: 'table'

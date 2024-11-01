@@ -50,7 +50,7 @@
     "@angular/router": "18.2.9",
     "@auth0/angular-jwt": "5.2.0",
     "@jsverse/transloco": "7.5.0",
-    "@jsverse/transloco-keys-manager": "5.1.0",
+    "@jsverse/transloco-keys-manager": "6.0.0",
     "@jsverse/transloco-utils": "7.0.2",
     "@ngrx/effects": "18.1.0",
     "@ngrx/entity": "18.1.0",
@@ -65,7 +65,7 @@
     "ngx-material-luxon": "1.1.1",
     "ngx-webstorage": "18.0.0",
     "rxjs": "7.8.1",
-    "tslib": "2.8.0",
+    "tslib": "2.8.1",
     "zone.js": "0.15.0"
   },
   "devDependencies": {
@@ -85,10 +85,10 @@
     "@types/node": "22.8.1",
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
-    "eslint": "8.57.0",
-    "eslint-plugin-deprecation": "2.0.0",
+    "eslint": "9.13.0",
+    "eslint-plugin-deprecation": "3.0.0",
     "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsdoc": "48.11.0",
+    "eslint-plugin-jsdoc": "50.4.3",
     "eslint-plugin-ngrx": "2.1.4",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "jasmine-core": "5.4.0",
@@ -106,7 +106,7 @@
     "stylelint-config-standard-scss": "13.1.0",
     "stylelint-scss": "6.8.1",
     "ts-node": "10.9.2",
-    "typescript": "5.5.4"
+    "typescript": "5.6.3"
   },
   "snyk": true
 }

@@ -50,7 +50,7 @@
     "@angular/router": "18.2.11",
     "@auth0/angular-jwt": "5.2.0",
     "@jsverse/transloco": "7.5.0",
-    "@jsverse/transloco-keys-manager": "5.1.0",
+    "@jsverse/transloco-keys-manager": "6.0.0",
     "@jsverse/transloco-utils": "7.0.2",
     "@ngrx/effects": "18.1.1",
     "@ngrx/entity": "18.1.1",
@@ -65,7 +65,7 @@
     "ngx-material-luxon": "1.1.1",
     "ngx-webstorage": "18.0.0",
     "rxjs": "7.8.1",
-    "tslib": "2.8.0",
+    "tslib": "2.8.1",
     "zone.js": "0.15.0"
   },
   "devDependencies": {
@@ -82,7 +82,7 @@
     "@types/jasmine": "5.1.4",
     "@types/jasminewd2": "2.0.13",
     "@types/luxon": "3.4.2",
-    "@types/node": "22.8.1",
+    "@types/node": "22.9.0",
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
     "eslint": "8.57.0",

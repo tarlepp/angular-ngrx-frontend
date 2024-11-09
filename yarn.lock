@@ -448,14 +448,7 @@
     tslib "^2.3.0"
     yargs "^17.2.1"
 
-"@angular/compiler@17.2.0":
-  version "17.2.0"
-  resolved "https://registry.npmjs.org/@angular/compiler/-/compiler-17.2.0.tgz"
-  integrity sha512-hsluvUtaRMlhKr5/dmQ53v8xDtkm0saqXYObGTLIWS3+QhXANHiM1WfPW/sz4G7ntocNjkYwMIjNjWl0NzeA5Q==
-  dependencies:
-    tslib "^2.3.0"
-
-"@angular/compiler@18.2.11":
+"@angular/compiler@18.2.11", "@angular/compiler@^18.1.0":
   version "18.2.11"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-18.2.11.tgz#8665cbbb94e667e18f829782e04c7932224c5ff5"
   integrity sha512-PSVL1YXUhTzkgJNYXiWk9eAZxNV6laQJRGdj9++C1q9m2S9/GlehZGzkt5GtC5rlUweJucCNvBC1+2D5FAt9vA==
@@ -2215,13 +2208,14 @@
   resolved "https://registry.npmjs.org/@jsonjoy.com/util/-/util-1.1.3.tgz"
   integrity sha512-g//kkF4kOwUjemValCtOc/xiYzmwMRmWq3Bn+YnzOzuZLHq2PpMOxxIayN3cKbo7Ko2Np65t6D9H81IvXbXhqg==
 
-"@jsverse/transloco-keys-manager@5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@jsverse/transloco-keys-manager/-/transloco-keys-manager-5.1.0.tgz#40fb15523730a08e624f00f1bc5cf665d0f7ea90"
-  integrity sha512-NXz9f4rdiFk71gQBIxgDSEYlw9Gwl/qWeOT/OODFQDIKlBg3zLhRntpGkSANbzvxkkL+r/98zXOg0RK1lPnN4Q==
+"@jsverse/transloco-keys-manager@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@jsverse/transloco-keys-manager/-/transloco-keys-manager-6.0.0.tgz#b0de4367c38779eec6948c6d94b0891aa82214b2"
+  integrity sha512-4iMWWxMMBiYdFduGII79gontiEBoRf97qwV+ysy4eZ6sTYoGWRDJZ2IitDoFmLBecg0GIu6qL5grBxEzPVzcTQ==
   dependencies:
-    "@angular/compiler" "17.2.0"
+    "@angular/compiler" "^18.1.0"
     "@jsverse/transloco-utils" "7.0.1"
+    "@jsverse/utils" "1.0.0-beta.3"
     "@phenomnomnominal/tsquery" "6.1.3"
     chalk "5.3.0"
     cheerio "1.0.0-rc.12"
@@ -2267,6 +2261,11 @@
     ora "^5.4.1"
     replace-in-file "^7.0.1"
     tslib "^2.2.0"
+
+"@jsverse/utils@1.0.0-beta.3":
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@jsverse/utils/-/utils-1.0.0-beta.3.tgz#cc72b469f4cc438d0aba37ec5a16bb2321384132"
+  integrity sha512-/wn9toL705YNV31+VdQ1yi5eq5jZzuekUsHBfEuc669qwRq7qb5iTLnnGPfbZa+6mQKwENhckHbC29+7xM6Wdg==
 
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.4"
@@ -2998,10 +2997,10 @@
   dependencies:
     undici-types "~6.19.2"
 
-"@types/node@22.8.1":
-  version "22.8.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.8.1.tgz#b39d4b98165e2ae792ce213f610c7c6108ccfa16"
-  integrity sha512-k6Gi8Yyo8EtrNtkHXutUu2corfDf9su95VYVP10aGYMMROM6SAItZi0w1XszA6RtWTHSVp5OeFof37w0IEqCQg==
+"@types/node@22.9.0":
+  version "22.9.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.9.0.tgz#b7f16e5c3384788542c72dc3d561a7ceae2c0365"
+  integrity sha512-vuyHg81vvWA1Z1ELfvLko2c8f34gyA0zaic0+Rllc5lbCnbSyuvb2Oxpm6TAUAC/2xZN3QGqxBNggD1nNR2AfQ==
   dependencies:
     undici-types "~6.19.8"
 
@@ -10345,10 +10344,10 @@ tslib@2.6.3:
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.3.tgz"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
 
-tslib@2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.0.tgz#d124c86c3c05a40a91e6fdea4021bd31d377971b"
-  integrity sha512-jWVzBLplnCmoaTr13V9dYbiQ99wvZRd0vNWaDRg+aVYRcjDF3nDksxFDE/+fkXnKhpnUUkmx5pK/v8mCtLVqZA==
+tslib@2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
+  integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
 tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
@@ -10521,7 +10520,7 @@ typed-assert@^1.0.8:
 
 typescript@5.5.4:
   version "5.5.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-5.5.4.tgz"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
   integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
 
 typical@^4.0.0:

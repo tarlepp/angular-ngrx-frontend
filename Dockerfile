@@ -1,5 +1,5 @@
 # Fetch build image
-FROM node:23.0.0-slim as build
+FROM node:23.1.0-slim as build
 
 # Copy sources to container
 COPY ./ /src/

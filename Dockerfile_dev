@@ -1,5 +1,5 @@
 # Fetch used node image
-FROM node:23.1.0-slim
+FROM node:23.3.0-slim
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -42,8 +42,7 @@ RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
 
 # Link `ng` command, set entrypoint with `x` mark and install `ncu` and `mversion` tools
 RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
-    && chmod +x docker-entrypoint-dev.sh \
-    && npm install -g npm-check-updates mversion
+    && chmod +x docker-entrypoint-dev.sh
 
 # Add node user to sudo group and set password to `node`
 RUN usermod -a -G sudo node \

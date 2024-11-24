@@ -9,6 +9,7 @@ import { layoutSelectors } from 'src/app/store';
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
+  standalone: false,
 })
 
 export class LandingComponent {

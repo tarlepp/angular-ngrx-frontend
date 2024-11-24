@@ -7,6 +7,7 @@ import { VersionContentInterface } from 'src/app/shared/components/version-chang
   selector: 'app-version-change-dialog',
   templateUrl: './version-change-dialog.component.html',
   styleUrls: ['./version-change-dialog.component.scss'],
+  standalone: false,
 })
 export class VersionChangeDialogComponent {
   /**

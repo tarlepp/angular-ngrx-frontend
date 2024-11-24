@@ -25,6 +25,7 @@ import { layoutSelectors } from 'src/app/store';
 @Pipe({
   name: 'localDate',
   pure: false,
+  standalone: false,
 })
 export class LocalDatePipe implements PipeTransform, OnDestroy {
   private locale: Locale;

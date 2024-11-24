@@ -11,6 +11,7 @@ import { authenticationSelectors } from 'src/app/store';
  */
 @Directive({
   selector: '[appIsLoggedIn]',
+  standalone: false,
 })
 
 export class IsLoggedInDirective implements OnInit, OnDestroy {

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslocoModule } from '@jsverse/transloco';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { LuxonModule } from 'luxon-angular';
 
 import { components } from 'src/app/shared/components';

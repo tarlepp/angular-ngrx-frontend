@@ -25,7 +25,6 @@
     "fix:ts": "ng lint --fix",
     "fix:scss": "npx stylelint --fix '**/*.scss'",
     "e2e": "ng e2e",
-    "extract-translations_": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --format-indentation '  ' --sort --format namespaced-json --null-as-default-value && for files in src/assets/i18n/*.json; do echo >> $files; done;",
     "extract-translations": "transloco-keys-manager extract --sort --unflat --remove-extra-keys --emit-error-on-extra-keys --default-value=null && for files in src/assets/i18n/*.json; do echo >> $files; done;",
     "check-translations": "sed -i 's/_/__/g; s/: null/x_x/g; s/: \"--- MISSING TRANSLATION ---\"/: null/g; s/x_x/: \"--- MISSING TRANSLATION ---\"/g; s/__/_/g' ./src/assets/i18n/*.json && git diff --exit-code ./src/assets/i18n/*.json",
     "postinstall": "node version.js",

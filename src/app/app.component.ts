@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
+import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
 import { Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
@@ -16,6 +16,7 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  standalone: false,
 })
 
 export class AppComponent implements OnInit, OnDestroy {

@@ -26,6 +26,7 @@ import { layoutSelectors } from 'src/app/store';
 @Pipe({
   name: 'localNumber',
   pure: false,
+  standalone: false,
 })
 export class LocalNumberPipe implements PipeTransform, OnDestroy {
   private locale: Locale;

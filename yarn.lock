@@ -2774,10 +2774,10 @@
   resolved "https://registry.npmjs.org/@sindresorhus/merge-streams/-/merge-streams-2.3.0.tgz"
   integrity sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==
 
-"@snyk/protect@1.1294.3":
-  version "1.1294.3"
-  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1294.3.tgz#b2304e10c1ec1ae15f850c873abcc8bcb4300a0f"
-  integrity sha512-fvdO4kFaQ9wQNLlCMZEwc2VQ3KioFy/wINoE7BLCPiwnw5pYXCKwgduCIKK97Vmtaxn9+NGIT/g0PngRBaKsTQ==
+"@snyk/protect@1.1295.0":
+  version "1.1295.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1295.0.tgz#edf42e7a2a96a3782815b97b73da6b6dd291a9c8"
+  integrity sha512-/nqz5lCsqcBNnltPTZFvWXo+a5mcpseOpCo2iG/jjSrRpCWDrLeiP+eTX4FxboVRx+oUCqjMCiIbI215njWY5g==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -8143,10 +8143,10 @@ neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngrx-store-localstorage@18.0.0:
-  version "18.0.0"
-  resolved "https://registry.npmjs.org/ngrx-store-localstorage/-/ngrx-store-localstorage-18.0.0.tgz"
-  integrity sha512-WoDePvMWiWF9LQHe+dTqbpm8lxoKCPoIvA0/1enIPTmdLQsOpdDKhMSD5YgwuqDusNfEik3QslProTFGyXZwtw==
+ngrx-store-localstorage@19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-19.0.0.tgz#4205562be5645d57518a2cafc1601fb2326688b3"
+  integrity sha512-aONkwb2oW8BI9p6Hqyc6UvB8N51LgPSPg6ogg/ypYCQqRP/p8CDgDuYfkXyQktO1WS+2wKV4lPvGdjfb8dJwEw==
   dependencies:
     deepmerge "^4.2.2"
     tslib "^2.3.0"

@@ -8,7 +8,7 @@ import { LuxonModule } from 'luxon-angular';
 import { components } from 'src/app/shared/components';
 import { directives } from 'src/app/shared/directives';
 import { httpInterceptors } from 'src/app/shared/interceptors';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+
 import { pipes } from 'src/app/shared/pipes';
 import { services } from 'src/app/shared/services';
 
@@ -21,9 +21,8 @@ import { services } from 'src/app/shared/services';
     FlexLayoutModule,
     LuxonModule,
     ReactiveFormsModule,
-    MaterialModule,
     TranslocoModule,
-  ],
+],
   exports: [
     ...components,
     ...directives,
@@ -32,9 +31,8 @@ import { services } from 'src/app/shared/services';
     FlexLayoutModule,
     LuxonModule,
     ReactiveFormsModule,
-    MaterialModule,
     TranslocoModule,
-  ],
+],
   providers: [
     ...httpInterceptors,
     ...services,

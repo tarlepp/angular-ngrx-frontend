@@ -1,35 +1,33 @@
-import { enableProdMode, isDevMode, importProvidersFrom } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-
-import { ConfigurationService } from 'src/app/shared/services';
-import { environment } from 'src/environments/environment';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { enableProdMode, isDevMode, importProvidersFrom } from '@angular/core';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { provideTransloco, TranslocoModule } from '@jsverse/transloco';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
   provideNgxWebstorage,
   withNgxWebstorageConfig,
   withLocalStorage,
   withSessionStorage,
-  LocalStorageService
+  LocalStorageService,
 } from 'ngx-webstorage';
-import { provideTransloco, TranslocoModule } from '@jsverse/transloco';
+
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppComponent } from 'src/app/app.component';
+import { jwtOptionsFactory } from 'src/app/auth/factories';
+import { LandingModule } from 'src/app/landing/landing.module';
 import { languages } from 'src/app/shared/constants';
 import { Language } from 'src/app/shared/enums';
 import { TranslocoHttpLoader } from 'src/app/shared/Loaders';
-import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { LandingModule } from 'src/app/landing/landing.module';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { ConfigurationService } from 'src/app/shared/services';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from 'src/app/store/app.reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
 import { effects } from 'src/app/store/app.effects';
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { jwtOptionsFactory } from 'src/app/auth/factories';
-import { AppComponent } from './app/app.component';
+import { reducers, metaReducers } from 'src/app/store/app.reducers';
+import { environment } from 'src/environments/environment';
 
 if (environment.production) {
   enableProdMode();

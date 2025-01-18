@@ -29,17 +29,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    OopsComponent,
-  ],
   imports: [
     LandingRoutingModule,
     SharedModule,
     RouterModule.forRoot(routes),
+    OopsComponent,
   ],
   exports: [
     RouterModule,
   ],
 })
 
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

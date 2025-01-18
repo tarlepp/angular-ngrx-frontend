@@ -1,16 +1,40 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
 import { authenticationActions, authenticationSelectors } from 'src/app/store';
+import {
+  FlexFillDirective,
+  DefaultLayoutDirective,
+  DefaultLayoutAlignDirective,
+  DefaultFlexOffsetDirective
+} from '@ngbracket/ngx-layout/flex';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { AutoFocusDirective } from '../../shared/directives/auto-focus.directive';
+import { MatButton } from '@angular/material/button';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  standalone: false,
+  imports: [
+    FlexFillDirective,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    AutoFocusDirective,
+    MatError,
+    DefaultFlexOffsetDirective,
+    MatButton,
+    TranslocoPipe,
+  ],
 })
 
 export class LoginComponent implements OnInit, OnDestroy {

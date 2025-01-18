@@ -3,12 +3,28 @@ import { Store } from '@ngrx/store';
 import { interval, Observable, Subscription } from 'rxjs';
 
 import { versionActions, versionSelectors } from 'src/app/store';
+import { MatToolbar } from '@angular/material/toolbar';
+import { DefaultLayoutDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
+import { MatAnchor } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { MatTooltip } from '@angular/material/tooltip';
+import { AsyncPipe } from '@angular/common';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
-  standalone: false,
+  imports: [
+    MatToolbar,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    MatAnchor,
+    MatDivider,
+    MatTooltip,
+    AsyncPipe,
+    TranslocoPipe,
+  ],
 })
 
 export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {

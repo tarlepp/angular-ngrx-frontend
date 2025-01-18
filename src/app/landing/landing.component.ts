@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 
 import { Device, Viewport } from 'src/app/shared/enums';
 import { layoutSelectors } from 'src/app/store';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
-  standalone: false,
+  imports: [AsyncPipe],
 })
 
 export class LandingComponent {

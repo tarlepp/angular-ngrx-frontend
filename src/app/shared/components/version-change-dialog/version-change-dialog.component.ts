@@ -1,13 +1,29 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+} from '@angular/material/dialog';
 
 import { VersionContentInterface } from 'src/app/shared/components/version-change-dialog/version-content.interface';
+import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-version-change-dialog',
   templateUrl: './version-change-dialog.component.html',
   styleUrls: ['./version-change-dialog.component.scss'],
-  standalone: false,
+  imports: [
+    MatDialogTitle,
+    MatDialogContent,
+    TranslocoDirective,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose,
+    TranslocoPipe,
+  ],
 })
 export class VersionChangeDialogComponent {
   /**

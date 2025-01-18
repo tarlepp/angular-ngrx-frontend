@@ -5,12 +5,10 @@ import { LandingComponent } from 'src/app/landing/landing.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    LandingComponent,
-  ],
   imports: [
     SharedModule,
     LandingRoutingModule,
+    LandingComponent,
   ],
 })
 

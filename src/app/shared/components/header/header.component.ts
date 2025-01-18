@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -9,12 +9,43 @@ import { UserProfileInterface } from 'src/app/auth/interfaces';
 import { languages } from 'src/app/shared/constants';
 import { Language, Theme } from 'src/app/shared/enums';
 import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
+import { MatToolbar } from '@angular/material/toolbar';
+import {
+  DefaultLayoutDirective,
+  DefaultLayoutAlignDirective,
+  DefaultFlexOffsetDirective,
+} from '@ngbracket/ngx-layout/flex';
+import { MatAnchor, MatIconButton } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/divider';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  standalone: false,
+  imports: [
+    MatToolbar,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    MatAnchor,
+    RouterLink,
+    NgIf,
+    MatProgressSpinner,
+    MatIconButton,
+    DefaultFlexOffsetDirective,
+    MatMenuTrigger,
+    MatIcon,
+    MatMenu,
+    MatMenuItem,
+    MatDivider,
+    NgFor,
+    AsyncPipe,
+    TranslocoPipe,
+  ],
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {

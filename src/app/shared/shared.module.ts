@@ -13,12 +13,10 @@ import { pipes } from 'src/app/shared/pipes';
 import { services } from 'src/app/shared/services';
 
 @NgModule({
-  declarations: [
+  imports: [
     ...components,
     ...directives,
     ...pipes,
-  ],
-  imports: [
     CommonModule,
     FlexLayoutModule,
     LuxonModule,

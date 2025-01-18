@@ -40,10 +40,6 @@ registerLocales();
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    HeaderComponent,
-    ErrorMessageComponent,
-    VersionChangeDialogComponent,
   ],
   bootstrap: [
     AppComponent,
@@ -58,18 +54,15 @@ registerLocales();
       stateKey: 'router',
       routerState: RouterState.Minimal,
     }),
-    StoreModule.forRoot(
-      reducers,
-      {
-        metaReducers,
-        runtimeChecks: {
-          strictStateSerializability: true,
-          strictActionSerializability: true,
-          strictStateImmutability: true,
-          strictActionImmutability: true,
-        },
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateSerializability: true,
+        strictActionSerializability: true,
+        strictStateImmutability: true,
+        strictActionImmutability: true,
       },
-    ),
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
@@ -87,6 +80,10 @@ registerLocales();
         ],
       },
     }),
+    FooterComponent,
+    HeaderComponent,
+    ErrorMessageComponent,
+    VersionChangeDialogComponent,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

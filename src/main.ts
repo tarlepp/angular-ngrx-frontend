@@ -20,7 +20,6 @@ import {
 import { AppComponent } from 'src/app/app.component';
 import { appRoutes } from 'src/app/app.routes';
 import { jwtOptionsFactory } from 'src/app/auth/factories';
-import { LandingModule } from 'src/app/landing/landing.module';
 import { languages } from 'src/app/shared/constants';
 import { Language } from 'src/app/shared/enums';
 import { TranslocoHttpLoader } from 'src/app/shared/Loaders';
@@ -44,7 +43,6 @@ ConfigurationService
           providers: [
             importProvidersFrom(
               BrowserModule,
-              LandingModule,
               StoreRouterConnectingModule.forRoot({
                 stateKey: 'router',
                 routerState: RouterState.Minimal,

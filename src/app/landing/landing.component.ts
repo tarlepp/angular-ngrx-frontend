@@ -9,8 +9,12 @@ import { layoutSelectors } from 'src/app/store';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
-  imports: [AsyncPipe],
+  styleUrls: [
+    './landing.component.scss',
+  ],
+  imports: [
+    AsyncPipe,
+  ],
 })
 
 export class LandingComponent {

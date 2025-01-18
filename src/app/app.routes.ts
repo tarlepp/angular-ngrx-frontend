@@ -5,7 +5,7 @@ export const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/landing',
+    loadComponent: (): Promise<any> => import('src/app/landing/landing.component').then(m => m.LandingComponent),
   },
   {
     path: 'oops',
@@ -19,6 +19,6 @@ export const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/landing',
+    redirectTo: '/',
   },
 ];

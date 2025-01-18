@@ -1,6 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
+import {
+  DefaultFlexDirective,
+  DefaultLayoutAlignDirective,
+  DefaultLayoutDirective,
+  FlexFillDirective,
+} from '@ngbracket/ngx-layout/flex';
 import { Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
@@ -8,18 +15,10 @@ import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
 
 import { UserDataInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
+import { FooterComponent, HeaderComponent } from 'src/app/shared/components';
 import { Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
-import { HeaderComponent } from './shared/components/header/header.component';
-import {
-  DefaultFlexDirective,
-  DefaultLayoutDirective,
-  DefaultLayoutAlignDirective,
-  FlexFillDirective,
-} from '@ngbracket/ngx-layout/flex';
-import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from './shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',

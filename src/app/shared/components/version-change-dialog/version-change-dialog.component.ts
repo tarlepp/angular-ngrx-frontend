@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
   MatDialogTitle,
@@ -6,10 +7,9 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
+import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
 
 import { VersionContentInterface } from 'src/app/shared/components/version-change-dialog/version-content.interface';
-import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
-import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-version-change-dialog',

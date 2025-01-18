@@ -1,21 +1,21 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-
-import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
-import { authenticationActions, authenticationSelectors } from 'src/app/store';
+import { MatButton } from '@angular/material/button';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { TranslocoPipe } from '@jsverse/transloco';
 import {
   FlexFillDirective,
   DefaultLayoutDirective,
   DefaultLayoutAlignDirective,
-  DefaultFlexOffsetDirective
+  DefaultFlexOffsetDirective,
 } from '@ngbracket/ngx-layout/flex';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
-import { AutoFocusDirective } from '../../shared/directives/auto-focus.directive';
-import { MatButton } from '@angular/material/button';
-import { TranslocoPipe } from '@jsverse/transloco';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+
+import { CredentialsRequestInterface } from 'src/app/auth/interfaces';
+import { AutoFocusDirective } from 'src/app/shared/directives';
+import { authenticationActions, authenticationSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-login',

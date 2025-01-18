@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FlexFillDirective, DefaultLayoutDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
 import { MatAnchor } from '@angular/material/button';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { FlexFillDirective, DefaultLayoutDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
 
 @Component({
   selector: 'app-oops',

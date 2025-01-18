@@ -1,7 +1,12 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
+import { MatButton } from '@angular/material/button';
+import { MatList, MatListItem } from '@angular/material/list';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MatTooltip } from '@angular/material/tooltip';
 import { TranslocoService, TranslocoPipe } from '@jsverse/transloco';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
+import { DefaultLayoutDirective, DefaultFlexDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
 import { take } from 'rxjs/operators';
 
 import {
@@ -11,11 +16,6 @@ import {
   ErrorMessageServerInterface,
 } from 'src/app/shared/interfaces';
 import { environment } from 'src/environments/environment';
-import { DefaultLayoutDirective, DefaultFlexDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
-import { MatList, MatListItem } from '@angular/material/list';
-import { NgFor, NgIf } from '@angular/common';
-import { MatTooltip } from '@angular/material/tooltip';
-import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-error-message',

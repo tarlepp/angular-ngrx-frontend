@@ -6,7 +6,9 @@ import { take } from 'rxjs/operators';
 import { ServerErrorInterface, VersionInterface } from 'src/app/shared/interfaces';
 import { ConfigurationService } from 'src/app/shared/services/configuration-service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class VersionService {
   /**
    * Constructor of the class, where we DI all services that we need to use

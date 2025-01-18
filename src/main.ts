@@ -22,6 +22,7 @@ import { appRoutes } from 'src/app/app.routes';
 import { jwtOptionsFactory } from 'src/app/auth/factories';
 import { languages } from 'src/app/shared/constants';
 import { Language } from 'src/app/shared/enums';
+import { httpInterceptors } from 'src/app/shared/interceptors';
 import { TranslocoHttpLoader } from 'src/app/shared/Loaders';
 import { ConfigurationService } from 'src/app/shared/services';
 import { effects } from 'src/app/store/app.effects';
@@ -79,8 +80,9 @@ ConfigurationService
               withPreloading(PreloadAllModules),
               withDebugTracing(),
             ),
-            provideHttpClient(withInterceptorsFromDi()),
-            provideHttpClient(),
+            provideHttpClient(
+              withInterceptorsFromDi(),
+            ),
             provideNgxWebstorage(
               withNgxWebstorageConfig({
                 separator: ':',
@@ -100,6 +102,7 @@ ConfigurationService
               loader: TranslocoHttpLoader,
             }),
             provideAnimations(),
+            httpInterceptors,
           ],
         },
       )

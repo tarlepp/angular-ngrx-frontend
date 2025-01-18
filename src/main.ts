@@ -42,37 +42,52 @@ ConfigurationService
         AppComponent,
         {
           providers: [
-            importProvidersFrom(BrowserModule, LandingModule, AppRoutingModule, SharedModule, StoreRouterConnectingModule.forRoot({
-              stateKey: 'router',
-              routerState: RouterState.Minimal,
-            }), StoreModule.forRoot(reducers, {
-              metaReducers,
-              runtimeChecks: {
-                strictStateSerializability: true,
-                strictActionSerializability: true,
-                strictStateImmutability: true,
-                strictActionImmutability: true,
-              },
-            }), StoreDevtoolsModule.instrument({
-              maxAge: 25,
-              logOnly: environment.production,
-            }), EffectsModule.forRoot([
-              ...effects,
-            ]), TranslocoModule, JwtModule.forRoot({
-              jwtOptionsProvider: {
-                provide: JWT_OPTIONS,
-                useFactory: jwtOptionsFactory,
-                deps: [
-                  LocalStorageService,
-                ],
-              },
-            })),
+            importProvidersFrom(
+              BrowserModule,
+              LandingModule,
+              AppRoutingModule,
+              SharedModule,
+              StoreRouterConnectingModule.forRoot({
+                stateKey: 'router',
+                routerState: RouterState.Minimal,
+              }),
+              StoreModule.forRoot(reducers, {
+                metaReducers,
+                runtimeChecks: {
+                  strictStateSerializability: true,
+                  strictActionSerializability: true,
+                  strictStateImmutability: true,
+                  strictActionImmutability: true,
+                },
+              }),
+              StoreDevtoolsModule.instrument({
+                maxAge: 25,
+                logOnly: environment.production,
+              }),
+              EffectsModule.forRoot([
+                ...effects,
+              ]),
+              TranslocoModule,
+              JwtModule.forRoot({
+                jwtOptionsProvider: {
+                  provide: JWT_OPTIONS,
+                  useFactory: jwtOptionsFactory,
+                  deps: [
+                    LocalStorageService,
+                  ],
+                },
+              }),
+            ),
             provideHttpClient(withInterceptorsFromDi()),
             provideHttpClient(),
-            provideNgxWebstorage(withNgxWebstorageConfig({
-              separator: ':',
-              caseSensitive: true,
-            }), withLocalStorage(), withSessionStorage()),
+            provideNgxWebstorage(
+              withNgxWebstorageConfig({
+                separator: ':',
+                caseSensitive: true,
+              }),
+              withLocalStorage(),
+              withSessionStorage(),
+            ),
             provideTransloco({
               config: {
                 availableLangs: languages,

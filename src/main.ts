@@ -2,6 +2,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { enableProdMode, isDevMode, importProvidersFrom } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { PreloadAllModules, provideRouter, withDebugTracing, withPreloading } from '@angular/router';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideTransloco, TranslocoModule } from '@jsverse/transloco';
 import { EffectsModule } from '@ngrx/effects';
@@ -16,8 +17,8 @@ import {
   LocalStorageService,
 } from 'ngx-webstorage';
 
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
+import { appRoutes } from 'src/app/app.routes';
 import { jwtOptionsFactory } from 'src/app/auth/factories';
 import { LandingModule } from 'src/app/landing/landing.module';
 import { languages } from 'src/app/shared/constants';
@@ -44,7 +45,6 @@ ConfigurationService
             importProvidersFrom(
               BrowserModule,
               LandingModule,
-              AppRoutingModule,
               StoreRouterConnectingModule.forRoot({
                 stateKey: 'router',
                 routerState: RouterState.Minimal,
@@ -75,6 +75,11 @@ ConfigurationService
                   ],
                 },
               }),
+            ),
+            provideRouter(
+              appRoutes,
+              withPreloading(PreloadAllModules),
+              withDebugTracing(),
             ),
             provideHttpClient(withInterceptorsFromDi()),
             provideHttpClient(),

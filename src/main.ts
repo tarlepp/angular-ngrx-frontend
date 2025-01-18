@@ -24,7 +24,6 @@ import { languages } from 'src/app/shared/constants';
 import { Language } from 'src/app/shared/enums';
 import { TranslocoHttpLoader } from 'src/app/shared/Loaders';
 import { ConfigurationService } from 'src/app/shared/services';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { effects } from 'src/app/store/app.effects';
 import { reducers, metaReducers } from 'src/app/store/app.reducers';
 import { environment } from 'src/environments/environment';
@@ -46,7 +45,6 @@ ConfigurationService
               BrowserModule,
               LandingModule,
               AppRoutingModule,
-              SharedModule,
               StoreRouterConnectingModule.forRoot({
                 stateKey: 'router',
                 routerState: RouterState.Minimal,

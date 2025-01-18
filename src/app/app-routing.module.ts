@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from 'src/app/auth/auth.module';
 import { LandingRoutingModule } from 'src/app/landing/landing-routing.module';
 import { OopsComponent } from 'src/app/shared/components';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -31,7 +30,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     LandingRoutingModule,
-    SharedModule,
     RouterModule.forRoot(routes),
     OopsComponent,
   ],

@@ -11,12 +11,29 @@ import { AuthenticationService } from 'src/app/auth/services';
 import { Theme, Viewport } from 'src/app/shared/enums';
 import { LocalizationInterface } from 'src/app/shared/interfaces';
 import { authenticationActions, authenticationSelectors, layoutActions, layoutSelectors } from 'src/app/store';
+import { HeaderComponent } from './shared/components/header/header.component';
+import {
+  DefaultFlexDirective,
+  DefaultLayoutDirective,
+  DefaultLayoutAlignDirective,
+  FlexFillDirective,
+} from '@ngbracket/ngx-layout/flex';
+import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: false,
+  imports: [
+    HeaderComponent,
+    DefaultFlexDirective,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    FlexFillDirective,
+    RouterOutlet,
+    FooterComponent,
+  ],
 })
 
 export class AppComponent implements OnInit, OnDestroy {

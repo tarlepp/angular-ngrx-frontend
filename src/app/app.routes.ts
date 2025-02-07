@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { AuthModule } from 'src/app/auth/auth.module';
 
 export const appRoutes: Routes = [
   {
@@ -15,7 +14,7 @@ export const appRoutes: Routes = [
   {
     path: 'auth',
     loadChildren: (): Promise<any> =>
-      import('src/app/auth/auth.module').then((module: typeof import('src/app/auth/auth.module')): AuthModule => module.AuthModule),
+      import('src/app/auth/auth.routes').then(m => m.authRoutes),
   },
   {
     path: '**',

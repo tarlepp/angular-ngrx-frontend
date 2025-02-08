@@ -1,7 +1,12 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
+import { MatButton } from '@angular/material/button';
+import { MatList, MatListItem } from '@angular/material/list';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
-import { TranslocoService } from '@jsverse/transloco';
+import { MatTooltip } from '@angular/material/tooltip';
+import { TranslocoService, TranslocoPipe } from '@jsverse/transloco';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
+import { DefaultLayoutDirective, DefaultFlexDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
 import { take } from 'rxjs/operators';
 
 import {
@@ -16,7 +21,18 @@ import { environment } from 'src/environments/environment';
   selector: 'app-error-message',
   templateUrl: './error-message.component.html',
   styleUrls: ['./error-message.component.scss'],
-  standalone: false,
+  imports: [
+    DefaultLayoutDirective,
+    DefaultFlexDirective,
+    MatList,
+    NgFor,
+    MatListItem,
+    DefaultLayoutAlignDirective,
+    NgIf,
+    MatTooltip,
+    MatButton,
+    TranslocoPipe,
+  ],
 })
 
 export class ErrorMessageComponent implements OnInit {

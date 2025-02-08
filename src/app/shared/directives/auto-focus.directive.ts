@@ -2,7 +2,6 @@ import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular
 
 @Directive({
   selector: '[appAutoFocus]',
-  standalone: false,
 })
 
 export class AutoFocusDirective implements OnChanges {

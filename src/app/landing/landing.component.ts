@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -8,8 +9,12 @@ import { layoutSelectors } from 'src/app/store';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
-  standalone: false,
+  styleUrls: [
+    './landing.component.scss',
+  ],
+  imports: [
+    AsyncPipe,
+  ],
 })
 
 export class LandingComponent {

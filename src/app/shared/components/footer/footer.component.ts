@@ -1,4 +1,11 @@
+import { AsyncPipe } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatAnchor } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatTooltip } from '@angular/material/tooltip';
+import { TranslocoPipe } from '@jsverse/transloco';
+import { DefaultLayoutDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
 import { Store } from '@ngrx/store';
 import { interval, Observable, Subscription } from 'rxjs';
 
@@ -8,7 +15,16 @@ import { versionActions, versionSelectors } from 'src/app/store';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
-  standalone: false,
+  imports: [
+    MatToolbar,
+    DefaultLayoutDirective,
+    DefaultLayoutAlignDirective,
+    MatAnchor,
+    MatDivider,
+    MatTooltip,
+    AsyncPipe,
+    TranslocoPipe,
+  ],
 })
 
 export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -43,7 +59,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
    * It is invoked only once when the directive is instantiated.
    */
   public ngOnInit(): void {
-    // Lets check if frontend version has been changed every 5 minutes
+    // Let's check if frontend version has been changed every 5 minutes
     this.subscriptions
       .add(interval(1000 * 60 * 5)
         .subscribe((): void => this.store.dispatch(versionActions.fetchFrontendVersion())),

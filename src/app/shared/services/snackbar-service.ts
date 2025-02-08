@@ -12,7 +12,9 @@ import { errorActions } from 'src/app/store';
 type AppErrorMessageSnackBarType = MatSnackBarRef<SimpleSnackBar|ErrorMessageComponent>;
 type AppMessageSnackBarType = MatSnackBarRef<SimpleSnackBar>;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SnackbarService {
   private readonly closeButtonTag: string;
 

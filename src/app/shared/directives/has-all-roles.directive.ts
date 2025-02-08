@@ -7,7 +7,6 @@ import { authenticationSelectors } from 'src/app/store';
 
 @Directive({
   selector: '[appHasAllRoles]',
-  standalone: false,
 })
 
 export class HasAllRolesDirective implements OnInit, OnDestroy {

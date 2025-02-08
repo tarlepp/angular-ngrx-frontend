@@ -44,6 +44,16 @@ $dark-warn-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-w
 // Include the light theme styles (color and default density) - This is for the baseline
 @include mat.all-component-themes($light-theme);
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .light-theme {
   /**
    * You can use these `--theme-*` in component specified SCSS files just by

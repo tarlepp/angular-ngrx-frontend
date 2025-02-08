@@ -2,6 +2,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { enableProdMode, isDevMode, importProvidersFrom } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PreloadAllModules, provideRouter, withDebugTracing, withPreloading } from '@angular/router';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideTransloco, TranslocoModule } from '@jsverse/transloco';
@@ -102,6 +103,7 @@ ConfigurationService
               loader: TranslocoHttpLoader,
             }),
             provideAnimations(),
+            provideAnimationsAsync(),
             httpInterceptors,
           ],
         },

@@ -1,4 +1,4 @@
-@import './variables';
+@use './variables' as vars;
 
 html,
 body {
@@ -7,12 +7,12 @@ body {
 
 body {
   margin: 0;
-  font-family: $font-family;
+  font-family: vars.$font-family;
 }
 
 app-root {
   display: flex;
   position: absolute;
-  inset: $header-height 0 0 0;
+  inset: vars.$header-height 0 0 0;
   flex-direction: column;
 }

@@ -1,8 +1,8 @@
-@import '../../../styles/variables';
+@use '../../../styles/variables' as vars;
 
 .login-container {
   width: 360px;
-  padding: $spacing;
+  padding: vars.$spacing;
   background-color: var(--theme-background-component);
 
   h1 {

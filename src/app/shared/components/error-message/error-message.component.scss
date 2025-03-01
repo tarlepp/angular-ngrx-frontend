@@ -1,4 +1,4 @@
-@import '../../../../styles/variables';
+@use '../../../../styles/variables' as vars;
 
 .mat-mdc-list-base[dense] {
   .mat-mdc-list-item {
@@ -10,7 +10,7 @@
        * the MDC version.
        */
       .mat-list-item-content {
-        padding: 0 0 $spacing-half;
+        padding: 0 0 vars.$spacing-half;
         color: rgba(255, 255, 255, .7);
         line-height: 12px;
       }

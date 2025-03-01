@@ -8,18 +8,15 @@
 @use '@angular/material' as mat;
 
 // Application specified styles for theming
-@import './palettes/app-palette-accent';
-@import './palettes/app-palette-grey';
-@import './palettes/app-palette-primary';
-@import './palettes/app-palette-warn';
-@import './variables';
+@use './palettes' as palettes;
+@use './variables' as vars;
 
 /**
  * Define a custom typography config that overrides the font-family as well as
  * the `headlines` and `body-1` levels.
  */
 $custom-typography: mat.m2-define-typography-config(
-  $font-family: $font-family,
+  $font-family: vars.$font-family,
   $headline-1: mat.m2-define-typography-level(112px, 112px, 300, $letter-spacing: -.05em),
   $headline-2: mat.m2-define-typography-level(56px, 56px, 400, $letter-spacing: -.02em),
   $headline-3: mat.m2-define-typography-level(45px, 48px, 400, $letter-spacing: -.005em),
@@ -40,49 +37,49 @@ $custom-typography: mat.m2-define-typography-config(
 @include mat.app-background;
 
 // Define the used palettes by application specified palette configuration
-$light-palette-primary: mat.m2-define-palette($app-palette-primary, $light-hue-primary);
-$light-palette-accent: mat.m2-define-palette($app-palette-accent, $light-hue-accent);
-$light-palette-warn: mat.m2-define-palette($app-palette-warn, $light-hue-warn);
-$dark-palette-primary: mat.m2-define-palette($app-palette-primary, $dark-hue-primary);
-$dark-palette-accent: mat.m2-define-palette($app-palette-accent, $dark-hue-accent);
-$dark-palette-warn: mat.m2-define-palette($app-palette-warn, $dark-hue-warn);
+$light-palette-primary: mat.m2-define-palette(palettes.$app-palette-primary, vars.$light-hue-primary);
+$light-palette-accent: mat.m2-define-palette(palettes.$app-palette-accent, vars.$light-hue-accent);
+$light-palette-warn: mat.m2-define-palette(palettes.$app-palette-warn, vars.$light-hue-warn);
+$dark-palette-primary: mat.m2-define-palette(palettes.$app-palette-primary, vars.$dark-hue-primary);
+$dark-palette-accent: mat.m2-define-palette(palettes.$app-palette-accent, vars.$dark-hue-accent);
+$dark-palette-warn: mat.m2-define-palette(palettes.$app-palette-warn, vars.$dark-hue-warn);
 
 // Background palette for light themes.
 $light-theme-background: (
-  status-bar: mat.m2-get-color-from-palette($app-palette-grey, 300),
-  app-bar: mat.m2-get-color-from-palette($app-palette-grey, 100),
-  background: mat.m2-get-color-from-palette($app-palette-grey, 50),
+  status-bar: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 300),
+  app-bar: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 100),
+  background: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 50),
   hover: rgba(black, .04), // TODO(kara): check style with Material Design UX
   card: white,
   dialog: white,
   disabled-button: rgba(black, .12),
   raised-button: white,
   focused-button: rgba(black, .12),
-  selected-button: mat.m2-get-color-from-palette($app-palette-grey, 300),
-  selected-disabled-button: mat.m2-get-color-from-palette($app-palette-grey, 400),
-  disabled-button-toggle: mat.m2-get-color-from-palette($app-palette-grey, 200),
-  unselected-chip: mat.m2-get-color-from-palette($app-palette-grey, 300),
-  disabled-list-option: mat.m2-get-color-from-palette($app-palette-grey, 200),
-  tooltip: mat.m2-get-color-from-palette($app-palette-grey, 700),
+  selected-button: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 300),
+  selected-disabled-button: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 400),
+  disabled-button-toggle: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 200),
+  unselected-chip: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 300),
+  disabled-list-option: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 200),
+  tooltip: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 700),
 );
 
 // Background palette for dark themes.
 $dark-theme-background: (
   status-bar: black,
-  app-bar: mat.m2-get-color-from-palette($app-palette-grey, 800),
-  background: mat.m2-get-color-from-palette($app-palette-grey, 600),
+  app-bar: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 800),
+  background: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 600),
   hover: rgba(white, .04), // TODO(kara): check style with Material Design UX
-  card: mat.m2-get-color-from-palette($app-palette-grey, 500),
-  dialog: mat.m2-get-color-from-palette($app-palette-grey, 800),
+  card: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 500),
+  dialog: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 800),
   disabled-button: rgba(white, .12),
-  raised-button: mat.m2-get-color-from-palette($app-palette-grey, 800),
+  raised-button: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 800),
   focused-button: rgba(white, .12),
-  selected-button: mat.m2-get-color-from-palette($app-palette-grey, 900),
-  selected-disabled-button: mat.m2-get-color-from-palette($app-palette-grey, 800),
+  selected-button: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 900),
+  selected-disabled-button: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 800),
   disabled-button-toggle: black,
-  unselected-chip: mat.m2-get-color-from-palette($app-palette-grey, 700),
+  unselected-chip: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 700),
   disabled-list-option: black,
-  tooltip: mat.m2-get-color-from-palette($app-palette-grey, 700),
+  tooltip: mat.m2-get-color-from-palette(palettes.$app-palette-grey, 700),
 );
 
 // Foreground (for texts) palette for light themes.

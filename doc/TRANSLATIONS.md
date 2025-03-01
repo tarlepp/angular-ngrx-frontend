@@ -88,8 +88,8 @@ Or with _structural directive_ like:
 
 Sometimes we have to use translatable strings straight in our code. Luckily,
 there is a way to easily maintain these strings with the
-`@jsverse/transloco-keys-manager/marker` package. What you need to do in the code, is
-to first import the marker function:
+`@jsverse/transloco-keys-manager/marker` package. What you need to do in the
+code, is to first import the marker function:
 
 ```typescript
 import { marker } from '@jsverse/transloco-keys-manager/marker';

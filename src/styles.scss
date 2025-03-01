@@ -1,48 +1,48 @@
 @use '@angular/material' as mat;
 @use 'sass:map';
 
-// Import application palettes with Angular Material theming
-@import './styles/theme';
+// foo
+@use './styles/layout';
+@use './styles/base';
+@use './styles/palettes' as palette;
+@use './styles/theme' as theme;
+@use './styles/variables' as vars;
 
-// Plus imports for other common styles that we need
-@import './styles/variables';
-@import './styles/animations';
-@import './styles/base';
-@import './styles/layout';
-@import './styles/mixins';
+// Import application palettes with Angular Material theming
+
 
 // Light theme common variables
-$light-color-config: mat.m2-get-color-config($light-theme);
+$light-color-config: mat.m2-get-color-config(theme.$light-theme);
 $light-background: mat.m2-get-color-from-palette(map.get($light-color-config, background), 'background');
 $light-background-component: mat.m2-get-color-from-palette(map.get($light-color-config, background), 'card');
 $light-text-color: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'text');
 $light-text-color-disabled: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'disabled-text');
 $light-text-color-hint: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'hint-text');
 $light-text-color-secondary: mat.m2-get-color-from-palette(map.get($light-color-config, foreground), 'secondary-text');
-$light-primary-color: mat.m2-get-color-from-palette(map.get($light-color-config, primary), $light-hue-primary);
-$light-primary-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-primary, $light-hue-primary);
-$light-accent-color: mat.m2-get-color-from-palette(map_get($light-color-config, accent), $light-hue-accent);
-$light-accent-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-accent, $light-hue-accent);
-$light-warn-color: mat.m2-get-color-from-palette(map_get($light-color-config, warn), $light-hue-warn);
-$light-warn-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-warn, $light-hue-warn);
+$light-primary-color: mat.m2-get-color-from-palette(map.get($light-color-config, primary), vars.$light-hue-primary);
+$light-primary-color-contrast: mat.m2-get-contrast-color-from-palette(palette.$app-palette-primary, vars.$light-hue-primary);
+$light-accent-color: mat.m2-get-color-from-palette(map.get($light-color-config, accent), vars.$light-hue-accent);
+$light-accent-color-contrast: mat.m2-get-contrast-color-from-palette(palette.$app-palette-accent, vars.$light-hue-accent);
+$light-warn-color: mat.m2-get-color-from-palette(map.get($light-color-config, warn), vars.$light-hue-warn);
+$light-warn-color-contrast: mat.m2-get-contrast-color-from-palette(palette.$app-palette-warn, vars.$light-hue-warn);
 
 // Dark theme common variables
-$dark-color-config: mat.m2-get-color-config($dark-theme);
+$dark-color-config: mat.m2-get-color-config(theme.$dark-theme);
 $dark-background: mat.m2-get-color-from-palette(map.get($dark-color-config, background), 'background');
 $dark-background-component: mat.m2-get-color-from-palette(map.get($dark-color-config, background), 'card');
 $dark-text-color: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'text');
 $dark-text-color-disabled: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'disabled-text');
 $dark-text-color-hint: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'hint-text');
 $dark-text-color-secondary: mat.m2-get-color-from-palette(map.get($dark-color-config, foreground), 'secondary-text');
-$dark-primary-color: mat.m2-get-color-from-palette(map.get($dark-color-config, primary), $dark-hue-primary);
-$dark-primary-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-primary, $dark-hue-primary);
-$dark-accent-color: mat.m2-get-color-from-palette(map.get($dark-color-config, accent), $dark-hue-accent);
-$dark-accent-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-accent, $dark-hue-accent);
-$dark-warn-color: mat.m2-get-color-from-palette(map.get($dark-color-config, warn), $dark-hue-warn);
-$dark-warn-color-contrast: mat.m2-get-contrast-color-from-palette($app-palette-warn, $dark-hue-warn);
+$dark-primary-color: mat.m2-get-color-from-palette(map.get($dark-color-config, primary), vars.$dark-hue-primary);
+$dark-primary-color-contrast: mat.m2-get-contrast-color-from-palette(palette.$app-palette-primary, vars.$dark-hue-primary);
+$dark-accent-color: mat.m2-get-color-from-palette(map.get($dark-color-config, accent), vars.$dark-hue-accent);
+$dark-accent-color-contrast: mat.m2-get-contrast-color-from-palette(palette.$app-palette-accent, vars.$dark-hue-accent);
+$dark-warn-color: mat.m2-get-color-from-palette(map.get($dark-color-config, warn), vars.$dark-hue-warn);
+$dark-warn-color-contrast: mat.m2-get-contrast-color-from-palette(palette.$app-palette-warn, vars.$dark-hue-warn);
 
 // Include the light theme styles (color and default density) - This is for the baseline
-@include mat.all-component-themes($light-theme);
+@include mat.all-component-themes(theme.$light-theme);
 
 html,
 body {
@@ -64,26 +64,28 @@ body {
    *  }
    */
   /* stylelint-disable */
-  --theme-background: #{$light-background};
-  --theme-background-component: #{$light-background-component};
-  --theme-text-color: #{$light-text-color};
-  --theme-text-color-disabled: #{$light-text-color-disabled};
-  --theme-text-color-hint: #{$light-text-color-hint};
-  --theme-text-color-secondary: #{$light-text-color-secondary};
-  --theme-primary-color: #{$light-primary-color};
-  --theme-primary-color-contrast: #{$light-primary-color-contrast};
-  --theme-accent-color: #{$light-accent-color};
-  --theme-accent-color-contrast: #{$light-accent-color-contrast};
-  --theme-warn-color: #{$light-warn-color};
-  --theme-warn-color-contrast: #{$light-warn-color-contrast};
-  /* stylelint-enable */
+  & {
+    /* stylelint-enable */
+    --theme-background: #{$light-background};
+    --theme-background-component: #{$light-background-component};
+    --theme-text-color: #{$light-text-color};
+    --theme-text-color-disabled: #{$light-text-color-disabled};
+    --theme-text-color-hint: #{$light-text-color-hint};
+    --theme-text-color-secondary: #{$light-text-color-secondary};
+    --theme-primary-color: #{$light-primary-color};
+    --theme-primary-color-contrast: #{$light-primary-color-contrast};
+    --theme-accent-color: #{$light-accent-color};
+    --theme-accent-color-contrast: #{$light-accent-color-contrast};
+    --theme-warn-color: #{$light-warn-color};
+    --theme-warn-color-contrast: #{$light-warn-color-contrast};
 
-  color: $light-text-color;
+    color: $light-text-color;
+  }
 }
 
 .dark-theme {
   // Include the dark theme styles (color and default density)
-  @include mat.all-component-colors($dark-theme);
+  @include mat.all-component-colors(theme.$dark-theme);
 
   /**
   * You can use these `--theme-*` in component specified SCSS files just by
@@ -94,19 +96,21 @@ body {
   *  }
   */
   /* stylelint-disable */
-  --theme-background: #{$dark-background};
-  --theme-background-component: #{$dark-background-component};
-  --theme-text-color: #{$dark-text-color};
-  --theme-text-color-disabled: #{$dark-text-color-disabled};
-  --theme-text-color-hint: #{$dark-text-color-hint};
-  --theme-text-color-secondary: #{$dark-text-color-secondary};
-  --theme-primary-color: #{$dark-primary-color};
-  --theme-primary-color-contrast: #{$dark-primary-color-contrast};
-  --theme-accent-color: #{$dark-accent-color};
-  --theme-accent-color-contrast: #{$dark-accent-color-contrast};
-  --theme-warn-color: #{$dark-warn-color};
-  --theme-warn-color-contrast: #{$dark-warn-color-contrast};
-  /* stylelint-enable */
+  & {
+    /* stylelint-enable */
+    --theme-background: #{$dark-background};
+    --theme-background-component: #{$dark-background-component};
+    --theme-text-color: #{$dark-text-color};
+    --theme-text-color-disabled: #{$dark-text-color-disabled};
+    --theme-text-color-hint: #{$dark-text-color-hint};
+    --theme-text-color-secondary: #{$dark-text-color-secondary};
+    --theme-primary-color: #{$dark-primary-color};
+    --theme-primary-color-contrast: #{$dark-primary-color-contrast};
+    --theme-accent-color: #{$dark-accent-color};
+    --theme-accent-color-contrast: #{$dark-accent-color-contrast};
+    --theme-warn-color: #{$dark-warn-color};
+    --theme-warn-color-contrast: #{$dark-warn-color-contrast};
 
-  color: $dark-text-color;
+    color: $dark-text-color;
+  }
 }

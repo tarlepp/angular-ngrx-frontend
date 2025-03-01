@@ -1,7 +1,7 @@
 @use 'sass:math';
 
-// Import variables
-@import './variables';
+// Use project variables
+@use './variables' as vars;
 
 @function depth($map) {
   $level: 1;
@@ -74,27 +74,27 @@
 }
 
 @mixin transition-ease-in-out-all() {
-  @include transition(all $interval ease-in-out);
+  @include transition(all vars.$interval ease-in-out);
 }
 
 @mixin scroll-bar() {
   &::-webkit-scrollbar {
-    width: $spacing-quarter;
-    height: $spacing-quarter;
-    border-radius: $spacing-half;
+    width: vars.$spacing-quarter;
+    height: vars.$spacing-quarter;
+    border-radius: vars.$spacing-half;
   }
 
   ::-webkit-scrollbar:horizontal {
-    height: $spacing-quarter;
+    height: vars.$spacing-quarter;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: $spacing-half;
+    border-radius: vars.$spacing-half;
     background: var(--theme-primary-color);
   }
 
   &::-webkit-scrollbar-track {
-    border-radius: $spacing-half;
+    border-radius: vars.$spacing-half;
     background: var(--theme-primary-color-contrast);
   }
 }

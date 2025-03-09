@@ -1,4 +1,4 @@
-@import './variables';
+@use './variables' as vars;
 
 .no-padding {
   padding: 0 !important;
@@ -8,7 +8,7 @@
   margin: 0 !important;
 }
 
-@each $size-name, $size in $sizes {
+@each $size-name, $size in vars.$sizes {
   .margin#{$size-name} {
     margin: #{$size} !important;
   }
@@ -18,8 +18,8 @@
   }
 }
 
-@each $position in $positions {
-  @each $size-name, $size in $sizes {
+@each $position in vars.$positions {
+  @each $size-name, $size in vars.$sizes {
     .margin-#{$position}#{$size-name} {
       margin-#{$position}: #{$size} !important;
     }
@@ -42,8 +42,8 @@
   }
 }
 
-@each $orientation in $orientations {
-  @each $size-name, $size in $sizes {
+@each $orientation in vars.$orientations {
+  @each $size-name, $size in vars.$sizes {
     @if $orientation == 'vertical' {
       .margin-#{$orientation}#{$size-name} {
         margin-top: #{$size} !important;
@@ -100,13 +100,13 @@
   }
 }
 
-@each $name, $opacity in $opacities {
+@each $name, $opacity in vars.$opacities {
   .opacity-#{$name} {
     opacity: #{$opacity};
   }
 }
 
-@each $name, $degree in $degrees {
+@each $name, $degree in vars.$degrees {
   .rotate-#{$name} {
     transform: rotate(#{$degree});
   }
@@ -196,7 +196,7 @@
 }
 
 .text-monospace {
-  font-family: $font-family-monospace !important;
+  font-family: vars.$font-family-monospace !important;
 }
 
 .text-lowercase {
@@ -208,11 +208,11 @@
 }
 
 .text-normal {
-  font-size: $font-size-normal !important;
+  font-size: vars.$font-size-normal !important;
 }
 
 .text-small {
-  font-size: $font-size-small !important;
+  font-size: vars.$font-size-small !important;
 }
 
 .text-size-80 {

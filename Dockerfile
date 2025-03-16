@@ -3,7 +3,7 @@ FROM node:23.8.0-slim AS dependencies
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock version.js ./
 
 RUN yarn install
 

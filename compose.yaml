@@ -4,7 +4,8 @@ services:
     hostname: node
     build:
       context: .
-      dockerfile: ./Dockerfile_dev
+      dockerfile: ./Dockerfile
+      target: development
     command: sh -c 'if [ -z $PROD_MODE ]; then make start-yarn; else make start-yarn-prod; fi'
     user: $HOST_UID:$HOST_GID
     ports:

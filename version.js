@@ -10,12 +10,20 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
+const dir = './src/assets';
+const filePath = path.join(dir, 'version.json');
+
+// Create directory if it doesn't exist
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir, { recursive: true });
+}
 
 const data = {
   version: require('./package.json').version,
 };
 
-fs.writeFile('./src/assets/version.json', JSON.stringify(data, null, '  ') + '\n', (error) => {
+fs.writeFile(filePath, JSON.stringify(data, null, '  ') + '\n', (error) => {
   if (error) {
     throw error;
   }

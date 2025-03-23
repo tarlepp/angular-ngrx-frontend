@@ -44,6 +44,7 @@
           }
         ],
         "@typescript-eslint/await-thenable": "error",
+        "@typescript-eslint/no-duplicate-enum-values": "off",
         "@typescript-eslint/explicit-member-accessibility": [
           "error",
           {

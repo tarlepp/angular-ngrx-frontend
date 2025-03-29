@@ -72,7 +72,9 @@ export class SnackbarService {
           if (!Array.isArray(serverErrorMessages)) {
             serverErrorMessages = [];
           }
-        } catch (e) { }
+        } catch (e) {
+          console.error(e);
+        }
 
         this.translocoService
           .selectTranslate(this.closeButtonTag)

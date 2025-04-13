@@ -1923,45 +1923,45 @@
   dependencies:
     tslib "^2.5.0"
 
-"@ngrx/effects@19.0.1":
-  version "19.0.1"
-  resolved "https://registry.npmjs.org/@ngrx/effects/-/effects-19.0.1.tgz"
-  integrity sha512-q+eztS1zN1247BtUZ41gxhumj4wMmvtfdSMfkFEuu6zuA57Vbx8zitEsw9boqPGtP5E4Cj5HKJLSJrl2kgwgcQ==
+"@ngrx/effects@19.1.0":
+  version "19.1.0"
+  resolved "https://registry.npmjs.org/@ngrx/effects/-/effects-19.1.0.tgz"
+  integrity sha512-rGRN0ZnzAPmQdUPvmoqZsK7Da/AoCfQcfody+h6PfHTwXNm+M2MRc8tXO6C+fznMRww8ZgNror2dfFmoOSOvNg==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/entity@19.0.1":
-  version "19.0.1"
-  resolved "https://registry.npmjs.org/@ngrx/entity/-/entity-19.0.1.tgz"
-  integrity sha512-Dw6UhLi7tGVWb/pLgYI81k1fPxCIbCWMztGKj08e8fLWoMvTWYTbG5tFbOJNSa9D3gPmxsBbbS8VMNqcUgl7wQ==
+"@ngrx/entity@19.1.0":
+  version "19.1.0"
+  resolved "https://registry.npmjs.org/@ngrx/entity/-/entity-19.1.0.tgz"
+  integrity sha512-Cy+uT5Lzs0fSaqcAtsK6ECac2ETma7UFnSnqLXSKPQmiBMNMMvP2On1c+zxaPgySG2R5kxgA0yDuHGsRiLAprA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/operators@^19.0.1":
-  version "19.0.1"
-  resolved "https://registry.npmjs.org/@ngrx/operators/-/operators-19.0.1.tgz"
-  integrity sha512-4CA+VexfK6nkRb6glmyCSoQgU7zQpEgMF0wVDamxyCO8hJo6E4TwUAN2W5tE5cxWFAsS0+wpFXFncpigvPL9Vw==
+"@ngrx/operators@^19.1.0":
+  version "19.1.0"
+  resolved "https://registry.npmjs.org/@ngrx/operators/-/operators-19.1.0.tgz"
+  integrity sha512-gpo69FnoAF69X68pk9eWFHB630xqerBYkF68wOFMciLOV2im3b/fAf+0sRvnQJmVtG/8jO0IPVdvLqa1TbWmPA==
   dependencies:
     tslib "^2.3.0"
 
-"@ngrx/router-store@19.0.1":
-  version "19.0.1"
-  resolved "https://registry.npmjs.org/@ngrx/router-store/-/router-store-19.0.1.tgz"
-  integrity sha512-JjmClGaP/ccdePoP1/4dJrymbOQPhtcJeyXXaZf5i5em2KQr8M9TeJAEQf8VA6uWbe6tnlo47WYVtNyX+CwYCQ==
+"@ngrx/router-store@19.1.0":
+  version "19.1.0"
+  resolved "https://registry.npmjs.org/@ngrx/router-store/-/router-store-19.1.0.tgz"
+  integrity sha512-eMS6WtZfx29Zmlm3imgEm1WcNTRY3UGdNL7fWJyPWUPUMLArkmyDQsP+NBveLIEj1yJs8U4S8V9gzqPSiGYLHA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store-devtools@19.0.1":
-  version "19.0.1"
-  resolved "https://registry.npmjs.org/@ngrx/store-devtools/-/store-devtools-19.0.1.tgz"
-  integrity sha512-afvr6NHh12LpYrOH9JKKEEi/z2DHq/wJ45hRn3mrcRDArQTKpTl7V2eu0dYgjGItSRSeJ2drzzKGjccL61PPSg==
+"@ngrx/store-devtools@19.1.0":
+  version "19.1.0"
+  resolved "https://registry.npmjs.org/@ngrx/store-devtools/-/store-devtools-19.1.0.tgz"
+  integrity sha512-c8sV5FQofqm7lF6HTJ4Bb7L/69TaIYHAwEFMbgqbsNoWDx+pilw/It6X9J3LnU8bXjQK4xg6qsgJ7fJIH5X2NA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store@19.0.1":
-  version "19.0.1"
-  resolved "https://registry.npmjs.org/@ngrx/store/-/store-19.0.1.tgz"
-  integrity sha512-+6eBLb+0rdJ856JRuKnvSzFxv1ISbYuX/OM12dMPf4wm+ddxjhyvi6tF8lPiNnaYb717PGNxXQzBFIGfIs4zGQ==
+"@ngrx/store@19.1.0":
+  version "19.1.0"
+  resolved "https://registry.npmjs.org/@ngrx/store/-/store-19.1.0.tgz"
+  integrity sha512-8kKCSFahTpRTx3f/wwcDjItdFnk2IMoorWRjTI2U/MGWuEi4flqLNWcX99s759e7TI6PctiGsaS8jnJXIUS8Jg==
   dependencies:
     tslib "^2.0.0"
 

@@ -34,15 +34,29 @@ correctly.
 
 ### In template files [ᐞ](#table-of-contents)
 
-Translations are easy to use with `translate` pipe:
+Translations are easy to use with `transloco` pipe:
 
 ```html
 <div>
   <form>
-    <button>{{ 'button.start' | translate }}</button>
+    <button>{{ 'button.start' | transloco }}</button>
   </form>
 </div>
 ```
+
+Another way is to use _structural directive_ like:
+
+```html
+<ng-container *transloco="let t">
+  <div>
+    <form>
+      <button>{{ t('button.start') }}</button>
+    </form>
+  </div>
+</ng-container>
+```
+
+```html
 
 Sometimes we need to have params inside the translatable string:
 
@@ -54,23 +68,31 @@ Sometimes we need to have params inside the translatable string:
 }
 ```
 
-Then we have to use `[translateParams]` in template:
+Then we have to use `[translocoParams]` in template:
 
 ```html
-<h1 translate
-    [translateParams]="{name: 'Arnold'}"
->example.greeting</h1>
+<h1 [transloco]="'example.greeting'"
+    [translocoParams]="{ name: 'Arnold' }"
+></h1>
+```
+
+Or with _structural directive_ like:
+
+```html
+<ng-container *transloco="let t">
+  <h1>{{ t('example.greeting', { name: 'Arnold' }) }}</h1>
+</ng-container
 ```
 
 ### In TypeScript code [ᐞ](#table-of-contents)
 
 Sometimes we have to use translatable strings straight in our code. Luckily,
 there is a way to easily maintain these strings with the
-`@biesbjerg/ngx-translate-extract` package. What you need to do in the code, is
-to first import the marker function:
+`@jsverse/transloco-keys-manager/marker` package. What you need to do in the
+code, is to first import the marker function:
 
 ```typescript
-import { marker } from '@biesbjerg/ngx-translate-extract-marker';
+import { marker } from '@jsverse/transloco-keys-manager/marker';
 ```
 
 Then, when you need to use a string in code, wrap it with the marker function.
@@ -86,7 +108,7 @@ This `message` variable can now be used as a normal translation tag in
 component. e.g.
 
 ```html
-<p>{{ message | translate }}</p>
+<p>{{ message | transloco }}</p>
 ```
 
 ## Workflow [ᐞ](#table-of-contents)
@@ -96,30 +118,37 @@ in the $!@. Eventually some keys will be forgotten from some of our translation
 files, or some keys turn out to be redundant and forgotten to be deleted.
 
 **Fortunately** we have a tool to be used when working with translations.
-`@biesbjerg/ngx-translate-extract` is set up in the application so, that it
+`@jsverse/transloco-keys-manager` is set up in the application so, that it
 will collect all used translation keys and add them to our translation files.
 It'll also sort the JSON nicely, cleans up unused tags, and keeps the format
 just like we wanted. All that just in one command:
 
 ```bash
 yarn run extract-translations
+
+OR
+
+make extract-translations
 ```
 
 Neat right? So recommend workflow with translations is just following:
 
 1. Add your translations to your _templates_ or _code_ using that `marker`
    function.
-2. Run `yarn run extract-translations` command.
-3. Open your translation files and fill out those empty spots.
+1. Run `yarn run extract-translations` OR `make extract-translations`
+   command.
+1. Open your translation files under `translations` and fill out those
+   empty spots.
+1. After that you need to run `yarn run sync-translations` OR
+   `make sync-translations` command
 
 With that workflow your translation files will always be synced between
 different languages and there isn't any redundant translations tags.
 
 ## Resources [ᐞ](#table-of-contents)
 
-* [Great tutorial](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-angular7-app-with-ngx-translate)
-* [Github](https://github.com/ngx-translate/core)
-* [Ngx-Translate home page](http://www.ngx-translate.com/)
+* [Github](https://github.com/jsverse/transloco/)
+* [Transloco home page](https://jsverse.github.io/transloco/)
 
 ---
 

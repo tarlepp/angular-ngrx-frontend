@@ -263,10 +263,10 @@
   optionalDependencies:
     lmdb "3.2.6"
 
-"@angular/cdk@19.2.9":
-  version "19.2.9"
-  resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-19.2.9.tgz"
-  integrity sha512-4If3BjWQPwW/xqRUCL7Mx0dHS0SuZY7Tq/Ocf7liwYTYCmSv8Ew7NqaiPA4RS3FnyUJcZW/UAd231uWI/ZHChg==
+"@angular/cdk@19.2.10":
+  version "19.2.10"
+  resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-19.2.10.tgz"
+  integrity sha512-lWBKGZtZ2JMB7r/2xLQIVtiMM2B70WJqSWT3sXyzTNzFBHtCQvH2kqdG7RuLr+2OZih4I/SgiBK2i8FzjwRIgA==
   dependencies:
     parse5 "^7.1.2"
     tslib "^2.3.0"
@@ -358,10 +358,10 @@
     fast-glob "3.3.3"
     yargs "^17.2.1"
 
-"@angular/material@19.2.9":
-  version "19.2.9"
-  resolved "https://registry.npmjs.org/@angular/material/-/material-19.2.9.tgz"
-  integrity sha512-zkc49u6AIZ+aQe76MvOmoZ06c+/ZNpFeBS3dH65kCmnIpFhh8c+zLjxgwgBIlrvUmfjy6J1iJaG05hmkLzAggg==
+"@angular/material@19.2.10":
+  version "19.2.10"
+  resolved "https://registry.npmjs.org/@angular/material/-/material-19.2.10.tgz"
+  integrity sha512-PZH05IyzzvinQI1mkk2ST6SIyWh/XxCeik10yOQxQmVgJv07qX5z6C2d5nkIG7Ijm2ZmHOJofgATT2KrB75H5Q==
   dependencies:
     tslib "^2.3.0"
 

@@ -23,16 +23,24 @@
     "@angular-devkit/core" "19.2.7"
     rxjs "7.8.1"
 
-"@angular-devkit/build-angular@19.2.7":
-  version "19.2.7"
-  resolved "https://registry.npmjs.org/@angular-devkit/build-angular/-/build-angular-19.2.7.tgz"
-  integrity sha512-2VZOLXGNChC9qme7Xo4z227GTb+hQw1dtyJvkeT1XmdxY0iBlCaZx2Stn0mFWOzNx3iL+QOX3XXYO4veCJrSWQ==
+"@angular-devkit/architect@0.1902.9":
+  version "0.1902.9"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1902.9.tgz#880b949dfd1740ea59f41ff91eb38b387d0222cc"
+  integrity sha512-SLUc7EaFMjhCnimqxTcv32wESJBLQ3E6c/1sAndPojyCoGiX24ASu2pxrTXrYNS9DqiJT8tReAnqmh7dmf3xwQ==
+  dependencies:
+    "@angular-devkit/core" "19.2.9"
+    rxjs "7.8.1"
+
+"@angular-devkit/build-angular@19.2.9":
+  version "19.2.9"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-19.2.9.tgz#bf5d68e0101e0a81715787f29547dc133ed1b799"
+  integrity sha512-v6x3h+LYyEew3EjoI1+2IiFDz6f96lJB1JvbbZj3Li9FMhO4M/xo4BaWHbeg9Lot/vUy6IAlR+BJywawNIzv0Q==
   dependencies:
     "@ampproject/remapping" "2.3.0"
-    "@angular-devkit/architect" "0.1902.7"
-    "@angular-devkit/build-webpack" "0.1902.7"
-    "@angular-devkit/core" "19.2.7"
-    "@angular/build" "19.2.7"
+    "@angular-devkit/architect" "0.1902.9"
+    "@angular-devkit/build-webpack" "0.1902.9"
+    "@angular-devkit/core" "19.2.9"
+    "@angular/build" "19.2.9"
     "@babel/core" "7.26.10"
     "@babel/generator" "7.26.10"
     "@babel/helper-annotate-as-pure" "7.25.9"
@@ -43,7 +51,7 @@
     "@babel/preset-env" "7.26.9"
     "@babel/runtime" "7.26.10"
     "@discoveryjs/json-ext" "0.6.3"
-    "@ngtools/webpack" "19.2.7"
+    "@ngtools/webpack" "19.2.9"
     "@vitejs/plugin-basic-ssl" "1.2.0"
     ansi-colors "4.1.3"
     autoprefixer "10.4.20"
@@ -53,7 +61,7 @@
     css-loader "7.1.2"
     esbuild-wasm "0.25.1"
     fast-glob "3.3.3"
-    http-proxy-middleware "3.0.3"
+    http-proxy-middleware "3.0.5"
     istanbul-lib-instrument "6.0.3"
     jsonc-parser "3.3.1"
     karma-source-map-support "1.4.0"
@@ -86,12 +94,12 @@
   optionalDependencies:
     esbuild "0.25.1"
 
-"@angular-devkit/build-webpack@0.1902.7":
-  version "0.1902.7"
-  resolved "https://registry.npmjs.org/@angular-devkit/build-webpack/-/build-webpack-0.1902.7.tgz"
-  integrity sha512-5oo2RFjTrNy/D7fLgTdRhL/rrIfydgHCdwtmQCoeL9RVXp6LcHtmMu2H26WzqVngd0wMYZ8OEbdJDyw5uFL+xA==
+"@angular-devkit/build-webpack@0.1902.9":
+  version "0.1902.9"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1902.9.tgz#714d66a108cea4727ef9fbbf1d3a90541533552d"
+  integrity sha512-iklNoxKgwd54KT5GE0o5SB+0hr6Iu3YSpj9fi23DlLKcWWwFYaKqoRaYcfuL7KdUzunFg7dzB7n6TgYpVHWWJw==
   dependencies:
-    "@angular-devkit/architect" "0.1902.7"
+    "@angular-devkit/architect" "0.1902.9"
     rxjs "7.8.1"
 
 "@angular-devkit/core@13.3.11":
@@ -122,6 +130,18 @@
   version "19.2.7"
   resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-19.2.7.tgz"
   integrity sha512-WeX/7HuNooJ4UhvVdremj6it0cX3nreG0/5r3QfrQd5Tz3sCHnh/lO5TW31gHtSqVgPjBGmzSzsyZ1Mi0lI7FA==
+  dependencies:
+    ajv "8.17.1"
+    ajv-formats "3.0.1"
+    jsonc-parser "3.3.1"
+    picomatch "4.0.2"
+    rxjs "7.8.1"
+    source-map "0.7.4"
+
+"@angular-devkit/core@19.2.9":
+  version "19.2.9"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-19.2.9.tgz#2320dc3d35d2101530150873f1139bcf6ec03b3d"
+  integrity sha512-vbTomKnN7H4jaif0hWAECFU2WvRbhfkYWHdlk/JtJM53iIJVL3mKWBRZ0QXITjmgfdIo3c9RcX+wFI7gGqGd6g==
   dependencies:
     ajv "8.17.1"
     ajv-formats "3.0.1"
@@ -229,13 +249,13 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/build@19.2.7":
-  version "19.2.7"
-  resolved "https://registry.npmjs.org/@angular/build/-/build-19.2.7.tgz"
-  integrity sha512-a91gbY7jxXZinUXC5O7I4urUV2Omv4hI2zOY4ufq2tvTt8iRjU/0SbHdIU2xFvon8CI/9HyB1WBl0JuDjlJMfg==
+"@angular/build@19.2.9":
+  version "19.2.9"
+  resolved "https://registry.yarnpkg.com/@angular/build/-/build-19.2.9.tgz#18662544b2831db6a9982822bcbd5958a7a61d4e"
+  integrity sha512-hrRhSdY98wGQ/jrpT3K73/Ii5FadQEJFcHy+ockqP2Xh7pXOwhGFc+D0ks4AdHea+pHtNbIb/qPd+UvR5izY3Q==
   dependencies:
     "@ampproject/remapping" "2.3.0"
-    "@angular-devkit/architect" "0.1902.7"
+    "@angular-devkit/architect" "0.1902.9"
     "@babel/core" "7.26.10"
     "@babel/helper-annotate-as-pure" "7.25.9"
     "@babel/helper-split-export-declaration" "7.24.7"
@@ -258,7 +278,7 @@
     sass "1.85.0"
     semver "7.7.1"
     source-map-support "0.5.21"
-    vite "6.2.5"
+    vite "6.2.6"
     watchpack "2.4.2"
   optionalDependencies:
     lmdb "3.2.6"
@@ -1965,10 +1985,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ngtools/webpack@19.2.7":
-  version "19.2.7"
-  resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-19.2.7.tgz"
-  integrity sha512-dUdalMLy6oNrrDQNOQMrfOZaFdvqNW/z8Z3EhtWySc2CiD/yjIqYwWi51o/SuDqBIglNa5BSrxHFfpAXl12r6w==
+"@ngtools/webpack@19.2.9":
+  version "19.2.9"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-19.2.9.tgz#4988ce24d5822618cafb1bf270d14ac4a545b0b6"
+  integrity sha512-CLfUauqi2Xp/jKGxp5wUwjqfVQWcBE09GMd51ovcCRLkgB2Kh26+CiVnGw5/lkBpISUCNdgN6nGiS+nfqMfFeQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -5762,10 +5782,10 @@ http-proxy-agent@^7.0.0:
     agent-base "^7.1.0"
     debug "^4.3.4"
 
-http-proxy-middleware@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npmjs.org/http-proxy-middleware/-/http-proxy-middleware-3.0.3.tgz"
-  integrity sha512-usY0HG5nyDUwtqpiZdETNbmKtw3QQ1jwYFZ9wi5iHzX2BcILwQKtYDJPo7XHTsu5Z0B2Hj3W9NNnbd+AjFWjqg==
+http-proxy-middleware@3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-3.0.5.tgz#9dcde663edc44079bc5a9c63e03fe5e5d6037fab"
+  integrity sha512-GLZZm1X38BPY4lkXA01jhwxvDoOkkXqjgVyUzVxiEK4iuRu03PZoYHhHRwxnfhQMDuaxi3vVri0YgSro/1oWqg==
   dependencies:
     "@types/http-proxy" "^1.17.15"
     debug "^4.3.6"
@@ -9766,10 +9786,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite@6.2.5:
-  version "6.2.5"
-  resolved "https://registry.npmjs.org/vite/-/vite-6.2.5.tgz"
-  integrity sha512-j023J/hCAa4pRIUH6J9HemwYfjB5llR2Ps0CWeikOtdR8+pAURAk0DoJC5/mm9kd+UgdnIy7d6HE4EAvlYhPhA==
+vite@6.2.6:
+  version "6.2.6"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-6.2.6.tgz#7f0ccf2fdc0c1eda079ce258508728e2473d3f61"
+  integrity sha512-9xpjNl3kR4rVDZgPNdTL0/c6ao4km69a/2ihNQbcANz8RuCOK3hQBmLSJf3bRKVQjVMda+YvizNE8AwvogcPbw==
   dependencies:
     esbuild "^0.25.0"
     postcss "^8.5.3"

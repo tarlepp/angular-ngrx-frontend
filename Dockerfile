@@ -1,5 +1,5 @@
 # Stage 1: Dependencies
-FROM node:23.11.0-slim AS dependencies
+FROM node:24.1.0-bullseye AS dependencies
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY package.json yarn.lock version.js ./
 RUN yarn install
 
 # Stage 2: Development
-FROM node:23.11.0-slim AS development
+FROM node:24.1.0-slim AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]

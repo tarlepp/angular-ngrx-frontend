@@ -163,10 +163,10 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
-"@angular-eslint/builder@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/builder/-/builder-19.3.0.tgz"
-  integrity sha512-j9xNrzZJq29ONSG6EaeQHve0Squkm6u6Dm8fZgWP7crTFOrtLXn7Wxgxuyl9eddpbWY1Ov1gjFuwBVnxIdyAqg==
+"@angular-eslint/builder@19.4.0":
+  version "19.4.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/builder/-/builder-19.4.0.tgz#afe4732586a69a9d7b871f2506e816be18163bfd"
+  integrity sha512-+mI/YwXiT+IPRNuTNrQqOm97iqbPM5Zc4fxR3p9N1xj1dxLyXJrtGXbbWJPK6i74ON7KdpkY3WLhMKnhWM4RzQ==
   dependencies:
     "@angular-devkit/architect" ">= 0.1900.0 < 0.2000.0"
     "@angular-devkit/core" ">= 19.0.0 < 20.0.0"

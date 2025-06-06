@@ -176,6 +176,11 @@
   resolved "https://registry.npmjs.org/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-19.3.0.tgz"
   integrity sha512-63Zci4pvnUR1iSkikFlNbShF1tO5HOarYd8fvNfmOZwFfZ/1T3j3bCy9YbE+aM5SYrWqPaPP/OcwZ3wJ8WNvqA==
 
+"@angular-eslint/bundled-angular-compiler@19.4.0":
+  version "19.4.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-19.4.0.tgz#68669d4ae32574f6940a5a174a063ec9552db42e"
+  integrity sha512-Djq+je34czagDxvkBbbe1dLlhUGYK2MbHjEgPTQ00tVkacLQGAW4UmT1A0JGZzfzl/lDVvli64/lYQsJTSSM6A==
+
 "@angular-eslint/eslint-plugin-template@19.3.0":
   version "19.3.0"
   resolved "https://registry.npmjs.org/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-19.3.0.tgz"
@@ -207,12 +212,12 @@
     semver "7.7.1"
     strip-json-comments "3.1.1"
 
-"@angular-eslint/template-parser@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/template-parser/-/template-parser-19.3.0.tgz"
-  integrity sha512-VxMNgsHXMWbbmZeBuBX5i8pzsSSEaoACVpaE+j8Muk60Am4Mxc0PytJm4n3znBSvI3B7Kq2+vStSRYPkOER4lA==
+"@angular-eslint/template-parser@19.4.0":
+  version "19.4.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/template-parser/-/template-parser-19.4.0.tgz#93cccac8dc7e97e4c15ba245b04f4c95b5ebf76c"
+  integrity sha512-f4t7Z6zo8owOTUqAtZ3G/cMA5hfT3RE2OKR0dLn7YI6LxUJkrlcHq75n60UHiapl5sais6heo70hvjQgJ3fDxQ==
   dependencies:
-    "@angular-eslint/bundled-angular-compiler" "19.3.0"
+    "@angular-eslint/bundled-angular-compiler" "19.4.0"
     eslint-scope "^8.0.2"
 
 "@angular-eslint/utils@19.3.0":

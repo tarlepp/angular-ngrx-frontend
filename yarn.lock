@@ -15,21 +15,13 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@angular-devkit/architect@0.2000.2":
+"@angular-devkit/architect@0.2000.2", "@angular-devkit/architect@>= 0.2000.0 < 0.2100.0":
   version "0.2000.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.2000.2.tgz#26848f120949a7ff3ee18b2d6e8bf1d389fa92ff"
   integrity sha512-adJYWJWuyXFtCOg2lZTV/7CImf4ifxd6c//VXuq5kx7AiSGTIH5Nf2xTQe8ZAZqytUmDgnoNMDhGRQ9b3C5TnA==
   dependencies:
     "@angular-devkit/core" "20.0.2"
     rxjs "7.8.2"
-
-"@angular-devkit/architect@>= 0.1900.0 < 0.2000.0":
-  version "0.1902.10"
-  resolved "https://registry.npmjs.org/@angular-devkit/architect/-/architect-0.1902.10.tgz"
-  integrity sha512-Oa0mJi/SgBFLpZTzyO1KfkrS8dKvFnOl8pxJNb51s5i+yUSBNQOC7H6ulq4sSPjswzPe2vcizoKIxBkdLjwJDA==
-  dependencies:
-    "@angular-devkit/core" "19.2.10"
-    rxjs "7.8.1"
 
 "@angular-devkit/build-angular@20.0.2":
   version "20.0.2"
@@ -114,31 +106,7 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/core@19.1.6":
-  version "19.1.6"
-  resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-19.1.6.tgz"
-  integrity sha512-4s1RpYFGb/yP6OZ1dnYmU7maFYdhZS9pnUHKKiL9rSDhUHkX+VZlf9WFFrHv2RMWg+evrrwPtiFOTMBLShUi8g==
-  dependencies:
-    ajv "8.17.1"
-    ajv-formats "3.0.1"
-    jsonc-parser "3.3.1"
-    picomatch "4.0.2"
-    rxjs "7.8.1"
-    source-map "0.7.4"
-
-"@angular-devkit/core@19.2.10", "@angular-devkit/core@>= 19.0.0 < 20.0.0":
-  version "19.2.10"
-  resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-19.2.10.tgz"
-  integrity sha512-xYF+Vgc+j6iPboR0uptQk3QFed5n/0KSgITbfV/uPEqhzSNdkiM4Y2i/sKlTZrI07cRK/m/dbZ6sZsbvXJVtkA==
-  dependencies:
-    ajv "8.17.1"
-    ajv-formats "3.0.1"
-    jsonc-parser "3.3.1"
-    picomatch "4.0.2"
-    rxjs "7.8.1"
-    source-map "0.7.4"
-
-"@angular-devkit/core@20.0.2":
+"@angular-devkit/core@20.0.2", "@angular-devkit/core@>= 20.0.0 < 21.0.0":
   version "20.0.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-20.0.2.tgz#23335cc4836590c35dba96ff619289c3d69c0b21"
   integrity sha512-qqTSpcIw+TqJ6u/tkQzqgpwVelHsHr8Jhws1Vlx6E0L6E+cRILBK48i9ttE+oYkQlcopQ3VZAmzcZodXJ1SQ9Q==
@@ -150,7 +118,7 @@
     rxjs "7.8.2"
     source-map "0.7.4"
 
-"@angular-devkit/schematics@20.0.2":
+"@angular-devkit/schematics@20.0.2", "@angular-devkit/schematics@>= 20.0.0 < 21.0.0":
   version "20.0.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-20.0.2.tgz#43ffec2c26387b340ef803a28c095d99175edde9"
   integrity sha512-r1aSZhcadLtUMhzUUfy+pkJdZW93z8WQtpGR24y88yFpPgDL5kY85VSlOzjGgo1vEs8Dd7ADcOcsVsUW8MxQ3A==
@@ -160,17 +128,6 @@
     magic-string "0.30.17"
     ora "8.2.0"
     rxjs "7.8.2"
-
-"@angular-devkit/schematics@>= 19.0.0 < 20.0.0":
-  version "19.1.6"
-  resolved "https://registry.npmjs.org/@angular-devkit/schematics/-/schematics-19.1.6.tgz"
-  integrity sha512-6ljZSVTFqnk0utnXLLd82wM6nj68984n5gfrpT1PlOff6MHHNH2YCfwNSlwg6Q5UfDxhEDIT9/MTLnXd6znIRQ==
-  dependencies:
-    "@angular-devkit/core" "19.1.6"
-    jsonc-parser "3.3.1"
-    magic-string "0.30.17"
-    ora "5.4.1"
-    rxjs "7.8.1"
 
 "@angular-devkit/schematics@^13.0.3":
   version "13.3.11"
@@ -183,64 +140,64 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
-"@angular-eslint/builder@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/builder/-/builder-19.3.0.tgz"
-  integrity sha512-j9xNrzZJq29ONSG6EaeQHve0Squkm6u6Dm8fZgWP7crTFOrtLXn7Wxgxuyl9eddpbWY1Ov1gjFuwBVnxIdyAqg==
+"@angular-eslint/builder@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/builder/-/builder-20.0.0.tgz#ac92670310e10c8ddb1911706e88161fe66cdfce"
+  integrity sha512-9jS3VvY+K+EHw9pofsdwKxDirKuTuRBnjMZdaKoUfLoYy5eS1XGJBXoMdaQiM+mSlTv113+L0SK4U565xiBLHQ==
   dependencies:
-    "@angular-devkit/architect" ">= 0.1900.0 < 0.2000.0"
-    "@angular-devkit/core" ">= 19.0.0 < 20.0.0"
+    "@angular-devkit/architect" ">= 0.2000.0 < 0.2100.0"
+    "@angular-devkit/core" ">= 20.0.0 < 21.0.0"
 
-"@angular-eslint/bundled-angular-compiler@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-19.3.0.tgz"
-  integrity sha512-63Zci4pvnUR1iSkikFlNbShF1tO5HOarYd8fvNfmOZwFfZ/1T3j3bCy9YbE+aM5SYrWqPaPP/OcwZ3wJ8WNvqA==
+"@angular-eslint/bundled-angular-compiler@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/bundled-angular-compiler/-/bundled-angular-compiler-20.0.0.tgz#dd694e6311b8ecb0b053c6a00ac504d65f2ce08b"
+  integrity sha512-mDXMQd08s11q9fC6Ps3ffZmvXop9eLuAAXexofHhA7uuoQAoUWS2zoOSNTWtDR6oxMcqEeMnALCjjFeJVBSVmg==
 
-"@angular-eslint/eslint-plugin-template@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-19.3.0.tgz"
-  integrity sha512-WyouppTpOYut+wvv13wlqqZ8EHoDrCZxNfGKuEUYK1BPmQlTB8EIZfQH4iR1rFVS28Rw+XRIiXo1x3oC0SOfnA==
+"@angular-eslint/eslint-plugin-template@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-20.0.0.tgz#7237f57f7f9f4753406060ceca7946a1db745cc3"
+  integrity sha512-QoGgrawU5JFcaj0TjXHKC6fiZkxBeGVRj/TWJtTo/x+c5TVoV5k9pI7Uxdmo9kr4SkPXmt80ZklvExSA510gyw==
   dependencies:
-    "@angular-eslint/bundled-angular-compiler" "19.3.0"
-    "@angular-eslint/utils" "19.3.0"
+    "@angular-eslint/bundled-angular-compiler" "20.0.0"
+    "@angular-eslint/utils" "20.0.0"
     aria-query "5.3.2"
     axobject-query "4.1.0"
 
-"@angular-eslint/eslint-plugin@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/eslint-plugin/-/eslint-plugin-19.3.0.tgz"
-  integrity sha512-nBLslLI20KnVbqlfNW7GcnI9R6cYCvRGjOE2QYhzxM316ciAQ62tvQuXP9ZVnRBLSKDAVnMeC0eTq9O4ysrxrQ==
+"@angular-eslint/eslint-plugin@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-20.0.0.tgz#bf91c54c6da95c24950b53af4855c79ef4c5a511"
+  integrity sha512-xzaLj2yEn43DH0bE9Gw3GrmC+jivIS5/Hbh3bDj3ctw3mUUrD8hrS7kBo1neZ0gnoVLoo/mwIldG+xs5NDY66A==
   dependencies:
-    "@angular-eslint/bundled-angular-compiler" "19.3.0"
-    "@angular-eslint/utils" "19.3.0"
+    "@angular-eslint/bundled-angular-compiler" "20.0.0"
+    "@angular-eslint/utils" "20.0.0"
 
-"@angular-eslint/schematics@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/schematics/-/schematics-19.3.0.tgz"
-  integrity sha512-Wl5sFQ4t84LUb8mJ2iVfhYFhtF55IugXu7rRhPHtgIu9Ty5s1v3HGUx4LKv51m2kWhPPeFOTmjeBv1APzFlmnQ==
+"@angular-eslint/schematics@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/schematics/-/schematics-20.0.0.tgz#3fba14a7d3121a5e70bcca63b2d9719f61227c04"
+  integrity sha512-VL3Sb6Df+iiUSPaQG8NxMPLx0dFRtRGSzsfe6CWYW7FUFP5dYEjpB63gKSAiIBLjPgnG6PMAzrRtfN4nDaTM+g==
   dependencies:
-    "@angular-devkit/core" ">= 19.0.0 < 20.0.0"
-    "@angular-devkit/schematics" ">= 19.0.0 < 20.0.0"
-    "@angular-eslint/eslint-plugin" "19.3.0"
-    "@angular-eslint/eslint-plugin-template" "19.3.0"
-    ignore "7.0.3"
-    semver "7.7.1"
+    "@angular-devkit/core" ">= 20.0.0 < 21.0.0"
+    "@angular-devkit/schematics" ">= 20.0.0 < 21.0.0"
+    "@angular-eslint/eslint-plugin" "20.0.0"
+    "@angular-eslint/eslint-plugin-template" "20.0.0"
+    ignore "7.0.5"
+    semver "7.7.2"
     strip-json-comments "3.1.1"
 
-"@angular-eslint/template-parser@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/template-parser/-/template-parser-19.3.0.tgz"
-  integrity sha512-VxMNgsHXMWbbmZeBuBX5i8pzsSSEaoACVpaE+j8Muk60Am4Mxc0PytJm4n3znBSvI3B7Kq2+vStSRYPkOER4lA==
+"@angular-eslint/template-parser@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/template-parser/-/template-parser-20.0.0.tgz#be8cae43017ffc8ff4dd4bbaa97da1be56792694"
+  integrity sha512-5y9hxH/z+9rIOJp1FwRBSgJ6xt8/pgRfBF+eEIPyIHKl5mV0cVzlQiD7j1LMYTcxJZLHAoryomvSBDpmbtAlWg==
   dependencies:
-    "@angular-eslint/bundled-angular-compiler" "19.3.0"
+    "@angular-eslint/bundled-angular-compiler" "20.0.0"
     eslint-scope "^8.0.2"
 
-"@angular-eslint/utils@19.3.0":
-  version "19.3.0"
-  resolved "https://registry.npmjs.org/@angular-eslint/utils/-/utils-19.3.0.tgz"
-  integrity sha512-ovvbQh96FIJfepHqLCMdKFkPXr3EbcvYc9kMj9hZyIxs/9/VxwPH7x25mMs4VsL6rXVgH2FgG5kR38UZlcTNNw==
+"@angular-eslint/utils@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/utils/-/utils-20.0.0.tgz#9a430d75942d254387aa365121132fb89c07ba7e"
+  integrity sha512-3wsx0iX5f/IQgcTwXIzQq2VPHSjYXJasKNSfgMyKXn4MJGljaSNj+A0ao/5zjnwWVpL0vK5PQsk7EIuMcgAdrg==
   dependencies:
-    "@angular-eslint/bundled-angular-compiler" "19.3.0"
+    "@angular-eslint/bundled-angular-compiler" "20.0.0"
 
 "@angular/animations@20.0.3":
   version "20.0.3"
@@ -6404,20 +6361,20 @@ ignore-walk@^7.0.0:
   dependencies:
     minimatch "^9.0.0"
 
-ignore@7.0.3, ignore@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.npmjs.org/ignore/-/ignore-7.0.3.tgz"
-  integrity sha512-bAH5jbK/F3T3Jls4I0SO1hmPR0dKU0a7+SY6n1yzRtG54FLO8d6w/nxLFX2Nb7dBu6cCWXPaAME6cYqFUMmuCA==
+ignore@7.0.5, ignore@^7.0.0, ignore@^7.0.4:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-7.0.5.tgz#4cb5f6cd7d4c7ab0365738c7aea888baa6d7efd9"
+  integrity sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==
 
 ignore@^5.2.0:
   version "5.2.4"
   resolved "https://registry.npmjs.org/ignore/-/ignore-5.2.4.tgz"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
 
-ignore@^7.0.0, ignore@^7.0.4:
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-7.0.5.tgz#4cb5f6cd7d4c7ab0365738c7aea888baa6d7efd9"
-  integrity sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==
+ignore@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.npmjs.org/ignore/-/ignore-7.0.3.tgz"
+  integrity sha512-bAH5jbK/F3T3Jls4I0SO1hmPR0dKU0a7+SY6n1yzRtG54FLO8d6w/nxLFX2Nb7dBu6cCWXPaAME6cYqFUMmuCA==
 
 image-size@~0.5.0:
   version "0.5.5"
@@ -8985,13 +8942,6 @@ rxjs@6.6.7:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@7.8.1:
-  version "7.8.1"
-  resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz"
-  integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
-  dependencies:
-    tslib "^2.1.0"
-
 rxjs@7.8.2:
   version "7.8.2"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.2.tgz"
@@ -9106,11 +9056,6 @@ selfsigned@^2.4.1:
     "@types/node-forge" "^1.3.0"
     node-forge "^1"
 
-semver@7.7.1, semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.5.4, semver@^7.6.0, semver@^7.6.3:
-  version "7.7.1"
-  resolved "https://registry.npmjs.org/semver/-/semver-7.7.1.tgz"
-  integrity sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==
-
 semver@7.7.2:
   version "7.7.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.2.tgz#67d99fdcd35cec21e6f8b87a7fd515a33f982b58"
@@ -9125,6 +9070,11 @@ semver@^6.0.0, semver@^6.3.1:
   version "6.3.1"
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
+
+semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.5.4, semver@^7.6.0, semver@^7.6.3:
+  version "7.7.1"
+  resolved "https://registry.npmjs.org/semver/-/semver-7.7.1.tgz"
+  integrity sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==
 
 send@0.19.0:
   version "0.19.0"

@@ -2222,45 +2222,45 @@
   dependencies:
     tslib "^2.5.0"
 
-"@ngrx/effects@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.npmjs.org/@ngrx/effects/-/effects-19.1.0.tgz"
-  integrity sha512-rGRN0ZnzAPmQdUPvmoqZsK7Da/AoCfQcfody+h6PfHTwXNm+M2MRc8tXO6C+fznMRww8ZgNror2dfFmoOSOvNg==
+"@ngrx/effects@19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-19.2.1.tgz#e9ee714deb7f8963b7d4b22bf21e06b2c680cae9"
+  integrity sha512-RZmTPOIC/h4JtySxh4Oa0ReQomxv4/+2er9vJ2IiuPDgUo7oE83iKZvB8uZUW/8y9dcu+MB6u0VjWM6rcbpCcA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/entity@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.npmjs.org/@ngrx/entity/-/entity-19.1.0.tgz"
-  integrity sha512-Cy+uT5Lzs0fSaqcAtsK6ECac2ETma7UFnSnqLXSKPQmiBMNMMvP2On1c+zxaPgySG2R5kxgA0yDuHGsRiLAprA==
+"@ngrx/entity@19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-19.2.1.tgz#b3a83995dbdf045009bfb1004dda37d16e1193e6"
+  integrity sha512-AnIe+EUy2WYP4qTgEtGpD/W0+nzHlhzjcCVHolIjodD2iyR1s6UwywziZXORVTV9TEdjHPADggyGXtsJd/1FCg==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/operators@^19.1.0":
-  version "19.1.0"
-  resolved "https://registry.npmjs.org/@ngrx/operators/-/operators-19.1.0.tgz"
-  integrity sha512-gpo69FnoAF69X68pk9eWFHB630xqerBYkF68wOFMciLOV2im3b/fAf+0sRvnQJmVtG/8jO0IPVdvLqa1TbWmPA==
+"@ngrx/operators@^19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/operators/-/operators-19.2.1.tgz#69956f9f23648ae2e73240623297a306418d69f3"
+  integrity sha512-umjSny5nWe7+a3XPeyMfE8vjhXD4ec6nA/KSV7bQA43Yt3eW8cQQr5ng7UZOkC0rbqcBGpSsJPt5thTeXiMXQg==
   dependencies:
     tslib "^2.3.0"
 
-"@ngrx/router-store@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.npmjs.org/@ngrx/router-store/-/router-store-19.1.0.tgz"
-  integrity sha512-eMS6WtZfx29Zmlm3imgEm1WcNTRY3UGdNL7fWJyPWUPUMLArkmyDQsP+NBveLIEj1yJs8U4S8V9gzqPSiGYLHA==
+"@ngrx/router-store@19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-19.2.1.tgz#a76444f63d9c4b4964fba43b39efd003187aaee6"
+  integrity sha512-4gI9A5Mnl52UEHskLKb2A6QXdHDdGr6eyBM940t16mI5RCXfkoSJNb5mQ/jXh2OZjhx9ponRVNmCaLwkxBMB5g==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store-devtools@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.npmjs.org/@ngrx/store-devtools/-/store-devtools-19.1.0.tgz"
-  integrity sha512-c8sV5FQofqm7lF6HTJ4Bb7L/69TaIYHAwEFMbgqbsNoWDx+pilw/It6X9J3LnU8bXjQK4xg6qsgJ7fJIH5X2NA==
+"@ngrx/store-devtools@19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-19.2.1.tgz#331ff0108e27f6e713f7ba43d59a2a84f3555a03"
+  integrity sha512-gj1YO+4yl6D0l9vzLWdw07TQSu5UPKgsSLsNJfDLXraaLCUcB8voAp4J7zohN8qR5ixDuHeMoiSSVuklQ75u2w==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.npmjs.org/@ngrx/store/-/store-19.1.0.tgz"
-  integrity sha512-8kKCSFahTpRTx3f/wwcDjItdFnk2IMoorWRjTI2U/MGWuEi4flqLNWcX99s759e7TI6PctiGsaS8jnJXIUS8Jg==
+"@ngrx/store@19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-19.2.1.tgz#8599cfdd167158952e7adba85e2790777a0e50a6"
+  integrity sha512-c5vQId7YoAhM0y4HASrz9mtLju+28vJspd6OBlhPbBlSae8GN8m9S/oav+8LaSY19yh95cZ5B/nMcLNNWgL/jA==
   dependencies:
     tslib "^2.0.0"
 

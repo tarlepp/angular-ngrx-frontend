@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatList, MatListItem } from '@angular/material/list';
@@ -25,10 +24,8 @@ import { environment } from 'src/environments/environment';
     DefaultLayoutDirective,
     DefaultFlexDirective,
     MatList,
-    NgFor,
     MatListItem,
     DefaultLayoutAlignDirective,
-    NgIf,
     MatTooltip,
     MatButton,
     TranslocoPipe,

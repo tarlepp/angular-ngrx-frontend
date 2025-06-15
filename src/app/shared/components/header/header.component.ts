@@ -1,4 +1,4 @@
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatAnchor, MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
@@ -33,7 +33,6 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
     DefaultLayoutAlignDirective,
     MatAnchor,
     RouterLink,
-    NgIf,
     MatProgressSpinner,
     MatIconButton,
     DefaultFlexOffsetDirective,
@@ -42,7 +41,6 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
     MatMenu,
     MatMenuItem,
     MatDivider,
-    NgFor,
     AsyncPipe,
     TranslocoPipe,
   ],

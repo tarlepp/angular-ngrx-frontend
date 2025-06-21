@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
 import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
@@ -18,20 +18,10 @@ import { ConfigurationService } from 'src/app/shared/services';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private readonly jwtHelper: JwtHelperService;
-  private readonly userData$: BehaviorSubject<UserDataInterface|null>;
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly http: HttpClient,
-    private readonly localStorage: LocalStorageService,
-  ) {
-    this.jwtHelper = new JwtHelperService();
-    this.userData$ = new BehaviorSubject<UserDataInterface|null>(null);
-  }
+  private readonly http: HttpClient = inject(HttpClient);
+  private readonly localStorage: LocalStorageService = inject(LocalStorageService);
+  private readonly jwtHelper: JwtHelperService = new JwtHelperService();
+  private readonly userData$: BehaviorSubject<UserDataInterface|null> = new BehaviorSubject<UserDataInterface|null>(null);
 
   /**
    * Method to make user login request to backend API endpoint. This method

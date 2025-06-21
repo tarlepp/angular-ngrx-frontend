@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatList, MatListItem } from '@angular/material/list';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
@@ -33,21 +33,14 @@ import { environment } from 'src/environments/environment';
 })
 
 export class ErrorMessageComponent implements OnInit {
-  public errors: Array<ErrorMessageInterface>;
-  public readonly production: boolean;
+  public errors: Array<ErrorMessageInterface> = [];
+  public readonly production: boolean = environment.production;
+  
+  private readonly serverMessages: Array<ErrorMessageServerInterface> = inject<Array<ErrorMessageServerInterface>>(MAT_SNACK_BAR_DATA);
+  private readonly snackBarRef: MatSnackBarRef<ErrorMessageComponent> = inject<MatSnackBarRef<ErrorMessageComponent>>(MatSnackBarRef);
+  private readonly translateService: TranslocoService = inject(TranslocoService);
 
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    @Inject(MAT_SNACK_BAR_DATA) private readonly serverMessages: Array<ErrorMessageServerInterface>,
-    private readonly snackBarRef: MatSnackBarRef<ErrorMessageComponent>,
-    private readonly translateService: TranslocoService,
-  ) {
-    this.errors = [];
-    this.production = environment.production;
-
+  public constructor() {
     ErrorMessageComponent.markTexts();
   }
 

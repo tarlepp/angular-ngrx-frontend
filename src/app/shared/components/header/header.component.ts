@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { MatAnchor, MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
@@ -47,30 +47,23 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
+
   @ViewChild('userMenu') private readonly userMenu!: MatMenuTrigger;
 
-  public profile: UserProfileInterface|null;
-  public languages: Array<Language>;
-  public currentLanguage: Language;
+  public profile: UserProfileInterface|null = null;
+  public languages: Array<Language> = languages;
+  public currentLanguage: Language = Language.DEFAULT;
   public readonly loading$: Observable<boolean>;
 
-  private readonly subscriptions: Subscription;
+  private readonly store: Store = inject(Store);
+  private readonly subscriptions: Subscription = new Subscription();
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(
-    private readonly store: Store,
-  ) {
-    this.profile = null;
-    this.languages = languages;
-    this.currentLanguage = Language.DEFAULT;
-
+  public constructor() {
     this.loading$ = this.store.select(authenticationSelectors.selectIsLoading);
-
-    this.subscriptions = new Subscription();
-
 
     // Note that if you add new language, you need to define it's text tag here
     marker([

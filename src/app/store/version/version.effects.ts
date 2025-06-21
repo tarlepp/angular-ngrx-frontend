@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
@@ -20,6 +20,10 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class VersionEffects {
+  private readonly actions$: Actions = inject(Actions);
+  private readonly versionService: VersionService = inject(VersionService);
+  private readonly dialog: MatDialog = inject(MatDialog);
+
   // noinspection JSUnusedLocalSymbols
   private fetchVersionsEffect$: Observable<Action<FetchVersionsTypes>> = createEffect(
     (): Observable<Action<FetchVersionsTypes>> => this.actions$.pipe(
@@ -141,15 +145,4 @@ export class VersionEffects {
     ),
     { dispatch: false },
   );
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly actions$: Actions,
-    private readonly versionService: VersionService,
-    private readonly dialog: MatDialog,
-  ) {
-  }
 }

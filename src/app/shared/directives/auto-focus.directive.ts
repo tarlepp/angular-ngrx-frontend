@@ -1,21 +1,13 @@
-import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 
 @Directive({
   selector: '[appAutoFocus]',
 })
 
 export class AutoFocusDirective implements OnChanges {
-  @Input() public appAutoFocus: boolean;
+  private readonly hostElement: ElementRef = inject(ElementRef);
 
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly hostElement: ElementRef,
-  ) {
-    this.appAutoFocus = false;
-  }
+  @Input() public appAutoFocus: boolean = false;
 
   /**
    * A callback method that is invoked immediately after the default change

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
@@ -36,24 +36,14 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
 })
 
 export class AppComponent implements OnInit, OnDestroy {
-  private loggedIn: boolean;
-  private tokenInterval: number;
-  private readonly subscription: Subscription;
+  private loggedIn: boolean = false;
+  private tokenInterval: number = 0;
 
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly localStorage: LocalStorageService,
-    private readonly mediaObserver: MediaObserver,
-    private readonly store: Store,
-    private readonly authenticationService: AuthenticationService,
-  ) {
-    this.loggedIn = false;
-    this.tokenInterval = 0;
-    this.subscription = new Subscription();
-  }
+  private readonly localStorage: LocalStorageService = inject(LocalStorageService);
+  private readonly mediaObserver: MediaObserver = inject(MediaObserver);
+  private readonly store: Store = inject(Store);
+  private readonly authenticationService: AuthenticationService = inject(AuthenticationService);
+  private readonly subscription: Subscription = new Subscription();
 
   /**
    * A callback method that is invoked immediately after the default change

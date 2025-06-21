@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { routerNavigatedAction } from '@ngrx/router-store';
 import { Action } from '@ngrx/store';
@@ -9,6 +9,8 @@ import { LayoutType, layoutActions } from 'src/app/store';
 
 @Injectable()
 export class RouterEffects {
+  private readonly actions$: Actions = inject(Actions);
+
   // noinspection JSUnusedLocalSymbols
   /**
    * Each time `NavigationEnd` event is dispatched from router, we want to
@@ -21,13 +23,4 @@ export class RouterEffects {
       map((): Action<LayoutType.SCROLL_TO_TOP> => layoutActions.scrollToTop()),
     ),
   );
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly actions$: Actions,
-  ) {
-  }
 }

@@ -1,5 +1,5 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -9,17 +9,14 @@ import { layoutSelectors } from 'src/app/store';
 
 @Injectable()
 export class AcceptLanguageInterceptor implements HttpInterceptor {
-  private language: Language;
+  private language: Language = Language.DEFAULT;
+  private readonly store: Store = inject(Store);
 
   /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
+   * Constructor of the class, where we subscribe to the store to get user
+   * selected language.
    */
-  public constructor(
-    private readonly store: Store,
-  ) {
-    this.language = Language.DEFAULT;
-
+  public constructor() {
     this.store.select(layoutSelectors.selectLanguage).subscribe((language: Language): Language => this.language = language);
   }
 

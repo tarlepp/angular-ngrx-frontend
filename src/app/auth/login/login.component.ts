@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -41,25 +41,19 @@ export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('loginFormElement') public loginFormElement!: NgForm;
 
   public readonly loginForm: UntypedFormGroup;
-  public loading: boolean;
-  public focus: boolean;
+  public loading: boolean = false;
+  public focus: boolean = true;
 
-  private readonly subscriptions: Subscription;
-  private isError: boolean;
+  private isError: boolean = false;
+  private readonly formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);
+  private readonly store: Store = inject(Store);
+  private readonly subscriptions: Subscription = new Subscription();
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(
-    private readonly formBuilder: UntypedFormBuilder,
-    private readonly store: Store,
-  ) {
-    this.loading = false;
-    this.focus = true;
-    this.subscriptions = new Subscription();
-    this.isError = false;
-
+  public constructor() {
     // Initialize login form
     this.loginForm = this.formBuilder.group({
       username: [null, [Validators.required, Validators.minLength(3)]],

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { MatAnchor } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -36,17 +36,10 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
   public readonly versionFrontend$: Observable<string>;
   public readonly versionBackend$: Observable<string>;
 
-  private readonly subscriptions: Subscription;
+  private readonly store: Store = inject(Store);
+  private readonly subscriptions: Subscription = new Subscription();
 
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly store: Store,
-  ) {
-    this.subscriptions = new Subscription();
-
+  public constructor() {
     // Initialize `versionFrontend$` and `versionBackend$` observables, that are used in component
     this.versionFrontend$ = this.store.select(versionSelectors.selectFrontendVersion);
     this.versionBackend$ = this.store.select(versionSelectors.selectBackendVersion);

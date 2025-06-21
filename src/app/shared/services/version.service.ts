@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -10,14 +10,7 @@ import { ConfigurationService } from 'src/app/shared/services/configuration-serv
   providedIn: 'root',
 })
 export class VersionService {
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly httpClient: HttpClient,
-  ) {
-  }
+  private readonly httpClient: HttpClient = inject(HttpClient);
 
   /**
    * Method to fetch frontend side version information from static JSON file

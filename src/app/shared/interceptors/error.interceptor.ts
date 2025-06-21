@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { noop, Observable, throwError } from 'rxjs';
@@ -11,14 +11,8 @@ import { authenticationActions, errorActions } from 'src/app/store';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly router: Router,
-    private readonly store: Store,
-  ) { }
+  private readonly router: Router = inject(Router);
+  private readonly store: Store = inject(Store);
 
   /**
    * Interceptor to handle possible HTTP errors from backend. Within this

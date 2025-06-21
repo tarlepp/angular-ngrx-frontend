@@ -5,28 +5,31 @@
                fxLayoutAlign="space-between center"
   >
     <a mat-button
-       routerLink="/"
+      routerLink="/"
     >
       {{ 'component.header.title' | transloco }}
     </a>
 
-    <div fxLayout="row"
+    <div fxLayout="row" 
          fxLayoutAlign="start center"
     >
-      <div *ngIf="loading$ | async">
-        <mat-spinner diameter="24"
-                     color="accent"
-        ></mat-spinner>
-      </div>
+      @if (loading$ | async) {
+        <div>
+          <mat-spinner diameter="24" color="accent"></mat-spinner>
+        </div>
+      }
 
-      <small *ngIf="profile">
-        {{ profile.username }}
-      </small>
+      @if (profile) {
+        <small>
+          {{ profile.username }}
+        </small>
+      }
 
-      <button mat-icon-button
-              fxFlexOffset="16px"
-              #userMenu="matMenuTrigger"
-              [matMenuTriggerFor]="profile ? matMenuUser : matMenuAnon">
+      <button mat-icon-button 
+              fxFlexOffset="16px" 
+              #userMenu="matMenuTrigger" 
+              [matMenuTriggerFor]="profile ? matMenuUser : matMenuAnon"
+      >
         <mat-icon>more_vert</mat-icon>
       </button>
     </div>
@@ -34,25 +37,25 @@
 
   <mat-menu #matMenuAnon="matMenu">
     <a class="padding-right"
-       mat-menu-item
-       routerLink="/auth/login"
-    >
+      mat-menu-item
+      routerLink="/auth/login"
+      >
       <mat-icon>fingerprint</mat-icon>
 
       <span>{{ 'component.header.menu.login' | transloco }}</span>
     </a>
 
     <button mat-menu-item
-            (click)="changeTheme()"
-    >
+      (click)="changeTheme()"
+      >
       <mat-icon class="rotate-45">brightness_2</mat-icon>
 
       <span>{{ 'component.header.menu.theme' | transloco }}</span>
     </button>
 
     <button mat-menu-item
-            [matMenuTriggerFor]="languageMenu"
-    >
+      [matMenuTriggerFor]="languageMenu"
+      >
       <mat-icon>language</mat-icon>
 
       <span>{{ 'component.header.menu.language.title' | transloco }}</span>
@@ -60,28 +63,28 @@
   </mat-menu>
 
   <mat-menu class="header-menu"
-            #matMenuUser="matMenu"
-  >
-    <a class="padding-right"
-       mat-menu-item
-       routerLink="/profile"
+    #matMenuUser="matMenu"
     >
+    <a class="padding-right"
+      mat-menu-item
+      routerLink="/profile"
+      >
       <mat-icon>person</mat-icon>
 
       <span>{{ 'component.header.menu.profile' | transloco }}</span>
     </a>
 
     <button mat-menu-item
-            (click)="changeTheme()"
-    >
+      (click)="changeTheme()"
+      >
       <mat-icon class="rotate-45">brightness_2</mat-icon>
 
       <span>{{ 'component.header.menu.theme' | transloco }}</span>
     </button>
 
     <button mat-menu-item
-            [matMenuTriggerFor]="languageMenu"
-    >
+      [matMenuTriggerFor]="languageMenu"
+      >
       <mat-icon>language</mat-icon>
 
       <span>{{ 'component.header.menu.language.title' | transloco }}</span>
@@ -90,9 +93,9 @@
     <mat-divider class="margin-vertical-quarter"></mat-divider>
 
     <button class="padding-right"
-            mat-menu-item
-            (click)="logout()"
-    >
+      mat-menu-item
+      (click)="logout()"
+      >
       <mat-icon>exit_to_app</mat-icon>
 
       <span>{{ 'component.header.menu.logout' | transloco }}</span>
@@ -100,14 +103,15 @@
   </mat-menu>
 
   <mat-menu class="header-menu"
-            #languageMenu="matMenu"
-  >
-    <button mat-menu-item
-            *ngFor="let language of languages"
-            [class.text-bold]="currentLanguage === language"
-            (click)="changeLanguage(language)"
+    #languageMenu="matMenu"
     >
-      {{ 'component.header.menu.language.' + language | transloco }}
-    </button>
+    @for (language of languages; track language) {
+      <button mat-menu-item
+        [class.text-bold]="currentLanguage === language"
+        (click)="changeLanguage(language)"
+        >
+        {{ 'component.header.menu.language.' + language | transloco }}
+      </button>
+    }
   </mat-menu>
 </div>

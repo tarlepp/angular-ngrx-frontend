@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -23,6 +23,11 @@ import {
 
 @Injectable()
 export class AuthenticationEffects {
+  private readonly actions$: Actions = inject(Actions);
+  private readonly router: Router = inject(Router);
+  private readonly authService: AuthenticationService = inject(AuthenticationService);
+  private readonly snackbarService: SnackbarService = inject(SnackbarService);
+
   // noinspection JSUnusedLocalSymbols
   /**
    * NgRx effect for `authenticationActions.login` action, so that we're
@@ -143,16 +148,4 @@ export class AuthenticationEffects {
       map((): Action<VersionType.FETCH_FRONTEND_VERSION> => versionActions.fetchFrontendVersion()),
     ),
   );
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly actions$: Actions,
-    private readonly router: Router,
-    private readonly authService: AuthenticationService,
-    private readonly snackbarService: SnackbarService,
-  ) {
-  }
 }

@@ -84,7 +84,7 @@
     "@types/node": "22.15.3",
     "@typescript-eslint/eslint-plugin": "8.31.1",
     "@typescript-eslint/parser": "7.16.0",
-    "eslint": "8.57.0",
+    "eslint": "9.0.0",
     "eslint-plugin-deprecation": "2.0.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsdoc": "48.11.0",

@@ -1,5 +1,5 @@
 import { formatNumber } from '@angular/common';
-import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { OnDestroy, Pipe, PipeTransform, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
@@ -28,23 +28,18 @@ import { layoutSelectors } from 'src/app/store';
   pure: false,
 })
 export class LocalNumberPipe implements PipeTransform, OnDestroy {
-  private locale: Locale;
-  private cachedLocale: Locale;
-  private cachedOutput: string|null;
-  private readonly subscriptions: Subscription;
+  private locale: Locale = Locale.DEFAULT;
+  private cachedLocale: Locale = Locale.DEFAULT;
+  private cachedOutput: string|null = null;
+
+  private readonly store: Store = inject(Store);
+  private readonly subscriptions: Subscription = new Subscription();
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(
-    private readonly store: Store,
-  ) {
-    this.locale = Locale.DEFAULT;
-    this.cachedLocale = Locale.DEFAULT;
-    this.cachedOutput = null;
-    this.subscriptions = new Subscription();
-
+  public constructor() {
     // Subscribe to locale changes
     this.subscriptions
       .add(this.store

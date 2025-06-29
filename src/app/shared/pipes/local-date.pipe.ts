@@ -1,4 +1,4 @@
-import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { OnDestroy, Pipe, PipeTransform, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { Subscription } from 'rxjs';
@@ -27,27 +27,19 @@ import { layoutSelectors } from 'src/app/store';
   pure: false,
 })
 export class LocalDatePipe implements PipeTransform, OnDestroy {
-  private locale: Locale;
-  private timezone: string;
-  private cachedLocale: Locale;
-  private cachedTimezone: string;
-  private cachedOutput: string|null;
-  private readonly subscriptions: Subscription;
+  private locale: Locale = Locale.DEFAULT;
+  private timezone: string = 'Europe/Helsinki';
+  private cachedLocale: Locale = Locale.DEFAULT;
+  private cachedTimezone: string = 'Europe/Helsinki';
+  private cachedOutput: string|null = null;
+  private readonly store: Store = inject(Store);
+  private readonly subscriptions: Subscription = new Subscription();
 
   /**
    * Constructor of the class, where we DI all services that we need to use
    * within this component and initialize needed properties.
    */
-  public constructor(
-    private readonly store: Store,
-  ) {
-    this.locale = Locale.DEFAULT;
-    this.timezone = 'Europe/Helsinki';
-    this.cachedLocale = Locale.DEFAULT;
-    this.cachedTimezone = 'Europe/Helsinki';
-    this.cachedOutput = null;
-    this.subscriptions = new Subscription();
-
+  public constructor() {
     // Subscribe to localization changes
     this.subscriptions
       .add(this.store

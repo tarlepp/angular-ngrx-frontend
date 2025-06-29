@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, DOCUMENT, inject } from '@angular/core';
 import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -15,10 +14,15 @@ import { layoutActions, LayoutType, LocalizationTypes } from 'src/app/store';
 
 @Injectable()
 export class LayoutEffects {
+  private readonly document: Document = inject<Document>(DOCUMENT);
+  private readonly actions$: Actions = inject(Actions);
+  private readonly translocoService: TranslocoService = inject(TranslocoService);
+  private readonly snackbarService: SnackbarService = inject(SnackbarService);
+
   // noinspection JSUnusedLocalSymbols
   /**
    * NgRx effect for `layoutActions.updateLocalization` action, within this
-   * we area actually switching this original action observable to multiple
+   * we are actually switching this original action observable to multiple
    * new action observables which are making following;
    *  1) Change language.
    *  2) Change locale.
@@ -179,16 +183,4 @@ export class LayoutEffects {
     ),
     { dispatch: false },
   );
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-    private readonly actions$: Actions,
-    private readonly translocoService: TranslocoService,
-    private readonly snackbarService: SnackbarService,
-  ) {
-  }
 }

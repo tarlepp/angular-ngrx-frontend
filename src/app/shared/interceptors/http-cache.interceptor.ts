@@ -6,7 +6,7 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 
 import { HttpCacheService } from 'src/app/shared/services/http-cache.service';
@@ -21,10 +21,7 @@ export const cacheable = new HttpContextToken(() => false);
 
 @Injectable()
 export class HttpCacheInterceptor implements HttpInterceptor {
-  public constructor(
-    private readonly httpCacheService: HttpCacheService,
-  ) {
-  }
+  private readonly httpCacheService: HttpCacheService = inject(HttpCacheService);
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Only cache requests that are configured to be cached

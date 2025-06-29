@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,6 +9,9 @@ import { errorActions } from 'src/app/store';
 
 @Injectable()
 export class ErrorEffects {
+  private readonly actions$: Actions = inject(Actions);
+  private readonly snackbarService: SnackbarService = inject(SnackbarService);
+
   // noinspection JSUnusedLocalSymbols
   /**
    * NgRx effect that is triggered within `ErrorType.SHOW_SNACKBAR` action.
@@ -29,14 +32,4 @@ export class ErrorEffects {
     ),
     { dispatch: false },
   );
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly actions$: Actions,
-    private readonly snackbarService: SnackbarService,
-  ) {
-  }
 }

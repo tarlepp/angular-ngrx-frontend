@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
@@ -16,19 +16,10 @@ type AppMessageSnackBarType = MatSnackBarRef<SimpleSnackBar>;
   providedIn: 'root',
 })
 export class SnackbarService {
-  private readonly closeButtonTag: string;
-
-  /**
-   * Constructor of the class, where we DI all services that we need to use
-   * within this component and initialize needed properties.
-   */
-  public constructor(
-    private readonly snackBar: MatSnackBar,
-    private readonly translocoService: TranslocoService,
-    private readonly store: Store,
-  ) {
-    this.closeButtonTag = marker('snackbar.close-button');
-  }
+  private readonly closeButtonTag: string = marker('snackbar.close-button');
+  private readonly snackBar: MatSnackBar = inject(MatSnackBar);
+  private readonly translocoService: TranslocoService = inject(TranslocoService);
+  private readonly store: Store = inject(Store);
 
   /**
    * Method to create plain snackbar message with specified content. MatSnackBarRef<TextOnlySnackBar>

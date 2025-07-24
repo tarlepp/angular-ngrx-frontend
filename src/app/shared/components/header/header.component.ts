@@ -1,19 +1,15 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatAnchor, MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
-import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
-import {
-  DefaultLayoutDirective,
-  DefaultLayoutAlignDirective,
-  DefaultFlexOffsetDirective,
-} from '@ngbracket/ngx-layout/flex';
+import { FlexOffsetDirective, LayoutAlignDirective, LayoutDirective } from '@ngbracket/ngx-layout/flex';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -28,20 +24,20 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   imports: [
+    AsyncPipe,
+    FlexOffsetDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
     MatToolbar,
-    DefaultLayoutDirective,
-    DefaultLayoutAlignDirective,
     MatAnchor,
     RouterLink,
     MatProgressSpinner,
     MatIconButton,
-    DefaultFlexOffsetDirective,
     MatMenuTrigger,
     MatIcon,
     MatMenu,
     MatMenuItem,
     MatDivider,
-    AsyncPipe,
     TranslocoPipe,
   ],
 })

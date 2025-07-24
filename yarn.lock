@@ -387,12 +387,12 @@
   optionalDependencies:
     lmdb "3.4.1"
 
-"@angular/cdk@20.1.0":
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-20.1.0.tgz#a26af0c9c9fd8dc34a4272a4df446ce26c2f9227"
-  integrity sha512-JhgbSOv7xZqWNZjuCh8A3A7pGv0mhtmGjHo36157LrxRO6R7x2yJJjxC5nQeroKZWhgN+X/jG/EJlzEvl9PxTw==
+"@angular/cdk@20.1.3":
+  version "20.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-20.1.3.tgz#696e6f3eece8ffb96420940799b10db234231128"
+  integrity sha512-TO/OBOPWIDJe+0g4S+ye6hewnWOhgWGa4iygvAlmQ77nyqhioHT60puyaDZRATxKh9k6KVmg9cPAk1lYbOFvaA==
   dependencies:
-    parse5 "^7.1.2"
+    parse5 "^8.0.0"
     tslib "^2.3.0"
 
 "@angular/cli@20.1.2":
@@ -491,10 +491,10 @@
     tinyglobby "^0.2.12"
     yargs "^18.0.0"
 
-"@angular/material@20.1.0":
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-20.1.0.tgz#0052963f7ffe4eba8d9725632d582ea6fe3b3220"
-  integrity sha512-LfGz/V/kZwRIhzIZBiurM4Wc5CQiiJkiOChUfoEOvQLN2hckPFZbbvtg6JwxxA6nhzsDhuGHbj7Xj5dNsLfZLw==
+"@angular/material@20.1.3":
+  version "20.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-20.1.3.tgz#261b651ba0f63640acc24115224b07818397fb06"
+  integrity sha512-W6/XJ2mih70b+PJUEAbI3mC415/SNY06nMBKcjWjRSth0jHe5/ujqIj0WkygkpDz34HEa11vV/0BgSpdS2FT5g==
   dependencies:
     tslib "^2.3.0"
 
@@ -9110,7 +9110,7 @@ parse5-sax-parser@^7.0.0:
   dependencies:
     parse5 "^7.0.0"
 
-parse5@^7.0.0, parse5@^7.1.2:
+parse5@^7.0.0:
   version "7.1.2"
   resolved "https://registry.npmjs.org/parse5/-/parse5-7.1.2.tgz"
   integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==
@@ -9121,6 +9121,13 @@ parse5@^7.3.0:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.3.0.tgz#d7e224fa72399c7a175099f45fc2ad024b05ec05"
   integrity sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==
+  dependencies:
+    entities "^6.0.0"
+
+parse5@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-8.0.0.tgz#aceb267f6b15f9b6e6ba9e35bfdd481fc2167b12"
+  integrity sha512-9m4m5GSgXjL4AjumKzq1Fgfp3Z8rsvjRNbnkVwfu2ImRqE5D0LnY2QfDen18FSY9C573YU5XxSapdHZTZ2WolA==
   dependencies:
     entities "^6.0.0"
 

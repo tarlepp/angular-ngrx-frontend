@@ -1,14 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { TranslocoPipe } from '@jsverse/transloco';
 import {
   FlexFillDirective,
-  DefaultLayoutDirective,
-  DefaultLayoutAlignDirective,
-  DefaultFlexOffsetDirective,
+  FlexOffsetDirective,
+  LayoutAlignDirective,
+  LayoutDirective,
 } from '@ngbracket/ngx-layout/flex';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -23,15 +23,15 @@ import { authenticationActions, authenticationSelectors } from 'src/app/store';
   styleUrls: ['./login.component.scss'],
   imports: [
     FlexFillDirective,
-    DefaultLayoutDirective,
-    DefaultLayoutAlignDirective,
+    FlexOffsetDirective,
+    LayoutDirective,
+    LayoutAlignDirective,
     ReactiveFormsModule,
     MatFormField,
     MatLabel,
     MatInput,
     AutoFocusDirective,
     MatError,
-    DefaultFlexOffsetDirective,
     MatButton,
     TranslocoPipe,
   ],

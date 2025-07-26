@@ -1,11 +1,11 @@
 import { AsyncPipe } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostBinding, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatAnchor } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { DefaultLayoutDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
+import { LayoutAlignDirective, LayoutDirective } from '@ngbracket/ngx-layout/flex';
 import { Store } from '@ngrx/store';
 import { interval, Observable, Subscription } from 'rxjs';
 
@@ -17,8 +17,8 @@ import { versionActions, versionSelectors } from 'src/app/store';
   styleUrls: ['./footer.component.scss'],
   imports: [
     MatToolbar,
-    DefaultLayoutDirective,
-    DefaultLayoutAlignDirective,
+    LayoutAlignDirective,
+    LayoutDirective,
     MatAnchor,
     MatDivider,
     MatTooltip,

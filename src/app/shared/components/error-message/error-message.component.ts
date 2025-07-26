@@ -1,11 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatList, MatListItem } from '@angular/material/list';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
 import { MatTooltip } from '@angular/material/tooltip';
-import { TranslocoService, TranslocoPipe } from '@jsverse/transloco';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
-import { DefaultLayoutDirective, DefaultFlexDirective, DefaultLayoutAlignDirective } from '@ngbracket/ngx-layout/flex';
+import { FlexDirective, LayoutAlignDirective, LayoutDirective } from '@ngbracket/ngx-layout/flex';
 import { take } from 'rxjs/operators';
 
 import {
@@ -21,11 +21,11 @@ import { environment } from 'src/environments/environment';
   templateUrl: './error-message.component.html',
   styleUrls: ['./error-message.component.scss'],
   imports: [
-    DefaultLayoutDirective,
-    DefaultFlexDirective,
+    FlexDirective,
+    LayoutAlignDirective,
+    LayoutDirective,
     MatList,
     MatListItem,
-    DefaultLayoutAlignDirective,
     MatTooltip,
     MatButton,
     TranslocoPipe,
@@ -35,7 +35,7 @@ import { environment } from 'src/environments/environment';
 export class ErrorMessageComponent implements OnInit {
   public errors: Array<ErrorMessageInterface> = [];
   public readonly production: boolean = environment.production;
-  
+
   private readonly serverMessages: Array<ErrorMessageServerInterface> = inject<Array<ErrorMessageServerInterface>>(MAT_SNACK_BAR_DATA);
   private readonly snackBarRef: MatSnackBarRef<ErrorMessageComponent> = inject<MatSnackBarRef<ErrorMessageComponent>>(MatSnackBarRef);
   private readonly translateService: TranslocoService = inject(TranslocoService);

@@ -1,13 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
-import {
-  DefaultFlexDirective,
-  DefaultLayoutAlignDirective,
-  DefaultLayoutDirective,
-  FlexFillDirective,
-} from '@ngbracket/ngx-layout/flex';
+import { FlexDirective, FlexFillDirective, LayoutAlignDirective, LayoutDirective } from '@ngbracket/ngx-layout/flex';
 import { Store } from '@ngrx/store';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Subscription } from 'rxjs';
@@ -26,10 +21,10 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
   styleUrls: ['./app.component.scss'],
   imports: [
     HeaderComponent,
-    DefaultFlexDirective,
-    DefaultLayoutDirective,
-    DefaultLayoutAlignDirective,
+    FlexDirective,
     FlexFillDirective,
+    LayoutAlignDirective,
+    LayoutDirective,
     RouterOutlet,
     FooterComponent,
   ],

@@ -45,6 +45,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               ...error,
               error: {
                 code: 0,
+                // eslint-disable-next-line @typescript-eslint/no-base-to-string
                 message: error.message || `Unknown error - ${error.toString()}`,
                 status: error.status || 0,
                 statusText: error.statusText || '',
@@ -94,6 +95,7 @@ export class ErrorInterceptor implements HttpInterceptor {
    */
   private dispatchMessage(httpErrorResponse: HttpErrorResponse): void {
     let error: ServerErrorInterface = {
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       message: httpErrorResponse.toString(),
       code: 0,
       status: httpErrorResponse.status || 0,

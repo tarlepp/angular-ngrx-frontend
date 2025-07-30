@@ -3,6 +3,7 @@ const eslint = require("@eslint/js");
 const importPlugin = require('eslint-plugin-import');
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
+const ngrx = require("@ngrx/eslint-plugin/v9");
 
 module.exports = tseslint.config(
   {
@@ -13,6 +14,7 @@ module.exports = tseslint.config(
       ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
+      ...ngrx.configs.all,
     ],
     languageOptions: {
       parserOptions: {
@@ -41,6 +43,9 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      "@ngrx/prefer-effect-callback-in-block-statement": "off",
+      "@ngrx/no-multiple-actions-in-effects": "off",
+      "@ngrx/no-store-subscription": "off",
       "@typescript-eslint/array-type": [
         "error",
         {

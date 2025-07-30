@@ -2461,6 +2461,14 @@
   dependencies:
     tslib "^2.0.0"
 
+"@ngrx/eslint-plugin@20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/eslint-plugin/-/eslint-plugin-20.0.0.tgz#d9e736d6f4e2e797c48e948f9e402d3c25b847f8"
+  integrity sha512-8wmF3Vyp0h7GqJ/vmwXmF4PeQP/OPR+3y0isUSs0sN8kaJAIqup+L0DuwBss7CEF7egf5o5T+4HlotLS9xr2jw==
+  dependencies:
+    semver "^7.3.5"
+    strip-json-comments "3.1.1"
+
 "@ngrx/operators@19.2.1":
   version "19.2.1"
   resolved "https://registry.yarnpkg.com/@ngrx/operators/-/operators-19.2.1.tgz#69956f9f23648ae2e73240623297a306418d69f3"

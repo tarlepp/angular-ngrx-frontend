@@ -27,7 +27,7 @@ export class ConfigurationService {
    * is not present.
    */
   private static loadDevelopment(): Promise<void> {
-    return new Promise<void>((resolve: () => void, reject: (s: string) => void): void => {
+    return new Promise<void>((resolve: () => void, reject: (error: Error) => void): void => {
       ConfigurationService.loadConfiguration(ConfigurationService.configurationFileLocal)
         .then((): void => resolve())
         .catch((error: string): void => {
@@ -48,7 +48,7 @@ export class ConfigurationService {
   private static loadConfiguration(configurationFile: string): Promise<void> {
     const ts = Math.round((new Date()).getTime() / 1000);
 
-    return new Promise<void>((resolve: () => void, reject: (s: string) => any): void => {
+    return new Promise<void>((resolve: () => void, reject: (error: Error) => any): void => {
       fetch(`${ configurationFile }?t=${ ts }`)
         .then((response: Response): void => {
           response

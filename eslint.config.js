@@ -10,9 +10,16 @@ module.exports = tseslint.config(
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
+    languageOptions: {
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
     plugins: {
       import: importPlugin
     },
@@ -45,6 +52,65 @@ module.exports = tseslint.config(
         "off",
         {
           "ignoreParameters": true
+        }
+      ],
+      "@typescript-eslint/await-thenable": "error",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-misused-promises": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/unbound-method": "off",
+      "@typescript-eslint/no-redundant-type-constituents": "off",
+      "@typescript-eslint/no-this-alias": "error",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "vars": "all",
+          "varsIgnorePattern": "(.)Effect\\$$"
+        }
+      ],
+      "@typescript-eslint/no-useless-constructor": "error",
+      "@typescript-eslint/restrict-plus-operands": "error",
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          "selector": "default",
+          "format": [
+            "camelCase"
+          ]
+        },
+        {
+          "selector": "enumMember",
+          "format": [
+            "UPPER_CASE"
+          ]
+        },
+        {
+          "selector": "objectLiteralProperty",
+          "format": [
+            "camelCase"
+          ]
+        },
+        {
+          "selector": "typeParameter",
+          "format": [
+            "PascalCase",
+            "UPPER_CASE"
+          ]
+        },
+        {
+          "selector": [
+            "class",
+            "enum",
+            "interface",
+            "typeAlias"
+          ],
+          "format": [
+            "PascalCase"
+          ]
         }
       ],
       "import/no-extraneous-dependencies": [
@@ -83,7 +149,11 @@ module.exports = tseslint.config(
         }
       ],
       "import/no-dynamic-require": "error",
-      "no-unused-vars": "error",
+      "no-invalid-this": "off",
+      "no-new-func": "error",
+      "no-param-reassign": "error",
+      "no-redeclare": "error",
+      "no-unused-vars": "off",
     },
   },
   {

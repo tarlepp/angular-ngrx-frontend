@@ -40,11 +40,12 @@ export class ErrorInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse): Observable<never> => {
           let payload = error;
 
-          if (error && error.hasOwnProperty('error') && error.status === 0) {
+          if (error && Object.prototype.hasOwnProperty.call(error, 'error') && error.status === 0) {
             payload = {
               ...error,
               error: {
                 code: 0,
+                // eslint-disable-next-line @typescript-eslint/no-base-to-string
                 message: error.message || `Unknown error - ${error.toString()}`,
                 status: error.status || 0,
                 statusText: error.statusText || '',
@@ -94,15 +95,16 @@ export class ErrorInterceptor implements HttpInterceptor {
    */
   private dispatchMessage(httpErrorResponse: HttpErrorResponse): void {
     let error: ServerErrorInterface = {
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       message: httpErrorResponse.toString(),
       code: 0,
       status: httpErrorResponse.status || 0,
       statusText: httpErrorResponse.statusText || '',
     };
 
-    if (httpErrorResponse.hasOwnProperty('error') && httpErrorResponse.error.hasOwnProperty('message')) {
+    if (Object.prototype.hasOwnProperty.call(httpErrorResponse, 'error') && Object.prototype.hasOwnProperty.call(httpErrorResponse.error, 'message')) {
       error = httpErrorResponse.error as ServerErrorInterface;
-    } else if (httpErrorResponse.hasOwnProperty('message')) {
+    } else if (Object.prototype.hasOwnProperty.call(httpErrorResponse, 'message')) {
       error.message = httpErrorResponse.message;
     }
 

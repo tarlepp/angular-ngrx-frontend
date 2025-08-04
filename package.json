@@ -86,7 +86,7 @@
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
     "angular-eslint": "20.1.1",
-    "eslint": "9.29.0",
+    "eslint": "9.31.0",
     "eslint-plugin-import": "2.32.0",
     "jasmine-core": "5.9.0",
     "jasmine-spec-reporter": "7.0.0",

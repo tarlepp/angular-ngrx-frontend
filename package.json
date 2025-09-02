@@ -57,7 +57,7 @@
     "@ngrx/router-store": "20.0.0",
     "@ngrx/store": "20.0.0",
     "@ngrx/store-devtools": "20.0.0",
-    "@snyk/protect": "1.1298.2",
+    "@snyk/protect": "1.1299.0",
     "luxon": "3.7.1",
     "luxon-angular": "6.0.0",
     "ngrx-store-localstorage": "20.0.0",
@@ -85,10 +85,10 @@
     "@types/node": "24.2.1",
     "@typescript-eslint/eslint-plugin": "8.39.0",
     "@typescript-eslint/parser": "8.39.0",
-    "angular-eslint": "20.1.1",
-    "eslint": "9.33.0",
+    "angular-eslint": "20.2.0",
+    "eslint": "9.34.0",
     "eslint-plugin-import": "2.32.0",
-    "jasmine-core": "5.9.0",
+    "jasmine-core": "5.10.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
@@ -103,8 +103,8 @@
     "stylelint-config-standard-scss": "15.0.1",
     "stylelint-scss": "6.12.1",
     "ts-node": "10.9.2",
-    "typescript": "5.8.3",
-    "typescript-eslint": "8.39.0"
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.41.0"
   },
   "snyk": true
 }

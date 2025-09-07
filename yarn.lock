@@ -318,10 +318,10 @@
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "20.1.1"
 
-"@angular/animations@20.1.6":
-  version "20.1.6"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-20.1.6.tgz#7ff66f995bbbc4d697d05fbd409d6430bffe9da2"
-  integrity sha512-vSU0BP0BzX20HoCE81MKcr9cd6H9zB1qbCNk2J1ulH1C9rXs5ZpeORy+riIJTOZDYLtE0jCsXT3pvVb+nPmADQ==
+"@angular/animations@20.1.7":
+  version "20.1.7"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-20.1.7.tgz#214f72f88d98e520664e4692d82b00a8a8d9b561"
+  integrity sha512-ykzx6cKqGkKbtE2CbHBukIgM2Wk8+BmYTEqwRZRVqskxbIGvEuLmLJrvmwpqqvo4MypgvbLEtJyviSCYQkZYvA==
   dependencies:
     tslib "^2.3.0"
 

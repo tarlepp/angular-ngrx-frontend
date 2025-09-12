@@ -1,3 +1,4 @@
+import { inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -6,11 +7,8 @@ import { AuthGuardMetaDataInterface } from 'src/app/auth/interfaces';
 import { AuthenticationService } from 'src/app/auth/services';
 
 export abstract class BaseAuth {
-  /**
-   * Constructor of the class. This is called from classes that extends this
-   * abstract class.
-   */
-  protected constructor(protected router: Router, protected authenticationService: AuthenticationService) { }
+  private readonly router: Router = inject(Router);
+  private readonly authenticationService: AuthenticationService = inject(AuthenticationService);
 
   /**
    * Helper method to make check if user needs to be authenticated or not. This
@@ -18,8 +16,8 @@ export abstract class BaseAuth {
    *  - AnonymousGuard
    *  - AuthenticationGuard
    *
-   * By default this method will redirect user either to `/` or `/auth/login`
-   * depending if user needs to be authenticated or not.
+   * By default, this method will redirect user either to `/` or `/auth/login`
+   * depending on if user needs to be authenticated or not.
    *
    * You can override this behaviour by setting `data` option to your route
    * definition where you can configure following;

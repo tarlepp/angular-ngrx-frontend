@@ -1,3 +1,4 @@
+import { inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -7,11 +8,8 @@ import { RoleGuardMetaDataInterface } from 'src/app/auth/interfaces';
 import { authenticationSelectors } from 'src/app/store';
 
 export abstract class BaseRole {
-  /**
-   * Constructor of the class. This is called from classes that extends this
-   * abstract class.
-   */
-  protected constructor(protected router: Router, protected store: Store) { }
+  private readonly router: Router = inject(Router);
+  private readonly store: Store = inject(Store);
 
   /**
    * Helper method to make check if user has certain role or not. This is used
@@ -21,8 +19,8 @@ export abstract class BaseRole {
    *  - RoleRootGuard
    *  - RoleUserGuard
    *
-   * By default this method will redirect user either to `/` or `/auth/login`
-   * depending if user is not logged in or user doesn't have the specified
+   * By default, this method will redirect user either to `/` or `/auth/login`
+   * depending on if user is not logged in or user doesn't have the specified
    * role.
    *
    * You can override this behaviour by setting `data` option to your route

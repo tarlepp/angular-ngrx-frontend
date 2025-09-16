@@ -2445,53 +2445,53 @@
   dependencies:
     tslib "^2.5.0"
 
-"@ngrx/effects@20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-20.0.0.tgz#dcbbc2fcd87c0833227df9ab7494ec06991c7f2f"
-  integrity sha512-iwNNPaDwGK7KGOEa1FBOvzLiJdgto8/Ba5ALH9pWsonGoEtQdaS6qUwG8DBA4G2xj+1DYKg6/jIghlKXX1nA6g==
+"@ngrx/effects@20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-20.0.1.tgz#324716a792c5048f71153da471f8eeaa0a5a43f9"
+  integrity sha512-bUwAPxwk9ly9FAalECLsjEFrIrrEK5iE95idv1TCekMwShqWuw1XzhqVqcmonbCFEiAGBDgyvDYwJxGi0W6UPw==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/entity@20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-20.0.0.tgz#78ca41e4d15fcfe6ef30d8850a250c63c6ecd8da"
-  integrity sha512-2smrxb0c3ceLPYt+VbZnM+VZSaT18JAEKqHB+jVasUYOWgXlZUUVC4syoqb2RiR2ek0Em0swlBC46XkB0Qu1Hw==
+"@ngrx/entity@20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-20.0.1.tgz#56c8781f7670b60c80912c70f55cd96fc883971f"
+  integrity sha512-NYzWkN1skfdI3MJNpaFPNcYSnwnXvKm7+DX7b1CeKzRxFKn5LNZaetETezDoF6VK9gSzxAnA1zwB+EtS0IzOFQ==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/eslint-plugin@20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/eslint-plugin/-/eslint-plugin-20.0.0.tgz#d9e736d6f4e2e797c48e948f9e402d3c25b847f8"
-  integrity sha512-8wmF3Vyp0h7GqJ/vmwXmF4PeQP/OPR+3y0isUSs0sN8kaJAIqup+L0DuwBss7CEF7egf5o5T+4HlotLS9xr2jw==
+"@ngrx/eslint-plugin@20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/eslint-plugin/-/eslint-plugin-20.0.1.tgz#871e0260919be1cb7390d770384b0b096057f3db"
+  integrity sha512-kP9EMIs+M6YioNQvtqy78KTypntdb4MG4pdboZxV788WSG+pQp4uWTQ11YUVL/xlUl685zpkO3JGl4RuElyMxg==
   dependencies:
     semver "^7.3.5"
     strip-json-comments "3.1.1"
 
-"@ngrx/operators@20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/operators/-/operators-20.0.0.tgz#c0d1c6414a77e838e5920cd50587f5e1f7ed6c29"
-  integrity sha512-Dp6HweO6wOJkUgcfuv6s8OrYIJf3TAYfvCFCoM1cQtLc70P9vhvqKggCR8BsrckF7XZa95zcm7Pab6OHFnOPWg==
+"@ngrx/operators@20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/operators/-/operators-20.0.1.tgz#6915bdf7f8159d17b5141c6b0a7bc9c7cd154820"
+  integrity sha512-IIaVUlPU2LB1FbZ2m4/4FmAZnTEDCDgC115naods4SHo6U+DU7ZzItfIGDLeEPDaHa8MnjVJwOtrXjy73eJcNg==
   dependencies:
     tslib "^2.3.0"
 
-"@ngrx/router-store@20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-20.0.0.tgz#1df0f10cd644ae3a007213bda4cd59149a1009c3"
-  integrity sha512-cxIsBbx1/RxXdMi45GrYskIJ9Umj8yW+/IiiB6xrpU8cUk0yJhkbfwfVO/ohtelG/Zsdr+732R7iEG5zb2LwBw==
+"@ngrx/router-store@20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-20.0.1.tgz#f897cd34f9179f8005b918e43298e26db3159d4e"
+  integrity sha512-sjl2n2LxBkK7+ShuictIoRSVj+N8QgGEL7btznR8rK0oGfUr5iMC/k23oENje4N4a80Gd2i+jEXsX1pBz8//vA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store-devtools@20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-20.0.0.tgz#c292e6639c8b116899a47c4aaacf3a6ea69121a4"
-  integrity sha512-7V7AufKctEz4vWhDS5cYUoc/XH2Za6C3MS0RrzHFzNZ4HbALL76j37t+JQADwofO5hDXBHhWc4+aSgeUkWfuiA==
+"@ngrx/store-devtools@20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-20.0.1.tgz#282fad69a95c48a4e9e466abd0beec5d90414f95"
+  integrity sha512-csP579rdeiz0WF5kOmUSX+6PWb4Q/zw6ejYzktJHcQvauWcVU2rPsBCxbyaK6eRJl/ZgzJrTmmGDRnySIglE1A==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store@20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-20.0.0.tgz#9538311e2c6994d2b9ae8be5b64d085e4d77490f"
-  integrity sha512-UVj6UVayXknq1V/OXSGAVG+CdSXYg+oFM6T4aplcP2fuq/4oHtnVi93hkIYa9OU+rhAuHvfRsOsGsTtxlpj52w==
+"@ngrx/store@20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-20.0.1.tgz#614a7dcc357f18fc2ed05e0cec91d7d4cffded29"
+  integrity sha512-SWIHKe9lBoNf4rOklaWbCRAz8ie1Duf1iL4SMe6BipqhdUfJ/pEbcz3xMQUIlv1CciHhRgMJFTzFrDxamYHknQ==
   dependencies:
     tslib "^2.0.0"
 
@@ -9523,7 +9523,7 @@ selfsigned@^2.4.1:
     "@types/node-forge" "^1.3.0"
     node-forge "^1"
 
-semver@7.7.2, semver@^7.6.0:
+semver@7.7.2, semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.5.3, semver@^7.5.4, semver@^7.6.0:
   version "7.7.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.2.tgz#67d99fdcd35cec21e6f8b87a7fd515a33f982b58"
   integrity sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==
@@ -9537,11 +9537,6 @@ semver@^6.0.0, semver@^6.3.1:
   version "6.3.1"
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
-
-semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.5.3, semver@^7.5.4:
-  version "7.7.1"
-  resolved "https://registry.npmjs.org/semver/-/semver-7.7.1.tgz"
-  integrity sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==
 
 send@0.19.0:
   version "0.19.0"

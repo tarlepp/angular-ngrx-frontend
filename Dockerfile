@@ -106,7 +106,8 @@ RUN yarn build-prod
 FROM nginx:mainline-alpine-slim AS production
 
 # Install security updates
-RUN apk upgrade --no-cache
+RUN apk update \
+    && apk upgrade --no-cache --available
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf

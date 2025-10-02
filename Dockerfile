@@ -105,6 +105,9 @@ RUN yarn build-prod
 # Stage 4: Production
 FROM nginx:mainline-alpine-slim AS production
 
+# Install security updates
+RUN apk upgrade --no-cache
+
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist/angular-frontend /usr/share/nginx/html

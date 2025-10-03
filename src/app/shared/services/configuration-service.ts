@@ -5,8 +5,8 @@ export class ConfigurationService {
   public static configuration: ApplicationConfigurationInterface;
   public static initialized: boolean = false;
 
-  private static configurationFile: string = `/assets/config/config.${ environment.name }.json`;
-  private static configurationFileLocal: string = `/assets/config/config.${ environment.name }.local.json`;
+  private static configurationFile: string = `/assets/config/config.${environment.name}.json`;
+  private static configurationFileLocal: string = `/assets/config/config.${environment.name}.local.json`;
 
   /**
    * Method to initialize application configuration for production and
@@ -32,7 +32,7 @@ export class ConfigurationService {
         .then((): void => resolve())
         .catch((error: string): void => {
           console.warn(error);
-          console.warn(`Fallback to '${ ConfigurationService.configurationFile }' configuration file`);
+          console.warn(`Fallback to '${ConfigurationService.configurationFile}' configuration file`);
 
           ConfigurationService.loadConfiguration(ConfigurationService.configurationFile)
             .then((): void => resolve())
@@ -49,7 +49,7 @@ export class ConfigurationService {
     const ts = Math.round((new Date()).getTime() / 1000);
 
     return new Promise<void>((resolve: () => void, reject: (error: Error) => any): void => {
-      fetch(`${ configurationFile }?t=${ ts }`)
+      fetch(`${configurationFile}?t=${ts}`)
         .then((response: Response): void => {
           response
             .json()
@@ -59,9 +59,9 @@ export class ConfigurationService {
 
               resolve();
             })
-            .catch((error: string): void => reject(new Error(`Invalid JSON in file '${ configurationFile }' - ${ error }`)));
+            .catch((error: string): void => reject(new Error(`Invalid JSON in file '${configurationFile}' - ${error}`)));
         })
-        .catch((error: string): void => reject(new Error(`Could not load file '${ configurationFile }' - ${ error }`)));
+        .catch((error: string): void => reject(new Error(`Could not load file '${configurationFile}' - ${error}`)));
     });
   }
 }

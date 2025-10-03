@@ -90,12 +90,12 @@ export class AppComponent implements OnInit, OnDestroy {
           this.logout(null);
         } else if (userData !== null && !this.loggedIn) {
           this.authenticationService
-          .isAuthenticated()
-          .pipe(take(1))
-          .subscribe((loggedIn: boolean): void => loggedIn
-            ? this.store.dispatch(authenticationActions.loginSuccess({ userData }))
-            : this.logout(marker('messages.authentication.timeout')),
-          );
+            .isAuthenticated()
+            .pipe(take(1))
+            .subscribe((loggedIn: boolean): void => loggedIn
+              ? this.store.dispatch(authenticationActions.loginSuccess({ userData }))
+              : this.logout(marker('messages.authentication.timeout')),
+            );
         }
       }),
     );
@@ -158,11 +158,13 @@ export class AppComponent implements OnInit, OnDestroy {
    * store.
    */
   private checkToken(): void {
-    this.authenticationService.isAuthenticated().pipe(
-      take(1),
-      filter((authenticated: boolean): boolean => this.loggedIn && !authenticated),
-    )
-    .subscribe((): void => this.logout(marker('messages.authentication.timeout')));
+    this.authenticationService
+      .isAuthenticated()
+      .pipe(
+        take(1),
+        filter((authenticated: boolean): boolean => this.loggedIn && !authenticated),
+      )
+      .subscribe((): void => this.logout(marker('messages.authentication.timeout')));
   }
 
   /**

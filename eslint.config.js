@@ -2,14 +2,17 @@
 const eslint = require("@eslint/js");
 const importPlugin = require('eslint-plugin-import');
 const tseslint = require("typescript-eslint");
+const { defineConfig } = require('eslint/config');
 const angular = require("angular-eslint");
 const ngrx = require("@ngrx/eslint-plugin/v9");
+const stylistic = require('@stylistic/eslint-plugin');
 
-module.exports = tseslint.config(
+module.exports = defineConfig(
   {
     files: ["**/*.ts"],
     extends: [
       eslint.configs.recommended,
+      stylistic.configs.recommended,
       ...tseslint.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.stylistic,
@@ -116,6 +119,62 @@ module.exports = tseslint.config(
           "format": [
             "PascalCase"
           ]
+        }
+      ],
+      "@stylistic/semi": ["error", "always"],
+      "@stylistic/member-delimiter-style": [
+        "error",
+        {
+          "multiline": {
+            "delimiter": "comma",
+            "requireLast": true
+          },
+          "singleline": {
+            "delimiter": "comma",
+            "requireLast": false
+          },
+          "overrides": {
+            "interface": {
+              "multiline": {
+                "delimiter": "semi",
+                "requireLast": true
+              }
+            }
+          }
+        }
+      ],
+      "@stylistic/space-infix-ops": [
+        "error",
+        {
+          "ignoreTypes": true,
+        }
+      ],
+      "@stylistic/no-multi-spaces": [
+        "error",
+        {
+          "exceptions": {
+            "TSEnumMember": true
+          }
+        }
+      ],
+      "@stylistic/indent": [
+        "error",
+        2,
+        {
+          ignoredNodes: ["ObjectExpression"]
+        }
+      ],
+      "@stylistic/brace-style": [
+        "error",
+        "1tbs"
+      ],
+      "@stylistic/operator-linebreak": [
+        "error",
+        "before",
+        {
+          "overrides": {
+            "=": "after"
+          }
         }
       ],
       "import/no-extraneous-dependencies": [

@@ -12,7 +12,7 @@
 // import 'zone.js/plugins/zone-error';
 
 import packageInfo from 'package.json';
-import { EnvironmentInterface } from 'src/app/shared/interfaces';  // Included with Angular CLI.
+import { EnvironmentInterface } from 'src/app/shared/interfaces'; // Included with Angular CLI.
 
 export const environment: EnvironmentInterface = {
   production: false,

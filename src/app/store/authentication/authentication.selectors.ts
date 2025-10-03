@@ -61,25 +61,28 @@ const selectFilteredError = pipe(
  * This selector can return a boolean or UrlTree value according to given
  * metaData object. See `BaseRole` class for more information about this.
  */
-const selectRoleGuard =
-  (role: Role, metaData: RoleGuardMetaDataInterface, router: Router): MemoizedSelector<Partial<AuthenticationState>, boolean|UrlTree> =>
-    createSelector(
-      selectIsLoggedIn,
-      selectRoles,
-      (isLoggedIn: boolean, userRoles: Array<Role>): boolean|UrlTree => {
-        let output;
+const selectRoleGuard = (
+  role: Role,
+  metaData: RoleGuardMetaDataInterface,
+  router: Router,
+): MemoizedSelector<Partial<AuthenticationState>, boolean|UrlTree> =>
+  createSelector(
+    selectIsLoggedIn,
+    selectRoles,
+    (isLoggedIn: boolean, userRoles: Array<Role>): boolean|UrlTree => {
+      let output;
 
-        if (!isLoggedIn) {
-          output = metaData.redirect ? router.parseUrl(metaData.routeNotLoggedIn) : false;
-        } else if (!userRoles.includes(role)) {
-          output = metaData.redirect ? router.parseUrl(metaData.routeNoRole) : false;
-        } else {
-          output = true;
-        }
+      if (!isLoggedIn) {
+        output = metaData.redirect ? router.parseUrl(metaData.routeNotLoggedIn) : false;
+      } else if (!userRoles.includes(role)) {
+        output = metaData.redirect ? router.parseUrl(metaData.routeNoRole) : false;
+      } else {
+        output = true;
+      }
 
-        return output;
-      },
-    );
+      return output;
+    },
+  );
 
 // Export all store selectors, so that those can be used easily.
 export const authenticationSelectors = {

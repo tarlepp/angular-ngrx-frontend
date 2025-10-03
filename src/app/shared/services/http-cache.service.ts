@@ -1,13 +1,13 @@
 import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { HttpCacheInterface } from 'src/app/shared/interfaces';
+import { HttpCacheType } from 'src/app/shared/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpCacheService {
-  private requests: HttpCacheInterface;
+  private requests: HttpCacheType;
 
   public constructor() {
     this.requests = {};

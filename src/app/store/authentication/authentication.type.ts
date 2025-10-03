@@ -13,15 +13,12 @@ export enum AuthenticationType {
 }
 
 // Authentication login types
-export type AuthenticationLoginTypes =
-  AuthenticationType.LOGIN_SUCCESS
+export type AuthenticationLoginTypes = AuthenticationType.LOGIN_SUCCESS
   | AuthenticationType.LOGIN_FAILURE;
 
 // Authentication profile types
-export type AuthenticationProfileTypes =
-  AuthenticationType.PROFILE_SUCCESS
+export type AuthenticationProfileTypes = AuthenticationType.PROFILE_SUCCESS
   | AuthenticationType.PROFILE_FAILURE;
 
-export type AuthenticationLoginSuccessTypes =
-  AuthenticationType.PROFILE
+export type AuthenticationLoginSuccessTypes = AuthenticationType.PROFILE
   | LayoutType.UPDATE_LOCALIZATION;

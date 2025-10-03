@@ -1,4 +1,4 @@
-import {ErrorMessageServerInterface} from 'src/app/shared/interfaces/error-message-server.interface';
+import { ErrorMessageServerInterface } from 'src/app/shared/interfaces/error-message-server.interface';
 
 /**
  * Interface definition for client side error messages - server side error

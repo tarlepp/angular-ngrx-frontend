@@ -59,7 +59,7 @@ export class LayoutEffects {
       tap((language: Language): Language => this.document.documentElement.lang = language),
       tap((language: Language): TranslocoService => this.translocoService.setActiveLang(language as string)),
       map((): Action<LayoutType.SET_LANGUAGE> =>
-        layoutActions.setLanguage({ language: this.translocoService.getActiveLang() as Language}),
+        layoutActions.setLanguage({ language: this.translocoService.getActiveLang() as Language }),
       ),
     ),
   );
@@ -132,7 +132,7 @@ export class LayoutEffects {
   private scrollToEffect$: Observable<Action<LayoutType.CLEAR_SCROLL_TO>> = createEffect(
     (): Observable<Action<LayoutType.CLEAR_SCROLL_TO>> => this.actions$.pipe(
       ofType(layoutActions.scrollTo),
-      tap((payload: { anchor: string; instant?: boolean }): void => {
+      tap((payload: { anchor: string, instant?: boolean }): void => {
         setTimeout((): void => {
           const element = this.document.querySelector(payload.anchor);
 
@@ -176,7 +176,7 @@ export class LayoutEffects {
     (): Observable<void> => this.actions$.pipe(
       ofType(layoutActions.snackbarMessage),
       tap(
-        (payload: { message: string; duration?: number; params?: DictionaryInterface<string> }): Promise<MatSnackBarRef<SimpleSnackBar>> =>
+        (payload: { message: string, duration?: number, params?: DictionaryInterface<string> }): Promise<MatSnackBarRef<SimpleSnackBar>> =>
           this.snackbarService.message(payload.message, payload.duration, payload.params).finally(),
       ),
       map((): void => noop()),

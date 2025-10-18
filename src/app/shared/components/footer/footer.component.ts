@@ -72,8 +72,8 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
     setTimeout((): void => {
       const height = parseInt(this.footerContainer.nativeElement.offsetHeight, 10);
 
-      this.topOffset = `${ height }px`;
-      this.topMargin = `-${ height }px`;
+      this.topOffset = `${height}px`;
+      this.topMargin = `-${height}px`;
     }, 0);
   }
 

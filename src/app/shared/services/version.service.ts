@@ -24,7 +24,7 @@ export class VersionService {
 
     return new Observable((observer: Observer<string>): void => {
       this.httpClient
-        .get(`/assets/version.json?t=${ ts }`)
+        .get(`/assets/version.json?t=${ts}`)
         .pipe(take(1))
         .subscribe({
           next: (data: VersionInterface|any): void => observer.next(data.version),
@@ -46,7 +46,7 @@ export class VersionService {
 
     return new Observable((observer: Observer<string>): void => {
       this.httpClient
-        .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ ts }`)
+        .get(`${ConfigurationService.configuration.apiUrl}/version?t=${ts}`)
         .pipe(take(1))
         .subscribe({
           next: (data: VersionInterface|any): void => observer.next(data.version),

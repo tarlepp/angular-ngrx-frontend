@@ -39,7 +39,7 @@ const changeLocale = createAction(LayoutType.CHANGE_LOCALE, props<{ locale: Loca
 const changeTimezone = createAction(LayoutType.CHANGE_TIMEZONE, props<{ timezone: string }>());
 const changeTheme = createAction(LayoutType.CHANGE_THEME, props<{ theme: Theme }>());
 const setLanguage = createAction(LayoutType.SET_LANGUAGE, props<{ language: Language }>());
-const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string; instant?: boolean }>());
+const scrollTo = createAction(LayoutType.SCROLL_TO, props<{ anchor: string, instant?: boolean }>());
 
 /**
  * Action to trigger browser to scroll to top of the page. This action is
@@ -52,7 +52,7 @@ const updateLocalization = createAction(LayoutType.UPDATE_LOCALIZATION, props<{ 
 
 const snackbarMessage = createAction(
   LayoutType.SNACKBAR_MESSAGE,
-  props<{ message: string; duration?: number; params?: DictionaryInterface<string> }>(),
+  props<{ message: string, duration?: number, params?: DictionaryInterface<string> }>(),
 );
 
 /**

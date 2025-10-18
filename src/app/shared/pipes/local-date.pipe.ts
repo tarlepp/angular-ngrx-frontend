@@ -70,9 +70,6 @@ export class LocalDatePipe implements PipeTransform, OnDestroy {
     if (this.cachedOutput === null || this.cachedLocale !== this.locale || this.cachedTimezone !== this.timezone) {
       this.cachedLocale = this.locale;
       this.cachedTimezone = this.timezone;
-
-      //this.cachedOutput = moment(value).tz(this.timezone).locale(this.locale).format(format || 'x').toString();
-
       this.cachedOutput = DateTime
         .fromISO(value instanceof Date ? value.toDateString() : value)
         .setZone(this.timezone)

@@ -107,10 +107,9 @@ ConfigurationService
             httpInterceptors,
           ],
         },
-      )
-      .catch((error: string): void => console.error(error));
+      ).catch((error: string): void => console.error(error));
     },
-    environment.production ?  2500 : 0, // In production mode we want to show that animation
+    environment.production ? 2500 : 0, // In production mode we want to show that animation
     );
   })
   .catch((error: string): void => console.error(error));

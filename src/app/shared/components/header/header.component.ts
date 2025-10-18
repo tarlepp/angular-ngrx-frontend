@@ -43,7 +43,6 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
-
   @ViewChild('userMenu') private readonly userMenu!: MatMenuTrigger;
 
   public profile: UserProfileInterface|null = null;

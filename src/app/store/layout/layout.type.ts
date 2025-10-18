@@ -13,7 +13,6 @@ export enum LayoutType {
   SNACKBAR_MESSAGE    = '[Layout] Show snackbar message',
 }
 
-export type LocalizationTypes =
-  LayoutType.CHANGE_LANGUAGE
+export type LocalizationTypes = LayoutType.CHANGE_LANGUAGE
   | LayoutType.CHANGE_LOCALE
   | LayoutType.CHANGE_TIMEZONE;

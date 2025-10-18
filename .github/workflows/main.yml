@@ -133,7 +133,7 @@ jobs:
         run: echo "DOCKER_TAG=$(echo ${GITHUB_REF} | sed -r 's/[\/()\.]+/_/g')-${GITHUB_SHA}" >> $GITHUB_OUTPUT
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --target production --tag angular-ngrx-frontend:${{ steps.vars.outputs.DOCKER_TAG }}
+        run: docker build . --file Dockerfile --build-arg TARGET=production --tag angular-ngrx-frontend:${{ steps.vars.outputs.DOCKER_TAG }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.29.0

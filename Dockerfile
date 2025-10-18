@@ -1,3 +1,5 @@
+ARG TARGET=production
+
 # Stage 1: Dependencies
 FROM node:24.8.0-bullseye AS dependencies
 
@@ -112,6 +114,3 @@ COPY --from=builder /app/dist/angular-frontend /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
-
-# Final stage selection based on build argument
-FROM ${TARGET:-development}

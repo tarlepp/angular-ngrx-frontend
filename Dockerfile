@@ -1,3 +1,5 @@
+ARG TARGET=production
+
 # Stage 1: Dependencies
 FROM node:24.8.0-bullseye AS dependencies
 
@@ -35,9 +37,9 @@ RUN apt-get update \
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
     && locale-gen
 
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
 WORKDIR /app
 
@@ -80,8 +82,8 @@ RUN chmod 777 -R /home/node /tmp \
 USER node
 
 # Add necessary stuff to bash autocomplete
-ENV PATH "$PATH:/home/node/.local/bin"
-ENV XDG_RUNTIME_PATH /home/node/.tmp
+ENV PATH="$PATH:/home/node/.local/bin"
+ENV XDG_RUNTIME_PATH=/home/node/.tmp
 
 RUN echo 'eval "$(thefuck --alias)"' >> /home/node/.bashrc
 
@@ -112,6 +114,3 @@ COPY --from=builder /app/dist/angular-frontend /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
-
-# Final stage selection based on build argument
-FROM ${TARGET:-development}

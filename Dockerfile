@@ -1,7 +1,7 @@
 ARG TARGET=production
 
 # Stage 1: Dependencies
-FROM node:24.8.0-bullseye AS dependencies
+FROM node:24.9.0-bullseye AS dependencies
 
 WORKDIR /app
 

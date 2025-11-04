@@ -103,11 +103,15 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:mainline-alpine-slim AS production
+FROM nginx:1.29.1-bookworm AS production
 
 # Install security updates
-RUN apk update \
-    && apk upgrade --no-cache --available
+RUN apt-get update \
+    && apt-get install -y \
+        debsecan \
+    && apt-get install --no-install-recommends -y \
+        $(debsecan --suite bookworm --format packages --only-fixed) \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf

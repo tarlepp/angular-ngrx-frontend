@@ -79,7 +79,7 @@
     "@angular/language-service": "20.3.6",
     "@bartholomej/ngx-translate-extract": "8.0.2",
     "@ngrx/eslint-plugin": "20.0.1",
-    "@stylistic/eslint-plugin": "5.4.0",
+    "@stylistic/eslint-plugin": "5.5.0",
     "@types/jasmine": "5.1.12",
     "@types/jasminewd2": "2.0.13",
     "@types/luxon": "3.7.1",

@@ -136,7 +136,7 @@ jobs:
         run: docker build . --file Dockerfile --build-arg TARGET=production --tag angular-ngrx-frontend:${{ steps.vars.outputs.DOCKER_TAG }}
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.29.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           image-ref: 'angular-ngrx-frontend:${{ steps.vars.outputs.DOCKER_TAG }}'
           format: 'table'

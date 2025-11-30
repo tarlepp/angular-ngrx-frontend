@@ -1,5 +1,5 @@
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { enableProdMode, isDevMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, isDevMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -43,6 +43,7 @@ ConfigurationService
         AppComponent,
         {
           providers: [
+            provideZoneChangeDetection(),
             importProvidersFrom(
               BrowserModule,
               StoreRouterConnectingModule.forRoot({

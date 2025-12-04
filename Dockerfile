@@ -105,7 +105,7 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:mainline-alpine-slim AS production
+FROM nginx:1.29.3-alpine-slim AS production
 
 RUN apk update \
     && apk add --no-cache pcre2=10.46-r0 \

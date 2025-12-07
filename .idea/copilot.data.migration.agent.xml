@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AgentMigrationStateService">
+    <option name="pendingSessionIds">
+      <option value="b62c9ffa-f91f-4816-b069-76dfc68f8097" />
+    </option>
+    <option name="pendingTurns">
+      <map>
+        <entry key="b62c9ffa-f91f-4816-b069-76dfc68f8097">
+          <value>
+            <set>
+              <option value="eaa0157d-ef5f-4ee4-b59b-cab226404544" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <pendingWorkingSetItems>
+      <entry key="b62c9ffa-f91f-4816-b069-76dfc68f8097">
+        <set>
+          <option value="file://$PROJECT_DIR$/CLAUDE.md" />
+        </set>
+      </entry>
+    </pendingWorkingSetItems>
+  </component>
+</project>

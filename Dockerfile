@@ -105,11 +105,7 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:mainline-alpine-slim AS production
-
-RUN apk update \
-    && apk add --no-cache pcre2=10.46-r0 \
-    && rm -rf /var/cache/apk/*
+FROM nginx:1.29.4-alpine-slim AS production
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf

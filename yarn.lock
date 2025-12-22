@@ -2334,52 +2334,52 @@
   dependencies:
     tslib "^2.5.0"
 
-"@ngrx/effects@21.0.0":
-  version "21.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-21.0.0.tgz#f7f457db4f830b763b3df1b1ae539ff7f3044041"
-  integrity sha512-SBF74z2hpf9ASXy5C33gji/nY8tIC0p2k78va2SJEIWg4Q0LPXMvolq+woQj5rXs8hRi1AdRaiIUW6fQ5Qtpbw==
+"@ngrx/effects@21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-21.0.1.tgz#00d6a0fdfb5de2936c339e1289cc743b3ea5dace"
+  integrity sha512-hSdpToAiSYa5FJ/CAygQHpnCaF2S1HO7q/57ob3XvNTWmkofa0VqI/IIe4W57bojh2YOWCJ91SCn3kAjymaV3g==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/entity@21.0.0":
-  version "21.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-21.0.0.tgz#9f748964fbc1c9e816ecfbe62488ece0c0ffa0bf"
-  integrity sha512-2xUAiC1Um4lMAT+5QBAV9+rZrOV8FfeOkm0Av0HuDq5nJDFcsMFZLtCex3b2KkjxP/S5ReUQCGcUBnXNdg3WlA==
+"@ngrx/entity@21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-21.0.1.tgz#cd75122a9ac71b6764760f58b0e6af77e62d4723"
+  integrity sha512-h7PjW8WzkPwSYDlicWcEw6EJ9yBfa+fbf5tmIty4cZ8yH6+Ld3aHuGAMAu8xbnV79oj0TGa/PSynu5LZq4jXdA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/eslint-plugin@21.0.0":
-  version "21.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/eslint-plugin/-/eslint-plugin-21.0.0.tgz#c49b2f9a6423dff9e4ccb6804c671bf0d10c1b6c"
-  integrity sha512-JDA0H4AJYY0ObK8vKQxBf8h+/0+EBHSHx9pTxWor5l8JKEl9lC6FGruSd4Q2/bsSavfh+aHG62uqtQHc79A9Mw==
+"@ngrx/eslint-plugin@21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/eslint-plugin/-/eslint-plugin-21.0.1.tgz#4f01b113c54e8b2ec7bee7cf817eecc9c57a964e"
+  integrity sha512-ZFFb7UFiTF4UzXYaMRmK6hEHFOiFtoJ+Euus4O7i0A+0na+zaYVxS42cdylG/IKe3sfAoLKZWkly/idNnMSaWQ==
   dependencies:
     strip-json-comments "3.1.1"
 
-"@ngrx/operators@21.0.0":
-  version "21.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/operators/-/operators-21.0.0.tgz#cb386001c5be3620effd4779a50881043fdd7736"
-  integrity sha512-deqh1kkpOGEDjhwEIEMZTjpWUie5FazDPVxV610LNPSF/Kwtqpv0xjCeAZXojkWrncptnJ9l0KhklJcaCODQwg==
+"@ngrx/operators@21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/operators/-/operators-21.0.1.tgz#4ced5db643d6c887af552e94e48f7c7e5b71bf20"
+  integrity sha512-CfSh9MzQoIjbipSJ4q1+ZhcY537I5th4hNdNiWHu/egx2+SgFUZlOcQ6E9c+DJMsVkYOoIYhKX1E/bYlFBqXJw==
   dependencies:
     tslib "^2.3.0"
 
-"@ngrx/router-store@21.0.0":
-  version "21.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-21.0.0.tgz#2b5c6474c8e570548467649ee8be0eb1d4fddf9f"
-  integrity sha512-3ItFzwzdOHd+Bv+AdpdoGSC9PKrMoxYbCUBGs73mvvVZbf9n/mvi0NBSsUqDfNjWAa6OYtRD6XSQymtbG3ZhZQ==
+"@ngrx/router-store@21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-21.0.1.tgz#7213f0ae09b8784f11e3ef5371233c11ba5fd6b8"
+  integrity sha512-hacH8ciwCRMLg7p7bThslYn564GOyS5LPf9c8cX4FTyOH+iJM32eJd2Lt64cA62vN6ruofV/IM2vB09nCkxHzg==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store-devtools@21.0.0":
-  version "21.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-21.0.0.tgz#ce71ed8e7c61cb4caeb5d127f642906065bd350c"
-  integrity sha512-zmeHW42DQEfAwlnJd+6BL8gczgLQIXqcZBUGyCtAUxxhSz83idPugM9K7GVmN7IEHek9/aEaiEuZiWe5PLs7cw==
+"@ngrx/store-devtools@21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-21.0.1.tgz#fb5125927f7976b0e76f609671a2df25cc6a66e5"
+  integrity sha512-G9fO7CFwYUpz8+JZ9uny+lVJ7iv6PcFJDg+jae5CCrAUIiflnR8gbwD8exAd2AODpxPCpmnSojuLNpLDAcwGzQ==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store@21.0.0":
-  version "21.0.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-21.0.0.tgz#58ba9e890bb7dc0a88446071ca45e5f84f1c8577"
-  integrity sha512-IQ+s0I4z8zkzlilFBr0Xpu/b5sjVbQOKhn0clRU4er82k1WUEyHSMT2Qksu2DNwTHCbWjagBhyBW3n3kQdOrTw==
+"@ngrx/store@21.0.1":
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-21.0.1.tgz#86103f7080d7f69711657f827e7a5f67827034a2"
+  integrity sha512-2hGnw/c5o8nmKzyx7TrUUM7FXjE2zqjX0EF+wLbw9Oy/L+VdCmx+ZI1BFjuAR4B8PKEWHG2KSbOM13SMNkpZiA==
   dependencies:
     tslib "^2.0.0"
 

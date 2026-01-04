@@ -60,7 +60,7 @@
     "@snyk/protect": "1.1301.2",
     "luxon": "3.7.2",
     "luxon-angular": "6.0.0",
-    "ngrx-store-localstorage": "20.0.0",
+    "ngrx-store-localstorage": "20.1.0",
     "ngx-material-luxon": "1.1.1",
     "ngx-webstorage": "21.0.1",
     "rxjs": "7.8.2",

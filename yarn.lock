@@ -7635,10 +7635,10 @@ neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngrx-store-localstorage@20.0.0:
-  version "20.0.0"
-  resolved "https://registry.npmjs.org/ngrx-store-localstorage/-/ngrx-store-localstorage-20.0.0.tgz"
-  integrity sha512-4TwMEgwrRm/ceN9zUVDfl/DrPDzZz04a0vDPbDGvV7lfI7Sg9pzA6oUcQGPzEzCEq5qhL9Emp1+7Pln1cbCqYA==
+ngrx-store-localstorage@20.1.0:
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-20.1.0.tgz#3743805ae82351c6164076e661e5580e625ef0b5"
+  integrity sha512-/5+i5qTxZdE8Q5qdSmj7+9JvriAnHwW7RsXzh1rrQ/UHA9vf12q6mJ6wYTTehUO4Qcl2t/K5MRkooN2eG2ZEvw==
   dependencies:
     deepmerge "^4.2.2"
     tslib "^2.3.0"

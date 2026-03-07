@@ -144,6 +144,14 @@
     "@angular-devkit/core" "21.2.0"
     rxjs "7.8.2"
 
+"@angular-devkit/architect@0.2102.1":
+  version "0.2102.1"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.2102.1.tgz#580bba6767a58283fcb1a3fd0246677edc714839"
+  integrity sha512-x2Qqz6oLYvEh9UBUG0AP1A4zROO/VP+k+zM9+4c2uZw1uqoBQFmutqgzncjVU7cR9R0RApgx9JRZHDFtQru68w==
+  dependencies:
+    "@angular-devkit/core" "21.2.1"
+    rxjs "7.8.2"
+
 "@angular-devkit/architect@>= 0.2100.0 < 0.2200.0":
   version "0.2100.2"
   resolved "https://registry.npmjs.org/@angular-devkit/architect/-/architect-0.2100.2.tgz"
@@ -152,16 +160,16 @@
     "@angular-devkit/core" "21.0.2"
     rxjs "7.8.2"
 
-"@angular-devkit/build-angular@21.2.0":
-  version "21.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-21.2.0.tgz#fa4d613f34fa69e86c70e4ebc65e3ded79782bcf"
-  integrity sha512-owv0fJHsbTf3b2GZTpLJicwLf6fOjuEHODjvFDnREAB1mUObUi2xkf8mc99/lFIT8d+Jcz0z+xqVIdEf1VJf6g==
+"@angular-devkit/build-angular@21.2.1":
+  version "21.2.1"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-21.2.1.tgz#823cf22e70401373ac760fda6f06772b7a96b0bd"
+  integrity sha512-HZQggWPHepDIzQeYVjcC1m3HeIEKBYVKPfb2uZBcPxigHvZMeB0JD49QrgDeSOQulIGkAnJoPf/IDRqQpvWzqg==
   dependencies:
     "@ampproject/remapping" "2.3.0"
-    "@angular-devkit/architect" "0.2102.0"
-    "@angular-devkit/build-webpack" "0.2102.0"
-    "@angular-devkit/core" "21.2.0"
-    "@angular/build" "21.2.0"
+    "@angular-devkit/architect" "0.2102.1"
+    "@angular-devkit/build-webpack" "0.2102.1"
+    "@angular-devkit/core" "21.2.1"
+    "@angular/build" "21.2.1"
     "@babel/core" "7.29.0"
     "@babel/generator" "7.29.1"
     "@babel/helper-annotate-as-pure" "7.27.3"
@@ -172,12 +180,12 @@
     "@babel/preset-env" "7.29.0"
     "@babel/runtime" "7.28.6"
     "@discoveryjs/json-ext" "0.6.3"
-    "@ngtools/webpack" "21.2.0"
+    "@ngtools/webpack" "21.2.1"
     ansi-colors "4.1.3"
-    autoprefixer "10.4.24"
+    autoprefixer "10.4.27"
     babel-loader "10.0.0"
     browserslist "^4.26.0"
-    copy-webpack-plugin "13.0.1"
+    copy-webpack-plugin "14.0.0"
     css-loader "7.1.3"
     esbuild-wasm "0.27.3"
     http-proxy-middleware "3.0.5"
@@ -214,12 +222,12 @@
   optionalDependencies:
     esbuild "0.27.3"
 
-"@angular-devkit/build-webpack@0.2102.0":
-  version "0.2102.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.2102.0.tgz#cf80118c9120f16daf07a4f4169cfdffdd8f50c5"
-  integrity sha512-Za1xoxxrv8w8/B8QoYza4asDAypMjbTkeDEZi3VGiZ+QRWHNSTDsIAePQDOqs4b6Wogk898kwYYAYGyLuWEC0A==
+"@angular-devkit/build-webpack@0.2102.1":
+  version "0.2102.1"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.2102.1.tgz#b4d2eba02987cd46a7ddd05c4d98fe46bd85d96b"
+  integrity sha512-iBBMHegwjaAGnSoB5i9ynzCTCdYcLCgGhA2Wmi09DHJPSVFXw23H0nZUeNaRpo2V0hPRrMiyE3dlmaRJC42/yA==
   dependencies:
-    "@angular-devkit/architect" "0.2102.0"
+    "@angular-devkit/architect" "0.2102.1"
     rxjs "7.8.2"
 
 "@angular-devkit/core@21.0.2", "@angular-devkit/core@>= 21.0.0 < 22.0.0":
@@ -238,6 +246,18 @@
   version "21.2.0"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-21.2.0.tgz#c09ebb5f4919c56c43322039a72025c7bfdb4246"
   integrity sha512-HZdTn46Ca6qbb9Zef8R/+TWsk6mNKRm4rJyL3PxHP6HnVCwSPNZ0LNN9BjVREBs+UlRdXqBGFBZh5D1nBgu5GQ==
+  dependencies:
+    ajv "8.18.0"
+    ajv-formats "3.0.1"
+    jsonc-parser "3.3.1"
+    picomatch "4.0.3"
+    rxjs "7.8.2"
+    source-map "0.7.6"
+
+"@angular-devkit/core@21.2.1":
+  version "21.2.1"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-21.2.1.tgz#131b1b591c20ca04e6bf2cf7a4173d16b77cd82f"
+  integrity sha512-TpXGjERqVPN8EPt7LdmWAwh0oNQ/6uWFutzGZiXhJy81n1zb1O1XrqhRAmvP1cAo5O+na6IV2JkkCmxL6F8GUg==
   dependencies:
     ajv "8.18.0"
     ajv-formats "3.0.1"
@@ -335,13 +355,13 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/build@21.2.0":
-  version "21.2.0"
-  resolved "https://registry.yarnpkg.com/@angular/build/-/build-21.2.0.tgz#26193fa9ac6b4a2d296c7f1c2163aecc51896856"
-  integrity sha512-K0EqiHz2y7TSyD4adWD0+C/P9khKlrsSWavXWxGRvoSJC/H3I3SK5Z6BWwftBibXR1Fis7njwvl5IGAlQrDchA==
+"@angular/build@21.2.1":
+  version "21.2.1"
+  resolved "https://registry.yarnpkg.com/@angular/build/-/build-21.2.1.tgz#4613224c4635a6a4460a10b01748987e6600a9d5"
+  integrity sha512-cUpLNHJp9taII/FOcJHHfQYlMcZSRaf6eIxgSNS6Xfx1CeGoJNDN+J8+GFk+H1CPJt1EvbfyZ+dE5DbsgTD/QQ==
   dependencies:
     "@ampproject/remapping" "2.3.0"
-    "@angular-devkit/architect" "0.2102.0"
+    "@angular-devkit/architect" "0.2102.1"
     "@babel/core" "7.29.0"
     "@babel/helper-annotate-as-pure" "7.27.3"
     "@babel/helper-split-export-declaration" "7.24.7"
@@ -2626,10 +2646,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ngtools/webpack@21.2.0":
-  version "21.2.0"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-21.2.0.tgz#a705475dcf15c5bfccf65c0db90dc92c4524d307"
-  integrity sha512-UOBgwtIvN29ELit35Gc11Kxx7ISQ8H4FJglRnoTmG9l26zA9vaLklfS4JHpU/8ORou9P+6NnZlzP80+qhmJSVg==
+"@ngtools/webpack@21.2.1":
+  version "21.2.1"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-21.2.1.tgz#6d58f97b93bccb861e6d993185572723c73fa47a"
+  integrity sha512-HGRGTDmyo3IuxxEAVK9/QK2Nd/nwWIh/zcd2x6nmCxC7tdB0fwIhEZhWnUDyLP2QnDaEPeR4NnZCGTN89SWhGg==
 
 "@noble/hashes@1.4.0":
   version "1.4.0"
@@ -4242,13 +4262,13 @@ asynckit@^0.4.0:
   resolved "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-autoprefixer@10.4.24:
-  version "10.4.24"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.24.tgz#2c29595f3abd820a79976a609d0bf40eecf212fb"
-  integrity sha512-uHZg7N9ULTVbutaIsDRoUkoS8/h3bdsmVJYZ5l3wv8Cp/6UIIoRDm90hZ+BwxUj/hGBEzLxdHNSKuFpn8WOyZw==
+autoprefixer@10.4.27:
+  version "10.4.27"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.27.tgz#51ea301a5c3c5f8642f8e564759c4f573be486f2"
+  integrity sha512-NP9APE+tO+LuJGn7/9+cohklunJsXWiaWEfV3si4Gi/XHDwVNgkwr1J3RQYFIvPy76GmJ9/bW8vyoU1LcxwKHA==
   dependencies:
     browserslist "^4.28.1"
-    caniuse-lite "^1.0.30001766"
+    caniuse-lite "^1.0.30001774"
     fraction.js "^5.3.4"
     picocolors "^1.1.1"
     postcss-value-parser "^4.2.0"
@@ -4649,10 +4669,10 @@ caniuse-lite@^1.0.30001759:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001761.tgz#4ca4c6e3792b24e8e2214baa568fc0e43de28191"
   integrity sha512-JF9ptu1vP2coz98+5051jZ4PwQgd2ni8A+gYSN7EA7dPKIMf0pDlSUxhdmVOaV3/fYK5uWBkgSXJaRLr4+3A6g==
 
-caniuse-lite@^1.0.30001766:
-  version "1.0.30001776"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001776.tgz#3c64d006348a2e92037aa4302345129806a42d24"
-  integrity sha512-sg01JDPzZ9jGshqKSckOQthXnYwOEP50jeVFhaSFbZcOy05TiuuaffDOfcwtCisJ9kNQuLBFibYywv2Bgm9osw==
+caniuse-lite@^1.0.30001774:
+  version "1.0.30001777"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001777.tgz#028f21e4b2718d138b55e692583e6810ccf60691"
+  integrity sha512-tmN+fJxroPndC74efCdp12j+0rk0RHwV5Jwa1zWaFVyw2ZxAuPeG8ZgWC3Wz7uSjT3qMRQ5XHZ4COgQmsCMJAQ==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -5017,15 +5037,15 @@ copy-anything@^2.0.1:
   dependencies:
     is-what "^3.14.1"
 
-copy-webpack-plugin@13.0.1:
-  version "13.0.1"
-  resolved "https://registry.npmjs.org/copy-webpack-plugin/-/copy-webpack-plugin-13.0.1.tgz"
-  integrity sha512-J+YV3WfhY6W/Xf9h+J1znYuqTye2xkBUIGyTPWuBAT27qajBa5mR4f8WBmfDY3YjRftT2kqZZiLi1qf0H+UOFw==
+copy-webpack-plugin@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-14.0.0.tgz#cd253b60e8e55bb41019dfe3ef2979ba705592c7"
+  integrity sha512-3JLW90aBGeaTLpM7mYQKpnVdgsUZRExY55giiZgLuX/xTQRUs1dOCwbBnWnvY6Q6rfZoXMNwzOQJCSZPppfqXA==
   dependencies:
     glob-parent "^6.0.1"
     normalize-path "^3.0.0"
     schema-utils "^4.2.0"
-    serialize-javascript "^6.0.2"
+    serialize-javascript "^7.0.3"
     tinyglobby "^0.2.12"
 
 core-js-compat@^3.43.0:
@@ -9625,6 +9645,11 @@ serialize-javascript@^6.0.2:
   integrity sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==
   dependencies:
     randombytes "^2.1.0"
+
+serialize-javascript@^7.0.3:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-7.0.4.tgz#c517735bd5b7631dd1fc191ee19cbb713ff8e05c"
+  integrity sha512-DuGdB+Po43Q5Jxwpzt1lhyFSYKryqoNjQSA9M92tyw0lyHIOur+XCalOUe0KTJpyqzT8+fQ5A0Jf7vCx/NKmIg==
 
 serve-index@^1.9.1:
   version "1.9.1"

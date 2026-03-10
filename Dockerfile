@@ -105,7 +105,7 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:1.29.4-alpine-slim AS production
+FROM nginx:1.29.5-alpine-slim AS production
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf

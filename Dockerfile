@@ -1,7 +1,7 @@
 ARG TARGET=production
 
 # Stage 1: Dependencies
-FROM node:25.2.1-bullseye AS dependencies
+FROM node:25.8.1-bullseye AS dependencies
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY package.json yarn.lock version.js ./
 RUN yarn install
 
 # Stage 2: Development
-FROM node:25.2.1-slim AS development
+FROM node:25.8.1-slim AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -105,7 +105,7 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:1.29.5-alpine-slim AS production
+FROM nginx:1.29.6-alpine-slim AS production
 
 RUN apk update \
     && apk add --no-cache zlib=1.3.2-r0 \

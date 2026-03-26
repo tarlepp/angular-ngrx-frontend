@@ -78,16 +78,17 @@ You should see `0.0.0.0:4200->4200/tcp` in the `PORTS` column.
 
 ## JetBrains IDEs
 
-If your JetBrains IDE version supports Dev Containers, open the project as a
-Dev Container and select the configuration from `.devcontainer/devcontainer.json`.
+If your JetBrains IDE version supports Dev Containers, open the project
+as a Dev Container and select the configuration from
+`.devcontainer/devcontainer.json`.
 
 If native Dev Container support is not available in your IDE version, use the
 current Docker Compose workflow (`make start`, `make bash`) as the fallback.
 
 Note that `customizations.vscode.tasks` in `.devcontainer/devcontainer.json`
 is VS Code-specific. JetBrains IDEs do not use those task definitions, so run
-`make start` / `make start-production` directly from the integrated
-terminal (or create IDE run configurations).
+`make start` / `make start-production` directly from the integrated terminal
+(or create IDE run configurations).
 
 
 ## What this setup does

@@ -1,8 +1,8 @@
 # What is this?
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![CI](https://github.com/tarlepp/angular-ngrx-frontend/workflows/CI/badge.svg)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/tarlepp/angular-ngrx-frontend/badge)](https://securityscorecards.dev/viewer/?platform=github.com&org=tarlepp&repo=angular-ngrx-frontend)
+[![MIT licensed][badge-mit]][license-url]
+![CI][badge-ci]
+[![OpenSSF Scorecard][badge-openssf]][openssf-url]
 
 Angular NgRx powered frontend template project for
 [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend)
@@ -238,7 +238,18 @@ development environment that this frontend expects by default.
 * [Angular Flex-Layout](https://github.com/angular/flex-layout)
 * [The RxJS Library](https://angular.io/guide/rx-library)
 * [NgRx Reactive State for Angular](https://ngrx.io/)
-* [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+* [Redux DevTools][redux-devtools-url]
+
+[badge-mit]: https://img.shields.io/badge/license-MIT-blue.svg
+[license-url]: LICENSE
+[badge-ci]:
+https://github.com/tarlepp/angular-ngrx-frontend/workflows/CI/badge.svg
+[badge-openssf]:
+https://api.securityscorecards.dev/projects/github.com/tarlepp/angular-ngrx-frontend/badge
+[openssf-url]:
+https://securityscorecards.dev/viewer/?platform=github.com&org=tarlepp&repo=angular-ngrx-frontend
+[redux-devtools-url]:
+https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
 
 ## Authors
 

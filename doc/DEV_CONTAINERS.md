@@ -14,12 +14,12 @@ Dev Containers are an extra onboarding option for IDEs that support the
 
 ## Table of Contents
 
-* [What is this?](#what-is-this)
-  * [Table of Contents](#table-of-contents)
-  * [VS Code](#vs-code)
-    * [VS Code troubleshooting](#vs-code-troubleshooting)
-  * [JetBrains IDEs](#jetbrains-ides)
-  * [What this setup does](#what-this-setup-does)
+- [What is this?](#what-is-this)
+  - [Table of Contents](#table-of-contents)
+  - [VS Code](#vs-code)
+    - [VS Code troubleshooting](#vs-code-troubleshooting)
+  - [JetBrains IDEs](#jetbrains-ides)
+  - [What this setup does](#what-this-setup-does)
 
 ## VS Code
 
@@ -65,7 +65,7 @@ If `https://localhost:4200` does not open:
 make start
 ```
 
-2. Check that container port mapping is active:
+1. Check that container port mapping is active:
 
 ```bash
 docker compose -f compose.yaml -f .devcontainer/docker-compose.devcontainer.yaml ps
@@ -73,7 +73,7 @@ docker compose -f compose.yaml -f .devcontainer/docker-compose.devcontainer.yaml
 
 You should see `0.0.0.0:4200->4200/tcp` in the `PORTS` column.
 
-3. If VS Code tasks are missing, run `Developer: Reload Window` and retry
+1. If VS Code tasks are missing, run `Developer: Reload Window` and retry
    `Tasks: Run Task`.
 
 ## JetBrains IDEs
@@ -90,7 +90,6 @@ is VS Code-specific. JetBrains IDEs do not use those task definitions, so run
 `make start` / `make start-production` directly from the integrated terminal
 (or create IDE run configurations).
 
-
 ## What this setup does
 
 - Reuses the existing `compose.yaml` service definitions.
@@ -101,4 +100,3 @@ is VS Code-specific. JetBrains IDEs do not use those task definitions, so run
 - Keeps the container running in idle mode so each developer can start the app
   manually with `make start`.
 - Avoids changing the existing host-level development workflow.
-

@@ -173,8 +173,8 @@ curl -k -I https://localhost:4200
 This project also supports opening the repository directly in a Dev Container
 for IDE workflows.
 
-- VS Code: use `Dev Containers: Reopen in Container`.
-- JetBrains IDEs: open the project using Dev Container support if available in
+* VS Code: use `Dev Containers: Reopen in Container`.
+* JetBrains IDEs: open the project using Dev Container support if available in
   your IDE version.
 
 When using a Dev Container, start the Angular development server inside the

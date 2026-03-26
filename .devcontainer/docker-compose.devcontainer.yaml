@@ -1,0 +1,8 @@
+services:
+  node:
+    container_name: angular-ngrx-frontend-devcontainer
+    user: node
+    command: /bin/bash -lc "while sleep 1000; do :; done"
+    ports:
+      - "4200:4200"
+

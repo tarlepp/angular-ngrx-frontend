@@ -1,0 +1,76 @@
+{
+  "name": "Angular NgRx Frontend",
+  "dockerComposeFile": [
+    "../compose.yaml",
+    "docker-compose.devcontainer.yaml"
+  ],
+  "service": "node",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "node",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/node/.local/bin",
+    "LANG": "en_US.UTF-8"
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,readonly",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,readonly"
+  ],
+  "forwardPorts": [4200],
+  "portsAttributes": {
+    "4200": {
+      "label": "Angular development server",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+          {
+            "label": "Dev Container: Start Angular (dev)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+              "start"
+            ],
+            "options": {
+              "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+              "reveal": "always",
+              "panel": "dedicated",
+              "clear": false
+            },
+            "detail": "Run Angular development server inside the Dev Container"
+          },
+          {
+            "label": "Dev Container: Start Angular (local prod)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+              "start-production"
+            ],
+            "options": {
+              "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+              "reveal": "always",
+              "panel": "dedicated",
+              "clear": false
+            },
+            "detail": "Run Angular local production server inside the Dev Container"
+          }
+        ]
+      },
+      "extensions": [
+        "angular.ng-template",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint"
+      ]
+    }
+  }
+}
+

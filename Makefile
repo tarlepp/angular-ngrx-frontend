@@ -44,14 +44,14 @@ endif
 
 start: ## Start application in development mode
 ifeq ($(INSIDE_DOCKER), 1)
-	$(WARNING_HOST)
+	@make start-yarn
 else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose up
 endif
 
 start-production: ## Start application locally in production mode
 ifeq ($(INSIDE_DOCKER), 1)
-	$(WARNING_HOST)
+	@make start-yarn-prod
 else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) PROD_MODE=1 docker compose up
 endif
@@ -150,7 +150,7 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make fix-scss
 endif
 
-extract-translations: ### Extract translations from TypeScript and HTML template files
+extract-translations: ## Extract translations from TypeScript and HTML template files
 ifeq ($(INSIDE_DOCKER), 1)
 	@echo "\033[32mExtracting translations\033[39m"
 	@yarn run extract-translations
@@ -161,7 +161,7 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make extract-translations
 endif
 
-check-translations: ### Check missing translations
+check-translations: ## Check missing translations
 ifeq ($(INSIDE_DOCKER), 1)
 	@echo "\033[32mChecking translations\033[39m"
 	@yarn run check-translations
@@ -214,7 +214,7 @@ endif
 
 project-stats: ## Create simple project stats
 ifeq ($(INSIDE_DOCKER), 1)
-	@echo "\033[32mFixing SCSS files\033[39m"
+	@echo "\033[32mGenerating project statistics\033[39m"
 	@./scripts/project-stats.sh
 else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)

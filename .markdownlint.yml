@@ -1,0 +1,9 @@
+MD013:
+  line_length: 80
+  code_blocks: false
+  url_inline: false
+  url_block: false
+MD026:
+  punctuation: '.,;:!'
+MD033: false
+MD051: false

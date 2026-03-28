@@ -64,17 +64,12 @@ jobs:
       - name: Make checkout
         uses: actions/checkout@v6.0.0
 
-      - name: Lint `./README.md`
-        uses: avto-dev/markdown-lint@v1.5.0
+      - name: Lint all markdown documentation files
+        uses: DavidAnson/markdownlint-cli2-action@v19
         with:
-          config: './markdown-lint.yml'
-          args: './README.md'
-
-      - name: Lint all the resource docs under `./doc/` directory
-        uses: avto-dev/markdown-lint@v1.5.0
-        with:
-          config: './markdown-lint.yml'
-          args: './doc/*.md'
+          globs: |
+            README.md
+            doc/*.md
 
   check-translations:
     name: Check that translations are up-to-date

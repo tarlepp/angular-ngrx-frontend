@@ -1,81 +1,139 @@
 # What is this?
 
-This document contains all custom commands that you can use within this
-application during development stage.
+This document describes the most useful development commands for this project.
+
+The primary workflow is Docker-based and exposed through `make` targets.
+If you are working inside a Dev Container, you can run the equivalent `yarn`
+commands directly from the IDE terminal.
 
 ## Table of Contents
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [Makefile](#makefile-table-of-contents)
-  * [Yarn](#yarn-table-of-contents)
+  * [Recommended workflow](#recommended-workflow)
+  * [Make commands](#make-commands)
+    * [Container lifecycle](#container-lifecycle)
+    * [Shell access](#shell-access)
+    * [Linting and fixing](#linting-and-fixing)
+    * [Translations](#translations)
+    * [Maintenance utilities](#maintenance-utilities)
+  * [Yarn commands](#yarn-commands)
+  * [Examples](#examples)
 
-## Makefile [ᐞ](#table-of-contents)
+## Recommended workflow
 
-This project contains `Makefile` configuration so that you can easily run
-some generic commands via `make` command. Below is a list of currently
-supported make commands, note that you can get this same list with just
-running `make` command:
+For most users, these are the commands you will use most often:
 
 ```bash
-bash                      # Get bash inside Node container
-check-translations        # Check missing translations
-docker-kill-containers    # Kill all running docker containers
-docker-remove-containers  # Remove all docker containers
-docker-remove-images      # Remove all docker images
-extract-translations      # Extract translations from TypeScript and HTML
-                          # template files
-fish                      # Get fish inside Node container
-fix                       # Fix TypeScript and SCSS files
-fix-scss                  # Fix SCSS files
-fix-ts                    # Fix TypeScript files
-generate-ssl-cert         # Generate self signed SSL certificate
-lint                      # Lint TypeScript and SCSS files
-lint-scss                 # Lint SCSS files
-lint-ts                   # Lint TypeScript files
-project-stats             # Create simple project stats
-start-build               # Start application in development mode and build
-                          # containers
-start-production          # Start application locally in production mode
-start                     # Start application in development mode
-start-yarn-prod           # Run start-prod command with yarn
-start-yarn                # Run start command with yarn
-stop                      # Stop application containers
-update                    # Upgrade dependencies via yarn interactively
+make start
+make bash
+make lint
+make fix
+make stop
 ```
 
-Example:
+If you are using a Dev Container, open the project in the container and run the
+same underlying tasks with `yarn` where appropriate.
+
+## Make commands
+
+Run `make` without arguments to see the current help output.
+
+### Container lifecycle
 
 ```bash
-da_wunder@wunder-VirtualBox:~/PhpstormProjects/angular-ngrx-frontend$ make bash
-node@84a0da4d1c84:/app$
+make start               # Start application in development mode
+make start-build         # Start application in development mode and rebuild container
+make start-production    # Start application with the local production Angular configuration
+make stop                # Stop application containers
 ```
 
-## Yarn [ᐞ](#table-of-contents)
-
-This project contains some custom scripts that are defined in [packages.json](../package.json)
-file that you can easily run just by using `yarn _command_here_`. Note
-that these yarn commands are mean to run inside Docker container, so first
-use `make bash` command to get shell inside container.
-
-Below you can see a list of all those custom commands that you most likely
-need to use at some point of development process:
+### Shell access
 
 ```bash
-extract-translations    # Extract translations, see TRANSLATIONS.md
-lint:scss               # Lint SCSS files by https://stylelint.io/
-lint:ts                 # Lint TS files by https://palantir.github.io/tslint/
+make bash               # Open a bash shell inside the node container
+make fish               # Open a fish shell inside the node container
 ```
 
-Example:
+### Linting and fixing
 
 ```bash
-da_wunder@wunder-VirtualBox:~/PhpstormProjects/angular-ngrx-frontend$ make bash
-node@84a0da4d1c84:/app$ yarn lint:scss
-yarn run v1.22.4
-$ npx stylelint '**/*.scss'
-Done in 2.06s.
-node@84a0da4d1c84:/app$
+make lint               # Run TypeScript and SCSS linting
+make lint-ts            # Run Angular/TypeScript linting
+make lint-scss          # Run SCSS linting with stylelint
+make fix                # Run TypeScript and SCSS auto-fixes
+make fix-ts             # Run Angular/TypeScript lint fixes
+make fix-scss           # Run SCSS auto-fixes with stylelint
+```
+
+### Translations
+
+```bash
+make extract-translations   # Extract translation keys from TS and HTML templates
+make check-translations     # Check for missing or out-of-sync translations
+```
+
+### Maintenance utilities
+
+```bash
+make update                    # Upgrade dependencies interactively with yarn
+make generate-ssl-cert         # Generate self-signed SSL certificates for local development
+make project-stats             # Generate simple project statistics
+make docker-kill-containers    # Kill all running Docker containers on the host
+make docker-remove-containers  # Remove all Docker containers on the host
+make docker-remove-images      # Remove all Docker images on the host
+```
+
+## Yarn commands
+
+The project defines scripts in [`package.json`](../package.json). These are
+especially useful when you are already inside the container via `make bash`, or
+when working in a Dev Container terminal.
+
+Commonly used scripts:
+
+```bash
+yarn start                # Start Angular development server with local SSL certificates
+yarn start-prod           # Start Angular using the local production configuration
+yarn build                # Create a development build
+yarn build-prod           # Create a production build
+yarn test                 # Run unit tests
+yarn lint:ts              # Run Angular/TypeScript linting
+yarn lint:scss            # Run stylelint for SCSS files
+yarn fix:ts               # Auto-fix Angular/TypeScript lint issues
+yarn fix:scss             # Auto-fix SCSS lint issues
+yarn extract-translations # Extract translation keys
+yarn check-translations   # Validate translation files
+yarn i18n:extract         # Run Transloco key extraction
+yarn i18n:find            # Find translation key usage
+yarn e2e                  # Run end-to-end tests
+```
+
+## Examples
+
+Open a shell in the running container:
+
+```bash
+make bash
+```
+
+Run SCSS linting inside the container:
+
+```bash
+make bash
+yarn lint:scss
+```
+
+Run the full lint suite from the host using the running container:
+
+```bash
+make lint
+```
+
+Rebuild and restart the development container:
+
+```bash
+make start-build
 ```
 
 ---

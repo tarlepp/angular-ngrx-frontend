@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: development
-    command: sh -c 'if [ -z $PROD_MODE ]; then make start-yarn; else make start-yarn-prod; fi'
-    user: $HOST_UID:$HOST_GID
+    command: sh -c 'if [ -z ${PROD_MODE:-} ]; then make start-yarn; else make start-yarn-prod; fi'
+    user: ${HOST_UID:-1000}:${HOST_GID:-1000}
     ports:
       - "4200:4200"
     volumes:

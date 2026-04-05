@@ -113,7 +113,7 @@ RUN apk update \
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist/angular-frontend /usr/share/nginx/html
+COPY --from=builder /app/dist/angular-frontend/browser /usr/share/nginx/html
 
 EXPOSE 80
 

@@ -47,9 +47,9 @@
     "@angular/platform-browser-dynamic": "21.2.6",
     "@angular/router": "21.2.6",
     "@auth0/angular-jwt": "5.2.0",
-    "@jsverse/transloco": "8.2.1",
+    "@jsverse/transloco": "8.3.0",
     "@jsverse/transloco-keys-manager": "8.1.0",
-    "@jsverse/transloco-utils": "8.2.1",
+    "@jsverse/transloco-utils": "8.3.0",
     "@ngbracket/ngx-layout": "21.0.0",
     "@ngrx/effects": "21.1.0",
     "@ngrx/entity": "21.1.0",
@@ -87,7 +87,7 @@
     "@typescript-eslint/eslint-plugin": "8.57.2",
     "@typescript-eslint/parser": "8.57.2",
     "angular-eslint": "21.3.1",
-    "eslint": "9.39.2",
+    "eslint": "10.2.0",
     "eslint-plugin-import": "2.32.0",
     "jasmine-core": "6.1.0",
     "jasmine-spec-reporter": "7.0.0",
@@ -105,7 +105,7 @@
     "stylelint-scss": "7.0.0",
     "ts-node": "10.9.2",
     "typescript": "6.0.2",
-    "typescript-eslint": "8.57.2"
+    "typescript-eslint": "8.58.0"
   },
   "snyk": true
 }

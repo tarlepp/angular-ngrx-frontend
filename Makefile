@@ -212,6 +212,18 @@ else
 	@cd docker/ssl && ./create-keys.sh
 endif
 
+check-action-updates: ## Check pinned GitHub Actions and available updates
+ifeq ($(INSIDE_DOCKER), 1)
+	@echo "\033[32mChecking GitHub Action pins and updates\033[39m"
+	@./scripts/check-action-updates.sh
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make check-action-updates
+endif
+
+
 project-stats: ## Create simple project stats
 ifeq ($(INSIDE_DOCKER), 1)
 	@echo "\033[32mGenerating project statistics\033[39m"

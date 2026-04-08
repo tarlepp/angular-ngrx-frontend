@@ -78,6 +78,7 @@ make check-translations     # Check for missing or out-of-sync translations
 ```bash
 make update                    # Upgrade dependencies interactively with yarn
 make generate-ssl-cert         # Generate self-signed SSL certificates for local development
+make check-action-updates      # Check pinned GitHub Actions and available updates
 make project-stats             # Generate simple project statistics
 make docker-kill-containers    # Kill all running Docker containers on the host
 make docker-remove-containers  # Remove all Docker containers on the host
@@ -128,6 +129,19 @@ Run the full lint suite from the host using the running container:
 
 ```bash
 make lint
+```
+
+Check pinned GitHub Actions and available updates:
+
+```bash
+make check-action-updates
+```
+
+Print current GitHub Action pins as markdown:
+
+```bash
+make bash
+bash scripts/check-action-updates.sh --current-pins-md
 ```
 
 Rebuild and restart the development container:

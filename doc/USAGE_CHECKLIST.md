@@ -7,7 +7,7 @@ use this template as in base of your own application.
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [Checklist](#checklist-table-of-contents)
+  * [Checklist](#checklist)
 
 ## Checklist [ᐞ](#table-of-contents)
 
@@ -31,6 +31,10 @@ started to use this template.
         modify it for your needs.
   * [ ] [vulnerability-scan.yml](../.github/workflows/vulnerability-scan.yml) -
         Check file contents and modify it for your needs.
+  * [ ] [ACTIONS_UPDATE.md](ACTIONS_UPDATE.md) - Review the GitHub
+        Actions pinning/update process and adapt it for your project.
+  * [ ] Run `make check-action-updates` after workflow changes to verify pins,
+        version consistency, and available updates.
 * [ ] Delete this file.
 
 ---

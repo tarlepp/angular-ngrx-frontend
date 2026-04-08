@@ -18,6 +18,8 @@ topic.
 
 * [Custom commands](COMMANDS.md) - common `make` and `yarn` commands used in
   development.
+* [GitHub Actions update guide](ACTIONS_UPDATE.md) - maintenance workflow for
+  SHA-pinned GitHub Actions and update checks.
 * [Concepts and features](CONCEPTS_AND_FEATURES.md) - overview of the
   application architecture and notable features.
 * [Dependency update](DEPENDENCY_UPDATE.md) - dependency upgrade workflow and
@@ -37,6 +39,7 @@ For the most common starting points:
 
 * New contributor setup: [`../README.md`](../README.md)
 * Day-to-day commands: [`COMMANDS.md`](COMMANDS.md)
+* GitHub Actions pin maintenance: [`ACTIONS_UPDATE.md`](ACTIONS_UPDATE.md)
 * Dev Container usage: [`DEV_CONTAINERS.md`](DEV_CONTAINERS.md)
 * Translation workflow: [`TRANSLATIONS.md`](TRANSLATIONS.md)
 

@@ -2,6 +2,7 @@ name: "Code scanning - action"
 
 permissions:
   contents: read
+  security-events: read
 
 on:
   push:

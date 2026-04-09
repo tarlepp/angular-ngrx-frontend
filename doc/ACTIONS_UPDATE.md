@@ -380,10 +380,8 @@ git ls-remote https://github.com/OWNER/REPO.git | grep TAG_NAME
 
 ## Useful Resources
 
-* [GitHub Actions Security Hardening]
-  (https://docs.github.com/en/actions/security-guides)
-* [Dependabot Documentation]
-  (https://docs.github.com/en/code-security/dependabot)
+* [GitHub Actions Security Hardening](https://docs.github.com/en/actions/security-guides)
+* [Dependabot Documentation](https://docs.github.com/en/code-security/dependabot)
 * [SLSA Framework](https://slsa.dev/)
 * [GitHub Action Marketplace](https://github.com/marketplace?type=actions)
 

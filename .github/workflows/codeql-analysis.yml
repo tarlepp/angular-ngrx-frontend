@@ -1,5 +1,8 @@
 name: "Code scanning - action"
 
+permissions:
+  contents: read
+
 on:
   push:
   pull_request:

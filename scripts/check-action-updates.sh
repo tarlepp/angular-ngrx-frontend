@@ -111,7 +111,6 @@ discover_actions() {
             esac
 
             repo="${uses_ref%@*}"
-            repo=$(printf '%s\n' "$repo" | cut -d/ -f1-2)
             ref="${uses_ref#*@}"
 
             case "$repo" in
@@ -139,24 +138,24 @@ discover_actions() {
 
             version="$discovered_version"
 
-            existing_version="${ACTIONS[$repo]}"
+            # Use composite key to support multiple versions of the same action
+            local action_key="${repo}@${version}"
+            local existing_ref="${ACTION_REFS[$action_key]}"
 
-            if [ -n "$existing_version" ] && [ "$existing_version" != "$version" ]; then
-                printf '%s⚠️  Conflicting pinned versions detected for %s: %s (%s) vs %s (%s:%s)%s\n' "$YELLOW" "$repo" "$existing_version" "${ACTION_SOURCES[$repo]}" "$version" "$workflow" "$line_number" "$NC" >&2
-                DISCOVERY_WARNINGS=$((DISCOVERY_WARNINGS + 1))
-                continue
-            fi
-
-            existing_ref="${ACTION_REFS[$repo]}"
             if [ -n "$existing_ref" ] && [ "$existing_ref" != "$ref" ]; then
-                printf '%s⚠️  Conflicting pinned refs detected for %s: %s (%s) vs %s (%s:%s)%s\n' "$YELLOW" "$repo" "$existing_ref" "${ACTION_SOURCES[$repo]}" "$ref" "$workflow" "$line_number" "$NC" >&2
+                printf '%s⚠️  Conflicting pinned refs detected for %s: %s (%s) vs %s (%s:%s)%s\n' "$YELLOW" "$action_key" "$existing_ref" "${ACTION_SOURCES[$action_key]}" "$ref" "$workflow" "$line_number" "$NC" >&2
                 DISCOVERY_WARNINGS=$((DISCOVERY_WARNINGS + 1))
                 continue
             fi
 
-            ACTIONS["$repo"]="$version"
-            ACTION_SOURCES["$repo"]="$workflow:$line_number"
-            ACTION_REFS["$repo"]="$ref"
+            ACTIONS["$action_key"]="$version"
+            # Append source, separating multiple occurrences with newlines
+            if [ -n "${ACTION_SOURCES[$action_key]}" ]; then
+                ACTION_SOURCES["$action_key"]="${ACTION_SOURCES[$action_key]}"$'\n'"$workflow:$line_number"
+            else
+                ACTION_SOURCES["$action_key"]="$workflow:$line_number"
+            fi
+            ACTION_REFS["$action_key"]="$ref"
         done < "$workflow"
     done
 }
@@ -186,22 +185,23 @@ print_current_pins_markdown() {
 get_latest_compatible_release() {
     local action="$1"
     local current_version="$2"
-    local tags major latest
+    local tags latest repo_path
 
-    tags=$($TIMEOUT_BIN 10 $GIT_BIN ls-remote --tags --refs "https://github.com/$action.git" 2>/dev/null | awk '{print $2}' | sed 's#refs/tags/##')
+    # Extract owner/repo (first two parts) for git ls-remote, handles both:
+    # - actions/checkout
+    # - github/codeql-action/init
+    repo_path=$(printf '%s\n' "$action" | cut -d/ -f1-2)
+
+    tags=$($TIMEOUT_BIN 10 $GIT_BIN ls-remote --tags --refs "https://github.com/$repo_path.git" 2>/dev/null | awk '{print $2}' | sed 's#refs/tags/##')
 
     if [ -z "$tags" ]; then
         printf '\n'
         return
     fi
 
-    major=$(printf '%s\n' "$current_version" | sed -E 's/^v?([0-9]+).*/\1/')
-
-    latest=$(printf '%s\n' "$tags" | grep -E "^v?${major}(\.|$)" | sort -V | tail -n 1)
-
-    if [ -z "$latest" ]; then
-        latest=$(printf '%s\n' "$tags" | sort -V | tail -n 1)
-    fi
+    # Get the absolute latest version tag (semver-like only, at least X.Y to exclude
+    # floating major alias tags like v1, v2 and non-version tags like "verbose")
+    latest=$(printf '%s\n' "$tags" | grep -E '^v?[0-9]+\.[0-9]+' | sort -V | tail -n 1)
 
     printf '%s\n' "$latest"
 }
@@ -238,54 +238,118 @@ fi
 printf 'Checking %s GitHub Actions for updates...\n' "${#ACTIONS[@]}"
 printf '\n'
 
-# Check each action
-for action in "${!ACTIONS[@]}"; do
-    current_version="${ACTIONS[$action]}"
-    ((TOTAL++))
-
-    # Get latest compatible release version within the same major line.
-    # This avoids false positives from alternate release streams like
-    # github/codeql-action's codeql-bundle tags.
-    latest=$(get_latest_compatible_release "$action" "$current_version")
-
-    if [ -z "$latest" ] || [ "$latest" = "null" ]; then
-        printf '%s⚠️  %s%s\n' "$YELLOW" "$action" "$NC"
-        printf '   Current: %s\n' "$current_version"
-        printf '   Latest:  (unable to fetch)\n'
-        printf '\n'
-        continue
-    fi
-
-    # Normalize versions for comparison (strip leading 'v' if present)
-    latest_normalized="${latest#v}"
-    current_normalized="${current_version#v}"
-
-    # Get full SHA for the version with timeout
-    sha=$($TIMEOUT_BIN 10 $GIT_BIN ls-remote --tags "https://github.com/$action.git" "refs/tags/$latest" 2>/dev/null | awk '{print $1}')
-
-    if [ -z "$sha" ]; then
-        printf '%s⚠️  %s%s\n' "$YELLOW" "$action" "$NC"
-        printf '   Current: %s\n' "$current_version"
-        printf '   Latest:  %s\n' "$latest"
-        printf '   SHA:     (unable to fetch)\n'
-        printf '\n'
-        continue
-    fi
-
-    # Compare versions (using normalized versions)
-    if [ "$latest_normalized" = "$current_normalized" ]; then
-        printf '%s✓ %s%s\n' "$GREEN" "$action" "$NC"
-        printf '   Version: %s (up-to-date)\n' "$current_version"
-        ((CURRENT++))
+# Group actions by repo name
+declare -A repo_versions
+for action_key in "${!ACTIONS[@]}"; do
+    repo_name="${action_key%@*}"
+    if [ -z "${repo_versions[$repo_name]}" ]; then
+        repo_versions["$repo_name"]="$action_key"
     else
-        printf '%s⚠️  UPDATE AVAILABLE: %s%s\n' "$RED" "$action" "$NC"
-        printf '   Current: %s\n' "$current_version"
-        printf '   Latest:  %s\n' "$latest"
-        printf '   SHA:     %s\n' "$sha"
-        printf '   Short:   %s\n' "${sha:0:8}"
-        ((OUTDATED++))
+        repo_versions["$repo_name"]="${repo_versions[$repo_name]} $action_key"
     fi
-    printf '\n'
+done
+
+# Check each action repo (potentially with multiple versions)
+for repo_name in $(printf '%s\n' "${!repo_versions[@]}" | sort); do
+    action_keys="${repo_versions[$repo_name]}"
+
+    # Track if any version is outdated for this repo
+    repo_has_update=0
+    unset versions_info
+    declare -a versions_info
+
+    for action_key in $action_keys; do
+        current_version="${ACTIONS[$action_key]}"
+        ((TOTAL++))
+
+        latest=$(get_latest_compatible_release "$repo_name" "$current_version")
+
+        if [ -z "$latest" ] || [ "$latest" = "null" ]; then
+            versions_info+=("$current_version||unable||")
+            continue
+        fi
+
+        latest_normalized="${latest#v}"
+        current_normalized="${current_version#v}"
+
+        repo_path=$(printf '%s\n' "$repo_name" | cut -d/ -f1-2)
+        sha=$($TIMEOUT_BIN 10 $GIT_BIN ls-remote --tags "https://github.com/$repo_path.git" "refs/tags/$latest" 2>/dev/null | awk '{print $1}')
+
+        if [ -z "$sha" ]; then
+            versions_info+=("$current_version||error||")
+            continue
+        fi
+
+        if [ "$latest_normalized" != "$current_normalized" ]; then
+            repo_has_update=1
+            # Store with ||| as source delimiter (won't appear in paths)
+            sources_str=$(printf '%s\n' "${ACTION_SOURCES[$action_key]}" | tr '\n' '|' | sed 's/|$//')
+            versions_info+=("${current_version}	${latest}	${sha}	${sources_str}")
+        else
+            ((CURRENT++))
+            versions_info+=("${current_version}	current	")
+        fi
+    done
+
+    # Display repo with all versions
+    if [ $repo_has_update -eq 1 ]; then
+        printf '%s⚠️ UPDATE AVAILABLE: %s%s\n' "$RED" "$repo_name" "$NC"
+        for info in "${versions_info[@]}"; do
+            # Use printf to handle tab-separated fields
+            current=$(printf '%s\n' "$info" | cut -f1)
+            latest=$(printf '%s\n' "$info" | cut -f2)
+            sha=$(printf '%s\n' "$info" | cut -f3)
+            sources_str=$(printf '%s\n' "$info" | cut -f4-)
+
+            if [ "$latest" = "current" ]; then
+                printf '   %s (up-to-date)\n' "$current"
+            elif [ "$latest" = "unable" ]; then
+                printf '   %s -> (unable to fetch)\n' "$current"
+            elif [ "$latest" = "error" ]; then
+                printf '   %s -> (error fetching SHA)\n' "$current"
+            else
+                printf '   %s -> %s\n' "$current" "$latest"
+                printf '      SHA:   %s\n' "$sha"
+                printf '      Short: %s\n' "${sha:0:8}"
+
+                # Display sources for this version (pipe-delimited, convert to newlines)
+                sources_array=()
+                i=0
+                while IFS= read -r line; do
+                    [ -n "$line" ] && sources_array[$i]="$line" && ((i++))
+                done < <(printf '%s\n' "$sources_str" | tr '|' '\n')
+
+                for idx in "${!sources_array[@]}"; do
+                    if [ "$idx" -eq 0 ]; then
+                        printf '      Source: %s\n' "${sources_array[$idx]}"
+                    else
+                        printf '              %s\n' "${sources_array[$idx]}"
+                    fi
+                done
+                ((OUTDATED++))
+            fi
+        done
+        printf '\n'
+    else
+        # All versions of this repo are up-to-date
+        all_current=1
+        for info in "${versions_info[@]}"; do
+            latest=$(printf '%s\n' "$info" | cut -f2)
+            if [ "$latest" != "current" ] && [ -n "$latest" ]; then
+                all_current=0
+                break
+            fi
+        done
+
+        if [ $all_current -eq 1 ]; then
+            printf '%s✓ %s%s\n' "$GREEN" "$repo_name" "$NC"
+            for info in "${versions_info[@]}"; do
+                current=$(printf '%s\n' "$info" | cut -f1)
+                printf '   %s (up-to-date)\n' "$current"
+            done
+            printf '\n'
+        fi
+    fi
 done
 
 # Summary

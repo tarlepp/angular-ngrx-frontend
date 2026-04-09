@@ -1,10 +1,10 @@
 # What is this?
 
-This document describes how to maintain SHA-pinned GitHub Actions in this
+This document explains how to maintain SHA-pinned GitHub Actions in this
 project.
 
-All GitHub Actions in this repository are pinned to commit SHAs (not version
-tags) to reduce supply-chain risk.
+All actions are pinned to commit SHAs (not version tags) to reduce
+supply-chain risk.
 
 ## Table of Contents
 
@@ -21,26 +21,27 @@ tags) to reduce supply-chain risk.
 
 ## Overview
 
-This project uses GitHub Actions pinned to specific commit SHAs instead of version tags. This provides:
+This project uses SHA-pinned GitHub Actions instead of floating version tags.
+That gives:
 
-- ✅ **Security**: Prevents compromised tags or tag updates from affecting CI
-- ✅ **Reproducibility**: Same action code runs every time
-- ✅ **Auditability**: Easy to track exactly which code is running
-- ⚠️ **Maintenance**: Requires manual updates (Dependabot can help, but SHAs must be verified)
+* **Security**: Prevents compromised tags from silently changing CI behavior.
+* **Reproducibility**: The same action code runs every time.
+* **Auditability**: It is easy to track exactly which code is running.
+* **Maintenance cost**: Updates are manual and must be verified.
 
-### Workflows with Pinned Actions
+### Workflows with pinned actions
 
-- `.github/workflows/main.yml` - CI checks (linting, tests, builds)
-- `.github/workflows/codeql-analysis.yml` - CodeQL security scanning
-- `.github/workflows/scorecard.yml` - Supply-chain security scoring
-- `.github/workflows/vulnerability-scan.yml` - Container vulnerability scanning
+* `.github/workflows/main.yml` for linting, tests, and builds.
+* `.github/workflows/codeql-analysis.yml` for CodeQL scanning.
+* `.github/workflows/scorecard.yml` for supply-chain scoring.
+* `.github/workflows/vulnerability-scan.yml` for vulnerability scanning.
 
 ---
 
 ## Current Action Pins
 
-This list is generated from `.github/workflows/*.yml` to avoid stale manual
-tables.
+The current pin list is generated from `.github/workflows/*.yml` so it does not
+become stale.
 
 Run this command to print current pins as markdown:
 
@@ -48,167 +49,175 @@ Run this command to print current pins as markdown:
 bash scripts/check-action-updates.sh --current-pins-md
 ```
 
-If you are on the host machine, run the command inside the dev container
-(`make bash`) or from your Dev Container terminal.
+If you are on the host machine, run it in the dev container (`make bash`) or in
+your Dev Container terminal.
 
 ---
 
 ## How to Update Actions
 
-### Step 1: Identify the Action to Update
+### Step 1: Identify the action to update
 
-Check which version is currently pinned in the workflow files. For example:
+Check which version is currently pinned in workflow files. Example:
 
 ```yaml
 uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 ```
 
-The comment shows the version tag, while the SHA is before the comment.
+The comment is the version tag. The SHA appears before the comment.
 
-### Step 2: Get the New Commit SHA
+### Step 2: Get the new commit SHA
 
-Use one of these methods to find the SHA for a new version:
+Use one of these methods to find the SHA for a new version.
 
-#### Method A: Using git ls-remote (Recommended)
+#### Method A: `git ls-remote` (recommended)
 
 ```bash
-# Get SHA for a specific version tag
-git ls-remote --tags https://github.com/actions/checkout.git refs/tags/v6.0.3 | awk '{print $1}'
+# Get SHA for a specific version tag.
+git ls-remote --tags https://github.com/actions/checkout.git \
+  refs/tags/v6.0.3 | awk '{print $1}'
 ```
 
-#### Method B: Using GitHub CLI
+#### Method B: GitHub CLI
 
 ```bash
-# If you have GitHub CLI installed
+# If GitHub CLI is installed.
 gh api repos/actions/checkout/git/refs/tags/v6.0.3 --jq '.object.sha'
 ```
 
-#### Method C: Using curl + jq
+#### Method C: `curl` + `jq`
 
 ```bash
-# Get the latest release information
-curl -s https://api.github.com/repos/actions/checkout/releases/latest | \
-  jq '.target_commitish'
+# Get latest release metadata.
+curl -s https://api.github.com/repos/actions/checkout/releases/latest \
+  | jq '.target_commitish'
 ```
 
-### Step 3: Update the Workflow Files
+### Step 3: Update workflow files
 
-Update all occurrences of the action in the relevant workflow files. For example, to update `actions/checkout` from v6.0.2 to v6.0.3:
+Update every occurrence of that action across workflows.
+Example: update `actions/checkout` from `v6.0.2` to `v6.0.3`.
 
-**Before:**
+Before:
+
 ```yaml
 uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 ```
 
-**After:**
+After:
+
 ```yaml
 uses: actions/checkout@ABC123DEF456... # v6.0.3
 ```
 
 Make sure to:
-- Update ALL occurrences of that action across workflows
-- Keep the version tag in the comment
-- Use the exact SHA (full 40-character hash)
 
-### Step 4: Verify the Update
+* Update all occurrences of that action.
+* Keep the version tag in the comment.
+* Use the full 40-character SHA.
 
-Ensure you replaced all instances:
+### Step 4: Verify the update
+
+Ensure all references were replaced:
 
 ```bash
-# Search for old version
+# Search for old version.
 grep -r "v6.0.2" .github/workflows/
 
-# Verify new version is in place
+# Verify new version.
 grep -r "v6.0.3" .github/workflows/
 ```
 
-### Step 5: Create a Pull Request
+### Step 5: Create a pull request
 
 1. Create a branch: `git checkout -b chore/update-github-actions`
-2. Commit changes: `git add .github/workflows/*.yml && git commit -m "chore: update GitHub Actions to latest versions"`
-3. Push and create a PR
-4. Verify CI passes with the new action versions
-5. Merge after approval
+2. Commit updates with a clear message.
+3. Push and open a PR.
+4. Verify CI passes with new action versions.
+5. Merge after approval.
 
 ---
 
 ## Checking for Updates
 
-### Method 1: Automated with Dependabot
+### Method 1: Dependabot notifications
 
-Dependabot can notify you of action updates. However, you must manually verify and update the SHAs.
+Dependabot can suggest action updates, but you still need to verify and update
+the SHA manually.
 
-**Note**: Dependabot automatically updates version tags but NOT commit SHAs. You need to:
-1. See Dependabot PR suggests new version
-2. Get the SHA for that version
-3. Manually update the SHA in the workflows
+Dependabot updates version tags in references. It does not select and verify the
+new commit SHA for you.
 
-### Method 2: Using the Automated Check Script (Recommended)
+Typical flow:
 
-This repository includes a script that checks pinned actions for updates.
+1. Review the Dependabot PR suggestion.
+2. Fetch the SHA for that version.
+3. Update the SHA in workflow files.
 
-**Location:** `scripts/check-action-updates.sh`
+### Method 2: Automated check script (recommended)
 
-**Run it with (preferred):**
+This repository includes an update-check script:
+
+* Location: `scripts/check-action-updates.sh`
+
+Run it with:
+
 ```bash
 make check-action-updates
 ```
 
 If you are already inside the dev container:
+
 ```bash
 bash scripts/check-action-updates.sh
 ```
 
-**What it does:**
-- Discovers pinned actions dynamically from `.github/workflows/*.yml`
-- Compares against the latest compatible release in the same major version line
-- Retrieves the full commit SHA for each new version
-- Shows colored output (green = current, red = update available)
-- Displays summary statistics
-- Reports discovery issues (for example unpinned refs or conflicting versions)
+What it does:
 
-**Example output:**
-```
-=================================================================================
+* Discovers pinned actions dynamically from `.github/workflows/*.yml`.
+* Compares each pin against the latest compatible release tag.
+* Resolves the full commit SHA for discovered updates.
+* Shows summary output and source lines for each finding.
+* Reports discovery warnings such as unpinned refs.
+
+Example output:
+
+```text
+================================================================================
                   GitHub Actions Update Checker
-=================================================================================
+================================================================================
 
 Checking 7 GitHub Actions for updates...
 
-✓ actions/checkout
-   Version: v6.0.2 (up-to-date)
+UPDATE AVAILABLE: actions/setup-node
+   v6.3.0 -> v6.3.1
+   SHA:   53b83947abc123def456...
+   Short: 53b83947
 
-⚠️  UPDATE AVAILABLE: actions/setup-node
-   Current: v6.3.0
-   Latest:  v6.3.1
-   SHA:     53b83947abc123def456...
-   Short:   53b83947
-
-...
-
-=================================================================================
+================================================================================
                            Summary
-=================================================================================
+================================================================================
 Total actions checked:   7
-Discovery warnings:     0
-Up-to-date:             5
-Updates available:      2
+Discovery warnings:      0
+Up-to-date:              5
+Updates available:       2
 ```
 
-**Exit codes:**
-- `0` = no discovery warnings and no updates
-- `1` = updates available
-- `2` = discovery warnings found (unpinned refs, conflicting versions, or unknown version comments)
+Exit codes:
 
-**Using in CI/CD:**
-The script can be integrated into CI pipelines to periodically check for action updates:
+* `0`: no discovery warnings and no updates.
+* `1`: updates are available.
+* `2`: discovery warnings found.
+
+Use in CI:
 
 ```yaml
 # .github/workflows/check-updates.yml
 name: Check Action Updates
+
 on:
   schedule:
-    - cron: '0 9 * * 1'  # Every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
 
 jobs:
   check:
@@ -218,58 +227,61 @@ jobs:
       - run: bash scripts/check-action-updates.sh
 ```
 
-**Requirements:**
-- git
-- timeout
-- bash
+Requirements:
 
-**Important behavior:**
-- The script intentionally tracks the latest stable release in the same major version line as the currently pinned action.
-- This avoids false positives from alternate release streams. For example, `github/codeql-action` publishes `codeql-bundle-*` releases that are not the same upgrade line as the workflow action itself.
-- The script continues running version checks even when discovery warnings are found, so one run shows all findings.
-- If you want to move to a new major version, review that upgrade manually instead of relying on the script to suggest it automatically.
+* `git`
+* `timeout`
+* `bash`
 
-**Note:** The script identifies updates but does not apply them. Review the changelog and test before merging.
+Important behavior:
 
-### Method 3: GitHub's Security Alerts
+* The script tracks updates in the same major version line by default.
+* This avoids false positives from alternate tag streams in some repositories.
+* The script continues checks even when discovery warnings are present.
+* Move to a new major version manually after reviewing release notes.
 
-GitHub will notify you of:
-- Dependabot alerts for action updates
-- Security vulnerabilities in actions
-- Breaking changes in action releases
+Note: the script reports updates but does not apply them.
 
-Check them in: **Repository Settings → Code security & analysis → Dependabot alerts**
+### Method 3: GitHub security alerts
+
+GitHub can notify you about:
+
+* Dependabot action update alerts.
+* Security vulnerabilities in actions.
+* Breaking changes in action releases.
+
+Check: Repository Settings -> Code security and analysis -> Dependabot alerts.
 
 ---
 
 ## Testing Updates
 
-### 1. Test in a Feature Branch
+### 1. Test in a feature branch
 
-Always test action updates before merging to master:
+Always test action updates before merging:
 
 ```bash
 git checkout -b test/action-update
-# Make your action updates
+# Make action updates.
 git push origin test/action-update
-# Create PR and verify CI passes
+# Create a PR and verify CI passes.
 ```
 
-### 2. Verify Action Behavior
+### 2. Verify action behavior
 
-Check the action's changelog for any behavioral changes:
+Review release notes for behavioral changes:
 
-```bash
-# Visit the action's repository
-# Example: https://github.com/actions/checkout/releases/tag/v6.0.3
+```text
+Example: https://github.com/actions/checkout/releases/tag/v6.0.3
 ```
 
-### 3. Monitor First Run
+### 3. Monitor first run after merge
 
-After merging:
-- Watch the next CI run carefully
-- Check workflow logs for any new warnings or errors
-- Verify the action behaves as expected
+After merge:
+
+* Watch the next CI run carefully.
+* Check logs for new warnings or errors.
+* Verify behavior still matches expectations.
 
 ---
 
@@ -277,43 +289,44 @@ After merging:
 
 ### What is a SHA pin?
 
-A SHA (Secure Hash Algorithm) is a cryptographic fingerprint of a specific commit in a repository:
+A SHA is a cryptographic fingerprint of a specific commit.
 
-- Version tag (can change or be retagged): `actions/checkout@v6.0.2`
-- Commit SHA (immutable): `actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd`
+* Version tag (mutable): `actions/checkout@v6.0.2`
+* Commit SHA (immutable):
+  `actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd`
 
 ### Why use SHA pins?
 
-**Security Risk of Tags:** `Tag v6.0.2 exists → Action Developer creates commit → Developer resets tag to new commit → Your workflows use different code!`
+Tags can be moved. SHAs cannot be changed once published. Pinning SHAs keeps
+workflow behavior stable and auditable.
 
-**Security of SHAs:** `SHA de0fac2e points to specific commit → That commit NEVER changes → Your workflows always use the same code`
+### How GitHub Actions resolves references
 
-### How GitHub Actions Resolves SHAs
+GitHub supports both forms:
 
-GitHub supports both formats:
-
-- Tag: `uses: actions/checkout@v6.0.2`
-- SHA: `uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd`
-- Short SHA: `uses: actions/checkout@de0fac2e`
+* Tag: `uses: actions/checkout@v6.0.2`
+* Full SHA: `uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd`
+* Short SHA: `uses: actions/checkout@de0fac2e`
 
 ---
 
 ## Best Practices
 
-**Do:**
-- Keep version tag in comments for readability
-- Update all instances of an action simultaneously
-- Test updates in a feature branch before merging
-- Document why you're updating (security fix, new feature, etc.)
-- Review the action's changelog before updating
-- Use the full 40-character SHA (though 7-8 chars work)
+Do:
 
-**Don't:**
-- Mix version tags and SHAs for the same action
-- Update only some instances of an action
-- Merge action updates without testing
-- Use SHAs from unverified sources
-- Ignore breaking changes in action releases
+* Keep the version tag in comments for readability.
+* Update all instances of the same action together.
+* Test updates in a feature branch before merging.
+* Review changelogs before updating.
+* Prefer full 40-character SHAs.
+
+Do not:
+
+* Mix tags and SHAs for the same action.
+* Update only some instances of an action.
+* Merge updates without testing.
+* Use SHAs from unverified sources.
+* Ignore breaking changes.
 
 ---
 
@@ -321,41 +334,45 @@ GitHub supports both formats:
 
 ### "Action not found" error
 
-If you get this error after updating:
+If this appears after updating:
 
-```
+```text
 Error: Can't find 'node_modules/...' from action
 ```
 
-**Solution:** The SHA might be incorrect. Verify it:
+The SHA may be incorrect. Verify it:
+
 ```bash
 git ls-remote --tags https://github.com/actions/setup-node.git \
   refs/tags/v6.3.0 | awk '{print $1}'
 ```
 
-### Workflows fail with new action
+### Workflows fail with a new action
 
-**Diagnose:**
-1. Check the action's changelog for breaking changes
-2. Look at workflow logs for specific error messages
-3. Test locally if possible
-4. Check GitHub Actions status page
+Diagnose:
 
-**Solution:**
-- Revert to previous version and investigate
-- Create an issue in the action's repository
-- Contact the maintainer for support
+1. Check the action changelog for breaking changes.
+2. Read workflow logs for precise errors.
+3. Reproduce locally if possible.
+4. Check the GitHub Actions status page.
+
+Then:
+
+* Revert to the previous pin while investigating.
+* Open an issue in the action repository if needed.
+* Contact maintainers when appropriate.
 
 ### SHA not found in repository
 
-**Problem:** You fetched a SHA but it doesn't exist
+Problem: fetched SHA does not exist.
 
-**Solution:**
+Verify:
+
 ```bash
-# Make sure you're using the correct repository
+# Confirm repository and tag.
 git ls-remote https://github.com/OWNER/REPO.git refs/tags/TAG_NAME
 
-# Verify the tag exists
+# Confirm tag exists.
 git ls-remote https://github.com/OWNER/REPO.git | grep TAG_NAME
 ```
 
@@ -363,42 +380,44 @@ git ls-remote https://github.com/OWNER/REPO.git | grep TAG_NAME
 
 ## Useful Resources
 
-- [GitHub Actions Security Hardening](https://docs.github.com/en/actions/security-guides)
-- [Dependabot Documentation](https://docs.github.com/en/code-security/dependabot)
-- [SLSA Framework (Supply-chain Levels for Software Artifacts)](https://slsa.dev/)
-- [Action Marketplace](https://github.com/marketplace?type=actions)
+* [GitHub Actions Security Hardening]
+  (https://docs.github.com/en/actions/security-guides)
+* [Dependabot Documentation]
+  (https://docs.github.com/en/code-security/dependabot)
+* [SLSA Framework](https://slsa.dev/)
+* [GitHub Action Marketplace](https://github.com/marketplace?type=actions)
 
 ---
 
 ## FAQ
 
-**Q: Why not just use version tags?**
-A: Version tags can be retagged, compromised, or accidentally deleted. SHAs are immutable.
+Q: Why not use version tags directly?
+A: Tags can be retagged or deleted. SHAs are immutable.
 
-**Q: Can I automatically update SHAs?**
-A: Dependabot can notify you, but you must verify and manually update SHAs for security.
+Q: Can SHAs be updated automatically?
+A: You can automate detection, but verification should stay manual.
 
-**Q: What if an action releases a security patch?**
-A: GitHub will notify you via Dependabot. Follow the update steps to pin the new SHA.
+Q: What if a security patch is released?
+A: Update the pin quickly after reviewing changelog and CI impact.
 
-**Q: How often should I update actions?**
-A: At minimum, update actions with security fixes immediately. For regular maintenance, check monthly.
+Q: How often should actions be updated?
+A: Apply security fixes quickly and review regular updates monthly.
 
-**Q: Can I use short SHAs?**
-A: Yes, GitHub supports 7+ character short SHAs, but full 40-character SHAs are recommended.
+Q: Can I use short SHAs?
+A: GitHub supports short SHAs, but full SHAs are recommended.
 
 ---
 
 ## Last Updated
 
-- **Date**: 2026-04-07
-- **Updated By**: GitHub Copilot
-- **Next Review**: 2026-05-07 (monthly)
+* **Date**: 2026-04-09
+* **Updated By**: GitHub Copilot
+* **Next Review**: 2026-05-09
 
-See also: `doc/README.md` for the documentation index and `.github/workflows/` for the current action pins.
+See also: `doc/README.md` and `.github/workflows/`.
 
 ---
 
-[Back to resources index](README.md) - [Back to main README.md](../README.md)
+[Back to resources index](README.md)
 
-
+[Back to main README.md](../README.md)

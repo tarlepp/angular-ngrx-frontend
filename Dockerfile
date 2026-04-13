@@ -105,9 +105,10 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:1.29.5-alpine-slim AS production
+FROM nginx:1.29.8-alpine-slim AS production
 
 RUN apk update \
+    && apk add --no-cache libcrypto3=3.5.6-r0 \
     && apk add --no-cache zlib=1.3.2-r0 \
     && rm -rf /var/cache/apk/*
 

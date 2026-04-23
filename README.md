@@ -221,6 +221,7 @@ development environment that this frontend expects by default.
 
 * [Resource index](doc/README.md)
 * [Custom commands](doc/COMMANDS.md)
+* [GitHub Actions update guide](doc/ACTIONS_UPDATE.md)
 * [Concepts and features](doc/CONCEPTS_AND_FEATURES.md)
 * [Dependency update](doc/DEPENDENCY_UPDATE.md)
 * [Dev Containers](doc/DEV_CONTAINERS.md)

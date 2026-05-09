@@ -31,8 +31,11 @@ jobs:
         with:
           node-version: 25.9.0
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Run `yarn lint:ts`
         run: yarn lint:ts
@@ -50,8 +53,11 @@ jobs:
         with:
           node-version: 25.9.0
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Run `yarn lint:scss`
         run: yarn lint:scss
@@ -84,8 +90,11 @@ jobs:
         with:
           node-version: 25.9.0
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Run `yarn run extract-translations && git diff --exit-code`
         run: yarn run extract-translations && git diff --exit-code
@@ -103,8 +112,11 @@ jobs:
         with:
           node-version: 25.9.0
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Run `yarn run check-translations`
         run: yarn run check-translations

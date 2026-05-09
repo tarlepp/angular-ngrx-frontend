@@ -13,6 +13,7 @@
     "url": "https://github.com/tarlepp/angular-ngrx-frontend/issues"
   },
   "version": "0.0.0",
+  "packageManager": "yarn@4.14.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl true --ssl-key docker/ssl/tls.key --ssl-cert docker/ssl/tls.crt --host 0.0.0.0 --disable-host-check",
@@ -29,7 +30,7 @@
     "check-translations": "sed -i 's/_/__/g; s/: null/x_x/g; s/: \"--- MISSING TRANSLATION ---\"/: null/g; s/x_x/: \"--- MISSING TRANSLATION ---\"/g; s/__/_/g' ./src/assets/i18n/*.json && git diff --exit-code ./src/assets/i18n/*.json",
     "postinstall": "node version.js",
     "snyk-protect": "snyk-protect",
-    "prepare": "yarn run snyk-protect",
+    "prepare": "yarn snyk-protect",
     "i18n:extract": "transloco-keys-manager extract",
     "i18n:find": "transloco-keys-manager find"
   },
@@ -78,8 +79,9 @@
     "@angular/compiler-cli": "21.2.11",
     "@angular/language-service": "21.2.11",
     "@bartholomej/ngx-translate-extract": "8.0.2",
-    "@eslint/js": "10.0.1",
+    "@eslint/js": "9.39.1",
     "@ngrx/eslint-plugin": "21.1.0",
+    "@schematics/angular": "21.2.9",
     "@stylistic/eslint-plugin": "5.10.0",
     "@types/jasmine": "6.0.0",
     "@types/jasminewd2": "2.0.13",
@@ -87,8 +89,10 @@
     "@types/node": "25.6.0",
     "@typescript-eslint/eslint-plugin": "8.59.1",
     "@typescript-eslint/parser": "8.59.1",
+    "@typescript-eslint/types": "8.59.1",
+    "@typescript-eslint/utils": "8.59.1",
     "angular-eslint": "21.3.1",
-    "eslint": "10.2.1",
+    "eslint": "9.39.1",
     "eslint-plugin-import": "2.32.0",
     "jasmine-core": "6.2.0",
     "jasmine-spec-reporter": "7.0.0",
@@ -105,7 +109,7 @@
     "stylelint-config-standard-scss": "17.0.0",
     "stylelint-scss": "7.0.0",
     "ts-node": "10.9.2",
-    "typescript": "6.0.3",
+    "typescript": "5.9.3",
     "typescript-eslint": "8.59.1"
   },
   "snyk": true

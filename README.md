@@ -63,6 +63,15 @@ Then open `https://localhost:4200` in your browser. For more details, see
   if you do not have `make`, check `Makefile` to see equivalent Docker
   commands.
 
+### Package manager
+
+This repository is pinned to Yarn 4 via the `packageManager` field in
+`package.json` and a checked-in release file under `.yarn/releases/`.
+
+When running commands inside the Docker `node` container (or in a Dev Container
+terminal), use `yarn` directly from the project root so the pinned Yarn version
+is used automatically.
+
 ## Installation
 
 This installation guide expects that you're using Docker Engine.
@@ -184,6 +193,13 @@ Quick start inside the Dev Container:
 
 ```bash
 make start
+```
+
+To confirm the pinned package manager inside the container:
+
+```bash
+yarn --version
+yarn install --immutable
 ```
 
 In VS Code, you can run the same command via `Tasks: Run Task` using

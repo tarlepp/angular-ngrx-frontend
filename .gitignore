@@ -11,6 +11,12 @@ compose.*.yaml
 
 # dependencies
 /node_modules
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/patches
+!.yarn/sdks
+!.yarn/versions
 
 # profiling files
 chrome-profiler-events*.json

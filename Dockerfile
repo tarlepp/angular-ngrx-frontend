@@ -5,9 +5,10 @@ FROM node:25.9.0-bullseye AS dependencies
 
 WORKDIR /app
 
-COPY package.json yarn.lock version.js ./
+COPY package.json yarn.lock .yarnrc.yml version.js ./
+COPY .yarn/releases ./.yarn/releases
 
-RUN yarn install
+RUN yarn install --immutable
 
 # Stage 2: Development
 FROM node:25.9.0-slim AS development

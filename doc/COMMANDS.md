@@ -91,9 +91,21 @@ The project defines scripts in [`package.json`](../package.json). These are
 especially useful when you are already inside the container via `make bash`, or
 when working in a Dev Container terminal.
 
+This repository is pinned to Yarn 4. The project-managed release file is stored
+under `.yarn/releases/`, so running `yarn` in the project root automatically
+uses the pinned version.
+
+Recommended verification after container startup:
+
+```bash
+yarn --version
+yarn install --immutable
+```
+
 Commonly used scripts:
 
 ```bash
+yarn install --immutable    # Install dependencies exactly as declared in yarn.lock
 yarn start                # Start Angular development server with local SSL certificates
 yarn start-prod           # Start Angular using the local production configuration
 yarn build                # Create a development build
@@ -108,6 +120,7 @@ yarn check-translations   # Validate translation files
 yarn i18n:extract         # Run Transloco key extraction
 yarn i18n:find            # Find translation key usage
 yarn e2e                  # Run end-to-end tests
+yarn up -i                # Interactively update dependency versions (Yarn 4)
 ```
 
 ## Examples

@@ -6,7 +6,7 @@ FROM node:25.9.0-bullseye AS dependencies
 WORKDIR /app
 
 COPY package.json yarn.lock .yarnrc.yml version.js ./
-COPY .yarn/releases ./.yarn/releases
+COPY .yarn ./.yarn
 
 RUN yarn install --immutable
 

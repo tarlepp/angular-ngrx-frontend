@@ -10,7 +10,11 @@ set -e
 #
 
 # Step 1
-yarn install
+if [ "${YARN_IMMUTABLE:-0}" = "1" ]; then
+  yarn install --immutable
+else
+  yarn install
+fi
 
 # Execute
 exec "$@"

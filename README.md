@@ -100,6 +100,13 @@ If you want to use Make commands instead, run the following command:
 make start
 ```
 
+If you want to enforce lockfile-consistent dependency installation during
+container startup, use:
+
+```bash
+make start-immutable
+```
+
 This command will create one (1) Docker container where your application is
 running on development stage.
 
@@ -160,6 +167,12 @@ configuration, use:
 
 ```bash
 make start-production
+```
+
+For development startup with immutable dependency installation, use:
+
+```bash
+make start-immutable
 ```
 
 If you use Dev Containers, use your IDE's Dev Container rebuild action (for

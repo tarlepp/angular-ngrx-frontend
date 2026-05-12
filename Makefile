@@ -63,6 +63,13 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose up
 endif
 
+start-immutable: ## Start application in development mode with immutable Yarn install
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) YARN_IMMUTABLE=1 docker compose up
+endif
+
 start-production: ## Start application locally in production mode
 ifeq ($(INSIDE_DOCKER), 1)
 	@make start-yarn-prod

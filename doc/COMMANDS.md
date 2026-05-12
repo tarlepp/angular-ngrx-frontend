@@ -43,6 +43,7 @@ Run `make` without arguments to see the current help output.
 
 ```bash
 make start               # Start application in development mode
+make start-immutable     # Start development mode with `yarn install --immutable` in container entrypoint
 make start-build         # Start application in development mode and rebuild container
 make start-production    # Start application with the local production Angular configuration
 make stop                # Stop application containers
@@ -161,6 +162,12 @@ Rebuild and restart the development container:
 
 ```bash
 make start-build
+```
+
+Start development mode with immutable dependency install:
+
+```bash
+make start-immutable
 ```
 
 ---

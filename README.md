@@ -100,15 +100,16 @@ If you want to use Make commands instead, run the following command:
 make start
 ```
 
+This will create one (1) Docker container where your application is running on
+development stage.
+
 If you want to enforce lockfile-consistent dependency installation during
-container startup, use:
+container startup (runs `yarn install --immutable` in the entrypoint instead of
+`yarn install`), use:
 
 ```bash
 make start-immutable
 ```
-
-This command will create one (1) Docker container where your application is
-running on development stage.
 
 For next steps (application URL, shell access, rebuilding containers, and a
 quick health check), see [Running the application](#running-the-application).
@@ -167,12 +168,6 @@ configuration, use:
 
 ```bash
 make start-production
-```
-
-For development startup with immutable dependency installation, use:
-
-```bash
-make start-immutable
 ```
 
 If you use Dev Containers, use your IDE's Dev Container rebuild action (for

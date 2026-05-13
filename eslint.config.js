@@ -6,7 +6,6 @@ const { defineConfig } = require('eslint/config');
 const angular = require("angular-eslint");
 const ngrx = require("@ngrx/eslint-plugin/v9");
 const stylistic = require('@stylistic/eslint-plugin');
-
 module.exports = defineConfig(
   {
     files: ["**/*.ts"],
@@ -30,14 +29,6 @@ module.exports = defineConfig(
     },
     processor: angular.processInlineTemplates,
     rules: {
-      "@angular-eslint/directive-selector": [
-        "error",
-        {
-          type: "attribute",
-          prefix: "app",
-          style: "camelCase",
-        },
-      ],
       "@angular-eslint/component-selector": [
         "error",
         {
@@ -46,42 +37,90 @@ module.exports = defineConfig(
           style: "kebab-case",
         },
       ],
-      "@ngrx/prefer-effect-callback-in-block-statement": "off",
+      "@angular-eslint/directive-selector": [
+        "error",
+        {
+          type: "attribute",
+          prefix: "app",
+          style: "camelCase",
+        },
+      ],
       "@ngrx/no-multiple-actions-in-effects": "off",
       "@ngrx/no-store-subscription": "off",
+      "@ngrx/prefer-effect-callback-in-block-statement": "off",
+      "@stylistic/brace-style": [
+        "error",
+        "1tbs"
+      ],
+      "@stylistic/comma-dangle": [
+        "error",
+        "always-multiline",
+      ],
+      "@stylistic/indent": [
+        "error",
+        2,
+        {
+          ignoredNodes: ["ObjectExpression"]
+        }
+      ],
+      "@stylistic/member-delimiter-style": [
+        "error",
+        {
+          "multiline": {
+            "delimiter": "comma",
+            "requireLast": true
+          },
+          "singleline": {
+            "delimiter": "comma",
+            "requireLast": false
+          },
+          "overrides": {
+            "interface": {
+              "multiline": {
+                "delimiter": "semi",
+                "requireLast": true
+              }
+            }
+          }
+        }
+      ],
+      "@stylistic/no-multi-spaces": [
+        "error",
+        {
+          "exceptions": {
+            "TSEnumMember": true
+          }
+        }
+      ],
+      "@stylistic/operator-linebreak": [
+        "error",
+        "before",
+        {
+          "overrides": {
+            "=": "after"
+          }
+        }
+      ],
+      "@stylistic/semi": ["error", "always"],
+      "@stylistic/space-infix-ops": [
+        "error",
+        {
+          "ignoreTypes": true,
+        }
+      ],
       "@typescript-eslint/array-type": [
         "error",
         {
           default: "generic",
         }
       ],
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-inferrable-types": [
-        "off",
-        {
-          "ignoreParameters": true
-        }
-      ],
       "@typescript-eslint/await-thenable": "error",
-      "@typescript-eslint/no-floating-promises": "off",
-      "@typescript-eslint/no-misused-promises": "off",
-      "@typescript-eslint/no-unsafe-argument": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-unsafe-return": "off",
-      "@typescript-eslint/unbound-method": "off",
-      "@typescript-eslint/no-redundant-type-constituents": "off",
-      "@typescript-eslint/no-this-alias": "error",
-      "@typescript-eslint/no-unused-vars": [
+      "@typescript-eslint/consistent-type-imports": [
         "error",
         {
-          "vars": "all",
-          "varsIgnorePattern": "(.)Effect\\$$"
+          "prefer": "no-type-imports"
         }
       ],
-      "@typescript-eslint/no-useless-constructor": "error",
-      "@typescript-eslint/restrict-plus-operands": "error",
       "@typescript-eslint/naming-convention": [
         "error",
         {
@@ -121,62 +160,33 @@ module.exports = defineConfig(
           ]
         }
       ],
-      "@stylistic/semi": ["error", "always"],
-      "@stylistic/member-delimiter-style": [
-        "error",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-inferrable-types": [
+        "off",
         {
-          "multiline": {
-            "delimiter": "comma",
-            "requireLast": true
-          },
-          "singleline": {
-            "delimiter": "comma",
-            "requireLast": false
-          },
-          "overrides": {
-            "interface": {
-              "multiline": {
-                "delimiter": "semi",
-                "requireLast": true
-              }
-            }
-          }
+          "ignoreParameters": true
         }
       ],
-      "@stylistic/space-infix-ops": [
+      "@typescript-eslint/no-misused-promises": "off",
+      "@typescript-eslint/no-redundant-type-constituents": "off",
+      "@typescript-eslint/no-this-alias": "error",
+      "@typescript-eslint/no-unused-vars": [
         "error",
         {
-          "ignoreTypes": true,
+          "vars": "all",
+          "varsIgnorePattern": "(.)Effect\\$$"
         }
       ],
-      "@stylistic/no-multi-spaces": [
-        "error",
-        {
-          "exceptions": {
-            "TSEnumMember": true
-          }
-        }
-      ],
-      "@stylistic/indent": [
-        "error",
-        2,
-        {
-          ignoredNodes: ["ObjectExpression"]
-        }
-      ],
-      "@stylistic/brace-style": [
-        "error",
-        "1tbs"
-      ],
-      "@stylistic/operator-linebreak": [
-        "error",
-        "before",
-        {
-          "overrides": {
-            "=": "after"
-          }
-        }
-      ],
+      "@typescript-eslint/no-useless-constructor": "error",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/restrict-plus-operands": "error",
+      "@typescript-eslint/unbound-method": "off",
+      "import/no-dynamic-require": "error",
       "import/no-extraneous-dependencies": [
         "error",
         {
@@ -212,7 +222,6 @@ module.exports = defineConfig(
           ]
         }
       ],
-      "import/no-dynamic-require": "error",
       "no-invalid-this": "off",
       "no-new-func": "error",
       "no-param-reassign": "error",

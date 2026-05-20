@@ -94,14 +94,17 @@ For Dev Containers, open this repository in your IDE and use its Dev Container
 workflow to reopen/start the project in a container (see
 [Dev Containers](#dev-containers) section for details).
 
-If you want to use Make commands instead, run the following command:
+If you want to use Make commands instead, choose one of the following:
 
 ```bash
-make start
+make start            # Standard start – runs `yarn install` on each startup
+make start-immutable  # Strict start – runs `yarn install --immutable` on each startup
 ```
 
-This command will create one (1) Docker container where your application is
-running on development stage.
+Both commands create one (1) Docker container where your application is running
+on development stage. Use `make start-immutable` when you want to enforce
+lockfile-consistent dependency installation (the container entrypoint runs
+`yarn install --immutable` instead of `yarn install`).
 
 For next steps (application URL, shell access, rebuilding containers, and a
 quick health check), see [Running the application](#running-the-application).

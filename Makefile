@@ -67,7 +67,7 @@ start-immutable: ## Start application in development mode with immutable Yarn in
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)
 else
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) YARN_IMMUTABLE=1 docker compose up
+     @HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) APP_YARN_IMMUTABLE=1 docker compose up
 endif
 
 start-production: ## Start application locally in production mode

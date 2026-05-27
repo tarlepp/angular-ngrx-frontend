@@ -1,24 +1,28 @@
 ARG TARGET=production
 
 # Stage 1: Dependencies
-FROM node:25.9.0-bullseye AS dependencies
+FROM node:26.2.0-bullseye AS dependencies
 
 WORKDIR /app
 
 COPY package.json yarn.lock .yarnrc.yml version.js ./
 COPY .yarn ./.yarn
 
-RUN yarn install --immutable
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
+RUN npm install -g corepack \
+    && corepack enable \
+    && corepack prepare "$(node -p "require('./package.json').packageManager")" --activate
 
 # Stage 2: Development
-FROM node:25.9.0-slim AS development
+FROM node:26.2.0-slim AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
 
 # Update package list and install necessary libraries
 RUN apt-get update \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         bash \
         bash-completion \
         curl \
@@ -26,6 +30,7 @@ RUN apt-get update \
         git \
         jq \
         locales \
+        make \
         nano \
         python3-dev \
         python3-pip \
@@ -41,18 +46,24 @@ RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en
 ENV LC_ALL=en_US.UTF-8
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
+RUN npm install -g corepack \
+    && corepack enable
 
 WORKDIR /app
 
 # Copy source code to container
 COPY . .
 
+RUN corepack prepare "$(node -p "require('./package.json').packageManager")" --activate
+
 # Add necessary stuff to bash autocomplete
 RUN echo 'source /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc \
     && curl https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash >> /etc/bash.bashrc \
     && printf '\nNG_COMMANDS="add build config doc e2e generate help lint new run serve test update version xi18n"\ncomplete -W "$NG_COMMANDS" ng\n' >> /etc/bash.bashrc
 
-# Link `ng` command, set entrypoint with `x` mark and install `ncu` and `mversion` tools
+# Link `ng` command and set entrypoint with executable permissions
 RUN ln -s /app/node_modules/.bin/ng /usr/local/bin/ng \
     && chmod +x docker-entrypoint-dev.sh
 
@@ -82,7 +93,7 @@ RUN chmod 777 -R /home/node /tmp \
 
 USER node
 
-# Add necessary stuff to bash autocomplete
+# User environment
 ENV PATH="$PATH:/home/node/.local/bin"
 ENV XDG_RUNTIME_PATH=/home/node/.tmp
 

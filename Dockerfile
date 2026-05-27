@@ -12,7 +12,8 @@ ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 
 RUN npm install -g corepack \
     && corepack enable \
-    && corepack prepare "$(node -p "require('./package.json').packageManager")" --activate
+    && corepack prepare "$(node -p "require('./package.json').packageManager")" --activate \
+    && yarn install --immutable
 
 # Stage 2: Development
 FROM node:26.2.0-slim AS development

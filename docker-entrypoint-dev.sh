@@ -9,13 +9,13 @@ set -e
 #      `sh -c 'make start-yarn'`
 #
 # Environment variables:
-#   YARN_IMMUTABLE=1  Run `yarn install --immutable` to enforce strict lockfile
+#   APP_YARN_IMMUTABLE=1  Run `yarn install --immutable` to enforce strict lockfile
 #                     consistency (default: 0, runs `yarn install`).
 #                     Set automatically by `make start-immutable`.
 #
 
 # Step 1
-if [ "${YARN_IMMUTABLE:-0}" = "1" ]; then
+if [ "${APP_YARN_IMMUTABLE:-0}" = "1" ]; then
   yarn install --immutable
 else
   yarn install

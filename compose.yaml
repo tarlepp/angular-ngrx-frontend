@@ -8,7 +8,7 @@ services:
       target: development
     command: sh -c 'if [ -z ${PROD_MODE:-} ]; then make start-yarn; else make start-yarn-prod; fi'
     environment:
-      YARN_IMMUTABLE: ${YARN_IMMUTABLE:-0}
+      APP_YARN_IMMUTABLE: ${APP_YARN_IMMUTABLE:-0}
     user: ${HOST_UID:-1000}:${HOST_GID:-1000}
     ports:
       - "4200:4200"

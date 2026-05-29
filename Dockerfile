@@ -82,6 +82,35 @@ USER node
 
 RUN pip3 install thefuck --user --no-warn-script-location --break-system-packages
 
+# thefuck 3.32 still imports deprecated `imp`; patch it for Python 3.13.
+RUN python3 - <<'PY'
+from pathlib import Path
+import site
+
+base = Path(site.getusersitepackages()) / 'thefuck'
+compat = """from importlib.util import module_from_spec, spec_from_file_location
+
+def load_source(name, path):
+    spec = spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f\"Cannot load module {name!r} from {path!r}\")
+    module = module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+"""
+
+for filename in ('conf.py', 'types.py'):
+    path = base / filename
+    if not path.exists():
+        raise FileNotFoundError(path)
+    text = path.read_text()
+    if 'from imp import load_source\n' not in text:
+        raise RuntimeError(f'Missing expected import in {path}')
+    text = text.replace('from imp import load_source\n', compat, 1)
+    path.write_text(text)
+PY
+
 RUN fish -c 'curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher' \
     && fish -c 'fisher install jorgebucaran/nvm.fish'
 
@@ -98,7 +127,7 @@ USER node
 ENV PATH="$PATH:/home/node/.local/bin"
 ENV XDG_RUNTIME_PATH=/home/node/.tmp
 
-RUN echo 'eval "$(thefuck --alias)"' >> /home/node/.bashrc
+RUN echo 'if command -v thefuck >/dev/null 2>&1; then eval "$(thefuck --alias 2>/dev/null)" || true; fi' >> /home/node/.bashrc
 
 # Expose port 4200 outside
 EXPOSE 4200

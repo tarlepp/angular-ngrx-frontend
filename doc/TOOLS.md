@@ -10,6 +10,7 @@ container.
   * [Table of Contents](#table-of-contents)
   * [npm-check-updates](#npm-check-updates-table-of-contents)
   * [mversion](#mversion-table-of-contents)
+  * [thefuck](#thefuck-table-of-contents)
 
 ## npm-check-updates [ᐞ](#table-of-contents)
 
@@ -30,6 +31,30 @@ or just not a `package.json` file. mversion can easily bump your version and
 optionally commit and create a tag.
 
 * [Website](https://github.com/mikaelbr/mversion)
+
+## thefuck [ᐞ](#table-of-contents)
+
+`thefuck` is installed in the development container to provide command
+correction aliases for bash and fish.
+
+### Python 3.13 compatibility note
+
+At the moment, `thefuck` `3.32` still imports deprecated Python `imp` from
+`thefuck/conf.py` and `thefuck/types.py`. Python `3.13` removed `imp`, which
+causes startup tracebacks when shells load `thefuck --alias`.
+
+To keep development shells working, the Docker build applies a small
+compatibility patch in `Dockerfile` that replaces `imp.load_source` usage with
+an `importlib`-based `load_source` implementation.
+
+This patch should be removed when upstream `thefuck` no longer imports `imp`.
+Before removal, verify inside container:
+
+```bash
+thefuck --alias >/dev/null
+```
+
+* [Website](https://github.com/nvbn/thefuck)
 
 ---
 

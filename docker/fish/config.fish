@@ -2,10 +2,15 @@ if type -q thefuck
 	thefuck --alias 2>/dev/null | source
 end
 
-# In this container `/usr/bin/open` cannot open remote fish docs; force text help.
+# In this container `/usr/bin/open` cannot open remote fish docs.
+# Use interactive lynx in a TTY, and non-interactive dump mode otherwise.
 if not set -q fish_help_browser
 	if type -q lynx
-		set -gx fish_help_browser lynx
+		if test -t 1
+			set -gx fish_help_browser lynx
+		else
+			set -gx fish_help_browser lynx -dump
+		end
 	end
 end
 
@@ -13,8 +18,8 @@ end
 abbr -a mlint make lint
 abbr -a mfix make fix
 
-# Welcome greeting for interactive shells
-if status is-interactive
+# Welcome greeting for interactive TTY shells only
+if status is-interactive; and test -t 1
 	echo "🎣 Welcome to Angular NgRx Frontend development"
 	echo ""
 	echo "Quick commands:"

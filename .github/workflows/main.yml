@@ -23,7 +23,8 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Make checkout
+      - &checkout_step
+        name: Make checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup Node + Corepack + Yarn deps
@@ -37,8 +38,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Make checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - *checkout_step
 
       - name: Setup Node + Corepack + Yarn deps
         uses: ./.github/actions/setup-yarn
@@ -51,8 +51,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Make checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - *checkout_step
 
       - name: Lint all markdown documentation files
         uses: DavidAnson/markdownlint-cli2-action@6b51ade7a9e4a75a7ad929842dd298a3804ebe8b # v23.1.0
@@ -66,8 +65,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Make checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - *checkout_step
 
       - name: Setup Node + Corepack + Yarn deps
         uses: ./.github/actions/setup-yarn
@@ -80,8 +78,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Make checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - *checkout_step
 
       - name: Setup Node + Corepack + Yarn deps
         uses: ./.github/actions/setup-yarn
@@ -100,8 +97,7 @@ jobs:
       - check-untranslated-text-tags
 
     steps:
-      - name: Make checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - *checkout_step
 
       - name: Set tag var
         id: vars

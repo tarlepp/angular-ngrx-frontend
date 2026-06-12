@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -9,14 +9,10 @@ import { layoutSelectors } from 'src/app/store';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: [
-    './landing.component.scss',
-  ],
-  imports: [
-    AsyncPipe,
-  ],
+  styleUrls: ['./landing.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [AsyncPipe],
 })
-
 export class LandingComponent {
   public readonly viewport$: Observable<Viewport>;
   public readonly device$: Observable<Device>;

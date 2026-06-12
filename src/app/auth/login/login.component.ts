@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -21,6 +21,7 @@ import { authenticationActions, authenticationSelectors } from 'src/app/store';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FlexFillDirective,
     FlexOffsetDirective,

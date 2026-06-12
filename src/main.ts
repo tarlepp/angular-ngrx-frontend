@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { enableProdMode, isDevMode, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -35,13 +35,11 @@ if (environment.production) {
 }
 
 // Load application configuration before bootstrapping application main module
-ConfigurationService
-  .init()
+ConfigurationService.init()
   .then((): void => {
-    setTimeout((): void => {
-      bootstrapApplication(
-        AppComponent,
-        {
+    setTimeout(
+      (): void => {
+        bootstrapApplication(AppComponent, {
           providers: [
             provideZoneChangeDetection(),
             importProvidersFrom(
@@ -63,17 +61,13 @@ ConfigurationService
                 maxAge: 25,
                 logOnly: environment.production,
               }),
-              EffectsModule.forRoot([
-                ...effects,
-              ]),
+              EffectsModule.forRoot([...effects]),
               TranslocoModule,
               JwtModule.forRoot({
                 jwtOptionsProvider: {
                   provide: JWT_OPTIONS,
                   useFactory: jwtOptionsFactory,
-                  deps: [
-                    LocalStorageService,
-                  ],
+                  deps: [LocalStorageService],
                 },
               }),
             ),
@@ -82,9 +76,7 @@ ConfigurationService
               withPreloading(PreloadAllModules),
               withDebugTracing(),
             ),
-            provideHttpClient(
-              withInterceptorsFromDi(),
-            ),
+            provideHttpClient(withXhr(), withInterceptorsFromDi()),
             provideNgxWebstorage(
               withNgxWebstorageConfig({
                 separator: ':',
@@ -107,10 +99,9 @@ ConfigurationService
             provideAnimationsAsync(),
             httpInterceptors,
           ],
-        },
-      ).catch((error: string): void => console.error(error));
-    },
-    environment.production ? 2500 : 0, // In production mode we want to show that animation
+        }).catch((error: string): void => console.error(error));
+      },
+      environment.production ? 2500 : 0, // In production mode we want to show that animation
     );
   })
   .catch((error: string): void => console.error(error));

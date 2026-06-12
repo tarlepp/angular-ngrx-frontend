@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MatAnchor, MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
@@ -23,6 +23,7 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
     FlexOffsetDirective,
@@ -41,7 +42,6 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
     TranslocoPipe,
   ],
 })
-
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('userMenu') private readonly userMenu!: MatMenuTrigger;
 
@@ -118,10 +118,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * Method to dispatch change theme action to layout feature store.
    */
   public changeTheme(): void {
-    this.store.select(layoutSelectors.selectTheme)
+    this.store
+      .select(layoutSelectors.selectTheme)
       .pipe(take(1))
-      .subscribe(
-        (theme: Theme): void => this.store.dispatch(layoutActions.changeTheme({ theme: theme === Theme.DARK ? Theme.LIGHT : Theme.DARK })),
+      .subscribe((theme: Theme): void =>
+        this.store.dispatch(
+          layoutActions.changeTheme({
+            theme: theme === Theme.DARK ? Theme.LIGHT : Theme.DARK,
+          }),
+        ),
       );
   }
 }

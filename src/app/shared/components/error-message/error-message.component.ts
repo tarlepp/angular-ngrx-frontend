@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatList, MatListItem } from '@angular/material/list';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
   selector: 'app-error-message',
   templateUrl: './error-message.component.html',
   styleUrls: ['./error-message.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FlexDirective,
     LayoutAlignDirective,
@@ -31,14 +32,18 @@ import { environment } from 'src/environments/environment';
     TranslocoPipe,
   ],
 })
-
 export class ErrorMessageComponent implements OnInit {
   public errors: Array<ErrorMessageInterface> = [];
   public readonly production: boolean = environment.production;
 
-  private readonly serverMessages: Array<ErrorMessageServerInterface> = inject<Array<ErrorMessageServerInterface>>(MAT_SNACK_BAR_DATA);
-  private readonly snackBarRef: MatSnackBarRef<ErrorMessageComponent> = inject<MatSnackBarRef<ErrorMessageComponent>>(MatSnackBarRef);
-  private readonly translateService: TranslocoService = inject(TranslocoService);
+  private readonly serverMessages: Array<ErrorMessageServerInterface> =
+    inject<Array<ErrorMessageServerInterface>>(MAT_SNACK_BAR_DATA);
+
+  private readonly snackBarRef: MatSnackBarRef<ErrorMessageComponent> =
+    inject<MatSnackBarRef<ErrorMessageComponent>>(MatSnackBarRef);
+
+  private readonly translateService: TranslocoService =
+    inject(TranslocoService);
 
   public constructor() {
     ErrorMessageComponent.markTexts();
@@ -66,12 +71,25 @@ export class ErrorMessageComponent implements OnInit {
    * remember to add those translations tags to `markTexts` method!
    */
   private static getClientMessage(message: ErrorMessageServerInterface): ErrorMessageClientInterface {
-    const target = message.target.split('.').map((bit: string): string => bit.charAt(0).toLowerCase() + bit.slice(1)).join('.');
+    const target = message.target
+      .split('.')
+      .map((bit: string): string => bit.charAt(0).toLowerCase() + bit.slice(1))
+      .join('.');
 
     return {
       ...message,
-      messageText: ['server-error', message.code, target, message.propertyPath].join('.'),
-      messageProperty: ['server-error', 'property', target, message.propertyPath].join('.'),
+      messageText: [
+        'server-error',
+        message.code,
+        target,
+        message.propertyPath,
+      ].join('.'),
+      messageProperty: [
+        'server-error',
+        'property',
+        target,
+        message.propertyPath,
+      ].join('.'),
     };
   }
 
@@ -115,15 +133,17 @@ export class ErrorMessageComponent implements OnInit {
 
   /**
    * Method to process error message translations and trigger `console.warn`
-   * if/when some "expected" translation is not found frontend application. Just
+   * if/when some 'expected' translation is not found frontend application. Just
    * note that this is not an error - we just want to notice that you _might_
    * be missing some translation.
    *
    * Also note that this `console.warn` message is only shown non-production
    * environment.
    */
-  private processTranslations(texts: DictionaryInterface<string>): (message: ErrorMessageClientInterface) => ErrorMessageClientInterface {
-    return (message: ErrorMessageClientInterface|any): ErrorMessageClientInterface => {
+  private processTranslations(
+    texts: DictionaryInterface<string>,
+  ): (message: ErrorMessageClientInterface) => ErrorMessageClientInterface {
+    return (message: ErrorMessageClientInterface | any): ErrorMessageClientInterface => {
       const properties = ['messageProperty', 'messageText'];
 
       properties.map((property: string): void => {
@@ -134,7 +154,9 @@ export class ErrorMessageComponent implements OnInit {
         // If translated text is the same as the property definition (text tag) itself - we don't have translation
         if (texts[message[property]] === message[property]) {
           if (!environment.production) {
-            console.warn(`Missing translation! '${message[property]}' - This is only shown in non 'production' environments.`);
+            console.warn(
+              `Missing translation! '${message[property]}' - This is only shown in non 'production' environments.`,
+            );
           }
 
           message[propertyClient] = null;

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { marker } from '@jsverse/transloco-keys-manager/marker';
 import { MediaChange, MediaObserver } from '@ngbracket/ngx-layout';
@@ -19,6 +19,7 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     HeaderComponent,
     FlexDirective,
@@ -29,7 +30,6 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
     FooterComponent,
   ],
 })
-
 export class AppComponent implements OnInit, OnDestroy {
   private loggedIn: boolean = false;
   private tokenInterval: number = 0;
@@ -67,11 +67,15 @@ export class AppComponent implements OnInit, OnDestroy {
      * We need to reset current token interval and start new one when user
      * logged in to application.
      */
-    this.subscription.add(this.localStorage
-      .observe('token')
-      .pipe(filter((value: string|undefined): boolean => value !== undefined))
-      .subscribe((): void => this.setTokenInterval()),
-    );
+    this.subscription
+      .add(
+        this.localStorage
+          .observe('token')
+          .pipe(
+            filter((value: string | undefined): boolean => value !== undefined),
+          )
+          .subscribe((): void => this.setTokenInterval()),
+      );
 
     /**
      * We need to track user logged in state, within this we have two (2)
@@ -83,28 +87,33 @@ export class AppComponent implements OnInit, OnDestroy {
      *     component says that user is not logged in. Within this case we
      *     need to dispatch `loginSuccess` action.
      */
-    this.subscription.add(this.authenticationService
-      .getLoggedInUserData()
-      .subscribe((userData: UserDataInterface|null): void => {
-        if (userData === null && this.loggedIn) {
-          this.logout(null);
-        } else if (userData !== null && !this.loggedIn) {
-          this.authenticationService
-            .isAuthenticated()
-            .pipe(take(1))
-            .subscribe((loggedIn: boolean): void => loggedIn
-              ? this.store.dispatch(authenticationActions.loginSuccess({ userData }))
-              : this.logout(marker('messages.authentication.timeout')),
-            );
-        }
-      }),
-    );
+    this.subscription
+      .add(
+        this.authenticationService
+          .getLoggedInUserData()
+          .subscribe((userData: UserDataInterface | null): void => {
+            if (userData === null && this.loggedIn) {
+              this.logout(null);
+            } else if (userData !== null && !this.loggedIn) {
+              this.authenticationService
+                .isAuthenticated()
+                .pipe(take(1))
+                .subscribe((loggedIn: boolean): void =>
+                  loggedIn
+                    ? this.store.dispatch(authenticationActions.loginSuccess({ userData }))
+                    : this.logout(marker('messages.authentication.timeout')),
+                );
+            }
+          }),
+      );
 
     // Is used logged in to application or not.
-    this.subscription.add(this.store
-      .select(authenticationSelectors.selectIsLoggedIn)
-      .subscribe((loggedIn: boolean): boolean => this.loggedIn = loggedIn),
-    );
+    this.subscription
+      .add(
+        this.store
+          .select(authenticationSelectors.selectIsLoggedIn)
+          .subscribe((loggedIn: boolean): boolean => (this.loggedIn = loggedIn)),
+      );
   }
 
   /**
@@ -113,14 +122,20 @@ export class AppComponent implements OnInit, OnDestroy {
    */
   private initLayout(): void {
     // Ensure that we're using correct theme on application init
-    this.store.select(layoutSelectors.selectTheme).pipe(take(1)).subscribe(
-      (theme: Theme): void => this.store.dispatch(layoutActions.changeTheme({ theme })),
-    );
+    this.store
+      .select(layoutSelectors.selectTheme)
+      .pipe(take(1))
+      .subscribe((theme: Theme): void =>
+        this.store.dispatch(layoutActions.changeTheme({ theme })),
+      );
 
     // Ensure that we're using correct localization settings on application init
-    this.store.select(layoutSelectors.selectLocalization).pipe(take(1)).subscribe(
-      (localization: LocalizationInterface): void => this.store.dispatch(layoutActions.updateLocalization({ localization })),
-    );
+    this.store
+      .select(layoutSelectors.selectLocalization)
+      .pipe(take(1))
+      .subscribe((localization: LocalizationInterface): void =>
+        this.store.dispatch(layoutActions.updateLocalization({ localization })),
+      );
 
     /**
      * If/when user changes browser size we need to update layout store state
@@ -131,22 +146,26 @@ export class AppComponent implements OnInit, OnDestroy {
      *  - isDesktop
      */
     this.subscription
-      .add(this.mediaObserver
-        .asObservable()
-        .pipe(
-          filter((changes: Array<MediaChange>): boolean => changes.length > 0),
-          map((changes: Array<MediaChange>): MediaChange => changes[0]),
-          distinctUntilChanged((prev: MediaChange, curr: MediaChange): boolean => prev.mqAlias === curr.mqAlias),
-        )
-        .subscribe((mediaChange: MediaChange): void =>
-          this.store.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
-        ),
+      .add(
+        this.mediaObserver
+          .asObservable()
+          .pipe(
+            filter((changes: Array<MediaChange>): boolean => changes.length > 0),
+            map((changes: Array<MediaChange>): MediaChange => changes[0]),
+            distinctUntilChanged((prev: MediaChange, curr: MediaChange): boolean => prev.mqAlias === curr.mqAlias),
+          )
+          .subscribe((mediaChange: MediaChange): void =>
+            this.store.dispatch(layoutActions.changeViewport({ viewport: mediaChange.mqAlias as Viewport })),
+          ),
       );
 
     // Ensure that we're using correct theme on application init
-    this.store.select(layoutSelectors.selectTheme).pipe(take(1)).subscribe(
-      (theme: Theme): void => this.store.dispatch(layoutActions.changeTheme({ theme })),
-    );
+    this.store
+      .select(layoutSelectors.selectTheme)
+      .pipe(take(1))
+      .subscribe((theme: Theme): void =>
+        this.store.dispatch(layoutActions.changeTheme({ theme })),
+      );
   }
 
   /**

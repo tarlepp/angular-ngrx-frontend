@@ -1,5 +1,15 @@
 import { AsyncPipe } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostBinding, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostBinding,
+  inject,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatAnchor } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -15,6 +25,7 @@ import { versionActions, versionSelectors } from 'src/app/store';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatToolbar,
     LayoutAlignDirective,

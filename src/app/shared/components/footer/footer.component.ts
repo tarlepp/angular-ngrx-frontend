@@ -1,14 +1,15 @@
 import { AsyncPipe } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
+  ChangeDetectionStrategy,
   ElementRef,
   HostBinding,
   inject,
   OnDestroy,
   OnInit,
   ViewChild,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 import { MatAnchor } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
@@ -47,6 +48,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
   public readonly versionFrontend$: Observable<string>;
   public readonly versionBackend$: Observable<string>;
 
+  private readonly changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   private readonly store: Store = inject(Store);
   private readonly subscriptions: Subscription = new Subscription();
 
@@ -85,6 +87,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
 
       this.topOffset = `${height}px`;
       this.topMargin = `-${height}px`;
+      this.changeDetectorRef.markForCheck();
     }, 0);
   }
 

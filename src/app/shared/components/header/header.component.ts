@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatAnchor, MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public currentLanguage: Language = Language.DEFAULT;
   public readonly loading$: Observable<boolean>;
 
+  private readonly changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   private readonly store: Store = inject(Store);
   private readonly subscriptions: Subscription = new Subscription();
 
@@ -78,14 +79,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscriptions
       .add(this.store
         .select(authenticationSelectors.selectProfile)
-        .subscribe((profile: UserProfileInterface|null): UserProfileInterface|null => this.profile = profile),
+        .subscribe((profile: UserProfileInterface|null): UserProfileInterface|null => {
+          this.profile = profile;
+          this.changeDetectorRef.markForCheck();
+
+          return this.profile;
+        }),
       );
 
     // Subscribe to language changes
     this.subscriptions
       .add(this.store
         .select(layoutSelectors.selectLanguage)
-        .subscribe((language: Language): Language => this.currentLanguage = language),
+        .subscribe((language: Language): Language => {
+          this.currentLanguage = language;
+          this.changeDetectorRef.markForCheck();
+
+          return this.currentLanguage;
+        }),
       );
   }
 

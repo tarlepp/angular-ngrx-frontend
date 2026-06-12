@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatList, MatListItem } from '@angular/material/list';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
@@ -44,6 +44,9 @@ export class ErrorMessageComponent implements OnInit {
 
   private readonly translateService: TranslocoService =
     inject(TranslocoService);
+
+  private readonly changeDetectorRef: ChangeDetectorRef =
+    inject(ChangeDetectorRef);
 
   public constructor() {
     ErrorMessageComponent.markTexts();
@@ -121,6 +124,8 @@ export class ErrorMessageComponent implements OnInit {
             debug: error.target.split('.').join('\\') + '::$' + error.propertyPath,
           }),
         );
+
+        this.changeDetectorRef.markForCheck();
       });
   }
 

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public focus: boolean = true;
 
   private isError: boolean = false;
+  private readonly changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   private readonly formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);
   private readonly store: Store = inject(Store);
   private readonly subscriptions: Subscription = new Subscription();
@@ -73,7 +74,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptions
       .add(this.store
         .select(authenticationSelectors.selectIsLoading)
-        .subscribe((loading: boolean): boolean => this.loading = loading),
+        .subscribe((loading: boolean): boolean => {
+          this.loading = loading;
+          this.changeDetectorRef.markForCheck();
+
+          return this.loading;
+        }),
       );
 
     // Reset login form if error happens
@@ -85,6 +91,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.loginFormElement.resetForm();
           this.focus = true;
           this.isError = true;
+          this.changeDetectorRef.markForCheck();
         }),
       );
   }

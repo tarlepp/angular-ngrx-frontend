@@ -3,268 +3,323 @@
 > **Project**: Angular NgRx Frontend Template
 > **Author**: Tarmo Leppänen
 > **License**: MIT
-> **Last Updated**: December 2025
+> **Last Updated**: June 2026
 
 ## Overview
 
-This is a production-ready Angular 21 frontend template powered by NgRx state management.
-It's designed as a standalone SPA (Single Page Application) that works with RESTful
-backends, particularly the [Symfony Flex Backend](https://github.com/tarlepp/symfony-flex-backend).
+This repository is a production-ready Angular frontend template powered by NgRx.
+It is a standalone SPA that consumes REST APIs and is designed to work well with
+[`symfony-flex-backend`](https://github.com/tarlepp/symfony-flex-backend) or any
+compatible backend.
 
-### Key Characteristics
+## AI documentation map
 
-- **Framework**: Angular 21.0.0 with standalone components
-- **State Management**: NgRx 20.1.0 (Store, Effects, Router Store, Entity, Operators)
-- **Language**: TypeScript 5.9.3 with strict mode enabled
-- **Styling**: SCSS with Angular Material 21.0.0
-- **Layout**: @ngbracket/ngx-layout (flexbox-based)
-- **i18n**: @jsverse/transloco (supports English and Finnish)
-- **Authentication**: JWT-based with @auth0/angular-jwt
-- **Development**: Docker-based with hot reload
-- **Testing**: Karma + Jasmine
+Use the repository AI guidance in this order:
 
-## Project Structure
+1. `.github/copilot-instructions.md` - short repository-level operational rules
+2. `CLAUDE.md` - long-form project context, architecture, and workflow notes
+3. `doc/AI_RULES.md` - AI policy maintenance and CI strategy guidance
+4. `.github/pull_request_template.md` - human review checklist for pull requests
 
-```
+If one of these documents drifts from the implementation, prefer the actual
+repository code, scripts, and CI configuration as the source of truth.
+
+## Key characteristics
+
+- **Framework**: Angular 22.0.1 with standalone components
+- **State management**: NgRx 21.1.1
+- **Language**: TypeScript 6.0.3 with strict compiler settings
+- **UI**: Angular Material 22.0.1 with SCSS styling
+- **Layout**: `@ngbracket/ngx-layout` 21.0.0
+- **i18n**: Transloco via `@jsverse/transloco` 8.3.0
+- **Authentication**: JWT-based authentication with `@auth0/angular-jwt`
+- **Testing**: Karma + Jasmine for unit tests, Protractor still present for E2E
+- **Package manager**: Yarn 4.14.1 via Corepack
+- **Container runtime**: Node 26.2.0 in Docker and CI
+
+## Project structure
+
+```text
 angular-ngrx-frontend/
 ├── src/
 │   ├── app/
-│   │   ├── app.component.ts          # Root component
-│   │   ├── app.routes.ts             # Route configuration (standalone)
-│   │   ├── auth/                     # Authentication module
-│   │   │   ├── enums/                # Role enum
-│   │   │   ├── factories/            # JWT options factory
-│   │   │   ├── guards/               # Auth & role guards
-│   │   │   ├── interfaces/           # User data interfaces
-│   │   │   ├── login/                # Login component
-│   │   │   └── services/             # Authentication service
-│   │   ├── landing/                  # Landing page component
-│   │   ├── shared/                   # Shared utilities
-│   │   │   ├── components/           # Reusable components (header, footer, etc.)
-│   │   │   ├── constants/            # App constants
-│   │   │   ├── directives/           # Custom directives
-│   │   │   ├── enums/                # Shared enums (Theme, Viewport)
-│   │   │   ├── interceptors/         # HTTP interceptors
-│   │   │   ├── interfaces/           # Shared interfaces
-│   │   │   ├── pipes/                # Custom pipes
-│   │   │   ├── services/             # Shared services
-│   │   │   └── utils/                # Utility functions
-│   │   └── store/                    # NgRx store
-│   │       ├── app.state.ts          # Root state definition
-│   │       ├── app.reducers.ts       # Root reducers
-│   │       ├── app.effects.ts        # Root effects
-│   │       ├── authentication/       # Auth state slice
-│   │       ├── error/                # Error state slice
-│   │       ├── layout/               # Layout state slice
-│   │       ├── router/               # Router state slice
-│   │       ├── version/              # Version state slice
-│   │       ├── meta-reducers/        # Meta reducers (localStorage sync)
-│   │       └── aware-states/         # State awareness utilities
+│   │   ├── app.component.ts
+│   │   ├── app.routes.ts
+│   │   ├── auth/
+│   │   ├── landing/
+│   │   ├── shared/
+│   │   └── store/
 │   ├── assets/
-│   │   ├── config/                   # Environment configs (dev/prod)
-│   │   ├── i18n/                     # Translation files (en.json, fi.json)
-│   │   └── version.json              # App version info
-│   ├── environments/                 # Environment files
-│   └── styles/                       # Global SCSS files
-├── docker/                           # Docker configuration
-├── doc/                              # Documentation
-├── e2e/                              # E2E tests
-└── scripts/                          # Build/utility scripts
+│   │   ├── config/
+│   │   ├── i18n/
+│   │   └── version.json
+│   ├── environments/
+│   └── styles/
+├── .github/
+│   ├── actions/
+│   └── workflows/
+├── .devcontainer/
+├── docker/
+├── doc/
+├── e2e/
+└── scripts/
 ```
 
-## Technology Stack
+## Technology stack
 
-### Core Dependencies
+### Core dependencies
 
-- **Angular 21.0.0**: Latest Angular with signals and standalone components
-- **NgRx 20.1.0**: Complete state management suite
-  - @ngrx/store: State container
-  - @ngrx/effects: Side effect management
-  - @ngrx/entity: Entity state management
-  - @ngrx/router-store: Router state integration
-  - @ngrx/store-devtools: Redux DevTools integration
-- **RxJS 7.8.2**: Reactive programming
-- **Angular Material 21.0.0**: Material Design UI components
-- **@ngbracket/ngx-layout 20.0.1**: Flexbox layout system
-- **@jsverse/transloco 8.2.0**: i18n library
-- **@auth0/angular-jwt 5.2.0**: JWT authentication
-- **Luxon 3.7.2**: Date/time handling (via luxon-angular)
-- **ngx-webstorage 20.0.0**: Browser storage wrapper
-- **ngrx-store-localstorage 20.0.0**: LocalStorage sync for NgRx
+- Angular 22.0.1
+- Angular Material 22.0.1
+- NgRx 21.1.1
+  - `@ngrx/store`
+  - `@ngrx/effects`
+  - `@ngrx/entity`
+  - `@ngrx/operators`
+  - `@ngrx/router-store`
+  - `@ngrx/store-devtools`
+- RxJS 7.8.2
+- `@jsverse/transloco` 8.3.0
+- `@jsverse/transloco-keys-manager` 8.1.0
+- `@ngbracket/ngx-layout` 21.0.0
+- `@auth0/angular-jwt` 5.2.0
+- Luxon 3.7.2 and `luxon-angular` 6.0.0
+- `ngx-webstorage` 21.0.1
+- `ngrx-store-localstorage` 20.1.0
 
-### Development Dependencies
+### Development tooling
 
-- **TypeScript 5.9.3**
-- **ESLint 9.39.1** with:
-  - @angular-eslint
-  - @ngrx/eslint-plugin
-  - @typescript-eslint
-  - @stylistic/eslint-plugin
-- **Stylelint 16.26.0** with SCSS support
-- **Karma + Jasmine**: Unit testing
-- **Protractor**: E2E testing
+- TypeScript 6.0.3
+- ESLint 10.4.1
+- `@angular-eslint` 22.0.0
+- `@ngrx/eslint-plugin` 21.1.1
+- `@typescript-eslint` 8.61.0
+- Stylelint 17.13.0
+- Angular CLI 22.0.1
+- Karma + Jasmine
+- Protractor 7.0.0
+- Docker + Docker Compose
+- Dev Container support via `.devcontainer/devcontainer.json`
 
-## Architecture Patterns
+## Architecture patterns
 
-### 1. NgRx State Management
+### 1. Angular application structure
 
-The application uses a modular NgRx architecture with feature slices:
+- Use standalone components; do not introduce NgModules.
+- Keep code within the existing feature-based structure under `src/app/`.
+- Prefer existing shared building blocks under `src/app/shared/` before adding
+  new abstractions.
+- Keep presentation components focused on inputs, outputs, and view state.
+- Move business logic into services, facades, or NgRx effects when appropriate.
 
-**Store Structure:**
+### 2. NgRx state management
+
+The root application state currently contains:
+
 ```typescript
-AppState {
-  router: RouterReducerState           // Router state
-  authentication: AuthenticationState  // User auth state
-  error: ErrorState                    // Error handling state
-  layout: LayoutState                  // UI layout state (theme, viewport)
-  version: VersionState                // App version state
+interface AppState {
+  router: RouterReducerState<BaseRouterStoreState>;
+  authentication: AuthenticationState;
+  error: ErrorState;
+  layout: LayoutState;
+  version: VersionState;
 }
 ```
 
-**Key Files:**
-- `src/app/store/app.state.ts` - Root state interface
-- `src/app/store/app.reducers.ts` - Root reducer configuration
-- `src/app/store/app.effects.ts` - Root effects
-- `src/app/store/*/` - Feature state slices
+Key files:
 
-**Best Practices:**
-- Use selectors for all state access
-- Keep effects for side effects (HTTP, routing, storage)
-- Use actions with clear naming: `[Source] Event`
-- Implement meta-reducers for cross-cutting concerns (localStorage sync)
+- `src/app/store/app.state.ts`
+- `src/app/store/app.reducers.ts`
+- `src/app/store/app.effects.ts`
+- `src/app/store/store.states.ts`
+- `src/app/store/store.reducers.ts`
+- `src/app/store/store.selectors.ts`
+- `src/app/store/*/`
 
-### 2. Authentication Flow
+Best practices:
 
-JWT-based authentication with:
-- Token stored in localStorage
-- Auto-refresh mechanism
-- Route guards (AuthenticationGuard, RoleGuard variants)
-- HTTP interceptors for token injection
-- Role-based access control (RBAC)
+- Use selectors for store reads instead of reaching into state shape directly.
+- Keep side effects in effects or services.
+- When shared state changes, review actions, reducers, selectors, and effects
+  together.
+- Prefer extending an existing feature slice before creating a parallel store
+  pattern or second state container.
 
-**Key Components:**
-- `src/app/auth/guards/authentication.guard.ts` - Login check
-- `src/app/auth/guards/role-*.guard.ts` - Role-based guards
-- `src/app/auth/services/authentication.service.ts` - Auth service
-- `src/app/auth/factories/jwt-options.factory.ts` - JWT config
+### 3. Authentication flow
 
-### 3. Routing
+Authentication is JWT-based and includes:
 
-Uses Angular standalone routing with lazy loading:
+- token handling via `@auth0/angular-jwt`
+- route guards under `src/app/auth/guards/`
+- auth routes under `src/app/auth/auth.routes.ts`
+- authentication services under `src/app/auth/services/`
+- NgRx authentication state under `src/app/store/authentication/`
 
-```typescript
-// Route example
-{
-  path: 'auth',
-  loadChildren: () => import('./auth/auth.routes').then(m => m.authRoutes)
-}
-```
+### 4. Routing
 
-### 4. HTTP Interceptors
+The application uses standalone Angular routing and lazy route loading.
+Feature routes live next to their features, for example:
 
-Multiple interceptors handle cross-cutting HTTP concerns:
-- `accept-language.interceptor.ts` - Language header injection
-- `backend-version.interceptor.ts` - Backend version checking
-- `error.interceptor.ts` - Global error handling
-- `http-cache.interceptor.ts` - Response caching
+- `src/app/app.routes.ts`
+- `src/app/auth/auth.routes.ts`
+- `src/app/auth/login/login.routes.ts`
 
-### 5. Internationalization (i18n)
+### 5. HTTP interceptors
 
-Uses Transloco with:
-- Translation files in `src/assets/i18n/`
-- Supported languages: English (en), Finnish (fi)
-- Keys extracted via `transloco-keys-manager`
-- Missing translations marked as `"--- MISSING TRANSLATION ---"`
+Cross-cutting HTTP behavior lives under `src/app/shared/interceptors/`, such as:
 
-**Key Commands:**
+- accept-language handling
+- backend version checks
+- error handling
+- HTTP caching
+
+### 6. Internationalization
+
+The project uses Transloco with translation files in `src/assets/i18n/`.
+Current configured languages in `transloco.config.ts` are:
+
+- `fi`
+- `en`
+
+Rules of thumb:
+
+- new user-facing text should be translated
+- keep `en.json` and `fi.json` in sync
+- use the repository translation commands instead of editing drift manually
+
+### 7. Theming and layout state
+
+The layout store tracks UI-related state such as:
+
+- theme
+- language and locale
+- timezone
+- viewport and device information
+- responsive flags such as desktop, tablet, and mobile
+- anchor scroll target
+
+## Development workflow
+
+### Docker-first workflow
+
+The primary local development workflow uses Docker Compose.
+Common commands from project root:
+
 ```bash
-yarn extract-translations  # Extract translation keys
-yarn check-translations    # Validate translations
-```
-
-### 6. Theming
-
-Material Design theming with:
-- Theme enum: `Theme.LIGHT`, `Theme.DARK`
-- Stored in NgRx layout state
-- Persisted to localStorage
-- Applied via CSS classes
-
-## Development Workflow
-
-### Docker-Based Development
-
-The project uses Docker Compose for consistent development environments:
-
-```bash
-# Start development server (https://localhost:4200)
 make start
-
-# Build and start (rebuild containers)
+make start-immutable
 make start-build
-
-# Get shell access
+make start-production
 make bash
-
-# Stop containers
 make stop
 ```
 
-**Important**: Uses self-signed SSL certificates in `docker/ssl/`. First-time users
-need to trust the certificate.
+Notes:
 
-### Without Docker
+- `make start` starts the development container and Angular dev server
+- `make start-immutable` enforces `yarn install --immutable` on startup
+- `make start-production` uses the local production Angular configuration
+- `make bash` opens a shell inside the `node` container
+
+### Dev Container workflow
+
+The repository also supports Dev Containers through `.devcontainer/`.
+Current configuration includes:
+
+- forwarded port `4200`
+- VS Code tasks for starting dev and local production modes
+- the `node` service as the workspace container
+- mounted host SSH and Git config for developer workflows
+
+### Running without Docker
+
+The repository includes direct Yarn scripts, but the documented workflow is still
+Docker-first or Dev Container-first. If you run locally without Docker, use the
+project root with Corepack-enabled Yarn:
 
 ```bash
 yarn install
-yarn start          # Dev server with SSL
-yarn start-prod     # Local production mode
+
+yarn start
+yarn start-prod
 ```
 
-### Common Tasks
+## Common tasks
 
 ```bash
 # Linting
-yarn lint:ts        # TypeScript
-yarn lint:scss      # SCSS
-make lint           # Both
+yarn lint:ts
+yarn lint:scss
+make lint
 
-# Fixing
-yarn fix:ts         # Auto-fix TypeScript
-yarn fix:scss       # Auto-fix SCSS
-make fix            # Both
+# Auto-fixing
+yarn fix:ts
+yarn fix:scss
+make fix
 
 # Testing
-yarn test           # Unit tests
-yarn e2e            # E2E tests
+yarn test
+yarn e2e
 
 # Building
-yarn build          # Development build
-yarn build-prod     # Production build
+yarn build
+yarn build-prod
 
 # Translations
-yarn i18n:extract   # Extract translation keys
-yarn i18n:find      # Find unused keys
+yarn extract-translations
+yarn check-translations
+yarn i18n:extract
+yarn i18n:find
 ```
+
+## CI and validation
+
+### Current CI workflow
+
+The main GitHub Actions workflow in `.github/workflows/main.yml` currently runs:
+
+- TypeScript linting
+- SCSS linting
+- markdown documentation linting
+- translation extraction drift checks
+- untranslated text tag checks
+- Docker image build
+- Trivy vulnerability scanning on the built image
+
+The reusable Yarn setup action uses Node 26.2.0 and `yarn install --immutable`.
+
+### Preferred validation commands for AI-assisted changes
+
+After changing code, prefer the smallest relevant validation set:
+
+```bash
+yarn lint:ts
+yarn lint:scss
+yarn test
+yarn extract-translations
+yarn check-translations
+```
+
+If you are using Docker or a Dev Container, run those commands inside the
+containerized environment where the pinned Yarn setup is available.
 
 ## Configuration
 
-### Environment Files
+### Angular build targets
 
-Three environment configurations:
-- `environment.ts` - Development (local)
-- `environment.local-prod.ts` - Local production testing
-- `environment.prod.ts` - Production deployment
+The Angular workspace currently defines:
 
-### Runtime Configuration
+- default build target
+- `production` build configuration
+- `localProduction` build configuration
+- Karma test target
+- ESLint lint target
+- Protractor E2E target
 
-Config loaded from `src/assets/config/*.json`:
-- `config.dev.json` - Development settings
-- `config.prod.json` - Production settings
+### TypeScript configuration
 
-### TypeScript Configuration
+Strict TypeScript settings are enabled, including:
 
-Strict mode enabled with:
 ```json
 {
   "strict": true,
@@ -274,208 +329,110 @@ Strict mode enabled with:
 }
 ```
 
-### ESLint Configuration
+### Runtime configuration
 
-Comprehensive linting with:
-- Angular-specific rules
-- NgRx best practices
-- TypeScript strict checks
-- Stylistic formatting
-- Import organization
+Runtime and environment-related files include:
 
-## Key Conventions
+- `src/environments/environment.ts`
+- `src/environments/environment.local-prod.ts`
+- `src/environments/environment.prod.ts`
+- `src/assets/config/config.dev.json`
+- `src/assets/config/config.prod.json`
 
-### File Organization
+## Key conventions
 
-- **Barrel exports**: Use `index.ts` for module exports
-- **Feature modules**: Group by feature (auth, shared, store)
-- **Naming**: `*.component.ts`, `*.service.ts`, `*.guard.ts`, etc.
+### Naming and organization
 
-### Component Architecture
+- use feature-based folders under `src/app/`
+- keep barrel exports where the repository already uses them
+- follow existing file naming such as `*.component.ts`, `*.service.ts`,
+  `*.guard.ts`, and `*.state.ts`
 
-- **Standalone components**: No NgModules (Angular 14+ approach)
-- **OnPush change detection**: Performance optimization
-- **Reactive forms**: For user input
-- **Smart/Dumb pattern**: Container vs. presentational components
+### Angular and RxJS style
 
-### State Management
+- prefer reactive patterns over imperative component logic
+- keep side effects out of presentation components
+- reuse Angular Material and existing shared components first
+- preserve current import ordering and linting conventions
 
-- **Immutability**: Always return new state objects
-- **Selectors**: Memoized state derivation
-- **Actions**: Past tense for events (`userLoggedIn`)
-- **Effects**: Handle side effects, dispatch actions
+### State management style
 
-### Styling
+- preserve immutability in reducers
+- use selectors for memoized state access
+- keep effects focused on side effects
+- update related store layers together when shared behavior changes
 
-- **SCSS**: Nested, variables, mixins
-- **BEM-like naming**: Block-Element-Modifier pattern
-- **Material theming**: Use Material Design color system
-- **Responsive**: Use flex-layout directives
+### Styling and UI
 
-## Backend Integration
+- use SCSS and existing repository conventions
+- prefer Angular Material before new UI libraries
+- avoid hardcoded user-facing text when it should be translated
 
-Designed to work with REST APIs. Default backend: `https://localhost:8000`
+## Backend integration
 
-**Expected API Patterns:**
-- JWT authentication endpoint
-- RESTful resource endpoints
-- Version endpoint for compatibility checking
-- CORS configuration for local development
+The default local backend assumption remains:
 
-## Common Issues & Solutions
+- frontend at `https://localhost:4200`
+- backend at `https://localhost:8000`
 
-### SSL Certificate Issues
+The frontend expects a backend that provides compatible REST endpoints,
+authentication, and version-related behavior.
 
-First-time setup shows "Your connection is not private":
+## Testing strategy
 
-1. Navigate to `docker/ssl/`
-2. Follow `README.md` to trust the certificate
-3. Or use the `make generate-ssl-cert` command
+### Unit tests
 
-### Port Conflicts
+- test runner: Karma
+- framework: Jasmine
+- test files: `*.spec.ts`
 
-Default port 4200 in use:
+### E2E tests
 
-- Stop other Angular dev servers
-- Or modify port in `package.json` start script
+- Protractor configuration lives in `e2e/protractor.conf.js`
+- Angular workspace still contains an E2E target
+- treat Protractor as legacy and verify whether it should be retained or
+  migrated before investing heavily in new E2E coverage
 
-### Docker Issues
+## Common issues and notes
 
-Container won't start:
+### SSL certificates
 
-```bash
-make stop
-docker system prune -a  # Warning: removes all stopped containers
-make start-build
-```
+The development server uses self-signed SSL certificates from `docker/ssl/`.
+First-time setup may require trusting the local certificate chain.
 
-### Translation Errors
+### Package manager expectations
 
-Missing translation keys:
+The repository is pinned to Yarn 4 via the `packageManager` field in
+`package.json`. Use Corepack-enabled Yarn rather than a globally mismatched
+package manager version.
 
-```bash
-yarn extract-translations
-yarn check-translations
-```
+### Documentation drift
 
-## IDE Setup
+This file is long-form context, not the only rules source. Keep it aligned with:
 
-### Recommended Extensions (WebStorm/IntelliJ)
+- `.github/copilot-instructions.md`
+- `doc/AI_RULES.md`
+- `.github/pull_request_template.md`
+- actual repository scripts and CI workflows
 
-- Angular Language Service
-- TypeScript support (built-in)
-- SCSS/Sass support
+## Practical guidance for AI assistants
 
-### VS Code
+When making changes in this repository:
 
-- Angular Language Service
-- ESLint
-- Stylelint
-- Docker
-- EditorConfig
-
-## Testing Strategy
-
-### Unit Tests
-
-- Jasmine framework
-- Karma test runner
-- Test files: `*.spec.ts`
-- Coverage reporting
-
-### E2E Tests
-
-- Protractor (note: deprecated, consider migration to Cypress/Playwright)
-- Test files in `e2e/src/`
-
-## Security Considerations
-
-- **JWT Storage**: Tokens in localStorage (consider security implications)
-- **HTTPS**: Required for production
-- **CORS**: Backend must allow frontend origin
-- **Snyk Protection**: Dependency vulnerability scanning
-- **Content Security Policy**: Configure as needed
-- **XSS Prevention**: Angular's built-in sanitization
-
-## Performance Optimization
-
-- **Lazy Loading**: Routes loaded on-demand
-- **OnPush Change Detection**: Reduces change detection cycles
-- **TrackBy**: Used in ngFor loops
-- **Service Workers**: Can be added for PWA
-- **AOT Compilation**: Enabled in production builds
-- **Tree Shaking**: Dead code elimination
-
-## Migration Notes
-
-### From Earlier Angular Versions
-
-- Project uses standalone components (no NgModules)
-- Uses new Angular Router (functional guards)
-- Signal-based reactivity available
-
-### Key Deprecations to Watch
-
-- Protractor (E2E) - consider Cypress/Playwright
-- Some Material components - check Angular Material changelog
-
-## Useful Resources
-
-- **Angular Docs**: https://angular.dev
-- **NgRx Docs**: https://ngrx.io
-- **Material Design**: https://material.angular.io
-- **Transloco**: https://jsverse.github.io/transloco
-- **Project Issues**: https://github.com/tarlepp/angular-ngrx-frontend/issues
-
-## AI Assistant Guidelines
-
-When working with this codebase:
-
-1. **Always use TypeScript strict mode** - No implicit any, strict null checks
-2. **Follow NgRx patterns** - Actions, reducers, effects, selectors
-3. **Use standalone components** - No NgModules
-4. **Respect the architecture** - Don't break the feature module structure
-5. **Test changes** - Run linting and tests before committing
-6. **Update translations** - Add keys to both en.json and fi.json
-7. **Use Material components** - Don't introduce new UI libraries
-8. **Follow reactive patterns** - Use RxJS operators, avoid imperative code
-9. **Check for errors** - Use `make lint` or individual yarn commands
-10. **Docker first** - Development is designed for Docker environment
-
-### Making Changes
-
-**Adding a new feature:**
-1. Create feature folder in appropriate location (auth/shared/store)
-2. Create component with `ng generate component`
-3. Add routes if needed
-4. Create NgRx slice if state management needed
-5. Add translations for UI text
-6. Write tests
-7. Run linters
-
-**Modifying state:**
-1. Update state interface in `*.state.ts`
-2. Update actions in `*.actions.ts`
-3. Update reducers in `*.reducers.ts`
-4. Update selectors in `*.selectors.ts`
-5. Update effects in `*.effects.ts` if needed
-
-**Adding dependencies:**
-```bash
-# Inside Docker container (make bash)
-yarn add <package>
-yarn add -D <dev-package>
-```
-
-## Version Information
-
-- **Angular**: 21.0.0
-- **NgRx**: 20.1.0
-- **TypeScript**: 5.9.3
-- **Node**: 25.2.1 (in Docker)
-- **Package Manager**: Yarn
+1. Use standalone Angular patterns.
+2. Follow existing NgRx actions, reducers, selectors, and effects structure.
+3. Prefer selectors for all shared state reads.
+4. Keep side effects in effects or services.
+5. Reuse existing shared components, directives, pipes, and services first.
+6. Add translations for new user-facing text in both `en.json` and `fi.json`.
+7. Prefer the smallest change that fully solves the task.
+8. Avoid unrelated refactors unless explicitly required.
+9. Run the smallest relevant validation commands for the files you changed.
+10. Use Docker or Dev Container workflows when local tool availability is
+    uncertain.
 
 ---
 
-*This document is maintained for AI assistants (Claude, GitHub Copilot, etc.) to
-provide context about the project structure, patterns, and conventions.*
+*This document is maintained for AI assistants and contributors who need a
+high-level map of the project's architecture, workflow, and repository
+conventions.*

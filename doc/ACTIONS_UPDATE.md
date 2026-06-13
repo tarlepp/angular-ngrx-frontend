@@ -179,6 +179,7 @@ What it does:
 * Resolves the full commit SHA for discovered updates.
 * Shows summary output and source lines for each finding.
 * Reports discovery warnings such as unpinned refs.
+* Detects "same version, new SHA" refreshes when a tag is repointed or an annotated tag resolves to a new commit.
 
 Example output:
 
@@ -237,6 +238,7 @@ Important behavior:
 
 * The script tracks updates in the same major version line by default.
 * This avoids false positives from alternate tag streams in some repositories.
+* A finding can show `vX.Y.Z -> vX.Y.Z (pin SHA refresh)` when the version stays the same but the tag's commit SHA has changed.
 * The script continues checks even when discovery warnings are present.
 * Move to a new major version manually after reviewing release notes.
 

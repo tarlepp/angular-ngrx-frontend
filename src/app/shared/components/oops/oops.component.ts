@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatAnchor } from '@angular/material/button';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { FlexFillDirective, LayoutAlignDirective, LayoutDirective } from '@ngbracket/ngx-layout/flex';
@@ -7,6 +7,7 @@ import { FlexFillDirective, LayoutAlignDirective, LayoutDirective } from '@ngbra
   selector: 'app-oops',
   templateUrl: './oops.component.html',
   styleUrls: ['./oops.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FlexFillDirective,
     LayoutDirective,
@@ -15,5 +16,4 @@ import { FlexFillDirective, LayoutAlignDirective, LayoutDirective } from '@ngbra
     TranslocoPipe,
   ],
 })
-
-export class OopsComponent { }
+export class OopsComponent {}

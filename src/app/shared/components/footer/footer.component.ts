@@ -1,5 +1,16 @@
 import { AsyncPipe } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostBinding, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ChangeDetectionStrategy,
+  ElementRef,
+  HostBinding,
+  inject,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatAnchor } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -15,6 +26,7 @@ import { versionActions, versionSelectors } from 'src/app/store';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatToolbar,
     LayoutAlignDirective,
@@ -36,6 +48,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
   public readonly versionFrontend$: Observable<string>;
   public readonly versionBackend$: Observable<string>;
 
+  private readonly changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   private readonly store: Store = inject(Store);
   private readonly subscriptions: Subscription = new Subscription();
 
@@ -74,6 +87,7 @@ export class FooterComponent implements OnInit, OnDestroy, AfterViewInit {
 
       this.topOffset = `${height}px`;
       this.topMargin = `-${height}px`;
+      this.changeDetectorRef.markForCheck();
     }, 0);
   }
 

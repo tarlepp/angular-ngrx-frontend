@@ -1,12 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogTitle,
-  MatDialogContent,
-  MatDialogActions,
-  MatDialogClose,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { TranslocoDirective, TranslocoPipe } from '@jsverse/transloco';
 
 import { VersionContentInterface } from 'src/app/shared/components/version-change-dialog/version-content.interface';
@@ -15,6 +9,7 @@ import { VersionContentInterface } from 'src/app/shared/components/version-chang
   selector: 'app-version-change-dialog',
   templateUrl: './version-change-dialog.component.html',
   styleUrls: ['./version-change-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatDialogTitle,
     MatDialogContent,
@@ -25,6 +20,7 @@ import { VersionContentInterface } from 'src/app/shared/components/version-chang
     TranslocoPipe,
   ],
 })
+
 export class VersionChangeDialogComponent {
   public readonly data: VersionContentInterface = inject<VersionContentInterface>(MAT_DIALOG_DATA);
 }

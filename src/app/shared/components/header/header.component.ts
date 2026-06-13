@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatAnchor, MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
@@ -23,6 +23,7 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
     FlexOffsetDirective,
@@ -41,7 +42,6 @@ import { authenticationActions, authenticationSelectors, layoutActions, layoutSe
     TranslocoPipe,
   ],
 })
-
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('userMenu') private readonly userMenu!: MatMenuTrigger;
 
@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public currentLanguage: Language = Language.DEFAULT;
   public readonly loading$: Observable<boolean>;
 
+  private readonly changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   private readonly store: Store = inject(Store);
   private readonly subscriptions: Subscription = new Subscription();
 
@@ -78,14 +79,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscriptions
       .add(this.store
         .select(authenticationSelectors.selectProfile)
-        .subscribe((profile: UserProfileInterface|null): UserProfileInterface|null => this.profile = profile),
+        .subscribe((profile: UserProfileInterface|null): UserProfileInterface|null => {
+          this.profile = profile;
+          this.changeDetectorRef.markForCheck();
+
+          return this.profile;
+        }),
       );
 
     // Subscribe to language changes
     this.subscriptions
       .add(this.store
         .select(layoutSelectors.selectLanguage)
-        .subscribe((language: Language): Language => this.currentLanguage = language),
+        .subscribe((language: Language): Language => {
+          this.currentLanguage = language;
+          this.changeDetectorRef.markForCheck();
+
+          return this.currentLanguage;
+        }),
       );
   }
 
@@ -118,10 +129,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
    * Method to dispatch change theme action to layout feature store.
    */
   public changeTheme(): void {
-    this.store.select(layoutSelectors.selectTheme)
+    this.store
+      .select(layoutSelectors.selectTheme)
       .pipe(take(1))
-      .subscribe(
-        (theme: Theme): void => this.store.dispatch(layoutActions.changeTheme({ theme: theme === Theme.DARK ? Theme.LIGHT : Theme.DARK })),
+      .subscribe((theme: Theme): void =>
+        this.store.dispatch(
+          layoutActions.changeTheme({
+            theme: theme === Theme.DARK ? Theme.LIGHT : Theme.DARK,
+          }),
+        ),
       );
   }
 }

@@ -149,6 +149,10 @@ RUN yarn build-prod
 # Stage 4: Production
 FROM nginx:1.31.1-alpine-slim AS production
 
+RUN apk update \
+    && apk add --no-cache libcrypto3=3.5.7-r0 \
+    && rm -rf /var/cache/apk/*
+
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist/angular-frontend/browser /usr/share/nginx/html

@@ -92,7 +92,7 @@ discover_actions() {
         return
     fi
 
-    for workflow in "$WORKFLOW_DIR"/*.yml; do
+    for workflow in "$WORKFLOW_DIR"/*.yml "$WORKFLOW_DIR"/*.yaml; do
         [ -f "$workflow" ] || continue
 
         line_number=0
@@ -170,7 +170,7 @@ discover_actions() {
         return
     fi
 
-    for action_file in "$ACTIONS_DIR"/*/action.yml; do
+    for action_file in "$ACTIONS_DIR"/*/action.yml "$ACTIONS_DIR"/*/action.yaml; do
         [ -f "$action_file" ] || continue
 
         line_number=0
@@ -289,6 +289,21 @@ get_latest_compatible_release() {
     printf '%s\n' "$latest"
 }
 
+resolve_tag_commit_sha() {
+    local repo_path="$1"
+    local tag="$2"
+    local sha
+
+    # Prefer peeled tag SHA (commit), fallback to direct ref for lightweight tags.
+    sha=$($TIMEOUT_BIN 10 $GIT_BIN ls-remote --tags "https://github.com/$repo_path.git" "refs/tags/$tag^{}" 2>/dev/null | awk '{print $1}')
+
+    if [ -z "$sha" ]; then
+        sha=$($TIMEOUT_BIN 10 $GIT_BIN ls-remote --tags "https://github.com/$repo_path.git" "refs/tags/$tag" 2>/dev/null | awk '{print $1}')
+    fi
+
+    printf '%s\n' "$sha"
+}
+
 if [ "$MODE" = "check" ]; then
     print_centered_banner "GitHub Actions Update Checker"
 fi
@@ -358,18 +373,25 @@ for repo_name in $(printf '%s\n' "${!repo_versions[@]}" | sort); do
         current_normalized="${current_version#v}"
 
         repo_path=$(printf '%s\n' "$repo_name" | cut -d/ -f1-2)
-        sha=$($TIMEOUT_BIN 10 $GIT_BIN ls-remote --tags "https://github.com/$repo_path.git" "refs/tags/$latest" 2>/dev/null | awk '{print $1}')
+        sha=$(resolve_tag_commit_sha "$repo_path" "$latest")
 
         if [ -z "$sha" ]; then
             versions_info+=("$current_version||error||")
             continue
         fi
 
+        current_ref="${ACTION_REFS[$action_key]}"
+
         if [ "$latest_normalized" != "$current_normalized" ]; then
             repo_has_update=1
             # Store with ||| as source delimiter (won't appear in paths)
             sources_str=$(printf '%s\n' "${ACTION_SOURCES[$action_key]}" | tr '\n' '|' | sed 's/|$//')
-            versions_info+=("${current_version}	${latest}	${sha}	${sources_str}")
+            versions_info+=("${current_version}	${latest}	${sha}	${sources_str}	${current_ref}")
+        elif printf '%s\n' "$current_ref" | grep -Eq '^[0-9a-f]{40}$' && [ "$current_ref" != "$sha" ]; then
+            # Same declared version but SHA differs from the resolved tag commit.
+            repo_has_update=1
+            sources_str=$(printf '%s\n' "${ACTION_SOURCES[$action_key]}" | tr '\n' '|' | sed 's/|$//')
+            versions_info+=("${current_version}	${latest}	${sha}	${sources_str}	${current_ref}")
         else
             ((CURRENT++))
             versions_info+=("${current_version}	current	")
@@ -384,7 +406,8 @@ for repo_name in $(printf '%s\n' "${!repo_versions[@]}" | sort); do
             current=$(printf '%s\n' "$info" | cut -f1)
             latest=$(printf '%s\n' "$info" | cut -f2)
             sha=$(printf '%s\n' "$info" | cut -f3)
-            sources_str=$(printf '%s\n' "$info" | cut -f4-)
+            sources_str=$(printf '%s\n' "$info" | cut -f4)
+            current_ref=$(printf '%s\n' "$info" | cut -f5)
 
             if [ "$latest" = "current" ]; then
                 printf '   %s (up-to-date)\n' "$current"
@@ -393,9 +416,16 @@ for repo_name in $(printf '%s\n' "${!repo_versions[@]}" | sort); do
             elif [ "$latest" = "error" ]; then
                 printf '   %s -> (error fetching SHA)\n' "$current"
             else
-                printf '   %s -> %s\n' "$current" "$latest"
-                printf '      SHA:   %s\n' "$sha"
-                printf '      Short: %s\n' "${sha:0:8}"
+                if [ "${latest#v}" = "${current#v}" ] && [ -n "$current_ref" ] && [ "$current_ref" != "$sha" ]; then
+                    printf '   %s -> %s (pin SHA refresh)\n' "$current" "$latest"
+                    printf '      Current SHA:  %s\n' "$current_ref"
+                    printf '      Updated SHA:  %s\n' "$sha"
+                    printf '      Updated short: %s\n' "${sha:0:8}"
+                else
+                    printf '   %s -> %s\n' "$current" "$latest"
+                    printf '      SHA:   %s\n' "$sha"
+                    printf '      Short: %s\n' "${sha:0:8}"
+                fi
 
                 # Display sources for this version (pipe-delimited, convert to newlines)
                 sources_array=()

@@ -255,9 +255,9 @@ Current configuration includes:
 
 ### Running without Docker
 
-The repository includes direct Yarn scripts, but the documented workflow is still
-Docker-first or Dev Container-first. If you run locally without Docker, use the
-project root with Corepack-enabled Yarn:
+The repository includes direct Yarn scripts, but the documented workflow is
+still Docker-first or Dev Container-first. If you run locally without Docker,
+use the project root with Corepack-enabled Yarn:
 
 ```bash
 yarn install

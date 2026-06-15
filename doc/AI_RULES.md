@@ -147,7 +147,8 @@ yarn check-translations
 
 ## Current CI alignment
 
-At the time of writing, `.github/workflows/main.yml` already includes checks for:
+At the time of writing, `.github/workflows/main.yml` already includes checks
+for:
 
 - TypeScript linting,
 - SCSS linting,
@@ -209,7 +210,8 @@ For this repository, the preferred enforcement order is:
 - Stylelint for SCSS issues,
 - unit tests for behavior and state flow,
 - translation extraction and translation validation for i18n drift, and
-- GitHub Actions workflow updates only when the existing commands are not enough.
+- GitHub Actions workflow updates only when the existing commands are not
+  enough.
 
 Examples:
 

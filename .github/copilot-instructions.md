@@ -49,10 +49,21 @@ and project workflow conventions.
 - Preserve public APIs and existing architecture unless the task explicitly
   requires a change.
 
+## Command execution rules
+
+- Treat the running `node` development container as the default environment for
+  development commands.
+- Run `yarn`, `ng`, lint, test, translation, and similar project commands
+  inside the running container, not on the host machine.
+- If starting from the host, prefer the existing `make` targets that delegate
+  into the running container.
+- Only run project commands directly on the host when the task explicitly
+  requires host-level Docker or Git operations.
+
 ## Validation rules
 
 After changing code, prefer running the smallest relevant validation set from
-project root:
+project root inside the running development container:
 
 - `yarn lint:ts`
 - `yarn lint:scss`

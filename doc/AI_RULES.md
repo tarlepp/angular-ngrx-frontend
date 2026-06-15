@@ -87,6 +87,28 @@ translation extraction and validation commands.
 - Preserve public APIs unless the task requires a change.
 - Reuse existing dependencies before proposing new ones.
 
+### 7. Use the running development container for project commands
+
+- Treat the running `node` container as the default environment for day-to-day
+  development work.
+- Run repository commands such as `yarn`, `ng`, lint, test, and translation
+  checks inside that container.
+- When working from the host shell, prefer the existing `make` targets that
+  call into the running container rather than executing project tooling on the
+  host directly.
+- Reserve host-level command execution for tasks that genuinely belong to the
+  host environment, such as Docker lifecycle or Git operations.
+
+### 8. Keep versioned documentation lightweight
+
+- Avoid duplicating fast-changing dependency or tooling versions in long-form AI
+  guidance when the repository already has a clear source of truth.
+- Prefer referencing files such as `package.json`, `Dockerfile`,
+  `.github/actions/setup-yarn/action.yml`, and `angular.json` instead of
+  maintaining the same version numbers in multiple documents.
+- If an exact version matters for a change, read it from the source file rather
+  than assuming that a documentation file is current.
+
 ## Enforcement model
 
 Not all AI rules can be enforced automatically. Use the following model:
@@ -112,7 +134,8 @@ These should be validated through repository tooling and CI whenever possible:
 
 ## Current validation commands
 
-From repository root, the main validation commands are:
+From repository root inside the running development container, the main
+validation commands are:
 
 ```bash
 yarn lint:ts
@@ -158,7 +181,8 @@ When using AI assistance in this repository, keep the workflow lightweight:
 2. Use `CLAUDE.md` when you need broader project context or architecture notes.
 3. Make the smallest change that fits existing Angular, NgRx, and i18n
    patterns.
-4. Run the smallest relevant validation commands for the files you changed.
+4. Run the smallest relevant validation commands for the files you changed
+   inside the running development container.
 5. Use `.github/pull_request_template.md` as the review checklist when opening
    pull requests.
 6. If a reviewer repeats the same correction pattern, update the AI guidance so

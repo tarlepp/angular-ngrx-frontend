@@ -242,7 +242,7 @@ architectural correction, or project convention appears repeatedly and should
 become a repository default.
 
 When possible, validate AI-assisted changes with the smallest relevant command
-set from project root:
+set from project root inside the running development container:
 
 ```bash
 yarn lint:ts
@@ -252,9 +252,9 @@ yarn extract-translations
 yarn check-translations
 ```
 
-If you are working from a containerized workflow, run those commands inside the
-development container or Dev Container where the pinned Yarn toolchain is
-available.
+In the documented local development workflow, run those commands inside the
+running `node` development container or Dev Container where the pinned Yarn
+toolchain is available.
 
 ## Backend?
 

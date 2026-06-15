@@ -26,16 +26,33 @@ repository code, scripts, and CI configuration as the source of truth.
 
 ## Key characteristics
 
-- **Framework**: Angular 22.0.1 with standalone components
-- **State management**: NgRx 21.1.1
-- **Language**: TypeScript 6.0.3 with strict compiler settings
-- **UI**: Angular Material 22.0.1 with SCSS styling
-- **Layout**: `@ngbracket/ngx-layout` 21.0.0
-- **i18n**: Transloco via `@jsverse/transloco` 8.3.0
+- **Framework**: Angular with standalone components
+- **State management**: NgRx
+- **Language**: TypeScript with strict compiler settings
+- **UI**: Angular Material with SCSS styling
+- **Layout**: `@ngbracket/ngx-layout`
+- **i18n**: Transloco via `@jsverse/transloco`
 - **Authentication**: JWT-based authentication with `@auth0/angular-jwt`
 - **Testing**: Karma + Jasmine for unit tests, Protractor still present for E2E
-- **Package manager**: Yarn 4.14.1 via Corepack
-- **Container runtime**: Node 26.2.0 in Docker and CI
+- **Package manager**: Yarn via Corepack
+- **Container runtime**: pinned Node versions in Docker and CI
+
+## Version sources of truth
+
+To avoid documentation drift, this file intentionally avoids mirroring most
+exact dependency and tooling versions.
+
+For current versions, use these files as the source of truth:
+
+- `package.json` for Angular, NgRx, TypeScript, Yarn package manager, and most
+  frontend dependencies
+- `Dockerfile` for container Node.js versions
+- `.github/actions/setup-yarn/action.yml` for the CI Node.js version and Yarn
+  installation behavior
+- `angular.json` for Angular workspace targets and build/test/lint setup
+
+If a version matters for implementation, read it from those files instead of
+copying it into long-form documentation.
 
 ## Project structure
 
@@ -69,35 +86,35 @@ angular-ngrx-frontend/
 
 ### Core dependencies
 
-- Angular 22.0.1
-- Angular Material 22.0.1
-- NgRx 21.1.1
+- Angular
+- Angular Material
+- NgRx
   - `@ngrx/store`
   - `@ngrx/effects`
   - `@ngrx/entity`
   - `@ngrx/operators`
   - `@ngrx/router-store`
   - `@ngrx/store-devtools`
-- RxJS 7.8.2
-- `@jsverse/transloco` 8.3.0
-- `@jsverse/transloco-keys-manager` 8.1.0
-- `@ngbracket/ngx-layout` 21.0.0
-- `@auth0/angular-jwt` 5.2.0
-- Luxon 3.7.2 and `luxon-angular` 6.0.0
-- `ngx-webstorage` 21.0.1
-- `ngrx-store-localstorage` 20.1.0
+- RxJS
+- `@jsverse/transloco`
+- `@jsverse/transloco-keys-manager`
+- `@ngbracket/ngx-layout`
+- `@auth0/angular-jwt`
+- Luxon and `luxon-angular`
+- `ngx-webstorage`
+- `ngrx-store-localstorage`
 
 ### Development tooling
 
-- TypeScript 6.0.3
-- ESLint 10.4.1
-- `@angular-eslint` 22.0.0
-- `@ngrx/eslint-plugin` 21.1.1
-- `@typescript-eslint` 8.61.0
-- Stylelint 17.13.0
-- Angular CLI 22.0.1
+- TypeScript
+- ESLint
+- `@angular-eslint`
+- `@ngrx/eslint-plugin`
+- `@typescript-eslint`
+- Stylelint
+- Angular CLI
 - Karma + Jasmine
-- Protractor 7.0.0
+- Protractor
 - Docker + Docker Compose
 - Dev Container support via `.devcontainer/devcontainer.json`
 
@@ -220,6 +237,11 @@ Notes:
 - `make start-immutable` enforces `yarn install --immutable` on startup
 - `make start-production` uses the local production Angular configuration
 - `make bash` opens a shell inside the `node` container
+- once development is running, treat that `node` container as the default place
+  to run project commands such as `yarn`, `ng`, linting, tests, and translation
+  checks
+- from the host shell, prefer the existing `make` targets that execute inside
+  the running container instead of invoking project tooling directly on the host
 
 ### Dev Container workflow
 
@@ -286,7 +308,8 @@ The main GitHub Actions workflow in `.github/workflows/main.yml` currently runs:
 - Docker image build
 - Trivy vulnerability scanning on the built image
 
-The reusable Yarn setup action uses Node 26.2.0 and `yarn install --immutable`.
+The reusable Yarn setup action pins a Node.js version and uses
+`yarn install --immutable`.
 
 ### Preferred validation commands for AI-assisted changes
 
@@ -301,7 +324,8 @@ yarn check-translations
 ```
 
 If you are using Docker or a Dev Container, run those commands inside the
-containerized environment where the pinned Yarn setup is available.
+containerized environment where the pinned Yarn setup is available. In the
+documented local development workflow, that means the running `node` container.
 
 ## Configuration
 
@@ -402,7 +426,7 @@ First-time setup may require trusting the local certificate chain.
 
 ### Package manager expectations
 
-The repository is pinned to Yarn 4 via the `packageManager` field in
+The repository pins its package manager via the `packageManager` field in
 `package.json`. Use Corepack-enabled Yarn rather than a globally mismatched
 package manager version.
 
@@ -427,7 +451,8 @@ When making changes in this repository:
 6. Add translations for new user-facing text in both `en.json` and `fi.json`.
 7. Prefer the smallest change that fully solves the task.
 8. Avoid unrelated refactors unless explicitly required.
-9. Run the smallest relevant validation commands for the files you changed.
+9. Run the smallest relevant validation commands for the files you changed
+   inside the running `node` container.
 10. Use Docker or Dev Container workflows when local tool availability is
     uncertain.
 

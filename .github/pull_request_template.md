@@ -24,4 +24,3 @@
 ## Notes for reviewers
 
 - Call out any architectural exception, trade-off, or follow-up work here
-

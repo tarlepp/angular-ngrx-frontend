@@ -285,4 +285,3 @@ After this first implementation, consider the following enhancements:
 - `.github/copilot-instructions.md`
 - `.github/pull_request_template.md`
 - `.github/workflows/main.yml`
-

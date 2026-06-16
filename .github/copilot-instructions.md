@@ -78,4 +78,3 @@ For deeper project context, architecture notes, and workflow details, use
 
 For guidance on maintaining AI policy files and turning recurring issues into
 validation or CI checks, use `doc/AI_RULES.md`.
-

@@ -231,10 +231,10 @@ See [Dev Containers](doc/DEV_CONTAINERS.md) for detailed steps.
 If you use AI assistance in this repository, keep it aligned with the project
 conventions already documented in this order:
 
-- `.github/copilot-instructions.md` for short repository rules,
-- `CLAUDE.md` for broader architecture and workflow context,
-- `doc/AI_RULES.md` for how AI guidance is maintained over time, and
-- `.github/pull_request_template.md` for the human review checklist used in
+* `.github/copilot-instructions.md` for short repository rules,
+* `CLAUDE.md` for broader architecture and workflow context,
+* `doc/AI_RULES.md` for how AI guidance is maintained over time, and
+* `.github/pull_request_template.md` for the human review checklist used in
   pull requests.
 
 As a simple rule of thumb, update the AI guidance when the same review comment,

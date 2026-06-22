@@ -280,6 +280,8 @@ development environment that this frontend expects by default.
 * [Tools](doc/TOOLS.md)
 * [Translations](doc/TRANSLATIONS.md)
 * [Usage checklist](doc/USAGE_CHECKLIST.md)
+* [Yarn version management](doc/YARN_UPDATE.md)
+* [Yarn update quick reference](doc/YARN_UPDATE_QUICK_REF.md)
 * [Scripts](scripts/README.md)
 
 ## External links / resources

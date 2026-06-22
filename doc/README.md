@@ -35,6 +35,10 @@ topic.
 * [Translations](TRANSLATIONS.md) - translation workflow and i18n notes.
 * [Usage checklist](USAGE_CHECKLIST.md) - a short checklist for common usage
   scenarios.
+* [Yarn version management](YARN_UPDATE.md) - full guide for checking and
+  upgrading the pinned Yarn version.
+* [Yarn update quick reference](YARN_UPDATE_QUICK_REF.md) - condensed command
+  cheatsheet for Yarn version checks and upgrades.
 
 ## Quick navigation
 
@@ -43,6 +47,7 @@ For the most common starting points:
 * New contributor setup: [`../README.md`](../README.md)
 * AI-assisted change policy: [`AI_RULES.md`](AI_RULES.md)
 * Day-to-day commands: [`COMMANDS.md`](COMMANDS.md)
+* Yarn version workflow: [`YARN_UPDATE_QUICK_REF.md`](YARN_UPDATE_QUICK_REF.md)
 * GitHub Actions pin maintenance: [`ACTIONS_UPDATE.md`](ACTIONS_UPDATE.md)
 * Dev Container usage: [`DEV_CONTAINERS.md`](DEV_CONTAINERS.md)
 * Translation workflow: [`TRANSLATIONS.md`](TRANSLATIONS.md)

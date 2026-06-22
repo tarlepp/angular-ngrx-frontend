@@ -46,6 +46,8 @@ make start               # Start application in development mode
 make start-immutable     # Start development mode with `yarn install --immutable` in container entrypoint
 make start-build         # Start application in development mode and rebuild container
 make start-production    # Start application with the local production Angular configuration
+make start-yarn          # Run `yarn start` inside the running container
+make start-yarn-prod     # Run `yarn start-prod` inside the running container
 make stop                # Stop application containers
 ```
 
@@ -59,12 +61,14 @@ make fish               # Open a fish shell inside the node container
 ### Linting and fixing
 
 ```bash
-make lint               # Run TypeScript and SCSS linting
+make lint               # Run TypeScript, SCSS, and Markdown linting
 make lint-ts            # Run Angular/TypeScript linting
 make lint-scss          # Run SCSS linting with stylelint
-make fix                # Run TypeScript and SCSS auto-fixes
+make lint-md            # Run markdownlint for all tracked Markdown files
+make fix                # Run TypeScript, SCSS, and Markdown auto-fixes
 make fix-ts             # Run Angular/TypeScript lint fixes
 make fix-scss           # Run SCSS auto-fixes with stylelint
+make fix-md             # Run markdownlint autofixes for tracked Markdown files
 ```
 
 ### Translations
@@ -114,8 +118,10 @@ yarn build-prod           # Create a production build
 yarn test                 # Run unit tests
 yarn lint:ts              # Run Angular/TypeScript linting
 yarn lint:scss            # Run stylelint for SCSS files
+yarn lint:md              # Run markdownlint for all tracked Markdown files
 yarn fix:ts               # Auto-fix Angular/TypeScript lint issues
 yarn fix:scss             # Auto-fix SCSS lint issues
+yarn fix:md               # Auto-fix markdownlint issues in tracked Markdown files
 yarn extract-translations # Extract translation keys
 yarn check-translations   # Validate translation files
 yarn i18n:extract         # Run Transloco key extraction

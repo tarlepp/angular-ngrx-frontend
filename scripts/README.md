@@ -27,7 +27,8 @@ File: `scripts/project-stats.sh`
 make project-stats
 ```
 
-If you are already inside the container, you can still run `bash scripts/project-stats.sh` directly.
+If you are already inside the container, you can still run
+`bash scripts/project-stats.sh` directly.
 
 ### GitHub Actions update checker
 
@@ -37,7 +38,8 @@ File: `scripts/check-action-updates.sh`
 make check-action-updates
 ```
 
-If you are already inside the container, you can still run `bash scripts/check-action-updates.sh` directly.
+If you are already inside the container, you can still run
+`bash scripts/check-action-updates.sh` directly.
 
 Print current pins as markdown:
 
@@ -46,9 +48,10 @@ bash scripts/check-action-updates.sh --current-pins-md
 ```
 
 Exit codes:
-- `0` = no discovery issues and no updates found
-- `1` = updates available
-- `2` = discovery issues found (for example unpinned refs or conflicting versions)
+
+* `0` = no discovery issues and no updates found
+* `1` = updates available
+* `2` = discovery issues found (for example unpinned refs or conflicting versions)
 
 ---
 

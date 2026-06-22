@@ -1,89 +1,79 @@
-# Yarn Update - Quick Reference
+# Yarn Update Quick Reference
 
-## The Simplest Way 🚀
+## Simplest Update
 
-### From host machine:
+Use explicit version:
+
 ```bash
-make yarn-upgrade VERSION=4.15.0
+make yarn-upgrade VERSION=4.17.0
 ```
 
-Or use the compatible alias:
+Use compatible alias:
+
 ```bash
-make yarn upgrade VERSION=4.15.0
+make yarn upgrade VERSION=4.17.0
 ```
 
-If `VERSION` is omitted, latest stable is used automatically.
+Use latest stable automatically:
 
-### Or from inside Docker:
 ```bash
-make bash
-make yarn-upgrade VERSION=4.15.0
+make yarn-upgrade
 ```
 
-## Alternative Methods
+## Check Current State
 
-### Using the helper script:
-```bash
-./scripts/update-yarn.sh 4.15.0
-```
-
-### Manual (inside Docker):
-```bash
-npm pkg set packageManager="yarn@4.15.0"
-corepack prepare "yarn@4.15.0" --activate
-yarn --version  # Verify
-```
-
-## Checking Current Version
+Show configured, active, and latest stable versions:
 
 ```bash
 make yarn-status
 ```
 
-This prints configured, active, and latest stable Yarn versions, plus update availability and a suggested upgrade command when a newer stable release exists.
-
-Dry-run upgrade check (no changes):
+Dry-run upgrade check with no file changes:
 
 ```bash
 make yarn-upgrade-check
 ```
 
-Or manually:
+## Manual Upgrade Steps
+
 ```bash
-node -p "require('./package.json').packageManager"
+npm pkg set packageManager="yarn@4.17.0"
+yarn set version "4.17.0"
+corepack prepare "yarn@4.17.0" --activate
+yarn --version
 ```
 
 ## After Upgrading
 
 ```bash
-# Test that everything works
 yarn install
 make lint
+```
 
-# Commit changes
+```bash
 git add package.json .yarnrc.yml .yarn/releases/
-git commit -m "chore: upgrade Yarn to 4.15.0"
+git commit -m "chore: upgrade Yarn to 4.17.0"
 git push
 ```
 
 ## Files That Change
 
-- ✏️ `package.json` - Updated version
-- ✏️ `.yarnrc.yml` - Updated yarnPath (auto-generated)
-- ✨ `.yarn/releases/yarn-X.Y.Z.cjs` - New binary file
+- `package.json`
+- `.yarnrc.yml`
+- `.yarn/releases/yarn-X.Y.Z.cjs`
 
 ## Full Documentation
 
-See [doc/YARN_UPDATE.md](../doc/YARN_UPDATE.md) for comprehensive guide
+- `doc/YARN_UPDATE.md`
+- `doc/YARN_UPDATE_SETUP.md`
 
 ## Find Latest Yarn Version
 
-[GitHub Releases](https://github.com/yarnpkg/yarn/releases) or:
 ```bash
-npm view yarn versions --json | tail -5
+curl -fsSL https://api.github.com/repos/yarnpkg/berry/releases/latest \
+  | python3 -c "import json,sys;print(json.load(sys.stdin)['tag_name'])"
 ```
 
 ---
 
-**Why so easy?** This project uses [Corepack](https://nodejs.org/docs/latest/api/corepack.html) - Node's official package manager manager.
-
+Back to docs index: `doc/README.md`

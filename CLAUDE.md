@@ -25,7 +25,7 @@ backends, particularly the [Symfony Flex Backend](https://github.com/tarlepp/sym
 
 ## Project Structure
 
-```
+```text
 angular-ngrx-frontend/
 ├── src/
 │   ├── app/
@@ -111,6 +111,7 @@ angular-ngrx-frontend/
 The application uses a modular NgRx architecture with feature slices:
 
 **Store Structure:**
+
 ```typescript
 AppState {
   router: RouterReducerState           // Router state
@@ -122,12 +123,14 @@ AppState {
 ```
 
 **Key Files:**
+
 - `src/app/store/app.state.ts` - Root state interface
 - `src/app/store/app.reducers.ts` - Root reducer configuration
 - `src/app/store/app.effects.ts` - Root effects
 - `src/app/store/*/` - Feature state slices
 
 **Best Practices:**
+
 - Use selectors for all state access
 - Keep effects for side effects (HTTP, routing, storage)
 - Use actions with clear naming: `[Source] Event`
@@ -136,6 +139,7 @@ AppState {
 ### 2. Authentication Flow
 
 JWT-based authentication with:
+
 - Token stored in localStorage
 - Auto-refresh mechanism
 - Route guards (AuthenticationGuard, RoleGuard variants)
@@ -143,6 +147,7 @@ JWT-based authentication with:
 - Role-based access control (RBAC)
 
 **Key Components:**
+
 - `src/app/auth/guards/authentication.guard.ts` - Login check
 - `src/app/auth/guards/role-*.guard.ts` - Role-based guards
 - `src/app/auth/services/authentication.service.ts` - Auth service
@@ -163,6 +168,7 @@ Uses Angular standalone routing with lazy loading:
 ### 4. HTTP Interceptors
 
 Multiple interceptors handle cross-cutting HTTP concerns:
+
 - `accept-language.interceptor.ts` - Language header injection
 - `backend-version.interceptor.ts` - Backend version checking
 - `error.interceptor.ts` - Global error handling
@@ -171,12 +177,14 @@ Multiple interceptors handle cross-cutting HTTP concerns:
 ### 5. Internationalization (i18n)
 
 Uses Transloco with:
+
 - Translation files in `src/assets/i18n/`
 - Supported languages: English (en), Finnish (fi)
 - Keys extracted via `transloco-keys-manager`
 - Missing translations marked as `"--- MISSING TRANSLATION ---"`
 
 **Key Commands:**
+
 ```bash
 yarn extract-translations  # Extract translation keys
 yarn check-translations    # Validate translations
@@ -185,6 +193,7 @@ yarn check-translations    # Validate translations
 ### 6. Theming
 
 Material Design theming with:
+
 - Theme enum: `Theme.LIGHT`, `Theme.DARK`
 - Stored in NgRx layout state
 - Persisted to localStorage
@@ -252,6 +261,7 @@ yarn i18n:find      # Find unused keys
 ### Environment Files
 
 Three environment configurations:
+
 - `environment.ts` - Development (local)
 - `environment.local-prod.ts` - Local production testing
 - `environment.prod.ts` - Production deployment
@@ -259,12 +269,14 @@ Three environment configurations:
 ### Runtime Configuration
 
 Config loaded from `src/assets/config/*.json`:
+
 - `config.dev.json` - Development settings
 - `config.prod.json` - Production settings
 
 ### TypeScript Configuration
 
 Strict mode enabled with:
+
 ```json
 {
   "strict": true,
@@ -277,6 +289,7 @@ Strict mode enabled with:
 ### ESLint Configuration
 
 Comprehensive linting with:
+
 - Angular-specific rules
 - NgRx best practices
 - TypeScript strict checks
@@ -317,6 +330,7 @@ Comprehensive linting with:
 Designed to work with REST APIs. Default backend: `https://localhost:8000`
 
 **Expected API Patterns:**
+
 - JWT authentication endpoint
 - RESTful resource endpoints
 - Version endpoint for compatibility checking
@@ -421,11 +435,11 @@ yarn check-translations
 
 ## Useful Resources
 
-- **Angular Docs**: https://angular.dev
-- **NgRx Docs**: https://ngrx.io
-- **Material Design**: https://material.angular.io
-- **Transloco**: https://jsverse.github.io/transloco
-- **Project Issues**: https://github.com/tarlepp/angular-ngrx-frontend/issues
+- **Angular Docs**: <https://angular.dev>
+- **NgRx Docs**: <https://ngrx.io>
+- **Material Design**: <https://material.angular.io>
+- **Transloco**: <https://jsverse.github.io/transloco>
+- **Project Issues**: <https://github.com/tarlepp/angular-ngrx-frontend/issues>
 
 ## AI Assistant Guidelines
 
@@ -445,6 +459,7 @@ When working with this codebase:
 ### Making Changes
 
 **Adding a new feature:**
+
 1. Create feature folder in appropriate location (auth/shared/store)
 2. Create component with `ng generate component`
 3. Add routes if needed
@@ -454,6 +469,7 @@ When working with this codebase:
 7. Run linters
 
 **Modifying state:**
+
 1. Update state interface in `*.state.ts`
 2. Update actions in `*.actions.ts`
 3. Update reducers in `*.reducers.ts`
@@ -461,6 +477,7 @@ When working with this codebase:
 5. Update effects in `*.effects.ts` if needed
 
 **Adding dependencies:**
+
 ```bash
 # Inside Docker container (make bash)
 yarn add <package>

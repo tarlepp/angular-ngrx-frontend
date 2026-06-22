@@ -68,7 +68,7 @@ make lint-md            # Run markdownlint for all tracked Markdown files
 make fix                # Run TypeScript, SCSS, and Markdown auto-fixes
 make fix-ts             # Run Angular/TypeScript lint fixes
 make fix-scss           # Run SCSS auto-fixes with stylelint
-make fix-md             # Run markdownlint autofixes for tracked Markdown files
+make fix-md             # Run markdownlint auto fixes for tracked Markdown files
 ```
 
 ### Translations

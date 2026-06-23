@@ -16,6 +16,9 @@ topic.
 
 ## Available documents
 
+* [AI-assisted change policy](AI_RULES.md) - repository-level guidance for
+  AI-assisted changes and how those rules align with CI, contributor workflow,
+  and project conventions.
 * [Custom commands](COMMANDS.md) - common `make` and `yarn` commands used in
   development.
 * [GitHub Actions update guide](ACTIONS_UPDATE.md) - maintenance workflow for
@@ -38,6 +41,7 @@ topic.
 For the most common starting points:
 
 * New contributor setup: [`../README.md`](../README.md)
+* AI-assisted change policy: [`AI_RULES.md`](AI_RULES.md)
 * Day-to-day commands: [`COMMANDS.md`](COMMANDS.md)
 * GitHub Actions pin maintenance: [`ACTIONS_UPDATE.md`](ACTIONS_UPDATE.md)
 * Dev Container usage: [`DEV_CONTAINERS.md`](DEV_CONTAINERS.md)

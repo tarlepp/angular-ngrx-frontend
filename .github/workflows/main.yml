@@ -58,7 +58,9 @@ jobs:
         with:
           globs: |
             README.md
+            CLAUDE.md
             doc/*.md
+            .github/*.md
 
   check-translations:
     name: Check that translations are up-to-date

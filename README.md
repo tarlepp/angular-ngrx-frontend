@@ -39,6 +39,7 @@ Then open `https://localhost:4200` in your browser. For more details, see
     * [Building containers](#building-containers)
     * [Health check](#health-check)
   * [Dev Containers](#dev-containers)
+  * [AI-assisted development](#ai-assisted-development)
   * [Backend?](#backend)
 * [Resources](#resources)
   * [External links / resources](#external-links--resources)
@@ -225,6 +226,36 @@ This support is additive; the existing `make start`, `make start-build`, and
 
 See [Dev Containers](doc/DEV_CONTAINERS.md) for detailed steps.
 
+## AI-assisted development
+
+If you use AI assistance in this repository, keep it aligned with the project
+conventions already documented in this order:
+
+* `.github/copilot-instructions.md` for short repository rules,
+* `CLAUDE.md` for broader architecture and workflow context,
+* `doc/AI_RULES.md` for how AI guidance is maintained over time, and
+* `.github/pull_request_template.md` for the human review checklist used in
+  pull requests.
+
+As a simple rule of thumb, update the AI guidance when the same review comment,
+architectural correction, or project convention appears repeatedly and should
+become a repository default.
+
+When possible, validate AI-assisted changes with the smallest relevant command
+set from project root inside the running development container:
+
+```bash
+yarn lint:ts
+yarn lint:scss
+yarn test
+yarn extract-translations
+yarn check-translations
+```
+
+In the documented local development workflow, run those commands inside the
+running `node` development container or Dev Container where the pinned Yarn
+toolchain is available.
+
 ## Backend?
 
 This frontend template is designed to work especially well with the
@@ -239,6 +270,7 @@ development environment that this frontend expects by default.
 ## Resources
 
 * [Resource index](doc/README.md)
+* [AI-assisted change policy](doc/AI_RULES.md)
 * [Custom commands](doc/COMMANDS.md)
 * [GitHub Actions update guide](doc/ACTIONS_UPDATE.md)
 * [Concepts and features](doc/CONCEPTS_AND_FEATURES.md)

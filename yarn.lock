@@ -343,6 +343,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular-devkit/core@npm:22.0.4":
+  version: 22.0.4
+  resolution: "@angular-devkit/core@npm:22.0.4"
+  dependencies:
+    ajv: "npm:8.20.0"
+    ajv-formats: "npm:3.0.1"
+    jsonc-parser: "npm:3.3.1"
+    picomatch: "npm:4.0.4"
+    rxjs: "npm:7.8.2"
+    source-map: "npm:0.7.6"
+  peerDependencies:
+    chokidar: ^5.0.0
+  peerDependenciesMeta:
+    chokidar:
+      optional: true
+  checksum: 10c0/0d84969ad31113a48202c644038386f7dd120af950490125d7b8d56c4ebc9ca362cff56be70f90eb3c3be1c15cbcec11aad648e46caebabba82efc91e75dff20
+  languageName: node
+  linkType: hard
+
 "@angular-devkit/schematics@npm:22.0.3":
   version: 22.0.3
   resolution: "@angular-devkit/schematics@npm:22.0.3"
@@ -353,6 +372,19 @@ __metadata:
     ora: "npm:9.4.0"
     rxjs: "npm:7.8.2"
   checksum: 10c0/31f7dacb1a30e452ca8bf504bde89a84c7c15eb2b2b2277dca7f161ddb048393dfc84c858efd96d966d6438a3e77db700e040137b089037b7334da5162b27d58
+  languageName: node
+  linkType: hard
+
+"@angular-devkit/schematics@npm:22.0.4":
+  version: 22.0.4
+  resolution: "@angular-devkit/schematics@npm:22.0.4"
+  dependencies:
+    "@angular-devkit/core": "npm:22.0.4"
+    jsonc-parser: "npm:3.3.1"
+    magic-string: "npm:0.30.21"
+    ora: "npm:9.4.0"
+    rxjs: "npm:7.8.2"
+  checksum: 10c0/02288bf8f636d3517d03e97942ac1fab4ec8e4448d0d918abd96b06b1a8d0e043482993b51fc69e6c2fe43a3459fb4bbf8c3cccc803f17649ebc2f61c656d94d
   languageName: node
   linkType: hard
 
@@ -4932,6 +4964,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@schematics/angular@npm:22.0.4":
+  version: 22.0.4
+  resolution: "@schematics/angular@npm:22.0.4"
+  dependencies:
+    "@angular-devkit/core": "npm:22.0.4"
+    "@angular-devkit/schematics": "npm:22.0.4"
+    jsonc-parser: "npm:3.3.1"
+    typescript: "npm:6.0.3"
+  checksum: 10c0/0b70801cd9c275fa50055d845d5c74044de7804c2380b361d06f43e308a080518c632227e2ed5d109fd4525fb8bbb7dfafc286367d0f0f1696917b7071930f1d
+  languageName: node
+  linkType: hard
+
 "@sigstore/bundle@npm:^4.0.0":
   version: 4.0.0
   resolution: "@sigstore/bundle@npm:4.0.0"
@@ -6148,7 +6192,7 @@ __metadata:
     "@ngrx/router-store": "npm:21.1.1"
     "@ngrx/store": "npm:21.1.1"
     "@ngrx/store-devtools": "npm:21.1.1"
-    "@schematics/angular": "npm:22.0.3"
+    "@schematics/angular": "npm:22.0.4"
     "@snyk/protect": "npm:1.1305.2"
     "@stylistic/eslint-plugin": "npm:5.10.0"
     "@types/jasmine": "npm:6.0.0"

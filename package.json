@@ -81,7 +81,7 @@
     "@bartholomej/ngx-translate-extract": "8.0.2",
     "@eslint/js": "10.0.1",
     "@ngrx/eslint-plugin": "21.1.1",
-    "@schematics/angular": "22.0.3",
+    "@schematics/angular": "22.0.4",
     "@stylistic/eslint-plugin": "5.10.0",
     "@types/jasmine": "6.0.0",
     "@types/jasminewd2": "2.0.13",

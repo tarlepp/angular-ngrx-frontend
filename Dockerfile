@@ -1,7 +1,7 @@
 ARG TARGET=production
 
 # Stage 1: Dependencies
-FROM node:26.2.0-bullseye AS dependencies
+FROM node:26.3.1-bullseye AS dependencies
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN npm install -g corepack \
     && yarn install --immutable
 
 # Stage 2: Development
-FROM node:26.2.0-slim AS development
+FROM node:26.3.1-slim AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -147,7 +147,7 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:1.31.1-alpine-slim AS production
+FROM nginx:1.31.2-alpine-slim AS production
 
 RUN apk update \
     && apk add --no-cache libcrypto3=3.5.7-r0 \

@@ -255,3 +255,39 @@ else
 	$(NOTICE_HOST)
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make project-stats
 endif
+
+yarn: ## Compatibility target for commands like `make yarn upgrade`
+	@true
+
+upgrade: ## Alias for yarn-upgrade (supports `make yarn upgrade`)
+	@$(MAKE) yarn-upgrade VERSION=$(VERSION)
+
+yarn-upgrade-check: ## Dry-run check for Yarn upgrade (no file changes)
+ifeq ($(INSIDE_DOCKER), 1)
+	@./scripts/yarn-upgrade-check.sh
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-upgrade-check
+endif
+
+yarn-upgrade: ## Upgrade Yarn (usage: make yarn-upgrade VERSION=4.15.0, or omit VERSION for latest stable)
+ifeq ($(INSIDE_DOCKER), 1)
+	@./scripts/yarn-upgrade.sh "$(VERSION)"
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-upgrade VERSION=$(VERSION)
+endif
+
+yarn-status: ## Display current Yarn version information
+ifeq ($(INSIDE_DOCKER), 1)
+	@./scripts/yarn-status.sh
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-status
+endif

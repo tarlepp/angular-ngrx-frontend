@@ -49,6 +49,14 @@ and project workflow conventions.
 - Preserve public APIs and existing architecture unless the task explicitly
   requires a change.
 
+## Git and reporting rules
+
+- Do not create commits unless the developer explicitly asks for a commit.
+- After making edits, provide a concise summary of what changed and why,
+  including touched file paths.
+- Before creating a commit on request, present the planned commit scope in the
+  response so the developer can review it.
+
 ## Command execution rules
 
 - Treat the running `node` development container as the default environment for

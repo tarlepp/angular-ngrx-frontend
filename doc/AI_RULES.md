@@ -109,6 +109,15 @@ translation extraction and validation commands.
 - If an exact version matters for a change, read it from the source file rather
   than assuming that a documentation file is current.
 
+### 9. Require explicit commit requests and clear change summaries
+
+- AI assistants must not create commits unless a developer explicitly requests
+  a commit.
+- After edits, AI responses should include a concise summary of what changed,
+  why it changed, and which files were touched.
+- If a commit is requested, present the intended commit scope in the response
+  before creating the commit.
+
 ## Enforcement model
 
 Not all AI rules can be enforced automatically. Use the following model:
@@ -188,6 +197,8 @@ When using AI assistance in this repository, keep the workflow lightweight:
    pull requests.
 6. If a reviewer repeats the same correction pattern, update the AI guidance so
    future changes start from the improved rule.
+7. Do not create commits unless a developer explicitly asks for one, and always
+   include a concise change summary in the response.
 
 ## CI strategy for recurring AI mistakes
 

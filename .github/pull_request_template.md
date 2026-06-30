@@ -21,6 +21,14 @@
 - [ ] Avoided unrelated refactors
 - [ ] Avoided new dependencies unless they were necessary
 
+## AI-assisted workflow checklist
+
+- [ ] No AI-created commit was made unless explicitly requested by a developer
+- [ ] AI response included a concise summary of what changed and which files
+      were touched
+- [ ] When a commit was requested, AI showed planned commit scope before
+      creating the commit
+
 ## Notes for reviewers
 
 - Call out any architectural exception, trade-off, or follow-up work here

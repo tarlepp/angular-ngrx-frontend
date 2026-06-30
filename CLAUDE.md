@@ -266,6 +266,16 @@ yarn start
 yarn start-prod
 ```
 
+### AI change reporting and commit policy
+
+When AI assistants are used for repository changes:
+
+- do not create commits unless a developer explicitly asks for a commit
+- report a concise summary of changes after edits, including touched files and
+  intent
+- when a commit is requested, show the planned commit scope in the response
+  before creating it
+
 ## Common tasks
 
 ```bash

@@ -53,14 +53,11 @@ jobs:
     steps:
       - *checkout_step
 
-      - name: Lint all markdown documentation files
-        uses: DavidAnson/markdownlint-cli2-action@ded1f9488f68a970bc66ea5619e13e9b52e601cd # v23.2.0
-        with:
-          globs: |
-            README.md
-            CLAUDE.md
-            doc/*.md
-            .github/*.md
+      - name: Setup Node + Corepack + Yarn deps
+        uses: ./.github/actions/setup-yarn
+
+      - name: Run `yarn lint:md`
+        run: yarn lint:md
 
   check-translations:
     name: Check that translations are up-to-date

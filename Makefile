@@ -105,10 +105,11 @@ else
 	$(WARNING_DOCKER)
 endif
 
-lint: ## Lint TypeScript and SCSS files
+lint: ## Lint TypeScript, SCSS, and Markdown files
 ifeq ($(INSIDE_DOCKER), 1)
 	@make lint-ts
 	@make lint-scss
+	@make lint-md
 else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
@@ -138,10 +139,22 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make lint-scss
 endif
 
-fix: ## Fix TypeScript and SCSS files
+lint-md: ## Lint Markdown files
+ifeq ($(INSIDE_DOCKER), 1)
+	@echo "\033[32mLinting Markdown files\033[39m"
+	@yarn run lint:md
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make lint-md
+endif
+
+fix: ## Fix TypeScript, SCSS, and Markdown files
 ifeq ($(INSIDE_DOCKER), 1)
 	@make fix-ts
 	@make fix-scss
+	@make fix-md
 else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
@@ -169,6 +182,17 @@ else ifeq ($(strip $(IS_RUNNING)),)
 else
 	$(NOTICE_HOST)
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make fix-scss
+endif
+
+fix-md: ## Fix Markdown files
+ifeq ($(INSIDE_DOCKER), 1)
+	@echo "\033[32mFixing Markdown files\033[39m"
+	@yarn run fix:md
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make fix-md
 endif
 
 extract-translations: ## Extract translations from TypeScript and HTML template files

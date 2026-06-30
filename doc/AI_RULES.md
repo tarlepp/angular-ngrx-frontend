@@ -1,4 +1,41 @@
-# AI Rules for This Repository
+# What is this?
+
+This document defines repository-level AI usage rules for change quality,
+architecture alignment, and workflow expectations.
+
+Use these rules together with `.github/copilot-instructions.md` and `CLAUDE.md`
+to keep AI-assisted changes consistent with existing project conventions.
+
+## Table of Contents
+
+- [What is this?](#what-is-this)
+  - [Table of Contents](#table-of-contents)
+  - [Why this document exists](#why-this-document-exists)
+  - [Rule hierarchy](#rule-hierarchy)
+  - [Scope](#scope)
+  - [Core repository rules](#core-repository-rules)
+    - [1. Follow the current Angular architecture](#1-follow-the-current-angular-architecture)
+    - [2. Respect NgRx boundaries](#2-respect-ngrx-boundaries)
+    - [3. Respect strict TypeScript](#3-respect-strict-typescript)
+    - [4. Keep UI and styling consistent](#4-keep-ui-and-styling-consistent)
+    - [5. Keep translations complete](#5-keep-translations-complete)
+    - [6. Keep changes small and relevant](#6-keep-changes-small-and-relevant)
+    - [7. Use the running development container for project commands](#7-use-the-running-development-container-for-project-commands)
+    - [8. Keep versioned documentation lightweight](#8-keep-versioned-documentation-lightweight)
+    - [9. Require explicit commit requests and clear change summaries](#9-require-explicit-commit-requests-and-clear-change-summaries)
+    - [10. Ask for human clarification instead of assuming](#10-ask-for-human-clarification-instead-of-assuming)
+  - [Enforcement model](#enforcement-model)
+    - [Documentation-only rules](#documentation-only-rules)
+    - [Automatically enforceable rules](#automatically-enforceable-rules)
+  - [Current validation commands](#current-validation-commands)
+  - [Current CI alignment](#current-ci-alignment)
+  - [Recommended maintenance workflow](#recommended-maintenance-workflow)
+  - [Contributor workflow for AI-assisted changes](#contributor-workflow-for-ai-assisted-changes)
+  - [CI strategy for recurring AI mistakes](#ci-strategy-for-recurring-ai-mistakes)
+    - [Examples of enforceable AI rules for this repository](#examples-of-enforceable-ai-rules-for-this-repository)
+  - [Good rule-writing patterns](#good-rule-writing-patterns)
+  - [Suggested next improvements](#suggested-next-improvements)
+  - [Related files](#related-files)
 
 ## Why this document exists
 
@@ -307,3 +344,9 @@ After this first implementation, consider the following enhancements:
 - `.github/copilot-instructions.md`
 - `.github/pull_request_template.md`
 - `.github/workflows/main.yml`
+
+---
+
+[Back to resources index](README.md)
+
+[Back to main README.md](../README.md)

@@ -247,6 +247,7 @@ set from project root inside the running development container:
 ```bash
 yarn lint:ts
 yarn lint:scss
+yarn lint:md
 yarn test
 yarn extract-translations
 yarn check-translations

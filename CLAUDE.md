@@ -508,6 +508,9 @@ When making changes in this repository:
     uncertain.
 11. Update relevant documentation when code changes affect documented behavior,
     architecture, workflow, or contributor guidance.
+12. Do not create commits unless a developer explicitly asks for one.
+13. Ask clarifying questions when requirements are ambiguous; do not proceed on
+    silent assumptions.
 
 ---
 

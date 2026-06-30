@@ -8,6 +8,7 @@
 ## Validation
 
 - [ ] Ran the smallest relevant checks for this change
+- [ ] Ran markdown lint when documentation files changed
 - [ ] Updated tests when behavior changed
 - [ ] Updated translations when user-facing text changed
 - [ ] Updated relevant documentation when behavior, architecture, workflow, or

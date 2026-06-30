@@ -153,6 +153,9 @@ translation extraction and validation commands.
   a commit.
 * After edits, AI responses should include a concise summary of what changed,
   why it changed, and which files were touched.
+* That summary should include proposed commit message text for each logical
+  change scope, following repository style (for example:
+  `Chore(scope): short summary`).
 * If a commit is requested, present the intended commit scope in the response
   before creating the commit.
 
@@ -259,9 +262,11 @@ When using AI assistance in this repository, keep the workflow lightweight:
    future changes start from the improved rule.
 7. Do not create commits unless a developer explicitly asks for one, and always
    include a concise change summary in the response.
-8. Ask clarifying questions when requirements are unclear; do not proceed on
+8. Include proposed commit message text in that summary, following the
+   repository's commit subject style.
+9. Ask clarifying questions when requirements are unclear; do not proceed on
    silent assumptions.
-9. Update relevant documentation when implementation changes affect documented
+10. Update relevant documentation when implementation changes affect documented
    behavior, architecture, workflow, or contributor guidance.
 
 ## CI strategy for recurring AI mistakes

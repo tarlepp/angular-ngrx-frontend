@@ -293,6 +293,9 @@ When AI assistants are used for repository changes:
 - do not create commits unless a developer explicitly asks for a commit
 - report a concise summary of changes after edits, including touched files and
   intent
+- include proposed commit message text in that summary for each logical change
+  scope, following repository style (for example:
+  `Chore(scope): short summary`)
 - when a commit is requested, show the planned commit scope in the response
   before creating it
 
@@ -511,6 +514,8 @@ When making changes in this repository:
 12. Do not create commits unless a developer explicitly asks for one.
 13. Ask clarifying questions when requirements are ambiguous; do not proceed on
     silent assumptions.
+14. Include proposed commit message text in change summaries using the
+    repository's commit subject style.
 
 ---
 

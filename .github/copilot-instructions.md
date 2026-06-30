@@ -63,6 +63,8 @@ and project workflow conventions.
 - Do not create commits unless the developer explicitly asks for a commit.
 - After making edits, provide a concise summary of what changed and why,
   including touched file paths.
+- In that summary, propose commit message text for each logical change scope,
+  following repository commit style (for example: `Chore(scope): short summary`).
 - Before creating a commit on request, present the planned commit scope in the
   response so the developer can review it.
 

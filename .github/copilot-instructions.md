@@ -93,6 +93,7 @@ project root inside the running development container:
 
 - `yarn lint:ts`
 - `yarn lint:scss`
+- `yarn lint:md`
 - `yarn test`
 - `yarn extract-translations`
 - `yarn check-translations`

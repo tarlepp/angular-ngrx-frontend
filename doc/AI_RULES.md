@@ -193,6 +193,7 @@ These should be validated through repository tooling and CI whenever possible:
 
 * TypeScript linting,
 * SCSS linting,
+* markdown documentation linting,
 * translation extraction consistency,
 * untranslated key detection, and
 * build success.
@@ -205,6 +206,7 @@ validation commands are:
 ```bash
 yarn lint:ts
 yarn lint:scss
+yarn lint:md
 yarn test
 yarn extract-translations
 yarn check-translations

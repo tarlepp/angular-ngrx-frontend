@@ -320,12 +320,14 @@ When AI-assisted changes modify code behavior or contributor workflow:
 # Linting
 yarn lint:ts
 yarn lint:scss
-make lint
+yarn lint:md
+make lint # Runs lint:ts, lint:scss, and lint:md
 
 # Auto-fixing
 yarn fix:ts
 yarn fix:scss
-make fix
+yarn fix:md
+make fix # Runs fix:ts, fix:scss, and fix:md
 
 # Testing
 yarn test
@@ -366,6 +368,7 @@ After changing code, prefer the smallest relevant validation set:
 ```bash
 yarn lint:ts
 yarn lint:scss
+yarn lint:md
 yarn test
 yarn extract-translations
 yarn check-translations

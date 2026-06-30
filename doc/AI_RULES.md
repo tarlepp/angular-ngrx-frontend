@@ -221,7 +221,9 @@ for:
 * SCSS linting,
 * markdown documentation linting,
 * translation extraction drift, and
-* untranslated text tags.
+* untranslated text tags,
+* Docker image build, and
+* Trivy vulnerability scanning of the built image.
 
 That means the most effective starting point for AI rules in this repository is
 not more process, but clearer instruction files that map directly to these

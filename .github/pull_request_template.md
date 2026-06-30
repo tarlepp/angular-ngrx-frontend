@@ -10,6 +10,8 @@
 - [ ] Ran the smallest relevant checks for this change
 - [ ] Updated tests when behavior changed
 - [ ] Updated translations when user-facing text changed
+- [ ] Updated relevant documentation when behavior, architecture, workflow, or
+      contributor-facing commands changed
 
 ## Repository architecture checklist
 
@@ -28,6 +30,8 @@
       were touched
 - [ ] When a commit was requested, AI showed planned commit scope before
       creating the commit
+- [ ] AI asked for clarification instead of silently assuming missing behavior,
+      API contract, UX text, or acceptance details
 
 ## Notes for reviewers
 

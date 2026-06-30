@@ -24,6 +24,7 @@ to keep AI-assisted changes consistent with existing project conventions.
     * [8. Keep versioned documentation lightweight](#8-keep-versioned-documentation-lightweight)
     * [9. Require explicit commit requests and clear change summaries](#9-require-explicit-commit-requests-and-clear-change-summaries)
     * [10. Ask for human clarification instead of assuming](#10-ask-for-human-clarification-instead-of-assuming)
+    * [11. Update relevant documentation with code changes](#11-update-relevant-documentation-with-code-changes)
   * [Enforcement model](#enforcement-model)
     * [Documentation-only rules](#documentation-only-rules)
     * [Automatically enforceable rules](#automatically-enforceable-rules)
@@ -164,6 +165,15 @@ translation extraction and validation commands.
 * If a temporary assumption is necessary to unblock progress, state it
   explicitly and ask for confirmation.
 
+### 11. Update relevant documentation with code changes
+
+* When code changes affect behavior, architecture, workflow, or contributor
+  commands, update the relevant documentation in the same change.
+* Keep repository AI guidance files aligned when policy-level instructions
+  change: `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`.
+* If documentation is intentionally deferred, state that explicitly in the
+  response with a reason.
+
 ## Enforcement model
 
 Not all AI rules can be enforced automatically. Use the following model:
@@ -247,6 +257,8 @@ When using AI assistance in this repository, keep the workflow lightweight:
    include a concise change summary in the response.
 8. Ask clarifying questions when requirements are unclear; do not proceed on
    silent assumptions.
+9. Update relevant documentation when implementation changes affect documented
+   behavior, architecture, workflow, or contributor guidance.
 
 ## CI strategy for recurring AI mistakes
 

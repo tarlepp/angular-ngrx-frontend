@@ -49,6 +49,15 @@ and project workflow conventions.
 - Preserve public APIs and existing architecture unless the task explicitly
   requires a change.
 
+## Documentation maintenance rules
+
+- When codebase behavior, architecture, workflow, or contributor-facing commands
+  change, update the relevant documentation in the same change.
+- Keep `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`
+  aligned when repository-level AI policies change.
+- If a documentation update is intentionally deferred, state that explicitly in
+  the response with the reason.
+
 ## Git and reporting rules
 
 - Do not create commits unless the developer explicitly asks for a commit.

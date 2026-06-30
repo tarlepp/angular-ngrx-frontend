@@ -305,6 +305,15 @@ When requirements are unclear during AI-assisted work:
 - if a temporary assumption is necessary, state it explicitly and ask the
   developer to confirm
 
+### AI documentation update policy
+
+When AI-assisted changes modify code behavior or contributor workflow:
+
+- update the relevant documentation in the same change when practical
+- keep `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`
+  aligned for repository-level AI policy changes
+- if documentation updates are deferred, state that explicitly with the reason
+
 ## Common tasks
 
 ```bash
@@ -494,6 +503,8 @@ When making changes in this repository:
    inside the running `node` container.
 10. Use Docker or Dev Container workflows when local tool availability is
     uncertain.
+11. Update relevant documentation when code changes affect documented behavior,
+    architecture, workflow, or contributor guidance.
 
 ---
 

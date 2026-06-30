@@ -57,6 +57,15 @@ and project workflow conventions.
 - Before creating a commit on request, present the planned commit scope in the
   response so the developer can review it.
 
+## Clarification and assumptions rules
+
+- If required details are missing, ambiguous, or involve a product decision,
+  ask the developer before implementing.
+- Do not silently assume behavior, API contracts, UX text, or acceptance
+  criteria when they are not defined.
+- If a best-effort assumption is unavoidable, state it explicitly and ask the
+  developer to confirm it.
+
 ## Command execution rules
 
 - Treat the running `node` development container as the default environment for

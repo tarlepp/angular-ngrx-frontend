@@ -118,6 +118,15 @@ translation extraction and validation commands.
 - If a commit is requested, present the intended commit scope in the response
   before creating the commit.
 
+### 10. Ask for human clarification instead of assuming
+
+- If requirements are missing, ambiguous, or policy-sensitive, AI assistants
+  should ask the developer clarifying questions before implementation.
+- Do not silently assume unspecified behavior, data contracts, UX wording, or
+  acceptance criteria.
+- If a temporary assumption is necessary to unblock progress, state it
+  explicitly and ask for confirmation.
+
 ## Enforcement model
 
 Not all AI rules can be enforced automatically. Use the following model:
@@ -199,6 +208,8 @@ When using AI assistance in this repository, keep the workflow lightweight:
    future changes start from the improved rule.
 7. Do not create commits unless a developer explicitly asks for one, and always
    include a concise change summary in the response.
+8. Ask clarifying questions when requirements are unclear; do not proceed on
+   silent assumptions.
 
 ## CI strategy for recurring AI mistakes
 

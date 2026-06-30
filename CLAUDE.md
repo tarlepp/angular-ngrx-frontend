@@ -296,6 +296,15 @@ When AI assistants are used for repository changes:
 - when a commit is requested, show the planned commit scope in the response
   before creating it
 
+### AI clarification and assumptions policy
+
+When requirements are unclear during AI-assisted work:
+
+- ask the developer for clarification before implementing ambiguous behavior
+- do not silently assume missing product, API, UX, or acceptance details
+- if a temporary assumption is necessary, state it explicitly and ask the
+  developer to confirm
+
 ## Common tasks
 
 ```bash

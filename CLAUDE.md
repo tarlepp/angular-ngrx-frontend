@@ -1,16 +1,36 @@
-# Angular NgRx Frontend - AI Assistant Context
+# What is this?
 
 > **Project**: Angular NgRx Frontend Template
 > **Author**: Tarmo Leppänen
 > **License**: MIT
 > **Last Updated**: June 2026
 
-## Overview
+This `CLAUDE.md` file is the long-form AI and contributor context guide for
+this repository. It explains architecture, workflow, and project conventions so
+changes stay aligned with existing Angular, NgRx, and CI expectations.
 
-This repository is a production-ready Angular frontend template powered by NgRx.
-It is a standalone SPA that consumes REST APIs and is designed to work well with
-[`symfony-flex-backend`](https://github.com/tarlepp/symfony-flex-backend) or any
-compatible backend.
+Use this document for deeper context, while keeping
+`.github/copilot-instructions.md` as the short operational rules source.
+
+## Table of Contents
+
+- [What is this](#what-is-this)
+  - [Table of Contents](#table-of-contents)
+  - [AI documentation map](#ai-documentation-map)
+  - [Key characteristics](#key-characteristics)
+  - [Version sources of truth](#version-sources-of-truth)
+  - [Project structure](#project-structure)
+  - [Technology stack](#technology-stack)
+  - [Architecture patterns](#architecture-patterns)
+  - [Development workflow](#development-workflow)
+  - [Common tasks](#common-tasks)
+  - [CI and validation](#ci-and-validation)
+  - [Configuration](#configuration)
+  - [Key conventions](#key-conventions)
+  - [Backend integration](#backend-integration)
+  - [Testing strategy](#testing-strategy)
+  - [Common issues and notes](#common-issues-and-notes)
+  - [Practical guidance for AI assistants](#practical-guidance-for-ai-assistants)
 
 ## AI documentation map
 

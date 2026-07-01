@@ -8,8 +8,11 @@
 ## Validation
 
 - [ ] Ran the smallest relevant checks for this change
+- [ ] Ran markdown lint when documentation files changed
 - [ ] Updated tests when behavior changed
 - [ ] Updated translations when user-facing text changed
+- [ ] Updated relevant documentation when behavior, architecture, workflow, or
+      contributor-facing commands changed
 
 ## Repository architecture checklist
 
@@ -20,6 +23,16 @@
       shared state changed
 - [ ] Avoided unrelated refactors
 - [ ] Avoided new dependencies unless they were necessary
+
+## AI-assisted workflow checklist
+
+- [ ] No AI-created commit was made unless explicitly requested by a developer
+- [ ] AI response included a concise summary of what changed and which files
+      were touched
+- [ ] When a commit was requested, AI showed planned commit scope before
+      creating the commit
+- [ ] AI asked for clarification instead of silently assuming missing behavior,
+      API contract, UX text, or acceptance details
 
 ## Notes for reviewers
 

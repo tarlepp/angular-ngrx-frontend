@@ -49,6 +49,34 @@ and project workflow conventions.
 - Preserve public APIs and existing architecture unless the task explicitly
   requires a change.
 
+## Documentation maintenance rules
+
+- When codebase behavior, architecture, workflow, or contributor-facing commands
+  change, update the relevant documentation in the same change.
+- Keep `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`
+  aligned when repository-level AI policies change.
+- If a documentation update is intentionally deferred, state that explicitly in
+  the response with the reason.
+
+## Git and reporting rules
+
+- Do not create commits unless the developer explicitly asks for a commit.
+- After making edits, provide a concise summary of what changed and why,
+  including touched file paths.
+- In that summary, propose commit message text for each logical change scope,
+  following repository commit style (for example: `Chore(scope): short summary`).
+- Before creating a commit on request, present the planned commit scope in the
+  response so the developer can review it.
+
+## Clarification and assumptions rules
+
+- If required details are missing, ambiguous, or involve a product decision,
+  ask the developer before implementing.
+- Do not silently assume behavior, API contracts, UX text, or acceptance
+  criteria when they are not defined.
+- If a best-effort assumption is unavoidable, state it explicitly and ask the
+  developer to confirm it.
+
 ## Command execution rules
 
 - Treat the running `node` development container as the default environment for
@@ -67,6 +95,7 @@ project root inside the running development container:
 
 - `yarn lint:ts`
 - `yarn lint:scss`
+- `yarn lint:md`
 - `yarn test`
 - `yarn extract-translations`
 - `yarn check-translations`

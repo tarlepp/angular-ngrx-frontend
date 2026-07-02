@@ -1,16 +1,36 @@
-# Angular NgRx Frontend - AI Assistant Context
+# What is this?
 
 > **Project**: Angular NgRx Frontend Template
 > **Author**: Tarmo Leppänen
 > **License**: MIT
 > **Last Updated**: June 2026
 
-## Overview
+This `CLAUDE.md` file is the long-form AI and contributor context guide for
+this repository. It explains architecture, workflow, and project conventions so
+changes stay aligned with existing Angular, NgRx, and CI expectations.
 
-This repository is a production-ready Angular frontend template powered by NgRx.
-It is a standalone SPA that consumes REST APIs and is designed to work well with
-[`symfony-flex-backend`](https://github.com/tarlepp/symfony-flex-backend) or any
-compatible backend.
+Use this document for deeper context, while keeping
+`.github/copilot-instructions.md` as the short operational rules source.
+
+## Table of Contents
+
+- [What is this](#what-is-this)
+  - [Table of Contents](#table-of-contents)
+  - [AI documentation map](#ai-documentation-map)
+  - [Key characteristics](#key-characteristics)
+  - [Version sources of truth](#version-sources-of-truth)
+  - [Project structure](#project-structure)
+  - [Technology stack](#technology-stack)
+  - [Architecture patterns](#architecture-patterns)
+  - [Development workflow](#development-workflow)
+  - [Common tasks](#common-tasks)
+  - [CI and validation](#ci-and-validation)
+  - [Configuration](#configuration)
+  - [Key conventions](#key-conventions)
+  - [Backend integration](#backend-integration)
+  - [Testing strategy](#testing-strategy)
+  - [Common issues and notes](#common-issues-and-notes)
+  - [Practical guidance for AI assistants](#practical-guidance-for-ai-assistants)
 
 ## AI documentation map
 
@@ -266,18 +286,51 @@ yarn start
 yarn start-prod
 ```
 
+### AI change reporting and commit policy
+
+When AI assistants are used for repository changes:
+
+- do not create commits unless a developer explicitly asks for a commit
+- report a concise summary of changes after edits, including touched files and
+  intent
+- include proposed commit message text in that summary for each logical change
+  scope, following repository style (for example:
+  `Chore(scope): short summary`)
+- when a commit is requested, show the planned commit scope in the response
+  before creating it
+
+### AI clarification and assumptions policy
+
+When requirements are unclear during AI-assisted work:
+
+- ask the developer for clarification before implementing ambiguous behavior
+- do not silently assume missing product, API, UX, or acceptance details
+- if a temporary assumption is necessary, state it explicitly and ask the
+  developer to confirm
+
+### AI documentation update policy
+
+When AI-assisted changes modify code behavior or contributor workflow:
+
+- update the relevant documentation in the same change when practical
+- keep `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`
+  aligned for repository-level AI policy changes
+- if documentation updates are deferred, state that explicitly with the reason
+
 ## Common tasks
 
 ```bash
 # Linting
 yarn lint:ts
 yarn lint:scss
-make lint
+yarn lint:md
+make lint # Runs lint:ts, lint:scss, and lint:md
 
 # Auto-fixing
 yarn fix:ts
 yarn fix:scss
-make fix
+yarn fix:md
+make fix # Runs fix:ts, fix:scss, and fix:md
 
 # Testing
 yarn test
@@ -318,6 +371,7 @@ After changing code, prefer the smallest relevant validation set:
 ```bash
 yarn lint:ts
 yarn lint:scss
+yarn lint:md
 yarn test
 yarn extract-translations
 yarn check-translations
@@ -455,6 +509,13 @@ When making changes in this repository:
    inside the running `node` container.
 10. Use Docker or Dev Container workflows when local tool availability is
     uncertain.
+11. Update relevant documentation when code changes affect documented behavior,
+    architecture, workflow, or contributor guidance.
+12. Do not create commits unless a developer explicitly asks for one.
+13. Ask clarifying questions when requirements are ambiguous; do not proceed on
+    silent assumptions.
+14. Include proposed commit message text in change summaries using the
+    repository's commit subject style.
 
 ---
 

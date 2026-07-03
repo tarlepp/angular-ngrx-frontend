@@ -4,7 +4,9 @@ This document contains information about _common_ tools that are included to
 this application. All these tools are available inside application docker
 container.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -13,6 +15,8 @@ container.
   * [thefuck](#thefuck-table-of-contents)
 
 ## npm-check-updates [ᐞ](#table-of-contents)
+
+<a id="npm-check-updates"></a>
 
 npm-check-updates upgrades your package.json dependencies to the latest
 versions, ignoring specified versions.
@@ -24,6 +28,8 @@ it will upgrade `"express": "^4.0.0"` to `"express": "^5.0.0"`.
 
 ## mversion [ᐞ](#table-of-contents)
 
+<a id="mversion"></a>
+
 A cross packaging manager module version handler/bumper. Imitates _npm version_
 to also work on other packaging files. For those times you either have
 multiple packaging files (like `bower.json`, `component.json`, `manifest.json`)
@@ -34,10 +40,14 @@ optionally commit and create a tag.
 
 ## thefuck [ᐞ](#table-of-contents)
 
+<a id="thefuck"></a>
+
 `thefuck` is installed in the development container to provide command
 correction aliases for bash and fish.
 
-### Python 3.13 compatibility note
+### Python 3.13 compatibility note [ᐞ](#table-of-contents)
+
+<a id="python-313-compatibility-note"></a>
 
 At the moment, `thefuck` `3.32` still imports deprecated Python `imp` from
 `thefuck/conf.py` and `thefuck/types.py`. Python `3.13` removed `imp`, which

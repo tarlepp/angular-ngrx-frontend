@@ -2,7 +2,9 @@
 
 This document contains information on how to use translations in the application.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -14,7 +16,11 @@ This document contains information on how to use translations in the application
 
 ## Basic usage [ᐞ](#table-of-contents)
 
+<a id="basic-usage"></a>
+
 ### Defining translations in the assets [ᐞ](#table-of-contents)
+
+<a id="defining-translations-in-the-assets"></a>
 
 Each language translations are stored in its own JSON file, for example
 `en.json`. In this application we are using nested (or so called
@@ -33,6 +39,8 @@ correctly.
 ```
 
 ### In template files [ᐞ](#table-of-contents)
+
+<a id="in-template-files"></a>
 
 Translations are easy to use with `transloco` pipe:
 

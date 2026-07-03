@@ -3,13 +3,17 @@
 This document contains basic checklist what _you_ need to do if you're going to
 use this template as in base of your own application.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
   * [Checklist](#checklist)
 
 ## Checklist [ᐞ](#table-of-contents)
+
+<a id="checklist"></a>
 
 Below you have _basic_ checklist that **_you need to go through_** after you have
 started to use this template.

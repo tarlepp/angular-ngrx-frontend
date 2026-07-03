@@ -7,14 +7,18 @@ Use the main [`README.md`](../README.md) for project setup and onboarding.
 Use the documents below when you need more detailed guidance about a specific
 topic.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
   * [Available documents](#available-documents)
   * [Quick navigation](#quick-navigation)
 
-## Available documents
+## Available documents [ᐞ](#table-of-contents)
+
+<a id="available-documents"></a>
 
 * [AI-assisted change policy](AI_RULES.md) - repository-level guidance for
   AI-assisted changes and how those rules align with CI, contributor workflow,
@@ -40,7 +44,9 @@ topic.
 * [Yarn update quick reference](YARN_UPDATE_QUICK_REF.md) - condensed command
   cheatsheet for Yarn version checks and upgrades.
 
-## Quick navigation
+## Quick navigation [ᐞ](#table-of-contents)
+
+<a id="quick-navigation"></a>
 
 For the most common starting points:
 
@@ -54,4 +60,4 @@ For the most common starting points:
 
 ---
 
-[Back to main README.md](../README.md)
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

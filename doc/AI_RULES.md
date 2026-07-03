@@ -27,6 +27,8 @@ to keep AI-assisted changes consistent with existing project conventions.
     * [9. Require explicit commit requests and clear change summaries](#9-require-explicit-commit-requests-and-clear-change-summaries)
     * [10. Ask for human clarification instead of assuming](#10-ask-for-human-clarification-instead-of-assuming)
     * [11. Update relevant documentation with code changes](#11-update-relevant-documentation-with-code-changes)
+    * [12. Follow repository documentation formatting conventions](#12-follow-repository-documentation-formatting-conventions)
+    * [13. Keep markdown structure consistent within directories](#13-keep-markdown-structure-consistent-within-directories)
   * [Enforcement model](#enforcement-model)
     * [Documentation-only rules](#documentation-only-rules)
     * [Automatically enforceable rules](#automatically-enforceable-rules)
@@ -208,6 +210,36 @@ translation extraction and validation commands.
   change: `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`.
 * If documentation is intentionally deferred, state that explicitly in the
   response with a reason.
+
+### 12. Follow repository documentation formatting conventions [ᐞ](#table-of-contents)
+
+<a id="12-follow-repository-documentation-formatting-conventions"></a>
+
+Documentation generated or edited by AI should follow the repository markdown
+format conventions so all docs remain consistent.
+
+* Use `# What is this?` as the default title style unless there is a justified
+  file-specific reason not to.
+* Keep `## Table of Contents` present and synchronized with current headings.
+* Use section backlinks (`[ᐞ](#table-of-contents)`) and explicit anchors
+  (`<a id="..."></a>`) for section navigation.
+* Use asterisk (`*`) markers for unordered lists.
+* Keep footer back links consistent with repository documentation patterns.
+* Validate formatting with `yarn lint:md` after documentation edits.
+
+### 13. Keep markdown structure consistent within directories [ᐞ](#table-of-contents)
+
+<a id="13-keep-markdown-structure-consistent-within-directories"></a>
+
+When multiple markdown files exist in the same directory, they should follow
+the same local documentation pattern.
+
+* Keep sibling docs aligned on heading style, TOC depth, and backlink usage.
+* Keep section anchor conventions (`<a id="..."></a>`) consistent across
+  sibling files.
+* Keep list marker style consistent across sibling files.
+* Keep footer back-link conventions consistent for that directory (for example,
+  `doc/*.md` should use the same bottom navigation pattern).
 
 ## Enforcement model [ᐞ](#table-of-contents)
 

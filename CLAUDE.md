@@ -29,6 +29,7 @@ Use this document for deeper context, while keeping
   * [CI and validation](#ci-and-validation)
   * [Configuration](#configuration)
   * [Key conventions](#key-conventions)
+    * [Documentation formatting conventions](#documentation-formatting-conventions)
   * [Backend integration](#backend-integration)
   * [Testing strategy](#testing-strategy)
   * [Common issues and notes](#common-issues-and-notes)
@@ -518,6 +519,26 @@ Runtime and environment-related files include:
 * prefer Angular Material before new UI libraries
 * avoid hardcoded user-facing text when it should be translated
 
+### Documentation formatting conventions [ᐞ](#table-of-contents)
+
+<a id="documentation-formatting-conventions"></a>
+
+Repository markdown files should follow the shared structure used in this
+project so navigation and maintenance stay consistent.
+
+* use `# What is this?` as the standard documentation title unless the file has
+  a justified exception
+* include a `## Table of Contents` section that matches current headings
+* include section backlinks (`[ᐞ](#table-of-contents)`) and anchor tags
+  (`<a id="..."></a>`) for heading navigation
+* use asterisk (`*`) list markers for unordered lists
+* include the standard footer back links for documentation pages where
+  applicable
+* keep markdown files within the same directory aligned to one shared structure
+  (heading style, TOC depth, backlink/anchor usage, list markers, and footer
+  link pattern)
+* run `yarn lint:md` after documentation edits
+
 ## Backend integration [ᐞ](#table-of-contents)
 
 <a id="backend-integration"></a>
@@ -606,6 +627,8 @@ When making changes in this repository:
     silent assumptions.
 14. Include proposed commit message text in change summaries using the
     repository's commit subject style.
+15. Keep markdown files in the same directory structurally consistent,
+    including shared footer back-link conventions.
 
 ---
 

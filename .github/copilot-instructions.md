@@ -22,6 +22,7 @@ and project workflow conventions.
   * [UI, styling, and i18n rules](#ui-styling-and-i18n-rules)
   * [Change scope rules](#change-scope-rules)
   * [Documentation maintenance rules](#documentation-maintenance-rules)
+  * [Documentation formatting rules](#documentation-formatting-rules)
   * [Git and reporting rules](#git-and-reporting-rules)
   * [Clarification and assumptions rules](#clarification-and-assumptions-rules)
   * [Command execution rules](#command-execution-rules)
@@ -89,6 +90,25 @@ and project workflow conventions.
   aligned when repository-level AI policies change.
 * If a documentation update is intentionally deferred, state that explicitly in
   the response with the reason.
+
+## Documentation formatting rules [ᐞ](#table-of-contents)
+
+<a id="documentation-formatting-rules"></a>
+
+* Follow the repository markdown structure used by existing documentation files.
+* Use `# What is this?` as the main title for documentation pages unless the
+  file has a clear reason to keep a different title.
+* Include a `## Table of Contents` section and keep its links in sync with the
+  current headings.
+* Add `[ᐞ](#table-of-contents)` and `<a id="..."></a>` section anchors for
+  headings to keep navigation consistent.
+* Use asterisk (`*`) list markers for unordered lists instead of hyphens.
+* Keep the footer navigation pattern consistent with repository docs, including
+  links back to resource index and main README when applicable.
+* When a directory contains multiple markdown files, keep sibling documents
+  structurally consistent (heading style, TOC depth, section backlinks/anchors,
+  list marker style, and footer back-link pattern).
+* Validate documentation formatting with `yarn lint:md`.
 
 ## Git and reporting rules [ᐞ](#table-of-contents)
 

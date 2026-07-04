@@ -3,13 +3,17 @@
 This folder contains all docker configuration for local development
 environment.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
-  * [Selfsigned SSL certificates](#selfsigned-ssl-certificates-ᐞ)
+  * [Selfsigned SSL certificates](#selfsigned-ssl-certificates)
 
 ## Selfsigned SSL certificates [ᐞ](#table-of-contents)
+
+<a id="selfsigned-ssl-certificates"></a>
 
 Note that this directory contains following SSL certification files:
 

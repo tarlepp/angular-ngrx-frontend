@@ -2,14 +2,19 @@
 
 This directory contains different scripts that are used during development.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
-* [Resources](#resources)
-  * [Project stats script](#project-stats-script)
-  * [GitHub Actions update checker](#github-actions-update-checker)
+  * [Table of Contents](#table-of-contents)
+  * [Resources](#resources)
+    * [Project stats script](#project-stats-script)
+    * [GitHub Actions update checker](#github-actions-update-checker)
 
-## Resources
+## Resources [ᐞ](#table-of-contents)
+
+<a id="resources"></a>
 
 * [Project stats script](project-stats.sh)
   * This script is used to generate simple project stats. It will generate
@@ -19,7 +24,9 @@ This directory contains different scripts that are used during development.
     discovery issues (unpinned refs/conflicting versions), and checks for
     available updates in the current major version line.
 
-### Project stats script
+### Project stats script [ᐞ](#table-of-contents)
+
+<a id="project-stats-script"></a>
 
 File: `scripts/project-stats.sh`
 
@@ -30,7 +37,9 @@ make project-stats
 If you are already inside the container, you can still run
 `bash scripts/project-stats.sh` directly.
 
-### GitHub Actions update checker
+### GitHub Actions update checker [ᐞ](#table-of-contents)
+
+<a id="github-actions-update-checker"></a>
 
 File: `scripts/check-action-updates.sh`
 

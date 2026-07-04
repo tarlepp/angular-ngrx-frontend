@@ -339,6 +339,9 @@ When AI assistants are used for repository changes:
 * include proposed commit message text in that summary for each logical change
   scope, following repository style (for example:
   `Chore(scope): short summary`)
+* when asked for pull request or commit titles, inspect the full branch diff
+  against the target base branch and suggest titles that describe the whole
+  change set
 * when a commit is requested, show the planned commit scope in the response
   before creating it
 
@@ -629,6 +632,8 @@ When making changes in this repository:
     repository's commit subject style.
 15. Keep markdown files in the same directory structurally consistent,
     including shared footer back-link conventions.
+16. When asked for pull request or commit titles, base the suggestion on the
+    full branch diff against the target base branch.
 
 ---
 

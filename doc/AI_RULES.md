@@ -29,6 +29,7 @@ to keep AI-assisted changes consistent with existing project conventions.
     * [11. Update relevant documentation with code changes](#11-update-relevant-documentation-with-code-changes)
     * [12. Follow repository documentation formatting conventions](#12-follow-repository-documentation-formatting-conventions)
     * [13. Keep markdown structure consistent within directories](#13-keep-markdown-structure-consistent-within-directories)
+    * [14. Suggest PR and commit titles from the full branch diff](#14-suggest-pr-and-commit-titles-from-the-full-branch-diff)
   * [Enforcement model](#enforcement-model)
     * [Documentation-only rules](#documentation-only-rules)
     * [Automatically enforceable rules](#automatically-enforceable-rules)
@@ -240,6 +241,20 @@ the same local documentation pattern.
 * Keep list marker style consistent across sibling files.
 * Keep footer back-link conventions consistent for that directory (for example,
   `doc/*.md` should use the same bottom navigation pattern).
+
+### 14. Suggest PR and commit titles from the full branch diff [ᐞ](#table-of-contents)
+
+<a id="14-suggest-pr-and-commit-titles-from-the-full-branch-diff"></a>
+
+When asked to provide a pull request title or commit title, base the suggestion
+on the full branch diff against the target base branch.
+
+* Review all changed files in the branch before suggesting a title.
+* Prefer a title that covers the entire change set rather than the most recent
+  file edit.
+* Keep the title concise and aligned with repository commit style.
+* If the change set spans multiple logical scopes, mention the dominant scope
+  or provide one title per scope when appropriate.
 
 ## Enforcement model [ᐞ](#table-of-contents)
 

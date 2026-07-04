@@ -119,6 +119,9 @@ and project workflow conventions.
   including touched file paths.
 * In that summary, propose commit message text for each logical change scope,
   following repository commit style (for example: `Chore(scope): short summary`).
+* When asked to propose pull request or commit titles, inspect the full branch
+  diff against the target base branch and suggest titles that cover the entire
+  change set, not just the last file edited.
 * Before creating a commit on request, present the planned commit scope in the
   response so the developer can review it.
 

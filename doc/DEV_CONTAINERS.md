@@ -5,23 +5,27 @@ Docker Compose workflow.
 
 The existing workflow is unchanged:
 
-- `make start`
-- `make start-build`
-- `make bash`
+* `make start`
+* `make start-build`
+* `make bash`
 
 Dev Containers are an extra onboarding option for IDEs that support the
 [devcontainer specification](https://containers.dev/).
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
 
-- [What is this?](#what-is-this)
-  - [Table of Contents](#table-of-contents)
-  - [VS Code](#vs-code)
-    - [VS Code troubleshooting](#vs-code-troubleshooting)
-  - [JetBrains IDEs](#jetbrains-ides)
-  - [What this setup does](#what-this-setup-does)
+<a id="table-of-contents"></a>
 
-## VS Code
+* [What is this?](#what-is-this)
+  * [Table of Contents](#table-of-contents)
+  * [VS Code](#vs-code)
+    * [VS Code troubleshooting](#vs-code-troubleshooting)
+  * [JetBrains IDEs](#jetbrains-ides)
+  * [What this setup does](#what-this-setup-does)
+
+## VS Code [ᐞ](#table-of-contents)
+
+<a id="vs-code"></a>
 
 1. Install the **Dev Containers** extension.
 2. Open this repository in VS Code.
@@ -40,8 +44,8 @@ make start-production
 
 You can also run the same commands from `Tasks: Run Task`:
 
-- `Dev Container: Start Angular (dev)`
-- `Dev Container: Start Angular (local prod)`
+* `Dev Container: Start Angular (dev)`
+* `Dev Container: Start Angular (local prod)`
 
 Task definitions are configured directly in
 `.devcontainer/devcontainer.json` under `customizations.vscode.tasks`.
@@ -55,7 +59,9 @@ so you can use Git and SSH without additional setup.
 The IDE will forward port `4200`, after which you can open
 `https://localhost:4200` in your browser.
 
-### VS Code troubleshooting
+### VS Code troubleshooting [ᐞ](#table-of-contents)
+
+<a id="vs-code-troubleshooting"></a>
 
 If `https://localhost:4200` does not open:
 
@@ -76,7 +82,9 @@ You should see `0.0.0.0:4200->4200/tcp` in the `PORTS` column.
 1. If VS Code tasks are missing, run `Developer: Reload Window` and retry
    `Tasks: Run Task`.
 
-## JetBrains IDEs
+## JetBrains IDEs [ᐞ](#table-of-contents)
+
+<a id="jetbrains-ides"></a>
 
 If your JetBrains IDE version supports Dev Containers, open the project
 as a Dev Container and select the configuration from
@@ -90,13 +98,19 @@ is VS Code-specific. JetBrains IDEs do not use those task definitions, so run
 `make start` / `make start-production` directly from the integrated terminal
 (or create IDE run configurations).
 
-## What this setup does
+## What this setup does [ᐞ](#table-of-contents)
 
-- Reuses the existing `compose.yaml` service definitions.
-- Applies a Dev Container specific Compose override in
+<a id="what-this-setup-does"></a>
+
+* Reuses the existing `compose.yaml` service definitions.
+* Applies a Dev Container specific Compose override in
   `.devcontainer/docker-compose.devcontainer.yaml`.
-- Publishes port `4200` on `localhost`, so `https://localhost:4200` works
+* Publishes port `4200` on `localhost`, so `https://localhost:4200` works
   directly from the host.
-- Keeps the container running in idle mode so each developer can start the app
+* Keeps the container running in idle mode so each developer can start the app
   manually with `make start`.
-- Avoids changing the existing host-level development workflow.
+* Avoids changing the existing host-level development workflow.
+
+---
+
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

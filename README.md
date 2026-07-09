@@ -13,7 +13,9 @@ REST APIs. The default target backend for local development is
 [`symfony-flex-backend`](https://github.com/tarlepp/symfony-flex-backend), but
 you can use any backend that provides a compatible API.
 
-## Quick Start
+## Quick Start [ᐞ](#table-of-contents)
+
+<a id="quick-start"></a>
 
 ```bash
 git clone https://github.com/tarlepp/angular-ngrx-frontend.git
@@ -24,7 +26,9 @@ make start
 Then open `https://localhost:4200` in your browser. For more details, see
 [Installation](#installation).
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -46,13 +50,17 @@ Then open `https://localhost:4200` in your browser. For more details, see
   * [Authors](#authors)
   * [License](#license)
 
-## Requirements
+## Requirements [ᐞ](#table-of-contents)
+
+<a id="requirements"></a>
 
 * [Docker Engine](https://docs.docker.com/engine/install/)
 * [Docker Compose v2](https://docs.docker.com/compose/install/)
   (included with Docker Desktop)
 
-### Recommendations
+### Recommendations [ᐞ](#table-of-contents)
+
+<a id="recommendations"></a>
 
 * `*nix platform` - most likely you're going to host your application on *nix
   platform - so I would recommend to do development also on that platform.
@@ -64,7 +72,9 @@ Then open `https://localhost:4200` in your browser. For more details, see
   if you do not have `make`, check `Makefile` to see equivalent Docker
   commands.
 
-### Package manager
+### Package manager [ᐞ](#table-of-contents)
+
+<a id="package-manager"></a>
 
 This repository is pinned to Yarn 4 via the `packageManager` field in
 `package.json` and a checked-in release file under `.yarn/releases/`.
@@ -73,11 +83,15 @@ When running commands inside the Docker `node` container (or in a Dev Container
 terminal), use `yarn` directly from the project root so the pinned Yarn version
 is used automatically.
 
-## Installation
+## Installation [ᐞ](#table-of-contents)
+
+<a id="installation"></a>
 
 This installation guide expects that you're using Docker Engine.
 
-### 1. Clone repository
+### 1. Clone repository [ᐞ](#table-of-contents)
+
+<a id="1-clone-repository"></a>
 
 Use your favorite IDE and check out the repository from GitHub, or use the
 following command:
@@ -86,7 +100,9 @@ following command:
 git clone https://github.com/tarlepp/angular-ngrx-frontend.git
 ```
 
-### 2. Start containers
+### 2. Start containers [ᐞ](#table-of-contents)
+
+<a id="2-start-containers"></a>
 
 You can run this project either with Dev Containers (for example in VS Code or
 JetBrains IDEs) or with Make commands.
@@ -110,12 +126,16 @@ lockfile-consistent dependency installation (the container entrypoint runs
 For next steps (application URL, shell access, rebuilding containers, and a
 quick health check), see [Running the application](#running-the-application).
 
-## Running the application
+## Running the application [ᐞ](#table-of-contents)
+
+<a id="running-the-application"></a>
 
 These instructions are shared for both Make-based and Dev Container-based
 workflows.
 
-### Using application
+### Using application [ᐞ](#table-of-contents)
+
+<a id="using-application"></a>
 
 By default `make start` starts the Angular development server inside the Docker
 container and exposes the following port on `localhost` on your host machine
@@ -133,7 +153,9 @@ Note that this frontend application assumes that your backend is running on
 [backend](https://github.com/tarlepp/symfony-flex-backend)
 is running on that address by default.
 
-### Getting shell to container
+### Getting shell to container [ᐞ](#table-of-contents)
+
+<a id="getting-shell-to-container"></a>
 
 After you've started the container (`make start` or via Dev Containers), you
 can list all running containers with `docker ps`.
@@ -147,7 +169,9 @@ make bash
 If you are using Dev Containers, you can also use the IDE terminal that is
 already attached to the `node` container.
 
-### Building containers
+### Building containers [ᐞ](#table-of-contents)
+
+<a id="building-containers"></a>
 
 From time to time you probably need to build containers again. This is something
 that you should do every time if you have some problems getting containers up
@@ -169,7 +193,9 @@ make start-production
 If you use Dev Containers, use your IDE's Dev Container rebuild action (for
 example, "Rebuild Container" / "Rebuild and Reopen in Container").
 
-### Health check
+### Health check [ᐞ](#table-of-contents)
+
+<a id="health-check"></a>
 
 To verify your setup is working correctly, you can check:
 
@@ -181,7 +207,9 @@ docker compose ps
 curl -k -I https://localhost:4200
 ```
 
-## Dev Containers
+## Dev Containers [ᐞ](#table-of-contents)
+
+<a id="dev-containers"></a>
 
 This project also supports opening the repository directly in a Dev Container
 for IDE workflows.
@@ -226,7 +254,9 @@ This support is additive; the existing `make start`, `make start-build`, and
 
 See [Dev Containers](doc/DEV_CONTAINERS.md) for detailed steps.
 
-## AI-assisted development
+## AI-assisted development [ᐞ](#table-of-contents)
+
+<a id="ai-assisted-development"></a>
 
 If you use AI assistance in this repository, keep it aligned with the project
 conventions already documented in this order:
@@ -257,7 +287,9 @@ In the documented local development workflow, run those commands inside the
 running `node` development container or Dev Container where the pinned Yarn
 toolchain is available.
 
-## Backend?
+## Backend? [ᐞ](#table-of-contents)
+
+<a id="backend"></a>
 
 This frontend template is designed to work especially well with the
 [`symfony-flex-backend`](https://github.com/tarlepp/symfony-flex-backend)
@@ -268,7 +300,9 @@ If you want a ready-made backend pair for this frontend, start with the Symfony
 Flex Backend project. It includes the API, authentication flow, and Docker-based
 development environment that this frontend expects by default.
 
-## Resources
+## Resources [ᐞ](#table-of-contents)
+
+<a id="resources"></a>
 
 * [Resource index](doc/README.md)
 * [AI-assisted change policy](doc/AI_RULES.md)
@@ -285,7 +319,9 @@ development environment that this frontend expects by default.
 * [Yarn update quick reference](doc/YARN_UPDATE_QUICK_REF.md)
 * [Scripts](scripts/README.md)
 
-## External links / resources
+## External links / resources [ᐞ](#table-of-contents)
+
+<a id="external-links-resources"></a>
 
 * [Angular](https://angular.io/)
 * [Angular Material](https://material.angular.io/)
@@ -306,12 +342,20 @@ https://securityscorecards.dev/viewer/?platform=github.com&org=tarlepp&repo=angu
 [redux-devtools-url]:
 https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
 
-## Authors
+## Authors [ᐞ](#table-of-contents)
+
+<a id="authors"></a>
 
 * [Tarmo Leppänen](https://github.com/tarlepp)
 
-## License
+## License [ᐞ](#table-of-contents)
+
+<a id="license"></a>
 
 [The MIT License (MIT)](LICENSE)
 
 Copyright © 2024 Tarmo Leppänen
+
+---
+
+[Back to resources index](doc/README.md) - [Back to main README.md](README.md)

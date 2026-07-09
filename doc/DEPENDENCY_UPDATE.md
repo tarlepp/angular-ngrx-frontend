@@ -5,7 +5,9 @@ within this application. The documentation relies on that you are using
 [Docker Engine](https://docs.docker.com/engine/install/) to run this
 application.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -15,7 +17,9 @@ application.
   * [Other updates](#other-updates)
   * [External links and resources](#external-links-and-resources)
 
-## Quick steps
+## Quick steps [ᐞ](#table-of-contents)
+
+<a id="quick-steps"></a>
 
 There are a few quick steps below on what you need to do to update the
 application package dependencies.
@@ -44,7 +48,9 @@ application package dependencies.
 5. Test that the application works.
 6. Profit ¯\\\_(ツ)_/¯
 
-### Yarn 4 notes
+### Yarn 4 notes [ᐞ](#table-of-contents)
+
+<a id="yarn-4-notes"></a>
 
 This repository is pinned to Yarn 4 via `packageManager` in `package.json`
 and the project-managed release under `.yarn/releases/`.
@@ -52,7 +58,9 @@ and the project-managed release under `.yarn/releases/`.
 When working in Docker (`make bash`) or Dev Containers, run `yarn` commands
 from the project root so the pinned Yarn version is used.
 
-## Update Yarn itself
+## Update Yarn itself [ᐞ](#table-of-contents)
+
+<a id="update-yarn-itself"></a>
 
 Use these steps when you want to update Yarn to the latest stable version for
 this repository.
@@ -79,12 +87,16 @@ this repository.
 4. Commit changed Yarn files (typically `package.json`, `.yarnrc.yml`,
    `.yarn/releases/*`, and sometimes `yarn.lock`).
 
-## Major version update
+## Major version update [ᐞ](#table-of-contents)
+
+<a id="major-version-update"></a>
 
 When there is a `Major` version update (eg. 12.x.y to 13.0.0) within Angular we
 need to check proper instructions from official [Angular Update Guide](https://update.angular.io).
 
-## Other updates
+## Other updates [ᐞ](#table-of-contents)
+
+<a id="other-updates"></a>
 
 From time to time it's a good idea to update library dependencies as well.
 
@@ -97,7 +109,9 @@ yarn up               # update according to semver ranges
 yarn install --immutable
 ```
 
-## External links and resources
+## External links and resources [ᐞ](#table-of-contents)
+
+<a id="external-links-and-resources"></a>
 
 * [Angular Update Guide](https://update.angular.io)
 * [ng update](https://angular.io/cli/update)

@@ -6,7 +6,9 @@ The primary workflow is Docker-based and exposed through `make` targets.
 If you are working inside a Dev Container, you can run the equivalent `yarn`
 commands directly from the IDE terminal.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -20,7 +22,9 @@ commands directly from the IDE terminal.
   * [Yarn commands](#yarn-commands)
   * [Examples](#examples)
 
-## Recommended workflow
+## Recommended workflow [ᐞ](#table-of-contents)
+
+<a id="recommended-workflow"></a>
 
 For most users, these are the commands you will use most often:
 
@@ -35,11 +39,15 @@ make stop
 If you are using a Dev Container, open the project in the container and run the
 same underlying tasks with `yarn` where appropriate.
 
-## Make commands
+## Make commands [ᐞ](#table-of-contents)
+
+<a id="make-commands"></a>
 
 Run `make` without arguments to see the current help output.
 
-### Container lifecycle
+### Container lifecycle [ᐞ](#table-of-contents)
+
+<a id="container-lifecycle"></a>
 
 ```bash
 make start               # Start application in development mode
@@ -51,14 +59,18 @@ make start-yarn-prod     # Run `yarn start-prod` inside the running container
 make stop                # Stop application containers
 ```
 
-### Shell access
+### Shell access [ᐞ](#table-of-contents)
+
+<a id="shell-access"></a>
 
 ```bash
 make bash               # Open a bash shell inside the node container
 make fish               # Open a fish shell inside the node container
 ```
 
-### Linting and fixing
+### Linting and fixing [ᐞ](#table-of-contents)
+
+<a id="linting-and-fixing"></a>
 
 ```bash
 make lint               # Run TypeScript, SCSS, and Markdown linting
@@ -71,14 +83,18 @@ make fix-scss           # Run SCSS auto-fixes with stylelint
 make fix-md             # Run markdownlint auto fixes for tracked Markdown files
 ```
 
-### Translations
+### Translations [ᐞ](#table-of-contents)
+
+<a id="translations"></a>
 
 ```bash
 make extract-translations   # Extract translation keys from TS and HTML templates
 make check-translations     # Check for missing or out-of-sync translations
 ```
 
-### Maintenance utilities
+### Maintenance utilities [ᐞ](#table-of-contents)
+
+<a id="maintenance-utilities"></a>
 
 ```bash
 make update                    # Upgrade dependencies interactively with yarn
@@ -90,7 +106,9 @@ make docker-remove-containers  # Remove all Docker containers on the host
 make docker-remove-images      # Remove all Docker images on the host
 ```
 
-## Yarn commands
+## Yarn commands [ᐞ](#table-of-contents)
+
+<a id="yarn-commands"></a>
 
 The project defines scripts in [`package.json`](../package.json). These are
 especially useful when you are already inside the container via `make bash`, or
@@ -130,7 +148,9 @@ yarn e2e                  # Run end-to-end tests
 yarn up -i                # Interactively update dependency versions (Yarn 4)
 ```
 
-## Examples
+## Examples [ᐞ](#table-of-contents)
+
+<a id="examples"></a>
 
 Open a shell in the running container:
 

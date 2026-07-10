@@ -3,7 +3,9 @@
 This document contains information about how you can speed up docker-compos
 usage in development stage.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -18,14 +20,20 @@ usage in development stage.
 
 ## Reasons? [ᐞ](#table-of-contents)
 
+<a id="reasons"></a>
+
 IO traffic is the main reason why using Docker on certain environments
 will be quite slow.
 
 ## Environments with problems [ᐞ](#table-of-contents)
 
+<a id="environments-with-problems"></a>
+
 Basically Windows and Mac; with linux you should not have these problems at all.
 
 ### Windows [ᐞ](#table-of-contents)
+
+<a id="windows"></a>
 
 The "most" clean solution to solve this atm is to run eg. Ubuntu desktop within
 [VMware](https://www.vmware.com/) / [VirtualBox](https://www.virtualbox.org/)
@@ -37,6 +45,8 @@ itself already contains necessary [docker-sync.yml](../docker-sync.yml)
 configuration file to help with this.
 
 ### Mac [ᐞ](#table-of-contents)
+
+<a id="mac"></a>
 
 With Mac there is a bit speed difference versus pure _*inux_ installation, but
 you could try to speed that up by using [Docker for Mac Edge](https://docs.docker.com/docker-for-mac/edge-release-notes/)
@@ -51,14 +61,20 @@ for your environment.
 
 ### Linux [ᐞ](#table-of-contents)
 
+<a id="linux"></a>
+
 No need to do anything `¯\_(ツ)_/¯`
 
 ## Installation of docker-sync [ᐞ](#table-of-contents)
+
+<a id="installation-of-docker-sync"></a>
 
 Follow install instructions from [docker-sync](http://docker-sync.io/)
 website.
 
 ### Configuration [ᐞ](#table-of-contents)
+
+<a id="configuration"></a>
 
 Create a `compose.override.yaml` file with following content:
 
@@ -77,6 +93,8 @@ volumes:
 ```
 
 ### Startup [ᐞ](#table-of-contents)
+
+<a id="startup"></a>
 
 To start application you just need to use command;
 

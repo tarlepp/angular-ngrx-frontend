@@ -3,7 +3,9 @@
 This document contains information about main concepts and features how this
 application is build and how you can use it.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -24,6 +26,8 @@ application is build and how you can use it.
 
 ## Main external components/libraries [ᐞ](#table-of-contents)
 
+<a id="main-external-componentslibraries"></a>
+
 This project uses specified components and libraries that have been tested with
 multiple similar Angular applications and these have proven to be rock solid
 starting point for Angular application.
@@ -33,6 +37,8 @@ of these to another one - no worries it's _your_ application, this template
 project just makes some assumptions.
 
 ### @angular/material [ᐞ](#table-of-contents)
+
+<a id="angularmaterial"></a>
 
 UI component infrastructure and Material Design components for mobile and
 desktop Angular web applications.
@@ -45,6 +51,8 @@ or some another UI library.
 
 ### @angular/flex-layout [ᐞ](#table-of-contents)
 
+<a id="angularflex-layout"></a>
+
 Provides HTML UI layout for Angular applications; using Flexbox and a
 Responsive API.
 
@@ -52,11 +60,15 @@ Responsive API.
 
 ### @auth0/angular-jwt [ᐞ](#table-of-contents)
 
+<a id="auth0angular-jwt"></a>
+
 Helper library for handling JWTs in Angular 2+ apps.
 
 * [Website](https://github.com/auth0/angular2-jwt)
 
 ### @ngrx/store [ᐞ](#table-of-contents)
+
+<a id="ngrxstore"></a>
 
 Store is RxJS powered state management for Angular applications, inspired by
 Redux. Store is a controlled state container designed to help write performant,
@@ -66,11 +78,15 @@ consistent applications on top of Angular.
 
 ### @ngx-translate/core [ᐞ](#table-of-contents)
 
+<a id="ngx-translatecore"></a>
+
 The internationalization (i18n) library for Angular.
 
 * [Website](http://www.ngx-translate.com/)
 
 ### ngx-webstorage [ᐞ](#table-of-contents)
+
+<a id="ngx-webstorage"></a>
 
 This library provides an easy-to-use service to manage the web storages (local
 and session) from your Angular application. It provides also two decorators to
@@ -80,6 +96,8 @@ synchronize the component attributes and the web storages.
 
 ## Application stores [ᐞ](#table-of-contents)
 
+<a id="application-stores"></a>
+
 By default, this application gives you couple `NgRx stores` that you can easily
 use within application to help you.
 
@@ -87,6 +105,8 @@ If you want to get deeper look of each of those stores you just need to go
 through each of those code - no worries there isn't so much code really.
 
 ### Authentication [ᐞ](#table-of-contents)
+
+<a id="authentication"></a>
 
 This store contains `authentication` information about current logged in user.
 This store contains following information;
@@ -103,6 +123,8 @@ user refresh page.
 
 ### Error [ᐞ](#table-of-contents)
 
+<a id="error"></a>
+
 This store contains following `error` information;
 
 * `errorSnackbar<ServerErrorInterface|null>`, Error that is show on snackbar
@@ -112,6 +134,8 @@ to user. With this store you can easily dispatch events to show some error
 message in your application.
 
 ### Layout [ᐞ](#table-of-contents)
+
+<a id="layout"></a>
 
 This store contains following generic `layout` information;
 
@@ -133,6 +157,8 @@ browser viewport.
 
 ## Interceptors [ᐞ](#table-of-contents)
 
+<a id="interceptors"></a>
+
 Application contains some generic interceptors that will help you to
 development your application. Note that these interceptors relies that you're
 using
@@ -141,11 +167,15 @@ or similar backend.
 
 ### Error interceptor [ᐞ](#table-of-contents)
 
+<a id="error-interceptor"></a>
+
 Generic HTTP error interceptor that will dispatch event to
 [Error store](#error),
 so that error is shown within Angular Material snackbar.
 
 ## Links [ᐞ](#table-of-contents)
+
+<a id="links"></a>
 
 * [@angular/material](https://material.angular.io/)
 * [@angular/flex-layout](https://github.com/angular/flex-layout)

@@ -6,7 +6,9 @@ architecture alignment, and workflow expectations.
 Use these rules together with `.github/copilot-instructions.md` and `CLAUDE.md`
 to keep AI-assisted changes consistent with existing project conventions.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -25,6 +27,9 @@ to keep AI-assisted changes consistent with existing project conventions.
     * [9. Require explicit commit requests and clear change summaries](#9-require-explicit-commit-requests-and-clear-change-summaries)
     * [10. Ask for human clarification instead of assuming](#10-ask-for-human-clarification-instead-of-assuming)
     * [11. Update relevant documentation with code changes](#11-update-relevant-documentation-with-code-changes)
+    * [12. Follow repository documentation formatting conventions](#12-follow-repository-documentation-formatting-conventions)
+    * [13. Keep markdown structure consistent within directories](#13-keep-markdown-structure-consistent-within-directories)
+    * [14. Suggest PR and commit titles from the full branch diff](#14-suggest-pr-and-commit-titles-from-the-full-branch-diff)
   * [Enforcement model](#enforcement-model)
     * [Documentation-only rules](#documentation-only-rules)
     * [Automatically enforceable rules](#automatically-enforceable-rules)
@@ -38,7 +43,9 @@ to keep AI-assisted changes consistent with existing project conventions.
   * [Suggested next improvements](#suggested-next-improvements)
   * [Related files](#related-files)
 
-## Why this document exists
+## Why this document exists [ᐞ](#table-of-contents)
+
+<a id="why-this-document-exists"></a>
 
 This repository already has strong technical conventions, linting, translation
 checks, and CI workflows. This document defines how to turn those conventions
@@ -51,7 +58,9 @@ The goal is simple:
 * keep changes aligned with Angular and NgRx project patterns, and
 * back important rules with automated checks whenever possible.
 
-## Rule hierarchy
+## Rule hierarchy [ᐞ](#table-of-contents)
+
+<a id="rule-hierarchy"></a>
 
 Use the following order of precedence when maintaining AI guidance:
 
@@ -64,7 +73,9 @@ Use the following order of precedence when maintaining AI guidance:
 If a rule in a documentation file conflicts with the existing codebase or CI,
 update the documentation or the implementation so that they match.
 
-## Scope
+## Scope [ᐞ](#table-of-contents)
+
+<a id="scope"></a>
 
 These rules apply to AI-assisted changes in the repository, including:
 
@@ -75,9 +86,13 @@ These rules apply to AI-assisted changes in the repository, including:
 * tests, and
 * dependency changes.
 
-## Core repository rules
+## Core repository rules [ᐞ](#table-of-contents)
 
-### 1. Follow the current Angular architecture
+<a id="core-repository-rules"></a>
+
+### 1. Follow the current Angular architecture [ᐞ](#table-of-contents)
+
+<a id="1-follow-the-current-angular-architecture"></a>
 
 * Use standalone components.
 * Do not introduce NgModules.
@@ -85,7 +100,9 @@ These rules apply to AI-assisted changes in the repository, including:
 * Prefer existing shared building blocks under `src/app/shared/` before adding
   new ones.
 
-### 2. Respect NgRx boundaries
+### 2. Respect NgRx boundaries [ᐞ](#table-of-contents)
+
+<a id="2-respect-ngrx-boundaries"></a>
 
 * Use actions, reducers, selectors, and effects consistently for shared state.
 * Use selectors for state reads.
@@ -95,20 +112,26 @@ These rules apply to AI-assisted changes in the repository, including:
   reducers, selectors, and effects as one unit instead of patching only a
   single layer.
 
-### 3. Respect strict TypeScript
+### 3. Respect strict TypeScript [ᐞ](#table-of-contents)
+
+<a id="3-respect-strict-typescript"></a>
 
 * Keep types explicit when inference is not clear.
 * Avoid implicit `any`.
 * Avoid weakening types simply to make code compile.
 * Keep changes compatible with current lint and TypeScript rules.
 
-### 4. Keep UI and styling consistent
+### 4. Keep UI and styling consistent [ᐞ](#table-of-contents)
+
+<a id="4-keep-ui-and-styling-consistent"></a>
 
 * Prefer Angular Material and existing repository patterns.
 * Follow the current SCSS structure and conventions.
 * Avoid introducing new visual or styling patterns without a clear need.
 
-### 5. Keep translations complete
+### 5. Keep translations complete [ᐞ](#table-of-contents)
+
+<a id="5-keep-translations-complete"></a>
 
 Any new user-visible text must be reflected in both translation files:
 
@@ -118,14 +141,18 @@ Any new user-visible text must be reflected in both translation files:
 Translation-related changes should remain compatible with the repository's
 translation extraction and validation commands.
 
-### 6. Keep changes small and relevant
+### 6. Keep changes small and relevant [ᐞ](#table-of-contents)
+
+<a id="6-keep-changes-small-and-relevant"></a>
 
 * Prefer minimal, task-focused edits.
 * Avoid unrelated refactors.
 * Preserve public APIs unless the task requires a change.
 * Reuse existing dependencies before proposing new ones.
 
-### 7. Use the running development container for project commands
+### 7. Use the running development container for project commands [ᐞ](#table-of-contents)
+
+<a id="7-use-the-running-development-container-for-project-commands"></a>
 
 * Treat the running `node` container as the default environment for day-to-day
   development work.
@@ -137,7 +164,9 @@ translation extraction and validation commands.
 * Reserve host-level command execution for tasks that genuinely belong to the
   host environment, such as Docker lifecycle or Git operations.
 
-### 8. Keep versioned documentation lightweight
+### 8. Keep versioned documentation lightweight [ᐞ](#table-of-contents)
+
+<a id="8-keep-versioned-documentation-lightweight"></a>
 
 * Avoid duplicating fast-changing dependency or tooling versions in long-form AI
   guidance when the repository already has a clear source of truth.
@@ -147,7 +176,9 @@ translation extraction and validation commands.
 * If an exact version matters for a change, read it from the source file rather
   than assuming that a documentation file is current.
 
-### 9. Require explicit commit requests and clear change summaries
+### 9. Require explicit commit requests and clear change summaries [ᐞ](#table-of-contents)
+
+<a id="9-require-explicit-commit-requests-and-clear-change-summaries"></a>
 
 * AI assistants must not create commits unless a developer explicitly requests
   a commit.
@@ -159,7 +190,9 @@ translation extraction and validation commands.
 * If a commit is requested, present the intended commit scope in the response
   before creating the commit.
 
-### 10. Ask for human clarification instead of assuming
+### 10. Ask for human clarification instead of assuming [ᐞ](#table-of-contents)
+
+<a id="10-ask-for-human-clarification-instead-of-assuming"></a>
 
 * If requirements are missing, ambiguous, or policy-sensitive, AI assistants
   should ask the developer clarifying questions before implementation.
@@ -168,7 +201,9 @@ translation extraction and validation commands.
 * If a temporary assumption is necessary to unblock progress, state it
   explicitly and ask for confirmation.
 
-### 11. Update relevant documentation with code changes
+### 11. Update relevant documentation with code changes [ᐞ](#table-of-contents)
+
+<a id="11-update-relevant-documentation-with-code-changes"></a>
 
 * When code changes affect behavior, architecture, workflow, or contributor
   commands, update the relevant documentation in the same change.
@@ -177,11 +212,59 @@ translation extraction and validation commands.
 * If documentation is intentionally deferred, state that explicitly in the
   response with a reason.
 
-## Enforcement model
+### 12. Follow repository documentation formatting conventions [ᐞ](#table-of-contents)
+
+<a id="12-follow-repository-documentation-formatting-conventions"></a>
+
+Documentation generated or edited by AI should follow the repository markdown
+format conventions so all docs remain consistent.
+
+* Use `# What is this?` as the default title style unless there is a justified
+  file-specific reason not to.
+* Keep `## Table of Contents` present and synchronized with current headings.
+* Use section backlinks (`[ᐞ](#table-of-contents)`) and explicit anchors
+  (`<a id="..."></a>`) for section navigation.
+* Use asterisk (`*`) markers for unordered lists.
+* Keep footer back links consistent with repository documentation patterns.
+* Validate formatting with `yarn lint:md` after documentation edits.
+
+### 13. Keep markdown structure consistent within directories [ᐞ](#table-of-contents)
+
+<a id="13-keep-markdown-structure-consistent-within-directories"></a>
+
+When multiple markdown files exist in the same directory, they should follow
+the same local documentation pattern.
+
+* Keep sibling docs aligned on heading style, TOC depth, and backlink usage.
+* Keep section anchor conventions (`<a id="..."></a>`) consistent across
+  sibling files.
+* Keep list marker style consistent across sibling files.
+* Keep footer back-link conventions consistent for that directory (for example,
+  `doc/*.md` should use the same bottom navigation pattern).
+
+### 14. Suggest PR and commit titles from the full branch diff [ᐞ](#table-of-contents)
+
+<a id="14-suggest-pr-and-commit-titles-from-the-full-branch-diff"></a>
+
+When asked to provide a pull request title or commit title, base the suggestion
+on the full branch diff against the target base branch.
+
+* Review all changed files in the branch before suggesting a title.
+* Prefer a title that covers the entire change set rather than the most recent
+  file edit.
+* Keep the title concise and aligned with repository commit style.
+* If the change set spans multiple logical scopes, mention the dominant scope
+  or provide one title per scope when appropriate.
+
+## Enforcement model [ᐞ](#table-of-contents)
+
+<a id="enforcement-model"></a>
 
 Not all AI rules can be enforced automatically. Use the following model:
 
-### Documentation-only rules
+### Documentation-only rules [ᐞ](#table-of-contents)
+
+<a id="documentation-only-rules"></a>
 
 These are guidance-heavy and should remain concise and stable:
 
@@ -190,7 +273,9 @@ These are guidance-heavy and should remain concise and stable:
 * keep business logic out of presentation components, and
 * reuse existing shared building blocks first.
 
-### Automatically enforceable rules
+### Automatically enforceable rules [ᐞ](#table-of-contents)
+
+<a id="automatically-enforceable-rules"></a>
 
 These should be validated through repository tooling and CI whenever possible:
 
@@ -201,7 +286,9 @@ These should be validated through repository tooling and CI whenever possible:
 * untranslated key detection, and
 * build success.
 
-## Current validation commands
+## Current validation commands [ᐞ](#table-of-contents)
+
+<a id="current-validation-commands"></a>
 
 From repository root inside the running development container, the main
 validation commands are:
@@ -215,7 +302,9 @@ yarn extract-translations
 yarn check-translations
 ```
 
-## Current CI alignment
+## Current CI alignment [ᐞ](#table-of-contents)
+
+<a id="current-ci-alignment"></a>
 
 At the time of writing, `.github/workflows/main.yml` already includes checks
 for:
@@ -232,7 +321,9 @@ That means the most effective starting point for AI rules in this repository is
 not more process, but clearer instruction files that map directly to these
 existing checks.
 
-## Recommended maintenance workflow
+## Recommended maintenance workflow [ᐞ](#table-of-contents)
+
+<a id="recommended-maintenance-workflow"></a>
 
 When a repeated AI mistake appears, follow this sequence:
 
@@ -246,7 +337,9 @@ As a practical default, update the AI rules when the same architectural or
 review comment appears multiple times, or when a new project convention is added
 that AI assistants should follow by default.
 
-## Contributor workflow for AI-assisted changes
+## Contributor workflow for AI-assisted changes [ᐞ](#table-of-contents)
+
+<a id="contributor-workflow-for-ai-assisted-changes"></a>
 
 When using AI assistance in this repository, keep the workflow lightweight:
 
@@ -269,7 +362,9 @@ When using AI assistance in this repository, keep the workflow lightweight:
 10. Update relevant documentation when implementation changes affect documented
    behavior, architecture, workflow, or contributor guidance.
 
-## CI strategy for recurring AI mistakes
+## CI strategy for recurring AI mistakes [ᐞ](#table-of-contents)
+
+<a id="ci-strategy-for-recurring-ai-mistakes"></a>
 
 When the same AI-generated mistake appears repeatedly, prefer converting that
 problem into an automated repository check instead of relying only on reviewer
@@ -313,7 +408,9 @@ Prefer extending existing jobs in `.github/workflows/main.yml` over creating a
 new workflow unless the new check has a clearly different lifecycle or runtime
 need.
 
-### Examples of enforceable AI rules for this repository
+### Examples of enforceable AI rules for this repository [ᐞ](#table-of-contents)
+
+<a id="examples-of-enforceable-ai-rules-for-this-repository"></a>
 
 These are good candidates when a recurring AI mistake becomes common enough to
 justify automation:
@@ -331,7 +428,9 @@ justify automation:
 Not every example needs immediate automation. Use them as a backlog of likely
 enforcement candidates when the same class of AI-generated issue repeats.
 
-## Good rule-writing patterns
+## Good rule-writing patterns [ᐞ](#table-of-contents)
+
+<a id="good-rule-writing-patterns"></a>
 
 Prefer rules that are concrete and testable.
 
@@ -348,7 +447,9 @@ Avoid vague rules such as:
 * write clean code, or
 * keep things consistent.
 
-## Suggested next improvements
+## Suggested next improvements [ᐞ](#table-of-contents)
+
+<a id="suggested-next-improvements"></a>
 
 After this first implementation, consider the following enhancements:
 
@@ -358,7 +459,9 @@ After this first implementation, consider the following enhancements:
 * add review checklist items for architectural exceptions, and
 * periodically prune rules that duplicate lint or test enforcement.
 
-## Related files
+## Related files [ᐞ](#table-of-contents)
+
+<a id="related-files"></a>
 
 * `README.md`
 * `CLAUDE.md`

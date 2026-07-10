@@ -6,7 +6,9 @@ project.
 All actions are pinned to commit SHAs (not version tags) to reduce
 supply-chain risk.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
+
+<a id="table-of-contents"></a>
 
 * [What is this?](#what-is-this)
   * [Table of Contents](#table-of-contents)
@@ -19,7 +21,9 @@ supply-chain risk.
 
 ---
 
-## Overview
+## Overview [ᐞ](#table-of-contents)
+
+<a id="overview"></a>
 
 This project uses SHA-pinned GitHub Actions instead of floating version tags.
 That gives:
@@ -29,7 +33,9 @@ That gives:
 * **Auditability**: It is easy to track exactly which code is running.
 * **Maintenance cost**: Updates are manual and must be verified.
 
-### Workflows with pinned actions
+### Workflows with pinned actions [ᐞ](#table-of-contents)
+
+<a id="workflows-with-pinned-actions"></a>
 
 * `.github/workflows/main.yml` for linting, tests, and builds.
 * `.github/workflows/codeql-analysis.yml` for CodeQL scanning.
@@ -38,7 +44,9 @@ That gives:
 
 ---
 
-## Current Action Pins
+## Current Action Pins [ᐞ](#table-of-contents)
+
+<a id="current-action-pins"></a>
 
 The current pin list is generated from `.github/workflows/*.yml` so it does not
 become stale.
@@ -54,9 +62,13 @@ your Dev Container terminal.
 
 ---
 
-## How to Update Actions
+## How to Update Actions [ᐞ](#table-of-contents)
 
-### Step 1: Identify the action to update
+<a id="how-to-update-actions"></a>
+
+### Step 1: Identify the action to update [ᐞ](#table-of-contents)
+
+<a id="step-1-identify-the-action-to-update"></a>
 
 Check which version is currently pinned in workflow files. Example:
 
@@ -66,11 +78,15 @@ uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
 The comment is the version tag. The SHA appears before the comment.
 
-### Step 2: Get the new commit SHA
+### Step 2: Get the new commit SHA [ᐞ](#table-of-contents)
+
+<a id="step-2-get-the-new-commit-sha"></a>
 
 Use one of these methods to find the SHA for a new version.
 
-#### Method A: `git ls-remote` (recommended)
+#### Method A: `git ls-remote` (recommended) [ᐞ](#table-of-contents)
+
+<a id="method-a-git-ls-remote-recommended"></a>
 
 ```bash
 # Get SHA for a specific version tag.
@@ -78,14 +94,18 @@ git ls-remote --tags https://github.com/actions/checkout.git \
   refs/tags/v6.0.3 | awk '{print $1}'
 ```
 
-#### Method B: GitHub CLI
+#### Method B: GitHub CLI [ᐞ](#table-of-contents)
+
+<a id="method-b-github-cli"></a>
 
 ```bash
 # If GitHub CLI is installed.
 gh api repos/actions/checkout/git/refs/tags/v6.0.3 --jq '.object.sha'
 ```
 
-#### Method C: `curl` + `jq`
+#### Method C: `curl` + `jq` [ᐞ](#table-of-contents)
+
+<a id="method-c-curl-jq"></a>
 
 ```bash
 # Get latest release metadata.
@@ -93,7 +113,9 @@ curl -s https://api.github.com/repos/actions/checkout/releases/latest \
   | jq '.target_commitish'
 ```
 
-### Step 3: Update workflow files
+### Step 3: Update workflow files [ᐞ](#table-of-contents)
+
+<a id="step-3-update-workflow-files"></a>
 
 Update every occurrence of that action across workflows.
 Example: update `actions/checkout` from `v6.0.2` to `v6.0.3`.
@@ -116,7 +138,9 @@ Make sure to:
 * Keep the version tag in the comment.
 * Use the full 40-character SHA.
 
-### Step 4: Verify the update
+### Step 4: Verify the update [ᐞ](#table-of-contents)
+
+<a id="step-4-verify-the-update"></a>
 
 Ensure all references were replaced:
 
@@ -128,7 +152,9 @@ grep -r "v6.0.2" .github/workflows/
 grep -r "v6.0.3" .github/workflows/
 ```
 
-### Step 5: Create a pull request
+### Step 5: Create a pull request [ᐞ](#table-of-contents)
+
+<a id="step-5-create-a-pull-request"></a>
 
 1. Create a branch: `git checkout -b chore/update-github-actions`
 2. Commit updates with a clear message.
@@ -138,9 +164,13 @@ grep -r "v6.0.3" .github/workflows/
 
 ---
 
-## Checking for Updates
+## Checking for Updates [ᐞ](#table-of-contents)
 
-### Method 1: Dependabot notifications
+<a id="checking-for-updates"></a>
+
+### Method 1: Dependabot notifications [ᐞ](#table-of-contents)
+
+<a id="method-1-dependabot-notifications"></a>
 
 Dependabot can suggest action updates, but you still need to verify and update
 the SHA manually.
@@ -154,7 +184,9 @@ Typical flow:
 2. Fetch the SHA for that version.
 3. Update the SHA in workflow files.
 
-### Method 2: Automated check script (recommended)
+### Method 2: Automated check script (recommended) [ᐞ](#table-of-contents)
+
+<a id="method-2-automated-check-script-recommended"></a>
 
 This repository includes an update-check script:
 
@@ -246,7 +278,9 @@ Important behavior:
 
 Note: the script reports updates but does not apply them.
 
-### Method 3: GitHub security alerts
+### Method 3: GitHub security alerts [ᐞ](#table-of-contents)
+
+<a id="method-3-github-security-alerts"></a>
 
 GitHub can notify you about:
 
@@ -258,9 +292,13 @@ Check: Repository Settings -> Code security and analysis -> Dependabot alerts.
 
 ---
 
-## Testing Updates
+## Testing Updates [ᐞ](#table-of-contents)
 
-### 1. Test in a feature branch
+<a id="testing-updates"></a>
+
+### 1. Test in a feature branch [ᐞ](#table-of-contents)
+
+<a id="1-test-in-a-feature-branch"></a>
 
 Always test action updates before merging:
 
@@ -271,7 +309,9 @@ git push origin test/action-update
 # Create a PR and verify CI passes.
 ```
 
-### 2. Verify action behavior
+### 2. Verify action behavior [ᐞ](#table-of-contents)
+
+<a id="2-verify-action-behavior"></a>
 
 Review release notes for behavioral changes:
 
@@ -279,7 +319,9 @@ Review release notes for behavioral changes:
 Example: https://github.com/actions/checkout/releases/tag/v6.0.3
 ```
 
-### 3. Monitor first run after merge
+### 3. Monitor first run after merge [ᐞ](#table-of-contents)
+
+<a id="3-monitor-first-run-after-merge"></a>
 
 After merge:
 
@@ -289,9 +331,13 @@ After merge:
 
 ---
 
-## Understanding SHA Pins
+## Understanding SHA Pins [ᐞ](#table-of-contents)
 
-### What is a SHA pin?
+<a id="understanding-sha-pins"></a>
+
+### What is a SHA pin? [ᐞ](#table-of-contents)
+
+<a id="what-is-a-sha-pin"></a>
 
 A SHA is a cryptographic fingerprint of a specific commit.
 
@@ -299,12 +345,16 @@ A SHA is a cryptographic fingerprint of a specific commit.
 * Commit SHA (immutable):
   `actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd`
 
-### Why use SHA pins?
+### Why use SHA pins? [ᐞ](#table-of-contents)
+
+<a id="why-use-sha-pins"></a>
 
 Tags can be moved. SHAs cannot be changed once published. Pinning SHAs keeps
 workflow behavior stable and auditable.
 
-### How GitHub Actions resolves references
+### How GitHub Actions resolves references [ᐞ](#table-of-contents)
+
+<a id="how-github-actions-resolves-references"></a>
 
 GitHub supports both forms:
 
@@ -314,7 +364,9 @@ GitHub supports both forms:
 
 ---
 
-## Best Practices
+## Best Practices [ᐞ](#table-of-contents)
+
+<a id="best-practices"></a>
 
 Do:
 
@@ -334,9 +386,13 @@ Do not:
 
 ---
 
-## Troubleshooting
+## Troubleshooting [ᐞ](#table-of-contents)
 
-### "Action not found" error
+<a id="troubleshooting"></a>
+
+### "Action not found" error [ᐞ](#table-of-contents)
+
+<a id="action-not-found-error"></a>
 
 If this appears after updating:
 
@@ -351,7 +407,9 @@ git ls-remote --tags https://github.com/actions/setup-node.git \
   refs/tags/v6.3.0 | awk '{print $1}'
 ```
 
-### Workflows fail with a new action
+### Workflows fail with a new action [ᐞ](#table-of-contents)
+
+<a id="workflows-fail-with-a-new-action"></a>
 
 Diagnose:
 
@@ -366,7 +424,9 @@ Then:
 * Open an issue in the action repository if needed.
 * Contact maintainers when appropriate.
 
-### SHA not found in repository
+### SHA not found in repository [ᐞ](#table-of-contents)
+
+<a id="sha-not-found-in-repository"></a>
 
 Problem: fetched SHA does not exist.
 
@@ -382,7 +442,9 @@ git ls-remote https://github.com/OWNER/REPO.git | grep TAG_NAME
 
 ---
 
-## Useful Resources
+## Useful Resources [ᐞ](#table-of-contents)
+
+<a id="useful-resources"></a>
 
 * [GitHub Actions Security Hardening](https://docs.github.com/en/actions/security-guides)
 * [Dependabot Documentation](https://docs.github.com/en/code-security/dependabot)
@@ -391,7 +453,9 @@ git ls-remote https://github.com/OWNER/REPO.git | grep TAG_NAME
 
 ---
 
-## FAQ
+## FAQ [ᐞ](#table-of-contents)
+
+<a id="faq"></a>
 
 Q: Why not use version tags directly?
 A: Tags can be retagged or deleted. SHAs are immutable.
@@ -410,7 +474,9 @@ A: GitHub supports short SHAs, but full SHAs are recommended.
 
 ---
 
-## Last Updated
+## Last Updated [ᐞ](#table-of-contents)
+
+<a id="last-updated"></a>
 
 * **Date**: 2026-04-09
 * **Updated By**: GitHub Copilot
@@ -420,6 +486,4 @@ See also: `doc/README.md` and `.github/workflows/`.
 
 ---
 
-[Back to resources index](README.md)
-
-[Back to main README.md](../README.md)
+[Back to resources index](README.md) - [Back to main README.md](../README.md)

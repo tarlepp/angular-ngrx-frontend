@@ -12,27 +12,32 @@ changes stay aligned with existing Angular, NgRx, and CI expectations.
 Use this document for deeper context, while keeping
 `.github/copilot-instructions.md` as the short operational rules source.
 
-## Table of Contents
+## Table of Contents [ᐞ](#table-of-contents)
 
-- [What is this](#what-is-this)
-  - [Table of Contents](#table-of-contents)
-  - [AI documentation map](#ai-documentation-map)
-  - [Key characteristics](#key-characteristics)
-  - [Version sources of truth](#version-sources-of-truth)
-  - [Project structure](#project-structure)
-  - [Technology stack](#technology-stack)
-  - [Architecture patterns](#architecture-patterns)
-  - [Development workflow](#development-workflow)
-  - [Common tasks](#common-tasks)
-  - [CI and validation](#ci-and-validation)
-  - [Configuration](#configuration)
-  - [Key conventions](#key-conventions)
-  - [Backend integration](#backend-integration)
-  - [Testing strategy](#testing-strategy)
-  - [Common issues and notes](#common-issues-and-notes)
-  - [Practical guidance for AI assistants](#practical-guidance-for-ai-assistants)
+<a id="table-of-contents"></a>
 
-## AI documentation map
+* [What is this](#what-is-this)
+  * [Table of Contents](#table-of-contents)
+  * [AI documentation map](#ai-documentation-map)
+  * [Key characteristics](#key-characteristics)
+  * [Version sources of truth](#version-sources-of-truth)
+  * [Project structure](#project-structure)
+  * [Technology stack](#technology-stack)
+  * [Architecture patterns](#architecture-patterns)
+  * [Development workflow](#development-workflow)
+  * [Common tasks](#common-tasks)
+  * [CI and validation](#ci-and-validation)
+  * [Configuration](#configuration)
+  * [Key conventions](#key-conventions)
+    * [Documentation formatting conventions](#documentation-formatting-conventions)
+  * [Backend integration](#backend-integration)
+  * [Testing strategy](#testing-strategy)
+  * [Common issues and notes](#common-issues-and-notes)
+  * [Practical guidance for AI assistants](#practical-guidance-for-ai-assistants)
+
+## AI documentation map [ᐞ](#table-of-contents)
+
+<a id="ai-documentation-map"></a>
 
 Use the repository AI guidance in this order:
 
@@ -44,37 +49,43 @@ Use the repository AI guidance in this order:
 If one of these documents drifts from the implementation, prefer the actual
 repository code, scripts, and CI configuration as the source of truth.
 
-## Key characteristics
+## Key characteristics [ᐞ](#table-of-contents)
 
-- **Framework**: Angular with standalone components
-- **State management**: NgRx
-- **Language**: TypeScript with strict compiler settings
-- **UI**: Angular Material with SCSS styling
-- **Layout**: `@ngbracket/ngx-layout`
-- **i18n**: Transloco via `@jsverse/transloco`
-- **Authentication**: JWT-based authentication with `@auth0/angular-jwt`
-- **Testing**: Karma + Jasmine for unit tests, Protractor still present for E2E
-- **Package manager**: Yarn via Corepack
-- **Container runtime**: pinned Node versions in Docker and CI
+<a id="key-characteristics"></a>
 
-## Version sources of truth
+* **Framework**: Angular with standalone components
+* **State management**: NgRx
+* **Language**: TypeScript with strict compiler settings
+* **UI**: Angular Material with SCSS styling
+* **Layout**: `@ngbracket/ngx-layout`
+* **i18n**: Transloco via `@jsverse/transloco`
+* **Authentication**: JWT-based authentication with `@auth0/angular-jwt`
+* **Testing**: Karma + Jasmine for unit tests, Protractor still present for E2E
+* **Package manager**: Yarn via Corepack
+* **Container runtime**: pinned Node versions in Docker and CI
+
+## Version sources of truth [ᐞ](#table-of-contents)
+
+<a id="version-sources-of-truth"></a>
 
 To avoid documentation drift, this file intentionally avoids mirroring most
 exact dependency and tooling versions.
 
 For current versions, use these files as the source of truth:
 
-- `package.json` for Angular, NgRx, TypeScript, Yarn package manager, and most
+* `package.json` for Angular, NgRx, TypeScript, Yarn package manager, and most
   frontend dependencies
-- `Dockerfile` for container Node.js versions
-- `.github/actions/setup-yarn/action.yml` for the CI Node.js version and Yarn
+* `Dockerfile` for container Node.js versions
+* `.github/actions/setup-yarn/action.yml` for the CI Node.js version and Yarn
   installation behavior
-- `angular.json` for Angular workspace targets and build/test/lint setup
+* `angular.json` for Angular workspace targets and build/test/lint setup
 
 If a version matters for implementation, read it from those files instead of
 copying it into long-form documentation.
 
-## Project structure
+## Project structure [ᐞ](#table-of-contents)
+
+<a id="project-structure"></a>
 
 ```text
 angular-ngrx-frontend/
@@ -102,54 +113,66 @@ angular-ngrx-frontend/
 └── scripts/
 ```
 
-## Technology stack
+## Technology stack [ᐞ](#table-of-contents)
 
-### Core dependencies
+<a id="technology-stack"></a>
 
-- Angular
-- Angular Material
-- NgRx
-  - `@ngrx/store`
-  - `@ngrx/effects`
-  - `@ngrx/entity`
-  - `@ngrx/operators`
-  - `@ngrx/router-store`
-  - `@ngrx/store-devtools`
-- RxJS
-- `@jsverse/transloco`
-- `@jsverse/transloco-keys-manager`
-- `@ngbracket/ngx-layout`
-- `@auth0/angular-jwt`
-- Luxon and `luxon-angular`
-- `ngx-webstorage`
-- `ngrx-store-localstorage`
+### Core dependencies [ᐞ](#table-of-contents)
 
-### Development tooling
+<a id="core-dependencies"></a>
 
-- TypeScript
-- ESLint
-- `@angular-eslint`
-- `@ngrx/eslint-plugin`
-- `@typescript-eslint`
-- Stylelint
-- Angular CLI
-- Karma + Jasmine
-- Protractor
-- Docker + Docker Compose
-- Dev Container support via `.devcontainer/devcontainer.json`
+* Angular
+* Angular Material
+* NgRx
+  * `@ngrx/store`
+  * `@ngrx/effects`
+  * `@ngrx/entity`
+  * `@ngrx/operators`
+  * `@ngrx/router-store`
+  * `@ngrx/store-devtools`
+* RxJS
+* `@jsverse/transloco`
+* `@jsverse/transloco-keys-manager`
+* `@ngbracket/ngx-layout`
+* `@auth0/angular-jwt`
+* Luxon and `luxon-angular`
+* `ngx-webstorage`
+* `ngrx-store-localstorage`
 
-## Architecture patterns
+### Development tooling [ᐞ](#table-of-contents)
 
-### 1. Angular application structure
+<a id="development-tooling"></a>
 
-- Use standalone components; do not introduce NgModules.
-- Keep code within the existing feature-based structure under `src/app/`.
-- Prefer existing shared building blocks under `src/app/shared/` before adding
+* TypeScript
+* ESLint
+* `@angular-eslint`
+* `@ngrx/eslint-plugin`
+* `@typescript-eslint`
+* Stylelint
+* Angular CLI
+* Karma + Jasmine
+* Protractor
+* Docker + Docker Compose
+* Dev Container support via `.devcontainer/devcontainer.json`
+
+## Architecture patterns [ᐞ](#table-of-contents)
+
+<a id="architecture-patterns"></a>
+
+### 1. Angular application structure [ᐞ](#table-of-contents)
+
+<a id="1-angular-application-structure"></a>
+
+* Use standalone components; do not introduce NgModules.
+* Keep code within the existing feature-based structure under `src/app/`.
+* Prefer existing shared building blocks under `src/app/shared/` before adding
   new abstractions.
-- Keep presentation components focused on inputs, outputs, and view state.
-- Move business logic into services, facades, or NgRx effects when appropriate.
+* Keep presentation components focused on inputs, outputs, and view state.
+* Move business logic into services, facades, or NgRx effects when appropriate.
 
-### 2. NgRx state management
+### 2. NgRx state management [ᐞ](#table-of-contents)
+
+<a id="2-ngrx-state-management"></a>
 
 The root application state currently contains:
 
@@ -165,79 +188,93 @@ interface AppState {
 
 Key files:
 
-- `src/app/store/app.state.ts`
-- `src/app/store/app.reducers.ts`
-- `src/app/store/app.effects.ts`
-- `src/app/store/store.states.ts`
-- `src/app/store/store.reducers.ts`
-- `src/app/store/store.selectors.ts`
-- `src/app/store/*/`
+* `src/app/store/app.state.ts`
+* `src/app/store/app.reducers.ts`
+* `src/app/store/app.effects.ts`
+* `src/app/store/store.states.ts`
+* `src/app/store/store.reducers.ts`
+* `src/app/store/store.selectors.ts`
+* `src/app/store/*/`
 
 Best practices:
 
-- Use selectors for store reads instead of reaching into state shape directly.
-- Keep side effects in effects or services.
-- When shared state changes, review actions, reducers, selectors, and effects
+* Use selectors for store reads instead of reaching into state shape directly.
+* Keep side effects in effects or services.
+* When shared state changes, review actions, reducers, selectors, and effects
   together.
-- Prefer extending an existing feature slice before creating a parallel store
+* Prefer extending an existing feature slice before creating a parallel store
   pattern or second state container.
 
-### 3. Authentication flow
+### 3. Authentication flow [ᐞ](#table-of-contents)
+
+<a id="3-authentication-flow"></a>
 
 Authentication is JWT-based and includes:
 
-- token handling via `@auth0/angular-jwt`
-- route guards under `src/app/auth/guards/`
-- auth routes under `src/app/auth/auth.routes.ts`
-- authentication services under `src/app/auth/services/`
-- NgRx authentication state under `src/app/store/authentication/`
+* token handling via `@auth0/angular-jwt`
+* route guards under `src/app/auth/guards/`
+* auth routes under `src/app/auth/auth.routes.ts`
+* authentication services under `src/app/auth/services/`
+* NgRx authentication state under `src/app/store/authentication/`
 
-### 4. Routing
+### 4. Routing [ᐞ](#table-of-contents)
+
+<a id="4-routing"></a>
 
 The application uses standalone Angular routing and lazy route loading.
 Feature routes live next to their features, for example:
 
-- `src/app/app.routes.ts`
-- `src/app/auth/auth.routes.ts`
-- `src/app/auth/login/login.routes.ts`
+* `src/app/app.routes.ts`
+* `src/app/auth/auth.routes.ts`
+* `src/app/auth/login/login.routes.ts`
 
-### 5. HTTP interceptors
+### 5. HTTP interceptors [ᐞ](#table-of-contents)
+
+<a id="5-http-interceptors"></a>
 
 Cross-cutting HTTP behavior lives under `src/app/shared/interceptors/`, such as:
 
-- accept-language handling
-- backend version checks
-- error handling
-- HTTP caching
+* accept-language handling
+* backend version checks
+* error handling
+* HTTP caching
 
-### 6. Internationalization
+### 6. Internationalization [ᐞ](#table-of-contents)
+
+<a id="6-internationalization"></a>
 
 The project uses Transloco with translation files in `src/assets/i18n/`.
 Current configured languages in `transloco.config.ts` are:
 
-- `fi`
-- `en`
+* `fi`
+* `en`
 
 Rules of thumb:
 
-- new user-facing text should be translated
-- keep `en.json` and `fi.json` in sync
-- use the repository translation commands instead of editing drift manually
+* new user-facing text should be translated
+* keep `en.json` and `fi.json` in sync
+* use the repository translation commands instead of editing drift manually
 
-### 7. Theming and layout state
+### 7. Theming and layout state [ᐞ](#table-of-contents)
+
+<a id="7-theming-and-layout-state"></a>
 
 The layout store tracks UI-related state such as:
 
-- theme
-- language and locale
-- timezone
-- viewport and device information
-- responsive flags such as desktop, tablet, and mobile
-- anchor scroll target
+* theme
+* language and locale
+* timezone
+* viewport and device information
+* responsive flags such as desktop, tablet, and mobile
+* anchor scroll target
 
-## Development workflow
+## Development workflow [ᐞ](#table-of-contents)
 
-### Docker-first workflow
+<a id="development-workflow"></a>
+
+### Docker-first workflow [ᐞ](#table-of-contents)
+
+<a id="docker-first-workflow"></a>
 
 The primary local development workflow uses Docker Compose.
 Common commands from project root:
@@ -253,27 +290,31 @@ make stop
 
 Notes:
 
-- `make start` starts the development container and Angular dev server
-- `make start-immutable` enforces `yarn install --immutable` on startup
-- `make start-production` uses the local production Angular configuration
-- `make bash` opens a shell inside the `node` container
-- once development is running, treat that `node` container as the default place
+* `make start` starts the development container and Angular dev server
+* `make start-immutable` enforces `yarn install --immutable` on startup
+* `make start-production` uses the local production Angular configuration
+* `make bash` opens a shell inside the `node` container
+* once development is running, treat that `node` container as the default place
   to run project commands such as `yarn`, `ng`, linting, tests, and translation
   checks
-- from the host shell, prefer the existing `make` targets that execute inside
+* from the host shell, prefer the existing `make` targets that execute inside
   the running container instead of invoking project tooling directly on the host
 
-### Dev Container workflow
+### Dev Container workflow [ᐞ](#table-of-contents)
+
+<a id="dev-container-workflow"></a>
 
 The repository also supports Dev Containers through `.devcontainer/`.
 Current configuration includes:
 
-- forwarded port `4200`
-- VS Code tasks for starting dev and local production modes
-- the `node` service as the workspace container
-- mounted host SSH and Git config for developer workflows
+* forwarded port `4200`
+* VS Code tasks for starting dev and local production modes
+* the `node` service as the workspace container
+* mounted host SSH and Git config for developer workflows
 
-### Running without Docker
+### Running without Docker [ᐞ](#table-of-contents)
+
+<a id="running-without-docker"></a>
 
 The repository includes direct Yarn scripts, but the documented workflow is
 still Docker-first or Dev Container-first. If you run locally without Docker,
@@ -286,38 +327,49 @@ yarn start
 yarn start-prod
 ```
 
-### AI change reporting and commit policy
+### AI change reporting and commit policy [ᐞ](#table-of-contents)
+
+<a id="ai-change-reporting-and-commit-policy"></a>
 
 When AI assistants are used for repository changes:
 
-- do not create commits unless a developer explicitly asks for a commit
-- report a concise summary of changes after edits, including touched files and
+* do not create commits unless a developer explicitly asks for a commit
+* report a concise summary of changes after edits, including touched files and
   intent
-- include proposed commit message text in that summary for each logical change
+* include proposed commit message text in that summary for each logical change
   scope, following repository style (for example:
   `Chore(scope): short summary`)
-- when a commit is requested, show the planned commit scope in the response
+* when asked for pull request or commit titles, inspect the full branch diff
+  against the target base branch and suggest titles that describe the whole
+  change set
+* when a commit is requested, show the planned commit scope in the response
   before creating it
 
-### AI clarification and assumptions policy
+### AI clarification and assumptions policy [ᐞ](#table-of-contents)
+
+<a id="ai-clarification-and-assumptions-policy"></a>
 
 When requirements are unclear during AI-assisted work:
 
-- ask the developer for clarification before implementing ambiguous behavior
-- do not silently assume missing product, API, UX, or acceptance details
-- if a temporary assumption is necessary, state it explicitly and ask the
+* ask the developer for clarification before implementing ambiguous behavior
+* do not silently assume missing product, API, UX, or acceptance details
+* if a temporary assumption is necessary, state it explicitly and ask the
   developer to confirm
 
-### AI documentation update policy
+### AI documentation update policy [ᐞ](#table-of-contents)
+
+<a id="ai-documentation-update-policy"></a>
 
 When AI-assisted changes modify code behavior or contributor workflow:
 
-- update the relevant documentation in the same change when practical
-- keep `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`
+* update the relevant documentation in the same change when practical
+* keep `.github/copilot-instructions.md`, `CLAUDE.md`, and `doc/AI_RULES.md`
   aligned for repository-level AI policy changes
-- if documentation updates are deferred, state that explicitly with the reason
+* if documentation updates are deferred, state that explicitly with the reason
 
-## Common tasks
+## Common tasks [ᐞ](#table-of-contents)
+
+<a id="common-tasks"></a>
 
 ```bash
 # Linting
@@ -347,24 +399,30 @@ yarn i18n:extract
 yarn i18n:find
 ```
 
-## CI and validation
+## CI and validation [ᐞ](#table-of-contents)
 
-### Current CI workflow
+<a id="ci-and-validation"></a>
+
+### Current CI workflow [ᐞ](#table-of-contents)
+
+<a id="current-ci-workflow"></a>
 
 The main GitHub Actions workflow in `.github/workflows/main.yml` currently runs:
 
-- TypeScript linting
-- SCSS linting
-- markdown documentation linting
-- translation extraction drift checks
-- untranslated text tag checks
-- Docker image build
-- Trivy vulnerability scanning on the built image
+* TypeScript linting
+* SCSS linting
+* markdown documentation linting
+* translation extraction drift checks
+* untranslated text tag checks
+* Docker image build
+* Trivy vulnerability scanning on the built image
 
 The reusable Yarn setup action pins a Node.js version and uses
 `yarn install --immutable`.
 
-### Preferred validation commands for AI-assisted changes
+### Preferred validation commands for AI-assisted changes [ᐞ](#table-of-contents)
+
+<a id="preferred-validation-commands-for-ai-assisted-changes"></a>
 
 After changing code, prefer the smallest relevant validation set:
 
@@ -381,20 +439,26 @@ If you are using Docker or a Dev Container, run those commands inside the
 containerized environment where the pinned Yarn setup is available. In the
 documented local development workflow, that means the running `node` container.
 
-## Configuration
+## Configuration [ᐞ](#table-of-contents)
 
-### Angular build targets
+<a id="configuration"></a>
+
+### Angular build targets [ᐞ](#table-of-contents)
+
+<a id="angular-build-targets"></a>
 
 The Angular workspace currently defines:
 
-- default build target
-- `production` build configuration
-- `localProduction` build configuration
-- Karma test target
-- ESLint lint target
-- Protractor E2E target
+* default build target
+* `production` build configuration
+* `localProduction` build configuration
+* Karma test target
+* ESLint lint target
+* Protractor E2E target
 
-### TypeScript configuration
+### TypeScript configuration [ᐞ](#table-of-contents)
+
+<a id="typescript-configuration"></a>
 
 Strict TypeScript settings are enabled, including:
 
@@ -407,93 +471,143 @@ Strict TypeScript settings are enabled, including:
 }
 ```
 
-### Runtime configuration
+### Runtime configuration [ᐞ](#table-of-contents)
+
+<a id="runtime-configuration"></a>
 
 Runtime and environment-related files include:
 
-- `src/environments/environment.ts`
-- `src/environments/environment.local-prod.ts`
-- `src/environments/environment.prod.ts`
-- `src/assets/config/config.dev.json`
-- `src/assets/config/config.prod.json`
+* `src/environments/environment.ts`
+* `src/environments/environment.local-prod.ts`
+* `src/environments/environment.prod.ts`
+* `src/assets/config/config.dev.json`
+* `src/assets/config/config.prod.json`
 
-## Key conventions
+## Key conventions [ᐞ](#table-of-contents)
 
-### Naming and organization
+<a id="key-conventions"></a>
 
-- use feature-based folders under `src/app/`
-- keep barrel exports where the repository already uses them
-- follow existing file naming such as `*.component.ts`, `*.service.ts`,
+### Naming and organization [ᐞ](#table-of-contents)
+
+<a id="naming-and-organization"></a>
+
+* use feature-based folders under `src/app/`
+* keep barrel exports where the repository already uses them
+* follow existing file naming such as `*.component.ts`, `*.service.ts`,
   `*.guard.ts`, and `*.state.ts`
 
-### Angular and RxJS style
+### Angular and RxJS style [ᐞ](#table-of-contents)
 
-- prefer reactive patterns over imperative component logic
-- keep side effects out of presentation components
-- reuse Angular Material and existing shared components first
-- preserve current import ordering and linting conventions
+<a id="angular-and-rxjs-style"></a>
 
-### State management style
+* prefer reactive patterns over imperative component logic
+* keep side effects out of presentation components
+* reuse Angular Material and existing shared components first
+* preserve current import ordering and linting conventions
 
-- preserve immutability in reducers
-- use selectors for memoized state access
-- keep effects focused on side effects
-- update related store layers together when shared behavior changes
+### State management style [ᐞ](#table-of-contents)
 
-### Styling and UI
+<a id="state-management-style"></a>
 
-- use SCSS and existing repository conventions
-- prefer Angular Material before new UI libraries
-- avoid hardcoded user-facing text when it should be translated
+* preserve immutability in reducers
+* use selectors for memoized state access
+* keep effects focused on side effects
+* update related store layers together when shared behavior changes
 
-## Backend integration
+### Styling and UI [ᐞ](#table-of-contents)
+
+<a id="styling-and-ui"></a>
+
+* use SCSS and existing repository conventions
+* prefer Angular Material before new UI libraries
+* avoid hardcoded user-facing text when it should be translated
+
+### Documentation formatting conventions [ᐞ](#table-of-contents)
+
+<a id="documentation-formatting-conventions"></a>
+
+Repository markdown files should follow the shared structure used in this
+project so navigation and maintenance stay consistent.
+
+* use `# What is this?` as the standard documentation title unless the file has
+  a justified exception
+* include a `## Table of Contents` section that matches current headings
+* include section backlinks (`[ᐞ](#table-of-contents)`) and anchor tags
+  (`<a id="..."></a>`) for heading navigation
+* use asterisk (`*`) list markers for unordered lists
+* include the standard footer back links for documentation pages where
+  applicable
+* keep markdown files within the same directory aligned to one shared structure
+  (heading style, TOC depth, backlink/anchor usage, list markers, and footer
+  link pattern)
+* run `yarn lint:md` after documentation edits
+
+## Backend integration [ᐞ](#table-of-contents)
+
+<a id="backend-integration"></a>
 
 The default local backend assumption remains:
 
-- frontend at `https://localhost:4200`
-- backend at `https://localhost:8000`
+* frontend at `https://localhost:4200`
+* backend at `https://localhost:8000`
 
 The frontend expects a backend that provides compatible REST endpoints,
 authentication, and version-related behavior.
 
-## Testing strategy
+## Testing strategy [ᐞ](#table-of-contents)
 
-### Unit tests
+<a id="testing-strategy"></a>
 
-- test runner: Karma
-- framework: Jasmine
-- test files: `*.spec.ts`
+### Unit tests [ᐞ](#table-of-contents)
 
-### E2E tests
+<a id="unit-tests"></a>
 
-- Protractor configuration lives in `e2e/protractor.conf.js`
-- Angular workspace still contains an E2E target
-- treat Protractor as legacy and verify whether it should be retained or
+* test runner: Karma
+* framework: Jasmine
+* test files: `*.spec.ts`
+
+### E2E tests [ᐞ](#table-of-contents)
+
+<a id="e2e-tests"></a>
+
+* Protractor configuration lives in `e2e/protractor.conf.js`
+* Angular workspace still contains an E2E target
+* treat Protractor as legacy and verify whether it should be retained or
   migrated before investing heavily in new E2E coverage
 
-## Common issues and notes
+## Common issues and notes [ᐞ](#table-of-contents)
 
-### SSL certificates
+<a id="common-issues-and-notes"></a>
+
+### SSL certificates [ᐞ](#table-of-contents)
+
+<a id="ssl-certificates"></a>
 
 The development server uses self-signed SSL certificates from `docker/ssl/`.
 First-time setup may require trusting the local certificate chain.
 
-### Package manager expectations
+### Package manager expectations [ᐞ](#table-of-contents)
+
+<a id="package-manager-expectations"></a>
 
 The repository pins its package manager via the `packageManager` field in
 `package.json`. Use Corepack-enabled Yarn rather than a globally mismatched
 package manager version.
 
-### Documentation drift
+### Documentation drift [ᐞ](#table-of-contents)
+
+<a id="documentation-drift"></a>
 
 This file is long-form context, not the only rules source. Keep it aligned with:
 
-- `.github/copilot-instructions.md`
-- `doc/AI_RULES.md`
-- `.github/pull_request_template.md`
-- actual repository scripts and CI workflows
+* `.github/copilot-instructions.md`
+* `doc/AI_RULES.md`
+* `.github/pull_request_template.md`
+* actual repository scripts and CI workflows
 
-## Practical guidance for AI assistants
+## Practical guidance for AI assistants [ᐞ](#table-of-contents)
+
+<a id="practical-guidance-for-ai-assistants"></a>
 
 When making changes in this repository:
 
@@ -516,9 +630,15 @@ When making changes in this repository:
     silent assumptions.
 14. Include proposed commit message text in change summaries using the
     repository's commit subject style.
+15. Keep markdown files in the same directory structurally consistent,
+    including shared footer back-link conventions.
+16. When asked for pull request or commit titles, base the suggestion on the
+    full branch diff against the target base branch.
 
 ---
 
 *This document is maintained for AI assistants and contributors who need a
 high-level map of the project's architecture, workflow, and repository
 conventions.*
+
+[Back to resources index](doc/README.md) - [Back to main README.md](README.md)

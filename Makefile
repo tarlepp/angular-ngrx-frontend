@@ -280,11 +280,24 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make project-stats
 endif
 
+# Yarn upgrade and version management targets
+# See doc/YARN_UPDATE.md and doc/YARN_UPDATE_QUICK_REF.md for detailed documentation
+
 yarn: ## Compatibility target for commands like `make yarn upgrade`
 	@true
 
 upgrade: ## Alias for yarn-upgrade (supports `make yarn upgrade`)
 	@$(MAKE) yarn-upgrade VERSION=$(VERSION)
+
+yarn-status: ## Display current Yarn version information (configured, active, and latest stable)
+ifeq ($(INSIDE_DOCKER), 1)
+	@./scripts/yarn-status.sh
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-status
+endif
 
 yarn-upgrade-check: ## Dry-run check for Yarn upgrade (no file changes)
 ifeq ($(INSIDE_DOCKER), 1)
@@ -306,12 +319,32 @@ else
 	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-upgrade VERSION=$(VERSION)
 endif
 
-yarn-status: ## Display current Yarn version information
+yarn-update: ## Alternative upgrade script (usage: make yarn-update VERSION=4.15.0, version is required)
 ifeq ($(INSIDE_DOCKER), 1)
-	@./scripts/yarn-status.sh
+ifndef VERSION
+	@echo "\033[31mERROR: VERSION parameter is required\033[39m\nUsage: make yarn-update VERSION=4.15.0"
+	@exit 1
+else
+	@./scripts/update-yarn.sh "$(VERSION)"
+endif
 else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)
 else
 	$(NOTICE_HOST)
-	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-status
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-update VERSION=$(VERSION)
+endif
+
+yarn-check-and-upgrade: ## Convenience: check status, dry-run, then upgrade to latest stable
+ifeq ($(INSIDE_DOCKER), 1)
+	@echo "\033[32m=== Yarn Status ===\033[39m"
+	@./scripts/yarn-status.sh
+	@echo "\033[32m=== Upgrade Check (Dry-run) ===\033[39m"
+	@./scripts/yarn-upgrade-check.sh
+	@echo "\033[32m=== Upgrading to Latest Stable ===\033[39m"
+	@./scripts/yarn-upgrade.sh ""
+else ifeq ($(strip $(IS_RUNNING)),)
+	$(WARNING_DOCKER)
+else
+	$(NOTICE_HOST)
+	@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose exec node make yarn-check-and-upgrade
 endif

@@ -5085,12 +5085,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snyk/protect@npm:1.1305.2":
-  version: 1.1305.2
-  resolution: "@snyk/protect@npm:1.1305.2"
+"@snyk/protect@npm:1.1306.0":
+  version: 1.1306.0
+  resolution: "@snyk/protect@npm:1.1306.0"
   bin:
     snyk-protect: bin/snyk-protect
-  checksum: 10c0/8708222ae2762e68f76da34741e9d46bad600eb07293d52482ac0994ba2a9aea55bfc5612bfed6590db43436adec2db41123136b5dd71f2bc5c98081801db1db
+  checksum: 10c0/d13ee376852ef7def617588ae08f207404907c4242abef2fbd4a71a83555b924ae6cad3b52b544351a0eb669fe12eadf399d62566ba17717fd2583b0f0e59c6d
   languageName: node
   linkType: hard
 
@@ -5436,12 +5436,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:26.1.0":
-  version: 26.1.0
-  resolution: "@types/node@npm:26.1.0"
+"@types/node@npm:26.1.1":
+  version: 26.1.1
+  resolution: "@types/node@npm:26.1.1"
   dependencies:
     undici-types: "npm:~8.3.0"
-  checksum: 10c0/61c22ad1ef215e24138cb8b7368fb68bab9de4c123b3f23d411749b015ba1b7d22f878ad54add26a0b69068d7e07c04af665069d8571b6c6c3b9b2fb73b7bd91
+  checksum: 10c0/25ac5093195736dd074d5027adbba85617bc951d5a41506ebd3b9073048acb7233613f3822d5f9b9447f9c0841c91f6387c46283916767e3ef79f23917452c46
   languageName: node
   linkType: hard
 
@@ -6237,18 +6237,18 @@ __metadata:
     "@ngrx/store": "npm:21.1.1"
     "@ngrx/store-devtools": "npm:21.1.1"
     "@schematics/angular": "npm:22.0.6"
-    "@snyk/protect": "npm:1.1305.2"
+    "@snyk/protect": "npm:1.1306.0"
     "@stylistic/eslint-plugin": "npm:5.10.0"
     "@types/jasmine": "npm:6.0.0"
     "@types/jasminewd2": "npm:2.0.13"
     "@types/luxon": "npm:3.7.2"
-    "@types/node": "npm:26.1.0"
+    "@types/node": "npm:26.1.1"
     "@typescript-eslint/eslint-plugin": "npm:8.63.0"
     "@typescript-eslint/parser": "npm:8.63.0"
     "@typescript-eslint/types": "npm:8.63.0"
     "@typescript-eslint/utils": "npm:8.63.0"
     angular-eslint: "npm:22.0.0"
-    eslint: "npm:10.6.0"
+    eslint: "npm:10.7.0"
     eslint-plugin-import: "npm:2.32.0"
     istanbul-lib-instrument: "npm:6.0.3"
     jasmine-core: "npm:6.3.0"
@@ -6265,7 +6265,7 @@ __metadata:
     ngx-material-luxon: "npm:1.1.1"
     ngx-webstorage: "npm:21.0.1"
     postcss: "npm:8.5.16"
-    prettier: "npm:3.9.4"
+    prettier: "npm:3.9.5"
     protractor: "npm:7.0.0"
     rxjs: "npm:7.8.2"
     stylelint: "npm:17.14.0"
@@ -8819,9 +8819,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:10.6.0":
-  version: 10.6.0
-  resolution: "eslint@npm:10.6.0"
+"eslint@npm:10.7.0":
+  version: 10.7.0
+  resolution: "eslint@npm:10.7.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.8.0"
     "@eslint-community/regexpp": "npm:^4.12.2"
@@ -8860,7 +8860,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 10c0/ebe0261fc750afb7f1a0c5a14f5288e57b971e0bee9754b1620132d22ad0c23690183977b0c9514ffa7ad460768d689d3fb9792ad9267b6c6205e2e0c17d8563
+  checksum: 10c0/d9415f506730c098ab8897da39f5719cdf9d1026c9511c322d4a272677f904b7d43ff423d63ee941c9a03d74d1a75563ce2668886734b1f293b22e57911a6dd6
   languageName: node
   linkType: hard
 
@@ -13165,12 +13165,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.9.4":
-  version: 3.9.4
-  resolution: "prettier@npm:3.9.4"
+"prettier@npm:3.9.5":
+  version: 3.9.5
+  resolution: "prettier@npm:3.9.5"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/dc6ec13d692745c6b7e7bf39beda9eb1b3b76c619118319bce393928c392264b1273337c75f80499695e165affefc7b3a9d2ebb18983af0a8f4dfbb2f45f6ff3
+  checksum: 10c0/0349dd9e6d8010965de6f69e6b6ee2484b8caf78c66675afced6c75ad60ff24c3a2a4f41153fb8adeaee4d8f539641b48cebc71d283cec4d146e9962126c5ceb
   languageName: node
   linkType: hard
 

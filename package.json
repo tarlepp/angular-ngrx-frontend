@@ -83,7 +83,7 @@
     "@bartholomej/ngx-translate-extract": "8.0.2",
     "@eslint/js": "10.0.1",
     "@ngrx/eslint-plugin": "21.1.1",
-    "@schematics/angular": "22.0.6",
+    "@schematics/angular": "22.0.7",
     "@stylistic/eslint-plugin": "5.10.0",
     "@types/jasmine": "6.0.0",
     "@types/jasminewd2": "2.0.13",
@@ -93,7 +93,7 @@
     "@typescript-eslint/parser": "8.63.0",
     "@typescript-eslint/types": "8.63.0",
     "@typescript-eslint/utils": "8.63.0",
-    "angular-eslint": "22.0.0",
+    "angular-eslint": "22.1.0",
     "eslint": "10.7.0",
     "eslint-plugin-import": "2.32.0",
     "istanbul-lib-instrument": "6.0.3",
@@ -105,7 +105,7 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.2.0",
     "ngx-build-plus": "20.0.0",
-    "postcss": "8.5.16",
+    "postcss": "8.5.19",
     "prettier": "3.9.5",
     "protractor": "7.0.0",
     "stylelint": "17.14.0",
@@ -114,7 +114,7 @@
     "stylelint-scss": "7.2.0",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.63.0"
+    "typescript-eslint": "8.64.0"
   },
   "snyk": true
 }

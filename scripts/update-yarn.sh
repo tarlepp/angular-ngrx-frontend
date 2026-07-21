@@ -72,8 +72,17 @@ else
     exit 1
 fi
 
-# Step 3: Verify the update
-echo -e "${GREEN}Step 3: Verifying installation...${NC}"
+# Step 3: Update yarn.lock file
+echo -e "${GREEN}Step 3: Updating yarn.lock file...${NC}"
+if yarn install; then
+    echo -e "${GREEN}✓ yarn.lock updated${NC}"
+else
+    echo -e "${RED}✗ Failed to run yarn install${NC}"
+    exit 1
+fi
+
+# Step 4: Verify the update
+echo -e "${GREEN}Step 4: Verifying installation...${NC}"
 ACTIVE_VERSION=$(yarn --version)
 echo -e "Active Yarn version: ${GREEN}$ACTIVE_VERSION${NC}"
 
@@ -84,7 +93,7 @@ if [ "$CONFIGURED_VERSION" != "$NEW_VERSION" ]; then
     exit 1
 fi
 
-# Step 4: Show what changed
+# Show what changed
 echo ""
 echo -e "${GREEN}Changes made:${NC}"
 echo "  package.json: yarn@${CURRENT_VERSION} → yarn@${NEW_VERSION}"
@@ -100,10 +109,10 @@ echo ""
 echo -e "${GREEN}✓ Yarn successfully upgraded to ${NEW_VERSION}${NC}"
 echo ""
 echo -e "${YELLOW}Next steps:${NC}"
-echo "1. Verify everything works: yarn install && yarn lint"
-echo "2. Commit changes: git add package.json .yarnrc.yml .yarn/releases/yarn-${NEW_VERSION}.cjs"
+echo "1. Verify everything works: yarn lint"
+echo "2. Commit changes: git add package.json yarn.lock .yarnrc.yml .yarn/releases/yarn-${NEW_VERSION}.cjs"
 echo "3. Push to repository"
 echo ""
 echo "Files to commit:"
-git status --short package.json .yarnrc.yml .yarn/releases/ 2>/dev/null | grep -E '^\s*M|^\s*\??' || echo "  (Run git status to see changes)"
+git status --short package.json yarn.lock .yarnrc.yml .yarn/releases/ 2>/dev/null | grep -E '^\s*M|^\s*\??' || echo "  (Run git status to see changes)"
 

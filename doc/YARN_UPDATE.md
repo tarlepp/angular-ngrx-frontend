@@ -83,6 +83,7 @@ make yarn-upgrade
 Expected changed files:
 
 * `package.json`
+* `yarn.lock`
 * `.yarnrc.yml`
 * `.yarn/releases/yarn-<version>.cjs`
 
@@ -102,6 +103,7 @@ Upgrade flow:
 1. update `packageManager` in `package.json`
 2. run `yarn set version` to update `.yarnrc.yml` and release file
 3. run `corepack prepare yarn@<version> --activate`
+4. run `yarn install` to update `yarn.lock` with the new Yarn version
 
 ## Manual Commands [ᐞ](#table-of-contents)
 
@@ -111,6 +113,7 @@ Upgrade flow:
 npm pkg set packageManager="yarn@4.17.0"
 yarn set version "4.17.0"
 corepack prepare "yarn@4.17.0" --activate
+yarn install
 
 ```
 

@@ -23,6 +23,9 @@ npm pkg set packageManager="yarn@$target_version"
 yarn set version "$target_version"
 corepack prepare "yarn@$target_version" --activate
 
-printf "\033[32mYarn upgraded to version %s and activated\033[39m\n" "$target_version"
+printf "\033[32mYarn upgraded to version %s\033[39m\n" "$target_version"
 yarn --version
+
+printf "\033[32mUpdating yarn.lock file...\033[39m\n"
+yarn install
 

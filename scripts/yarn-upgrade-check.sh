@@ -28,4 +28,3 @@ else
   echo "Run:"
   echo "  make yarn-upgrade VERSION=$latest"
 fi
-

@@ -19,6 +19,7 @@ commands directly from the IDE terminal.
     * [Linting and fixing](#linting-and-fixing)
     * [Translations](#translations)
     * [Maintenance utilities](#maintenance-utilities)
+      * [Yarn version management](#yarn-version-management)
   * [Yarn commands](#yarn-commands)
   * [Examples](#examples)
 
@@ -105,6 +106,25 @@ make docker-kill-containers    # Kill all running Docker containers on the host
 make docker-remove-containers  # Remove all Docker containers on the host
 make docker-remove-images      # Remove all Docker images on the host
 ```
+
+#### Yarn version management [ᐞ](#table-of-contents)
+
+<a id="yarn-version-management"></a>
+
+The project pins Yarn in-repo for consistent development, CI, and Docker environments.
+Manage the pinned Yarn version with these commands:
+
+```bash
+make yarn-status               # Show configured, active, and latest stable Yarn versions
+make yarn-upgrade-check        # Dry-run check for Yarn upgrade (no file changes)
+make yarn-upgrade              # Upgrade Yarn to latest stable version
+make yarn-upgrade VERSION=4.17.0  # Upgrade Yarn to a specific version
+make yarn-update VERSION=4.17.0   # Alternative upgrade approach (requires VERSION parameter)
+make yarn-check-and-upgrade    # Convenience workflow: check status, validate, then upgrade
+make yarn upgrade VERSION=4.17.0  # Compatible alias for yarn-upgrade
+```
+
+For detailed documentation, see `doc/YARN_UPDATE.md` and `doc/YARN_UPDATE_QUICK_REF.md`.
 
 ## Yarn commands [ᐞ](#table-of-contents)
 
@@ -194,6 +214,31 @@ Start development mode with immutable dependency install:
 
 ```bash
 make start-immutable
+```
+
+Check current Yarn version and status:
+
+```bash
+make yarn-status
+```
+
+Upgrade Yarn to the latest stable version:
+
+```bash
+make yarn-upgrade
+```
+
+Upgrade Yarn to a specific version with dry-run check first:
+
+```bash
+make yarn-upgrade-check        # Validate without making changes
+make yarn-upgrade VERSION=4.17.0  # Perform the upgrade
+```
+
+Run comprehensive Yarn validation and upgrade workflow:
+
+```bash
+make yarn-check-and-upgrade
 ```
 
 ---

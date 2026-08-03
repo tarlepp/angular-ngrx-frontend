@@ -105,7 +105,7 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.2.0",
     "ngx-build-plus": "20.0.0",
-    "postcss": "8.5.21",
+    "postcss": "8.5.22",
     "prettier": "3.9.6",
     "protractor": "7.0.0",
     "stylelint": "17.14.1",

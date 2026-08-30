@@ -150,7 +150,7 @@ RUN yarn build-prod
 FROM nginx:1.31.2-alpine-slim AS production
 
 RUN apk update \
-    && apk add --no-cache libcrypto3=3.5.7-r0 \
+    && apk add --no-cache libcrypto3=3.5.8-r0 \
     && rm -rf /var/cache/apk/*
 
 # Copy nginx configuration and build application inside the final container

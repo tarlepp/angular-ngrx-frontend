@@ -1,14 +1,14 @@
 // @ts-check
-const eslint = require("@eslint/js");
+const eslint = require('@eslint/js');
 const importPlugin = require('eslint-plugin-import');
-const tseslint = require("typescript-eslint");
+const tseslint = require('typescript-eslint');
 const { defineConfig } = require('eslint/config');
-const angular = require("angular-eslint");
-const ngrx = require("@ngrx/eslint-plugin/v9");
+const angular = require('angular-eslint');
+const ngrx = require('@ngrx/eslint-plugin');
 const stylistic = require('@stylistic/eslint-plugin');
 module.exports = defineConfig(
   {
-    files: ["**/*.ts"],
+    files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
       stylistic.configs.recommended,
@@ -29,208 +29,208 @@ module.exports = defineConfig(
     },
     processor: angular.processInlineTemplates,
     rules: {
-      "@angular-eslint/component-selector": [
-        "error",
+      '@angular-eslint/component-selector': [
+        'error',
         {
-          type: "element",
-          prefix: "app",
-          style: "kebab-case",
+          type: 'element',
+          prefix: 'app',
+          style: 'kebab-case',
         },
       ],
-      "@angular-eslint/directive-selector": [
-        "error",
+      '@angular-eslint/directive-selector': [
+        'error',
         {
-          type: "attribute",
-          prefix: "app",
-          style: "camelCase",
+          type: 'attribute',
+          prefix: 'app',
+          style: 'camelCase',
         },
       ],
-      "@ngrx/no-multiple-actions-in-effects": "off",
-      "@ngrx/no-store-subscription": "off",
-      "@ngrx/prefer-effect-callback-in-block-statement": "off",
-      "@stylistic/brace-style": [
-        "error",
-        "1tbs"
+      '@ngrx/no-multiple-actions-in-effects': 'off',
+      '@ngrx/no-store-subscription': 'off',
+      '@ngrx/prefer-effect-callback-in-block-statement': 'off',
+      '@stylistic/brace-style': [
+        'error',
+        '1tbs'
       ],
-      "@stylistic/comma-dangle": [
-        "error",
-        "always-multiline",
+      '@stylistic/comma-dangle': [
+        'error',
+        'always-multiline',
       ],
-      "@stylistic/indent": [
-        "error",
+      '@stylistic/indent': [
+        'error',
         2,
         {
-          ignoredNodes: ["ObjectExpression"]
+          ignoredNodes: ['ObjectExpression']
         }
       ],
-      "@stylistic/member-delimiter-style": [
-        "error",
+      '@stylistic/member-delimiter-style': [
+        'error',
         {
-          "multiline": {
-            "delimiter": "comma",
-            "requireLast": true
+          'multiline': {
+            'delimiter': 'comma',
+            'requireLast': true
           },
-          "singleline": {
-            "delimiter": "comma",
-            "requireLast": false
+          'singleline': {
+            'delimiter': 'comma',
+            'requireLast': false
           },
-          "overrides": {
-            "interface": {
-              "multiline": {
-                "delimiter": "semi",
-                "requireLast": true
+          'overrides': {
+            'interface': {
+              'multiline': {
+                'delimiter': 'semi',
+                'requireLast': true
               }
             }
           }
         }
       ],
-      "@stylistic/no-multi-spaces": [
-        "error",
+      '@stylistic/no-multi-spaces': [
+        'error',
         {
-          "exceptions": {
-            "TSEnumMember": true
+          'exceptions': {
+            'TSEnumMember': true
           }
         }
       ],
-      "@stylistic/operator-linebreak": [
-        "error",
-        "before",
+      '@stylistic/operator-linebreak': [
+        'error',
+        'before',
         {
-          "overrides": {
-            "=": "after"
+          'overrides': {
+            '=': 'after'
           }
         }
       ],
-      "@stylistic/semi": ["error", "always"],
-      "@stylistic/space-infix-ops": [
-        "error",
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/space-infix-ops': [
+        'error',
         {
-          "ignoreTypes": true,
+          'ignoreTypes': true,
         }
       ],
-      "@typescript-eslint/array-type": [
-        "error",
+      '@typescript-eslint/array-type': [
+        'error',
         {
-          default: "generic",
+          default: 'generic',
         }
       ],
-      "@typescript-eslint/await-thenable": "error",
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
+      '@typescript-eslint/await-thenable': 'error',
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
         {
-          "prefer": "no-type-imports"
+          'prefer': 'no-type-imports'
         }
       ],
-      "@typescript-eslint/naming-convention": [
-        "error",
+      '@typescript-eslint/naming-convention': [
+        'error',
         {
-          "selector": "default",
-          "format": [
-            "camelCase"
+          'selector': 'default',
+          'format': [
+            'camelCase'
           ]
         },
         {
-          "selector": "enumMember",
-          "format": [
-            "UPPER_CASE"
+          'selector': 'enumMember',
+          'format': [
+            'UPPER_CASE'
           ]
         },
         {
-          "selector": "objectLiteralProperty",
-          "format": [
-            "camelCase"
+          'selector': 'objectLiteralProperty',
+          'format': [
+            'camelCase'
           ]
         },
         {
-          "selector": "typeParameter",
-          "format": [
-            "PascalCase",
-            "UPPER_CASE"
+          'selector': 'typeParameter',
+          'format': [
+            'PascalCase',
+            'UPPER_CASE'
           ]
         },
         {
-          "selector": [
-            "class",
-            "enum",
-            "interface",
-            "typeAlias"
+          'selector': [
+            'class',
+            'enum',
+            'interface',
+            'typeAlias'
           ],
-          "format": [
-            "PascalCase"
+          'format': [
+            'PascalCase'
           ]
         }
       ],
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-floating-promises": "off",
-      "@typescript-eslint/no-inferrable-types": [
-        "off",
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/no-inferrable-types': [
+        'off',
         {
-          "ignoreParameters": true
+          'ignoreParameters': true
         }
       ],
-      "@typescript-eslint/no-misused-promises": "off",
-      "@typescript-eslint/no-redundant-type-constituents": "off",
-      "@typescript-eslint/no-this-alias": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
+      '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/no-redundant-type-constituents': 'off',
+      '@typescript-eslint/no-this-alias': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
         {
-          "vars": "all",
-          "varsIgnorePattern": "(.)Effect\\$$"
+          'vars': 'all',
+          'varsIgnorePattern': '(.)Effect\\$$'
         }
       ],
-      "@typescript-eslint/no-useless-constructor": "error",
-      "@typescript-eslint/no-unsafe-argument": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-unsafe-return": "off",
-      "@typescript-eslint/restrict-plus-operands": "error",
-      "@typescript-eslint/unbound-method": "off",
-      "import/no-dynamic-require": "error",
-      "import/no-extraneous-dependencies": [
-        "error",
+      '@typescript-eslint/no-useless-constructor': 'error',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/restrict-plus-operands': 'error',
+      '@typescript-eslint/unbound-method': 'off',
+      'import/no-dynamic-require': 'error',
+      'import/no-extraneous-dependencies': [
+        'error',
         {
-          "devDependencies": false
+          'devDependencies': false
         }
       ],
-      "import/order": [
-        "error",
+      'import/order': [
+        'error',
         {
-          "pathGroups": [
+          'pathGroups': [
             {
-              "pattern": "^(?!src\\/|package.json)([@]|[a-z])",
-              "group": "external",
-              "position": "before"
+              'pattern': '^(?!src\\/|package.json)([@]|[a-z])',
+              'group': 'external',
+              'position': 'before'
             },
             {
-              "pattern": "^(src\\/|package.json)",
-              "group": "internal",
-              "position": "after"
+              'pattern': '^(src\\/|package.json)',
+              'group': 'internal',
+              'position': 'after'
             }
           ],
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
+          'alphabetize': {
+            'order': 'asc',
+            'caseInsensitive': true
           },
-          "groups": [
-            "external",
-            "internal"
+          'groups': [
+            'external',
+            'internal'
           ],
-          "newlines-between": "ignore",
-          "pathGroupsExcludedImportTypes": [
-            "builtin"
+          'newlines-between': 'ignore',
+          'pathGroupsExcludedImportTypes': [
+            'builtin'
           ]
         }
       ],
-      "no-invalid-this": "off",
-      "no-new-func": "error",
-      "no-param-reassign": "error",
-      "no-redeclare": "error",
-      "no-unused-vars": "off",
+      'no-invalid-this': 'off',
+      'no-new-func': 'error',
+      'no-param-reassign': 'error',
+      'no-redeclare': 'error',
+      'no-unused-vars': 'off',
     },
   },
   {
-    files: ["**/*.html"],
+    files: ['**/*.html'],
     extends: [
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,

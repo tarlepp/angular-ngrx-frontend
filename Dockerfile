@@ -150,7 +150,8 @@ RUN yarn build-prod
 FROM nginx:1.31.2-alpine-slim AS production
 
 RUN apk add --no-cache \
-  pcre2=10.49-r0
+  pcre2=10.49-r0 \
+  libcrypto3=3.5.8-r0
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf

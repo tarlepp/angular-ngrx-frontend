@@ -1,7 +1,7 @@
 ARG TARGET=production
 
 # Stage 1: Dependencies
-FROM node:26.4.0-bullseye AS dependencies
+FROM node:26.10.0-trixie AS dependencies
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN npm install -g corepack \
     && yarn install --immutable
 
 # Stage 2: Development
-FROM node:26.4.0-slim AS development
+FROM node:26.10.0-slim AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -149,9 +149,9 @@ RUN yarn build-prod
 # Stage 4: Production
 FROM nginx:1.31.2-alpine-slim AS production
 
-RUN apk update \
-    && apk add --no-cache libcrypto3=3.5.8-r0 \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache \
+  pcre2=10.49-r0 \
+  libcrypto3=3.5.9-r0
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf

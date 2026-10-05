@@ -83,7 +83,7 @@
     "@bartholomej/ngx-translate-extract": "8.0.2",
     "@eslint/js": "10.0.1",
     "@ngrx/eslint-plugin": "22.0.1",
-    "@schematics/angular": "22.2.0",
+    "@schematics/angular": "22.2.1",
     "@stylistic/eslint-plugin": "5.10.0",
     "@types/jasmine": "6.0.0",
     "@types/jasminewd2": "2.0.13",
@@ -108,13 +108,13 @@
     "postcss": "8.5.28",
     "prettier": "3.9.9",
     "protractor": "7.0.0",
-    "stylelint": "17.15.0",
+    "stylelint": "17.16.0",
     "stylelint-config-sass-guidelines": "13.0.0",
     "stylelint-config-standard-scss": "17.0.0",
     "stylelint-scss": "7.3.0",
     "ts-node": "10.9.2",
-    "typescript": "6.0.3",
-    "typescript-eslint": "8.70.1"
+    "typescript": "7.0.2",
+    "typescript-eslint": "8.71.0"
   },
   "snyk": true
 }

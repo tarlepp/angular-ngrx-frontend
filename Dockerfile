@@ -1,7 +1,7 @@
 ARG TARGET=production
 
 # Stage 1: Dependencies
-FROM node:26.10.0-trixie AS dependencies
+FROM node:26.11.1-trixie AS dependencies
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN npm install -g corepack \
     && yarn install --immutable
 
 # Stage 2: Development
-FROM node:26.10.0-slim AS development
+FROM node:26.11.1-slim AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -147,7 +147,7 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:1.31.2-alpine-slim AS production
+FROM nginx:1.31.6-alpine-slim AS production
 
 RUN apk add --no-cache \
   pcre2=10.49-r0 \

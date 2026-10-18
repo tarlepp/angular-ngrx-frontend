@@ -336,7 +336,7 @@ command_digest() {
     local raw type digest platforms name repository file line_number line word ref found=0
     local -a words
 
-    ask IMAGE "Image name and tag (e.g. php:8.5.11-fpm-bookworm)"
+    ask IMAGE "Image name and tag (e.g. node:26.12.0-trixie)"
 
     info "OK" "Inspecting ${IMAGE}"
 

@@ -25,6 +25,7 @@ Use this document for deeper context, while keeping
   * [Technology stack](#technology-stack)
   * [Architecture patterns](#architecture-patterns)
   * [Development workflow](#development-workflow)
+    * [Multi-platform Docker image workflow](#multi-platform-docker-image-workflow)
   * [Common tasks](#common-tasks)
   * [CI and validation](#ci-and-validation)
   * [Configuration](#configuration)
@@ -299,6 +300,28 @@ Notes:
   checks
 * from the host shell, prefer the existing `make` targets that execute inside
   the running container instead of invoking project tooling directly on the host
+
+### Multi-platform Docker image workflow [ᐞ](#table-of-contents)
+
+<a id="multi-platform-docker-image-workflow"></a>
+
+The `scripts/docker-images.sh` helper and its Makefile targets manage
+multi-platform base-image checks and Buildx builds. Run these commands from the
+repository root on the Docker host, outside the development container:
+
+```bash
+make docker-image-digest IMAGE=node:26.10.0-trixie
+make docker-image-verify-pins
+make docker-build-platform PLATFORM=linux/arm64
+make docker-build-multi-platform PLATFORMS=linux/amd64,linux/arm64 TAG=ghcr.io/OWNER/angular-ngrx-frontend:latest
+```
+
+When changing Dockerfile base images, verify that the reference resolves to a
+multi-platform index and use the index digest rather than a platform-specific
+manifest digest. Multi-platform publishing is a manual helper workflow; it
+does not change the existing CI image build. See
+[`doc/DOCKER_MULTI_PLATFORM.md`](doc/DOCKER_MULTI_PLATFORM.md) for complete
+requirements and commands.
 
 ### Dev Container workflow [ᐞ](#table-of-contents)
 

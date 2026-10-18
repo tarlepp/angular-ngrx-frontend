@@ -33,6 +33,8 @@ topic.
   notes.
 * [Dev Containers](DEV_CONTAINERS.md) - opening and working with this project
   in Dev Container capable IDEs.
+* [Multi-platform Docker images](DOCKER_MULTI_PLATFORM.md) - inspect base-image
+  manifests and build the application image for multiple platforms.
 * [Speed problems with application?](SPEED_UP_DOCKER_COMPOSE.md) - tips for
   improving Docker-based development performance.
 * [Tools](TOOLS.md) - project tooling overview.
@@ -53,6 +55,8 @@ For the most common starting points:
 * New contributor setup: [`../README.md`](../README.md)
 * AI-assisted change policy: [`AI_RULES.md`](AI_RULES.md)
 * Day-to-day commands: [`COMMANDS.md`](COMMANDS.md)
+* Multi-platform Docker images:
+  [`DOCKER_MULTI_PLATFORM.md`](DOCKER_MULTI_PLATFORM.md)
 * Yarn version workflow: [`YARN_UPDATE_QUICK_REF.md`](YARN_UPDATE_QUICK_REF.md)
 * GitHub Actions pin maintenance: [`ACTIONS_UPDATE.md`](ACTIONS_UPDATE.md)
 * Dev Container usage: [`DEV_CONTAINERS.md`](DEV_CONTAINERS.md)

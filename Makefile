@@ -257,6 +257,48 @@ else
 	@cd docker/ssl && ./create-keys.sh
 endif
 
+docker-image-digest: ## Show the multi-platform index digest for an image (IMAGE=...)
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@IMAGE="$(IMAGE)" ./scripts/docker-images.sh digest
+endif
+
+docker-image-verify-pins: ## Verify all Dockerfile base images are multi-platform
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@./scripts/docker-images.sh verify
+endif
+
+docker-builder-platforms: ## Show platforms supported by the current buildx builder
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@./scripts/docker-images.sh platforms
+endif
+
+docker-setup-qemu: ## Install QEMU emulators on the Docker host (PLATFORMS=arm64,amd64)
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@PLATFORMS="$(PLATFORMS)" ./scripts/docker-images.sh setup-qemu
+endif
+
+docker-build-platform: ## Build and load one platform locally (PLATFORM=linux/arm64)
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@PLATFORM="$(PLATFORM)" DOCKERFILE="$(DOCKERFILE)" TARGET="$(TARGET)" TAG="$(TAG)" ./scripts/docker-images.sh build
+endif
+
+docker-build-multi-platform: ## Build and push multiple platforms (PLATFORMS=... TAG=...)
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@PLATFORMS="$(PLATFORMS)" DOCKERFILE="$(DOCKERFILE)" TARGET="$(TARGET)" TAG="$(TAG)" BUILDER="$(BUILDER)" ./scripts/docker-images.sh push
+endif
+
 check-action-updates: ## Check pinned GitHub Actions and available updates
 ifeq ($(INSIDE_DOCKER), 1)
 	@echo "\033[32mChecking GitHub Action pins and updates\033[39m"

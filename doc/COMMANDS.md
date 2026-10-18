@@ -19,6 +19,7 @@ commands directly from the IDE terminal.
     * [Linting and fixing](#linting-and-fixing)
     * [Translations](#translations)
     * [Maintenance utilities](#maintenance-utilities)
+      * [Multi-platform Docker images](#multi-platform-docker-images)
       * [Yarn version management](#yarn-version-management)
   * [Yarn commands](#yarn-commands)
   * [Examples](#examples)
@@ -106,6 +107,27 @@ make docker-kill-containers    # Kill all running Docker containers on the host
 make docker-remove-containers  # Remove all Docker containers on the host
 make docker-remove-images      # Remove all Docker images on the host
 ```
+
+#### Multi-platform Docker images [ᐞ](#table-of-contents)
+
+<a id="multi-platform-docker-images"></a>
+
+These commands use Docker Buildx on the host. Run them from the repository
+root, outside the development container:
+
+```bash
+make docker-image-digest IMAGE=node:26.10.0-trixie
+make docker-image-verify-pins
+make docker-builder-platforms
+make docker-setup-qemu PLATFORMS=arm64,amd64
+make docker-build-platform PLATFORM=linux/arm64
+make docker-build-multi-platform PLATFORMS=linux/amd64,linux/arm64 TAG=ghcr.io/OWNER/angular-ngrx-frontend:latest
+```
+
+The single-platform command loads the image locally; the multi-platform
+command pushes the image to the specified registry. See
+[`DOCKER_MULTI_PLATFORM.md`](DOCKER_MULTI_PLATFORM.md) for requirements,
+parameters, and base-image pinning guidance.
 
 #### Yarn version management [ᐞ](#table-of-contents)
 

@@ -20,6 +20,7 @@ and project workflow conventions.
   * [Architecture rules](#architecture-rules)
   * [TypeScript and Angular rules](#typescript-and-angular-rules)
   * [UI, styling, and i18n rules](#ui-styling-and-i18n-rules)
+  * [Docker image rules](#docker-image-rules)
   * [Change scope rules](#change-scope-rules)
   * [Documentation maintenance rules](#documentation-maintenance-rules)
   * [Documentation formatting rules](#documentation-formatting-rules)
@@ -69,6 +70,18 @@ and project workflow conventions.
   * `src/assets/i18n/fi.json`
 * Avoid hardcoded user-facing strings in templates and components when they
   should be translated.
+
+## Docker image rules [ᐞ](#table-of-contents)
+
+<a id="docker-image-rules"></a>
+
+* When changing Dockerfile base images for multi-platform use, verify their
+  manifests with `make docker-image-verify-pins` and prefer a multi-platform
+  index digest over a platform-specific manifest digest.
+* Use `doc/DOCKER_MULTI_PLATFORM.md` for Buildx commands. These commands run on
+  the Docker host, outside the development container.
+* Do not treat the manual multi-platform push helper as a change to CI
+  publishing behavior.
 
 ## Change scope rules [ᐞ](#table-of-contents)
 

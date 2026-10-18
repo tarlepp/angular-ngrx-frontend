@@ -163,6 +163,12 @@ translation extraction and validation commands.
   host directly.
 * Reserve host-level command execution for tasks that genuinely belong to the
   host environment, such as Docker lifecycle or Git operations.
+* Multi-platform image inspection, QEMU setup, and Buildx builds use the Docker
+  host; follow `doc/DOCKER_MULTI_PLATFORM.md` rather than running those commands
+  inside the development container.
+* When changing Dockerfile base images for multi-platform support, verify that
+  the reference resolves to an image index. Pin the index digest, not a
+  platform-specific child manifest.
 
 ### 8. Keep versioned documentation lightweight [ᐞ](#table-of-contents)
 

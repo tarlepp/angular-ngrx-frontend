@@ -45,6 +45,26 @@ optionally commit and create a tag.
 `thefuck` is installed in the development container to provide command
 correction aliases for bash and fish.
 
+Interactive Bash and Fish sessions opened with `make bash` or `make fish`
+automatically offer a correction after a failed command. Press Enter to
+execute the suggestion, use the arrow keys to choose another suggestion,
+or press Ctrl+C to dismiss
+it. Confirmation is always required for automatic suggestions, even if
+disabled in personal `thefuck` settings. Successful commands, commands
+interrupted by a signal, and non-interactive scripts do not trigger suggestions.
+The Bash prompt hook preserves existing prompt commands; Fish uses its
+`fish_postexec` event without replacing the prompt.
+
+Like manual invocation, `thefuck` may rerun the failed command to inspect
+its output before suggesting a correction. Be aware of this for commands
+that can partially succeed or have side effects.
+
+Manual correction with `fuck` remains available in both shells.
+
+The automatic hooks are installed from `docker/bash/thefuck.bash` and
+`docker/fish/config.fish`. After changing either, rebuild and recreate the
+container with `make start-build`.
+
 ### Python 3.13 compatibility note [ᐞ](#table-of-contents)
 
 <a id="python-313-compatibility-note"></a>

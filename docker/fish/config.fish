@@ -1,5 +1,16 @@
 if type -q thefuck
-	thefuck --alias 2>/dev/null | source
+	thefuck --alias | source
+
+	if status is-interactive
+		function _thefuck_postexec --on-event fish_postexec
+			set -l exit_status $status
+			if test $exit_status -gt 0; and test $exit_status -lt 128; and isatty stdin; and isatty stdout
+				set -lx THEFUCK_REQUIRE_CONFIRMATION true
+				fuck --force-command "$argv[1]"
+			end
+			return $exit_status
+		end
+	end
 end
 
 # In this container `/usr/bin/open` cannot open remote fish docs.
@@ -28,4 +39,3 @@ if status is-interactive; and test -t 1
 	echo "  help      → fish help         (interactive docs)"
 	echo ""
 end
-

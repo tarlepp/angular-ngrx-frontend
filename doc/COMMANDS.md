@@ -118,6 +118,7 @@ root, outside the development container:
 ```bash
 make docker-image-digest IMAGE=node:26.10.0-trixie
 make docker-image-verify-pins
+make docker-image-updates
 make docker-builder-platforms
 make docker-setup-qemu PLATFORMS=arm64,amd64
 make docker-build-platform PLATFORM=linux/arm64

@@ -12,6 +12,7 @@
 # Commands:
 #   digest      Show multi-platform index digest and pin reference for image
 #   verify      Verify that Dockerfile base images are multi-platform
+#   updates     Check newer semver versions of Dockerfile base images
 #   platforms   Show platforms that the current buildx builder supports
 #   setup-qemu  Install QEMU emulators for cross-platform builds
 #   build       Build image for a single platform and load it locally
@@ -30,7 +31,8 @@
 #
 # Requirements:
 #   - docker with buildx plugin (host machine)
-#   - jq (digest and verify commands)
+#   - jq (digest, verify and updates commands)
+#   - curl (updates command)
 #
 ################################################################################
 
@@ -55,6 +57,11 @@ shopt -s globstar nullglob
 PINNED_DOCKERFILES=(Dockerfile docker/**/Dockerfile docker/**/Dockerfile.*)
 declare -ga VERIFY_DOCKERFILES=()
 PLATFORM_PATTERN='^linux/[a-z0-9]+(/v[0-9]+)?$'
+RETRY_ATTEMPTS=3
+
+# Temporary state shared with subshells (rate limit hint and status)
+STATE_DIR="$(mktemp -d)"
+trap 'rm -rf "$STATE_DIR"' EXIT
 
 usage() {
     cat << EOF
@@ -66,6 +73,7 @@ Usage:
 Commands:
   digest      Show multi-platform index digest and pin reference for image
   verify      Verify that Dockerfile base images are multi-platform
+  updates     Check newer semver versions of Dockerfile base images
   platforms   Show platforms that the current buildx builder supports
   setup-qemu  Install QEMU emulators for cross-platform builds
   build       Build image for a single platform and load it locally
@@ -85,6 +93,7 @@ script is run in an interactive terminal, the value is asked from the user.
 Make targets:
   make docker-image-digest
   make docker-image-verify-pins
+  make docker-image-updates
   make docker-builder-platforms
   make docker-setup-qemu PLATFORMS=arm64,amd64
   make docker-build-platform PLATFORM=linux/arm64
@@ -194,25 +203,110 @@ require_jq() {
     fi
 }
 
+# Wait before next retry. Shows countdown progress on interactive terminals.
+# Usage: retry_wait <attempt> <reason>
+retry_wait() {
+    local delay=$(($1 * 10)) remaining prefix
+
+    prefix="$(printf '  %sRETRY%s %s/%s %s' "$YELLOW" "$NC" "$1" "$((RETRY_ATTEMPTS - 1))" "$2")"
+
+    if [ -t 2 ]; then
+        for ((remaining = delay; remaining > 0; remaining--)); do
+            printf '\r\033[K%s, retrying in %ss (Ctrl+C to abort)' "$prefix" "$remaining" >&2
+            sleep 1
+        done
+
+        printf '\r\033[K%s, retrying now\n' "$prefix" >&2
+    else
+        printf '%s, retrying in %ss\n' "$prefix" "$delay" >&2
+        sleep "$delay"
+    fi
+}
+
+# Print `username:secret` stored by `docker login` for registry, if any.
+# Supports credHelpers, credsStore and inline auths of the Docker config.
+# Usage: registry_credentials <registry>
+registry_credentials() {
+    local config="${DOCKER_CONFIG:-$HOME/.docker}/config.json" server="$1" helper auth
+
+    [ "$server" = "docker.io" ] && server="https://index.docker.io/v1/"
+    [ -f "$config" ] || return 0
+
+    helper="$(jq -r --arg s "$server" '.credHelpers[$s] // .credsStore // empty' "$config" 2> /dev/null || true)"
+
+    if [ -n "$helper" ]; then
+        command -v "docker-credential-${helper}" > /dev/null 2>&1 || return 0
+
+        printf '%s' "$server" | "docker-credential-${helper}" get 2> /dev/null \
+            | jq -r 'select(.Username and .Secret and .Username != "<token>") | .Username + ":" + .Secret' 2> /dev/null \
+            || true
+
+        return 0
+    fi
+
+    auth="$(jq -r --arg s "$server" '.auths[$s].auth // empty' "$config" 2> /dev/null || true)"
+
+    if [ -n "$auth" ]; then
+        base64 -d <<< "$auth" 2> /dev/null || true
+    fi
+}
+
+# Show `docker login` hint once when registry rate limit is reached.
+# Usage: rate_limit_hint <registry>
+rate_limit_hint() {
+    local login="docker login"
+
+    [ -e "${STATE_DIR}/rate-limit-hint" ] && return 0
+    : > "${STATE_DIR}/rate-limit-hint"
+
+    [ "$1" = "docker.io" ] || login="docker login $1"
+
+    if [ -n "$(registry_credentials "$1")" ]; then
+        warning "RATE LIMIT" "Pull rate limit of $1 reached for the logged in account" >&2
+    else
+        warning "RATE LIMIT" "Anonymous pull rate limit of $1 reached" >&2
+        warning "RATE LIMIT" "Press Ctrl+C, run '${login}' and run this command again to get a higher limit" >&2
+    fi
+}
+
+# Remember that retries for registry requests are exhausted, so that later
+# requests of the same kind fail fast instead of waiting again.
+# Usage: mark_rate_limited <tags-|manifests-><registry>
+mark_rate_limited() {
+    : > "${STATE_DIR}/rate-limited-$1"
+}
+
+is_rate_limited() {
+    [ -e "${STATE_DIR}/rate-limited-$1" ]
+}
+
 # Fetch raw manifest (index or single manifest) with a single registry request.
 # Retries transient registry errors (rate limit, timeouts, server errors).
 # Prints manifest on success, or registry error on failure.
 raw_manifest() {
-    local attempt output delay
+    local attempt output reason registry
 
-    for attempt in 1 2 3; do
+    parse_image_ref "$1"
+    registry="$REF_REGISTRY"
+
+    for ((attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++)); do
         if output="$(docker buildx imagetools inspect --raw "$1" 2>&1)"; then
             printf '%s' "$output"
             return 0
         fi
 
-        if [ "$attempt" -eq 3 ] || ! grep -qiE '429|toomanyrequests|timeout|EOF|50[0-9] ' <<< "$output"; then
+        if grep -qiE '429|toomanyrequests' <<< "$output"; then
+            rate_limit_hint "$registry"
+            reason="Registry rate limit reached"
+        elif grep -qiE 'timeout|EOF|50[0-9] ' <<< "$output"; then
+            reason="Registry request failed"
+        else
             break
         fi
 
-        delay=$((attempt * 10))
-        printf '  %sRETRY%s Registry request failed, retrying in %ss\n' "$YELLOW" "$NC" "$delay" >&2
-        sleep "$delay"
+        [ "$attempt" -lt "$RETRY_ATTEMPTS" ] || break
+
+        retry_wait "$attempt" "$reason"
     done
 
     printf '%s\n' "$output"
@@ -594,6 +688,468 @@ command_verify() {
     info "OK" "All Dockerfiles use multi-platform base images"
 }
 
+require_curl() {
+    if ! command -v curl > /dev/null 2>&1; then
+        error "curl command not found, install it first"
+        exit 69
+    fi
+}
+
+# Split image reference into registry, repository and tag.
+# Usage: parse_image_ref <reference>
+# Sets: REF_REGISTRY, REF_REPOSITORY, REF_TAG
+parse_image_ref() {
+    local name first
+
+    name="$(image_repository "$1")"
+    REF_TAG="${1%@*}"
+    REF_TAG="${REF_TAG#"$name"}"
+    REF_TAG="${REF_TAG#:}"
+
+    first="${name%%/*}"
+
+    if [ "$first" != "$name" ] && { [[ "$first" == *.* ]] || [[ "$first" == *:* ]] || [ "$first" = "localhost" ]; }; then
+        REF_REGISTRY="$first"
+        REF_REPOSITORY="${name#*/}"
+    else
+        REF_REGISTRY="docker.io"
+        REF_REPOSITORY="$name"
+        [[ "$REF_REPOSITORY" == */* ]] || REF_REPOSITORY="library/${REF_REPOSITORY}"
+    fi
+}
+
+registry_host() {
+    if [ "$1" = "docker.io" ]; then
+        printf 'registry-1.docker.io'
+    else
+        printf '%s' "$1"
+    fi
+}
+
+# Request pull token for repository and store it in TOKEN_CACHE. Uses
+# credentials from `docker login` when available, otherwise anonymous access.
+# Must not be called in a subshell, otherwise the cached token is lost.
+# Usage: registry_token <registry> <repository>
+registry_token() {
+    local key="$1/$2" challenge realm service token="" credentials
+    local -a args
+
+    [ -n "${TOKEN_CACHE[$key]+set}" ] && return 0
+
+    challenge="$(curl -s -o /dev/null -D - "https://$(registry_host "$1")/v2/" \
+        | tr -d '\r' | grep -i '^www-authenticate:' || true)"
+
+    if [[ "$challenge" == *realm=* ]]; then
+        realm="$(sed -n 's/.*realm="\([^"]*\)".*/\1/p' <<< "$challenge")"
+        service="$(sed -n 's/.*service="\([^"]*\)".*/\1/p' <<< "$challenge")"
+
+        args=(-fsG "$realm" --data-urlencode "scope=repository:$2:pull")
+        [ -n "$service" ] && args+=(--data-urlencode "service=${service}")
+
+        credentials="$(registry_credentials "$1")"
+
+        if [ -n "$credentials" ]; then
+            # Pass credentials via stdin config, so those are not visible in process list
+            credentials="${credentials//\\/\\\\}"
+            credentials="${credentials//\"/\\\"}"
+
+            token="$(printf 'user = "%s"\n' "$credentials" | curl -K - "${args[@]}" \
+                | jq -r '.token // .access_token // empty')" || token=""
+        fi
+
+        if [ -z "$token" ]; then
+            token="$(curl "${args[@]}" | jq -r '.token // .access_token // empty')" || return 1
+        fi
+    fi
+
+    TOKEN_CACHE[$key]="$token"
+}
+
+# Print curl authorization arguments for repository, one per line.
+# Usage: registry_auth_args <registry> <repository>
+registry_auth_args() {
+    local token="${TOKEN_CACHE[$1/$2]:-}"
+
+    [ -n "$token" ] && printf -- '-H\nAuthorization: Bearer %s\n' "$token"
+
+    return 0
+}
+
+# Print rate limit details from registry response headers, e.g. ` (100 per 1h)`.
+# Usage: rate_limit_details <headers>
+rate_limit_details() {
+    local limit window
+
+    read -r limit window < <(grep -i -m 1 '^ratelimit-limit:' <<< "$1" \
+        | sed -n 's/^[^:]*: *\([0-9]*\);w=\([0-9]*\).*/\1 \2/p') || true
+
+    [ -n "${limit:-}" ] && [ -n "${window:-}" ] || return 0
+
+    if [ $((window % 3600)) -eq 0 ]; then
+        printf ' (%s per %sh)' "$limit" "$((window / 3600))"
+    else
+        printf ' (%s per %ss)' "$limit" "$window"
+    fi
+}
+
+# Check registry response status for retry. Sets RETRY_REASON and RETRY_STATUS.
+# Usage: retryable_status <registry> <http status> <headers>
+# Returns: 0 = retryable error, 1 = other error
+retryable_status() {
+    case "$2" in
+        429)
+            rate_limit_hint "$1"
+            RETRY_REASON="Registry rate limit reached$(rate_limit_details "$3")"
+            RETRY_STATUS=3
+            ;;
+        000|5[0-9][0-9])
+            RETRY_REASON="Registry request failed (HTTP $2)"
+            RETRY_STATUS=1
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+# List all tags of a repository using the registry v2 API. Follows `Link`
+# header pagination. Call registry_token first.
+# Usage: registry_tags <registry> <repository>
+# Returns: 0 = OK, 1 = request failed, 3 = registry rate limit reached
+registry_tags() {
+    local host url headers body status next attempt
+    local -a auth=()
+
+    is_rate_limited "tags-$1" && return 3
+
+    host="$(registry_host "$1")"
+    mapfile -t auth < <(registry_auth_args "$1" "$2")
+
+    url="https://${host}/v2/$2/tags/list?n=10000"
+    headers="$(mktemp -p "$STATE_DIR")"
+    body="$(mktemp -p "$STATE_DIR")"
+
+    while [ -n "$url" ]; do
+        for ((attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++)); do
+            status="$(curl -s -D "$headers" -o "$body" -w '%{http_code}' "${auth[@]}" "$url")" || status="000"
+
+            [ "$status" = "200" ] && break
+
+            retryable_status "$1" "$status" "$(tr -d '\r' < "$headers")" || return 1
+
+            if [ "$attempt" -eq "$RETRY_ATTEMPTS" ]; then
+                [ "$RETRY_STATUS" -eq 3 ] && mark_rate_limited "tags-$1"
+                return "$RETRY_STATUS"
+            fi
+
+            retry_wait "$attempt" "$RETRY_REASON"
+        done
+
+        jq -r '.tags[]?' "$body" || return 1
+
+        next="$(tr -d '\r' < "$headers" | sed -n 's/^[Ll]ink: *<\([^>]*\)>; *rel="next".*/\1/p')"
+
+        if [ -z "$next" ]; then
+            url=""
+        elif [[ "$next" == http* ]]; then
+            url="$next"
+        else
+            url="https://${host}${next}"
+        fi
+    done
+}
+
+# Resolve manifest media type and digest with a registry HEAD request. HEAD
+# requests do not count towards the Docker Hub pull rate limit, unlike the GET
+# requests made by `docker buildx imagetools inspect`.
+# Usage: manifest_head <reference>
+# Sets: HEAD_TYPE, HEAD_DIGEST
+# Returns: 0 = OK, 1 = request failed, 3 = registry rate limit reached
+manifest_head() {
+    local headers status attempt
+    local -a auth=()
+
+    HEAD_TYPE=""
+    HEAD_DIGEST=""
+
+    parse_image_ref "$1"
+    is_rate_limited "manifests-$REF_REGISTRY" && return 3
+    registry_token "$REF_REGISTRY" "$REF_REPOSITORY" || return 1
+    mapfile -t auth < <(registry_auth_args "$REF_REGISTRY" "$REF_REPOSITORY")
+
+    for ((attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++)); do
+        headers="$(curl -s -I "${auth[@]}" \
+            -H 'Accept: application/vnd.oci.image.index.v1+json' \
+            -H 'Accept: application/vnd.docker.distribution.manifest.list.v2+json' \
+            -H 'Accept: application/vnd.oci.image.manifest.v1+json' \
+            -H 'Accept: application/vnd.docker.distribution.manifest.v2+json' \
+            "https://$(registry_host "$REF_REGISTRY")/v2/${REF_REPOSITORY}/manifests/${REF_TAG}" \
+            | tr -d '\r')" || headers=""
+
+        status="$(sed -n '1s/^HTTP\/[0-9.]* \([0-9]*\).*/\1/p' <<< "$headers")"
+
+        if [ "$status" = "200" ]; then
+            HEAD_TYPE="$(sed -n 's/^[Cc]ontent-[Tt]ype: *\([^;]*\).*/\1/p' <<< "$headers")"
+            HEAD_DIGEST="$(sed -n 's/^[Dd]ocker-[Cc]ontent-[Dd]igest: *//p' <<< "$headers")"
+            [ -n "$HEAD_DIGEST" ] && return 0
+            return 1
+        fi
+
+        retryable_status "$REF_REGISTRY" "${status:-000}" "$headers" || return 1
+
+        if [ "$attempt" -eq "$RETRY_ATTEMPTS" ]; then
+            [ "$RETRY_STATUS" -eq 3 ] && mark_rate_limited "manifests-$REF_REGISTRY"
+            return "$RETRY_STATUS"
+        fi
+
+        retry_wait "$attempt" "$RETRY_REASON"
+    done
+
+    return 1
+}
+
+# Print available update for image reference.
+# Usage: print_update <type> <version> <reference>
+# Sets: UPDATE_PIN to pin reference, or to reference with problem description
+print_update() {
+    local digest result=0 problem=""
+
+    if [ -z "${DIGEST_CACHE[$3]+set}" ]; then
+        manifest_head "$3" || result=$?
+
+        if [ "$result" -ne 0 ]; then
+            :
+        elif ! is_index "$HEAD_TYPE"; then
+            result=2
+        fi
+
+        DIGEST_CACHE[$3]="${result}:${HEAD_DIGEST}"
+    fi
+
+    result="${DIGEST_CACHE[$3]%%:*}"
+    digest="${DIGEST_CACHE[$3]#*:}"
+
+    case "$result" in
+        0) ;;
+        2) problem="single platform image, no index digest" ;;
+        3) problem="registry rate limit reached, digest not resolved"; RATE_LIMITED=1 ;;
+        *) problem="could not resolve digest" ;;
+    esac
+
+    if [ -z "$problem" ]; then
+        UPDATE_PIN="${3}@${digest}"
+        printf '  %sUPDATE%s %-5s %s\n' "$YELLOW" "$NC" "$1" "$2"
+        printf '         FROM %s\n' "$UPDATE_PIN"
+    else
+        UPDATE_PIN="${3} (${problem})"
+        printf '  %sUPDATE%s %-5s %s %s(%s)%s\n' "$YELLOW" "$NC" "$1" "$2" "$RED" "$problem" "$NC"
+    fi
+}
+
+# Check semver updates of external base images in a single Dockerfile.
+# Usage: check_dockerfile_updates <file>
+check_dockerfile_updates() {
+    local file="$1"
+    local -A stages=()
+    local line_number line word ref is_stage name prefix version suffix major minor key tags tags_status problem
+    local latest_patch latest_minor latest_major candidate type
+    local -a pins
+    local semver='^(v?)([0-9]+)\.([0-9]+)\.([0-9]+)(-[A-Za-z0-9._-]+)?$'
+    local -a words versions
+
+    printf '%s%s%s\n' "$BOLD" "$file" "$NC"
+
+    while IFS=: read -r line_number line; do
+        read -r -a words <<< "$line"
+
+        ref=""
+        for word in "${words[@]:1}"; do
+            [[ "$word" == --* ]] && continue
+            ref="$word"
+            break
+        done
+
+        is_stage=0
+        [ -n "${stages[${ref,,}]:-}" ] && is_stage=1
+
+        if [ "${#words[@]}" -ge 4 ] && [ "${words[-2],,}" = "as" ]; then
+            stages["${words[-1],,}"]=1
+        fi
+
+        [ "$is_stage" -eq 1 ] && continue
+
+        printf '  line %s: %s\n' "$line_number" "$ref"
+
+        parse_image_ref "$ref"
+        name="$(image_repository "$ref")"
+
+        if ! [[ "$REF_TAG" =~ $semver ]]; then
+            printf '  %sSKIP%s   Tag "%s" is not a semver version (X.Y.Z[-suffix])\n' "$YELLOW" "$NC" "${REF_TAG:-<none>}"
+            continue
+        fi
+
+        prefix="${BASH_REMATCH[1]}"
+        major="${BASH_REMATCH[2]}"
+        minor="${BASH_REMATCH[3]}"
+        version="${major}.${minor}.${BASH_REMATCH[4]}"
+        suffix="${BASH_REMATCH[5]}"
+
+        key="${REF_REGISTRY}/${REF_REPOSITORY}"
+
+        if [ -z "${TAGS_CACHE[$key]+set}" ]; then
+            tags_status=0
+
+            if registry_token "$REF_REGISTRY" "$REF_REPOSITORY"; then
+                tags="$(registry_tags "$REF_REGISTRY" "$REF_REPOSITORY")" || tags_status=$?
+            else
+                tags_status=1
+            fi
+
+            if [ "$tags_status" -ne 0 ]; then
+                if [ "$tags_status" -eq 3 ]; then
+                    problem="Could not list tags of ${key}, registry rate limit reached"
+                    RATE_LIMITED=1
+                else
+                    problem="Could not list tags of ${key}"
+                fi
+
+                printf '  %sFAIL%s   %s\n' "$RED" "$NC" "$problem"
+                github_annotation error "$file" "$line_number" "Base image update check failed" "${ref}: ${problem}"
+                UPDATE_ROWS+=("| \`${file}\` | ${line_number} | \`${ref}\` | :x: ${problem} |")
+                FAILED=$((FAILED + 1))
+                continue
+            fi
+
+            TAGS_CACHE[$key]="$tags"
+        fi
+
+        # Versions with the same prefix and suffix, e.g. `X.Y.Z-trixie`
+        mapfile -t versions < <(
+            while IFS= read -r candidate; do
+                if [[ "$candidate" =~ $semver ]] \
+                    && [ "${BASH_REMATCH[1]}" = "$prefix" ] \
+                    && [ "${BASH_REMATCH[5]}" = "$suffix" ]; then
+                    printf '%s.%s.%s\n' "${BASH_REMATCH[2]}" "${BASH_REMATCH[3]}" "${BASH_REMATCH[4]}"
+                fi
+            done <<< "${TAGS_CACHE[$key]}" | sort -uV
+        )
+
+        latest_patch=""
+        latest_minor=""
+        latest_major=""
+
+        for candidate in "${versions[@]}"; do
+            [ "$candidate" = "$version" ] && continue
+            [ "$(printf '%s\n%s\n' "$version" "$candidate" | sort -V | tail -n 1)" = "$candidate" ] || continue
+
+            latest_major="$candidate"
+            [ "${candidate%%.*}" = "$major" ] && latest_minor="$candidate"
+            [[ "$candidate" == "${major}.${minor}."* ]] && latest_patch="$candidate"
+        done
+
+        [ "$latest_minor" = "$latest_patch" ] && latest_minor=""
+        [ "$latest_major" = "$latest_patch" ] || [ "$latest_major" = "$latest_minor" ] && latest_major=""
+
+        if [ -z "${latest_patch}${latest_minor}${latest_major}" ]; then
+            printf '  %sOK%s     Up to date (%s)\n' "$GREEN" "$NC" "$version"
+            UPDATE_ROWS+=("| \`${file}\` | ${line_number} | \`${ref}\` | :white_check_mark: Up to date |")
+            continue
+        fi
+
+        UPDATES=$((UPDATES + 1))
+        pins=()
+
+        for type in patch minor major; do
+            case "$type" in
+                patch) candidate="$latest_patch" ;;
+                minor) candidate="$latest_minor" ;;
+                major) candidate="$latest_major" ;;
+            esac
+
+            [ -n "$candidate" ] || continue
+
+            print_update "$type" "$candidate" "${name}:${prefix}${candidate}${suffix}"
+            pins+=("${type} ${candidate}: FROM ${UPDATE_PIN}")
+            UPDATE_ROWS+=("| \`${file}\` | ${line_number} | \`${ref}\` | :x: ${type} ${candidate}: \`FROM ${UPDATE_PIN}\` |")
+        done
+
+        github_annotation error "$file" "$line_number" "Base image update available" \
+            "${ref} has newer versions:"$'\n'"$(printf '%s\n' "${pins[@]}")"
+    done < <(dockerfile_from_lines "$file")
+
+    printf '\n'
+}
+
+# Write update check result to GitHub Actions job summary.
+# Usage: write_updates_summary
+write_updates_summary() {
+    [ -n "${GITHUB_STEP_SUMMARY:-}" ] || return 0
+
+    github_summary "## Docker base image updates" ""
+
+    if [ "$FAILED" -gt 0 ]; then
+        github_summary ":x: **Could not check ${FAILED} base image(s).**" ""
+    fi
+
+    if [ "$UPDATES" -gt 0 ]; then
+        github_summary ":x: **${UPDATES} base image(s) have newer versions.** Update \`FROM\` lines with the pin references below, see $(doc_link)." ""
+    elif [ "$FAILED" -eq 0 ]; then
+        github_summary ":white_check_mark: All base images are up to date." ""
+    fi
+
+    [ "${#UPDATE_ROWS[@]}" -gt 0 ] || return 0
+
+    github_summary "| File | Line | Image | Result |" "|---|---|---|---|"
+    github_summary "${UPDATE_ROWS[@]}"
+}
+
+command_updates() {
+    local file
+    local -a files
+    declare -ga UPDATE_ROWS=()
+    declare -g UPDATE_PIN=""
+    declare -gA TAGS_CACHE=()
+    declare -gA DIGEST_CACHE=()
+    declare -gA TOKEN_CACHE=()
+    declare -g UPDATES=0
+    declare -g FAILED=0
+    declare -g RATE_LIMITED=0
+
+    files=(Dockerfile docker/**/Dockerfile docker/**/Dockerfile.*)
+
+    if [ "${#files[@]}" -eq 0 ]; then
+        error "No Dockerfiles found"
+        exit 1
+    fi
+
+    info "OK" "Checking base image updates of ${#files[@]} Dockerfiles"
+    printf '\n'
+
+    for file in "${files[@]}"; do
+        check_dockerfile_updates "$file"
+    done
+
+    if [ "$RATE_LIMITED" -eq 1 ]; then
+        warning "WARNING" "Registry pull rate limit reached, some digests are not resolved, see the RATE LIMIT hint above"
+    fi
+
+    write_updates_summary
+
+    if [ "$FAILED" -gt 0 ]; then
+        error "Could not check ${FAILED} base image(s)"
+    fi
+
+    if [ "$UPDATES" -gt 0 ]; then
+        error "${UPDATES} base image(s) have newer versions, update FROM lines with the pin references above"
+    fi
+
+    if [ "$FAILED" -gt 0 ] || [ "$UPDATES" -gt 0 ]; then
+        exit 1
+    fi
+
+    info "OK" "All base images are up to date"
+}
+
 command_platforms() {
     docker buildx inspect --bootstrap | awk '/^(Name|Driver|Platforms):/ && !seen[$1]++'
 }
@@ -720,6 +1276,7 @@ command_push() {
 case "${1:-}" in
     digest ) require_docker; require_jq; command_digest ;;
     verify ) require_docker; require_jq; command_verify ;;
+    updates ) require_docker; require_jq; require_curl; command_updates ;;
     platforms ) require_docker; command_platforms ;;
     setup-qemu ) require_docker; command_setup_qemu ;;
     build ) require_docker; command_build ;;

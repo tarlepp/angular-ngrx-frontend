@@ -1,7 +1,7 @@
 ARG TARGET=production
 
 # Stage 1: Dependencies
-FROM node:26.12.0-trixie@sha256:1b84b89ada025e3b14543cbb837ffaa1c1b5273b841c5b94dd1a8f9c1d8cf7fe AS dependencies
+FROM node:26.12.0-trixie@sha256:45a2bf9d9300e9cf47ecb375e38447c140c45ef5fbae869c430475b05b98d86e AS dependencies
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN npm install -g corepack \
     && yarn install --immutable
 
 # Stage 2: Development
-FROM node:26.12.0-trixie-slim@sha256:0d1e33586362bb9e608c4e751e7a9e7edb55c9ac11461ed5666af696cc461dd4 AS development
+FROM node:26.12.0-trixie-slim@sha256:e556a144463cc8dc53afe8de6d2fa0db5c132fd39ffa232c17641bd40df2bf11 AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]

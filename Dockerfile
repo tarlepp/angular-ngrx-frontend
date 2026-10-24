@@ -127,7 +127,9 @@ USER node
 ENV PATH="$PATH:/home/node/.local/bin"
 ENV XDG_RUNTIME_PATH=/home/node/.tmp
 
-RUN echo 'if command -v thefuck >/dev/null 2>&1; then eval "$(thefuck --alias 2>/dev/null)" || true; fi' >> /home/node/.bashrc
+COPY --chown=node:node ./docker/bash/thefuck.bash /home/node/.config/bash/thefuck.bash
+
+RUN echo 'source /home/node/.config/bash/thefuck.bash' >> /home/node/.bashrc
 
 # Expose port 4200 outside
 EXPOSE 4200

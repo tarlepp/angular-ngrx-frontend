@@ -312,6 +312,7 @@ repository root on the Docker host, outside the development container:
 ```bash
 make docker-image-digest IMAGE=node:26.10.0-trixie
 make docker-image-verify-pins
+make docker-image-updates
 make docker-build-platform PLATFORM=linux/arm64
 make docker-build-multi-platform PLATFORMS=linux/amd64,linux/arm64 TAG=ghcr.io/OWNER/angular-ngrx-frontend:latest
 ```
@@ -437,6 +438,7 @@ The main GitHub Actions workflow in `.github/workflows/main.yml` currently runs:
 * markdown documentation linting
 * translation extraction drift checks
 * untranslated text tag checks
+* Docker base image update checks (`./scripts/docker-images.sh updates`)
 * Docker image build
 * Trivy vulnerability scanning on the built image
 

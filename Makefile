@@ -271,6 +271,13 @@ else
 	@./scripts/docker-images.sh verify
 endif
 
+docker-image-updates: ## Check newer semver versions of Dockerfile base images
+ifeq ($(INSIDE_DOCKER), 1)
+	$(WARNING_HOST)
+else
+	@./scripts/docker-images.sh updates
+endif
+
 docker-builder-platforms: ## Show platforms supported by the current buildx builder
 ifeq ($(INSIDE_DOCKER), 1)
 	$(WARNING_HOST)

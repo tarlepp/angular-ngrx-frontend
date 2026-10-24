@@ -21,7 +21,8 @@ application's image for one or more platforms.
 
 Run these commands from the repository root on the Docker host, not inside the
 development container. The helper requires Docker with the Buildx plugin.
-`jq` is additionally required for digest inspection and base-image verification.
+`jq` is additionally required for digest inspection, base-image verification,
+and update checks; `curl` is required for update checks.
 Pushing requires authentication to the target registry.
 
 The commands are available through `make` and the underlying
@@ -47,6 +48,35 @@ Dockerfile and any Dockerfiles under `docker/`. It verifies that each resolves
 to a multi-platform index; single-platform manifests fail verification.
 Multi-platform tags that are not pinned by digest produce warnings. Use the
 digest command to get a pin reference.
+
+Check whether newer semver versions of the base images are available:
+
+```bash
+make docker-image-updates
+```
+
+The command lists each Dockerfile and external `FROM` line, then reports the
+newest patch, minor, and major versions that keep the same tag suffix (for
+example `-trixie-slim`). Each update includes a ready-to-use `FROM` pin
+reference with its multi-platform index digest. Tags that are not semver
+versions, such as `latest`, are skipped. This command requires `curl` and `jq`.
+
+The command exits with status `1` when any update is available or an image
+cannot be checked, and with `0` when all base images are up to date. The CI
+workflow runs the same check (`./scripts/docker-images.sh updates`), so a new
+upstream base image release fails CI until the `FROM` lines are updated. In
+GitHub Actions, the command also adds error annotations to the Dockerfile lines
+and writes the pin references to the job summary.
+
+Digests are resolved with registry `HEAD` requests, which do not consume the
+Docker Hub pull quota. Registry requests use the credentials stored by
+`docker login` when available, which gives a higher rate limit than anonymous
+access.
+
+When a registry rate limit is reached, the command shows a hint once, then
+retries with a countdown. You can press Ctrl+C, run `docker login`, and run the
+command again. If retries are exhausted, the update is still listed, but its
+digest is reported as not resolved.
 
 ## Building for one platform [ᐞ](#table-of-contents)
 

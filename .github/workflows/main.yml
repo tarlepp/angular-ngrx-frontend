@@ -85,6 +85,16 @@ jobs:
       - name: Run `yarn run check-translations`
         run: yarn run check-translations
 
+  check-docker-base-image-updates:
+    name: Check that Docker base images are up-to-date
+    runs-on: ubuntu-24.04
+
+    steps:
+      - *checkout_step
+
+      - name: Run `./scripts/docker-images.sh updates`
+        run: ./scripts/docker-images.sh updates
+
   build:
     name: Build application Docker image
     runs-on: ubuntu-24.04

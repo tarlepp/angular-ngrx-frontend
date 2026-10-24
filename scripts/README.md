@@ -10,6 +10,7 @@ This directory contains different scripts that are used during development.
   * [Table of Contents](#table-of-contents)
   * [Resources](#resources)
     * [Yarn management scripts](#yarn-management-scripts)
+    * [Multi-platform Docker image helper](#multi-platform-docker-image-helper)
     * [Project stats script](#project-stats-script)
     * [GitHub Actions update checker](#github-actions-update-checker)
 
@@ -19,6 +20,8 @@ This directory contains different scripts that are used during development.
 
 * [Yarn management scripts](#yarn-management-scripts)
   * Manage the pinned Yarn version across the project
+* [Multi-platform Docker image helper](#multi-platform-docker-image-helper)
+  * Inspect base images and build the application image with Docker Buildx
 * [Project stats script](#project-stats-script)
   * Generate simple project statistics
 * [GitHub Actions update checker](#github-actions-update-checker)
@@ -90,6 +93,29 @@ Scripts referenced:
 * `scripts/update-yarn.sh` - Alternative upgrade with detailed output
 
 See `doc/YARN_UPDATE.md` and `doc/YARN_UPDATE_QUICK_REF.md` for detailed documentation.
+
+### Multi-platform Docker image helper [ᐞ](#table-of-contents)
+
+<a id="multi-platform-docker-image-helper"></a>
+
+File: `scripts/docker-images.sh`
+
+Use the Makefile entrypoints on the Docker host to inspect multi-platform base
+image manifests, verify Dockerfile base images, and build or push images for
+one or more platforms. The helper requires Docker Buildx; `jq` is required for
+manifest inspection and verification.
+
+```bash
+make docker-image-digest IMAGE=node:26.10.0-trixie
+make docker-image-verify-pins
+make docker-builder-platforms
+make docker-setup-qemu PLATFORMS=arm64,amd64
+make docker-build-platform PLATFORM=linux/arm64
+make docker-build-multi-platform PLATFORMS=linux/amd64,linux/arm64 TAG=ghcr.io/OWNER/angular-ngrx-frontend:latest
+```
+
+See `doc/DOCKER_MULTI_PLATFORM.md` for command parameters, registry publishing,
+and base-image pinning guidance.
 
 ### Project stats script [ᐞ](#table-of-contents)
 

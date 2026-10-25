@@ -104,6 +104,7 @@ jobs:
       - lint-documentation
       - check-translations
       - check-untranslated-text-tags
+      - check-docker-base-image-updates
 
     steps:
       - *checkout_step

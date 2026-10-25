@@ -75,6 +75,8 @@ make yarn-update VERSION=4.17.0
 
 * Uses `scripts/update-yarn.sh` with detailed step-by-step output
 * Requires explicit VERSION parameter
+* Uses the same upgrade flow as `yarn-upgrade`, including downloading the
+  release binary
 
 **Convenience workflow (check, validate, then upgrade):**
 
@@ -93,6 +95,12 @@ Scripts referenced:
 * `scripts/update-yarn.sh` - Alternative upgrade with detailed output
 
 See `doc/YARN_UPDATE.md` and `doc/YARN_UPDATE_QUICK_REF.md` for detailed documentation.
+
+Yarn scripts use colored headings and labeled results (`NO_COLOR=1` disables
+script colors). When an update is available or an upgrade succeeds, they print
+a reminder and `git add` command for the new `.yarn/releases/yarn-<version>.cjs`
+binary and both version pins. You must review and commit these files together;
+the scripts never stage or commit automatically.
 
 ### Multi-platform Docker image helper [ᐞ](#table-of-contents)
 

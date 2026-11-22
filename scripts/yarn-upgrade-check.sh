@@ -8,23 +8,22 @@ configured="$(node -p "require('./package.json').packageManager.replace('yarn@',
 active="$(yarn --version)"
 latest="$(get_latest_stable_yarn_version)"
 
-printf "\033[32mYarn Upgrade Check (dry-run):\033[39m\n"
-echo "Configured version: $configured"
-echo "Active version: $active"
-echo "Latest stable version: $latest"
+yarn_heading 'Yarn upgrade check (dry-run)'
+yarn_versions "$configured" "$active" "$latest"
+yarn_message "$YARN_BLUE" 'INFO' 'Read-only check; no files will be changed.'
 
 if is_unknown_version "$latest"; then
-  echo "Result: unable to determine latest stable version"
+  yarn_message "$YARN_YELLOW" 'WARN' 'Unable to determine latest stable version.'
   echo "Try again later or run with explicit version:"
   echo "  make yarn-upgrade VERSION=X.Y.Z"
 elif [ "$configured" = "$latest" ] && [ "$active" = "$latest" ]; then
-  echo "Result: up to date (no changes needed)"
+  yarn_message "$YARN_GREEN" 'OK' 'Yarn is up to date; no changes needed.'
 else
-  echo "Result: upgrade available"
+  yarn_message "$YARN_YELLOW" 'UPDATE' 'Yarn version pins or active version differ from latest stable.'
   echo "Would update:"
   echo "  - package.json (packageManager)"
   echo "  - .yarnrc.yml (yarnPath)"
   echo "  - .yarn/releases/yarn-$latest.cjs"
-  echo "Run:"
-  echo "  make yarn-upgrade VERSION=$latest"
+  printf '\n  Run: %smake yarn-upgrade VERSION=%s%s\n' "$YARN_BOLD" "$latest" "$YARN_RESET"
+  yarn_vcs_reminder "$latest"
 fi

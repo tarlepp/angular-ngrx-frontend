@@ -54,6 +54,9 @@ Dry-run check with no file changes:
 make yarn-upgrade-check
 ```
 
+Output uses blue section headings, green success labels, and yellow warnings
+and action reminders. Set `NO_COLOR=1` to disable script colors.
+
 ## Upgrade Yarn [ᐞ](#table-of-contents)
 
 <a id="upgrade-yarn"></a>
@@ -86,6 +89,19 @@ Expected changed files:
 * `.yarnrc.yml`
 * `.yarn/releases/yarn-<version>.cjs`
 
+**The new Yarn binary must be added to version control**, not just the two
+configuration files. Upgrade scripts print this reminder after success; status
+and dry-run checks also show it when an update is available.
+
+For example, after upgrading to `4.18.0`:
+
+```bash
+git add package.json .yarnrc.yml .yarn/releases/yarn-4.18.0.cjs
+```
+
+Review and commit these files together, including any removed old release.
+The scripts do not stage or commit files automatically.
+
 ## Implementation Details [ᐞ](#table-of-contents)
 
 <a id="implementation-details"></a>
@@ -96,6 +112,7 @@ Make targets call these scripts:
 * `scripts/yarn-status.sh`
 * `scripts/yarn-upgrade.sh`
 * `scripts/yarn-upgrade-check.sh`
+* `scripts/update-yarn.sh` (explicit-version entrypoint using the same upgrade flow)
 
 Upgrade flow:
 

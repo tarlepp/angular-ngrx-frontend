@@ -219,7 +219,7 @@ endif
 
 update: ## Upgrade dependencies via yarn interactively
 ifeq ($(INSIDE_DOCKER), 1)
-	@echo "\033[32m\033[39m"
+	@bash -c 'source scripts/yarn-lib.sh; yarn_heading "Interactive dependency update"'
 	@yarn upgrade-interactive
 else ifeq ($(strip $(IS_RUNNING)),)
 	$(WARNING_DOCKER)

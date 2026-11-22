@@ -8,25 +8,21 @@ configured="$(node -p "require('./package.json').packageManager")"
 active="$(yarn --version)"
 latest_stable="$(get_latest_stable_yarn_version)"
 
-printf "\033[32mYarn Version Information:\033[39m\n"
-echo "Configured version: $configured"
-echo "Active version: $active"
-echo "Latest stable version: $latest_stable"
+yarn_heading 'Yarn version information'
+yarn_versions "$configured" "$active" "$latest_stable"
 
 if is_unknown_version "$latest_stable"; then
-  echo "Update available: unknown (could not determine latest stable)"
+  yarn_message "$YARN_YELLOW" 'WARN' 'Update availability unknown: could not determine latest stable.'
 elif [ "$active" = "$latest_stable" ]; then
-  echo "Update available: no"
+  yarn_message "$YARN_GREEN" 'OK' 'Active Yarn is up to date.'
 else
-  echo "Update available: yes"
-  echo "Suggested command: make yarn-upgrade VERSION=$latest_stable"
+  yarn_message "$YARN_YELLOW" 'UPDATE' 'A different stable Yarn version is available.'
+  printf '  Run: %smake yarn-upgrade VERSION=%s%s\n' "$YARN_BOLD" "$latest_stable" "$YARN_RESET"
+  yarn_vcs_reminder "$latest_stable"
 fi
 
-echo ""
-printf "\033[32m.yarnrc.yml yarnPath:\033[39m\n"
+yarn_heading 'Project Yarn pin (.yarnrc.yml)'
 grep "yarnPath:" .yarnrc.yml || echo "Not set"
 
-echo ""
-printf "\033[32mAvailable Yarn releases in .yarn/releases/:\033[39m\n"
+yarn_heading 'Local Yarn releases (.yarn/releases/)'
 ls -1 .yarn/releases/ 2>/dev/null | sort || echo "No releases found"
-

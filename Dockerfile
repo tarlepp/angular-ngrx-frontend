@@ -16,7 +16,7 @@ RUN npm install -g corepack \
     && yarn install --immutable
 
 # Stage 2: Development
-FROM node:26.13.1-trixie-slim@sha256:e6bedef217677b276c591795e169840edd9096dbf13f29df8ef8d1856b8820bc AS development
+FROM node:26.13.1-trixie-slim@sha256:abe7e5a82b61a8ef67b315b85497c9e65173387ccf2f4a029248184b8e020be5 AS development
 
 # Let's use bash as a default shell with login each time
 SHELL ["/bin/bash", "--login", "-c"]
@@ -149,7 +149,7 @@ COPY . .
 RUN yarn build-prod
 
 # Stage 4: Production
-FROM nginx:1.31.9-alpine-slim@sha256:0b98e1db810be4f78a699dd2a98fa1c52b12a71e91872a00a2537b9a8b502be9 AS production
+FROM nginx:1.31.10-alpine-slim@sha256:c293b28729906d97fa5302fce3bd79bd27a3ea9a5d9604e21c6ff0ebf14549fc AS production
 
 # Copy nginx configuration and build application inside the final container
 COPY --from=builder /app/docker/nginx.conf /etc/nginx/conf.d/default.conf
